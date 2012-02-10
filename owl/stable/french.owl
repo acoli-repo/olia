@@ -1,0 +1,2588 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/french.owl#"
+     xml:base="http://purl.org/olia/french.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/french.owl">
+        <owl:versionInfo>2011-10-30 created by Christian Chiarcos
+
+So far, included only part-of-speech tags (ettiquettes, Abeille and Clément 2003, Annexe 1), but not les différents types de composés (Annexe 2). Also, phrase labels for constituent syntax are missing. For the surface forms of the tags, I used the forms provided by Abeillén and Clément, *not* the actual XML encoding. Its abbreviations seem to differ. Accordingly, system:hasTier is &quot;cat&quot;, not split into &quot;cat&quot; (resp. &quot;catint&quot;), &quot;sous-cat&quot;, &quot;mph&quot;.
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <rdfs:comment>OLiA Annotation Model for the morphosyntactic annotations of the French Le Monde corpus (Abeillé et al. 2000). Unless specified otherwise, all comments (mostly examples) are quotes from Abeillé and Clément (2003).
+
+References
+Abeille A., Clement L., Kinyon A. (2000) “Building a treebank for French”, In Proc. LREC 2000
+Abeillé, A. and Clément, L. (2003), &quot;Annotation Morpho-syntaxique. Les mots simples - Les mots composés. Corpus Le Monde&quot;, ms., version of 10 janvier 2003, http://www.llf.cnrs.fr/Gens/Abeille/guide-morpho-synt.02.pdf</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.llf.cnrs.fr/Gens/Abeille/guide-morpho-synt.02.pdf</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTag"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTier"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Adjectif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Adjectif">
+        <rdfs:label xml:lang="en">adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdjectifCardinal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifCardinal">
+        <rdfs:label xml:lang="en">cardinal adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
+        <rdfs:comment xml:lang="fr">ACfp les NEUF différences
+ACmp les NEUF stylos
+ACms le livre TROIS
+Acfs la porte TROIS</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdjectifIndéfini -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifIndéfini">
+        <rdfs:label xml:lang="en">indefinite adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
+        <rdfs:comment xml:lang="fr">A-indef-ms le MEME cabinet
+A-indef-fs Une SEULE fleur
+A-indef-mp TOUS les ans
+A-indef-fp TOUTES les fleurs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdjectifInterrogatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifInterrogatif">
+        <rdfs:label xml:lang="en">interrogative adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
+        <rdfs:comment xml:lang="fr">A-inter-ms QUEL est ce vainqueur ?
+A-inter-fs QUELLE est cette fille ?
+A-inter-fp QUELLES sont nos chances ?
+A-inter-mp QUELS sont les candidats ?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdjectifOrdinal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifOrdinal">
+        <rdfs:label xml:lang="en">ordinal adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
+        <rdfs:comment xml:lang="fr">AOms le XIXe siècle
+AOfs une SECONDE chance
+AOmp les TROISIEME trimestres
+AOfp les DIXIEMES saisons</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdjectifPossessif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifPossessif">
+        <rdfs:label xml:lang="en">possessive adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
+        <rdfs:comment xml:lang="fr">A-poss-fs Cette pipe est MIENNE
+        A-poss-ms un MIEN cousin</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdjectifQualificatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifQualificatif">
+        <rdfs:label xml:lang="en">qualificative adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
+        <rdfs:comment xml:lang="fr">il est INTELLIGENT
+le PETIT chien de la voisine
+du fait que le candidat est déclaré SEUL sur la liste
+Un stylo NEUF
+AQmp Ces enfants sont déjà GRANDS
+De GRANDS enfants
+AQfs une défaite EVIDENTE
+une IMPORTANTE victoire
+AQfp trois disquettes ENDOMMAGEES</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Adverbe -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Adverbe">
+        <rdfs:label xml:lang="en">adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:comment xml:lang="fr">il est PRESQUE midi
+le ministre est ENSUITE nommé
+il s&#39;avance LENTEMENT DESSOUS
+BIEN des années ont passé
+BEAUCOUP de ces étudiants sont diplomés
+il en veut D&#39;AVANTAGE
+DEPUIS, il est parti</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdverbeDémonstratif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdverbeDémonstratif">
+        <rdfs:label xml:lang="en">demonstrative adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
+        <rdfs:comment xml:lang="fr">ce garçon-CI</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdverbeExclamatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdverbeExclamatif">
+        <rdfs:label xml:lang="en">exclamative adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
+        <rdfs:comment xml:lang="fr">ADV-exclam QUE oui ! COMME elle est belle !</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdverbeInterrogatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdverbeInterrogatif">
+        <rdfs:label xml:lang="en">interrogative adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
+        <rdfs:comment xml:lang="fr">COMBIEN sont ils ?
+il me demande COMBIEN ils sont
+OU vas-tu ? QUAND pars-tu ?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AdverbeNégatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#AdverbeNégatif">
+        <rdfs:label xml:lang="en">negative adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
+        <rdfs:comment xml:lang="fr">pour ne prendre QUE des exemples
+        Jean ne boit PLUS</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Clitique -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Clitique">
+        <rdfs:label xml:lang="en">clitic</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ClitiqueObjet -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#ClitiqueObjet">
+        <rdfs:label xml:lang="en">clitic object pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Clitique"/>
+        <rdfs:comment xml:lang="fr">CLO1ms me, m&#39; -moi
+CLO1fs me, m&#39; -moi
+CLO2fs te, -toi, t&#39;
+CLO2ms te, -toi, t&#39;
+CLO3ms en, y, le, l&#39;, lui
+CLO3fs la, l&#39;, lui
+CLO3fp les, leur
+CLO3mp les, leur</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ClitiqueRéfléchi -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#ClitiqueRéfléchi">
+        <rdfs:label xml:lang="en">clitic reflexive pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Clitique"/>
+        <rdfs:comment xml:lang="fr">CLR1ms me, m&#39; -moi,
+CLR1fs me, -moi, m&#39;
+CLR2ms te, -toi, t&#39;
+CLR2fs te, -toi, t&#39;
+CLR1mp nous, -nous
+CLR1fp nous, -nous
+CLR2mp vous, -vous
+CLR2fp vous , -vous
+CLR3fp se, s&#39;
+CLR3mp se, s&#39;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ClitiqueSujet -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#ClitiqueSujet">
+        <rdfs:label xml:lang="en">clitic subject pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Clitique"/>
+        <rdfs:comment xml:lang="fr">CLS1ms je, j&#39;
+CLS2ms tu
+CLS1mp nous
+CLS2mp vous
+CLS3ms on, ce
+CLS3mp ils
+CLS3fs elle
+CLS3fp elles</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Conjonction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Conjonction">
+        <rdfs:label xml:lang="en">conjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ConjonctionDeCoordination -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#ConjonctionDeCoordination">
+        <rdfs:label xml:lang="en">coordinating conjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Conjonction"/>
+        <rdfs:comment xml:lang="fr">La table AINSI QUE les chaises sont en orme.
+        Le combustible est mélangé à l&#39;air ET injecté dans la chambre</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ConjonctionDeSubordination -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#ConjonctionDeSubordination">
+        <rdfs:label xml:lang="en">subordinating conjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Conjonction"/>
+        <rdfs:comment xml:lang="fr">QUAND Marie travaille, elle n&#39;écoute personne
+Le député n&#39;a pas fait de déclaration LORSQU&#39;il a été battu
+Jean est gros ALORS QUE Marie ne l&#39;est pas.
+Il est aussi petit QUE Marie.
+Je pense QU&#39; elle a tort.
+Je me demande SI elle m&#39;écoute.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Determinant -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Determinant">
+        <rdfs:label xml:lang="en">determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantCardinal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantCardinal">
+        <rdfs:label xml:lang="en">cardinal determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">DCfp TROIS amies sont venues
+        DCmp TROIS éléphants sont traqués par les chasseurs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantDéfini -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantDéfini">
+        <rdfs:label xml:lang="en">definite determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">Dms LE ministre a pris la parole
+Dmp Marie garde LES enfants
+Dfs LA linguistique, c&#39;est passionnant
+Dfp LES ordinateurs sont allumés</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantDémonstratif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantDémonstratif">
+        <rdfs:label xml:lang="en">demonstrative determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">DDms CE vélo est-il a vendre ?
+DDmp CES ustensiles sont pratiques
+DDfs Je regarde CETTE peinture
+DDfp CES peintures sont laides</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantExclamatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantExclamatif">
+        <rdfs:label xml:lang="en">exclamative determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">DEms QUEL homme que cet homme là !
+DEmp QUELS individus sinistres !
+DEfs QUELLE chance !
+DEfp QUELLES belles fleurs !</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantIndéfini -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantIndéfini">
+        <rdfs:label xml:lang="en">indefinite determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">D-indef-fs UNE action rentable
+D-indef-ms UN ordinateur est en panne
+D-indef-mp la grogne parmi CERTAINS anciens cadres
+D-indef-fp Tu achètera DES prunes</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantInterrogatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantInterrogatif">
+        <rdfs:label xml:lang="en">interrogative determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">D-inter-fs QUELLE meilleure méthode que celle du puzzle ?
+D-inter-fp Jean demande QUELLES filles sont candidates
+D-inter-ms QUEL pain veut-tu ?
+D-inter-mp QUELS enfants cherches-tu ?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantNégatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantNégatif">
+        <rdfs:label xml:lang="en">negative determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">DNfs NULLE fille
+DNms AUCUN garçon
+DNms NULS soucis
+DNfp NULLES filles</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantPartitif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantPartitif">
+        <rdfs:label xml:lang="en">partitive determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">D-part-ms j&#39;ai acheté DU pain
+        D-part-fs Jean boit DE LA bière</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DeterminantPossessif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantPossessif">
+        <rdfs:label xml:lang="en">possessive determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
+        <rdfs:comment xml:lang="fr">D-poss-ms MON chien
+D-poss-fs SA voiture
+D-poss-mp MES amis
+D-poss-fp TES fleurs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Etiquette -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Etiquette">
+        <rdfs:label xml:lang="en">tag</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasTier"/>
+                <owl:hasValue>cat</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Interjection">
+        <rdfs:label xml:lang="en">interjection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:comment xml:lang="fr">HELAS !</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#MotEtranger -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#MotEtranger">
+        <rdfs:label xml:lang="en">foreign word</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:comment xml:lang="fr">MOTS ETRANGERS
+        ET % mettre exemple</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Nom -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Nom">
+        <rdfs:label xml:lang="en">Noun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NomCommun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#NomCommun">
+        <rdfs:label xml:lang="en">common noun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Nom"/>
+        <rdfs:comment xml:lang="fr">NCfp 
+Trois VACHES
+Les PME
+
+NCfs 
+Une VACHE
+
+NCmp 
+TAUREAUX
+des MILLIONS de Français
+
+NCms 
+TAUREAU
+Un MILLIARD de fois
+le FRANCAIS</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NomPropre -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#NomPropre">
+        <rdfs:label xml:lang="en">proper noun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Nom"/>
+        <rdfs:comment xml:lang="fr">NPfp 
+les ALPES
+
+NPfs 
+MARIE
+la FRANCE
+la SNCF
+
+NPmp 
+les GOBELINS
+Les ETATS-UNIS
+
+NPms 
+PAUL
+le JAPON</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Ponctuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Ponctuation">
+        <rdfs:label xml:lang="en">punctuation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PonctuationFaible -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PonctuationFaible">
+        <rdfs:label xml:lang="en">weak punctuation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Ponctuation"/>
+        <rdfs:comment xml:lang="fr">faible
+        PONCTW - , ; : / &quot; &#39;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PonctuationForte -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PonctuationForte">
+        <rdfs:label xml:lang="en">strong punctuation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Ponctuation"/>
+        <rdfs:comment xml:lang="fr">forte
+        PONCTS . ? ! ...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Prefixe -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Prefixe">
+        <rdfs:label xml:lang="en">prefix</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:comment xml:lang="fr">PREFIXE
+        PREF ANTI, ARCHI, PR…, POST...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Preposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Preposition">
+        <rdfs:label xml:lang="en">preposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:comment xml:lang="fr">DEPUIS midi
+je viens DE sortir
+QUANT A vous, vous restez
+elle est partie VOICI 3 ans
+Le sel est SUR la table
+Il jette un oeil AVANT DE partir</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Pronom -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Pronom">
+        <rdfs:label xml:lang="en">pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PronomCardinal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomCardinal">
+        <rdfs:label xml:lang="en">cardinal pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
+        <rdfs:comment xml:lang="fr">PRO-inter-3mp On ne sait pas LESQUELS viendront
+        PRO-inter-3fp On se demande LESQUELLES choisir</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PronomIndéfini -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomIndéfini">
+        <rdfs:label xml:lang="en">indefinite pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
+        <rdfs:comment xml:lang="fr">PRO-indef-3ms L&#39;UN des notres, TOUT va bien
+PRO-indef-3fs L&#39;UNE des nôtres
+PRO-indef-3mp TOUS sont partis, BEAUCOUP de ces étudiants, PLUSIEURS sont arrivés
+PRO-indef-3fp Elles sont TOUTES venues, CERTAINES sont là</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PronomInterrogatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomInterrogatif">
+        <rdfs:label xml:lang="en">interrogative pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
+        <rdfs:comment xml:lang="fr">PRO-inter-3ms LEQUEL est parti ?
+PRO-inter-3fs LAQUELLE veux-tu ?
+PRO-inter-3mp On ne sait pas LESQUELS viendront
+PRO-inter-3fp On se demande LESQUELLES choisir</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PronomNégatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomNégatif">
+        <rdfs:label xml:lang="en">negative pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
+        <rdfs:comment xml:lang="fr">PRO-inter-ms PERSONNE ne viendra, RIEN ne bouge, NUL n&#39;est censé ignorer la loi
+PRO-inter-mp AUCUNS ne viendront
+PRO-inter-fs AUCUNE n&#39;est partie
+PRO-inter-fp AUCUNES ne seront interrogées</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PronomPersonnel -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomPersonnel">
+        <rdfs:label xml:lang="en">strong personal pronoun</rdfs:label>
+        <rdfs:label xml:lang="fr">Pronoms personels (forts)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
+        <rdfs:comment xml:lang="fr">Pronoms personnels (forts)
+PRO-pers-1ms moi
+PRO-pers-2ms toi
+PRO-pers-3ms lui, soi
+PRO-pers-1mp nous
+PRO-pers-2mp vous
+PRO-pers-3mp eux
+PRO-pers-1fp nous
+PRO-pers-2fp vous
+PRO-pers-3fp elles
+PRO-pers-1fs moi
+PRO-pers-2fs toi
+PRO-pers-3fs elle, soi</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PronomPossessif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomPossessif">
+        <rdfs:label xml:lang="en">possessive pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
+        <rdfs:comment xml:lang="fr">PRO-poss-3ms le MIEN, le TIEN, le SIEN, le NOTRE, le VOTRE, le LEUR
+PRO-poss-3mp les AUTRES, , les MIENs, les TIENS, les SIENS,
+PRO-poss-3fp les NOTRES, les VOTRES, les LEURS
+PRO-poss-3fs j&#39;en veux UNE, la MIENNE, la TIENNE, la NOTRE, la VOTRE, la LEUR</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PronomRelatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomRelatif">
+        <rdfs:label xml:lang="en">relative pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
+        <rdfs:comment xml:lang="fr">PROR1ms moi QUI suis parti
+PROR2ms toi QUE l&#39;on cherche
+PROR3ms l&#39;endroit OU on va
+PROR1mp nous QUI sommes ignorants
+PROR2mp vous QUE tous admirent
+PROR3mp des bons QU&#39;il faut acheter
+PROR1fs moi QUI suis partie
+PROR2fs toi QUE l&#39;on a arrêtée
+PROR3fs la femme à LAQUELLE on écrira
+PROR1fp nous à QUI personne ne pense
+PROR2fp vous QUI êtes belles
+PROR3fp les femmes DONT on parle</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Verbe -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#Verbe">
+        <rdfs:label xml:lang="en">verb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:comment xml:lang="fr">Pour les formes composées, nous notons les traits morphologiques du ou des auxiliaires puis du participe.
+Exemple :
+il:CL3ms a:VP3s été:VKms mangé:VKms
+j:CL1ms eusse:VT1s mangé:VKms
+j:CL1ms ai:VP1s eu:VKms mangé:VKms</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbeFuturIndicatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeFuturIndicatif">
+        <rdfs:label xml:lang="en">verb, future indicative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">futur indicatif
+VF1s MANGERAI
+VF2s MANGERAS
+VF3s MANGERA
+VF1p MANGERONS
+VF2p MANGEREZ
+VF3p MANGERONT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbeImparfaitIndicatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeImparfaitIndicatif">
+        <rdfs:label xml:lang="en">verb, imperfect indicative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">imparfait indicatif
+VI1s MANGEAIS
+VI2s MANGEAIS
+VI3s MANGEAIT
+VI1p MANGIONS
+VI2p MANGIEZ
+VI3p MANGEAIENT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbeImparfaitSubjonctif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeImparfaitSubjonctif">
+        <rdfs:label xml:lang="en">verb, imperfect subjunctive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">imparfait subjonctif
+VT1s MANGEASSE, EUSSE
+VT3s MANGE¬T
+VT1p MANGEASSIONS, CHOISISSIONS
+VT3p MANGEASSENT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbeImpératif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeImpératif">
+        <rdfs:label xml:lang="en">verb, imperative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">impératif
+VY1p MANGEONS
+VY2s MANGE
+VY2p MANGEZ</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbeInfinitif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeInfinitif">
+        <rdfs:label xml:lang="en">verb, infinitive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">infinitif
+VW MANGER</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbeParticipePassé -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeParticipePassé">
+        <rdfs:label xml:lang="en">verb, past participle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">participe passé
+VKms MANGé
+VKmp MANGéS
+VKfs MANGéE
+VKfp MANGéES</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbeParticipePrésent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeParticipePrésent">
+        <rdfs:label xml:lang="en">verb, present participle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">participe présent
+VG MANGEANT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbePasséSimpleIndicatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbePasséSimpleIndicatif">
+        <rdfs:label xml:lang="en">verb, simple past indicative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">passé simple indicatif
+VJ1s MANGEAI
+VJ3s MANGEA
+VJ3p MANGèRENT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbePrésentConditionnel -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbePrésentConditionnel">
+        <rdfs:label xml:lang="en">present conditional verb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">présent conditionnel
+VC1s MANGERAIS
+VC2s MANGERAIS
+VC3s MANGERAIT
+VC1p MANGERIONS
+VC2p MANGERIEZ
+VC3p MANGERAIENT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbePrésentIndicatif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbePrésentIndicatif">
+        <rdfs:label xml:lang="en">verb, indicative present</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">présent indicatif
+VP1s MANGE
+VP2s MANGES
+VP3s MANGE, VOICI
+VP1p MANGEONS
+VP2p MANGEZ
+VP3p MANGENT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VerbePrésentSubjonctif -->
+
+    <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbePrésentSubjonctif">
+        <rdfs:label xml:lang="en">verb, subjunctive present</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
+        <rdfs:comment xml:lang="fr">présent subjonctif
+VS1s MANGE
+VS2s MANGES
+VS3s MANGE
+VS1p MANGIONS
+VS2p MANGIEZ
+VS3p MANGENT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-indef-fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-indef-fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifIndéfini"/>
+        <system:hasTag>A-indef-fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-indef-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-indef-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifIndéfini"/>
+        <system:hasTag>A-indef-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-indef-mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-indef-mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifIndéfini"/>
+        <system:hasTag>A-indef-mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-indef-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-indef-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifIndéfini"/>
+        <system:hasTag>A-indef-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-inter-fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-inter-fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifInterrogatif"/>
+        <system:hasTag>A-inter-fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-inter-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-inter-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifInterrogatif"/>
+        <system:hasTag>A-inter-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-inter-mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-inter-mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifInterrogatif"/>
+        <system:hasTag>A-inter-mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-inter-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-inter-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifInterrogatif"/>
+        <system:hasTag>A-inter-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-poss-fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-poss-fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifPossessif"/>
+        <system:hasTag>A-poss-fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-poss-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-poss-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifPossessif"/>
+        <system:hasTag>A-poss-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-poss-mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-poss-mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifPossessif"/>
+        <system:hasTag>A-poss-mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#A-poss-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#A-poss-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifPossessif"/>
+        <system:hasTag>A-poss-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ACfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ACfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifCardinal"/>
+        <system:hasTag>ACfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ACmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ACmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifCardinal"/>
+        <system:hasTag>ACmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ACms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ACms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifCardinal"/>
+        <system:hasTag>ACms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ADV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ADV">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
+        <system:hasTag>ADV</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ADV-exlam -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ADV-exlam">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdverbeExclamatif"/>
+        <system:hasTag>ADV-exlam</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ADV-inter -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ADV-inter">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdverbeInterrogatif"/>
+        <system:hasTag>ADV-inter</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ADV-neg -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ADV-neg">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdverbeNégatif"/>
+        <system:hasTag>ADV-neg</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ADVD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ADVD">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdverbeDémonstratif"/>
+        <system:hasTag>ADVD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AO-fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#AO-fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifOrdinal"/>
+        <system:hasTag>AO-fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AO-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#AO-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifOrdinal"/>
+        <system:hasTag>AO-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AO-mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#AO-mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifOrdinal"/>
+        <system:hasTag>AO-mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AO-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#AO-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifOrdinal"/>
+        <system:hasTag>AO-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AQfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#AQfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifQualificatif"/>
+        <system:hasTag>AQfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AQfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#AQfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifQualificatif"/>
+        <system:hasTag>AQfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AQmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#AQmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifQualificatif"/>
+        <system:hasTag>AQmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#AQms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#AQms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifQualificatif"/>
+        <system:hasTag>AQms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Acfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#Acfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#AdjectifCardinal"/>
+        <system:hasTag>Acfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CC">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ConjonctionDeCoordination"/>
+        <system:hasTag>CC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLO1ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLO1ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueObjet"/>
+        <system:hasTag>CLO1ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR1fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR1fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR1fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR1fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR1fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR1fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR1mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR1mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR1mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR1ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR1ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR1ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR2fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR2fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR2fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR2fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR2fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR2fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR2mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR2mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR2mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR2ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR2ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR2ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR3fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR3fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR3fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLR3mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLR3mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueRéfléchi"/>
+        <system:hasTag>CLR3mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS1fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS1fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueObjet"/>
+        <system:hasTag>CLS1fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS1mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS1mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueSujet"/>
+        <system:hasTag>CLS1mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS1ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS1ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueSujet"/>
+        <system:hasTag>CLS1ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS2fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS2fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueObjet"/>
+        <system:hasTag>CLS2fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS2mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS2mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueSujet"/>
+        <system:hasTag>CLS2mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS2ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS2ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueObjet"/>
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueSujet"/>
+        <system:hasTag>CLS2ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS3fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS3fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueObjet"/>
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueSujet"/>
+        <system:hasTag>CLS3fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS3fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS3fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueObjet"/>
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueSujet"/>
+        <system:hasTag>CLS3fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS3mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS3mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueObjet"/>
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueSujet"/>
+        <system:hasTag>CLS3mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CLS3ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CLS3ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueObjet"/>
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ClitiqueSujet"/>
+        <system:hasTag>CLS3ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#CS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#CS">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#ConjonctionDeSubordination"/>
+        <system:hasTag>CS</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-indef-fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-indef-fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantIndéfini"/>
+        <system:hasTag>D-indef-fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-indef-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-indef-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantIndéfini"/>
+        <system:hasTag>D-indef-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-indef-mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-indef-mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantIndéfini"/>
+        <system:hasTag>D-indef-mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-indef-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-indef-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantIndéfini"/>
+        <system:hasTag>D-indef-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-inter-fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-inter-fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantInterrogatif"/>
+        <system:hasTag>D-inter-fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-inter-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-inter-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantInterrogatif"/>
+        <system:hasTag>D-inter-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-inter-mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-inter-mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantInterrogatif"/>
+        <system:hasTag>D-inter-mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-inter-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-inter-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantInterrogatif"/>
+        <system:hasTag>D-inter-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-part-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-part-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantPartitif"/>
+        <system:hasTag>D-part-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-part-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-part-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantPartitif"/>
+        <system:hasTag>D-part-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-poss-fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-poss-fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantPossessif"/>
+        <system:hasTag>D-poss-fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-poss-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-poss-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantPossessif"/>
+        <system:hasTag>D-poss-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-poss-mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-poss-mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantPossessif"/>
+        <system:hasTag>D-poss-mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#D-poss-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#D-poss-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantPossessif"/>
+        <system:hasTag>D-poss-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DCfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DCfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantCardinal"/>
+        <system:hasTag>DCfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DCmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DCmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantCardinal"/>
+        <system:hasTag>DCmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DDfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DDfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantDémonstratif"/>
+        <system:hasTag>DDfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DDfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DDfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantDémonstratif"/>
+        <system:hasTag>DDfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DDmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DDmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantDémonstratif"/>
+        <system:hasTag>DDmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DDms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DDms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantDémonstratif"/>
+        <system:hasTag>DDms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DEfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DEfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantExclamatif"/>
+        <system:hasTag>DEfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DEfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DEfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantExclamatif"/>
+        <system:hasTag>DEfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DEmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DEmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantExclamatif"/>
+        <system:hasTag>DEmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DEms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DEms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantExclamatif"/>
+        <system:hasTag>DEms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DNfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DNfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantNégatif"/>
+        <system:hasTag>DNfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DNfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DNfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantNégatif"/>
+        <system:hasTag>DNfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DNmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DNmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantNégatif"/>
+        <system:hasTag>DNmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#DNms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#DNms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantNégatif"/>
+        <system:hasTag>DNms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Dfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#Dfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantDéfini"/>
+        <system:hasTag>Dfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Dfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#Dfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantDéfini"/>
+        <system:hasTag>Dfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Dmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#Dmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantDéfini"/>
+        <system:hasTag>Dmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#Dms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#Dms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#DeterminantDéfini"/>
+        <system:hasTag>Dms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#ET -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#ET">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#MotEtranger"/>
+        <system:hasTag>ET</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#I -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#I">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#Interjection"/>
+        <system:hasTag>I</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NCfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#NCfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#NomCommun"/>
+        <system:hasTag>NCfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NCfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#NCfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#NomCommun"/>
+        <system:hasTag>NCfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NCmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#NCmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#NomCommun"/>
+        <system:hasTag>NCmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NCms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#NCms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#NomCommun"/>
+        <system:hasTag>NCms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NPfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#NPfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#NomPropre"/>
+        <system:hasTag>NPfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NPfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#NPfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#NomPropre"/>
+        <system:hasTag>NPfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NPmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#NPmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#NomPropre"/>
+        <system:hasTag>NPmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#NPms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#NPms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#NomPropre"/>
+        <system:hasTag>NPms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#P -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#P">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#Preposition"/>
+        <system:hasTag>P</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PONCTS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PONCTS">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PonctuationForte"/>
+        <system:hasTag>PONCTS</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PONCTW -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PONCTW">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PonctuationFaible"/>
+        <system:hasTag>PONCTW</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PREF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PREF">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#Prefixe"/>
+        <system:hasTag>PREF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-card-3fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-card-3fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomCardinal"/>
+        <system:hasTag>PRO-card-3fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-card-3mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-card-3mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomCardinal"/>
+        <system:hasTag>PRO-card-3mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-indef-3fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-indef-3fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomIndéfini"/>
+        <system:hasTag>PRO-indef-3fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-indef-3fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-indef-3fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomIndéfini"/>
+        <system:hasTag>PRO-indef-3fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-indef-3mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-indef-3mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomIndéfini"/>
+        <system:hasTag>PRO-indef-3mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-indef-3ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-indef-3ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomIndéfini"/>
+        <system:hasTag>PRO-indef-3ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-inter-3fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-inter-3fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomInterrogatif"/>
+        <system:hasTag>PRO-inter-3fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-inter-3fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-inter-3fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomInterrogatif"/>
+        <system:hasTag>PRO-inter-3fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-inter-3mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-inter-3mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomInterrogatif"/>
+        <system:hasTag>PRO-inter-3mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-inter-3ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-inter-3ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomInterrogatif"/>
+        <system:hasTag>PRO-inter-3ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-1fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-1fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-1fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-1fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-1fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-1fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-1mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-1mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-1mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-1ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-1ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-1ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-2fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-2fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-2fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-2fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-2fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-2fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-2mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-2mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-2mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-2ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-2ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-2ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-3fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-3fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-3fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-3fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-3fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-3fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-3mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-3mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-3mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-pers-3ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-pers-3ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPersonnel"/>
+        <system:hasTag>PRO-pers-3ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-poss-3fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-poss-3fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPossessif"/>
+        <system:hasTag>PRO-poss-3fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-poss-3fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-poss-3fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPossessif"/>
+        <system:hasTag>PRO-poss-3fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-poss-3mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-poss-3mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPossessif"/>
+        <system:hasTag>PRO-poss-3mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRO-poss-3ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRO-poss-3ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomPossessif"/>
+        <system:hasTag>PRO-poss-3ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRON-fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRON-fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomNégatif"/>
+        <system:hasTag>PRON-fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRON-fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRON-fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomNégatif"/>
+        <system:hasTag>PRON-fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRON-mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRON-mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomNégatif"/>
+        <system:hasTag>PRON-mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PRON-ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PRON-ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomNégatif"/>
+        <system:hasTag>PRON-ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR1fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR1fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR1fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR1fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR1fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR1fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR1mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR1mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR1mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR1ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR1ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR1ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR2fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR2fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR2fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR2fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR2fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR2fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR2mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR2mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR2mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR2ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR2ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR2ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR3fp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR3fp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR3fp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR3fs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR3fs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR3fs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR3mp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR3mp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR3mp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#PROR3ms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#PROR3ms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#PronomRelatif"/>
+        <system:hasTag>PROR3ms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VC1p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VC1p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentConditionnel"/>
+        <system:hasTag>VC1p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VC1s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VC1s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentConditionnel"/>
+        <system:hasTag>VC1s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VC2p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VC2p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentConditionnel"/>
+        <system:hasTag>VC2p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VC2s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VC2s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentConditionnel"/>
+        <system:hasTag>VC2s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VC3p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VC3p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentConditionnel"/>
+        <system:hasTag>VC3p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VC3s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VC3s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentConditionnel"/>
+        <system:hasTag>VC3s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VF1p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VF1p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeFuturIndicatif"/>
+        <system:hasTag>VF1p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VF1s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VF1s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeFuturIndicatif"/>
+        <system:hasTag>VF1s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VF2p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VF2p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeFuturIndicatif"/>
+        <system:hasTag>VF2p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VF2s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VF2s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeFuturIndicatif"/>
+        <system:hasTag>VF2s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VF3p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VF3p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeFuturIndicatif"/>
+        <system:hasTag>VF3p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VF3s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VF3s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeFuturIndicatif"/>
+        <system:hasTag>VF3s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VG">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeParticipePrésent"/>
+        <system:hasTag>VG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VI1p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VI1p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitIndicatif"/>
+        <system:hasTag>VI1p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VI1s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VI1s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitIndicatif"/>
+        <system:hasTag>VI1s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VI2p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VI2p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitIndicatif"/>
+        <system:hasTag>VI2p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VI2s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VI2s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitIndicatif"/>
+        <system:hasTag>VI2s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VI3p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VI3p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitIndicatif"/>
+        <system:hasTag>VI3p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VI3s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VI3s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitIndicatif"/>
+        <system:hasTag>VI3s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VJ1s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VJ1s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePasséSimpleIndicatif"/>
+        <system:hasTag>VJ1s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VJ3p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VJ3p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePasséSimpleIndicatif"/>
+        <system:hasTag>VJ3p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VJ3s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VJ3s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePasséSimpleIndicatif"/>
+        <system:hasTag>VJ3s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VKfp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VKfp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeParticipePassé"/>
+        <system:hasTag>VKfp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VKfs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VKfs">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeParticipePassé"/>
+        <system:hasTag>VKfs</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VKmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VKmp">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeParticipePassé"/>
+        <system:hasTag>VKmp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VKms -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VKms">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeParticipePassé"/>
+        <system:hasTag>VKms</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VP1p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VP1p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentIndicatif"/>
+        <system:hasTag>VP1p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VP1s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VP1s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentIndicatif"/>
+        <system:hasTag>VP1s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VP2p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VP2p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentIndicatif"/>
+        <system:hasTag>VP2p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VP2s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VP2s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentIndicatif"/>
+        <system:hasTag>VP2s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VP3p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VP3p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentIndicatif"/>
+        <system:hasTag>VP3p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VP3s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VP3s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentIndicatif"/>
+        <system:hasTag>VP3s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VS1p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VS1p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentSubjonctif"/>
+        <system:hasTag>VS1p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VS1s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VS1s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentSubjonctif"/>
+        <system:hasTag>VS1s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VS2p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VS2p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentSubjonctif"/>
+        <system:hasTag>VS2p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VS2s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VS2s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentSubjonctif"/>
+        <system:hasTag>VS2s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VS3p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VS3p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentSubjonctif"/>
+        <system:hasTag>VS3p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VS3s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VS3s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbePrésentSubjonctif"/>
+        <system:hasTag>VS3s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VT1p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VT1p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitSubjonctif"/>
+        <system:hasTag>VT1p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VT1s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VT1s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitSubjonctif"/>
+        <system:hasTag>VT1s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VT3p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VT3p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitSubjonctif"/>
+        <system:hasTag>VT3p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VT3s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VT3s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImparfaitSubjonctif"/>
+        <system:hasTag>VT3s</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VW -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VW">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeInfinitif"/>
+        <system:hasTag>VW</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VY1p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VY1p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImpératif"/>
+        <system:hasTag>VY1p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VY2p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VY2p">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImpératif"/>
+        <system:hasTag>VY2p</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/french.owl#VY2s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french.owl#VY2s">
+        <rdf:type rdf:resource="http://purl.org/olia/french.owl#VerbeImpératif"/>
+        <system:hasTag>VY2s</system:hasTag>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

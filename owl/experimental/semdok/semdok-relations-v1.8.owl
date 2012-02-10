@@ -1,0 +1,587 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.text-technology.de/semdok-relations.owl#"
+  xml:base="http://www.text-technology.de/semdok-relations.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="MononuclearRelation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="MultinuclearRelation"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RhetoricalRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-process-step">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Elaboration-derivation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Concession">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Contrast"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InterpersonalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-restatement">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Elaboration"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-drift">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Elaboration-continuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CauseResult-multi">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CauseResult"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ListSequence">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BridgingRelation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DiscourseRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Citation-self">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Citation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CausePurpose">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CauseResult"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Attribution">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Support"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Evaluation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InterpretationEvaluation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ResultPurpose">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CauseResult"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SententialDiscourseSegment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DiscourseSegment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CDS-block">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ComplexDiscourseSegment"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >aka sds+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Citation-attribution">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Citation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Citation-evidence">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Citation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProblemSolution-multi">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ProblemSolution"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Consequence-multi">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Consequence"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ElementaryDiscourseSegment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DiscourseSegment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RhetoricalRelation">
+    <rdfs:subClassOf rdf:resource="#DiscourseRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Antithesis">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InterpersonalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Contrast"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Circumstance">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="IdeationalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#DiscourseSegment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DiscourseRole"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SameSegment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TextualRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InterpretationEvaluation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InterpersonalRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Preparation-title">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Preparation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ComplexDiscourseSegment">
+    <rdfs:subClassOf rdf:resource="#DiscourseSegment"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Elaboration-continuation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Elaboration-identity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProblemSolution-s">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ProblemSolution"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CDS-doc">
+    <rdfs:subClassOf rdf:resource="#ComplexDiscourseSegment"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >aka section+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="List-dm_other">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="List"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DiscourseMarker">
+    <rdfs:subClassOf rdf:resource="#DiscourseRole"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Schema">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TextualRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Result">
+    <rdfs:subClassOf rdf:resource="#ResultPurpose"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Cause">
+    <rdfs:subClassOf rdf:resource="#CausePurpose"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Elaboration-identity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Elaboration"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#IdeationalRelation">
+    <rdfs:subClassOf rdf:resource="#RhetoricalRelation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InterpersonalRelation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TextualRelation"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-specification">
+    <rdfs:subClassOf rdf:resource="#Elaboration-identity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#List">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InterpersonalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ListSequence"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-theme-rheme">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Elaboration-continuation-other"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Preparation">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InterpersonalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#TextualRelation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset="reduce-01"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RhetoricalRelation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InterpersonalRelation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#IdeationalRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Purpose-s">
+    <rdfs:subClassOf rdf:resource="#CausePurpose"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Background">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InterpersonalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-integration">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Elaboration"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Joint">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TextualRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-class-subclass">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Elaboration-derivation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InterpersonalRelation">
+    <owl:disjointWith rdf:resource="#IdeationalRelation"/>
+    <owl:disjointWith rdf:resource="#TextualRelation"/>
+    <rdfs:subClassOf rdf:resource="#RhetoricalRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DiscourseAdverbial">
+    <rdfs:subClassOf rdf:resource="#DiscourseMarker"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProblemSolution-n">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ProblemSolution"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Justify">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Support-other"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-assign-abbreviation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Elaboration-assign"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CauseResult">
+    <rdfs:subClassOf rdf:resource="#IdeationalRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Means">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#InterpersonalRelation"/>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StructuralConnective">
+    <rdfs:subClassOf rdf:resource="#DiscourseMarker"/>
+  </owl:Class>
+  <owl:Class rdf:ID="List-coordination">
+    <rdfs:subClassOf rdf:resource="#List"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-set-member">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Elaboration-derivation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Citation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Support"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-example">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Elaboration"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Elaboration-continuation-other">
+    <rdfs:subClassOf rdf:resource="#Elaboration-continuation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ArticleTopLevelSchema">
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ProblemSolution">
+    <rdfs:subClassOf rdf:resource="#InterpersonalRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Contrast">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RhetoricalRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Preparation-question">
+    <rdfs:subClassOf rdf:resource="#Preparation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MultinuclearRelation">
+    <owl:disjointWith rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf rdf:resource="#RhetoricalRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-whole-part">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Elaboration-derivation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Purpose-n">
+    <rdfs:subClassOf rdf:resource="#ResultPurpose"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-specification-other">
+    <rdfs:subClassOf rdf:resource="#Elaboration-specification"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Preparation-other">
+    <rdfs:subClassOf rdf:resource="#Preparation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Interpretation">
+    <rdfs:subClassOf rdf:resource="#InterpretationEvaluation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RelationDefinition"/>
+  <owl:Class rdf:about="#Elaboration">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#IdeationalRelation"/>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="directionSatellite"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >left</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Summary">
+    <rdfs:subClassOf rdf:resource="#InterpersonalRelation"/>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Contrast-multi">
+    <rdfs:subClassOf rdf:resource="#Contrast"/>
+    <rdfs:subClassOf rdf:resource="#MultinuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Extra">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf rdf:resource="#TextualRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Consequence-s">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Consequence"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Sequence">
+    <rdfs:subClassOf rdf:resource="#IdeationalRelation"/>
+    <rdfs:subClassOf rdf:resource="#ListSequence"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-class-instance">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Elaboration-derivation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DiscourseEntity">
+    <rdfs:subClassOf rdf:resource="#DiscourseRole"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Consequence-n">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Consequence"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Consequence">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#IdeationalRelation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Elaboration-assign">
+    <rdfs:subClassOf rdf:resource="#Elaboration-specification"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-assign-other">
+    <rdfs:subClassOf rdf:resource="#Elaboration-assign"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CDS-div">
+    <rdfs:subClassOf rdf:resource="#ComplexDiscourseSegment"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >aka para+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Evidence">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Support-other"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-theme-theme">
+    <rdfs:subClassOf rdf:resource="#Elaboration-continuation-other"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=noAnnotate</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Elaboration-derivation">
+    <rdfs:subClassOf rdf:resource="#Elaboration"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Support">
+    <rdfs:subClassOf rdf:resource="#InterpersonalRelation"/>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rrset=reduce-01</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Elaboration-definition">
+    <rdfs:subClassOf rdf:resource="#Elaboration"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Support-other">
+    <rdfs:subClassOf rdf:resource="#Support"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="markedBy">
+    <rdfs:domain rdf:resource="#RhetoricalRelation"/>
+    <rdfs:range rdf:resource="#DiscourseMarker"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >relating a rhetorical relation to a discourse marker</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSatellite">
+    <rdfs:range rdf:resource="#DiscourseSegment"/>
+    <rdfs:domain rdf:resource="#MononuclearRelation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasNucleus">
+    <rdfs:domain rdf:resource="#RhetoricalRelation"/>
+    <rdfs:range rdf:resource="#DiscourseSegment"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="constraint-on-S">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Constraint on the satellite</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#RelationDefinition"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="constraint-on-N">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Constraint on the nucleus</rdfs:comment>
+    <rdfs:domain rdf:resource="#RelationDefinition"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="intention-A">
+    <rdfs:domain rdf:resource="#RelationDefinition"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Intention of the Writer</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#directionSatellite">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >left</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >right</rdf:first>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#MononuclearRelation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="constraint-on-N-S-combination">
+    <rdfs:domain rdf:resource="#RelationDefinition"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Constraint on the combination of nucleus and satellite. After the format used by Mann/Thompson/Taboada.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="source">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#RelationDefinition"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Source e.g. of a relation or of a definition, e.g. which author introduced it</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DataRange>
+    <owl:oneOf rdf:parseType="Resource">
+      <rdf:rest rdf:parseType="Resource">
+        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >reduced-01</rdf:first>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+      </rdf:rest>
+      <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >full</rdf:first>
+    </owl:oneOf>
+  </owl:DataRange>
+  <RelationDefinition rdf:ID="Def_IdeationalRelation"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 120)  http://protege.stanford.edu -->

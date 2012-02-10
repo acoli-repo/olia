@@ -1,0 +1,717 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.owl-ontologies.com/Ontology1274445642.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.owl-ontologies.com/Ontology1274445642.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OLiA Annotation Model for the RST annotation of the RST Discourse Treebank
+
+Lynn Carlson and Daniel Marcu. 2001. Discourse Tagging Manual. ISI Tech Report ISI-TR-545. July 2001. http://www.isi.edu/~marcu/discourse/tagging-ref-manual.pdf</rdfs:comment>
+  </owl:Ontology>
+
+<!-- Schema -->
+
+  <owl:Class rdf:ID="ColumnTitle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This schema refers to the name of a regularly featured column in the paper,
+and should be used when the paper begins by presenting a TITLE, COLUMN-TITLE and AUTHOR.
+(Carlson and Marcu 2001)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Schema"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PointOfOrigin">
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >POINT-OF-ORIGIN refers to the geographic location in which the events in the
+story take place. Use this schema if this information is designated separately at the beginning or
+end of the article or section of the article. It should be linked to a TEXT or SECTIONTEXT schema. (Carlson and Marcu 2001)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Footnote">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Supplementary information given outside of the body of the text, usually at
+the end of a document in this corpus. (Carlson and Marcu 2001)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Schema"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Title">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Schema"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The WSJ documents from the LDC usually did not include titles. However, in
+a small number of cases, a WSJ document consisted of more than one article, each of which
+included a title. In that case the schemata TITLE and TEXT were used. (Carlson and Marcu 2001)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Schema">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Schemata are labels that refer to structural elements of the organization of a text, such as a title,
+author, signature block, or the body of the text itself. They are associated with individual nodes in
+the discourse structure of a text, and represent an annotation level that is independent of the rhe-
+torical relations defined above. Schemata do not reflect relations between text spans as rhetorical
+relations do, but rather characterize a functional role of an individual text span. In terms of the
+physical layout of a text, a schema pertains to a block or segment of the text.
+Schemata are linked to other schemata by the multinuclear relation TEXTUALORGANIZA-
+TION. (Carlson and Marcu 2001)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Source">
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The schema SOURCE is used when an article, or section of an article, begins or
+ends by noting the source of the information presented in the article. It should be linked to a TEXT
+or SECTIONTEXT schema. (Carlson and Marcu 2001)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Author">
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Most of the time, the WSJ articles in our corpus did not include title and
+author information. However, in a small number of cases, a line about the author was included at
+the end of the text. In such cases, the schema Author was used to link this with the rest of the text. (Carlson and Marcu 2001)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SectionTitle">
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Often, an article will be broken up structurally into distinct sections represent-
+ing different topics. Most often, each section will be labeled, so there will be a corresponding
+SECTIONTITLE and SECTIONTEXT. Usually, the section title occurs on a separate line. (Carlson and Marcu 2001)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Date">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >When a date is provided at the beginning of the document, and it refers to the
+rest of the article, the DATE schema should be used. It may also be used for subsections of the
+document. It should be linked to a TEXT or SECTIONTEXT schema.  (Carlson and Marcu 2001)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Abstract">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >When a separate section of a document contains an abstract or summary of the
+document, this schema should be used. If, within the text of the article, a sentence or paragraph
+adequately summarizes the document, then the relation SUMMARY-S or SUMMARY-N should be
+selected. The schema ABSTRACT is reserved for a summary which is separate from the body of the
+text itself. (Carlson and Marcu 2001)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SignatureBlock">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A SIGNATURE-BLOCK is a section of the document that may contain a person’s
+name, title and company. If these occur on multiple lines, each line should be treated as a separate
+EDU, and all should be linked via a LIST relation before the SIGNATURE-BLOCK label is selected.
+This occurs in letters to the editor in the WSJ corpus. This schema is linked to the schema TEXT
+(if the entire article is a letter) or SECTIONTEXT (if only a portion of the article is a letter). (Carlson and Marcu 2001)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Text">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The schema Text is used to link the main body of the text to other structural
+elements of the document, such as a FOOTNOTE, SOURCE, HEADING, etc. This schema is used only
+if the entire body of the text should be linked to another schema. If only a subsection of the text is
+relevant, the schema SECTIONTEXT is used instead. Occasionally, a WSJ document contains more
+than one article. In that case, the schema TEXT may be used, for example to link a TITLE and TEXT
+for each of the three articles included within a single document (see example below under 13.
+Title). (Carlson and Marcu 2001)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SectionText">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Often, an article will be broken up structurally into distinct sections represent-
+ing different topics. In this case, the schema SectionText is used. Most often, each section will be
+labeled, so there will be a corresponding SECTIONTITLE and SECTIONTEXT. (Carlson and Marcu 2001)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Heading">
+    <rdfs:subClassOf rdf:resource="#Schema"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The WSJ articles in our corpus did not include headings, so this schema was
+not used in tagging the corpus. (Carlson and Marcu 2001)</rdfs:comment>
+  </owl:Class>
+
+<!-- RST relations -->
+
+  <owl:Class rdf:ID="CauseResult">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is a causal relation in which two EDUs, one representing the cause and
+the other representing the result, are of equal importance or weight. When either the cause or the
+result is more important, select the corresponding mononuclear relation CAUSE or RESULT, respec-
+tively.
+
+The multinuclear relations CAUSE-RESULT and CONSEQUENCE are similar. The former
+should be selected when the causality is perceived as being more direct, while the latter is
+reserved for a more indirect causal connection.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MultinuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TemporalBefore">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a TEMPORAL-BEFORE relation, the situation presented in the nucleus (often
+realized as a superordinate clause) occurs before or leading up to the situation in the satellite
+(often realized as a subordinate clause). When the relation is multinuclear but the spans occur in
+reverse temporal order -- i.e., the situation presented in the second span occurs before the situation
+presented in the first span -- select the multinuclear relation INVERTED-SEQUENCE.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MononuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ElementaryDiscourseUnit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The basic elementary discourse unit (EDU) is a clause.
+
+The first step in characterizing the discourse structure of a text in our protocol is to determine the
+elementary discourse units (EDUs), which are the minimal building blocks of a discourse tree.
+Mann and Thompson (1988, p. 244) state that “RST provides a general way to describe the rela-
+tions among clauses in a text, whether or not they are grammatically or lexically signalled.”
+
+... we chose the clause as the elementary unit of discourse,
+using lexical and syntactic clues to help determine boundaries. A few refinements to this basic
+principle are enumerated below, with reference to the section of the manual that discusses the phe-
+nomenon in more detail.
+• Clauses that are subjects or objects of a main verb are not treated as EDUs. (Section 2.2)
+• Clauses that are complements of a main verb are not treated as EDUs. (Section 2.3)
+• Complements of attribution verbs (speech acts and other cognitive acts) are treated as EDUs.
+(Section 2.4)
+• Relative clauses, nominal postmodifiers, or clauses that break up other legitimate EDUs, are
+treated as embedded discourse units. (Section 2.9)
+• Phrases that begin with a strong discourse marker, such as because, in spite of, as a result of,
+according to, are treated as EDUs. (Section 2.10)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Circumstance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MononuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a CIRCUMSTANCE relation, the situation presented in the satellite provides
+the context in which the situation presented in the nucleus should be interpreted. The satellite IS
+NOT the cause/reason/motivation of the situation presented in the nucleus. The reader/writer
+intentions are irrelevant in determining whether such a relation holds. Select CIRCUMSTANCE over
+BACKGROUND when the events described in the nucleus and satellite are somewhat co-temporal.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Result">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MononuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The situation presented in the satellite is the cause of the situation presented in
+the nucleus. The result, which is the nucleus, is the most important part. Without presenting the
+satellite, the reader may not know what caused the result in the nucleus. In contrast to a PURPOSE
+relation, the situation presented in the nucleus of a result relation is factual, i.e., it is achieved. The
+intention of the writer is to emphasize the result. When the cause is the nucleus, select the mono-
+nuclear relation CAUSE. When it is not clear whether the cause or result is more important, select
+the multinuclear relation CAUSE-RESULT.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Definition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MononuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a DEFINITION relation, the satellite gives a definition of the nucleus.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Background">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MononuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a BACKGROUND relation, the satellite establishes the context or the grounds
+with respect to which the nucleus is to be interpreted. Understanding the satellite helps the reader
+understand the nucleus. The satellite IS NOT the cause/reason/motivation of the situation pre-
+sented in the nucleus. The reader/writer intentions are irrelevant in determining whether such a
+relation holds. In contrast with the CIRCUMSTANCE relation, the information or the context of the
+BACKGROUND relation is not always specified clearly or delimited sharply. Hence, the CIRCUM-
+STANCE relation is stronger than BACKGROUND. Often, in a BACKGROUND relation, the events rep-
+resented in the nucleus and the satellite occur at distinctly different times, whereas events in a
+CIRCUMSTANCE relation are somewhat co-temporal.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ElaborationProcessStep">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ELABORATION-PROCESS-STEP: In this elaboration relation, the nucleus introduces an activity or event (a pro-
+cess). The satellite then enumerates the steps involved in carrying out the process, usually in chro-
+nological order. Thus, the steps are most often represented in a multinuclear SEQUENCE
+relationship.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MononuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RelationsWithBothNuclearities">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RhetoricalRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RhetoricalRelation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relations are defined to hold between two elementary units if mononuclear, and among two or
+more elementary units if multinuclear. Relations can be grouped into classes that share some type
+of rhetorical meaning (such as cause, elaboration). Some of these classes contain only one rela-
+tion, while others contain several relations.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="QuestionAnswer">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a question-answer relation, one textual span poses a question (not necessar-
+ily realized as an interrogative sentence), and the other text span answers the question. The rela-
+tion may be mononuclear or multinuclear, depending on the context. When the question is
+perceived as more important than the answer, the question is assigned the role of nucleus and the
+answer is the satellite. The relation QUESTION-ANSWER-S should be selected in this case. When the
+answer is the nucleus, use the label QUESTION-ANSWER-N; when the relation is multinuclear, use
+the relation QUESTION-ANSWER.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ExplanationArgumentative">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An EXPLANATION-ARGUMENTATIVE relation usually pertain to actions and sit-
+uations that are independent of the will of an animate agent.The satellite provides a factual expla-
+nation for the situation presented in the nucleus. It is not the intention of the writer to convince the
+reader of a point, which is the role of the EVIDENCE relation. It also differs from the REASON rela-
+tion, which justifies or explains the actions of an animate agent, and involves the will or intentions
+of the agent.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MononuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="InvertedSequence">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An INVERTED-SEQUENCE is a multinuclear list of events presented in reverse
+chronological order. (See also SEQUENCE).</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ElaborationGenericSpecific">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MononuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ELABORATION-GENERAL-SPECIFIC: The satellite provides specific information to help define a very general con-
+cept introduced in the nucleus.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Preference">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MononuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The relation compares two situations, acts, events, etc., and assigns a clear
+preference for one of the situations, acts, events, etc. The preferred situation, act, event, etc. is the
+nucleus.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Sequence">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A SEQUENCE is a multinuclear list of events presented in chronological order.
+(See also INVERTED-SEQUENCE.)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MononuclearRelation">
+    <rdfs:subClassOf rdf:resource="#RhetoricalRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RhetoricalQuestion">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a RHETORICAL-QUESTION relation, the satellite poses a question vis-a-vis a
+segment of the text; the intention of the author is usually not to answer it, but rather, to raise an
+issue for the reader to consider, or to raise an issue for which the answer should be obvious.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Contingency">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a CONTINGENCY relation, the satellite suggests an abstract notion of recur-
+rence or habituality. Hence, the expression of time, place, or condition is not the primary focus.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Evaluation">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In an evaluation relationship, one span assesses the situation presented in the other
+span of the relationship on a scale of good to bad. An evaluation can be an appraisal, estimation,
+rating, interpretation, or assessment of a situation. The evaluation can be the viewpoint of the
+writer or another agent in the text. The assessment may occur in the satellite (EVALUATION-S) or
+the nucleus (EVALUATION-N), or it may occur in a multinuclear relationship (EVALUATION), when
+the spans representing the situation and the assessment are of equal weight.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ProblemSolution">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a problem-solution relation, one textual span presents a problem, and the
+other text span presents a solution. The relation may be mononuclear or multinuclear, depending
+on the context. When the problem is perceived as more important than the solution, the problem is
+assigned the role of nucleus and the solution is the satellite. The relation PROBLEM-SOLUTION-S
+should be selected in this case. When the solution is the nucleus, use the label PROBLEM-SOLU-
+TION-N; when the relation is multinuclear, use the relation PROBLEM-SOLUTION.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Condition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a CONDITION relation, the truth of the proposition associated with the
+nucleus is a consequence of the fulfillment of the condition in the satellite. The satellite presents a
+situation that is not realized.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TopicComment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A general statement or topic of discussion is introduced, after which a specific
+remark is made on the statement or topic. This relation is always multinuclear, as both spans are
+necessary to understand the context. When the spans occur in the reverse order, with the comment
+preceding the topic, the relation COMMENT-TOPIC is selected.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CommentTopic">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A specific remark is made on a topic or statement, after which the topic itself
+is identified. This relation is always multinuclear, as both spans are necessary to understand the
+context. When the spans occur in the reverse order, with the topic preceding the comment, the
+relation TOPIC-COMMENT is selected. While COMMENT-TOPIC is not a frequently used device in
+English, it is seen in news reporting, for example, when someone makes a statement, after which a
+reference is given to help the reader interpret the context of the statement.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ElaborationPartWhole">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In an ELABORATION-PART-WHOLE relation, the satellite specifies or elaborates
+on a portion or part of the nucleus. Since this relation is most often appropriate for representing
+parts of objects, it is only occasionally found to hold between EDUs. Most typically, this would be
+in a parenthetical modifier. It is distinguished from ELABORATION-SET-MEMBER, in which each
+member is representative of the entire set in a similar way.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ElaborationSetMember">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ELABORATION-SET-MEMBER: In this elaboration relation, the nucleus introduces a finite set (which may be
+generic or a named entity) or a list of information. The satellite then specifically elaborates on at
+least one member of the set. Typically, the members themselves are represented in a multinuclear
+LIST relationship.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Analogy">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In an ANALOGY relation, two textual spans, often quite dissimilar, are set in
+correspondence in some respects. An analogy contains an inference that if two or more things
+agree with one another in some respects, they will probably agree in other respects. In most cases,
+the relation is multinuclear.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Example">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The satellite provides an example with respect to the information presented in
+the nucleus. If the example is a member of a set which may be enumerable but not all of whose
+elements are known or specified, then choose the relation EXAMPLE. If the example is a member of an enumerable set whose elements are known or specified, select the relation ELABORATION-SET-
+MEMBER.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cause">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The situation presented in the nucleus is the cause of the situation presented in
+the satellite. The cause, which is the nucleus, is the most important part. The satellite represents
+the result of the action. The intention of the writer is to emphasize the cause. When the result is
+the nucleus, the mononuclear relation RESULT should be selected. When it is not clear whether the
+cause or result is more important, select the multinuclear relation CAUSE-RESULT.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Concession">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The situation indicated in the nucleus is contrary to expectation in the light of
+the information presented in the satellite. In other words, a CONCESSION relation is always charac-
+terized by a violated expectation. (Compare to ANTITHESIS.) In some cases, which text span is the
+satellite and which is the nucleus do not depend on the semantics of the spans, but rather on the
+intention of the writer.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Restatement">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A restatement relation is always mononuclear. The satellite and nucleus are of
+(roughly) comparable size. The satellite reiterates the information presented in the nucleus, typi-
+cally with slightly different wording. It does not add to or interpret the information.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Consequence">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a consequence relation, the situation presented in one span is a consequence
+of the situation presented in the other span. The reader/writer intentions are irrelevant to determin-
+ing whether such a relation holds. A CONSEQUENCE-N relation is similar to a RESULT relation, in
+that in both cases, the nucleus presents a consequence or result of the situation in the satellite.
+Similarly, a CONSEQUENCE-S relation is similar to a CAUSE relation, in that in both cases, the satel-
+lite presents a consequence or result of the situation in the nucleus. The relations CAUSE and
+RESULT imply a more direct linkage between the events in the nucleus and the satellite, whereas a
+CONSEQUENCE-S or CONSEQUENCE-N relation suggests a more indirect linkage. If both spans carry
+equal weight in the discourse, select the multinuclear CONSEQUENCE.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TopicShift">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The relation TOPIC-SHIFT is used to link large textual spans when there is a
+sharp change in focus going from one segment to the other. The same elements are NOT in focus
+in the two spans. While this relation may be either mononuclear or multinuclear, it is usually
+multinuclear. Only select mononuclear if the relative size or importance of one of the spans is less
+significant than that of the other.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NegativeAttribution">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This relation marks a negative attribution. The negation must be in the satel-
+lite, or source, of the attribution in order for the ATTRIBUTION-N relation to hold. All of the rules
+for segmenting clauses in the ATTRIBUTION relation also apply to the ATTRIBUTION-N relation.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ElaborationObjectAttribute">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ELABORATION-OBJECT-ATTRIBUTE is a relation involving a clause, usually a
+postmodifier of a noun phrase, that is required to give meaning to an animate or inanimate object.
+The modifying clause is the satellite, and the object it modifies is the nucleus. The satellite is
+intrinsic to the meaning of the nucleus, and/or essential to understanding the context, and is
+almost always an embedded unit. This relation is almost always embedded
+
+In embedded units, ELABORATION-OBJECT-ATTRIBUTE-E is much more common than
+ELABORATION-ADDITIONAL-E. The way to distinguish between ELABORATION-OBJECT-
+ATTRIBUTE-E and ELABORATION-ADDITIONAL-E is that the former is intrinsic to the object it is
+modifying in the nucleus, while the latter is extrinsic, i.e. it contains information that is incidental
+and which could be omitted without loss of understanding. Usually, an ELABORATION-ADDI-
+TIONAL-E is separated from the nucleus by a comma and represents a nonrestrictive relative
+clause, whereas an ELABORATION-OBJECT-ATTRIBUTE-E represents a restrictive relative clause.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="List">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A LIST is a multinuclear relation whose elements can be listed, but which are
+not in a comparison, contrast or other, stronger type of multinuclear relation. A LIST relation usu-
+ally exhibits some sort of parallel structure between the units involved in the relation. At lower
+levels of the discourse structure, such as between clauses or sentences, a LIST relation is often
+selected when there is some sort of parallel syntactic or semantic structure between the units, such
+as in the examples below. At higher levels of the discourse structure, the relation may be found
+when there are paragraphs of items enumerated in a similar fashion</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Reason">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a REASON relation, the nucleus must be an action carried out by an animate
+agent. Only animate agents can have reasons for performing actions. You can paraphrase it as
+“Satellite is the reason for Nucleus.” In cases where both spans appear equally important, select
+the multinuclear REASON.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Hypothetical">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a HYPOTHETICAL relation, the satellite presents a situation that is not fac-
+tual, but that one supposes or conjectures to be true. The nucleus presents the consequences that
+would arise should the situation come true. A HYPOTHETICAL relation presents a more abstract
+scenario than a CONDITION relation. This relation is always mononuclear.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Comment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a COMMENT relation, the satellite constitutes a subjective remark on a previ-
+ous segment of the text. It is not an evaluation or an interpretation. The comment is usually pre-
+sented from a perspective that is outside of the elements in focus in the nucleus.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Contrast">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a CONTRAST relation, two or more nuclei come in contrast with each other
+along some dimension. The contrast may happen in only one or few respects, while everything
+else can remain the same in other respects. Typically, a CONTRAST relation includes a contrastive
+discourse cue, such as but, however, while, whereas a COMPARISON does not.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Attribution">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Instances of reported speech, both direct and indirect, should be marked for
+the rhetorical relation of ATTRIBUTION. The satellite is the source of the attribution (a clause con-
+taining a reporting verb, or a phrase beginning with according to), and the nucleus is the content
+of the reported message (which must be in a separate clause). The ATTRIBUTION relation is also
+used with cognitive predicates, to include feelings, thoughts, hopes, etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ElaborationAdditional">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In an ELABORATION-ADDITIONAL relation, the satellite gives additional infor-
+mation or detail about the situation presented in the nucleus. This relation is extremely common at
+all levels of the discourse structure, and is especially popular to show relations across large spans of information. It is the default for the family of elaboration relations, and should be used when
+none of the other, more specific, elaboration relations apply.
+
+When an elaborating satellite is an embedded unit, the relation ELABORATION-ADDI-
+TIONAL-E is used. Generally, the embedded satellite of this relation is separated from the nucleus
+by a comma and represents a nonrestrictive relative clause, whereas an ELABORATION-OBJECT-
+ATTRIBUTE-E represents a restrictive relative clause</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Means">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A means satellite specifies a method, mechanism, instrument, channel or con-
+duit for accomplishing some goal. It should tell you how something was or is to be accomplished.
+In other words, the satellite answers a “by which means?”or “how?” question that can be assigned
+to the nucleus. It is often indicated by the preposition by.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Antithesis">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In an ANTITHESIS relation, the situation presented in the nucleus comes in con-
+trast with the situation presented in the satellite. The contrast may happen in only one or few
+respects, while everything else can remain the same in other respects. An ANTITHESIS relation is
+always mononuclear -- it is a contrastive relation that distinguishes clearly between the nuclearity
+of its arguments. It differs from the mononuclear CONCESSION relation, which is characterized by
+a violated expectation. When both units play a nuclear role, the multinuclear relation CONTRAST
+should be selected.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Enablement">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In an ENABLEMENT relation, the situation presented in the nucleus is unreal-
+ized. The action presented in the satellite increases the chances of the situation in the nucleus
+being realized.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TemporalAfter">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a TEMPORAL-AFTER relation, the situation presented in the nucleus (often
+realized as a superordinate clause) occurs after the situation presented in the satellite (often real-
+ized as a subordinate clause). When the relation is multinuclear, and the spans occur in temporal
+order -- i.e., the situation presented in the second segment occurs after the situation presented in
+the first segment -- select the multinuclear relation SEQUENCE.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Purpose">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In contrast to a RESULT relation, the situation presented in the satellite of a
+purpose relation is only putative, i.e., it is yet to be achieved. Most often it can be paraphrased as
+“nucleus in order to satellite.”</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Disjunction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DISJUNCTION is a multinuclear relation whose elements can be listed as alter-
+natives, either positive or negative.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TopicDrift">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The relation TOPIC-DRIFT is used to link large textual spans when the topic
+drifts smoothly from the information presented in the first span to the information presented in the
+second. The same elements are in focus in both textual units. While this relation may be either
+mononuclear or multinuclear, it is usually multinuclear. Only select mononuclear if the relative
+size or importance of one of the spans is less significant than that of the other.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StatementResponse">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a STATEMENT-RESPONSE relation, one textual span presents a statement and
+the other span makes some sort of response to it. The statement may be one actually spoken by
+someone or the author’s statement of a situation. Similarly, the response may be one actually spo-
+ken or a situational response to what is occurring in the statement portion. When the statement is
+perceived as more important than the response, the statement is assigned the role of nucleus and
+the response is the satellite. The relation STATEMENT-RESPONSE-S should be selected in this case.
+When the response is the nucleus, use the label STATEMENT-RESPONSE-N; when the relation is
+multinuclear, use the relation STATEMENT-RESPONSE.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Proportion">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A PROPORTION relation expresses a proportionality or equivalence of tendency
+or degree between two nuclei. It is always multinuclear.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Otherwise">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is a mutually exclusive relation between two elements of equal impor-
+tance. The situations presented by both the satellite and the nucleus are unrealized. Realizing the
+situation associated with the nucleus will prevent the realization of the consequences associated
+with the satellite. This relation may also be multinuclear.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TemporalSameTime">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a TEMPORAL-SAME-TIME relation, the situations presented in the nucleus
+and satellite occur at approximately the same time, or at least there is an overlap between the two
+situations. This relation can be mononuclear or multinuclear.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Evidence">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In an EVIDENCE relation, the situation presented in the satellite provides evi-
+dence or justification for the situation presented in the nucleus. Usually EVIDENCE relations per-
+tain to actions and situations that are independent of the will of an animate agent. Evidence is data
+on which judgment of a conclusion may be based, and is presented by the writer or an agent in the
+article to convince the reader of a point. An evidence satellite increases the chance of the reader
+accepting the information presented in the nucleus.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Comparison">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a COMPARISON relation, two textual spans are compared along some dimen-
+sion, which can be abstract. The relations can convey that some abstract entities that pertain to the
+comparison relation are similar, different, greater-than, less-than, etc. In the case of a comparison
+relation, the spans, entities, etc. are not in contrast.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Interpretation">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In interpretation relations, one side of the relation gives a different perspective
+on the situation presented in the other side. It is subjective, presenting the personal opinion of the
+writer or of a third party. An interpretation can be: 1) an explanation of what is not immediately
+plain or explicit; 2) an explanation of actions, events, or statements by pointing out or suggesting
+inner relationships, motives, or by relating particulars to general principles; or 3) an understand-
+ing or appreciation of a situation in light of individual belief, judgment, interest, or circumstance.
+The interpretation may be mononuclear, with the interpretation occurring in the satellite
+(INTERPRETATION-S) or in the nucleus (INTERPRETATION-N); or it may be multinuclear (INTERPRE-
+TATION), with the interpretation occurring in one of the nuclei.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SameUnit">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A pseudo-relation used as a device for linking two discontinuous text frag-
+ments that are really a single EDU, but which are broken up by an embedded unit. Examples of
+embedded units that can break up other EDUs include: relative clauses, other nominal postmodifi-
+ers, parentheticals, participial clauses, etc. By convention, this relation is always multinuclear.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Manner">
+    <rdfs:subClassOf rdf:resource="#MononuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A manner satellite explains the way in which something is done. (It sometimes
+also expresses some sort of similarity/comparison.) The satellite answers the question “in what
+manner?” or “in what way?”. A MANNER relation is less “goal-oriented” than a MEANS relation,
+and often is more of a description of the style of an action.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TextualOrganization">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TEXTUAL-ORGANIZATION is a multinuclear relation used to link elements of
+the structure of the text, for example, to link a title with the body of the text, a section title with the
+text of a section, etc. The role of the relation is primarily that of enforcing a tree structure on the
+representation.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultinuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Summary">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a SUMMARY-S relation, the satellite summarizes the information presented
+in the nucleus. The emphasis is on the situation presented in the nucleus. The size of the summary
+(the satellite) is shorter than the size of the nucleus. In an SUMMARY-N relation, the nucleus sum-
+marizes the information presented in the satellite. The emphasis is on the summary. The size of
+the summary (the nucleus) is shorter than the size of the satellite.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MultinuclearRelation">
+    <rdfs:subClassOf rdf:resource="#RhetoricalRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Conclusion">
+    <rdfs:subClassOf rdf:resource="#RelationsWithBothNuclearities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In a CONCLUSION relation, the satellite presents a final statement that wraps up
+the situation presented in the nucleus. A CONCLUSION satellite is a reasoned judgment, inference, necessary consequence, or final decision with respect to the situation presented in the nucleus.
+When the nucleus and satellite are of equal importance, select the multinuclear CONCLUSION.</rdfs:comment>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

@@ -1,0 +1,539 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://141.89.100.105/owl/stuttgart-is.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://141.89.100.105/owl/stuttgart-is.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Richtlinien zur Annotation von Gegebenheit
+und Kontrast in Projekt A1
+SFB 732
+Arndt Riester, Lorena Killmann, David Lorenz, Melanie Portz
+(draft version)
+20. November 2007</rdfs:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >080404: OWL modelling Christian Chiarcos</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="AccessibleViaDescription">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SituationallyEvoked"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Accessible-via-description
+Ein Ausdruck, der (wiederum zumindest einigen) Lesern unbekannt ist, aber
+trotzdem definit markiert ist, wird durch [acc-desc] gekennzeichnet. Der Leser
+erh¨alt aufgrund der mitgelieferten Beschreibung eine “Anleitung” wie er den
+Referenten des Ausdrucks in seiner Vorstellungswelt verankern kann. Beispiel:
+“der k¨unftige polnische Ministerpr¨asident Kwasniewski”. Im Gegensatz zu
+als [acc-gen] klassifizierten Personen, w¨urde es bei als [acc-desc] markierten
+keinen Sinn machen, den Leser zu fragen “Wer ist das?”, da dieser keine
+weiteren Informationen besitzt als die im Ausdruck selbst enthaltenen.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Definit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Zumindest einer der unterschiedlichen Kontexte, auf die sich ein definiter Ausdruck bezieht (Welt, Situation,
+bestimmtes Szenario oder Diskurs), muss so geschaffen sein, dass der
+bezeichnete Gegenstand in ihm einzig ist. Zusammengefasst l¨asst sich dies auf
+die Formel bringen: Einzigkeit + Kontext = Identifizierbarkeit. Eine definite
+Phrase, die einen Objekttyp bezeichnet, von der es offensichtlich in jedem
+verf¨ugbaren Kontext nur kein oder mehrere Instanzen gibt, ist nicht korrekt
+verwendet, man betrachte z.B. “den Buchstaben” auf dieser Seite.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Referierend"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Expletive">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:hasValue>
+              <Informationsstatus rdf:ID="expletive">
+                <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >expletive</hasTag>
+              </Informationsstatus>
+            </owl:hasValue>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hatInformationsStatus"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:ID="Markable"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >expl. es: Dieses Element erh¨alt ein eigenes Label: EXPLETIVE.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="D-Given">
+    <rdfs:subClassOf rdf:resource="#Definit"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ein Ausdruck gilt als d-given (das ’d’ steht f¨ur Diskurs), wenn es im vorangegangenen
+Text einen Ausdruck gibt, der dasselbe Objekt bezeichnet.
+(3) Der k¨unftige polnische Pr¨asident Kwasniewski hat betont, er wolle die
+Integration seines Landes in die EU und die Nato erreichen.
+Der einundvierzigj¨ahrige fr¨uhere Jugend- und Sportminister . . .
+Wenn sich ein Ausdruck kataphorisch auf ein Objekt bezieht, das erst im
+weiteren Text eingef¨uhrt wird, bezeichnen wir dies ebenfalls als d-given, auch
+wenn hier das “Antezedens” rechts vom Target steht.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Referierend">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unter dem Begriff Informationsstatus versteht man die Klassifikation von
+(in erster Linie) referentiellen Ausdr¨ucken (Nominal-/Determinerphrasen,
+Pr¨apositionalphrasen wie “Paul”, “die Frau”, “auf dem Parkplatz”), in textuell
+bereits gegebene, in auf eine bestimmte Art und Weise identifizierbare
+und in neue. Dabei spielt die Unterscheidung in definite und indefinite
+Kennzeichnungen eine wesentliche Rolle, wenngleich sie lediglich als erstes
+Identifizierungsmerkmal fungiert</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DefiniterAusdruck">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hatInformationsStatus"/>
+            </owl:onProperty>
+            <owl:allValuesFrom rdf:resource="#Definit"/>
+          </owl:Restriction>
+          <owl:Class rdf:ID="ReferierenderAusdruck"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="DiskursgegebenerAusdruck"/>
+              <owl:Class rdf:ID="SituativGegebenerAusdruck"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Zumindest einer der unterschiedlichen Kontexte, auf die sich ein definiter Ausdruck bezieht (Welt, Situation,
+bestimmtes Szenario oder Diskurs), muss so geschaffen sein, dass der
+bezeichnete Gegenstand in ihm einzig ist. Zusammengefasst l¨asst sich dies auf
+die Formel bringen: Einzigkeit + Kontext = Identifizierbarkeit. Eine definite
+Phrase, die einen Objekttyp bezeichnet, von der es offensichtlich in jedem
+verf¨ugbaren Kontext nur kein oder mehrere Instanzen gibt, ist nicht korrekt
+verwendet, man betrachte z.B. “den Buchstaben” auf dieser Seite.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Informationsstatus">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >is</owl:hasValue>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="hasTier"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unter dem Begriff Informationsstatus versteht man die Klassifikation von
+(in erster Linie) referentiellen Ausdr¨ucken (Nominal-/Determinerphrasen,
+Pr¨apositionalphrasen wie “Paul”, “die Frau”, “auf dem Parkplatz”), in textuell
+bereits gegebene, in auf eine bestimmte Art und Weise identifizierbare
+und in neue. Dabei spielt die Unterscheidung in definite und indefinite
+Kennzeichnungen eine wesentliche Rolle, wenngleich sie lediglich als erstes
+Identifizierungsmerkmal fungiert.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Markable">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Die Korpustexte m¨ussen zuerst aufgeteilt werden in die zu annotierenden
+Konstituenten/Chunks (sogenannte Markables). Im ersten Schritt wollen wir
+ausschließlich Nominalphrasen (manchmal auch als Determinatorenphrasen
+bezeichnet) und Pr¨apositionalphrasen annotieren. Im Folgenden sind diese
+durch eckige Klammern gekennzeichnet. Wenn Teile einer Phrase ein anderes
+Objekt bezeichnen als die Gesamtphrase, dann sollen diese gesondert
+markiert werden (geschachtelte Klammern).
+
+Appositionen wie “der spanische Außenminister Solana” annotieren wir komplett
+als eine Konstituente. Hat die Phrase ein PP-Adjunkt (etwa [der Außenminister
+[von Spanien], Solana]), so wird dieses zus¨atzlich annotiert. Es gilt
+die Regel, dass jede maximale Phrase, die einen eigenen Referenten besitzt,
+auch einen eigenen Informationsstatus zugewiesen bekommt. Im genannten
+Beispiel sind die unterschiedlichen Referenten die Person Solana und das
+Land Spanien.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Indefinit">
+    <rdfs:subClassOf rdf:resource="#Referierend"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DiskursgegebenerAusdruck">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ein Ausdruck gilt als d-given (das ’d’ steht f¨ur Diskurs), wenn es im vorangegangenen
+Text einen Ausdruck gibt, der dasselbe Objekt bezeichnet.
+(3) Der k¨unftige polnische Pr¨asident Kwasniewski hat betont, er wolle die
+Integration seines Landes in die EU und die Nato erreichen.
+Der einundvierzigj¨ahrige fr¨uhere Jugend- und Sportminister . . .
+Wenn sich ein Ausdruck kataphorisch auf ein Objekt bezieht, das erst im
+weiteren Text eingef¨uhrt wird, bezeichnen wir dies ebenfalls als d-given, auch
+wenn hier das “Antezedens” rechts vom Target steht.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#DefiniterAusdruck"/>
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >1</owl:minCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hatAntezedenz"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hatInformationsStatus"/>
+            </owl:onProperty>
+            <owl:allValuesFrom rdf:resource="#D-Given"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#ReferierenderAusdruck">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Markable"/>
+          <owl:Restriction>
+            <owl:allValuesFrom rdf:resource="#Referierend"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hatInformationsStatus"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DefiniterAusdruck"/>
+              <owl:Class rdf:ID="IndefiniterAusdruck"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unter dem Begriff Informationsstatus versteht man die Klassifikation von
+(in erster Linie) referentiellen Ausdr¨ucken (Nominal-/Determinerphrasen,
+Pr¨apositionalphrasen wie “Paul”, “die Frau”, “auf dem Parkplatz”), in textuell
+bereits gegebene, in auf eine bestimmte Art und Weise identifizierbare
+und in neue. Dabei spielt die Unterscheidung in definite und indefinite
+Kennzeichnungen eine wesentliche Rolle, wenngleich sie lediglich als erstes
+Identifizierungsmerkmal fungiert</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SituationallyEvoked">
+    <rdfs:subClassOf rdf:resource="#Definit"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Der Referent des Ausdrucks ist Teil der Diskurssituation (vor allem deiktische
+Ausdr¨ucke: “heute”, “gestern”, “du” etc., sofern sie nicht [given] sind.)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Bridging">
+    <rdfs:subClassOf rdf:resource="#SituationallyEvoked"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bridging bezeichnet die Identifizierbarkeit eines Ausdrucks (z.B. “das Lenkrad”)
+aufgrund der textuellen Verf¨ugbarkeit eines anderen, z.B. ¨ubergeordneten
+Ausdrucks (“das Auto”).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Partitiv">
+    <rdfs:subClassOf rdf:resource="#Referierend"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wenn ein indefiniter Ausdruck als Teil eines vorangegangenen Ausdrucks
+verstanden wird, z.B. in (25), liegt ein Partitiv (siehe unten) vor (der z.B.
+auf Franz¨osisch mit “de” markiert w¨urde).
+(25) die Enklave Bihac . . . kleinere Gebiete
+
+Unter dem Begriff “Partitiv” fassen wir ein wenig unorthodox alle Indefi-
+nite zusammen, die sich inhaltlich auf vorangegangenes Material beziehen.
+Die Unterkategorien entsprechen bisweilen denen der (definiten) Bridgingentit
+¨aten.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NegativAusdruck">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:hasValue>
+              <Informationsstatus rdf:ID="negative">
+                <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >null</hasTag>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >nichts, niemand Es liegt in der Natur der Dinge, dass diese Ausdr¨ucke
+kein Antezedens besitzen k¨onnen (außer eventuell eine vorangegangene Nennung
+des gleichen Ausdrucks). Um die Frage zu umschiffen, ob “nichts” sich
+auf ein allgemein identifizierbares “Nichts” bezieht oder ob dies einen inneren
+Widerspruch darstellen w¨urde, verwenden wir das Label NULL.</rdfs:comment>
+              </Informationsstatus>
+            </owl:hasValue>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hatInformationsStatus"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Markable"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >nichts, niemand Es liegt in der Natur der Dinge, dass diese Ausdr¨ucke
+kein Antezedens besitzen k¨onnen (außer eventuell eine vorangegangene Nennung
+des gleichen Ausdrucks). Um die Frage zu umschiffen, ob “nichts” sich
+auf ein allgemein identifizierbares “Nichts” bezieht oder ob dies einen inneren
+Widerspruch darstellen w¨urde, verwenden wir das Label NULL.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SituativGegebenerAusdruck">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Der Referent des Ausdrucks ist Teil der Diskurssituation (vor allem deiktische
+Ausdr¨ucke: “heute”, “gestern”, “du” etc., sofern sie nicht [given] sind.)</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#DefiniterAusdruck"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hatInformationsStatus"/>
+            </owl:onProperty>
+            <owl:allValuesFrom rdf:resource="#SituationallyEvoked"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Accessible">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ein Phrase wird als accessible (zug¨anglich, identifizierbar) bezeichnet, wenn
+sie zwar kein im Text vorhandenes Antezedens besitzt, aber vom Leser trotzdem
+identifiziert werden kann, z.B. der Ausdruck “der Papst”. Die Identifi-
+zierung kann dabei auf unterschiedliche Weise zustande kommen</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Definit"/>
+  </owl:Class>
+  <owl:Class rdf:about="#IndefiniterAusdruck">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:allValuesFrom rdf:resource="#Indefinit"/>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="#hatInformationsStatus"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="#hatInformationsStatus"/>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="#Partitiv"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Class rdf:about="#ReferierenderAusdruck"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Situationsverweis">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Der Referent des Ausdrucks ist Teil der Diskurssituation (vor allem deiktische
+Ausdr¨ucke: “heute”, “gestern”, “du” etc., sofern sie nicht [given] sind.)</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#hatInformationsStatus">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unter dem Begriff Informationsstatus versteht man die Klassifikation von
+(in erster Linie) referentiellen Ausdr¨ucken (Nominal-/Determinerphrasen,
+Pr¨apositionalphrasen wie “Paul”, “die Frau”, “auf dem Parkplatz”), in textuell
+bereits gegebene, in auf eine bestimmte Art und Weise identifizierbare
+und in neue. Dabei spielt die Unterscheidung in definite und indefinite
+Kennzeichnungen eine wesentliche Rolle, wenngleich sie lediglich als erstes
+Identifizierungsmerkmal fungiert.
+
+Manchmal wird ein Pluralausdruck verwendet, um zwei vorher erw¨ahnte Ausdr
+¨ucke referentiell zusammenzufassen, z.B. (29).
+(29) Uno und Nato . . . sie
+In diesem Fall m¨ussen beide Ausdr¨ucke als Antezedens derselben [given]-
+Relation annotiert werden. Dies unterscheidet sich von dem Fall, wo entweder
+10
+der eine oder der andere Ausdruck als das Antezedens eines Pronomens verstanden
+werden kann und bei dem zwei getrennte [given]-Relationen annotiert
+werden sollen.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Markable"/>
+    <rdfs:range rdf:resource="#Informationsstatus"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hatAntezedenz">
+    <rdfs:range rdf:resource="#Markable"/>
+    <rdfs:domain rdf:resource="#DiskursgegebenerAusdruck"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ein Ausdruck gilt als d-given (das ’d’ steht f¨ur Diskurs), wenn es im vorangegangenen
+Text einen Ausdruck gibt, der dasselbe Objekt bezeichnet.
+(3) Der k¨unftige polnische Pr¨asident Kwasniewski hat betont, er wolle die
+Integration seines Landes in die EU und die Nato erreichen.
+Der einundvierzigj¨ahrige fr¨uhere Jugend- und Sportminister . . .
+Wenn sich ein Ausdruck kataphorisch auf ein Objekt bezieht, das erst im
+weiteren Text eingef¨uhrt wird, bezeichnen wir dies ebenfalls als d-given, auch
+wenn hier das “Antezedens” rechts vom Target steht.
+
+
+Bei anaphorischen Ketten, bei denen immer wieder derselbe Referent bezeichnet
+wird (also wenn mit D-GIVEN annotiert wird), kennzeichnen wir
+normalerweise nur jeweils den unmittelbar vorangegangenen Antezedenten.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasTag">
+    <rdfs:domain rdf:resource="#Informationsstatus"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#hasTier">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >is</rdf:first>
+          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Informationsstatus"/>
+  </owl:DatatypeProperty>
+  <D-Given rdf:ID="dGivenReflexive">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-reflexive Reflexiv- und Reziprokpronomina</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-reflexive</hasTag>
+  </D-Given>
+  <D-Given rdf:ID="dGivenPronoun">
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given pronoun</hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given pronoun Verwendung eines Personal- oder Demonstrativpronomens</rdfs:comment>
+  </D-Given>
+  <Indefinit rdf:ID="new">
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >new</hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >New
+Indefinite Ausdr¨ucke (zumindest solche, die unspezifisch und keine Partitive
+sind) werden als [new] markiert.</rdfs:comment>
+  </Indefinit>
+  <Bridging rdf:ID="bridgingSame">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bridging-same Der Referent geh¨ort zur selben Menge/Klasse wie der Bridging-
+Antezedent.</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bridging-same</hasTag>
+  </Bridging>
+  <D-Given rdf:ID="dGivenCataphor">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-cataphor vorausweisende Ausdr¨ucke, die sich auf einen darauffolgenden
+Relativsatz beziehen und die ohne diesen Relativsatz keine vollst¨andige
+Bedeutung h¨atten</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-cataphor</hasTag>
+  </D-Given>
+  <Partitiv rdf:ID="partitiveSame">
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >partitive-same</hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partitive-same Alternative zum Vorg¨anger</rdfs:comment>
+  </Partitiv>
+  <Bridging rdf:ID="bridgingSuper">
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bridging-super</hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bridging-super Der Bridging-Antezedent ist ein Teil des Referenten.</rdfs:comment>
+  </Bridging>
+  <D-Given rdf:ID="dGivenShort">
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-short</hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-short Verk¨urzte Wiederholung</rdfs:comment>
+  </D-Given>
+  <Bridging rdf:ID="bridging">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bridging bezeichnet die Identifizierbarkeit eines Ausdrucks (z.B. “das Lenkrad”)
+aufgrund der textuellen Verf¨ugbarkeit eines anderen, z.B. ¨ubergeordneten
+Ausdrucks (“das Auto”).
+falls keine der anderen M¨oglichkeiten zutrifft, sollte nur
+[bridging] annotiert werden, zusammen mit einem kurzen Kommentar.</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bridging</hasTag>
+  </Bridging>
+  <Partitiv rdf:ID="partitiveSuper">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partitive-super Inverser Partitiv</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partitive-super</hasTag>
+  </Partitiv>
+  <Partitiv rdf:ID="partitivePart">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partitive-part Vielleicht der einzige “echte” Partitiv; neue Individuen, die
+Teil einer zuvor erw¨ahnten Gruppe sind.</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >partitive-part</hasTag>
+  </Partitiv>
+  <Bridging rdf:ID="bridgingPart">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bridging-part Der Referent ist ein Teil des Bridging-Antezedenten.</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bridging-part</hasTag>
+  </Bridging>
+  <Partitiv rdf:ID="indefRel">
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >indef-rel</hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alle ¨ubrigen Indefinite, bei denen sich eine Relation zu einem Antezedenten
+ausmachen l¨asst, kennzeichnen wir mit der “Indef-Rel”-Beziehung.</rdfs:comment>
+  </Partitiv>
+  <D-Given rdf:ID="dGiven">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ein Ausdruck gilt als d-given (das ’d’ steht f¨ur Diskurs), wenn es im vorangegangenen
+Text einen Ausdruck gibt, der dasselbe Objekt bezeichnet.
+(3) Der k¨unftige polnische Pr¨asident Kwasniewski hat betont, er wolle die
+Integration seines Landes in die EU und die Nato erreichen.
+Der einundvierzigj¨ahrige fr¨uhere Jugend- und Sportminister . . .
+Wenn sich ein Ausdruck kataphorisch auf ein Objekt bezieht, das erst im
+weiteren Text eingef¨uhrt wird, bezeichnen wir dies ebenfalls als d-given, auch
+wenn hier das “Antezedens” rechts vom Target steht.
+Falls die Phrase keinem der genannten Typen zugeordnet werden kann,
+kann auch nur [given] annotiert werden; dann aber mit einem Kommentar
+versehen.</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given</hasTag>
+  </D-Given>
+  <D-Given rdf:ID="dGivenSynonymous">
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-synonymous</hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-synonymous neuer Ausdruck, der synomym verwendet wird</rdfs:comment>
+  </D-Given>
+  <D-Given rdf:ID="dGivenRepeated">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Exakte Wiederholung</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D-given-repeated</hasTag>
+  </D-Given>
+  <Accessible rdf:ID="accessibleGeneralToken">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Accessible-general-token general Ein Ausdruck, von dem man ausgehen
+kann, dass er zumindest einigen Lesern bekannt ist, wird als generally
+accessible bezeichnet (“der Papst”, “der Formel-1-Weltmeister Michael Schumacher”).
+Die eben genannten Beispiele erhalten die Markierung [acc-gentoken].</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >acc-gen-token</hasTag>
+  </Accessible>
+  <AccessibleViaDescription rdf:ID="accDesc">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ein Ausdruck, der (wiederum zumindest einigen) Lesern unbekannt ist, aber
+trotzdem definit markiert ist, wird durch [acc-desc] gekennzeichnet. Der Leser
+erh¨alt aufgrund der mitgelieferten Beschreibung eine “Anleitung” wie er den
+Referenten des Ausdrucks in seiner Vorstellungswelt verankern kann. Beispiel:
+“der k¨unftige polnische Ministerpr¨asident Kwasniewski”. Im Gegensatz zu
+als [acc-gen] klassifizierten Personen, w¨urde es bei als [acc-desc] markierten
+keinen Sinn machen, den Leser zu fragen “Wer ist das?”, da dieser keine
+weiteren Informationen besitzt als die im Ausdruck selbst enthaltenen.</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >acc-desc</hasTag>
+  </AccessibleViaDescription>
+  <Accessible rdf:ID="accessibleGeneralType">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Accessible-general-type Sogenannte generische (gattungsbezeichnende)
+Ausdr¨ucke, wie “der L¨owe” (als Tierart) werden als [acc-gen-type] markiert.</rdfs:comment>
+    <hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >acc-gen-type</hasTag>
+  </Accessible>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
