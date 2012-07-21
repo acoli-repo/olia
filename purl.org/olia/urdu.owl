@@ -1,0 +1,952 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY urdu "http://purl.org/olia/urdu.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/urdu.owl#"
+     xml:base="http://purl.org/olia/urdu.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:urdu="http://purl.org/olia/urdu.owl#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/urdu.owl">
+        <owl:versionInfo>2011-07-28 created
+
+Note: encoding errors when copying Arabic letters from PDF, hence, no examples.
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <rdfs:comment>OLiA annotation model for morphosyntactic and morphological annotations of Urdu following Sajjad (2007). Unless marked otherwise, all coments are quoted from this document.
+
+Hassan Sajjad (2007), Urdu Part of Speech Tagset, version 1.0.0.0, 07-12-2007, Center for research in Urdu Language Processing. National University of Computer and Emerging Sciences, Lahore, Pakistan, http://www.crulp.org/Downloads/langproc/UrduPOStagger/UrduPOStagset.pdf</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.crulp.org/Downloads/langproc/UrduPOStagger/UrduPOStagset.pdf</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AdjectivalParticle -->
+
+    <owl:Class rdf:about="&urdu;AdjectivalParticle">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Adjectival particle (A):
+This category includes only one word sa with its two inflection forms. This particle is normally
+used for comparison.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Adjective -->
+
+    <owl:Class rdf:about="&urdu;Adjective">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Adjective (ADJ):
+Adjectives are catered as one category. The information related to the degree of adjective is not
+taken into account.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Adverb -->
+
+    <owl:Class rdf:about="&urdu;Adverb">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Adverb (ADV):
+Adverbs are handled as one category in the tagset. Consider the following examples of adverbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AdverbialDemonstrative -->
+
+    <owl:Class rdf:about="&urdu;AdverbialDemonstrative">
+        <rdfs:subClassOf rdf:resource="&urdu;Demonstrative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AdverbialKafPronoun -->
+
+    <owl:Class rdf:about="&urdu;AdverbialKafPronoun">
+        <rdfs:subClassOf rdf:resource="&urdu;Pronoun"/>
+        <rdfs:comment>Kaf pronouns add interrogative property in the sentence. They are divided into two categories.
+Kaf pronouns, represented by KP, are used to ask question about a noun. The second category
+includes adverbial kaf pronouns which are used at the place of nouns with adverbial nature.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AdverbialPronoun -->
+
+    <owl:Class rdf:about="&urdu;AdverbialPronoun">
+        <rdfs:subClassOf rdf:resource="&urdu;Pronoun"/>
+        <rdfs:comment>The adverbial pronouns occur at the place of nouns with adverbial nature and show the property
+of time, place, manner, etc. They are represented by AP in the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AspectualAuxiliary -->
+
+    <owl:Class rdf:about="&urdu;AspectualAuxiliary">
+        <rdfs:subClassOf rdf:resource="&urdu;Auxiliary"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Auxiliary -->
+
+    <owl:Class rdf:about="&urdu;Auxiliary">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Auxiliaries:
+Based on the syntactic nature of language, auxiliaries are divided into two categories. Aspectual
+auxiliaries always occur after main verb of the sentence. Tense auxiliaries are used to show the
+time of the action. They occurred at the end of the verb phrase.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#CardinalNumeral -->
+
+    <owl:Class rdf:about="&urdu;CardinalNumeral">
+        <rdfs:subClassOf rdf:resource="&urdu;Numeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Conjunction -->
+
+    <owl:Class rdf:about="&urdu;Conjunction">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Conjunction:
+Conjunctions are divided into coordinating and subordinating conjunctions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="&urdu;CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="&urdu;Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Date -->
+
+    <owl:Class rdf:about="&urdu;Date">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Date, e.g., 2007, 1999</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Demonstrative -->
+
+    <owl:Class rdf:about="&urdu;Demonstrative">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Demonstratives are divided into four categories. All four categories of demonstratives have
+ambiguity with four categories of pronoun. Phrase level analysis was done to distinguish
+between demonstrative and pronoun.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Expression -->
+
+    <owl:Class rdf:about="&urdu;Expression">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Expression (Exp):
+Any word or symbol which is not handled in this tagset will be catered under expression. It can
+be mathematical symbols, digits, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#FractionalNumeral -->
+
+    <owl:Class rdf:about="&urdu;FractionalNumeral">
+        <rdfs:subClassOf rdf:resource="&urdu;Numeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Genitive -->
+
+    <owl:Class rdf:about="&urdu;Genitive">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#GenitiveReflexive -->
+
+    <owl:Class rdf:about="&urdu;GenitiveReflexive">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Intensifier -->
+
+    <owl:Class rdf:about="&urdu;Intensifier">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Intensifier (I):
+There are only three words in this category</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Interjection -->
+
+    <owl:Class rdf:about="&urdu;Interjection">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Interjection (INT):
+Interjections normally occur at the start of the sentence. They are kept as separate category in
+the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#KERParticle -->
+
+    <owl:Class rdf:about="&urdu;KERParticle">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>KER particle (KER):
+These particles normally occur in verb phrase. There are only two entities in this class.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#KafDemonstrative -->
+
+    <owl:Class rdf:about="&urdu;KafDemonstrative">
+        <rdfs:subClassOf rdf:resource="&urdu;Demonstrative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#KafPronoun -->
+
+    <owl:Class rdf:about="&urdu;KafPronoun">
+        <rdfs:subClassOf rdf:resource="&urdu;Pronoun"/>
+        <rdfs:comment>Kaf pronouns add interrogative property in the sentence. They are divided into two categories.
+Kaf pronouns, represented by KP, are used to ask question about a noun. The second category
+includes adverbial kaf pronouns which are used at the place of nouns with adverbial nature.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#MeasuringUnit -->
+
+    <owl:Class rdf:about="&urdu;MeasuringUnit">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Measuring unit (U):
+They are frequently used with numerals. However, they have a different syntactic structure than
+numerals.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#MultiplicativeNumeral -->
+
+    <owl:Class rdf:about="&urdu;MultiplicativeNumeral">
+        <rdfs:subClassOf rdf:resource="&urdu;Numeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Negation -->
+
+    <owl:Class rdf:about="&urdu;Negation">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Noun -->
+
+    <owl:Class rdf:about="&urdu;Noun">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Nouns are divided into two categories. First category consists of simple nouns which are
+represented by NN in the tagset. However, there are other nouns that show adverbial nature like
+time, place, manner, etc. These are also catered under noun. The proper nouns are kept in a
+separate category.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Numeral -->
+
+    <owl:Class rdf:about="&urdu;Numeral">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Numerals:
+Numerals are divided into four categories based on their syntactic structure. Cardinal (CA),
+ordinal (OR), fractional (FR) and multiplicative (MUL) are types included in the tagset. Following
+are the examples of each category.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#OrdinalNumeral -->
+
+    <owl:Class rdf:about="&urdu;OrdinalNumeral">
+        <rdfs:subClassOf rdf:resource="&urdu;Numeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PartOfSpeech -->
+
+    <owl:Class rdf:about="&urdu;PartOfSpeech">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasTier"/>
+                <owl:hasValue>pos</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PersonalDemonstrative -->
+
+    <owl:Class rdf:about="&urdu;PersonalDemonstrative">
+        <rdfs:subClassOf rdf:resource="&urdu;Demonstrative"/>
+        <rdfs:comment>Personal demonstrative (PD)
+This category includes the elements of demonstrative and personal demonstratives. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="&urdu;PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="&urdu;Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PhraseMarker -->
+
+    <owl:Class rdf:about="&urdu;PhraseMarker">
+        <rdfs:subClassOf rdf:resource="&urdu;Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PostTitle -->
+
+    <owl:Class rdf:about="&urdu;PostTitle">
+        <rdfs:subClassOf rdf:resource="&urdu;Title"/>
+        <rdfs:comment>Post-title</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PreTitle -->
+
+    <owl:Class rdf:about="&urdu;PreTitle">
+        <rdfs:subClassOf rdf:resource="&urdu;Title"/>
+        <rdfs:comment>Pre-title</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Pronoun -->
+
+    <owl:Class rdf:about="&urdu;Pronoun">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Pronouns are divided into six categories based on their syntactic structure. Most of the
+categories are consistent with the types provided by Urdu grammarians. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#ProperNoun -->
+
+    <owl:Class rdf:about="&urdu;ProperNoun">
+        <rdfs:subClassOf rdf:resource="&urdu;Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Punctuation -->
+
+    <owl:Class rdf:about="&urdu;Punctuation">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Punctuation marks: In this tagset, punctuation marks are divided into two categories. Sentence
+markers mark the boundary of the sentence. Phrase markers are used inside the sentence but
+never used at the end of sentence.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Quantifier -->
+
+    <owl:Class rdf:about="&urdu;Quantifier">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#QuestionWord -->
+
+    <owl:Class rdf:about="&urdu;QuestionWord">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Question words (QW):
+There are some words instead of kaf pronouns that are used for the interrogation in the sentence.
+However, these words cannot be replaced by a noun or pronoun. A separate category of question
+words has been formed for these words.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#ReflexivePronoun -->
+
+    <owl:Class rdf:about="&urdu;ReflexivePronoun">
+        <rdfs:subClassOf rdf:resource="&urdu;Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#RelativeDemonstrative -->
+
+    <owl:Class rdf:about="&urdu;RelativeDemonstrative">
+        <rdfs:subClassOf rdf:resource="&urdu;Demonstrative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#RelativePronoun -->
+
+    <owl:Class rdf:about="&urdu;RelativePronoun">
+        <rdfs:subClassOf rdf:resource="&urdu;Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#SemanticMarker -->
+
+    <owl:Class rdf:about="&urdu;SemanticMarker">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Semantic Marker (P):
+Following are the list of particles included into this category. The tag SE is applied to an ambiguous category.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#SentenceMarker -->
+
+    <owl:Class rdf:about="&urdu;SentenceMarker">
+        <rdfs:subClassOf rdf:resource="&urdu;Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#SimpleNoun -->
+
+    <owl:Class rdf:about="&urdu;SimpleNoun">
+        <rdfs:subClassOf rdf:resource="&urdu;Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="&urdu;SubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="&urdu;Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#TenseAuxiliary -->
+
+    <owl:Class rdf:about="&urdu;TenseAuxiliary">
+        <rdfs:subClassOf rdf:resource="&urdu;Auxiliary"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Title -->
+
+    <owl:Class rdf:about="&urdu;Title">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Title:
+Titles are divided into two categories based on their pre and post occurrence around a proper
+noun.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Verb -->
+
+    <owl:Class rdf:about="&urdu;Verb">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Verb (VB): At sentence level, any word showing action in any form is considered as verb. No
+further categorization is done.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Wala -->
+
+    <owl:Class rdf:about="&urdu;Wala">
+        <rdfs:subClassOf rdf:resource="&urdu;PartOfSpeech"/>
+        <rdfs:comment>Wala (WALA):
+        This category contains one word wala and its inflections</rdfs:comment>
+        <rdfs:comment>wala expresses generalized possession of the noun it follows.
+            
+            H والا वाला wālā = H وال वाल wāl [prob. Prk. वालो and वालओ; S. पालः and पालकः; but often confounded with the primary suff. 
+            hārā and wālā in ani-hārā or ane-wālā = Ap. Prk. अणिअअडं or अणिअअडअ (with euphonic h or w inserted)=S. अनीय+क+रं, or
+            र+कं], suff. (f. -ī), added to subst. to derive nouns implying possession or relation generally;—e.g. go-wāl, or 
+            go-wālā, s.m. cow-keeper, cow-herd (fr. go, 'cow');—ghaṭ-wāl, s.m. wharf-keeper, wharfinger (fr. ghāṭ, 'landing-place');
+            —nāʼo-wālā, s.m. boat-keeper, boatman (fr. nāʼo, 'boat');—ghar-wālā, s.m. master or owner of the house (fr. ghar, 
+            'house');—kapṛā-wālā, s.m. cloth-man, cloth-merchant (fr. kapṛā, 'cloth');—roṭī-wālā, s.m. bread-man, baker (fr. roṭī, 
+            'bread');—dillī-wālā, belonging to, or a native of, Delhi;—it is even suffixed to foreign words, e.g. bakas-wālā, box-man, 
+            pedlar (fr. bakas, 'a box');—it is sometimes used to form adj. fr. subst., e.g. kifāyat-wālā, 'economical' (fr. kifāyat, 
+            'economy');—gunjāʼish-wālā, 'capacious, spacious, roomy' (fr. gunjāʼish, 'capacity'):—The suff. (a)ne-wālā (or ani-hārā) 
+            is added to the roots of verbs to form fut. act. part., or nouns of agency, e.g. paṛh-ne-wālā, 'one who is going (or is 
+            about) to read'; 'a reader';—de-ne-wālā, 'who is about to give'; 'a giver';—ho-ne-wālā, 'that is about to happen'; 'that 
+            has yet to come to pass'; 'which is yet possible.' 
+            
+            (Platts, John T. (John Thompson). A dictionary of Urdu, classical Hindi, and English. London: W. H. Allen &amp; Co., 1884, http://dsal.uchicago.edu/cgi-bin/philologic/contextualize.pl?p.9.platts.538398)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#A -->
+
+    <owl:NamedIndividual rdf:about="&urdu;A">
+        <rdf:type rdf:resource="&urdu;AdjectivalParticle"/>
+        <system:hasTag>A</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AA -->
+
+    <owl:NamedIndividual rdf:about="&urdu;AA">
+        <rdf:type rdf:resource="&urdu;AspectualAuxiliary"/>
+        <system:hasTag>AA</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AD -->
+
+    <owl:NamedIndividual rdf:about="&urdu;AD">
+        <rdf:type rdf:resource="&urdu;AdverbialDemonstrative"/>
+        <system:hasTag>KD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#ADJ -->
+
+    <owl:NamedIndividual rdf:about="&urdu;ADJ">
+        <rdf:type rdf:resource="&urdu;Adjective"/>
+        <system:hasTag>ADJ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#ADV -->
+
+    <owl:NamedIndividual rdf:about="&urdu;ADV">
+        <rdf:type rdf:resource="&urdu;Adverb"/>
+        <system:hasTag>ADV</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AKP -->
+
+    <owl:NamedIndividual rdf:about="&urdu;AKP">
+        <rdf:type rdf:resource="&urdu;AdverbialKafPronoun"/>
+        <system:hasTag>AKP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#AP -->
+
+    <owl:NamedIndividual rdf:about="&urdu;AP">
+        <rdf:type rdf:resource="&urdu;AdverbialPronoun"/>
+        <system:hasTag>AP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#CA -->
+
+    <owl:NamedIndividual rdf:about="&urdu;CA">
+        <rdf:type rdf:resource="&urdu;CardinalNumeral"/>
+        <system:hasTag>CA</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="&urdu;CC">
+        <rdf:type rdf:resource="&urdu;CoordinatingConjunction"/>
+        <system:hasTag>CC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#DATE -->
+
+    <owl:NamedIndividual rdf:about="&urdu;DATE">
+        <rdf:type rdf:resource="&urdu;Date"/>
+        <system:hasTag>DATE</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Exp -->
+
+    <owl:NamedIndividual rdf:about="&urdu;Exp">
+        <rdf:type rdf:resource="&urdu;Expression"/>
+        <system:hasTag>Exp</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#FR -->
+
+    <owl:NamedIndividual rdf:about="&urdu;FR">
+        <rdf:type rdf:resource="&urdu;FractionalNumeral"/>
+        <system:hasTag>FR</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#G -->
+
+    <owl:NamedIndividual rdf:about="&urdu;G">
+        <rdf:type rdf:resource="&urdu;Genitive"/>
+        <system:hasTag>G</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#GR -->
+
+    <owl:NamedIndividual rdf:about="&urdu;GR">
+        <rdf:type rdf:resource="&urdu;GenitiveReflexive"/>
+        <system:hasTag>GR</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#I -->
+
+    <owl:NamedIndividual rdf:about="&urdu;I">
+        <rdf:type rdf:resource="&urdu;Intensifier"/>
+        <system:hasTag>I</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#INT -->
+
+    <owl:NamedIndividual rdf:about="&urdu;INT">
+        <rdf:type rdf:resource="&urdu;Interjection"/>
+        <system:hasTag>INT</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#KD -->
+
+    <owl:NamedIndividual rdf:about="&urdu;KD">
+        <rdf:type rdf:resource="&urdu;KafDemonstrative"/>
+        <system:hasTag>AD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#KER -->
+
+    <owl:NamedIndividual rdf:about="&urdu;KER">
+        <rdf:type rdf:resource="&urdu;KERParticle"/>
+        <system:hasTag>KER</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#KP -->
+
+    <owl:NamedIndividual rdf:about="&urdu;KP">
+        <rdf:type rdf:resource="&urdu;KafPronoun"/>
+        <system:hasTag>KP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#MUL -->
+
+    <owl:NamedIndividual rdf:about="&urdu;MUL">
+        <rdf:type rdf:resource="&urdu;MultiplicativeNumeral"/>
+        <system:hasTag>MUL</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#NEG -->
+
+    <owl:NamedIndividual rdf:about="&urdu;NEG">
+        <rdf:type rdf:resource="&urdu;Negation"/>
+        <system:hasTag>NEG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#NN -->
+
+    <owl:NamedIndividual rdf:about="&urdu;NN">
+        <rdf:type rdf:resource="&urdu;SimpleNoun"/>
+        <system:hasTag>NN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#OR -->
+
+    <owl:NamedIndividual rdf:about="&urdu;OR">
+        <rdf:type rdf:resource="&urdu;OrdinalNumeral"/>
+        <system:hasTag>OR</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#P -->
+
+    <owl:NamedIndividual rdf:about="&urdu;P">
+        <rdf:type rdf:resource="&urdu;SemanticMarker"/>
+        <system:hasTag>P</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PD -->
+
+    <owl:NamedIndividual rdf:about="&urdu;PD">
+        <rdf:type rdf:resource="&urdu;PersonalDemonstrative"/>
+        <system:hasTag>PD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PM -->
+
+    <owl:NamedIndividual rdf:about="&urdu;PM">
+        <rdf:type rdf:resource="&urdu;PhraseMarker"/>
+        <system:hasTag>PM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PN -->
+
+    <owl:NamedIndividual rdf:about="&urdu;PN">
+        <rdf:type rdf:resource="&urdu;ProperNoun"/>
+        <system:hasTag>PN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#POT -->
+
+    <owl:NamedIndividual rdf:about="&urdu;POT">
+        <rdf:type rdf:resource="&urdu;PostTitle"/>
+        <system:hasTag>POT</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PP -->
+
+    <owl:NamedIndividual rdf:about="&urdu;PP">
+        <rdf:type rdf:resource="&urdu;PersonalPronoun"/>
+        <system:hasTag>PP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#PRT -->
+
+    <owl:NamedIndividual rdf:about="&urdu;PRT">
+        <rdf:type rdf:resource="&urdu;PreTitle"/>
+        <system:hasTag>PRT</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#Q -->
+
+    <owl:NamedIndividual rdf:about="&urdu;Q">
+        <rdf:type rdf:resource="&urdu;Quantifier"/>
+        <system:hasTag>Q</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#QW -->
+
+    <owl:NamedIndividual rdf:about="&urdu;QW">
+        <rdf:type rdf:resource="&urdu;QuestionWord"/>
+        <system:hasTag>QW</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#RD -->
+
+    <owl:NamedIndividual rdf:about="&urdu;RD">
+        <rdf:type rdf:resource="&urdu;RelativeDemonstrative"/>
+        <system:hasTag>RD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#REP -->
+
+    <owl:NamedIndividual rdf:about="&urdu;REP">
+        <rdf:type rdf:resource="&urdu;RelativePronoun"/>
+        <system:hasTag>REP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#RP -->
+
+    <owl:NamedIndividual rdf:about="&urdu;RP">
+        <rdf:type rdf:resource="&urdu;ReflexivePronoun"/>
+        <system:hasTag>RP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#SC -->
+
+    <owl:NamedIndividual rdf:about="&urdu;SC">
+        <rdf:type rdf:resource="&urdu;SubordinatingConjunction"/>
+        <system:hasTag>SC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#SE -->
+
+    <owl:NamedIndividual rdf:about="&urdu;SE">
+        <rdf:type rdf:resource="&urdu;SemanticMarker"/>
+        <system:hasTag>SE</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#SM -->
+
+    <owl:NamedIndividual rdf:about="&urdu;SM">
+        <rdf:type rdf:resource="&urdu;SentenceMarker"/>
+        <system:hasTag>SM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#TA -->
+
+    <owl:NamedIndividual rdf:about="&urdu;TA">
+        <rdf:type rdf:resource="&urdu;TenseAuxiliary"/>
+        <system:hasTag>TA</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#U -->
+
+    <owl:NamedIndividual rdf:about="&urdu;U">
+        <rdf:type rdf:resource="&urdu;MeasuringUnit"/>
+        <system:hasTag>U</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#VB -->
+
+    <owl:NamedIndividual rdf:about="&urdu;VB">
+        <rdf:type rdf:resource="&urdu;Verb"/>
+        <system:hasTag>VB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/urdu.owl#WALA -->
+
+    <owl:NamedIndividual rdf:about="&urdu;WALA">
+        <rdf:type rdf:resource="&urdu;Wala"/>
+        <system:hasTag>WALA</system:hasTag>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

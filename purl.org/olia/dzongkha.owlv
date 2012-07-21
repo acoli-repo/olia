@@ -1,0 +1,1549 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/dzongkha.owl#"
+     xml:base="http://purl.org/olia/dzongkha.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/dzongkha.owl">
+        <rdfs:comment>2010-09-23 created&lt;br/&gt;
+2010-10-12 NominalNoun and QuantifierNoun updated according to Jurmey&#39;s email&lt;br/&gt;
+2011-08-16 linking with system.owl
+
+Christian Chiarcos, chiarcos@uni-potsdam.de
+</rdfs:comment>
+        <dc:description>Dzongkha is the national language of Bhutan. It is categorized as a Sino-Tibetan Language and said to have derived from the classical Tibetan or choka: Dzongkha consonants, vowels, phonemes, phonetics and writing system are all identical. 
+The tagset applied here contains 66 tags, which is based on the Penn Treebank.
+
+The POS tagged data is already in use in projects concerning Dzongkha Text to Speech (TTS) processing, further tests on word segmentation, and in corpus-linguistic research. Future work entails its utilization for higher-level NLP tasks such as parsing, building parallel corpora, research on semantics, machine translation, and many more. (Chungku et al. 2010)
+
+Unless marked otherwise, all comments are quoted from Chungku et al. (2010).
+
+Chungku Chungku, Jurmey Rabgay and Gertrud Faaß (2010), Building NLP resources for Dzongkha: A Tagset and A Tagged Corpus, In: Proceedings of the 8th Workshop on Asian Language Resources, pages 103–110, Beijing, China, 21-22 August 2010.
+
+</dc:description>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#AblativeCaseMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#AblativeCaseMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#CaseMarker"/>
+        <rdfs:comment>Concerning case, we added two subclasses of
+case: CDt and CA. These differentiate between
+dative (CDt) and ablative (CA): The CDt
+(Dative case) labels e.g.དོན་ལས་/doen le/(for it)
+and དོན་ལ་/doen lu/(for this). The Ablative case
+(CA) is used when the argument of the
+preposition describes a source. For example, in
+the phrase ཤིང་ལས་རང་ཁི་/shing le kang thri/(from
+wood chair), ལས་/le/from/ will be labeled CA
+since the chair described is made from (the
+source) wood (Muaz, et al. 2009).
+(Chungku et al. 2010)
+
+A case, whose basic role, or one of its basic roles, is to indicate the source or origin of a person and an object.
+
+་མ ་ ལས་ ར་ །
+Jamtsho Lê[CAt] Nobû
+ocean from jewel
+&#39;A jewel from the ocean&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#OpenClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Adposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Adposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#OpenClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#AffirmativeMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#AffirmativeMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Marker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#AgentiveVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#AgentiveVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <rdfs:comment>An agentive verb marks the semantic role of agent or the doer of an action.
+
+Example:
+་ ་ ས་ ་ ་ བསད་ ག།
+Dorji-gi jele sänu
+&#39;Dorji killed the cat&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#AspirationalVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#AspirationalVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <rdfs:comment>It is a verb, which indicates a strong desire to achieve something, without the doer.
+
+དག་པ ་ ང་ ་ ་བར་ ག།
+dag-pai zhing-lu kewa shÔ
+&#39;May i be born in pure land&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#AuxiliaryVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#BehaviouralAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#BehaviouralAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Adverb"/>
+        <rdfs:comment>It is an adverb, that expresses the manner or behavior of any kind, whether good or bad, slow or fast etc.
+
+་ནམ་པ་ ་ ང་ནང་ ་འ ངས་ ་ ་འབད་ ས།
+Sonampa-tshu Zhing-na Tsagyeng-te Lâbädä
+&#39;Farmers are putting their efforts in the field&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CardinalNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#CardinalNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CaseMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#CaseMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CharacteristicAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#CharacteristicAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Adjective"/>
+        <rdfs:comment>It is an adjective, which expresses the character and feature of subject or an object, while modifying a noun.
+
+ང་འ ་ ང ་ འ ག།
+Shing-di rim du
+&#39;The tree is tall&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#ClosedClassCategory -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#ClosedClassCategory">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Tag"/>
+        <rdfs:comment>In Dzongkha it is mainly the function words that
+are ambiguous in terms of their POS. A typical
+example is le (from) belonging to the
+category PP (post position) and le (so)
+which is of the category CC (conjunction).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CombinedTag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#CombinedTag">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#CommonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#ComparativeAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#ComparativeAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Adjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#ComparativeAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#ComparativeAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Conjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Conjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CoordinateConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#CoordinateConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#DativeCaseMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#DativeCaseMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#CaseMarker"/>
+        <rdfs:comment>Concerning case, we added two subclasses of
+case: CDt and CA. These differentiate between
+dative (CDt) and ablative (CA): The CDt
+(Dative case) labels e.g.དོན་ལས་/doen le/(for it)
+and དོན་ལ་/doen lu/(for this). The Ablative case
+(CA) is used when the argument of the
+preposition describes a source. For example, in
+the phrase ཤིང་ལས་རང་ཁི་/shing le kang thri/(from
+wood chair), ལས་/le/from/ will be labeled CA
+since the chair described is made from (the
+source) wood (Muaz, et al. 2009).
+(Chungku et al. 2010)
+
+A case, whose basic role, or one of its basic roles, is to distinguish the recipient of something given, transferred etc. 
+
+ང་ ས་ ཀ ་ ་ ་ བ་ ན་ །
+Nga-gi[AuxV] Karma-lu[CD] Kideb bjeyi[past tense]
+i karma to book gave
+&#39;I gave the book to Karma&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#DefiniteDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#DefiniteDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Determiner"/>
+        <rdfs:comment>An article, which is used after the subject or an object, that refers to a particular thing.
+
+་ ་འ ་ ་ གས་ མ་ ད།འ
+Dôji-d&#39;i &#39;mi lezhim yö
+Dorji-[DA] person good be
+&#39;Dorji is a good boy&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Determiner -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Determiner">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+        <rdfs:comment>Any of a class of grammatical units characterized by ones that are seen as limiting the potential referent of a noun phrase.
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#DifferentialPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#DifferentialPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Pronoun"/>
+        <rdfs:comment>A pronoun, which classifies or differentiates(pronoun) by a single basis, like everybody; each; individual etc. 
+
+འ ག་པ ་ ་ ར་ ག་ར་ ན་ ང་ ང་ཁ་ ས་ད །
+Drupai Miser Gara Enrung Dzongkha ShegÔ
+&#39;Every Bhutanese must know Dzongkha&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#CaseMarker"/>
+        <rdfs:comment>A case, whose basic role, or one of its basic roles, is to make link with the preceding noun(a person or an object).
+
+ཁབ་ ་ །
+khab-ki[CG] tsä
+needle of tip
+&#39;A tip of needle&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#HonorificCommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#HonorificCommonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Noun"/>
+        <rdfs:comment>Dzongkha uses honorific forms: ན་བཟའ་/nam za/
+(cloths) is the honorific form of the noun གོ་
+ལ་/gola/(cloths), གསངས་/sung/(tell) the honorific
+form of the verb སབ་/lab/(tell). We opted to mark
+them by adding the tag NNH (honorific
+common noun) and VBH (honorific verb) to
+enable future research on this specific usage of
+Dzongkha language. A number of tags were
+added to the set, of which we describe four in
+more detail: two of the additional tags are subclasses
+of verbs: VBH (honorific verb form),
+and VBN which describes past participle forms,
+like, e.g. བངམ་/jun/(created), the past particle
+form of བང་/jung/(create).
+(Chungku et al. 2010)
+
+A noun, which indicates respect for the person being addressed, e.g., Miwang Gel-poi Yab “A king&#39;s father” [Though father=Apa, but colloquially we say YAB in Dzongkha]
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#HonorificVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#HonorificVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <rdfs:comment>Dzongkha uses honorific forms: ན་བཟའ་/nam za/
+(cloths) is the honorific form of the noun གོ་
+ལ་/gola/(cloths), གསངས་/sung/(tell) the honorific
+form of the verb སབ་/lab/(tell). We opted to mark
+them by adding the tag NNH (honorific
+common noun) and VBH (honorific verb) to
+enable future research on this specific usage of
+Dzongkha language. A number of tags were
+added to the set, of which we describe four in
+more detail: two of the additional tags are subclasses
+of verbs: VBH (honorific verb form),
+and VBN which describes past participle forms,
+like, e.g. བངམ་/jun/(created), the past particle
+form of བང་/jung/(create).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#ImperativeVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#ImperativeVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <rdfs:comment>Imperative verb is a mood, that expresses a command to someone or somebody.
+Example:
+་ ་ ས་ ག།
+yigu drish
+&#39;write a letter&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#IndefiniteDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#IndefiniteDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Determiner"/>
+        <rdfs:comment>An article, which is used after the subject or an object, that doesn&#39;t refer to a particular thing, but simply refer to an individual or individuals of the noun in a broad sense.
+
+་ལ་ ་ ག ས་ བ་མས། ག་
+&#39;Mi lalu ce[IA]-gi &#39;labmä
+people some-[IA](AuxV) say be
+&#39;Some people say...&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Interjection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#OpenClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#InterrogativeMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#InterrogativeMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Marker"/>
+        <rdfs:comment>Example:
+
+ད་ ག་ ་ འ ་ ་ །
+Chö gat&#39;ä joni mo
+you where going-[IrD]
+&#39;Where are you going?&#39;
+
+ད་ ་འབདཝ་ ན་ན།
+Chö lâ bäyi &#39;inâ
+you work do be-[IdI]
+&#39;Are you working?&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)
+
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#LocativePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#LocativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Pronoun"/>
+        <rdfs:comment>A Locative pronoun is a pronoun, which locates the object of a noun or place of anything.
+
+་ ན་ གས་ ང་ ་ ག།
+Nâ[LP] PhÜntsho&#39;ling-lu ShÔ
+&#39;Come here at Phuntsholing&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Marker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Marker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#ModalVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#ModalVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Negator -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Negator">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NominalNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#NominalNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Number"/>
+        <rdfs:comment>Nominal numbers are used to identify or refer the things. It does not show the quantity or rank.
+
+Example:
+ངེ་གི་ འགལ་འཕིན་ ཨང་གངས་ འདི་ ༡༧༦༤༩༠༣༧ ཨིན།
+NGIGI DRUELTHRIN ANGDRANG &#39;DI 17649037 INN
+my mobile number is 17649037 be
+“ My mobile number is 17649037.”
+(Jurmey Rabgay, email Sep 20, 2010)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NonAgentiveVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#NonAgentiveVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <rdfs:comment>A non-agentive verb is a type of verb, which indicates an action without the doer.
+
+Example:
+ང་མ་ འ ར་ ས།
+&#39;lungma phur-dä
+&#39;A wind is blowing&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#OpenClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Number -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Number">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#OpenClassCategory -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#OpenClassCategory">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#OrdinalNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#OrdinalNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#ParticularPersonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#ParticularPersonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Noun"/>
+        <rdfs:comment>A name, which particularly focusses to a particular thing, e.g., “Jigme Singye Wangchuk” (the Fourth King of Bhutan)
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PastParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#PastParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <rdfs:comment>The past participle expresses an event which precedes the event, denoted by the main verb.
+
+ང་ དབང་འ ས་ ་ ང་ ་ དཀའ་ངལ་ བ་ །
+Nga &#39;Wangdü-lu Song-di Kanyä Thopce
+i wangd&#39;i-to-[prep] go-[pp] problem get-[pt]
+&#39;Having gone to &#39;Wangdi, I ran into a problem&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PeriodicAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#PeriodicAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Adjective"/>
+        <rdfs:comment>It is an adjective, which expresses the time or period of the circumstances, while modifying a noun.
+
+ན་ ང་ ང་ ་ ལ་ ་ འ ་ །
+Nahing Nga chigyel-lu joyi
+&#39;I went abroad last year&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PluralNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#PluralNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PossessiveDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#PossessiveDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Determiner"/>
+        <rdfs:comment>An article, that modifies a noun by attributing possession to some one or something.
+
+་ ་ ་ བ།
+Ngä-gi kid&#39;eb
+my[PsA] book
+&#39;My book&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Postposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Postposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Adposition"/>
+        <rdfs:comment>As an example for such dissimilarity [between the Penn Treebank tagset and the Dzongkha tagset -- CC], Dzongkha postpositions are mentioned here, cf. (1); the respective tag (PP) only exist for Dzongkha whereas in English the whole set of ad position tags (preposition and postpositions) exist.
+(1) j&#39;ili shing-gi wôlu -dû
+Cat tree[posp] under[PP] be
+&#39;&#39;A cat is under the tree&#39;&#39;
+(Chungku et al. 2010)
+
+An element related to a noun phrase in the same way as a preposition, except that it comes after instead of before. Dzongkha is a postpositional language.
+
+་ ་ ང་ ་ ག་ ་འ ག།
+j&#39;ili shing-gi wôlu-dû
+cat tree-[posp] under-[PP] be
+&#39;A cat is under the tree&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Punctuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Punctuation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#QuantifierNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#QuantifierNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Noun"/>
+        <rdfs:comment>A noun which quantifies one or more things, regardless of subject and an object.
+
+ང་གིས་ བམོ་ ལ་ དང་ ཕད་ཅི།
+NGAGI BUM &#39;NGA &#39;DA CHECI
+I girl five with met
+“I met with five girls.”
+(Jurmey Rabgay, email Sep 20, 2010)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#ReflexivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#ReflexivePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Pronoun"/>
+        <rdfs:comment>A Reflexive pronoun is something one is doing to or for oneself and it applies to the above subjective pronoun, common pronoun etc.
+
+ད་ར་རང་ ་ ས་པས།
+Chö-rarang Mishê-pä
+&#39;Yourself don&#39;t know&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#SubordinateConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#SubordinateConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#SuperlativeAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#SuperlativeAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Adjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#SuperlativeAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#SuperlativeAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Tag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Tag">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasTag"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Examining the similar features exhibited by
+both the languages (Dzongkha and English),
+tags that were applicable to Dzongkha were
+taken directly from the Penn Treebank. In cases
+where these languages showed dissimilarities in
+their nature, new tags for Dzongkha were
+assigned</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#TenseMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#TenseMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#Marker"/>
+        <rdfs:comment>Dzongkha has also a tense marker, which is not complicated like in other languages. It has got only six tense markers and can be used in a very simple and effective way. They are: (&#39;Ni&#39;+&#39;Wong&#39;) for future, (&#39;D&#39;o&#39;+&#39;D&#39;ä&#39;) for present and (&#39;Ci&#39;+&#39;Yi&#39;) for past tense.
+
+ང་ ནངས་པ་ འ ་ །
+Nga naba jo-ni[past tense]
+I tomorrow go-will-[past]
+&#39;I am going tomorrow&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#ClosedClassCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VocativeCaseMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/dzongkha.owl#VocativeCaseMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/dzongkha.owl#CaseMarker"/>
+        <rdfs:comment>A case, whose basic role, or one of its basic roles, is to address or invoke a person or thing.
+
+དབ ! ་ ག།
+&#39;Wä NâshÔ
+heyi-[CV], here come
+&#39;Hey, come here!&#39;
+(http://panl10n.net/english/Outputs%20Phase%202/CCs/Bhutan/Papers/2007/0701/PartOfSpeech.pdf)
+
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#AM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#AM">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#AffirmativeMarker"/>
+        <rdfs:comment>Marker, Affirmative</rdfs:comment>
+        <system:hasTag>AM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#AMSC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#AMSC">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#AffirmativeMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SubordinateConjunction"/>
+        <system:hasTag>AMSC</system:hasTag>
+        <rdfs:comment>Affirmative + Subordinate Conjunction</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CA -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#CA">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#AblativeCaseMarker"/>
+        <system:hasTag>CA</system:hasTag>
+        <rdfs:comment>Case marker, Ablative case</rdfs:comment>
+        <rdfs:comment>Concerning case, we added two subclasses of
+case: CDt and CA. These differentiate between
+dative (CDt) and ablative (CA): The CDt
+(Dative case) labels e.g.དོན་ལས་/doen le/(for it)
+and དོན་ལ་/doen lu/(for this). The Ablative case
+(CA) is used when the argument of the
+preposition describes a source. For example, in
+the phrase ཤིང་ལས་རང་ཁི་/shing le kang thri/(from
+wood chair), ལས་/le/from/ will be labeled CA
+since the chair described is made from (the
+source) wood (Muaz, et al. 2009).</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#CC">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CoordinateConjunction"/>
+        <rdfs:comment>Conjunction, Coordinate</rdfs:comment>
+        <system:hasTag>CC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#CD">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CardinalNumber"/>
+        <rdfs:comment>Number, Cardinal</rdfs:comment>
+        <system:hasTag>CD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CDt -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#CDt">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#DativeCaseMarker"/>
+        <rdfs:comment>Concerning case, we added two subclasses of
+case: CDt and CA. These differentiate between
+dative (CDt) and ablative (CA): The CDt
+(Dative case) labels e.g.དོན་ལས་/doen le/(for it)
+and དོན་ལ་/doen lu/(for this). The Ablative case
+(CA) is used when the argument of the
+preposition describes a source. For example, in
+the phrase ཤིང་ལས་རང་ཁི་/shing le kang thri/(from
+wood chair), ལས་/le/from/ will be labeled CA
+since the chair described is made from (the
+source) wood (Muaz, et al. 2009).</rdfs:comment>
+        <system:hasTag>CDt</system:hasTag>
+        <rdfs:comment>Case marker, Dative case</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#CG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdfs:comment>Case marker, Genitive case</rdfs:comment>
+        <system:hasTag>CG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#CV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#CV">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#VocativeCaseMarker"/>
+        <system:hasTag>CV</system:hasTag>
+        <rdfs:comment>Case marker, Vocative case</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#DT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#DT">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#DefiniteDeterminer"/>
+        <rdfs:comment>Determiner, Definite</rdfs:comment>
+        <system:hasTag>DT</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#DTCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#DTCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#DefiniteDeterminer"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdfs:comment>DefiniteDeterminer + Genitive case</rdfs:comment>
+        <system:hasTag>DTCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#DTDOLLAR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#DTDOLLAR">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#PossessiveDeterminer"/>
+        <rdfs:comment>Determiner, Possessive</rdfs:comment>
+        <system:hasTag>DT$</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#DTI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#DTI">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#IndefiniteDeterminer"/>
+        <rdfs:comment>Determiner, Indefinite</rdfs:comment>
+        <system:hasTag>DTI</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#IrM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#IrM">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#InterrogativeMarker"/>
+        <system:hasTag>IrM</system:hasTag>
+        <rdfs:comment>Marker, Interrogative</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#JJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#JJ">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Adjective"/>
+        <rdfs:comment>Adjective, Adjective</rdfs:comment>
+        <system:hasTag>JJ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#JJCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#JJCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Adjective"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <system:hasTag>JJCG</system:hasTag>
+        <rdfs:comment>Adjective+CG</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#JJCt -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#JJCt">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CharacteristicAdjective"/>
+        <system:hasTag>JJCt</system:hasTag>
+        <rdfs:comment>Adjective, Characteristic</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#JJCtCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#JJCtCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CharacteristicAdjective"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdfs:comment>Adjective, Characteristic + Genitive case</rdfs:comment>
+        <system:hasTag>JJCtCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#JJP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#JJP">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#PeriodicAdjective"/>
+        <system:hasTag>JJP</system:hasTag>
+        <rdfs:comment>Adjective, Periodic</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#JJPCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#JJPCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#PeriodicAdjective"/>
+        <rdfs:comment>Adjective, Periodic + Genitive case</rdfs:comment>
+        <system:hasTag>JJPCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#JJR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#JJR">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ComparativeAdjective"/>
+        <system:hasTag>JJR</system:hasTag>
+        <rdfs:comment>Adjective, Comparative</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#JJS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#JJS">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SuperlativeAdjective"/>
+        <rdfs:comment>Adjective, Superlative</rdfs:comment>
+        <system:hasTag>JJS</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#ND -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#ND">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#NominalNumber"/>
+        <system:hasTag>ND</system:hasTag>
+        <rdfs:comment>Number, Nominal</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NEG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NEG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Negator"/>
+        <system:hasTag>NEG</system:hasTag>
+        <rdfs:comment>Negator</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NEGCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NEGCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Negator"/>
+        <rdfs:comment>Negator + Genitive case</rdfs:comment>
+        <system:hasTag>NEGCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NEGSC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NEGSC">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Negator"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SubordinateConjunction"/>
+        <rdfs:comment>Negator + Subordinate Conjunction</rdfs:comment>
+        <system:hasTag>NEGSC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NN">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CommonNoun"/>
+        <system:hasTag>NN</system:hasTag>
+        <rdfs:comment>Noun, Common Noun</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CommonNoun"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <system:hasTag>NNCG</system:hasTag>
+        <rdfs:comment>Noun, Common + Genitive case</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNH">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#HonorificCommonNoun"/>
+        <rdfs:comment>Noun, honorific form</rdfs:comment>
+        <system:hasTag>NNH</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNP">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ParticularPersonNoun"/>
+        <rdfs:comment>Noun, Particular/Person</rdfs:comment>
+        <system:hasTag>NNP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNPCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNPCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ParticularPersonNoun"/>
+        <rdfs:comment>Noun, Particular + Genitive case</rdfs:comment>
+        <system:hasTag>NNPCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNQ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNQ">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#QuantifierNoun"/>
+        <rdfs:comment>Noun, Quantifier</rdfs:comment>
+        <system:hasTag>NNQ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNQCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNQCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#QuantifierNoun"/>
+        <rdfs:comment>Noun, Quantifier + Genitive case</rdfs:comment>
+        <system:hasTag>NNQCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNS">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#PluralNoun"/>
+        <rdfs:comment>Noun, Plural</rdfs:comment>
+        <system:hasTag>NNS</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNSC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNSC">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CommonNoun"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SubordinateConjunction"/>
+        <system:hasTag>NNSC</system:hasTag>
+        <rdfs:comment>Common Noun + Subordinate Conjunction</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#NNSCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#NNSCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#PluralNoun"/>
+        <rdfs:comment>Noun, Plural + Genitive case</rdfs:comment>
+        <system:hasTag>NNSCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#OD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#OD">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#OrdinalNumber"/>
+        <rdfs:comment>Number, Ordinal</rdfs:comment>
+        <system:hasTag>OD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#PP">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Postposition"/>
+        <rdfs:comment>As an example for such dissimilarity [between the Penn Treebank tagset and the Dzongkha tagset -- CC], Dzongkha postpositions are mentioned here, cf. (1); the respective tag (PP) only exist for Dzongkha whereas in English the whole set of ad position tags (preposition and postpositions) exist.
+(1) j&#39;ili shing-gi wôlu -dû
+Cat tree[posp] under[PP] be
+&#39;&#39;A cat is under the tree&#39;&#39;</rdfs:comment>
+        <system:hasTag>PP</system:hasTag>
+        <rdfs:comment>Adposition, Postposition</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PRD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#PRD">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#DifferentialPronoun"/>
+        <rdfs:comment>Pronouns, Differential</rdfs:comment>
+        <system:hasTag>PRD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PRL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#PRL">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#LocativePronoun"/>
+        <system:hasTag>PRL</system:hasTag>
+        <rdfs:comment>Pronouns, Locative</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PRLCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#PRLCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#LocativePronoun"/>
+        <rdfs:comment>Locative Pronoun + Genitive case</rdfs:comment>
+        <system:hasTag>PRLCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PRP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#PRP">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#PersonalPronoun"/>
+        <rdfs:comment>Pronouns, Personal</rdfs:comment>
+        <system:hasTag>PRP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PRRF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#PRRF">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ReflexivePronoun"/>
+        <rdfs:comment>Pronouns, Reflexive</rdfs:comment>
+        <system:hasTag>PRRF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#PUN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#PUN">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Punctuation"/>
+        <system:hasTag>PUN</system:hasTag>
+        <rdfs:comment>Punctuation</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#RB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#RB">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Adverb"/>
+        <rdfs:comment>Adverb, Adverb</rdfs:comment>
+        <system:hasTag>RB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#RBB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#RBB">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#BehaviouralAdverb"/>
+        <rdfs:comment>Adverb, Behavioural</rdfs:comment>
+        <system:hasTag>RBB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#RBR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#RBR">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ComparativeAdverb"/>
+        <rdfs:comment>Adverb, Comparative</rdfs:comment>
+        <system:hasTag>RBR</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#RBS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#RBS">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SuperlativeAdverb"/>
+        <rdfs:comment>Adverb, Superlative</rdfs:comment>
+        <system:hasTag>RBS</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#SC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#SC">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SubordinateConjunction"/>
+        <system:hasTag>SC</system:hasTag>
+        <rdfs:comment>Conjunction, Subordinate</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#TM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#TM">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#TenseMarker"/>
+        <system:hasTag>TM</system:hasTag>
+        <rdfs:comment>Marker, Tense</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#UH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#UH">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Interjection"/>
+        <rdfs:comment>Interjection</rdfs:comment>
+        <system:hasTag>UH</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VB">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <system:hasTag>VB</system:hasTag>
+        <rdfs:comment>Verb, Verb</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBAUX -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBAUX">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#AuxiliaryVerb"/>
+        <system:hasTag>VBAUX</system:hasTag>
+        <rdfs:comment>Verb, Auxiliary</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBAs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBAs">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#AspirationalVerb"/>
+        <system:hasTag>VBAs</system:hasTag>
+        <rdfs:comment>Verb, Aspirational</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBAt -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBAt">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#AgentiveVerb"/>
+        <rdfs:comment>Verb, Agentive</rdfs:comment>
+        <system:hasTag>VBAt</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBAtCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBAtCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#AgentiveVerb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdfs:comment>Veb, Agentive + Genitive case</rdfs:comment>
+        <system:hasTag>VBAtCG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBAtSC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBAtSC">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#AgentiveVerb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SubordinateConjunction"/>
+        <rdfs:comment>Verb, Agentive + Subordinate Conjunction</rdfs:comment>
+        <system:hasTag>VBAtSC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <system:hasTag>VBCG</system:hasTag>
+        <rdfs:comment>Verb, Verb + Genitive case</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBH">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#HonorificVerb"/>
+        <rdfs:comment>Verb, Honorific
+
+Dzongkha uses honorific forms: ན་བཟའ་/nam za/
+(cloths) is the honorific form of the noun གོ་
+ལ་/gola/(cloths), གསངས་/sung/(tell) the honorific
+form of the verb སབ་/lab/(tell). We opted to mark
+them by adding the tag NNH (honorific
+common noun) and VBH (honorific verb) to
+enable future research on this specific usage of
+Dzongkha language. A number of tags were
+added to the set, of which we describe four in
+more detail: two of the additional tags are subclasses
+of verbs: VBH (honorific verb form),
+and VBN which describes past participle forms,
+like, e.g. བངམ་/jun/(created), the past particle
+form of བང་/jung/(create).</rdfs:comment>
+        <system:hasTag>VBH</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBHCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBHCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#HonorificVerb"/>
+        <system:hasTag>VBHCG</system:hasTag>
+        <rdfs:comment>Verb, Honorific + Genitive case</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBI">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ImperativeVerb"/>
+        <rdfs:comment>Verb, Imperative</rdfs:comment>
+        <system:hasTag>VBI</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBMD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBMD">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ModalVerb"/>
+        <rdfs:comment>Verb, Modal</rdfs:comment>
+        <system:hasTag>VBMD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBMDCG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBMDCG">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#GenitiveCaseMarker"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ModalVerb"/>
+        <system:hasTag>VBMDCG</system:hasTag>
+        <rdfs:comment>Verb, Modal + Genitive case</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBMDSC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBMDSC">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#ModalVerb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SubordinateConjunction"/>
+        <system:hasTag>VBMDSC</system:hasTag>
+        <rdfs:comment>form of the tag in the document is given as VBMDC, in analogy with other fused forms, however, VBMDSC should be appropriate</rdfs:comment>
+        <rdfs:comment>Verb, Modal + Subordinate Conjunction</rdfs:comment>
+        <system:hasTag>VBMDC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBN">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#PastParticiple"/>
+        <rdfs:comment>Verb, Past Participle</rdfs:comment>
+        <system:hasTag>VBN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBNa -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBNa">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#NonAgentiveVerb"/>
+        <system:hasTag>VBNa</system:hasTag>
+        <rdfs:comment>Verb, Non-Agentive</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/dzongkha.owl#VBSC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/dzongkha.owl#VBSC">
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#CombinedTag"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#SubordinateConjunction"/>
+        <rdf:type rdf:resource="http://purl.org/olia/dzongkha.owl#Verb"/>
+        <rdfs:comment>Verb, Verb + Subordinate Conjunction</rdfs:comment>
+        <system:hasTag>VBSC</system:hasTag>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+
