@@ -3,6 +3,7 @@
 
 <!DOCTYPE rdf:RDF [
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
@@ -12,6 +13,7 @@
 <rdf:RDF xmlns="http://purl.org/olia/coref-tueba.owl#"
      xml:base="http://purl.org/olia/coref-tueba.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -25,6 +27,7 @@ References:
 Karin Naumann (2007), Manual for the Annotation of in-document Referential Relations, Tech Rep., Seminar für Sprachwissenschaft, Abt. Computerlinguistik Universität Tübingen, Germany, version of May 2007, URL http://www.sfs.uni-tuebingen.de/resources/tuebadz-coreference-manual-2007.pdf (accessed 2013-01-31)</rdfs:comment>
         <owl:versionInfo rdf:datatype="&xsd;string">OWL modelling Christian Chiarcos 2013-01-31</owl:versionInfo>
         <rdfs:isDefinedBy rdf:datatype="&xsd;anyURI">http://www.sfs.uni-tuebingen.de/resources/tuebadz-coreference-manual-2007.pdf</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
     </owl:Ontology>
     
 
@@ -184,7 +187,7 @@ Reflexive pronouns, which occur with inherently reflexive verbs like “sich ere
     
 
 
-    <!-- http://purl.org/olia/coref-tueba.owl#Bound -->
+    <!-- http://purl.org/olia/coref-tueba.owl#BindingRelation -->
 
     <owl:Class rdf:about="http://purl.org/olia/coref-tueba.owl#BindingRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/coref-tueba.owl#RelationFeature"/>
@@ -275,6 +278,7 @@ sitting on a heap of rotten credits.
     <!-- http://purl.org/olia/coref-tueba.owl#Markable -->
 
     <owl:Class rdf:about="http://purl.org/olia/coref-tueba.owl#Markable">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
         <rdfs:comment xml:lang="en">The markables that are subject to annotation are those linguistic elements that might refer to a contextual antecedent. Poesio (2004) defines markables as “the text constituents that realize semantic objects that may enter in anaphoric relations”. Hirschman and Chinchor (1997) state “... that just because an element is ‘markable’, it does not follow that there are later references to it – that is, it may or may not participate in coreference. [...]. The relation is marked only between pairs of elements both of which are markables. This means that some markables that look anaphoric will not be coded, including pronouns, demonstratives, and definite NPs whose antecedent is a clause rather than a markable.“
 Markables that will be annotated for anaphora/cataphora and for coreference are definite noun phrases, personal pronouns, relative, reflexive, and reciprocal pronouns, demonstrative, indefinite and possessive pronouns. ...
 We annotate coreferential definite descriptions, i.e. definite NPs, including complex (e.g. coordinated) noun phrases. The boundaries of a nominal markable are defined by the maximal extension of this NP which includes complements as well as adjuncts of the head noun
@@ -286,6 +290,21 @@ We annotate coreferential definite descriptions, i.e. definite NPs, including co
     <!-- http://purl.org/olia/coref-tueba.owl#ReferentialRelation -->
 
     <owl:Class rdf:about="http://purl.org/olia/coref-tueba.owl#ReferentialRelation">
+        <rdfs:subClassOf rdf:resource="&system;Relation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasSource"/>
+                <owl:onClass rdf:resource="http://purl.org/olia/coref-tueba.owl#Markable"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasTarget"/>
+                <owl:onClass rdf:resource="http://purl.org/olia/coref-tueba.owl#Markable"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The linguistic relations that are annotated in the texts can be subsumed under the notion of ‘referential relations’. We define referential relations as a cover-term for all contextually dependent reference relations. The annotation is restricted to anaphoric, cataphoric and
 coreferential expressions referring to a nominal or pronominal antecedent preceding or following the dependent expression within the same text. ...
 In the case of cataphora, the antecedent which is referred to is following the cataphor. Thus, the linguistic framework underlying this definition is on the level of text rather than on the level of semantics. (§1)</rdfs:comment>
@@ -296,6 +315,7 @@ In the case of cataphora, the antecedent which is referred to is following the c
     <!-- http://purl.org/olia/coref-tueba.owl#RelationFeature -->
 
     <owl:Class rdf:about="http://purl.org/olia/coref-tueba.owl#RelationFeature">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
         <owl:versionInfo xml:lang="en">Naumann (2007) describes referential relations and other annotations (expletives) as annotations attached to markables, with referential relations involving an additional antecedent.
 Technically, however, these annotations were produced with Palinka, which requires a 1:1 relation between markables and links, so that the RelationFeatures can be modeled as *features of markables* rather than links. This approach is also compatible with the slightly more generic annotation model of MMAX2 (which allows multiple links, but no direct annotation of links).
 Therefore, the following distinction is introduced: Markable and ReferentialRelation as structural units of annotation, RelationFeature as the labels attached to these structures.</owl:versionInfo>
@@ -335,7 +355,7 @@ They] have come on foot because the car was taken from [4 them] by Serbian irreg
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/coref-tueba.owl#anaphoric">
         <rdf:type rdf:resource="http://purl.org/olia/coref-tueba.owl#AnaphoricRelation"/>
-        <hasTag xml:lang="en">anaphoric</hasTag>
+        <hasTag rdf:datatype="&xsd;string">anaphoric</hasTag>
     </owl:NamedIndividual>
     
 
@@ -344,7 +364,7 @@ They] have come on foot because the car was taken from [4 them] by Serbian irreg
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/coref-tueba.owl#bound">
         <rdf:type rdf:resource="http://purl.org/olia/coref-tueba.owl#BindingRelation"/>
-        <hasTag xml:lang="en">bound</hasTag>
+        <hasTag rdf:datatype="&xsd;string">bound</hasTag>
     </owl:NamedIndividual>
     
 
@@ -353,7 +373,7 @@ They] have come on foot because the car was taken from [4 them] by Serbian irreg
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/coref-tueba.owl#cataphoric">
         <rdf:type rdf:resource="http://purl.org/olia/coref-tueba.owl#CataphoricRelation"/>
-        <hasTag xml:lang="en">cataphoric</hasTag>
+        <hasTag rdf:datatype="&xsd;string">cataphoric</hasTag>
     </owl:NamedIndividual>
     
 
@@ -362,7 +382,7 @@ They] have come on foot because the car was taken from [4 them] by Serbian irreg
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/coref-tueba.owl#coreferential">
         <rdf:type rdf:resource="http://purl.org/olia/coref-tueba.owl#CoreferenceRelation"/>
-        <hasTag xml:lang="en">coreferential</hasTag>
+        <hasTag rdf:datatype="&xsd;string">coreferential</hasTag>
     </owl:NamedIndividual>
     
 
@@ -371,7 +391,7 @@ They] have come on foot because the car was taken from [4 them] by Serbian irreg
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/coref-tueba.owl#expletive">
         <rdf:type rdf:resource="http://purl.org/olia/coref-tueba.owl#Expletive"/>
-        <hasTag xml:lang="en">expletive</hasTag>
+        <hasTag rdf:datatype="&xsd;string">expletive</hasTag>
     </owl:NamedIndividual>
     
 
@@ -380,7 +400,7 @@ They] have come on foot because the car was taken from [4 them] by Serbian irreg
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/coref-tueba.owl#instance">
         <rdf:type rdf:resource="http://purl.org/olia/coref-tueba.owl#InstanceRelation"/>
-        <hasTag xml:lang="en">instance</hasTag>
+        <hasTag rdf:datatype="&xsd;string">instance</hasTag>
     </owl:NamedIndividual>
     
 
@@ -389,7 +409,7 @@ They] have come on foot because the car was taken from [4 them] by Serbian irreg
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/coref-tueba.owl#split_antecedent">
         <rdf:type rdf:resource="http://purl.org/olia/coref-tueba.owl#SplitAntecedentRelation"/>
-        <hasTag xml:lang="en">split_antecedent</hasTag>
+        <hasTag rdf:datatype="&xsd;string">split_antecedent</hasTag>
     </owl:NamedIndividual>
 </rdf:RDF>
 
