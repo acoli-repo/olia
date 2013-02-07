@@ -1,6 +1,6 @@
 #!/bin/sh 
-rm -rI purl.org/olia
 TARGET=purl.org/olia
+rm -rI $TARGET
 mkdir -pv $TARGET
 
 cp -v doc/index.html $TARGET
