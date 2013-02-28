@@ -8,14 +8,17 @@ import org.apache.commons.collections.map.MultiValueMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class OLiAMap { "
+public class OLiAMap { 
+"
 
-for FILE in `find $DIR -name "*tiger.owl.csv" `
+for FILE in `find $DIR -name "*.csv" `
 do
-	MAPNAME=$(echo "$FILE" | sed 's/.owl.csv$//;s/.rdf.csv//;s/.*\///' )
-	echo "	public static MultiValueMap $MAPNAME = MultiValueMap.decorate(new HashMap<String,ArrayList<String>>());
-	{"
-	sed "s/\t/\",\"/;s/^/\t\t$MAPNAME.put(\"/;s/$/\");/"  $FILE
+	MAPNAME=$(echo "$FILE" | sed 's/.owl.csv$//;s/.rdf.csv//;s/.*\///;s/-/_/g;s/[0-9]/INT/g' )
+	echo "	public static MultiValueMap $MAPNAME = MultiValueMap.decorate(new HashMap<String, ArrayList<String>>());
+	
+	static {
+"
+	sed "s/\t/\", \"/;s/^/\t\t$MAPNAME.put(\"/;s/$/\");/"  $FILE
 	echo "	}
 	"
 done

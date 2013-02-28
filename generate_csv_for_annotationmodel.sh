@@ -14,6 +14,7 @@ transform_annotation_model()
 
 for FILE in `find $TARGETFOLDER -name "*.owl" `
 do
+        echo $FILE
         transform_annotation_model $FILE > "$FILE"".csv"
 done
 
