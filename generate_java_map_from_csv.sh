@@ -48,7 +48,7 @@ do
     PLAINNAME=$(echo "$FILE" | sed 's/-link.rdf$//;s/.*\///;' ) 
     JAVANAME=$(java_name $PLAINNAME)
     
-	echo "package org.nlp2rdf;
+	echo "package org.nlp2rdf.vocabularymodule.olia;
 
 import org.apache.commons.collections.map.MultiValueMap;
 
