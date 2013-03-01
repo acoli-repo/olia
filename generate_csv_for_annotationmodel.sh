@@ -4,17 +4,18 @@ TARGETFOLDER=olia.nlp2rdf.org/owl
 
 transform_annotation_model()
 {
-	rapper -i rdfxml $1   | \
-	grep '>\s<http://purl.org/olia/system.owl#hasTag>\s\"' |\
-	sed 's/\^\^<http:\/\/www.w3.org\/2001\/XMLSchema#string>//' | \
-	cut -f1,3 -d '>' | \
-	sed 's/<//;s/> "/\t/;s/" .//' | \
-	awk 'BEGIN {FS=OFS="\t"}{t=$1;$1=$2;$2=t;print}'
+	rapper -i rdfxml $1   											|\
+	grep '> <http://purl.org/olia/system.owl#\([a-zA-Z]*\)> \"' 	|\
+	sed  's|"^^<http://www.w3.org/2001/XMLSchema#string> \. *$||' 	|\
+	sed  's|" \. *$||' 	|\
+	sed  's|^<||' 	|\
+	sed  's|> <http://purl.org/olia/system.owl#\([a-zA-Z]*\)> "|\t\1\t|' 	|\
+	awk 'BEGIN {FS=OFS="\t"}{t=$1;$1=$3;$3=t;t=$2;$2=$3;$3=t;print}'
 }
 
-for FILE in `find $TARGETFOLDER -name "*.owl" `
+
+for FILE in `find $TARGETFOLDER -name "*.owl"  `
 do
-        echo $FILE
-        transform_annotation_model $FILE > "$FILE"".csv"
+    transform_annotation_model $FILE > "$FILE"".csv"
 done
 
