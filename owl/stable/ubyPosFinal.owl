@@ -1,0 +1,1070 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY ubyPos "http://purl.org/olia/ubyPos.owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/ubyPos.owl#"
+     xml:base="http://purl.org/olia/ubyPos.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:ubyPos="http://purl.org/olia/ubyPos.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/ubyPos.owl">
+        <rdfs:label>ubyPos.owl</rdfs:label>
+        <owl:versionInfo xml:lang="en">2012, Nov 14 created
+
+Note that the DTD seems to imply some hierarchical structure of concepts by having the more general concept preceding the more specific one. This is neither formalized in the DTD nor is it in the defining ISOcat categories, so left underspecified here.
+
+Christian Chiarcos
+chiarcos@isi.edu</owl:versionInfo>
+        <rdfs:comment xml:lang="en">OLiA Annotation Model for Uby Parts of Speech (Gurevych et al, 2012)
+extracted from the Uby DTD (http://code.google.com/p/uby/source/browse/de.tudarmstadt.ukp.uby/tags/de.tudarmstadt.ukp.uby-0.2.0/de.tudarmstadt.ukp.uby.lmf.model-asl/src/main/resources/dtd/UBY_LMF.dtd, version of Nov 21th, 2012).
+
+References
+Iryna Gurevych, Judith Eckle-Kohler, Silvana Hartmann, Michael Matuschek, Christian M. Meyer and Christian Wirth, 2012, Uby - A Large-Scale Unified Lexical-Semantic Resource, Proceedings of the 13th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2012), Avignon, France.
+
+The DTD is made available under a Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license which is available at http://creativecommons.org/licenses/by-sa/3.0/
+You are free to share (copy, distribute and transmit) the work, to develop your own extensions (adapt, remix) of the work, and to make commercial use of the work.</rdfs:comment>
+        <rdfs:comment xml:lang="en">TODO: formalize cardinality constraints, add hierarchical structures</rdfs:comment>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasFeature -->
+
+    <owl:ObjectProperty rdf:about="&system;hasFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_WordFormAttribute -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_WordFormAttribute">
+        <rdfs:label>WordFormAttribute</rdfs:label>
+        <rdfs:isDefinedBy>http://code.google.com/p/uby/source/browse/de.tudarmstadt.ukp.uby/trunk/de.tudarmstadt.ukp.uby.lmf.model-asl/src/main/resources/dtd/UBY_LMF.dtd</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_case -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_case">
+        <rdfs:label>case</rdfs:label>
+        <rdfs:range rdf:resource="&ubyPos;case"/>
+        <rdfs:subPropertyOf rdf:resource="&ubyPos;has_WordFormAttribute"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_degree -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_degree">
+        <rdfs:label>degree</rdfs:label>
+        <rdfs:range rdf:resource="&ubyPos;degree"/>
+        <rdfs:subPropertyOf rdf:resource="&ubyPos;has_WordFormAttribute"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_grammaticalGender -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_grammaticalGender">
+        <rdfs:label>grammaticalGender</rdfs:label>
+        <rdfs:range rdf:resource="&ubyPos;grammaticalGender"/>
+        <rdfs:subPropertyOf rdf:resource="&ubyPos;has_WordFormAttribute"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_grammaticalNumber -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_grammaticalNumber">
+        <rdfs:label>grammaticalNumber</rdfs:label>
+        <rdfs:range rdf:resource="&ubyPos;grammaticalNumber"/>
+        <rdfs:subPropertyOf rdf:resource="&ubyPos;has_WordFormAttribute"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_partOfSpeech -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_partOfSpeech">
+        <rdfs:label>partOfSpeech</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-396</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_person -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_person">
+        <rdfs:label>person</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ubyPos;has_WordFormAttribute"/>
+        <rdfs:range rdf:resource="&ubyPos;person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_tense -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_tense">
+        <rdfs:label>tense</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ubyPos;has_WordFormAttribute"/>
+        <rdfs:range rdf:resource="&ubyPos;tense"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#has_verbFormMood -->
+
+    <owl:ObjectProperty rdf:about="&ubyPos;has_verbFormMood">
+        <rdfs:label>verbFormMood</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ubyPos;has_WordFormAttribute"/>
+        <rdfs:range rdf:resource="&ubyPos;verbFormMood"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#Feature -->
+
+    <owl:Class rdf:about="&system;Feature"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#UnitOfAnnotation -->
+
+    <owl:Class rdf:about="&system;UnitOfAnnotation"/>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#LexicalEntry -->
+
+    <owl:Class rdf:about="&ubyPos;LexicalEntry">
+        <rdfs:label>LexicalEntry</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:isDefinedBy>http://code.google.com/p/uby/source/browse/de.tudarmstadt.ukp.uby/trunk/de.tudarmstadt.ukp.uby.lmf.model-asl/src/main/resources/dtd/UBY_LMF.dtd</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#WordForm -->
+
+    <owl:Class rdf:about="&ubyPos;WordForm">
+        <rdfs:label>WordForm</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:isDefinedBy>http://code.google.com/p/uby/source/browse/de.tudarmstadt.ukp.uby/trunk/de.tudarmstadt.ukp.uby.lmf.model-asl/src/main/resources/dtd/UBY_LMF.dtd</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#WordFormAttribute -->
+
+    <owl:Class rdf:about="&ubyPos;WordFormAttribute">
+        <rdfs:label>WordFormAttribute</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:isDefinedBy>http://code.google.com/p/uby/source/browse/de.tudarmstadt.ukp.uby/trunk/de.tudarmstadt.ukp.uby.lmf.model-asl/src/main/resources/dtd/UBY_LMF.dtd</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#abbreviation -->
+
+    <owl:Class rdf:about="&ubyPos;abbreviation">
+        <rdfs:label>abbreviation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-329</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#abbreviationAcronym -->
+
+    <owl:Class rdf:about="&ubyPos;abbreviationAcronym">
+        <rdfs:label>abbreviationAcronym</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;abbreviation"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-334</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#abbreviationInitialism -->
+
+    <owl:Class rdf:about="&ubyPos;abbreviationInitialism">
+        <rdfs:label>abbreviationInitialism</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;abbreviation"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-333</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#adjective -->
+
+    <owl:Class rdf:about="&ubyPos;adjective">
+        <rdfs:label>adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1230</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#adposition -->
+
+    <owl:Class rdf:about="&ubyPos;adposition">
+        <rdfs:label>adposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1231</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#adpositionCircumposition -->
+
+    <owl:Class rdf:about="&ubyPos;adpositionCircumposition">
+        <rdfs:label>adpositionCircumposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;adposition"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1906</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#adpositionPostposition -->
+
+    <owl:Class rdf:about="&ubyPos;adpositionPostposition">
+        <rdfs:label>adpositionPostposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;adposition"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1360</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#adpositionPreposition -->
+
+    <owl:Class rdf:about="&ubyPos;adpositionPreposition">
+        <rdfs:label>adpositionPreposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;adposition"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1366</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#adverb -->
+
+    <owl:Class rdf:about="&ubyPos;adverb">
+        <rdfs:label>adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1232</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#adverbPronominal -->
+
+    <owl:Class rdf:about="&ubyPos;adverbPronominal">
+        <rdfs:label>adverbPronominal</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;adverb"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2998</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#affix -->
+
+    <owl:Class rdf:about="&ubyPos;affix">
+        <rdfs:label>affix</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1234</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#affixPrefix -->
+
+    <owl:Class rdf:about="&ubyPos;affixPrefix">
+        <rdfs:label>affixPrefix</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;affix"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1365</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#affixSuffix -->
+
+    <owl:Class rdf:about="&ubyPos;affixSuffix">
+        <rdfs:label>affixSuffix</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;affix"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1395</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#case -->
+
+    <owl:Class rdf:about="&ubyPos;case">
+        <rdfs:label>case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;WordFormAttribute"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2720</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#conjunction -->
+
+    <owl:Class rdf:about="&ubyPos;conjunction">
+        <rdfs:label>conjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3132</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#conjunctionCoordinating -->
+
+    <owl:Class rdf:about="&ubyPos;conjunctionCoordinating">
+        <rdfs:label>conjunctionCoordinating</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;conjunction"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1262</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#conjunctionSubordinating -->
+
+    <owl:Class rdf:about="&ubyPos;conjunctionSubordinating">
+        <rdfs:label>conjunctionSubordinating</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;conjunction"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1393</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#contraction -->
+
+    <owl:Class rdf:about="&ubyPos;contraction">
+        <rdfs:label>contraction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-354</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#degree -->
+
+    <owl:Class rdf:about="&ubyPos;degree">
+        <rdfs:label>degree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;WordFormAttribute"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2779</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#determiner -->
+
+    <owl:Class rdf:about="&ubyPos;determiner">
+        <rdfs:label>determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1272</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#determinerDefinite -->
+
+    <owl:Class rdf:about="&ubyPos;determinerDefinite">
+        <rdfs:label>determinerDefinite</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1430</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#determinerDemonstrative -->
+
+    <owl:Class rdf:about="&ubyPos;determinerDemonstrative">
+        <rdfs:label>determinerDemonstrative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1269</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#determinerIndefinite -->
+
+    <owl:Class rdf:about="&ubyPos;determinerIndefinite">
+        <rdfs:label>determinerIndefinite</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1307</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#determinerInterrogative -->
+
+    <owl:Class rdf:about="&ubyPos;determinerInterrogative">
+        <rdfs:label>determinerInterrogative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1320</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#determinerPossessive -->
+
+    <owl:Class rdf:about="&ubyPos;determinerPossessive">
+        <rdfs:label>determinerPossessive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1357</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#grammaticalGender -->
+
+    <owl:Class rdf:about="&ubyPos;grammaticalGender">
+        <rdfs:label>grammaticalGender</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;WordFormAttribute"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3217</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#grammaticalNumber -->
+
+    <owl:Class rdf:about="&ubyPos;grammaticalNumber">
+        <rdfs:label>grammaticalNumber</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;WordFormAttribute"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-251</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#interjection -->
+
+    <owl:Class rdf:about="&ubyPos;interjection">
+        <rdfs:label>interjection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1318</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#noun -->
+
+    <owl:Class rdf:about="&ubyPos;noun">
+        <rdfs:label>noun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3347</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#nounCommon -->
+
+    <owl:Class rdf:about="&ubyPos;nounCommon">
+        <rdfs:label>nounCommon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;noun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-385</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#nounProper -->
+
+    <owl:Class rdf:about="&ubyPos;nounProper">
+        <rdfs:label>nounProper</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;noun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1371</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#nounProperFirstName -->
+
+    <owl:Class rdf:about="&ubyPos;nounProperFirstName">
+        <rdfs:label>nounProperFirstName</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;noun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4194</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#nounProperLastName -->
+
+    <owl:Class rdf:about="&ubyPos;nounProperLastName">
+        <rdfs:label>nounProperLastName</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;noun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4195</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#numeral -->
+
+    <owl:Class rdf:about="&ubyPos;numeral">
+        <rdfs:label>numeral</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1334</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#partOfSpeech -->
+
+    <owl:Class rdf:about="&ubyPos;partOfSpeech">
+        <rdfs:label>partOfSpeech</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:isDefinedBy>http://code.google.com/p/uby/source/browse/de.tudarmstadt.ukp.uby/trunk/de.tudarmstadt.ukp.uby.lmf.model-asl/src/main/resources/dtd/UBY_LMF.dtd</rdfs:isDefinedBy>
+        <rdfs:comment>As a convention, the relation is called has_partOfSpeech, partOfSpeech is the top-level *class* of parts of speech</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#particle -->
+
+    <owl:Class rdf:about="&ubyPos;particle">
+        <rdfs:label>particle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3372</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#particleAnswer -->
+
+    <owl:Class rdf:about="&ubyPos;particleAnswer">
+        <rdfs:label>particleAnswer</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;particle"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2891</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#particleComparative -->
+
+    <owl:Class rdf:about="&ubyPos;particleComparative">
+        <rdfs:label>particleComparative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;particle"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1922</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#particleInfinitive -->
+
+    <owl:Class rdf:about="&ubyPos;particleInfinitive">
+        <rdfs:label>particleInfinitive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;particle"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1896</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#particleNegative -->
+
+    <owl:Class rdf:about="&ubyPos;particleNegative">
+        <rdfs:label>particleNegative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;particle"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1894</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#person -->
+
+    <owl:Class rdf:about="&ubyPos;person">
+        <rdfs:label>person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;WordFormAttribute"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3385</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#phraseme -->
+
+    <owl:Class rdf:about="&ubyPos;phraseme">
+        <rdfs:label>phraseme</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-339</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronoun -->
+
+    <owl:Class rdf:about="&ubyPos;pronoun">
+        <rdfs:label>pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1370</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronounDemonstrative -->
+
+    <owl:Class rdf:about="&ubyPos;pronounDemonstrative">
+        <rdfs:label>pronounDemonstrative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1270</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronounIndefinite -->
+
+    <owl:Class rdf:about="&ubyPos;pronounIndefinite">
+        <rdfs:label>pronounIndefinite</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1309</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronounInterrogative -->
+
+    <owl:Class rdf:about="&ubyPos;pronounInterrogative">
+        <rdfs:label>pronounInterrogative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1321</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronounPersonal -->
+
+    <owl:Class rdf:about="&ubyPos;pronounPersonal">
+        <rdfs:label>pronounPersonal</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3013</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronounPersonalIrreflexive -->
+
+    <owl:Class rdf:about="&ubyPos;pronounPersonalIrreflexive">
+        <rdfs:label>pronounPersonalIrreflexive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;pronounPersonal"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3013</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronounPersonalReflexive -->
+
+    <owl:Class rdf:about="&ubyPos;pronounPersonalReflexive">
+        <rdfs:label>pronounPersonalReflexive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;pronounPersonal"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3014</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronounPossessive -->
+
+    <owl:Class rdf:about="&ubyPos;pronounPossessive">
+        <rdfs:label>pronounPossessive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1359</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#pronounRelative -->
+
+    <owl:Class rdf:about="&ubyPos;pronounRelative">
+        <rdfs:label>pronounRelative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1380</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#separableParticle -->
+
+    <owl:Class rdf:about="&ubyPos;separableParticle">
+        <rdfs:label>separableParticle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3546</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#symbol -->
+
+    <owl:Class rdf:about="&ubyPos;symbol">
+        <rdfs:label>symbol</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1398</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#tense -->
+
+    <owl:Class rdf:about="&ubyPos;tense">
+        <rdfs:label>tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;WordFormAttribute"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3519</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#verb -->
+
+    <owl:Class rdf:about="&ubyPos;verb">
+        <rdfs:label>verb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1424</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#verbAuxiliary -->
+
+    <owl:Class rdf:about="&ubyPos;verbAuxiliary">
+        <rdfs:label>verbAuxiliary</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;verb"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1244</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#verbFormMood -->
+
+    <owl:Class rdf:about="&ubyPos;verbFormMood">
+        <rdfs:label>verbFormMood</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;WordFormAttribute"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1427</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#verbMain -->
+
+    <owl:Class rdf:about="&ubyPos;verbMain">
+        <rdfs:label>verbMain</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;verb"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1400</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#verbModal -->
+
+    <owl:Class rdf:about="&ubyPos;verbModal">
+        <rdfs:label>verbModal</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ubyPos;verb"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1329</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#accusative -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;accusative">
+        <rdf:type rdf:resource="&ubyPos;case"/>
+        <rdfs:label>accusative</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2724</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#comparative -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;comparative">
+        <rdf:type rdf:resource="&ubyPos;degree"/>
+        <rdfs:label>comparative</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2781</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#dative -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;dative">
+        <rdf:type rdf:resource="&ubyPos;case"/>
+        <rdfs:label>dative</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2723</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#feminine -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;feminine">
+        <rdf:type rdf:resource="&ubyPos;grammaticalGender"/>
+        <rdfs:label>feminine</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3197</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#first -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;first">
+        <rdf:type rdf:resource="&ubyPos;person"/>
+        <rdfs:label>first</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3198</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#genitive -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;genitive">
+        <rdf:type rdf:resource="&ubyPos;case"/>
+        <rdfs:label>genitive</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2722</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#imperative -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;imperative">
+        <rdf:type rdf:resource="&ubyPos;verbFormMood"/>
+        <rdfs:label>imperative</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1844</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#indicative -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;indicative">
+        <rdf:type rdf:resource="&ubyPos;verbFormMood"/>
+        <rdfs:label>indicative</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1885</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#infinitive -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;infinitive">
+        <rdf:type rdf:resource="&ubyPos;verbFormMood"/>
+        <rdfs:label>infinitive</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1312</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#infinitiveZu -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;infinitiveZu">
+        <rdf:type rdf:resource="&ubyPos;verbFormMood"/>
+        <rdfs:label>infinitiveZu</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2897</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#ingForm -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;ingForm">
+        <rdf:type rdf:resource="&ubyPos;verbFormMood"/>
+        <rdfs:label>ingForm</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4108</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#masculine -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;masculine">
+        <rdf:type rdf:resource="&ubyPos;grammaticalGender"/>
+        <rdfs:label>masculine</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3312</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#neuter -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;neuter">
+        <rdf:type rdf:resource="&ubyPos;grammaticalGender"/>
+        <rdfs:label>neuter</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3336</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#nominative -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;nominative">
+        <rdf:type rdf:resource="&ubyPos;case"/>
+        <rdfs:label>nominative</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2721</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#participle -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;participle">
+        <rdf:type rdf:resource="&ubyPos;verbFormMood"/>
+        <rdfs:label>participle</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3371</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#past -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;past">
+        <rdf:type rdf:resource="&ubyPos;tense"/>
+        <rdfs:label>past</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3378</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#plural -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;plural">
+        <rdf:type rdf:resource="&ubyPos;grammaticalNumber"/>
+        <rdfs:label>plural</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-253</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#positive -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;positive">
+        <rdf:type rdf:resource="&ubyPos;degree"/>
+        <rdfs:label>positive</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2780</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#present -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;present">
+        <rdf:type rdf:resource="&ubyPos;tense"/>
+        <rdfs:label>present</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3421</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#second -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;second">
+        <rdf:type rdf:resource="&ubyPos;person"/>
+        <rdfs:label>second</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3464</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#singular -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;singular">
+        <rdf:type rdf:resource="&ubyPos;grammaticalNumber"/>
+        <rdfs:label>singular</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-252</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#subjunctive -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;subjunctive">
+        <rdf:type rdf:resource="&ubyPos;verbFormMood"/>
+        <rdfs:label>subjunctive</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1843</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#superlative -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;superlative">
+        <rdf:type rdf:resource="&ubyPos;degree"/>
+        <rdfs:label>superlative</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2782</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyPos.owl#third -->
+
+    <owl:NamedIndividual rdf:about="&ubyPos;third">
+        <rdf:type rdf:resource="&ubyPos;person"/>
+        <rdfs:label>third</rdfs:label>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3526</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
