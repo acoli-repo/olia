@@ -114,10 +114,16 @@
 	11/08/16 linking with Dzongkha tagset (Chungku et al. 2010)
 		added AspirationalVerb, AgentiveVerb, TenseMarkingParticle, NonAgentiveVerb, LocativePronoun, NominalNumber, CaseMarker, PeriodicAdjective, CharacteristicAdjective, DifferentialPronoun, NominalQuantifier
 		HonorificVerb, HonorificCommonNoun added (=> Honorificity to be remodelled)
-
+	13/03/03 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
+		added GivenName, FamilyName, comments for PersonalPronoun, Separability
+	13/03/03 partial "hasFeature Self"-modeling for ...Feature concepts: not inferable through Fact++ or Hermit, though, hence incomplete
+	13/03/04 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
+		Contraction
+	
 Christian Chiarcos chiarcos@uni-potsdam.de
 	</owl:versionInfo>
-  </owl:Ontology>  
+	<owl:versionInfo>TODO: self modeling in linking</owl:versionInfo>
+ </owl:Ontology>  
   
 	<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
 	
@@ -536,7 +542,14 @@ Christian Chiarcos chiarcos@uni-potsdam.de
       and pause fillers such as er and erm in transcriptions of speech, or written representations of singing such as dum-de-dum. (http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recr 19.09.06)</rdfs:comment>
     <rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
-</rdfs:subClassOf>
+	</rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#Contraction">
+	<owl:versionInfo>Uby POS, undocumented, http://purl.org/olia/ubyPos.owl</owl:versionInfo>
+	<rdfs:comment>no definition given</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
+	</rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adposition">
     <owl:versionInfo>EAGLES top-level category Adposition (AP).</owl:versionInfo>
@@ -953,6 +966,28 @@ Christian Chiarcos chiarcos@uni-potsdam.de
 		occur in singular/plural or co-occur with the relevant kind of determiner.
 		(http://en.wikipedia.org/wiki/Mass_noun 19.09.06)
 	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#GivenName">
+	<owl:versionInfo>
+		introduced as generalization over http://purl.org/olia/ubyPos.owl#nounProperFirstName
+	</owl:versionInfo>
+	<rdfs:comment>
+		In most European cultures, a given name designates an individual person throughout her/his life span. To distinguish people with the same name but from different families, additional elements have been introduced into name formulas that identify a person's family or ancestry. (CC)
+	</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#ProperNoun"/>
+	</rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#FamilyName">
+	<owl:versionInfo>
+		introduced as generalization over http://purl.org/olia/ubyPos.owl#nounProperSecondName
+	</owl:versionInfo>
+	<rdfs:comment>
+		In most European cultures, family names have been introduced into name formulas to identify a person's family, so that individuals with the same given name can be distinguished. (CC)
+	</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#ProperNoun"/>
+	</rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#ProperNoun">
 	<owl:versionInfo>
@@ -2447,6 +2482,8 @@ Christian Chiarcos chiarcos@uni-potsdam.de
 		<rdfs:comment>
 			A personal pronoun is a pronoun that expresses a distinction of person deixis. 		
 			(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAPersonalPronoun.htm 19.09.06)
+			
+			Note that (despite the SIL definition), an olia:PersonalPronoun refers to irreflexive personal pronouns. Personal pronoun categories without reflexivity sensitivity should be mapped onto olia:PersReflPronoun. (CC)
 		</rdfs:comment>
     <rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#PersReflPronoun"/>
@@ -4245,8 +4282,16 @@ Left square bracket
 	</owl:Class>
 	
 	<!-- SeparabilityFunction -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSeparability"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonSeparable">
-		<owl:versionInfo>EAGLES</owl:versionInfo>
+		<owl:versionInfo>EAGLES; note that UbyPos extends separability to particles</owl:versionInfo>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			Non-separable verbs are not composed of a verb stem and a separable 
 			affix. (cf. SeparabilityFeature: Separable)
@@ -4256,7 +4301,7 @@ Left square bracket
 </rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Separable">
-		<owl:versionInfo>EAGLES</owl:versionInfo>
+		<owl:versionInfo>EAGLES; note that UbyPos extends separability to particles</owl:versionInfo>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			A separable verb is a verb that is composed of a verb stem and a separable 
 			affix. In some verb forms, the verb appears in one word, whilst in others 
@@ -4274,6 +4319,12 @@ Left square bracket
 		<owl:versionInfo>TODO: link with concept hierarchy</owl:versionInfo>
 		<owl:versionInfo>TODO: rename to ReductionFeature</owl:versionInfo>
 		<owl:versionInfo>merged with http://purl.org/olia/mte/multext-east.owl#AdjectiveFormation, http://purl.org/olia/mte/multext-east.owl#ReductionFeature: reduced vs. full inflection</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasStrength"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonreducedInflection">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#CompoundAdjective</owl:versionInfo>
@@ -4313,6 +4364,14 @@ Left square bracket
 	</owl:Class>
 
 	<!-- PolarityFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPolarity"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#Negation">
 		<owl:versionInfo>added in accordance with TIGER</owl:versionInfo>
     	<rdfs:comment>http://purl.org/olia/mte/multext-east.owl#Negated: Negative=&quot;yes&quot; encodes negative verbal word-forms in Slavic languages and Estonian. (MTE v4) 
@@ -4330,6 +4389,14 @@ Left square bracket
 	</owl:Class>
 
 	<!-- ProximityFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ProximityFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasProximity"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Distal">
 		<owl:versionInfo>added in accordance with http://purl.org/olia/mte/multext-east.owl#CliticDistalDeterminer</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ProximityFeature"/>
@@ -4354,6 +4421,14 @@ Left square bracket
 	</owl:Class>
 
 	<!-- SpecificityFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SpecificityFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSpecificity"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Specific">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#CliticSpecificDeterminer</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SpecificityFeature"/>
@@ -4405,6 +4480,12 @@ Left square bracket
 
 	<!-- NumberFeature -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumberFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
 		<owl:versionInfo>TODO: extend with TDS numberProperty and GOLD NumberValue</owl:versionInfo>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Plural">
@@ -4615,6 +4696,12 @@ Left square bracket
 
 	<!-- InflectionTypeFeature -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasInflectionType"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:comment>
 			In this category, different inflection-relevant features are assembled. 
 			Typically, inflection phenomena are language-specific and pertain to different grammatial categories;
@@ -4744,6 +4831,12 @@ Left square bracket
 
 	<!-- ReflexivityFeature -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReflexivityFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasReflexivity"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
 		<owl:versionInfo>TODO: integrate with VoiceFeature (as in the TDS Ontology) implementation</owl:versionInfo>
 		<rdfs:subClassOf>
 			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
@@ -4781,6 +4874,12 @@ Left square bracket
 
 	<!-- VoideFeature -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasVoice"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
 		<owl:versionInfo>hierarchically restructured</owl:versionInfo>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActiveVoice">
@@ -5724,6 +5823,14 @@ The NP or S complement of a preposition is placed inside the PP.
 	</owl:Class>
 
 	<!-- Aspect -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#AspectFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasAspect"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SimpleAspect">
 		<owl:versionInfo>ILPOSTS, http://purl.org/olia/ilposts.owl#SimpleAspect</owl:versionInfo>
 		<owl:versionInfo>TODO: check whether this is properly defined</owl:versionInfo>
@@ -6022,6 +6129,12 @@ The NP or S complement of a preposition is placed inside the PP.
 	
 	<!-- MoodFeature -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasMood"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
 		<owl:versionInfo>Mood feature pertains to grammaticalized moods (as expressed in verbal inflection). 
 			It is, however, partly redundant with SentenceType that involves different kind of markers with respect to the discourse function of sentences (cf. InterrogativeMood besides Question, DeclarativeMood vs. DeclarativeSentence, etc.).
 			The main difference between both is the restriction to a limited set of surface indicators.
@@ -9560,6 +9673,14 @@ CONJP — Conjunction Phrase. Used to mark certain “multi-word” conjunctions
      ====================================================== -->
 
 	 <!-- SyntacticFunction -->
+ 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticFunction"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adverbial">
       <rdfs:subClassOf>
          <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction"/>
