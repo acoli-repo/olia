@@ -118,7 +118,7 @@
 		added GivenName, FamilyName, comments for PersonalPronoun, Separability
 	13/03/03 partial "hasFeature Self"-modeling for ...Feature concepts: not inferable through Fact++ or Hermit, though, hence incomplete
 	13/03/04 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
-		Contraction
+		Contraction, Phraseme, LexicalUnit (as generalization over Phraseme and Lexeme), Initialism
 	
 Christian Chiarcos chiarcos@uni-potsdam.de
 	</owl:versionInfo>
@@ -762,7 +762,14 @@ Christian Chiarcos chiarcos@uni-potsdam.de
 		<rdfs:comment>Date is a stretch of text that specifies a specific point in time and that is not further linguistically analysed. (Chiarcos)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="#Residual"/>
 	</owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/olia.owl#Abbreviation">
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Initialism">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Abbreviation"/>
+		</rdfs:subClassOf>
+		<owl:versionInfo>adopted from ubyPos.owl</owl:versionInfo>
+		<rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-333</rdfs:isDefinedBy>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Abbreviation">
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
     </rdfs:subClassOf>
@@ -9839,6 +9846,33 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
      ||      SEMANTIC AND LEXICAL UNITS              ||
      ====================================================== -->
 
+	<owl:Class rdf:ID="LexicalUnit">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >introduced as a generalization over Lexeme and Phraseme (as opposed to phrase) with the extension to lexical-semantic resources like Uby</owl:versionInfo>
+	<rdfs:comment>A LexicalUnit is a grammatical expression that is known to the speakers of that language as a conventional expression of a particular concept. It consists of a single lexeme or a conventional combination of lexemes with certain unchangeable characteristics (CC).
+	</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia_top.owl#SemanticUnit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Phraseme">
+	<owl:versionInfo>http://purl.org/olia/ubyPos.owl#phraseme, no definition there</owl:versionInfo>
+	<rdfs:comment>Conventional lexical unit consisting of a particular phrase (CC)</rdfs:comment>
+	<owl:equivalentClass>
+		<owl:Class>
+			<owl:intersectionOf>
+				<owl:Class rdf:about="#LexicalUnit"/>
+				<owl:Class rdf:about="#Phrase"/>
+			</owl:intersectionOf>
+		</owl:Class>
+	</owl:equivalentClass>
+	<owl:subClassOf>
+		<owl:Class rdf:about="#FixedExpression"/>
+	</owl:subClassOf>
+	</owl:Class>
+
+	 
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Collocation">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Collocation</owl:versionInfo>
 		<rdfs:comment>
@@ -9868,7 +9902,7 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
                             </rdfs:comment>
       <rdfs:label>lexeme</rdfs:label>
 	  <rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticUnit"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#LexicalUnit"/>
 	  </rdfs:subClassOf>
    </owl:Class>
 	
@@ -10702,6 +10736,7 @@ Words such as fully and completely are absolutes and do not receive -EXT.
 			resolve redundancy between XYMood and XYVerb
 			redundancy between SyntacticType und MorphosyntacticCategory
 			Honorificity as independent feature, cf. HonorificVerb, HonorificCommonNoun
+			replace ...Category by ...Unit
 			-->
 
 </rdf:RDF>
