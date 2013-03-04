@@ -119,8 +119,9 @@
 	13/03/03 partial "hasFeature Self"-modeling for ...Feature concepts: not inferable through Fact++ or Hermit, though, hence incomplete
 	13/03/04 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
 		Contraction, Phraseme, LexicalUnit (as generalization over Phraseme and Lexeme), Initialism
+	13/03/04 olia-top:XYFeature olia:hasXY Self for most XYFeatures
 	
-Christian Chiarcos chiarcos@uni-potsdam.de
+Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</owl:versionInfo>
 	<owl:versionInfo>TODO: self modeling in linking</owl:versionInfo>
  </owl:Ontology>  
@@ -8005,16 +8006,6 @@ The NP or S complement of a preposition is placed inside the PP.
 	
   <!-- Properties -->
   
-      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CaseFeature">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasCase"/>
-                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-
-  
     <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticFunction">
 			<owl:versionInfo>Bies et al. 1995</owl:versionInfo>
     	<rdfs:subPropertyOf>
@@ -8026,7 +8017,14 @@ The NP or S complement of a preposition is placed inside the PP.
 		</rdfs:comment>
 		<owl:versionInfo>TODO: apply this to primitive concepts, too</owl:versionInfo>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticFunction"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 	</rdfs:range>
   </owl:ObjectProperty>
   
@@ -8040,8 +8038,10 @@ The NP or S complement of a preposition is placed inside the PP.
       <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
     </rdfs:subPropertyOf>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature"/>
-</rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+			<rdfs:comment>ValencyFeature cannot be reflexive, because hasSyntacticValency is distinguished from hasSemanticValency</rdfs:comment>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
 
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSemanticValency">
@@ -8056,14 +8056,23 @@ The NP or S complement of a preposition is placed inside the PP.
       <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
     </rdfs:subPropertyOf>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+				<rdfs:comment>ValencyFeature cannot be reflexive, because hasSyntacticValency is distinguished from hasSemanticValency</rdfs:comment>
+		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
  
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasCountability">
 	<rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Noun"/>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CountabilityFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CountabilityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasCountability"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 </rdfs:range>
 	<rdfs:subPropertyOf>
       <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
@@ -8073,40 +8082,84 @@ The NP or S complement of a preposition is placed inside the PP.
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSemanticRole">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 	</rdfs:range>
   </owl:ObjectProperty>
+  
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSeparability">
-    <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+    <!--rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/ -->
+	<!-- can also be particles, cf. UbyPos -->
     <rdfs:subPropertyOf>
       <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
     </rdfs:subPropertyOf>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSeparabilityFeature"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasDefiniteness">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DefinitenessFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DefinitenessFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasDefiniteness"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
 	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasEmphasis">
 		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 		<rdfs:range>
-			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EmphasisFeature"/>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EmphasisFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasEmphasis"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 		</rdfs:range>
 	</owl:ObjectProperty>
 	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasProximity">
 		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 		<rdfs:range>
-			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ProximityFeature"/>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ProximityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasProximity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 		</rdfs:range>
 	</owl:ObjectProperty>
 	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSpecificity">
 		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 		<rdfs:range>
-			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SpecificityFeature"/>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SpecificityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSpecificity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 		</rdfs:range>
 	</owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasChild">
@@ -8134,36 +8187,81 @@ The NP or S complement of a preposition is placed inside the PP.
     </rdfs:domain>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DegreeFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DegreeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasDegree"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="hasSemanticRole">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasPolarity">
     <rdfs:range>
-      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature"/>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPolarity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
     </rdfs:range>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasInflectionType">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasInflection"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasVoice">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
-</rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasVoice"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasStrength">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+		<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#StrengthFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasStrength"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasNumber">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
@@ -8181,7 +8279,14 @@ The NP or S complement of a preposition is placed inside the PP.
       </owl:Class>
     </rdfs:domain>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumberFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumberFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasOwnedNumber">
@@ -8271,22 +8376,62 @@ The NP or S complement of a preposition is placed inside the PP.
     <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#SubordinatingConjunction"/>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
   </owl:ObjectProperty>
+  
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasReflexivity">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReflexivitiyFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasReflexivity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
+  
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasTense">
     <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#TenseFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasCoordType">
     <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#CoordinatingConjunction"/>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CoordTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasCoordType"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
+
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticRole">
     <rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
-</rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticRole"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
     <rdfs:domain>
     	<owl:Class rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
     </rdfs:domain>
@@ -8307,6 +8452,16 @@ The NP or S complement of a preposition is placed inside the PP.
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#GenderFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasGender"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasOwnerGender">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1416"/-->
@@ -8317,7 +8472,11 @@ The NP or S complement of a preposition is placed inside the PP.
                             </rdfs:comment>
       <rdfs:label>owner gender</rdfs:label>
 	  <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	  <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#GenderFeature">
+	  </rdfs:range>
    </owl:ObjectProperty>
+   
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasCase">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:domain>
@@ -8331,7 +8490,18 @@ The NP or S complement of a preposition is placed inside the PP.
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CaseFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasCase"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
+  
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasPerson">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:domain>
@@ -8342,7 +8512,17 @@ The NP or S complement of a preposition is placed inside the PP.
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
-  </owl:ObjectProperty>
+  	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PersonFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range></owl:ObjectProperty>
+	
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSubjectPerson">
 	<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
 	<rdfs:domain>
@@ -8357,6 +8537,7 @@ The NP or S complement of a preposition is placed inside the PP.
                             </rdfs:comment>
       <rdfs:label>subject person</rdfs:label>
    </owl:ObjectProperty>
+   
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasObjectPerson">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2279"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-2279</owl:versionInfo>
@@ -8373,6 +8554,7 @@ The NP or S complement of a preposition is placed inside the PP.
         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PersonFeature"/>
 		</rdfs:range>
    </owl:ObjectProperty>
+   
    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasOwnerPerson">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1929"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1929</owl:versionInfo>
@@ -8387,30 +8569,70 @@ The NP or S complement of a preposition is placed inside the PP.
 	  </rdfs:range>
 	  <owl:versionInfo>does not entail hasPerson: hasPerson pertains to agreement</owl:versionInfo>
    </owl:ObjectProperty>
+   
    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasMood">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature">
+			<rdfs:comment>Note that we do not posit that MoodFeature hasMood self, because MoodFeature can be used with either hasMood or hasModality</rdfs:comment>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
+  
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasAspect">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+	 <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#AspectFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasAspect"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
   </owl:ObjectProperty>
+  
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasValency">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 	<rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasValency"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 	</rdfs:range>
   </owl:ObjectProperty>
+  
 	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasNumeralAgreementClass">
 		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 		<rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Quantifier"/>
-		<rdfs:range rdf:resource="http://purl.org/olia/olia-top.owl#NumeralAgreementClass"/>
+		<rdfs:range rdf:resource="http://purl.org/olia/olia-top.owl#NumeralAgreementClass">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasNumeralAgreementClass"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 	</owl:ObjectProperty>
 	
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasReduplicationType">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 	      <owl:versionInfo>cf. http://www.isocat.org/datcat/DC-2240</owl:versionInfo>
 	    <rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReduplicationTypeFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReduplicationTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasReducplicationType"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
   
