@@ -21,12 +21,12 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://purl.org/olia/ubyPos.owl">
         <rdfs:label>ubyPos.owl</rdfs:label>
-        <owl:versionInfo xml:lang="en">2012, Nov 14 created
+        <owl:versionInfo xml:lang="en">2012, Nov 14 created (CC)
+2012, Dec additions (JEK) [skipped here, TODO: reimport from ubyCat.owl]
+2013, Mar 04 upper case for partOfSpeech concepts, lower case for partOfSpeech individuals (CC)
 
-Note that the DTD seems to imply some hierarchical structure of concepts by having the more general concept preceding the more specific one. This is neither formalized in the DTD nor is it in the defining ISOcat categories, so left underspecified here.
-
-Christian Chiarcos
-chiarcos@isi.edu</owl:versionInfo>
+Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de
+Judith Eckle-Kohler, eckle-kohler@tk.informatik.tu-darmstadt.de</owl:versionInfo>
         <rdfs:comment xml:lang="en">OLiA Annotation Model for Uby Parts of Speech (Gurevych et al, 2012)
 extracted from the Uby DTD (http://code.google.com/p/uby/source/browse/de.tudarmstadt.ukp.uby/tags/de.tudarmstadt.ukp.uby-0.2.0/de.tudarmstadt.ukp.uby.lmf.model-asl/src/main/resources/dtd/UBY_LMF.dtd, version of Nov 21th, 2012).
 
@@ -225,7 +225,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#abbreviation -->
 
-    <owl:Class rdf:about="&ubyPos;abbreviation">
+    <owl:Class rdf:about="&ubyPos;Abbreviation">
         <rdfs:label>abbreviation</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-329</rdfs:isDefinedBy>
@@ -235,9 +235,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#abbreviationAcronym -->
 
-    <owl:Class rdf:about="&ubyPos;abbreviationAcronym">
+    <owl:Class rdf:about="&ubyPos;AbbreviationAcronym">
         <rdfs:label>abbreviationAcronym</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;abbreviation"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Abbreviation"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-334</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -245,9 +245,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#abbreviationInitialism -->
 
-    <owl:Class rdf:about="&ubyPos;abbreviationInitialism">
+    <owl:Class rdf:about="&ubyPos;AbbreviationInitialism">
         <rdfs:label>abbreviationInitialism</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;abbreviation"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Abbreviation"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-333</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -255,7 +255,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#adjective -->
 
-    <owl:Class rdf:about="&ubyPos;adjective">
+    <owl:Class rdf:about="&ubyPos;Adjective">
         <rdfs:label>adjective</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1230</rdfs:isDefinedBy>
@@ -265,7 +265,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#adposition -->
 
-    <owl:Class rdf:about="&ubyPos;adposition">
+    <owl:Class rdf:about="&ubyPos;Adposition">
         <rdfs:label>adposition</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1231</rdfs:isDefinedBy>
@@ -275,9 +275,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#adpositionCircumposition -->
 
-    <owl:Class rdf:about="&ubyPos;adpositionCircumposition">
+    <owl:Class rdf:about="&ubyPos;AdpositionCircumposition">
         <rdfs:label>adpositionCircumposition</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;adposition"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Adposition"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1906</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -285,9 +285,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#adpositionPostposition -->
 
-    <owl:Class rdf:about="&ubyPos;adpositionPostposition">
+    <owl:Class rdf:about="&ubyPos;AdpositionPostposition">
         <rdfs:label>adpositionPostposition</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;adposition"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Adposition"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1360</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -295,9 +295,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#adpositionPreposition -->
 
-    <owl:Class rdf:about="&ubyPos;adpositionPreposition">
+    <owl:Class rdf:about="&ubyPos;AdpositionPreposition">
         <rdfs:label>adpositionPreposition</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;adposition"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Adposition"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1366</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -305,7 +305,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#adverb -->
 
-    <owl:Class rdf:about="&ubyPos;adverb">
+    <owl:Class rdf:about="&ubyPos;Adverb">
         <rdfs:label>adverb</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1232</rdfs:isDefinedBy>
@@ -315,9 +315,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#adverbPronominal -->
 
-    <owl:Class rdf:about="&ubyPos;adverbPronominal">
+    <owl:Class rdf:about="&ubyPos;AdverbPronominal">
         <rdfs:label>adverbPronominal</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;adverb"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Adverb"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2998</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -325,7 +325,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#affix -->
 
-    <owl:Class rdf:about="&ubyPos;affix">
+    <owl:Class rdf:about="&ubyPos;Affix">
         <rdfs:label>affix</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1234</rdfs:isDefinedBy>
@@ -335,9 +335,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#affixPrefix -->
 
-    <owl:Class rdf:about="&ubyPos;affixPrefix">
+    <owl:Class rdf:about="&ubyPos;AffixPrefix">
         <rdfs:label>affixPrefix</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;affix"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Affix"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1365</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -345,9 +345,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#affixSuffix -->
 
-    <owl:Class rdf:about="&ubyPos;affixSuffix">
+    <owl:Class rdf:about="&ubyPos;AffixSuffix">
         <rdfs:label>affixSuffix</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;affix"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Affix"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1395</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -365,7 +365,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#conjunction -->
 
-    <owl:Class rdf:about="&ubyPos;conjunction">
+    <owl:Class rdf:about="&ubyPos;Conjunction">
         <rdfs:label>conjunction</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3132</rdfs:isDefinedBy>
@@ -375,9 +375,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#conjunctionCoordinating -->
 
-    <owl:Class rdf:about="&ubyPos;conjunctionCoordinating">
+    <owl:Class rdf:about="&ubyPos;ConjunctionCoordinating">
         <rdfs:label>conjunctionCoordinating</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;conjunction"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Conjunction"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1262</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -385,9 +385,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#conjunctionSubordinating -->
 
-    <owl:Class rdf:about="&ubyPos;conjunctionSubordinating">
+    <owl:Class rdf:about="&ubyPos;ConjunctionSubordinating">
         <rdfs:label>conjunctionSubordinating</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;conjunction"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Conjunction"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1393</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -395,7 +395,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#contraction -->
 
-    <owl:Class rdf:about="&ubyPos;contraction">
+    <owl:Class rdf:about="&ubyPos;Contraction">
         <rdfs:label>contraction</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-354</rdfs:isDefinedBy>
@@ -415,7 +415,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#determiner -->
 
-    <owl:Class rdf:about="&ubyPos;determiner">
+    <owl:Class rdf:about="&ubyPos;Determiner">
         <rdfs:label>determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1272</rdfs:isDefinedBy>
@@ -425,9 +425,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#determinerDefinite -->
 
-    <owl:Class rdf:about="&ubyPos;determinerDefinite">
+    <owl:Class rdf:about="&ubyPos;DeterminerDefinite">
         <rdfs:label>determinerDefinite</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Determiner"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1430</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -435,9 +435,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#determinerDemonstrative -->
 
-    <owl:Class rdf:about="&ubyPos;determinerDemonstrative">
+    <owl:Class rdf:about="&ubyPos;DeterminerDemonstrative">
         <rdfs:label>determinerDemonstrative</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Determiner"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1269</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -445,9 +445,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#determinerIndefinite -->
 
-    <owl:Class rdf:about="&ubyPos;determinerIndefinite">
+    <owl:Class rdf:about="&ubyPos;DeterminerIndefinite">
         <rdfs:label>determinerIndefinite</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Determiner"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1307</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -455,9 +455,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#determinerInterrogative -->
 
-    <owl:Class rdf:about="&ubyPos;determinerInterrogative">
+    <owl:Class rdf:about="&ubyPos;DeterminerInterrogative">
         <rdfs:label>determinerInterrogative</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Determiner"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1320</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -465,9 +465,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#determinerPossessive -->
 
-    <owl:Class rdf:about="&ubyPos;determinerPossessive">
+    <owl:Class rdf:about="&ubyPos;DeterminerPossessive">
         <rdfs:label>determinerPossessive</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;determiner"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Determiner"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1357</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -495,7 +495,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#interjection -->
 
-    <owl:Class rdf:about="&ubyPos;interjection">
+    <owl:Class rdf:about="&ubyPos;Interjection">
         <rdfs:label>interjection</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1318</rdfs:isDefinedBy>
@@ -505,7 +505,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#noun -->
 
-    <owl:Class rdf:about="&ubyPos;noun">
+    <owl:Class rdf:about="&ubyPos;Noun">
         <rdfs:label>noun</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3347</rdfs:isDefinedBy>
@@ -515,9 +515,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#nounCommon -->
 
-    <owl:Class rdf:about="&ubyPos;nounCommon">
+    <owl:Class rdf:about="&ubyPos;NounCommon">
         <rdfs:label>nounCommon</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;noun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Noun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-385</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -525,9 +525,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#nounProper -->
 
-    <owl:Class rdf:about="&ubyPos;nounProper">
+    <owl:Class rdf:about="&ubyPos;NounProper">
         <rdfs:label>nounProper</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;noun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Noun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1371</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -535,9 +535,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#nounProperFirstName -->
 
-    <owl:Class rdf:about="&ubyPos;nounProperFirstName">
+    <owl:Class rdf:about="&ubyPos;NounProperFirstName">
         <rdfs:label>nounProperFirstName</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;noun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Noun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4194</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -545,9 +545,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#nounProperLastName -->
 
-    <owl:Class rdf:about="&ubyPos;nounProperLastName">
+    <owl:Class rdf:about="&ubyPos;NounProperLastName">
         <rdfs:label>nounProperLastName</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;noun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Noun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4195</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -555,7 +555,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#numeral -->
 
-    <owl:Class rdf:about="&ubyPos;numeral">
+    <owl:Class rdf:about="&ubyPos;Numeral">
         <rdfs:label>numeral</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1334</rdfs:isDefinedBy>
@@ -576,7 +576,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#particle -->
 
-    <owl:Class rdf:about="&ubyPos;particle">
+    <owl:Class rdf:about="&ubyPos;Particle">
         <rdfs:label>particle</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3372</rdfs:isDefinedBy>
@@ -586,9 +586,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#particleAnswer -->
 
-    <owl:Class rdf:about="&ubyPos;particleAnswer">
+    <owl:Class rdf:about="&ubyPos;ParticleAnswer">
         <rdfs:label>particleAnswer</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;particle"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Particle"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2891</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -596,9 +596,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#particleComparative -->
 
-    <owl:Class rdf:about="&ubyPos;particleComparative">
+    <owl:Class rdf:about="&ubyPos;ParticleComparative">
         <rdfs:label>particleComparative</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;particle"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Particle"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1922</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -606,9 +606,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#particleInfinitive -->
 
-    <owl:Class rdf:about="&ubyPos;particleInfinitive">
+    <owl:Class rdf:about="&ubyPos;ParticleInfinitive">
         <rdfs:label>particleInfinitive</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;particle"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Particle"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1896</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -616,9 +616,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#particleNegative -->
 
-    <owl:Class rdf:about="&ubyPos;particleNegative">
+    <owl:Class rdf:about="&ubyPos;ParticleNegative">
         <rdfs:label>particleNegative</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;particle"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Particle"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1894</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -636,7 +636,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#phraseme -->
 
-    <owl:Class rdf:about="&ubyPos;phraseme">
+    <owl:Class rdf:about="&ubyPos;Phraseme">
         <rdfs:label>phraseme</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-339</rdfs:isDefinedBy>
@@ -646,7 +646,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronoun -->
 
-    <owl:Class rdf:about="&ubyPos;pronoun">
+    <owl:Class rdf:about="&ubyPos;Pronoun">
         <rdfs:label>pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1370</rdfs:isDefinedBy>
@@ -656,9 +656,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronounDemonstrative -->
 
-    <owl:Class rdf:about="&ubyPos;pronounDemonstrative">
+    <owl:Class rdf:about="&ubyPos;PronounDemonstrative">
         <rdfs:label>pronounDemonstrative</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Pronoun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1270</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -666,9 +666,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronounIndefinite -->
 
-    <owl:Class rdf:about="&ubyPos;pronounIndefinite">
+    <owl:Class rdf:about="&ubyPos;PronounIndefinite">
         <rdfs:label>pronounIndefinite</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Pronoun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1309</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -676,9 +676,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronounInterrogative -->
 
-    <owl:Class rdf:about="&ubyPos;pronounInterrogative">
+    <owl:Class rdf:about="&ubyPos;PronounInterrogative">
         <rdfs:label>pronounInterrogative</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Pronoun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1321</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -686,9 +686,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronounPersonal -->
 
-    <owl:Class rdf:about="&ubyPos;pronounPersonal">
+    <owl:Class rdf:about="&ubyPos;PronounPersonal">
         <rdfs:label>pronounPersonal</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Pronoun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3013</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -696,9 +696,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronounPersonalIrreflexive -->
 
-    <owl:Class rdf:about="&ubyPos;pronounPersonalIrreflexive">
+    <owl:Class rdf:about="&ubyPos;PronounPersonalIrreflexive">
         <rdfs:label>pronounPersonalIrreflexive</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;pronounPersonal"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;PronounPersonal"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3013</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -706,9 +706,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronounPersonalReflexive -->
 
-    <owl:Class rdf:about="&ubyPos;pronounPersonalReflexive">
+    <owl:Class rdf:about="&ubyPos;PronounPersonalReflexive">
         <rdfs:label>pronounPersonalReflexive</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;pronounPersonal"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;PronounPersonal"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3014</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -716,9 +716,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronounPossessive -->
 
-    <owl:Class rdf:about="&ubyPos;pronounPossessive">
+    <owl:Class rdf:about="&ubyPos;PronounPossessive">
         <rdfs:label>pronounPossessive</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Pronoun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1359</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -726,9 +726,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#pronounRelative -->
 
-    <owl:Class rdf:about="&ubyPos;pronounRelative">
+    <owl:Class rdf:about="&ubyPos;PronounRelative">
         <rdfs:label>pronounRelative</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;pronoun"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Pronoun"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1380</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -736,7 +736,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#separableParticle -->
 
-    <owl:Class rdf:about="&ubyPos;separableParticle">
+    <owl:Class rdf:about="&ubyPos;SeparableParticle">
         <rdfs:label>separableParticle</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3546</rdfs:isDefinedBy>
@@ -746,7 +746,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#symbol -->
 
-    <owl:Class rdf:about="&ubyPos;symbol">
+    <owl:Class rdf:about="&ubyPos;Symbol">
         <rdfs:label>symbol</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1398</rdfs:isDefinedBy>
@@ -766,7 +766,7 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#verb -->
 
-    <owl:Class rdf:about="&ubyPos;verb">
+    <owl:Class rdf:about="&ubyPos;Verb">
         <rdfs:label>verb</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ubyPos;partOfSpeech"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1424</rdfs:isDefinedBy>
@@ -776,9 +776,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#verbAuxiliary -->
 
-    <owl:Class rdf:about="&ubyPos;verbAuxiliary">
+    <owl:Class rdf:about="&ubyPos;VerbAuxiliary">
         <rdfs:label>verbAuxiliary</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;verb"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Verb"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1244</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -796,9 +796,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#verbMain -->
 
-    <owl:Class rdf:about="&ubyPos;verbMain">
+    <owl:Class rdf:about="&ubyPos;VerbMain">
         <rdfs:label>verbMain</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;verb"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Verb"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1400</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -806,9 +806,9 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
 
     <!-- http://purl.org/olia/ubyPos.owl#verbModal -->
 
-    <owl:Class rdf:about="&ubyPos;verbModal">
+    <owl:Class rdf:about="&ubyPos;VerbModal">
         <rdfs:label>verbModal</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ubyPos;verb"/>
+        <rdfs:subClassOf rdf:resource="&ubyPos;Verb"/>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1329</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -1062,7 +1062,64 @@ You are free to share (copy, distribute and transmit) the work, to develop your 
         <rdfs:label>third</rdfs:label>
         <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3526</rdfs:isDefinedBy>
     </owl:NamedIndividual>
-</rdf:RDF>
+
+	    <!-- http://purl.org/olia/ubyPos.owl#abbreviation -->
+
+    <ubyPos:Abbreviation rdf:about="&ubyPos;abbreviation"/>
+    <ubyPos:AbbreviationAcronym rdf:about="&ubyPos;abbreviationAcronym"/>
+    <ubyPos:AbbreviationInitialism rdf:about="&ubyPos;abbreviationInitialism"/>
+    <ubyPos:Adjective rdf:about="&ubyPos;adjective"/>
+    <ubyPos:Adposition rdf:about="&ubyPos;adposition"/>
+    <ubyPos:AdpositionCircumposition rdf:about="&ubyPos;adpositionCircumposition"/>
+    <ubyPos:AdpositionPostposition rdf:about="&ubyPos;adpositionPostposition"/>
+    <ubyPos:AdpositionPreposition rdf:about="&ubyPos;adpositionPreposition"/>
+    <ubyPos:Adverb rdf:about="&ubyPos;adverb"/>
+    <ubyPos:AdverbPronominal rdf:about="&ubyPos;adverbPronominal"/>
+	<ubyPos:Affix rdf:about="&ubyPos;affix"/>
+    <ubyPos:AffixPrefix rdf:about="&ubyPos;affixPrefix"/>
+    <ubyPos:AffixSuffix rdf:about="&ubyPos;affixSuffix"/>
+    <ubyPos:Conjunction rdf:about="&ubyPos;conjunction"/>
+	<ubyPos:ConjunctionCoordinating rdf:about="&ubyPos;conjunctionCoordinating"/>
+    <ubyPos:ConjunctionSubordinating rdf:about="&ubyPos;conjunctionSubordinating"/>
+    <ubyPos:Contraction rdf:about="&ubyPos;contraction"/>
+    <ubyPos:Determiner rdf:about="&ubyPos;determiner"/>
+    <ubyPos:DeterminerDefinite rdf:about="&ubyPos;determinerDefinite"/>
+    <ubyPos:DeterminerDemonstrative rdf:about="&ubyPos;determinerDemonstrative"/>
+    <ubyPos:DeterminerIndefinite rdf:about="&ubyPos;determinerIndefinite"/>
+    <ubyPos:DeterminerInterrogative rdf:about="&ubyPos;determinerInterrogative"/>
+    <ubyPos:DeterminerPossessive rdf:about="&ubyPos;determinerPossessive"/>
+    <ubyPos:Interjection rdf:about="&ubyPos;interjection"/>
+    <ubyPos:Noun rdf:about="&ubyPos;noun"/>
+    <ubyPos:NounCommon rdf:about="&ubyPos;nounCommon"/>
+    <ubyPos:NounProper rdf:about="&ubyPos;nounProper"/>
+    <ubyPos:NounProperFirstName rdf:about="&ubyPos;nounProperFirstName"/>
+    <ubyPos:NounProperLastName rdf:about="&ubyPos;nounProperLastName"/>
+    <ubyPos:Numeral rdf:about="&ubyPos;numeral"/>
+    <ubyPos:Particle rdf:about="&ubyPos;particle"/>
+    <ubyPos:ParticleAnswer rdf:about="&ubyPos;particleAnswer"/>
+    <ubyPos:ParticleComparative rdf:about="&ubyPos;particleComparative"/>
+    <ubyPos:ParticleInfinitive rdf:about="&ubyPos;particleInfinitive"/>
+    <ubyPos:ParticleNegative rdf:about="&ubyPos;particleNegative"/>
+    <ubyPos:Phraseme rdf:about="&ubyPos;phraseme"/>
+    <ubyPos:Pronoun rdf:about="&ubyPos;pronoun"/>
+    <ubyPos:PronounDemonstrative rdf:about="&ubyPos;pronounDemonstrative"/>
+    <ubyPos:PronounIndefinite rdf:about="&ubyPos;pronounIndefinite"/>
+    <ubyPos:PronounInterrogative rdf:about="&ubyPos;pronounInterrogative"/>
+    <ubyPos:PronounPersonal rdf:about="&ubyPos;pronounPersonal"/>
+    <ubyPos:PronounPersonalIrreflexive rdf:about="&ubyPos;pronounPersonalIrreflexive"/>
+    <ubyPos:PronounPersonalReflexive rdf:about="&ubyPos;pronounPersonalReflexive"/>
+    <ubyPos:PronounPossessive rdf:about="&ubyPos;pronounPossessive"/>
+    <ubyPos:PronounRelative rdf:about="&ubyPos;pronounRelative"/>
+    <ubyPos:SeparableParticle rdf:about="&ubyPos;separableParticle"/>
+    <ubyPos:Symbol rdf:about="&ubyPos;symbol"/>
+    <ubyPos:Verb rdf:about="&ubyPos;verb"/>
+    <ubyPos:VerbAuxiliary rdf:about="&ubyPos;verbAuxiliary"/>
+    <ubyPos:VerbMain rdf:about="&ubyPos;verbMain"/>
+    <ubyPos:VerbModal rdf:about="&ubyPos;verbModal"/>
+
+	</rdf:RDF>
+
+
 
 
 
