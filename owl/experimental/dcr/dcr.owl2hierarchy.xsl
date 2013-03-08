@@ -9,7 +9,7 @@
     
     <xsl:output version="1.0" encoding="UTF-8" indent="yes" method="xml"/>
     
-    <!-- convert the original ISOcat rdf export to OWL -->
+    <!-- after OWL data structures have been generated from DCIF, infer additional hierarchical links through naming conventions -->
     <xsl:template match="/rdf:RDF">
         <xsl:copy>
             <xsl:for-each select="@*">
@@ -18,12 +18,10 @@
                 </xsl:if>
             </xsl:for-each>
             <owl:Ontology>
-                <rdfs:comment>OWL representation of ISOcat RDF exported Data Categories</rdfs:comment>
+                <rdfs:comment>infer hierarchical structures for OWL representation of ISOcat DCIF</rdfs:comment>
             </owl:Ontology>
             <xsl:call-template name="infer-hierarchical-structure-from-description"/>
             <xsl:call-template name="infer-hierarchical-structure-from-naming-conventions"/>
-            
-            <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
     
@@ -57,7 +55,7 @@
     <!-- selects all rdf descriptions, performs decomposition of camel case
         if the last word occurs multiple times, then create a new class -->
     <xsl:template name="infer-hierarchical-structure-from-naming-conventions">
-        <xsl:for-each select="//rdf:Description[@rdf:ID!='']">
+        <xsl:for-each select="//rdf:Description[@rdf:ID!='']|//owl:Class[@rdf:ID!='']">
             <xsl:call-template name="create-classes-right-to-left">
                 <xsl:with-param name="name">
                     <xsl:value-of select="@rdf:ID"/>
@@ -68,7 +66,7 @@
 
     <!-- selects the first NP of the rdf:comment (heuristic: select 1 to 3 of the first words -->
     <xsl:template name="infer-hierarchical-structure-from-description">
-        <xsl:for-each select="//rdf:Description[@rdf:ID!='']">
+        <xsl:for-each select="//rdf:Description[@rdf:ID!='']|//owl:Class[@rdf:ID!='']">
             <xsl:variable name="name">
                 <xsl:value-of select="@rdf:ID"/>
             </xsl:variable>
@@ -179,8 +177,8 @@
                 siblingClassSuffix <xsl:value-of select="$siblingClassSuffix"/>
                 superClassName <xsl:value-of select="$superClassName"/>
             </xsl:message>            
-            <xsl:if test="count(//rdf:Description[@rdf:ID=$superClassName])=1 or count(//rdf:Description[ends-with(@rdf:ID,$siblingClassSuffix)])&gt;1">
-                <xsl:if test="count(//rdf:Description[@rdf:ID=$superClassName])=0 and count(./preceding::rdf:Description[ends-with(@rdf:ID,$siblingClassSuffix)][1])=0">
+            <xsl:if test="count(//*[@rdf:ID=$superClassName])=1 or count(//*[ends-with(@rdf:ID,$siblingClassSuffix)])&gt;1">
+                <xsl:if test="count(//*[@rdf:ID=$superClassName])=0 and count(./preceding::*[name()='rdf:Description' or name()='owl:Class'][ends-with(@rdf:ID,$siblingClassSuffix)][1])=0">
                     <owl:Class rdf:ID="{$superClassName}"/>
                 </xsl:if>
                 <owl:Class rdf:about="#{$name}">

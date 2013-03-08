@@ -10,9 +10,29 @@
       version="2.0">
 <xsl:output indent="yes" encoding="UTF-8" method="xml"/>
 
-<!-- only working for dumps of the entire profile, not for individually exported directories -->
+ <!-- 
+    DCIF 2 OWL 
 
-    <!-- DCIF 2 OWL-->
+    TODO: proper dc definitions for informational elements
+
+    converts ISOcat profiles in DCIF, the "native" XML format of ISOcat (http://www.isocat.org), to RDF/OWL
+
+    NOTES
+    This is a *partial* converter, only working for dumps of an entire profile, say 
+    https://catalog.clarin.eu/isocat/rest/profile/6.dcif, not for individually exported directories.
+
+    HISTORY
+    2010-05-29 converter version for LREC workshop data
+    2013-03-17 converter update for LREJ "postproceedings" 
+        supports //dcif:dataCategory/@identifier
+        extract //dcif:dataCategory/@definition
+        extract //dcif:dataCategory/@owner
+        extract //dcif:dataCategory/@type
+        extract //dcif:dataCategory/@version
+    
+    Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de     
+-->
+
     <xsl:template match="/">
         <rdf:RDF
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -27,11 +47,38 @@
                 <rdfs:comment>OWL representation of ISOcat DCIF exported Data Categories</rdfs:comment>
             </owl:Ontology>
             <xsl:for-each select="//dcif:dataCategory">
-                <owl:Class rdf:ID="{replace(normalize-space(string(.//dcif:identifier[1]/text())),' ','_')}">
+                <xsl:variable name="dcifID">
+                    <xsl:choose>
+                        <xsl:when test="normalize-space(@identifier)=''">
+                            <xsl:value-of select="normalize-space(string(.//dcif:identifier[1]/text()))"/> <!-- 2010 version -->
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 version -->
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <owl:Class rdf:ID="{replace($dcifID,' ','_')}">
                     <dcr:datcat rdf:resource="{@pid}"/>
-                    <owl:versionInfo>
-                        <xsl:value-of select="./ancestor-or-self::dcif:dataCategory/@pid"/>
-                    </owl:versionInfo>
+                    <xsl:for-each select="./ancestor-or-self::dcif:dataCategory[1]">
+                        <rdfs:isDefinedBy>
+                            <xsl:value-of select="@pid"/>
+                        </rdfs:isDefinedBy>
+                        <owl:versionInfo>
+                            <xsl:value-of select="concat('isoCat ID: ',@pid)"/>
+                            <xsl:text>
+</xsl:text>
+                            <xsl:value-of select="concat('isoCat owner: ',@owner)"/>
+                            <xsl:text>
+</xsl:text>
+                            <xsl:value-of select="concat('isoCat version: ',@version)"/>
+                            <xsl:text>
+</xsl:text>
+                            <xsl:value-of select="concat('isoCat type:', @type)"/>
+                        </owl:versionInfo>
+                        <rdfs:comment>
+                            <xsl:value-of select="@definition"/>
+                        </rdfs:comment>
+                    </xsl:for-each>
                     <xsl:for-each select="./dcif:descriptionSection/dcif:languageSection[string(./dcif:language)='en']/dcif:definitionSection">
                         <rdfs:comment>
                             <xsl:text>
@@ -59,10 +106,22 @@
                         <xsl:variable name="idref">
                             <xsl:value-of select="@pid"/>
                         </xsl:variable>                         
-                        <rdfs:subClassOf>
-                            <owl:Class rdf:about="#{replace(normalize-space(//dcif:dataCategory[@pid=$idref]//dcif:identifier[1]/text()),' ','_')}"/>
-                        </rdfs:subClassOf>
-                        <owl:versionInfo>subClassOf <xsl:value-of select="replace(normalize-space(//dcif:dataCategory[@pid=$idref]//dcif:identifier[1]/text()),' ','_')"/> (dcif:isA)</owl:versionInfo>
+                        <xsl:for-each select="//dcif:dataCategory[@pid=$idref][1]">
+                            <xsl:variable name="pdcifID">
+                                <xsl:choose>
+                                    <xsl:when test="normalize-space(@identifier)=''">
+                                        <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:variable>
+                            <rdfs:subClassOf>
+                                <owl:Class rdf:about="#{replace($pdcifID,' ','_')}"/>
+                            </rdfs:subClassOf>
+                            <owl:versionInfo>subClassOf <xsl:value-of select="replace($pdcifID,' ','_')"/> (dcif:isA)</owl:versionInfo>
+                        </xsl:for-each>
                     </xsl:for-each>
 
                     <xsl:if test="count(.//dcif:isA)=0">
@@ -71,10 +130,20 @@
                             <xsl:value-of select="$pid"/>
                         </xsl:message>
                         <xsl:for-each select="//dcif:dataCategory[./dcif:conceptualDomain/dcif:value/@pid=$pid]">
+                            <xsl:variable name="pdcifID">
+                                <xsl:choose>
+                                    <xsl:when test="normalize-space(@identifier)=''">
+                                        <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:variable>
                             <rdfs:subClassOf>
-                                <owl:Class rdf:about="#{replace(normalize-space(string(.//dcif:identifier[1]/text())),' ','_')}"/>
+                                <owl:Class rdf:about="#{replace($pdcifID,' ','_')}"/>
                             </rdfs:subClassOf>
-                            <owl:versionInfo>subClassOf <xsl:value-of select="replace(normalize-space(string(.//dcif:identifier[1]/text())),' ','_')"/> (dcif:conceptualDomain)</owl:versionInfo>
+                            <owl:versionInfo>subClassOf <xsl:value-of select="replace($pdcifID,' ','_')"/> (dcif:conceptualDomain)</owl:versionInfo>
                         </xsl:for-each>
                     </xsl:if>
                     
@@ -88,9 +157,16 @@
                             -->
                         <xsl:call-template name="create-subClassOf-right-to-left">
                                 <xsl:with-param name="name">
-                                    <xsl:value-of select=".//dcif:identifier[1]"/>
+                                    <xsl:choose>
+                                           <xsl:when test="normalize-space(@identifier)=''">
+                                                <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                                            </xsl:otherwise>
+                                    </xsl:choose>
                                 </xsl:with-param>
-                                <xsl:with-param name="useGuesser">false</xsl:with-param>
+                                <xsl:with-param name="useGuesser">true</xsl:with-param> <!-- 2010: false -->
                         </xsl:call-template>
                     </xsl:variable>
                     
@@ -102,9 +178,16 @@
                             -->
                             <xsl:call-template name="create-subClassOf-right-to-left">
                                 <xsl:with-param name="name">
-                                    <xsl:value-of select=".//dcif:identifier[1]"/>
+                                        <xsl:choose>
+                                            <xsl:when test="normalize-space(@identifier)=''">
+                                                <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                                            </xsl:otherwise>
+                                        </xsl:choose>
                                 </xsl:with-param>
-                                <xsl:with-param name="useGuesser">false</xsl:with-param>
+                                <xsl:with-param name="useGuesser">true</xsl:with-param> <!-- 2010: false -->
                             </xsl:call-template>
                         </xsl:when>
                         <xsl:otherwise>
@@ -171,7 +254,14 @@
                                 -->
                                 <xsl:call-template name="create-subClassOf-for-list-of-candidates">
                                     <xsl:with-param name="name">
-                                        <xsl:value-of select=".//dcif:identifier/text()"/>
+                                            <xsl:choose>
+                                                <xsl:when test="normalize-space(@identifier)=''">
+                                                    <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                                                </xsl:otherwise>
+                                            </xsl:choose>
                                     </xsl:with-param>
                                     <xsl:with-param name="candidates">
                                         <xsl:value-of select="$candidates"/>
@@ -182,7 +272,14 @@
                                 <xsl:when test="string-length(normalize-space($inferredSubClassOfFromDescription))&gt;0">
                                     <xsl:call-template name="create-subClassOf-for-list-of-candidates">
                                         <xsl:with-param name="name">
-                                            <xsl:value-of select=".//dcif:identifier/text()"/>
+                                                <xsl:choose>
+                                                    <xsl:when test="normalize-space(@identifier)=''">
+                                                        <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                        <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
                                         </xsl:with-param>
                                         <xsl:with-param name="candidates">
                                             <xsl:value-of select="$candidates"/>
@@ -192,9 +289,16 @@
                                 <xsl:otherwise>
                                     <xsl:call-template name="create-subClassOf-right-to-left">
                                         <xsl:with-param name="name">
-                                            <xsl:value-of select=".//dcif:identifier[1]"/>
+                                            <xsl:choose>
+                                                <xsl:when test="normalize-space(@identifier)=''">
+                                                    <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                                                </xsl:otherwise>
+                                            </xsl:choose>
                                         </xsl:with-param>
-                                        <xsl:with-param name="useGuesser">true</xsl:with-param>
+                                        <xsl:with-param name="useGuesser">true</xsl:with-param> <!-- 2010: true -->
                                     </xsl:call-template>
                                 </xsl:otherwise>
                             </xsl:choose>
@@ -245,7 +349,8 @@
             <xsl:if test="not($superClassName=$name) and 
                 string-length(normalize-space($superClassName))&gt;0">
                 <xsl:choose>
-                    <xsl:when test="(count(//dcif:identifier[text()=$superClassName][1])=1 or count(//dcif:identifier[ends-with(text(),$siblingClassSuffix)])&gt;1)">
+                    <xsl:when test="(count(//dcif:identifier[text()=$superClassName][1])=1 or count(//dcif:identifier[ends-with(text(),$siblingClassSuffix)][1])=1) or 
+                        (count(//dcif:dataCategory[@identifier=$superClassName][1])=1 or count(//dcif:dataCategory[ends-with(@identifier,$siblingClassSuffix)][1])=1)">
                         <owl:versionInfo>subClassOf <xsl:value-of select="$superClassName"/> inferred from dcif:definition and dcif:identifier.</owl:versionInfo>
                         <rdfs:subClassOf>
                             <owl:Class rdf:about="#{$superClassName}"/>
@@ -253,9 +358,19 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:for-each select="//dcif:name[@xml:lang='en'][text()=$superClassName][1]">
-                            <owl:versionInfo>subClassOf <xsl:value-of select="./ancestor::dcif:dataCategory//dcif:identifier[1]"/> inferred from dcif:definition and dcif:name.</owl:versionInfo>
+                            <xsl:variable name="ancestorDcifID">
+                                <xsl:choose>
+                                    <xsl:when test="normalize-space(./ancestor::dcif:dataCategory/@identifier)=''">
+                                        <xsl:value-of select="normalize-space(./ancestor::dcif:dataCategory//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="normalize-space(./ancestor::dcif:dataCategory/@identifier)"/> <!-- 2013 -->
+                                    </xsl:otherwise>
+                                </xsl:choose>                                
+                            </xsl:variable>
+                            <owl:versionInfo>subClassOf <xsl:value-of select="$ancestorDcifID"/> inferred from dcif:definition and dcif:name.</owl:versionInfo>
                             <rdfs:subClassOf>
-                                <owl:Class rdf:about="#{./ancestor::dcif:dataCategory//dcif:identifier[1]}"/>
+                                <owl:Class rdf:about="#{$ancestorDcifID}"/>
                             </rdfs:subClassOf>
                         </xsl:for-each>
                     </xsl:otherwise>
@@ -271,7 +386,14 @@
         <xsl:param name="tokenizedName">
             <xsl:call-template name="parseCamelCase">
                 <xsl:with-param name="string">
-                    <xsl:value-of select=".//dcif:identifier[1]"/>
+                    <xsl:choose>
+                        <xsl:when test="normalize-space(@identifier)=''">
+                            <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:with-param>
             </xsl:call-template>
         </xsl:param>
@@ -310,7 +432,8 @@
                 superClassName <xsl:value-of select="$superClassName"/>
             </xsl:message>
             <xsl:choose>
-              <xsl:when test="count(//dcif:identifier[text()=$superClassName])=1 or ($useGuesser='true' and count(//dcif:identifier[ends-with(text(),$siblingClassSuffix)])&gt;1)">
+                <xsl:when test="(count(//dcif:identifier[text()=$superClassName][1])=1 or ($useGuesser='true' and count(//dcif:identifier[ends-with(text(),$siblingClassSuffix)][1])=1)) or 
+                    (count(//dcif:dataCategory[@identifier=$superClassName][1])=1 or ($useGuesser='true' and count(//dcif:dataCategory[ends-with(@identifier,$siblingClassSuffix)][1])=1))">                    
                     <owl:versionInfo>subClassOf <xsl:value-of select="$superClassName"/> inferred from naming conventions and dcif:identifier (guessing=<xsl:value-of select="$useGuesser"/>).</owl:versionInfo>
                     <rdfs:subClassOf>
                         <owl:Class rdf:about="#{$superClassName}"/>
@@ -318,9 +441,19 @@
               </xsl:when>
               <xsl:otherwise>
                   <xsl:for-each select="//dcif:dataCategory[.//dcif:name[@xml:lang='en']/text()=$superClassName]">
-                      <owl:versionInfo>subClassOf <xsl:value-of select=".//dcif:identifier/text()"/> inferred from naming conventions and dcif:name.</owl:versionInfo>
+                      <xsl:variable name="dcifID">
+                          <xsl:choose>
+                              <xsl:when test="normalize-space(@identifier)=''">
+                                  <xsl:value-of select="normalize-space(.//dcif:identifier[1]/text())"/> <!-- 2010 -->
+                              </xsl:when>
+                              <xsl:otherwise>
+                                  <xsl:value-of select="normalize-space(@identifier)"/> <!-- 2013 -->
+                              </xsl:otherwise>
+                          </xsl:choose>
+                      </xsl:variable>
+                      <owl:versionInfo>subClassOf <xsl:value-of select="$dcifID"/> inferred from naming conventions and dcif:name.</owl:versionInfo>
                       <rdfs:subClassOf>
-                          <owl:Class rdf:about="#{.//dcif:identifier/text()}"/>
+                          <owl:Class rdf:about="#{$dcifID}"/>
                       </rdfs:subClassOf>
                   </xsl:for-each>
               </xsl:otherwise>
