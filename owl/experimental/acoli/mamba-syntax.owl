@@ -1,0 +1,1833 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY mamba-syntax "http://purl.org/olia/mamba-syntax.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/mamba-syntax.owl#"
+     xml:base="http://purl.org/olia/mamba-syntax.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:mamba-syntax="http://purl.org/olia/mamba-syntax.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >First trial of ontology for MAMBA scheme used by the swedish model of MALT parser. http://www.maltparser.org/mco/swedish_parser/swemalt.html</rdfs:comment>
+        <owl:versionInfo rdf:datatype="&xsd;string"
+            >Maria Sukhareva 27/04/2013
+MAMBA annotation scheme as applied to MALT parser,</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#dominates -->
+
+    <owl:ObjectProperty rdf:about="&mamba-syntax;dominates">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >structural relationship between 
+(a) a phrase and the syntactic nodes it is attached to (in constituency analysis), or
+(b) a head and its children (in dependency analysis)
+The head/phrase dominates its children.
+Different types of dominates relations may be distinguished via edge labels which are attached to the child nodes.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#hasFunction -->
+
+    <owl:ObjectProperty rdf:about="&mamba-syntax;hasFunction">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >different relationships (edges, function labels) between parent (head/phrase) and child nodes may be distinguished via different edge labels attached to the child node.</rdfs:comment>
+        <rdfs:range rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#isDominated -->
+
+    <owl:ObjectProperty rdf:about="&mamba-syntax;isDominated">
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <owl:inverseOf rdf:resource="&mamba-syntax;dominates"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTag"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTier"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#Feature -->
+
+    <owl:Class rdf:about="&system;Feature"/>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#APEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;APEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#AVPEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;AVPEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Agent -->
+
+    <owl:Class rdf:about="&mamba-syntax;Agent">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#ClauseAdverbials -->
+
+    <owl:Class rdf:about="&mamba-syntax;ClauseAdverbials">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Cojunct -->
+
+    <owl:Class rdf:about="&mamba-syntax;Cojunct">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;APEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;AVPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;HDEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;NPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;PPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#ComplementOfPreposition -->
+
+    <owl:Class rdf:about="&mamba-syntax;ComplementOfPreposition">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;PPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#CoordinationAtMainClause -->
+
+    <owl:Class rdf:about="&mamba-syntax;CoordinationAtMainClause">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;ROOTEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Coordinator -->
+
+    <owl:Class rdf:about="&mamba-syntax;Coordinator">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;APEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;AVPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;HDEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;NPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;PPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;ROOTEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Determiner -->
+
+    <owl:Class rdf:about="&mamba-syntax;Determiner">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;APEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#DoubledFunction -->
+
+    <owl:Class rdf:about="&mamba-syntax;DoubledFunction">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#FiniteVerb -->
+
+    <owl:Class rdf:about="&mamba-syntax;FiniteVerb">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#FreeSubjectivePredicativeComplement -->
+
+    <owl:Class rdf:about="&mamba-syntax;FreeSubjectivePredicativeComplement">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#HDEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;HDEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Head -->
+
+    <owl:Class rdf:about="&mamba-syntax;Head">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;APEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;AVPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;HDEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;NPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#InfinitiveMarker -->
+
+    <owl:Class rdf:about="&mamba-syntax;InfinitiveMarker">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Interjection -->
+
+    <owl:Class rdf:about="&mamba-syntax;Interjection">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;APEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;AVPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;HDEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;NPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Macrosyntagm -->
+
+    <owl:Class rdf:about="&mamba-syntax;Macrosyntagm">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;ROOTEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#NPEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;NPEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#NominalPostmodifier -->
+
+    <owl:Class rdf:about="&mamba-syntax;NominalPostmodifier">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;NPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#NominalPremodifier -->
+
+    <owl:Class rdf:about="&mamba-syntax;NominalPremodifier">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;APEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#NonFiniteVerb -->
+
+    <owl:Class rdf:about="&mamba-syntax;NonFiniteVerb">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#OtherFunctionsNotCoordination -->
+
+    <owl:Class rdf:about="&mamba-syntax;OtherFunctionsNotCoordination">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#OtherNounDependents -->
+
+    <owl:Class rdf:about="&mamba-syntax;OtherNounDependents">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;NPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#PPEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;PPEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Particle -->
+
+    <owl:Class rdf:about="&mamba-syntax;Particle">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Phrase -->
+
+    <owl:Class rdf:about="&mamba-syntax;Phrase">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#PhraseAdverbials -->
+
+    <owl:Class rdf:about="&mamba-syntax;PhraseAdverbials">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#PredicativeAttribute -->
+
+    <owl:Class rdf:about="&mamba-syntax;PredicativeAttribute">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;HDEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#PredicativeComplement -->
+
+    <owl:Class rdf:about="&mamba-syntax;PredicativeComplement">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Preposition -->
+
+    <owl:Class rdf:about="&mamba-syntax;Preposition">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;PPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#Punctuation -->
+
+    <owl:Class rdf:about="&mamba-syntax;Punctuation">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;APEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;AVPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;HDEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;NPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;PPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#ROOTEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;ROOTEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#SEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;SEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#SubjectsAndObjects -->
+
+    <owl:Class rdf:about="&mamba-syntax;SubjectsAndObjects">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#SubordinateClauseMinusSubordinateConjunction -->
+
+    <owl:Class rdf:about="&mamba-syntax;SubordinateClauseMinusSubordinateConjunction">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="&mamba-syntax;SubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#SyntacticEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;SyntacticEdge">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasTag"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasTier"/>
+                <owl:hasValue rdf:datatype="&xsd;string">label</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Relations between syntactic nodes.
+Note that here, edge labels are coded as properties of child nodes. The corresponding parent node in the syntactic tree (dependency or phrase structure) has to be inferred from the dominates property</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#UnclassifiableDependent -->
+
+    <owl:Class rdf:about="&mamba-syntax;UnclassifiableDependent">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;APEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;AVPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;HDEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;NPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;PPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;VPEdge"/>
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;XPEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#VPEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;VPEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#VerbGroup -->
+
+    <owl:Class rdf:about="&mamba-syntax;VerbGroup">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#XPEdge -->
+
+    <owl:Class rdf:about="&mamba-syntax;XPEdge">
+        <rdfs:subClassOf rdf:resource="&mamba-syntax;SyntacticEdge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#genid3 -->
+
+    <rdf:Description>
+        <system:hasTag>FS</system:hasTag>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#MeasurementArgumentOfAdjective -->
+
+    <owl:Thing rdf:about="&mamba-syntax;MeasurementArgumentOfAdjective">
+        <system:hasTag rdf:datatype="&xsd;string">AMS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#S -->
+
+    <owl:Thing rdf:about="&mamba-syntax;S">
+        <system:hasTag rdf:datatype="&xsd;string">S</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#accusativeObject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;accusativeObject">
+        <system:hasTag rdf:datatype="&xsd;string">OA</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >accusative argument of a verb phrase (Bader et al. 2003, &#167;5) or a deverbal adjective 
+(Bader et al. 2003, &#167;4)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#adjectiveComponent -->
+
+    <owl:Thing rdf:about="&mamba-syntax;adjectiveComponent">
+        <system:hasTag rdf:datatype="&xsd;string">ADC</system:hasTag>
+        <owl:sameAs rdf:resource="&mamba-syntax;MeasurementArgumentOfAdjective"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#adjectivePhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;adjectivePhrase">
+        <rdf:type rdf:resource="&mamba-syntax;Phrase"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(Bader et al. 2003, &#167;4)</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">AP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#adpositionalCaseMarker -->
+
+    <owl:Thing rdf:about="&mamba-syntax;adpositionalCaseMarker">
+        <system:hasTag rdf:datatype="&xsd;string">AC</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#adverbialPhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;adverbialPhrase">
+        <rdf:type rdf:resource="&mamba-syntax;Phrase"/>
+        <system:hasTag rdf:datatype="&xsd;string">AVP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#adverbialPhraseComponent -->
+
+    <SyntacticEdge rdf:about="&mamba-syntax;adverbialPhraseComponent">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">AVC</system:hasTag>
+    </SyntacticEdge>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#agent -->
+
+    <owl:Thing rdf:about="&mamba-syntax;agent">
+        <rdf:type rdf:resource="&mamba-syntax;Agent"/>
+        <system:hasTag>AG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#apposition -->
+
+    <owl:Thing rdf:about="&mamba-syntax;apposition">
+        <rdf:type rdf:resource="&mamba-syntax;OtherFunctionsNotCoordination"/>
+        <system:hasTag rdf:datatype="&xsd;string">AN</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#attitudeAdverbial -->
+
+    <owl:Thing rdf:about="&mamba-syntax;attitudeAdverbial">
+        <rdf:type rdf:resource="&mamba-syntax;PhraseAdverbials"/>
+        <system:hasTag>MA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#chunk -->
+
+    <owl:Thing rdf:about="&mamba-syntax;chunk">
+        <system:hasTag rdf:datatype="&xsd;string">CH</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >flat analysis of foreign material
+      &quot;Fremdsprachliche Zitate werden als Chunks (CH) flach annotiert; die einzelnen Komponenten erhalten das Label UC (&#8220;unit component&#8221;).&quot;
+      (Bader et al. 2003, &#167;2.1.5)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#clausalObject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;clausalObject">
+        <system:hasTag rdf:datatype="&xsd;string">OC</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#cojunct -->
+
+    <Cojunct rdf:about="&mamba-syntax;cojunct">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>CJ</system:hasTag>
+        <rdfs:comment
+            >Conjunct (in coordinate structure)</rdfs:comment>
+    </Cojunct>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#colloconationalVerbConstruction -->
+
+    <owl:Thing rdf:about="&mamba-syntax;colloconationalVerbConstruction">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >&quot;Funktionsverbgef&#252;ge&quot;</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">CVC</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#colon -->
+
+    <Punctuation rdf:about="&mamba-syntax;colon">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTier>IQ</system:hasTier>
+    </Punctuation>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#comitative -->
+
+    <owl:Thing rdf:about="&mamba-syntax;comitative">
+        <system:hasTag rdf:datatype="&xsd;string">MC</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#comma -->
+
+    <Punctuation rdf:about="&mamba-syntax;comma">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTier>IK</system:hasTier>
+    </Punctuation>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#comparativeAdverbials -->
+
+    <ClauseAdverbials rdf:about="&mamba-syntax;comparativeAdverbials">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>KA</system:hasTag>
+    </ClauseAdverbials>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#comparativeComplement -->
+
+    <owl:Thing rdf:about="&mamba-syntax;comparativeComplement">
+        <system:hasTag rdf:datatype="&xsd;string">CC</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >comparative complement, German &quot;Vergleichskomplement&quot; 
+applies to NPs (Bader et al. 2003, &#167;2), PPs (Bader et al. &#167;3), and APs (Bader et al. &#167;4)
+Adjektive im Komparativ k&#168;onnen sich mit einem
+zus&#168;atzlichen Argument verbinden, einer mit
+als eingeleiteten Phrase, wobei die Kategorie der
+Phrase vom als unabh&#168;angig ist. Dieses Argument
+bekommt das Funktionslabel CC (comparative
+complement), das Wort als das Label CM (comparative
+conjunction). Siehe auch die Abschnitte
+7.2 und 6.4.
+(Bader et al. 2003, &#167;4.5)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#comparativeConjunction -->
+
+    <owl:Thing rdf:about="&mamba-syntax;comparativeConjunction">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">CM</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#complementOfPreposition -->
+
+    <ComplementOfPreposition rdf:about="&mamba-syntax;complementOfPreposition">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PA</system:hasTag>
+    </ComplementOfPreposition>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#complementizer -->
+
+    <owl:Thing rdf:about="&mamba-syntax;complementizer">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(Bader et al. 2003, &#167;5)</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">CP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#complexNumeral -->
+
+    <owl:Thing rdf:about="&mamba-syntax;complexNumeral">
+        <system:hasTag rdf:datatype="&xsd;string">NM</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >complex (multi-token) numeral within an noun phrase.
+      &quot;F&#252;r komplexe Numeralien (10 000, eine Million) ist das Label NM (NuMber) vorgesehen. Die einzelnen Komponenten bekommen das Funktionslabel
+      NMC (NuMber Component).&quot;
+      (Bader etal. 2003, &#167;2.1.2)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#conjunct -->
+
+    <SyntacticEdge rdf:about="&mamba-syntax;conjunct">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">CJ</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >applies to coordinated adverbial phrases and coordinated complementisers, examples in Bader et al. (2003), &#167; 5.2.1</rdfs:comment>
+    </SyntacticEdge>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#conjunctionalAdverbial -->
+
+    <owl:Thing rdf:about="&mamba-syntax;conjunctionalAdverbial">
+        <rdf:type rdf:resource="&mamba-syntax;PhraseAdverbials"/>
+        <system:hasTag>+A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#contrastiveAdverbial -->
+
+    <PhraseAdverbials rdf:about="&mamba-syntax;contrastiveAdverbial">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>CA</system:hasTag>
+    </PhraseAdverbials>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedAdjectivePhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedAdjectivePhrase">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(Bader et al. 2003, &#167;9.1)</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">CAP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedAdposition -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedAdposition">
+        <system:hasTag rdf:datatype="&xsd;string">CAC</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedAdverbialPhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedAdverbialPhrase">
+        <system:hasTag rdf:datatype="&xsd;string">CAVP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedComplementizer -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedComplementizer">
+        <system:hasTag rdf:datatype="&xsd;string">CCP</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >coordinated conjunctions
+(Bader et al. 2003, &#167;5.2.1, &#167;9.2)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedNounPhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedNounPhrase">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(Bader et al. 2003, &#167;9.1)</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">CNP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedPrepositionalPhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedPrepositionalPhrase">
+        <system:hasTag rdf:datatype="&xsd;string">CPP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedSentence -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedSentence">
+        <system:hasTag rdf:datatype="&xsd;string">CS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedVerbPhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedVerbPhrase">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Als erste Richtlinie gilt zun&#168;achst: In NPs, APs und PPs werden die zu koordinierenden Elemente
+      direkt zusammengefa&#223;t und bilden wieder eine Konstituente. In VPs und S&#168;atzen verbinden sich die
+      VP- und S-Knoten zuerst mit den Dependenten auf ihrer Seite der Koordination und werden dann zu
+      einer koordinierten Phrase zusammengefa&#223;t (siehe Beispiele).
+      (Bader et al. 2003, &#167;9.1)</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">CVP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatedZuMarkedInfinitive -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinatedZuMarkedInfinitive">
+        <system:hasTag rdf:datatype="&xsd;string">CVZ</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinatingConjunction -->
+
+    <Coordinator rdf:about="&mamba-syntax;coordinatingConjunction">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">++</system:hasTag>
+    </Coordinator>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordination -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordination">
+        <system:hasTag rdf:datatype="&xsd;string">CO</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#coordinationAtMainClauseLevel -->
+
+    <owl:Thing rdf:about="&mamba-syntax;coordinationAtMainClauseLevel">
+        <rdf:type rdf:resource="&mamba-syntax;CoordinationAtMainClause"/>
+        <rdf:type rdf:resource="&mamba-syntax;OtherFunctionsNotCoordination"/>
+        <system:hasTag>+F</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#dash -->
+
+    <owl:Thing rdf:about="&mamba-syntax;dash">
+        <rdf:type rdf:resource="&mamba-syntax;Punctuation"/>
+        <system:hasTag>IT</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#dative -->
+
+    <owl:Thing rdf:about="&mamba-syntax;dative">
+        <system:hasTag rdf:datatype="&xsd;string">DA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#determiner -->
+
+    <Determiner rdf:about="&mamba-syntax;determiner">
+        <rdf:type rdf:resource="&mamba-syntax;OtherNounDependents"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>DT</system:hasTag>
+    </Determiner>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#directObject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;directObject">
+        <rdf:type rdf:resource="&mamba-syntax;SubjectsAndObjects"/>
+        <system:hasTag>OO</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#directionalModifier -->
+
+    <owl:Thing rdf:about="&mamba-syntax;directionalModifier">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;way&quot;</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">MW</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#discourseLevelConstituent -->
+
+    <owl:Thing rdf:about="&mamba-syntax;discourseLevelConstituent">
+        <system:hasTag rdf:datatype="&xsd;string">DL</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >applied to direct speech
+
+Da f&#168;ur uns die syntaktische Struktur Vorrang hat vor der Diskursstruktur, wird die letztere nur annotiert,
+wenn keine klaren syntaktischen Beziehungen bestehen. So wird im folgenden Satz die angefu
+&#168; hrte A&#168; u&#223;erung als OC zu sagt annotiert.
+(65) &#8220;Nun&#8221;, sagt Peter, &#8220;m&#168;ussen wir nach Hause gehen&#8221;.
+Wenn hingegen keine syntaktische Beziehung (meistens OC) zwischen dem Angef&#168;uhrten und der es
+einbettenden Diskursstruktur besteht, verbinden sich die beiden Komponenten parataktisch zu einer
+Discourse Level Constituent (DL). Die Bestandteile einer DL sind: RS (reported speech) und DH
+(discourse-level head).
+(Bader et al. 2003, &#167;5.5)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#discourseLevelHead -->
+
+    <SyntacticEdge rdf:about="&mamba-syntax;discourseLevelHead">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">DH</system:hasTag>
+    </SyntacticEdge>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#discourseMarker -->
+
+    <SyntacticEdge rdf:about="&mamba-syntax;discourseMarker">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">DM</system:hasTag>
+    </SyntacticEdge>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#doubledFunction -->
+
+    <owl:Thing rdf:about="&mamba-syntax;doubledFunction">
+        <rdf:type rdf:resource="&mamba-syntax;DoubledFunction"/>
+        <system:hasTag>DB</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#dummyObject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;dummyObject">
+        <rdf:type rdf:resource="&mamba-syntax;SubjectsAndObjects"/>
+        <system:hasTag>FO</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#dummySubject -->
+
+    <SubjectsAndObjects rdf:about="&mamba-syntax;dummySubject">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>FS</system:hasTag>
+    </SubjectsAndObjects>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#exclamationMark -->
+
+    <owl:Thing rdf:about="&mamba-syntax;exclamationMark">
+        <rdf:type rdf:resource="&mamba-syntax;Punctuation"/>
+        <system:hasTier>IU</system:hasTier>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#expletiveEs -->
+
+    <owl:Thing rdf:about="&mamba-syntax;expletiveEs">
+        <system:hasTag rdf:datatype="&xsd;string">EP</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string">expletive es</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#finiteVerb -->
+
+    <FiniteVerb rdf:about="&mamba-syntax;finiteVerb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>FV</system:hasTag>
+    </FiniteVerb>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#freeSubjectivePredicativeComplement -->
+
+    <FreeSubjectivePredicativeComplement rdf:about="&mamba-syntax;freeSubjectivePredicativeComplement">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>FP</system:hasTag>
+    </FreeSubjectivePredicativeComplement>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#fundamentPhrase -->
+
+    <OtherFunctionsNotCoordination rdf:about="&mamba-syntax;fundamentPhrase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>XF</system:hasTag>
+    </OtherFunctionsNotCoordination>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#genitiveAttribute -->
+
+    <owl:Thing rdf:about="&mamba-syntax;genitiveAttribute">
+        <system:hasTag rdf:datatype="&xsd;string">AG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#genitiveObject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;genitiveObject">
+        <system:hasTag rdf:datatype="&xsd;string">OG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#head -->
+
+    <Head rdf:about="&mamba-syntax;head">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">HD</system:hasTag>
+    </Head>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#idiosyncraticUnit -->
+
+    <owl:Thing rdf:about="&mamba-syntax;idiosyncraticUnit">
+        <system:hasTag rdf:datatype="&xsd;string">ISU</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#indirectObject -->
+
+    <SubjectsAndObjects rdf:about="&mamba-syntax;indirectObject">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>IO</system:hasTag>
+    </SubjectsAndObjects>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#infinitive -->
+
+    <owl:Thing rdf:about="&mamba-syntax;infinitive">
+        <rdf:type rdf:resource="&mamba-syntax;NonFiniteVerb"/>
+        <system:hasTag>IF</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#infinitiveMarker -->
+
+    <InfinitiveMarker rdf:about="&mamba-syntax;infinitiveMarker">
+        <rdf:type rdf:resource="&mamba-syntax;OtherFunctionsNotCoordination"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>IM</system:hasTag>
+    </InfinitiveMarker>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#infinitiveObjectComplement -->
+
+    <SubjectsAndObjects rdf:about="&mamba-syntax;infinitiveObjectComplement">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>VO</system:hasTag>
+    </SubjectsAndObjects>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#infinitiveSubjectComplement -->
+
+    <SubjectsAndObjects rdf:about="&mamba-syntax;infinitiveSubjectComplement">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>VS</system:hasTag>
+    </SubjectsAndObjects>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#instrumental -->
+
+    <owl:Thing rdf:about="&mamba-syntax;instrumental">
+        <system:hasTag rdf:datatype="&xsd;string">MI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#interjectionPhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;interjectionPhrase">
+        <rdf:type rdf:resource="&mamba-syntax;Interjection"/>
+        <system:hasTag>YY</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#junctor -->
+
+    <owl:Thing rdf:about="&mamba-syntax;junctor">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">JU</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#locative -->
+
+    <owl:Thing rdf:about="&mamba-syntax;locative">
+        <system:hasTag rdf:datatype="&xsd;string">ML</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#logicalObject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;logicalObject">
+        <rdf:type rdf:resource="&mamba-syntax;SubjectsAndObjects"/>
+        <system:hasTag>EO</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#logicalSubject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;logicalSubject">
+        <rdf:type rdf:resource="&mamba-syntax;SubjectsAndObjects"/>
+        <system:hasTag>ES</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#marcrosyntag -->
+
+    <owl:Thing rdf:about="&mamba-syntax;marcrosyntag">
+        <rdf:type rdf:resource="&mamba-syntax;Macrosyntagm"/>
+        <system:hasTag>MS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#modifier -->
+
+    <owl:Thing rdf:about="&mamba-syntax;modifier">
+        <system:hasTag rdf:datatype="&xsd;string">MO</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Modifier, German &quot;Modifikator&quot; (Bader et al. 2003, &#167;2)
+Applies within NPs only to focus particles, e.g. nur, auch, lediglich,
+zumindest, vor allem, . . . which are annotated regardless of their positioning within the NP (Bader et al. 2003, &#167;2.7).
+Within adjective phrases, label of PPs and adverbials (Bader et al. 2003, &#167;4.1)
+also applies to VPs (Bader et al. 2003, &#167;5)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#morphologicalParticle -->
+
+    <owl:Thing rdf:about="&mamba-syntax;morphologicalParticle">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">PM</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#multiTokenAdjective -->
+
+    <owl:Thing rdf:about="&mamba-syntax;multiTokenAdjective">
+        <system:hasTag rdf:datatype="&xsd;string">MTA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#negation -->
+
+    <owl:Thing rdf:about="&mamba-syntax;negation">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">NG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#negationAdverbial -->
+
+    <PhraseAdverbials rdf:about="&mamba-syntax;negationAdverbial">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NA</system:hasTag>
+    </PhraseAdverbials>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#nominalPremodifier -->
+
+    <NominalPremodifier rdf:about="&mamba-syntax;nominalPremodifier">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>AT</system:hasTag>
+        <rdfs:comment
+            >Nominal (adjectival) pre-modifier</rdfs:comment>
+    </NominalPremodifier>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#nonFiniteVerb -->
+
+    <NonFiniteVerb rdf:about="&mamba-syntax;nonFiniteVerb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>IV</system:hasTag>
+    </NonFiniteVerb>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#notifyingAdverbial -->
+
+    <owl:Thing rdf:about="&mamba-syntax;notifyingAdverbial">
+        <rdf:type rdf:resource="&mamba-syntax;PhraseAdverbials"/>
+        <system:hasTag>VA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#nounKernelModifier -->
+
+    <owl:Thing rdf:about="&mamba-syntax;nounKernelModifier">
+        <system:hasTag rdf:datatype="&xsd;string">NK</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#nounPhrase -->
+
+    <Phrase rdf:about="&mamba-syntax;nounPhrase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">NP</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >noun phrase (Bader et al. 2003, &#167;2)
+      Eine NP besteht zun&quot;achst aus einer Reihe von pronominalen, substantivischen und adjektivischen Kernelementen (NP kernel elements, NK). Ihre genauere Unterteilung kann aufgrund der Part-of-Speech bzw. kategorialen Information vorgenommen werden, so dass sich eine Unterscheidung auf der Ebene der Funktionslabels er&quot;ubrigt.</rdfs:comment>
+    </Phrase>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#numberComponent -->
+
+    <owl:Thing rdf:about="&mamba-syntax;numberComponent">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">NMC</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Part of a multi-token (complex) numeral.
+      F&#252;r komplexe Numeralien (10 000, eine Million) ist das Label NM (NuMber) vorgesehen. Die einzelnen Komponenten bekommen das Funktionslabel NMC (NuMber Component).
+      (Bader etal. 2003, &#167;2.12)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#objectAdverbials -->
+
+    <owl:Thing rdf:about="&mamba-syntax;objectAdverbials">
+        <rdf:type rdf:resource="&mamba-syntax;ClauseAdverbials"/>
+        <system:hasTag>OA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#otherAdverbials -->
+
+    <owl:Thing rdf:about="&mamba-syntax;otherAdverbials">
+        <rdf:type rdf:resource="&mamba-syntax;ClauseAdverbials"/>
+        <system:hasTag>AA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#otherNominalPostmodifier -->
+
+    <NominalPostmodifier rdf:about="&mamba-syntax;otherNominalPostmodifier">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ET</system:hasTag>
+    </NominalPostmodifier>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#otherPhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;otherPhrase">
+        <rdf:type rdf:resource="&mamba-syntax;Phrase"/>
+        <system:hasTag>XP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#otherPunctuationMark -->
+
+    <owl:Thing rdf:about="&mamba-syntax;otherPunctuationMark">
+        <rdf:type rdf:resource="&mamba-syntax;Punctuation"/>
+        <system:hasTier>IG</system:hasTier>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#otherSubject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;otherSubject">
+        <rdf:type rdf:resource="&mamba-syntax;SubjectsAndObjects"/>
+        <system:hasTag>SS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#parenthesis -->
+
+    <SyntacticEdge rdf:about="&mamba-syntax;parenthesis">
+        <rdf:type rdf:resource="&mamba-syntax;Punctuation"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">IR</system:hasTag>
+    </SyntacticEdge>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#particle -->
+
+    <Particle rdf:about="&mamba-syntax;particle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PL</system:hasTag>
+    </Particle>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#passivisedSubject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;passivisedSubject">
+        <system:hasTag rdf:datatype="&xsd;string"></system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >passivised subject (PP)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#period -->
+
+    <owl:Thing rdf:about="&mamba-syntax;period">
+        <rdf:type rdf:resource="&mamba-syntax;Punctuation"/>
+        <system:hasTier>IP</system:hasTier>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#phrasalGenitive -->
+
+    <owl:Thing rdf:about="&mamba-syntax;phrasalGenitive">
+        <system:hasTag rdf:datatype="&xsd;string">PG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#placeAdverbials -->
+
+    <ClauseAdverbials rdf:about="&mamba-syntax;placeAdverbials">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>RA</system:hasTag>
+    </ClauseAdverbials>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#placeholder -->
+
+    <owl:Thing rdf:about="&mamba-syntax;placeholder">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">PH</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >a pro-form that is resolved by a repeated element
+(Bader et al. 2003, &#167;6.1)
+also, the so-called vorfeld-es: Vorfeld-es (PH ohne RE)
+Test: steht nur im Vorfeld (d.h., dieses es h&#168;angt
+weder vom Auftreten eines satzwertigen Arguments
+ab noch vom Verb) (Bader et al. 2003, &#167;6.2)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#postnominalModifier -->
+
+    <owl:Thing rdf:about="&mamba-syntax;postnominalModifier">
+        <system:hasTag rdf:datatype="&xsd;string">MNR</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#predicate -->
+
+    <SyntacticEdge rdf:about="&mamba-syntax;predicate">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">PD</system:hasTag>
+    </SyntacticEdge>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#predicativeAttribute -->
+
+    <owl:Thing rdf:about="&mamba-syntax;predicativeAttribute">
+        <rdf:type rdf:resource="&mamba-syntax;PredicativeAttribute"/>
+        <system:hasTag>PT</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#predicativeComplement -->
+
+    <PredicativeComplement rdf:about="&mamba-syntax;predicativeComplement">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>SP</system:hasTag>
+    </PredicativeComplement>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#preposition -->
+
+    <Preposition rdf:about="&mamba-syntax;preposition">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PR</system:hasTag>
+    </Preposition>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#prepositionalObject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;prepositionalObject">
+        <system:hasTag rdf:datatype="&xsd;string">OP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#prepositionalPhrase -->
+
+    <Phrase rdf:about="&mamba-syntax;prepositionalPhrase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">PP</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >PPs werden wie NPs behandelt, also auch flach
+      annotiert. Die Pr&#168;a-/Post-/Zirkumposition (PoSTags:
+      APPR / APPO / APZR) bekommt das Label
+      AC (adpositional case marker). Sonst &#168;andert
+      sich die Struktur nicht.
+      (Bader et al. 2003, &#167;3.1)</rdfs:comment>
+    </Phrase>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#properNoun -->
+
+    <owl:Thing rdf:about="&mamba-syntax;properNoun">
+        <system:hasTag rdf:datatype="&xsd;string">PN</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Vorname(n), Familienname(n) und Namenszus&#168;atze werden alle unter dem Knoten PN (proper noun)
+      zusammengefa&#223;t und als eine komplexe Kernkomponente der NP betrachtet. Die einzelnen Komponenten
+      des PN werden als PNC (proper noun component) annotiert.
+      Dasselbe gilt f&#252;r fremdsprachliche Namen. Komponenten von Firmennamen wie Bayerische Vereinsbank
+      sowie Titel werden dagegen als NKs annotiert.
+      (Bader et al. 2003, &#167;2.1.4)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#properNounComponent -->
+
+    <SyntacticEdge rdf:about="&mamba-syntax;properNounComponent">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">PNC</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Vorname(n), Familienname(n) und Namenszus&#168;atze werden alle unter dem Knoten PN (proper noun)
+      zusammengefa&#223;t und als eine komplexe Kernkomponente der NP betrachtet. Die einzelnen Komponenten
+      des PN werden als PNC (proper noun component) annotiert.
+      Dasselbe gilt f&#168;ur fremdsprachliche Namen. Komponenten von Firmennamen wie Bayerische Vereinsbank
+      sowie Titel werden dagegen als NKs annotiert.
+      (Bader et al. 2003, &#167;2.1.4)</rdfs:comment>
+    </SyntacticEdge>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#quasiLanguage -->
+
+    <owl:Thing rdf:about="&mamba-syntax;quasiLanguage">
+        <system:hasTag rdf:datatype="&xsd;string">QL</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string">quasi-language</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#questionMark -->
+
+    <Punctuation rdf:about="&mamba-syntax;questionMark">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTier>I?</system:hasTier>
+    </Punctuation>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#quotationMark -->
+
+    <Punctuation rdf:about="&mamba-syntax;quotationMark">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTier>IC</system:hasTier>
+    </Punctuation>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#relativeClause -->
+
+    <owl:Thing rdf:about="&mamba-syntax;relativeClause">
+        <system:hasTag rdf:datatype="&xsd;string">RC</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Relativs&#168;atze werden als T&#168;ochter des NP-Knotens annotiert, und zwar unabh&#168;angig davon, ob sie extraponiert
+sind oder nicht. Sie werden mit dem Label RC (relative clause) gekennzeichnet. (Bader et al. 2003, &#167;2.6)
+
+Also applies to cleft sentences: Cleft-S&#168;atze: Der Relativsatz soll immer als RC zur pr&#168;adikativen NP annotiert werden. Das Pronomen
+es ist Subjekt.</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#relativeClauseInCleft -->
+
+    <OtherFunctionsNotCoordination rdf:about="&mamba-syntax;relativeClauseInCleft">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>EF</system:hasTag>
+    </OtherFunctionsNotCoordination>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#repeatedElement -->
+
+    <owl:Thing rdf:about="&mamba-syntax;repeatedElement">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">RE</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#reportedSpeech -->
+
+    <owl:Thing rdf:about="&mamba-syntax;reportedSpeech">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">RS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#rhetoricalModifier -->
+
+    <owl:Thing rdf:about="&mamba-syntax;rhetoricalModifier">
+        <rdf:type rdf:resource="&mamba-syntax;SyntacticEdge"/>
+        <system:hasTag rdf:datatype="&xsd;string">MR</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#rootNode -->
+
+    <owl:Thing rdf:about="&mamba-syntax;rootNode">
+        <rdf:type rdf:resource="&mamba-syntax;Phrase"/>
+        <system:hasTag>ROOT</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#secondAccusativeObject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;secondAccusativeObject">
+        <system:hasTag rdf:datatype="&xsd;string">OA2</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >object accusative 2 (Bader et al. 2003, &#167;5)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#secondDash -->
+
+    <owl:Thing rdf:about="&mamba-syntax;secondDash">
+        <rdf:type rdf:resource="&mamba-syntax;Punctuation"/>
+        <system:hasTier>JT</system:hasTier>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#secondParenthesis -->
+
+    <Punctuation rdf:about="&mamba-syntax;secondParenthesis">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTier>JR</system:hasTier>
+    </Punctuation>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#secondPunctuationMark -->
+
+    <owl:Thing rdf:about="&mamba-syntax;secondPunctuationMark">
+        <rdf:type rdf:resource="&mamba-syntax;Punctuation"/>
+        <system:hasTag>JG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#secondQuotationMark -->
+
+    <Punctuation rdf:about="&mamba-syntax;secondQuotationMark">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTier>JC</system:hasTier>
+    </Punctuation>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#semicolon -->
+
+    <owl:Thing rdf:about="&mamba-syntax;semicolon">
+        <rdf:type rdf:resource="&mamba-syntax;Punctuation"/>
+        <system:hasTier>IS</system:hasTier>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#sentenceOrClause -->
+
+    <owl:Thing rdf:about="&mamba-syntax;sentenceOrClause">
+        <rdf:type rdf:resource="&mamba-syntax;Phrase"/>
+        <system:hasTag>S</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#separableVerbPrefix -->
+
+    <owl:Thing rdf:about="&mamba-syntax;separableVerbPrefix">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(Bader et al. 2003, &#167;5)</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">SVP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#soCalledExpressions -->
+
+    <owl:Thing rdf:about="&mamba-syntax;soCalledExpressions">
+        <rdf:type rdf:resource="&mamba-syntax;OtherNounDependents"/>
+        <system:hasTag>XT</system:hasTag>
+        <rdfs:comment
+            >Expressions like &quot;s&#229; kallad&quot; (so called)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#soToSpeakAdverbial -->
+
+    <PhraseAdverbials rdf:about="&mamba-syntax;soToSpeakAdverbial">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:comment
+            >Expressions like &quot;s&#229; att s&#228;ga&quot; (so to speak)</rdfs:comment>
+        <system:hasTag>XA</system:hasTag>
+    </PhraseAdverbials>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#subject -->
+
+    <owl:Thing rdf:about="&mamba-syntax;subject">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(Bader et al. 2003, &#167;5)</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">SB</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#subjectOrPredicate -->
+
+    <owl:Thing rdf:about="&mamba-syntax;subjectOrPredicate">
+        <system:hasTag rdf:datatype="&xsd;string">SP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#subordinateClauseMinusSubConj -->
+
+    <owl:Thing rdf:about="&mamba-syntax;subordinateClauseMinusSubConj">
+        <rdf:type rdf:resource="&mamba-syntax;SubordinateClauseMinusSubordinateConjunction"/>
+        <system:hasTag>UA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#subordinatingConjunction -->
+
+    <owl:Thing rdf:about="&mamba-syntax;subordinatingConjunction">
+        <rdf:type rdf:resource="&mamba-syntax;SubordinatingConjunction"/>
+        <system:hasTag>UK</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#superlativePhraseWithAm -->
+
+    <owl:Thing rdf:about="&mamba-syntax;superlativePhraseWithAm">
+        <system:hasTag rdf:datatype="&xsd;string">AA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#timeAdverbials -->
+
+    <owl:Thing rdf:about="&mamba-syntax;timeAdverbials">
+        <rdf:type rdf:resource="&mamba-syntax;ClauseAdverbials"/>
+        <system:hasTag>TA</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#unclassifiableGrammaticalFunction -->
+
+    <owl:Thing rdf:about="&mamba-syntax;unclassifiableGrammaticalFunction">
+        <rdf:type rdf:resource="&mamba-syntax;UnclassifiableDependent"/>
+        <system:hasTag>XX</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#unitComponent -->
+
+    <SyntacticEdge rdf:about="&mamba-syntax;unitComponent">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Fremdsprachliche Zitate werden als Chunks (CH) flach annotiert; die einzelnen Komponenten erhalten
+      das Label UC (&#8220;unit component&#8221;).
+      (Bader et al. 2003, &#167; 2.1.5)</rdfs:comment>
+        <system:hasTag rdf:datatype="&xsd;string">UC</system:hasTag>
+    </SyntacticEdge>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#verbGroup -->
+
+    <VerbGroup rdf:about="&mamba-syntax;verbGroup">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>VG</system:hasTag>
+    </VerbGroup>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#verbPhrase -->
+
+    <owl:Thing rdf:about="&mamba-syntax;verbPhrase">
+        <rdf:type rdf:resource="&mamba-syntax;Phrase"/>
+        <system:hasTag rdf:datatype="&xsd;string">VP</system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >verbal phrase with a non-finite verb.
+      Jedes Verb f&#168;uhrt eine eigenst&#168;andige Phrase ein.
+      Phrasen mit finitem Verb bekommen das Label S
+      (Satz)
+      (Bader et al. 2003, &#167;5.1)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/mamba-syntax.owl#vocative -->
+
+    <SubjectsAndObjects rdf:about="&mamba-syntax;vocative">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag rdf:datatype="&xsd;string">VO</system:hasTag>
+    </SubjectsAndObjects>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
