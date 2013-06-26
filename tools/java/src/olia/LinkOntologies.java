@@ -20,7 +20,9 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 /** performs a semiautomated linking between two ontologies based on overlapping concept names<br/>
-used to develop linking models, but output needs to be manually corrected */
+used to develop linking models, but output needs to be manually corrected <br/>
+	TODO: retrieve also labels
+*/
 public class LinkOntologies {
 
 	/** tokenization by special characters and camelCase */ 
