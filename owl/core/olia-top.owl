@@ -24,8 +24,12 @@
 	2011/08/03 added SpecificityFeature
 	2011/08/04 SubordTypeFeature, CoordTypeFeature deprecated, added NumeralAgreementClass
 	2011/08/11 StrengthFeature recast as MorphologicalFeature rather than MorphosyntacticFeature
-  2011/08/15 EmphasisFeature added
-  2011/08/15 PhonologicalProcess added (for Elision and Apocope, formerly both classified as MorphologicalProcess)
+	2011/08/15 EmphasisFeature added
+	2011/08/15 PhonologicalProcess added (for Elision and Apocope, formerly both classified as MorphologicalProcess)
+	2013/06/25 EvidentialityFeature, ClusivityFeature added (from ISOcat), intensity as new label to EmphasisFeature
+			   LexicalRelation for labels for relations holding between lexemes
+	2013/06/27 AgreementFeature (from ISOcat, as superclass of NominalAgreementClass, Person, Gender, Number; not as a relation between words)	
+	2013/06/28 EvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative)
 
     Christian Chiarcos, chiarcos@uni-potsdam.de</rdfs:comment>
     <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
@@ -98,16 +102,28 @@
   </owl:Class>
   
   <owl:Class rdf:ID="EmphasisFeature">
-    <owl:versionInfo>adopted from ILPOSTS, there a property of Adverb, Classifier, Demonstrative, Noun, Particle, Adposition, Quantifier, Verb</owl:versionInfo>
+     <rdfs:label>intensity</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2197</rdfs:isDefinedBy>
+    <owl:versionInfo>adopted from ILPOSTS, there a property of Adverb, Classifier, Demonstrative, Noun, Particle, Adposition, Quantifier, Verb, identified with http://www.isocat.org/datcat/DC-2197 "intensity"</owl:versionInfo>
     <rdfs:comment>Applies to grammatical (morphosyntactic) markers of emphasis for languages where emphatic expressions are distinguished from non-emphatic forms.
       In Irish Gaelic, for example, the unmarked personal pronouns (e.g., sé, é ‘he, him’) is distinguished from the emphatic pronoun (e.g., seisean, eisean ‘he, him’). 
       Beyond pronouns, also nouns can be emphatically marked, e.g., by adding a clitic reflexive element to them. (Mulkern 2007).
       
       (Ann E. Mulkern. Knowing who’s important: Relative discourse salience and Irish pronominal forms. In Nancy A. Hedberg and Ron Zacharski, editors, The Grammar-Pragmatics Interface: Essays in honor of Jeanette K. Gundel, pages 113–142. John Benjamins, Amsterdam and Philadelphia, 2007.)
     </rdfs:comment>
+	      <rdfs:comment>Quality of being felt very strongly or having a strong effect (intensity, http://www.isocat.org/datcat/DC-2197)</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
     <rdfs:label>emphasis</rdfs:label>
   </owl:Class>
+  
+  	<owl:Class rdf:ID="ClusivityFeature">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3031</rdfs:isDefinedBy>
+      <rdfs:comment>The category that encodes "whether the addressee (addressees) are included in or excluded from the set of referents which also contains the speaker".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
+	<rdfs:label>clusivity</rdfs:label>
+	</owl:Class>
+		
+
 
   <owl:Class rdf:ID="SpecificityFeature">
     <owl:versionInfo>distinguishes specific and nonspecific determiners, e.g., in Klallam (Salish, see olia:SpecificArticle, olia:NonspecificArticle), or in Persian (http://purl.org/olia/mte/multext-east.owl#CliticSpecificDeterminer)</owl:versionInfo>
@@ -132,6 +148,20 @@
     <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
   </owl:Class>
 
+     <owl:Class rdf:ID="EvidentialityFeature">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3185</rdfs:isDefinedBy>
+      <owl:versionInfo>isoCat ID: http://www.isocat.org/datcat/DC-3185</owl:versionInfo>
+      <rdfs:comment>Evidentiality denotes the basis that the speaker
+                        has for claiming that the event has occurred (or is going to take place).
+                        Appear to show a greater number of distinctions in the realis mood
+                        (especially in the past tense) than the irrealis mood. [Bhat 1999: 63-64,
+                        70]</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
+      </rdfs:subClassOf>
+	 </owl:Class>
+
+  
     <owl:Class rdf:ID="RegisterFeature">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1988"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1988</owl:versionInfo>
@@ -174,6 +204,9 @@
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="MoodFeature">
+	<rdfs:label>verb form mood</rdfs:label>
+	<rdfs:label>mood</rdfs:label>
+	<rdfs:label>modality</rdfs:label>
     <rdfs:comment>
 			Modality is a facet of illocutionary point or general intent of a speaker, 
 			or a speaker's degree of commitment to the expressed proposition's believability, 
@@ -195,6 +228,20 @@
       <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
     </rdfs:subClassOf>
   </owl:Class>
+  
+  <owl:Class rdf:ID="AgreementFeature">
+	<rdfs:label>agreement</rdfs:label>
+	<rdfs:label>PVAGR</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2188</rdfs:isDefinedBy>
+	  <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4973</rdfs:isDefinedBy>
+      <rdfs:comment>Agreement: Formal relationship whereby a word (or a sub-part of a word) requires a corresponding form of another word (or sub-part of a word) (http://www.isocat.org/datcat/DC-2188)
+	  
+	  PVAGR: agreement as shown (stem + affix) in inflected forms of a finite verb (http://www.isocat.org/datcat/DC-4973)</rdfs:comment>
+     <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
+    </rdfs:subClassOf>
+	</owl:Class>
+
   <owl:Class rdf:ID="NumeralAgreementClass">
     <owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#NumeralAgreementClass</owl:versionInfo>
     <rdfs:comment>In most Slavic languages, Numerals and Quantifiers involve specific agreement patterns, e.g., in Russian:&lt;br/&gt;
@@ -208,14 +255,17 @@
       Some Czech feminine and neuter body parts have preserved dual forms, and if the noun is dual, so are its attributes (adjectives, pronouns).  So 2 differs formally from 3-4. The corresponding agreement pattern is a DualQuantifier (MTE v4: Numeral/Class=&quot;definite2&quot;).
       (Ivan A. Derzhanski &amp; Christian Chiarcos, http://purl.org/olia/mte/multext-east.owl#NumeralAgreementClass)</rdfs:comment>
     <rdfs:subClassOf>
-      <owl:Class rdf:ID="MorphosyntacticFeature"/>
+      <owl:Class rdf:ID="AgreementFeature"/>
     </rdfs:subClassOf>
   </owl:Class>
   
 
   <owl:Class rdf:ID="AspectFeature">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Aspect is a grammatical category associated with verbs that expresses a temporal view of the event or state expressed by the verb. (http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsAspect.htm  17.11.06)
+     <rdfs:label>aspect</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1242</rdfs:isDefinedBy>
+      <rdfs:comment>Category associated to verbs and referring to the way the grammar marks the duration or type of temporal activity. (http://www.isocat.org/datcat/DC-1242)
+	  
+	  Aspect is a grammatical category associated with verbs that expresses a temporal view of the event or state expressed by the verb. (http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsAspect.htm  17.11.06)
 
 The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. It corresponds also to the Past Simple/Imperfect distinction of Romance languages. (http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1av  17.11.06)</rdfs:comment>
     <rdfs:subClassOf>
@@ -232,10 +282,17 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
 			A grammatical number is a morphological category characterized by the expression of quantity 
 			through inflection or agreement. (http://en.wikipedia.org/wiki/Grammatical_number  17.11.06)</rdfs:comment>
     <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#AgreementFeature"/>
     </rdfs:subClassOf>
   </owl:Class>
-  
+
+   <owl:Class rdf:ID="EvaluativeFeature">
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticFeature"/>
+	</rdfs:subClassOf>
+	<rdfs:comment>generalization over PreferredEvaluative and PejorativeEvaluative in ISOcat</rdfs:comment>
+  </owl:Class>
+
   <owl:Class rdf:ID="CountabilityFeature">
 	<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticFeature"/>
@@ -297,10 +354,14 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
     (ISO12620; http://www.isocat.org/datcat/DC-1328)
     </rdfs:comment>
     <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#AgreementFeature"/>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="MorphosyntacticCategory">
+	<rdfs:label>morphosyntactic category</rdfs:label>
+	<rdfs:label>part of speech</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1345</rdfs:isDefinedBy>
+      <rdfs:comment>partOfSpeech: Term used to describe how a particular word is used in a sentence. (http://www.isocat.org/datcat/DC-1345)</rdfs:comment>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >"extended" EAGLES
 
@@ -322,12 +383,15 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
     </rdfs:subClassOf>
     <owl:equivalentClass>
       <owl:Class rdf:ID="Word">
+		<rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1415</rdfs:isDefinedBy>
         <owl:equivalentClass rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
         <rdfs:subClassOf>
           <owl:Class rdf:ID="SyntacticCategory"/>
         </rdfs:subClassOf>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        >Terminal nodes of syntactic annotations, termed "Word" here, are the same structural entities that are subject to morphosyntactic (Part of Speech) annotations.</rdfs:comment>
+        >Terminal nodes of syntactic annotations, termed "Word" here, are the same structural entities that are subject to morphosyntactic (Part of Speech) annotations.
+		
+		cf. http://www.isocat.org/datcat/DC-1415 "word": Linguistic unit composed of at least a part of speech and a lemma.</rdfs:comment>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
@@ -369,8 +433,12 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
 	<owl:versionInfo>added in accordance with PTB bracketing guidelines ,Santorini (1991, Â§4.2), Bies (1995, Â§2.3, Â§2.5)</owl:versionInfo>
   </owl:Class>
   <owl:Class rdf:ID="TenseFeature">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Tense is a grammatical category, typically marked on the verb, that deictically refers to the time of the event or state denoted by the verb in relation to some other temporal reference point. (http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsTense.htm  17.11.06)</rdfs:comment>
+     <rdfs:label>verb tense</rdfs:label>
+	 <rdfs:label>tense</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4964</rdfs:isDefinedBy>
+      <rdfs:comment>verb tense: property referring to the way the grammar marks (via affixes and/or suppletion) the time at which the action denoted by the verb took place. (http://www.isocat.org/datcat/DC-4964)
+	  
+	  Tense is a grammatical category, typically marked on the verb, that deictically refers to the time of the event or state denoted by the verb in relation to some other temporal reference point. (http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsTense.htm  17.11.06)</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
     </rdfs:subClassOf>
@@ -400,7 +468,7 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
     <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
   </owl:Class>
   <owl:Class rdf:ID="GenderFeature">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#AgreementFeature"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The term gender refers to various forms of expressing biological or sociological gender by inflecting words.  Nouns, pronouns, articles and the adjectives denote the gender of their referent. (http://en.wikipedia.org/wiki/Grammatical_gender  17.11.06)
 	
@@ -420,9 +488,13 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
     <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
   </owl:Class>
   <owl:Class rdf:ID="DefinitenessFeature">
+     <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1926</rdfs:isDefinedBy>
+	<rdfs:label>definiteness</rdfs:label>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >In grammatical theory, definiteness is a feature of noun phrases, distinguishing between entities which are specific and identifiable in a given context (definite noun phrases) and entities which are not (indefinite noun phrases).
 (http://en.wikipedia.org/wiki/Definiteness 02.05.07)
+
+	Property about the possiblity to identify an entity. (http://www.isocat.org/datcat/DC-1926)
 
 An in Eagles additional language-specific attribute for nouns/ noun phrases is Definiteness.
 (http://www.ilc.cnr.it/EAGLES96/annotate/node19.html#oav2  16.11.06)</rdfs:comment>
@@ -442,8 +514,11 @@ An in Eagles additional language-specific attribute for nouns/ noun phrases is D
 There is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="DegreeFeature">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >The Eagles-recommended attribute Degree applies only to inflectional comparatives and superlatives. In some languages, e.g. Spanish, the number of such adjectives is very small. (http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recn)</rdfs:comment>
+     <rdfs:label>degree</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1419</rdfs:isDefinedBy>
+      <rdfs:comment>Property concerning comparison. (http://www.isocat.org/datcat/DC-1419) 
+	  
+	  The Eagles-recommended attribute Degree applies only to inflectional comparatives and superlatives. In some languages, e.g. Spanish, the number of such adjectives is very small. (http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recn)</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
   </owl:Class>
   <owl:Class rdf:ID="ReflexivityFeature">
@@ -496,6 +571,13 @@ There is a great extent of overlap between LinguisticCategories/LinguisticFeatur
 		</rdfs:comment>
 	</owl:Class>
 
+	<owl:Class rdf:ID="LexicalRelation">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+		</rdfs:subClassOf>
+		<owl:versionInfo>introduced for relation labels such as homonym. These label relations holding between two lexemes.</owl:versionInfo>
+	</owl:Class>
+	
   <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole">
     <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
