@@ -18,7 +18,11 @@
     xmlns:olia_top="http://purl.org/olia/olia-top.owl#"
   xml:base="http://purl.org/olia/olia.owl">
   <owl:Ontology rdf:about="http://purl.org/olia/olia.owl">
-	<owl:versionInfo>TODO: disentangle Modality and Mood; HabitualAspect vs. HabitualMood ?</owl:versionInfo>
+	<owl:versionInfo>TODO: simplify {Interrogative,Indefinite,...}/{Cardinal,Multiplicative,...}Quantifier dichothomies
+	In subsequent versions, however, orthographical definitions should be handled with existing ontologies specializing on the description on language, e.g., lexvo
+	check gerundive vs. gerund
+	update GOLD linking
+	</owl:versionInfo>
     <owl:imports>
 		<owl:Ontology rdf:about="http://purl.org/olia/olia-top.owl"/>
 	</owl:imports>
@@ -26,10 +30,10 @@
 		<owl:Ontology rdf:about="http://purl.org/olia/system.owl"/>
 	</owl:imports>
     <rdfs:comment>
-	OLiA Reference Model for Morphology and Morphosyntax, with experimental extension to Syntax
-	(primarily 
+	OLiA Reference Model for Morphology, Morphosyntax and Syntax
+	(originally 
     based on the EAGLES recommendations, with modifications in accordance to 
-    DCR (ISOcat), TDS ontology, GOLD v.03, the SFB 632 annotation guidelines, 
+    DCR (ISOcat, June 2013), TDS ontology, GOLD v.03, the SFB 632 annotation guidelines, 
     the MULTEXT-East ontology and various annotation schemes)
 	</rdfs:comment>
 	<owl:versionInfo>
@@ -67,7 +71,7 @@
 			Sampson (1995), see susa.owl
 	10/04/08 extensions with respect to constituent types, syntactic relations and semantic roles 
 			in accordance with Dipper et al. (2007), see sfb632.owl
-	10/04/13 extension wrt. the morphosyntactic profile of the DCR
+	10/04/13 extension wrt. the morphosyntactic profile of the DCR (ISOcat, www.isocat.org)
 	10/04/14 validation, PossessiveFeature removed
 	10/04/15-18 additions in accordance to the PTB Bracketing Guidelines (Santorini 1991, Bies et al. 1995)
 	10/11/26 introduced NounHeadedPhrase for improved compatibility with dependency parsing schemes (e.g., Connexor)
@@ -97,7 +101,7 @@
 			 PresentParticiple (= Sentence and hasTense some Present)
 			 PastParticiple (= Sentence and hasTense some Past)
 	11/08/12-15 linking with ILPOSTS (for Indian languages)
-			added PurposiveCase, PurposiveAspect, DistributivePronoun, ConditionalParticiple, ConditionalRealisMood, ConditionalIrrealisMood, PresumptiveMood, Sequel, AbilitativeMood, SecondHonorific, SecondNonHonorific, hasEmphasisFeature, Emphatic, NonEmphatic, SimpleAspect
+			added PurposiveCase, PurposiveAspect, DistributivePronoun, ConditionalParticiple, ConditionalRealisMood, ConditionalIrrealisMood, PresumptiveMood, Sequel, AbilitativeMood, SecondHonorific, SecondNonHonorific, hasEmphasis, Emphatic, NonEmphatic, SimpleAspect
 			EmphaticDeterminer, EmphaticPronoun deprecated
 			CausalMood (from Nowak 1996, for Inuktitut)
 			MannerAdverb (= Adverb and hasSemanticRole some MannerRole) {introduced as deprecated}
@@ -121,10 +125,16 @@
 	13/03/04 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
 		Contraction, Phraseme, LexicalUnit (as generalization over Phraseme and Lexeme), Initialism
 	13/03/04 olia-top:XYFeature olia:hasXY Self for most XYFeatures
+	13/06/24 additions from ISOcat morphosyntactic profile: FusedPrepositionPronoun, ElativeNoun, InterrogativeMultiplicativeQuantifier, FocusMarker, AdjutativeVoice, AversiveCase
+	13/06/25 additions from ISOcat morphosyntactic profile: VisualEvidentiality, OtherSourceEvidentiality, DeductiveEvidentiality, Exclusive, Inclusive, Homonym, Homophone, CircumstantialVoice
+	13/06/27 ISOcat additions: MannerNoun (deprecated), QuestionWord (extended to be a generalization over InterrogativeXY, deprecated), GeneralizationWord, EpistemicPossibilityModality, DebitiveMood, InchoativeAspect, PresentativePronoun, IndefiniteCardinalQuantifier, NumeralBoth (deprecated), GraphicalSeparator, Impossible, Possible, EpistemicNecessityModality, TemporallyDefinedUsage, PrepositionalAdverb, DeclarativePunctuation, Multal, ObligativeModality, RomanNumeral, DigitNumeral, Script, ParticleAdverb (deprecrated), ApplicativeVoice, EvaluativeModality, PlaceNoun (deprecated), String [generalized as orthographical anchor point for RomanNumeral]
+	13/06/28 ISOcat additions: Masdar, Ideophone, DeficientVerb (deprecated), IndefiniteMultiplicativeQuantifier, PermissiveModality, WeakObligativeModality, ExistentialPronoun (deprecated), InstrumentNoun, PhysicalAbilitiveModality, MedioPassiveVoice, InterrogativeCardinalQuantifier, CompletiveAspect, PseudopassiveVoice, LetterNumeral, ContextualVariation, Homograph, CollectivePronoun, PossessiveRelativePronoun, ExpansionVariation, CausativeVoice, Augmentative, FusedPronounAuxiliary, AntiCausativeVoice, StatusConstructus, PreferredEvaluative, PejorativeEvaluative, CommissiveForce, ActionalForce, VolitiveForce
+		hasEvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), HortativeModality (from GOLD, missing in the corresponding ISOcat export)
+		disentangled Modality and Mood: for every Mood, created a corresponding Modality as superclass; XYMood is subconcept of Mood and XYModality concept, hasMood only for Mood, hasModality for Modality	
+	OWL/DL validation
 	
 Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</owl:versionInfo>
-	<owl:versionInfo>TODO: self modeling in linking</owl:versionInfo>
  </owl:Ontology>  
   
 	<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
@@ -133,6 +143,14 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
      ||            ORTHOGRAPHIC CATEGORIES               ||
      ====================================================== -->
 
+	<owl:Class rdf:ID="Script">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1855</rdfs:isDefinedBy>
+      <rdfs:comment>Set of graphic characters used for the written form of one or more languages.</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+	</owl:Class>
+		 
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Character">
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
@@ -147,9 +165,16 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
                             </rdfs:comment>
       <rdfs:label>space</rdfs:label>
 	  <rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Character"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#GraphicalSeparator"/>
 </rdfs:subClassOf>
    </owl:Class>
+   <owl:Class rdf:ID="GraphicalSeparator">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1863</rdfs:isDefinedBy>
+      <rdfs:comment>Character string that appears between two written forms</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Character"/>
+</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Letter">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1889"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1889</owl:versionInfo>
@@ -162,6 +187,32 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Character"/>
 </rdfs:subClassOf>
    </owl:Class>
+   
+   <owl:Class rdf:ID="String">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2182</rdfs:isDefinedBy>
+      <rdfs:comment>Character string to be interpreted in context</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+		<owl:versionInfo>Introduced as a generalization over numeralRoman which is orthographically defined but not a single character</owl:versionInfo>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="RomanNumeral">
+		<rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1936</rdfs:isDefinedBy>
+		<rdfs:comment>Numeral expressed with roman digits.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Numeral"/>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#String"/>
+	</owl:Class>
+	<owl:Class rdf:ID="DigitNumeral">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1935</rdfs:isDefinedBy>
+      <rdfs:comment>Numeral expressed by Arabic digits.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Numeral"/>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#String"/>
+	  </owl:Class>
+	<owl:Class rdf:ID="LetterNumeral">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1937</rdfs:isDefinedBy>
+      <rdfs:comment>Numeral expressed with letters.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Numeral"/>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#String"/>
+	</owl:Class>
    
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Diacritic">
 		<rdfs:subClassOf>
@@ -241,6 +292,13 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		</owl:equivalentClass>
 		<rdfs:comment>added in accordance with TIGER MorphologicalParticle</rdfs:comment>
 	</owl:Class>
+	
+	<owl:Class rdf:ID="FocusMarker">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4196</rdfs:isDefinedBy>
+      <rdfs:comment>a morpheme indicating that the element it marks is the focus of the utterance.</rdfs:comment>
+	  <owl:versionInfo>In compliance with ISOcat, this is defined here as a morpheme. However, focus markers can be independent words, as well.</owl:versionInfo>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Morpheme"/>
+	 </owl:Class>
 
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#Root">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2231"/-->
@@ -254,6 +312,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
 </rdfs:subClassOf>
     </owl:Class>
+	
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Affix">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1234"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1234</owl:versionInfo>
@@ -333,7 +393,7 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	  <rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
 	  </rdfs:subClassOf>
-      <owl:equivalentClass rdfs:resource="#CliticElement"/>
+      <owl:equivalentClass rdf:resource="#CliticElement"/>
     </owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CliticElement">
 		<!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1903"/-->
@@ -442,8 +502,12 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	<owl:Class rdf:ID="EchoWord">
 		<owl:versionInfo>adopted from Ancorra for Indian languages, http://purl.org/olia/ancorra.owl#EchoWord</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="#Reduplication"/>
+		<rdfs:label>echo word</rdfs:label>
+		<rdfs:label>reduplicative</rdfs:label>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Word"/>
-		<rdfs:comment>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4209</rdfs:isDefinedBy>
+      <rdfs:comment>The word is a copy of a previous word. In Hindi, this would add the meaning of distribution ("one rupee each"), separation ("sit separately"), variety, diversity or just emphasis. (http://www.isocat.org/datcat/DC-4209, reduplicative)
+	  
 			Echo word is a linguistic term that refers to a particular kind of reduplication which is a widespread areal feature in the languages of South Asia. Echo words are characterized by reduplication of a complete word or phrase, with the initial segment or syllable of the reduplicant being overwritten by a fixed segment or syllable. In most languages in which this phenomenon is present, echo words serve to express a meaning of "... and such; and things like that." In some cases the echo word may express a depreciative meaning as well.
 			
 			Echo words in Hindi are typically created with a fixed initial v:
@@ -471,6 +535,16 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Derivation"/>
 	</owl:Class>
+	
+	<owl:Class rdf:ID="Augmentative">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3094 (augmentativeSize)</rdfs:isDefinedBy>
+      <rdfs:comment>A special form of a noun that signals that the
+                        object being referred to is large relative to the usual size of such an
+                        object [Crystal 1980: 34].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Derivation"/>
+		<owl:versionInfo>modelled as a derivational process analoguously to Diminuitive</owl:versionInfo>
+	</owl:Class>
+
 
 	<!-- ======================================================
 		||           PHONOLOGICAL PROCESSES             ||
@@ -546,6 +620,13 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
 	</rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:ID="GeneralizationWord">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3033</rdfs:isDefinedBy>
+      <rdfs:comment>A word that does not carry its own meaning but generalizes the meaning of a neighboring word, adding the "etc." sense.</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
+	</rdfs:subClassOf>
+	</owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Contraction">
 	<owl:versionInfo>Uby POS, undocumented, http://purl.org/olia/ubyPos.owl</owl:versionInfo>
 	<rdfs:comment>no definition given</rdfs:comment>
@@ -692,6 +773,29 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
 </rdfs:subClassOf>
   </owl:Class>
+     <owl:Class rdf:ID="ParticleAdverb">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1917</rdfs:isDefinedBy>
+	  <owl:deprecated>true</owl:deprecated>
+      <rdfs:comment>Word that is both an adverb and a particle.</rdfs:comment>
+	  <owl:versionInfo>merely a shorthand for the intersection of Adverb and Particle, hence deprecated</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="#Adverb"/>
+		<rdfs:subClassOf rdf:resource="#Particle"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adverb"/>
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Particle"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+
+     <owl:Class rdf:ID="PrepositionalAdverb">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3000</rdfs:isDefinedBy>
+      <rdfs:comment>adverb which is very similar in its form to a preposition</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#Adverb"/>
+		<rdfs:subClassOf rdf:resource="#Preposition"/>
+	</owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Interjection">
     <rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
@@ -783,6 +887,17 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
      can be abbreviated as "abbr." or "abbrev."
      (http://en.wikipedia.org/wiki/Abbreviation 19.09.06)</rdfs:comment>
   </owl:Class>
+  <owl:Class rdf:ID="CollectivePronoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3006</rdfs:isDefinedBy>
+      <rdfs:comment>A pronoun that refers to all elements of a set.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="#Pronoun"/>
+	</owl:Class>
+  <owl:Class rdf:ID="PresentativePronoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3015</rdfs:isDefinedBy>
+      <rdfs:comment>pronoun that identify the current locative or temporal situation</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
+	  <owl:versionInfo>Should be redefined in terms of deixis</owl:versionInfo>
+	</owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#AbbreviatedPronoun">
   	<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
   	<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Abbreviation"/>
@@ -898,6 +1013,15 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adposition"/>
 </rdfs:subClassOf>
   </owl:Class>
+
+  
+   <owl:Class rdf:ID="FusedPronounAuxiliary">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3008</rdfs:isDefinedBy>
+      <rdfs:comment>word resulting from the aggregation of a pronoun and an auxiliary</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#Pronoun"/>
+		<rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+	</owl:Class>
+  
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#FusedPreposition">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1901"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1901</owl:versionInfo>
@@ -911,7 +1035,16 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf preposition (dcif:isA)</owl:versionInfo>
 	</owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/olia.owl#SimplePreposition">
+
+     <owl:Class rdf:ID="FusedPrepositionPronoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3009</rdfs:isDefinedBy>
+      <rdfs:comment>word resulting from the aggregation of a preposition and a pronoun</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Preposition"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
+	</owl:Class>
+
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SimplePreposition">
 
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1900"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1900</owl:versionInfo>
@@ -1239,11 +1372,17 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	<!-- Verb -->
    <owl:Class rdf:about="http://purl.org/olia/olia.owl#MainVerb">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1400"/-->
+	  <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3004 (plainVerb)</rdfs:isDefinedBy>
+		<rdfs:label>main verb</rdfs:label>
+		<rdfs:label>plain verb</rdfs:label>
+	  
    	<owl:versionInfo>to be renamed to LexicalVerb ("main verb" can also mean "head of a finite clause")</owl:versionInfo>
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1400 (main verb)</owl:versionInfo>
       <rdfs:comment>
                             Main verb in contrast to a modal or an auxiliary.
                                 (http://www.isocat.org/datcat/DC-1400)
+								
+								verb which has its own semantics (http://www.isocat.org/datcat/DC-3004, plainVerb)
                             </rdfs:comment>
       <rdfs:label>main verb</rdfs:label>
       <rdfs:subClassOf>
@@ -1251,6 +1390,15 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf verb (dcif:isA)</owl:versionInfo>
    </owl:Class>
+   <owl:Class rdf:ID="DeficientVerb">
+		<owl:deprecated>true</owl:deprecated>
+		<owl:versionInfo>This is an ill-defined concept originating from ISOcat. It is however, not possible to circumscribe it in OLiA as it lacks an established concept of deficiency. Despite the unsatisfactory definition, this was thus adopted in OLiA for compatibility with ISOcat, but marked as deprecated.</owl:versionInfo>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3007</rdfs:isDefinedBy>
+      <rdfs:comment>verb lacking certain morphosyntactic properties</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="#Verb"/>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:ID="AgentiveVerb">
 		<rdfs:comment>
 		An agentive verb marks the semantic role of agent or the doer of an action.
@@ -1379,6 +1527,18 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
      (http://en.wikipedia.org/wiki/Verbal_noun 19.09.06)
 	</rdfs:comment>
   </owl:Class>
+  
+     <owl:Class rdf:ID="Masdar">
+		<rdfs:label>masdar</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2224</rdfs:isDefinedBy>
+      <rdfs:comment>property that expresses a verbal idea under an abstract form. (http://www.isocat.org/datcat/DC-2224)
+	  
+	  the verbal noun present in Arabic and various Caucasian languages, such as Georgian and North-Caucasian languages. This grammatical term is an Arabic word, used later as a specialized, technical term to name the verbal noun in Arabic and Caucasian grammar. (http://en.wikipedia.org/wiki/Masdar)
+	  </rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#VerbalNoun"/>
+	</owl:Class>
+
+  
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Supine">
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia.owl#NonFiniteVerb"/>
@@ -1388,6 +1548,7 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		Supine is a nonfinite form of motion verbs with functions similar to that of an infinitive (Angelika Adams)</rdfs:comment>
   </owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Participle">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1341</rdfs:isDefinedBy>
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia.owl#NonFiniteVerb"/>
     </rdfs:subClassOf>
@@ -1396,7 +1557,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	A participle is a lexical item, derived from a verb that has some of the characteristics and functions of both verbs and adjectives.
 	In English, participles may be used as adjectives, and in non-finite forms of verbs.
 	(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAParticiple.htm 19.09.06)
-	</rdfs:comment>
+	
+	Non-finite form of a verb other than the infinitive that is used in many languages possibly in conjunction with an auxiliary and that functions attributively, predicatively or adverbially. (http://www.isocat.org/datcat/DC-1341)</rdfs:comment>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalParticiple">
 		<owl:versionInfo>adopted from ILPOSTS for Indian languages</owl:versionInfo>
@@ -1863,6 +2025,22 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 			</owl:Class>
 		</owl:equivalentClass>
 	</owl:Class>
+	
+	   <owl:Class rdf:ID="PossessiveRelativePronoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3005</rdfs:isDefinedBy>
+      <rdfs:comment>A relative pronoun whose antecedent is the possessor of the subject or object in the relative clause.</rdfs:comment>
+	  <owl:versionInfo>here "Pronoun" seems to refer to attributive pronoun, as the corresponding possessiverelativeDeterminer is not found in ISOcat
+		(substitutive possessive relative pronouns [without accompanying noun] do exist, but are comparably marked, cf. "I remember whose lines these are." vs. "I remember certain lines and whose they are." In this example, the latter is actually an elliptical construction with an elided head noun)</owl:versionInfo>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#PossessivePronoun"/>
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#RelativePronoun"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		</owl:Class>
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PartitiveDeterminer">
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Determiner"/>
@@ -1964,9 +2142,15 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		</rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InterrogativeDeterminer">
-		<rdfs:subClassOf>
-			<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHDeterminer"/>
-		</rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#WHDeterminer"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHDeterminer"/>
+					<owl:Class rdf:about="#QuestionWord"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<owl:versionInfo>EAGLES Determiner with WhType="Interrogative"</owl:versionInfo>
 		<rdfs:comment>
 			A interrogative is a function word used to introduce an interrogative clause.
@@ -2438,6 +2622,14 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHPronoun"/>
 </rdfs:subClassOf>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHPronoun"/>
+					<owl:Class rdf:about="#QuestionWord"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<owl:versionInfo>EAGLES WHPronoun with Wh-Type="Interrogative".</owl:versionInfo>
 		<rdfs:comment>
 			A interrogative pronoun is a pro-form that is used in questions in place of the item questioned for.
@@ -2483,6 +2675,9 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		</rdfs:comment>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PersonalPronoun">
+		  <rdfs:label>irreflexive personal pronoun</rdfs:label>
+		  <rdfs:label>personal pronoun</rdfs:label>
+		  <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3013 (irreflexive personal pronoun)</rdfs:isDefinedBy>
 		<owl:versionInfo>EAGLES PersReflPronoun with "Special PronounType"="Personal".</owl:versionInfo>
 		<owl:versionInfo>TODO: the SIL definition (also used in GOLD) is nonsatisfactory. 
 			German reflexive pronouns have person distinction, so this definition actually
@@ -2759,6 +2954,12 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf partOfSpeech (dcif:conceptualDomain)</owl:versionInfo>
     </owl:Class>
+	<owl:Class rdf:ID="DeclarativePunctuation">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2086</rdfs:isDefinedBy>
+      <rdfs:comment>Punctuation used at the end a declarative sentence.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SentenceFinalPunctuation"/>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#DeclarativeModality"/>
+	</owl:Class>
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#Point">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1445"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1445</owl:versionInfo>
@@ -3190,6 +3391,15 @@ Left square bracket
 		<rdfs:comment>e.g., dvadesetora/dvadesetoro, dvoja/dvoje, dvoje, dvoji/dvoje, dvojih/dvoje, dvojim/dvoje, oboje, tridesetora/tridesetoro, troja/troje (sr, http://purl.org/olia/mte/multext-east.owl#CollectiveNumeral)</rdfs:comment>
 		<rdfs:comment>e.g., ambelor/ambii, ambilor/ambii, am&#226;nduror/am&#226;ndoi, am&#226;ndurora/am&#226;ndoi, c&#226;te&#351;ipatru, tuspatru (ro, http://purl.org/olia/mte/multext-east.owl#CollectiveNumeral)</rdfs:comment>
 	</owl:Class>
+	<owl:Class rdf:ID="NumeralBoth">
+		<owl:deprecated>true</owl:deprecated>
+		<owl:versionInfo>The ISOcat definition entails that this just represents the value of "2". I guess, this is not true, but that this Numeral is actually a DualQuantifier (and should be renamed as such), otherwise, it should be eliminated</owl:versionInfo>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1938</rdfs:isDefinedBy>
+      <rdfs:comment>Numeric value for two.</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="#Numeral"/>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Fraction">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#FractalNumeral, http://purl.org/olia/urdu.owl#FractionalNumeral</owl:versionInfo>
 		<rdfs:label>fractional numeral</rdfs:label>
@@ -3222,16 +3432,50 @@ Left square bracket
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Quantifier"/>
 	</owl:Class>
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InterrogativeQuantifier">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#InterrogativeQuantifier</owl:versionInfo>
 		<rdfs:comment>In the Czech and Slovak MTE v4 pecs, Numeral/Class=&quot;interrogative&quot; are items meaning `how many/much&#39;, etc. Strictly speaking, they are pronumerals (pro-quantifiers), but traditional descriptions don&#39;t recognise such a category, so they are described variously as pronouns or as numerals (because their syntactic distribution is that of numerals, or very close).&quot; (Ivan A Derzhanski, email 2010/06/11, http://purl.org/olia/mte/multext-east.owl#InterrogativeQuantifier)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProQuantifier"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#ProQuantifier"/>
+					<owl:Class rdf:about="#QuestionWord"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
+	
+	<owl:Class rdf:ID="InterrogativeMultiplicativeQuantifier">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3021 (InterrogativeMultiplicativeNumeral)</rdfs:isDefinedBy>
+      <rdfs:comment>An interrogative/relative word used to ask about the number of times something happened.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#InterrogativeQuantifier"/>
+	</owl:Class>
+	<owl:Class rdf:ID="InterrogativeCardinalQuantifier">
+		<rdfs:label>interrogative cardinal numeral</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3018 (interrogativeCardinalNumeral)</rdfs:isDefinedBy>
+      <rdfs:comment>interrogativeCardinalNumeral: An interrogative/relative word used to ask about quantity.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#InterrogativeQuantifier"/>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="IndefiniteMultiplicativeQuantifier">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3024 (IndefiniteMultiplicativeNumeral)</rdfs:isDefinedBy>
+      <rdfs:comment>A word indicating imprecise number of times something happened.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#IndefiniteQuantifier"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#IndefiniteQuantifier">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#IndefiniteQuantifier</owl:versionInfo>
 		<rdfs:comment>In the Czech and Slovak MTE v4 specs, Numeral/Class=&quot;indefinite&quot; are items meaning `several/some&#39;,  etc. Strictly speaking, they are pronumerals (pro-quantifiers), but traditional descriptions don&#39;t recognise such a category, so they are described variously as pronouns or as numerals (because their syntactic distribution is that of numerals, or very close).&quot; (Ivan A Derzhanski, email 2010/06/11, http://purl.org/olia/mte/multext-east.owl#IndefiniteQuantifier)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProQuantifier"/>
-	</owl:Class>
+	</owl:Class>	 
+   <owl:Class rdf:ID="IndefiniteCardinalQuantifier">
+		<rdfs:label>indefinite cardinal numeral</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3023 (indefiniteCardinalNumeral)</rdfs:isDefinedBy>
+      <rdfs:comment>ndefiniteCardinalNumeral: A word used to express imprecise quantity.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#IndefiniteQuantifier"/>
+		</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RelativeQuantifier">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#RelativeQuantifier</owl:versionInfo>
 		<rdfs:comment>In the Czech MTE v4 specs, Numeral/Class=&quot;relative&quot; are items meaning `how many/much&#39;, `as many/much&#39; etc. Strictly speaking, they are pronumerals (pro-quantifiers), but traditional descriptions don&#39;t recognise such a category, so they are described variously as pronouns or as numerals (because their syntactic distribution is that of numerals, or very close).&quot; (Ivan A Derzhanski, email 2010/06/11, http://purl.org/olia/mte/multext-east.owl#RelativeQuantifier)</rdfs:comment>
@@ -3377,7 +3621,7 @@ Left square bracket
          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf adjective (dcif:isA)</owl:versionInfo>
-		<owl:equivalentClass rdfs:resource="#RelationalAdjective"/>
+		<owl:equivalentClass rdf:resource="#RelationalAdjective"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RelationalAdjective">
 		<owl:versionInfo>cf. OrdinalAdjective</owl:versionInfo>
@@ -3540,6 +3784,10 @@ Left square bracket
 </rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PronominalAdverb">
+		<rdfs:label>pronominal adverb</rdfs:label>
+		<rdfs:label>adverbial pronoun</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3011 (adverbialPronoun)</rdfs:isDefinedBy>
+
 		<owl:versionInfo>
 			EAGLES Adverb with Adverb-Type="Pronominal".
 
@@ -3603,6 +3851,14 @@ Left square bracket
 		<rdfs:subClassOf>
 			<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHTypeAdverbs"/>
 		</rdfs:subClassOf>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHTypeAdverbs"/>
+					<owl:Class rdf:about="#QuestionWord"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RelativeAdverb">
 		<rdfs:subClassOf>
@@ -3637,7 +3893,10 @@ Left square bracket
 		<rdfs:subClassOf rdf:resource="#Unique"/>
 	</owl:Class>
 	<owl:Class rdf:ID="Izafat">
-		<owl:versionInfo>from the EMILLE tagset for Urdu, http://purl.org/olia/emille.owl#Izafat, cf. http://purl.org/olia/mte/multext-east.owl#GenitiveCase for the modelling of the Izafat in the Farsi MULTEXT-East.</owl:versionInfo>
+	  <rdfs:label>ezafe</rdfs:label>
+	  <rdfs:label>izafat</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2999</rdfs:isDefinedBy>
+      <owl:versionInfo>from the EMILLE tagset for Urdu, http://purl.org/olia/emille.owl#Izafat, cf. http://purl.org/olia/mte/multext-east.owl#GenitiveCase for the modelling of the Izafat in the Farsi MULTEXT-East.</owl:versionInfo>
 		<rdfs:comment>The izāfat (pronounced as a shorter form of –ē–) is an enclitic of Persian origin which 
 			is used in Farsi and neighboring languages.
 			In Urdu, it can be considered a preposition under certain circumstances: it links
@@ -3649,6 +3908,8 @@ Left square bracket
 			izāfat is in the context of the Unique category of miscellaneous one-member wordclasses,
 			discussed below.
 			(Hardie 2003, http://purl.org/olia/emille.owl#Izafat)
+			
+			enclitic morpheme used to form noun phrases and that can denote possession, can form apposition or can join adjectives to nouns. (http://www.isocat.org/datcat/DC-2999)
 		</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="#Unique"/>
 	</owl:Class>
@@ -3702,6 +3963,7 @@ Left square bracket
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Particle"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ExclusiveEmphaticParticle">
+		<rdfs:subClassOf><owl:Class rdf:about="#Exclusive"/></rdfs:subClassOf>
 		<owl:versionInfo>adopted from EMILLE for Urdu, http://purl.org/olia/emille.owl#ExclusiveEmphaticParticle</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#EmphaticParticle"/>
 		<rdfs:comment>In Urdu, the exclusive emphatic particle hî emphasizes the preceding word and excludes something else (which may not be expressed). (Schmidt 1999, p.233, http://purl.org/olia/emille.owl#ExclusiveEmphaticParticle)
@@ -3717,6 +3979,7 @@ Left square bracket
 		</rdfs:comment>
 	</owl:Class>
 	<owl:Class rdf:ID="InclusiveEmphaticParticle">
+		<rdfs:subClassOf><owl:Class rdf:about="#Inclusive"/></rdfs:subClassOf>
 		<owl:versionInfo>adopted from EMILLE for Urdu, http://purl.org/olia/emille.owl#InclusiveEmphaticParticle</owl:versionInfo>
 		<rdfs:comment>In Urdu, bhî is an emphatic particle meaning 'even'. In opposition to contrastive tô and exclusive hî, bhî is inclusive:
 			
@@ -3759,6 +4022,20 @@ Left square bracket
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#ExistentialThere</owl:versionInfo>
 		<rdfs:comment rdf:datatype="&xsd;string">English existential there is specified as a subtype of pronoun in MTE v4, i.e., Pronoun/Type=&quot;ex-there&quot; (http://purl.org/olia/mte/multext-east.owl#ExistentialThere)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Particle"/>
+	</owl:Class>
+	<owl:Class rdf:ID="ExistentialPronoun">
+		<owl:deprecated>true</owl:deprecated>
+		<owl:versionInfo>merely a shorthand for ExistentialParticle and Pronoun, hence deprecated</owl:versionInfo>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3012</rdfs:isDefinedBy>
+      <rdfs:comment>pronoun that indicates the existence of something or someone</rdfs:comment>
+ 		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#ExistentialParticle"/>
+					<owl:Class rdf:about="#Pronoun"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbalParticle">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#VerbalParticle</owl:versionInfo>
@@ -3813,6 +4090,7 @@ Left square bracket
 		(Telljohann et al. 2009, p. 136)
 		</rdfs:comment>
 	</owl:Class>
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Classifier">
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Unique"/>
@@ -4022,8 +4300,16 @@ Left square bracket
                                 (http://www.isocat.org/datcat/DC-1921)
                             </rdfs:comment>
       <rdfs:label>interrogative particle</rdfs:label>
-      <rdfs:subClassOf>
-         <owl:Class rdf:about="http://purl.org/olia/olia.owl#Particle"/>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Particle"/>
+					<owl:Class rdf:about="#QuestionWord"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+     <rdfs:subClassOf>
+         <owl:Class rdf:about="#Particle"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf particle (dcif:isA)</owl:versionInfo>
     </owl:Class>
@@ -4173,6 +4459,8 @@ Left square bracket
      ||              GRAMMATICAL FEATURES                ||
      ====================================================== -->
 
+	 
+	 
 	<!-- NominalAgreementClass -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumeralAgreementClass">
 	</owl:Class>
@@ -4383,8 +4671,10 @@ Left square bracket
 		</rdfs:subClassOf>
 	</owl:Class>
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#Negation">
-		<owl:versionInfo>added in accordance with TIGER</owl:versionInfo>
-    	<rdfs:comment>http://purl.org/olia/mte/multext-east.owl#Negated: Negative=&quot;yes&quot; encodes negative verbal word-forms in Slavic languages and Estonian. (MTE v4) 
+		<rdfs:label>negative</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1839</rdfs:isDefinedBy>
+      <rdfs:comment>denotes the negation or the absence (http://www.isocat.org/datcat/DC-1839)
+		http://purl.org/olia/mte/multext-east.owl#Negated: Negative=&quot;yes&quot; encodes negative verbal word-forms in Slavic languages and Estonian. (MTE v4) 
     	In Slovak, for example, verbs form negative by prefix &#39;ne-&#39;, with the exception of the verb &quot;by&#357;&quot; (E. &quot;to be&quot;) which forms the negative in indicative by using separate particle &quot;nie&quot;, e.g. &quot;nie je&quot; (is not). Here, Slovak &quot;je&quot; would be marked as negative, despite having positive form. In Resian, negative is always marked as &#39;n&#39; except for two verbs: &#39;n&#239;man&#39; / not to have, &#39;n&#239;si&#39; / not to be. (MTE v4)</rdfs:comment>
 		<rdfs:subClassOf>
 			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature"/>
@@ -4430,6 +4720,29 @@ Left square bracket
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ProximityFeature"/>
 	</owl:Class>
 
+	<!-- ClusivityFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ClusivityFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasClusivity"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+   <owl:Class rdf:ID="Exclusive">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3029</rdfs:isDefinedBy>
+      <rdfs:comment>a form denoting that the addressee (addressees) are not included into the set of their referents which contain also the speaker</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ClusivityFeature"/>
+	</owl:Class>
+	<owl:Class rdf:ID="Inclusive">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3030</rdfs:isDefinedBy>
+      <rdfs:comment>the form denoting that the addressee (addressees) are included into the set of their referents which contain also the speaker</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ClusivityFeature"/>
+	</owl:Class>
+
+
+
+	
 	<!-- SpecificityFeature -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SpecificityFeature">
 		<rdfs:subClassOf>
@@ -4497,6 +4810,13 @@ Left square bracket
             </owl:Restriction>
 		</rdfs:subClassOf>
 		<owl:versionInfo>TODO: extend with TDS numberProperty and GOLD NumberValue</owl:versionInfo>
+	</owl:Class>	
+   <owl:Class rdf:ID="Multal">
+		<rdfs:label>multal number</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3327</rdfs:isDefinedBy>
+      <rdfs:comment>Multal is a number property that refers to a
+                        large number of individuals.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NumberFeature"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Plural">
 		<owl:versionInfo>EAGLES</owl:versionInfo>
@@ -4892,6 +5212,68 @@ Left square bracket
 		</rdfs:subClassOf>
 		<owl:versionInfo>hierarchically restructured</owl:versionInfo>
 	</owl:Class>
+
+   <owl:Class rdf:ID="CausativeVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3847</rdfs:isDefinedBy>
+      <rdfs:comment>voice where the subject causes someone or something else to do or be something</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	
+   <owl:Class rdf:ID="AntiCausativeVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3080</rdfs:isDefinedBy>
+      <rdfs:comment>An intransitive verb is derived from a basically
+                        transitive one with the direct object of the transitive verb corresponding
+                        to the subject of the intransitive [Siewierska 1988: 267].</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+
+	
+	 <owl:Class rdf:ID="CircumstantialVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3848</rdfs:isDefinedBy>
+      <rdfs:comment>voice that promotes an oblique argument of a verb to the role of subject</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="MediopassiveVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3850</rdfs:isDefinedBy>
+      <rdfs:comment>voice which subsumes both the middle voice and the passive voice</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	  </rdfs:subClassOf>
+	  <owl:equivalentClass>
+		<owl:Class>
+			<owl:unionOf rdf:parseType="Collection">
+				<owl:Class rdf:about="#MiddleVoice"/>
+				<owl:Class rdf:about="#PassiveVoice"/>
+			</owl:unionOf>
+		</owl:Class>
+	</owl:equivalentClass>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="PseudopassiveVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3851</rdfs:isDefinedBy>
+      <rdfs:comment>voice in a specify passive construction (different from the regular passive) where the patient is the syntactic subject and agent is the syntactic object</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="#PassiveVoice"/>
+	</owl:Class>
+
+
+
+   <owl:Class rdf:ID="ApplicativeVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3846</rdfs:isDefinedBy>
+      <rdfs:comment>voice which promotes an oblique argument of a verb to the core patient argument and indicates the oblique role within the meaning of the verb</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	 </owl:Class>
+	<owl:Class rdf:ID="AdjutativeVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3844</rdfs:isDefinedBy>
+      <rdfs:comment>voice for a construction where the subject of the verb is not an agent of the action denoted by the verb but is assisting an unstated agent in performing the action</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActiveVoice">
 		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#activeVoice</owl:versionInfo>
 		<rdfs:comment>
@@ -4911,6 +5293,7 @@ Left square bracket
 </rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice">
+		<rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3839</rdfs:isDefinedBy>
 		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#passiveVoice</owl:versionInfo>
 		<rdfs:comment>
 			When the subject is the patient, target or undergoer of the action, 
@@ -5770,7 +6153,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			Postmodifying is a function of an adjective that can modify, describe, or qualify a preceding noun.
 			(EAGLES)
-		</rdfs:comment>
+			modificationType: Refers to the prenominal or postnominal positions of determiners which distinguish different forms. (http://www.isocat.org/datcat/DC-1931)</rdfs:comment>
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
 </rdfs:subClassOf>
@@ -5781,7 +6164,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			Premodifying is a function of an adjective that can modify a following noun.
 			(EAGLES)
-		</rdfs:comment>
+			modificationType: Refers to the prenominal or postnominal positions of determiners which distinguish different forms. (http://www.isocat.org/datcat/DC-1931)</rdfs:comment>
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
 </rdfs:subClassOf>
@@ -5841,6 +6224,18 @@ The NP or S complement of a preposition is placed inside the PP.
                 <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
             </owl:Restriction>
 		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:ID="InchoativeAspect">
+		<rdfs:label>inchoative</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2002</rdfs:isDefinedBy>
+      <rdfs:comment>Aspect that expresses the beginning of an event or state.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#AspectFeature"></rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:ID="CompletiveAspect">
+		<rdfs:label>completive</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-5474</rdfs:isDefinedBy>
+      <rdfs:comment>To do something thoroughly and to completion.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#AspectFeature"></rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SimpleAspect">
 		<owl:versionInfo>ILPOSTS, http://purl.org/olia/ilposts.owl#SimpleAspect</owl:versionInfo>
@@ -6138,25 +6533,127 @@ The NP or S complement of a preposition is placed inside the PP.
       <owl:versionInfo>subClassOf aspect (dcif:conceptualDomain)</owl:versionInfo>
     </owl:Class>
 	
-	<!-- MoodFeature -->
-	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature">
+	<!-- ModalityFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasMood"/>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasModality"/>
                 <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
             </owl:Restriction>
 		</rdfs:subClassOf>
-		<owl:versionInfo>Mood feature pertains to grammaticalized moods (as expressed in verbal inflection). 
-			It is, however, partly redundant with SentenceType that involves different kind of markers with respect to the discourse function of sentences (cf. InterrogativeMood besides Question, DeclarativeMood vs. DeclarativeSentence, etc.).
-			The main difference between both is the restriction to a limited set of surface indicators.
-			One may consider to combine them: The OLiA ontology is focusing on functional elements of language, not their surface realization. 
-			Apparently this was also the design strategy of the TDS ontology.
-		</owl:versionInfo>
+		<owl:versionInfo>Mood feature pertains to grammaticalized moods (as expressed in verbal inflection), Modality refers to the underlying concept that can also be manifested by other grammatical or orthographic markers</owl:versionInfo>
+		<owl:versionInfo>note that Modality overlaps with SentenceType (cf. InterrogativeModality besides Question, DeclarativeModality vs. DeclarativeSentence, etc.). The main difference between both is the restriction of SentenceType to full sentences as a basis of analysis. Any updates should maintain this relationship.</owl:versionInfo>
 	</owl:Class>
-	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AbilitativeMood">
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AbilitativeModality">
 		<owl:versionInfo>Adopted from ILPOSTS (for Indian languages), http://purl.org/olia/ilposts.owl#AbilitativeMood</owl:versionInfo>
-		<rdfs:comment>Abilitative is a mood that indicates ability, comparable to the use of "can" in English. (http://zbb.spinnwebe.com/viewtopic.php?f=7&amp;t=34901)</rdfs:comment>
+		<rdfs:comment>modality expressed by AbilitativeMood: Abilitative is a mood that indicates ability, comparable to the use of "can" in English. (http://zbb.spinnwebe.com/viewtopic.php?f=7&amp;t=34901)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+	</owl:Class>
+	  <owl:Class rdf:ID="PhysicalAbilitiveModality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3394</rdfs:isDefinedBy>
+      <rdfs:comment>PhysicalAbilitiveModality indicates that an
+                        agent has the physical capacity to perform some action. [Bybee, Perkins and
+                        Pagliuca 1994: 192; Palmer 2001: 77]</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#AbilitativeModality"/>
+	</owl:Class>	
+  <owl:Class rdf:ID="ActionalModality">
+	<rdfs:label>actional force</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3063</rdfs:isDefinedBy>
+      <rdfs:comment>ActionalForce indicates that the speaker or
+                        hearer is to undertake some action. Actional force subsumes Imperative,
+                        Commissive and Hortatory force.</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+	</owl:Class>
+	<owl:Class rdf:ID="HortativeModality">
+		<rdfs:label>hortative force</rdfs:label>
+		<rdfs:isDefinedBy>http://linguistics-ontology.org/gold/2010/HortatoryForce</rdfs:isDefinedBy>
+		<rdfs:comment>A term sometimes used in the grammatical analysis of verbs, to refer to a type of modal meaning in which an exhortation is made. An example of a hortative usage ('a hortative') is the 'let us' construction in English ('let us pray'). [Crystal 2008: 232] (http://linguistics-ontology.org/gold/2010/HortatoryForce)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#ActionalModality"/>
+	</owl:Class>
+	<owl:Class rdf:ID="CommissiveModality">
+		<rdfs:label>commissive force</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3120</rdfs:isDefinedBy>
+      <rdfs:comment>CommissiveForce indicates that the speaker
+                        promises or threatens to perform some action [Palmer 2001: 10,
+                        72].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#ActionalModality"/>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#ImperativeModality">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#imperativeModality</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="#ActionalModality"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Pertaining to the mood or mode of a verb form or clause such that it 
+			predicates a command, request, or exhortation (OED).
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#imperativeModality)
+		</rdfs:comment>
+    </owl:Class>
+	<owl:Class rdf:ID="VolitiveModality">
+		<rdfs:label>volitive force</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3555</rdfs:isDefinedBy>
+      <rdfs:comment>VolitiveForce indicates that the speaker is
+                        willing to perform some action [Palmer 2001: 76].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="RelativeModality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3836</rdfs:isDefinedBy>
+      <rdfs:comment>Mood to express reported speech (or indirect speech) as opposed to direct speech.</rdfs:comment>
+	  <owl:versionInfo>Clarify relationship with DirectSpeech</owl:versionInfo>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+	 </owl:Class>
+
+ 	<owl:Class rdf:ID="EvaluativeModality">
+		<rdfs:label>evaluative property</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3184 (EvaluativeProperty)</rdfs:isDefinedBy>
+      <rdfs:comment>EvaluativeProperty: A term used in semantics for a type of modality
+                        where propositions express the speaker's attitude (e.g. surprise, regret)
+                        towards what is being said. [Crystal 2003: 168]</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+	</owl:Class>
+	 <owl:Class rdf:ID="PermissiveModality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3384</rdfs:isDefinedBy>
+      <rdfs:comment>PermissiveModality indicates that an agent has
+                        permission to perform the action expressed by the predicate [Palmer 2001:
+                        10, 71].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+	</owl:Class>
+	   <owl:Class rdf:ID="MentalAbilitiveModality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3313</rdfs:isDefinedBy>
+      <rdfs:comment>MentalAbilitiveModality indicates that an agent
+                        has the capacity to perform some mental action [Bybee, Perkins and Pagliuca
+                        1994: 192; Palmer 2001: 77].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AbilitativeModality"/>
+	</owl:Class>
+	   <owl:Class rdf:ID="ObligativeModality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3356</rdfs:isDefinedBy>
+      <rdfs:comment>ObligativeModality indicates that an agent is
+                        required to perform the action expressed by the predicate [Bybee, Perkins
+                        and Pagliuca 1994: 177; Palmer 2001: 71].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+		</owl:Class>
+   <owl:Class rdf:ID="WeakObligativeModality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3557</rdfs:isDefinedBy>
+      <rdfs:comment>WeakObligativeModality indicates that an agent
+                        is under a moral obligation to perform the action expressed by the predicate
+                        [Bybee, Perkins and Pagliuca 1994: 186-187].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#ObligativeModality"/>
+		</owl:Class>		
+		<owl:Class rdf:ID="EpistemicPossibilityModality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3181</rdfs:isDefinedBy>
+      <rdfs:comment>EpistemicPossibilityModality indicates that the
+                        designated state of affairs is not known not to be true.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+	</owl:Class>
+	   <owl:Class rdf:ID="EpistemicNecessityModality">
+	   <rdfs:label>categorical modality</rdfs:label>
+	   <rdfs:label>epistemic necessitiy modality</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3180</rdfs:isDefinedBy>
+      <rdfs:comment>EpistemicNecessityModality indicates that the
+                        expressed proposition is known to be true. Also known as CategoricalModality
+                        [Palmer 2001: 37, 68-69].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdmonitiveModality">
 		<owl:versionInfo>
@@ -6167,40 +6664,230 @@ The NP or S complement of a preposition is placed inside the PP.
 			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#admonitiveModality)
 		</rdfs:comment>
 		<rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
-</rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+		</rdfs:subClassOf>
 	</owl:Class>
-	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CausalMood">
-		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+	<owl:Class rdf:ID="DebitiveModality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3835</rdfs:isDefinedBy>
+      <rdfs:comment>Mood to express necessity or requirement</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+		</rdfs:subClassOf>
+	</owl:Class>	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CausalModality">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
 		<owl:versionInfo>Nowak (1996)</owl:versionInfo>
 		<rdfs:comment>In Inuktitut, causality is expressed by verbal inflection. Causal mood signifies causal relationships in a sentence. (Nowak 1996, p.39)
 		
 		Elke Nowak (1996), Transforming the images: Ergativity and transitivity in Inuktitut (Eskimo). Walter de Gruyter, Berlin.
 		</rdfs:comment>
 	</owl:Class>
-	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DeclarativeMood">
-		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#declarativeModality</owl:versionInfo>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DeclarativeModality">
+		<owl:versionInfo>generalization over DeclarativeMood</owl:versionInfo>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			Pertaining to the mood or mode of a verb form or clause such that it 
 			predicates a type of (formal) assertion (OED).
 			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#declarativeModality)
 		</rdfs:comment>
 		<rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
 </rdfs:subClassOf>
 	</owl:Class>
-	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DubitiveMood">
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DubitiveModality">
 		<owl:versionInfo>http://purl.org/linguistics/gold/Dubitive</owl:versionInfo>
 		<rdfs:subClassOf>
-			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
 		</rdfs:subClassOf>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			DubitiveMood indicates a speaker's doubt or uncertainty about a proposition (Palmer 2001).
 			(http://purl.org/linguistics/gold/Dubitive)
 		</rdfs:comment>	
 	</owl:Class>
-	<owl:Class rdf:about="http://purl.org/olia/olia.owl#HabitualMood">
-		<owl:versionInfo>adopted from ILPOSTS, http://purl.org/olia/ilposts.owl#HabitualMood, I assume that HabitualMood is equivalent with HabitualAspect</owl:versionInfo>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#QuotativeModality">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Quotative, MTE VForm=&quot;quotative&quot; (Estonian)</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="&xsd;string">A quotative is grammatical device to mark reported speech in some languages (http://en.wikipedia.org/wiki/Quotative), e.g., in Estonian.&lt;br/&gt;
+			
+			&#8216;Reportedly, while he was going (in his boat), he turned over.&#8217;
+			Ta olevat        oma     paadiga   &#252;mber l&#228;inud
+			He was_QUOTATIVE his_own boat_WITH over  gone.&lt;br/&gt;
+			
+			(Estonian translation of an example given under http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAQuotativeEvidential.htm)
+			(Heiki-Jaan.Kaalep, email 2010/06/22)</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InterrogativeModality">
+		<owl:versionInfo>
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#interrogativeModality
+		</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			The interrogative modality serves to indicate interrogative quality.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#interrogativeModality)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#OptativeModality">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/Optative,
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#optativeModality
+		</owl:versionInfo>
+		<rdfs:comment>
+			Optative indicates that the speaker wishes or hopes that the expressed proposition 
+			be the case (Bybee, Perkins, and Pagliuca 1994: 179; Palmer 2001: 204).
+			(http://purl.org/linguistics/gold/Optative)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubjunctiveModality">
+		<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			http://purl.org/linguistics/gold/Subjunctive,
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#subjunctiveModality
+		</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			The subjunctive is the mood that is minimally marked as opposed to 
+			the indicative and that marks a clause as not directly representing 
+			an assertion of the speaker. 
+			(http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&amp;file=lido/servlet/Lido_Servlet Subjunktiv 18.06.07)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#TimitiveModality">
+		<owl:versionInfo>http://purl.org/linguistics/gold/Timitive</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			TimitiveMood expresses that the speaker fears something expressed in what is said 
+			(Palmer 2001: 13, 22).
+			(http://purl.org/linguistics/gold/Timitive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#IrrealisModality">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#irrealisModality</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Irrealis modality indicates the situation to which it pertains is 
+			non-actual or non-factual.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#irrealisModality)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PresumptiveModality">
+		<owl:versionInfo>adopted from ILPOSTS (http://purl.org/olia/ilposts.owl#PresumptiveMood) for Indian languages</owl:versionInfo>
+		<rdfs:comment>The presumptive mood is used in Romanian to express presupposition or hypothesis regarding the fact denoted by the verb, as well as other more or less similar attitudes: doubt, curiosity, concern, condition, indifference, inevitability. For example, acolo s-o fi dus "he might have gone there" shows the basic presupposition use, while the following excerpt from a poem by Eminescu shows the use both in a conditional clause de-o fi "suppose it is" and in a main clause showing an attitude of submission to fate le-om duce "we would bear".
+			
+			De-o fi una, de-o fi alta... Ce e scris și pentru noi,
+			Bucuroși le-om duce toate, de e pace, de-i război.
+			
+			Be it one, be it the other... Whatever fate we have,
+			We will gladly go through all, be it peace or be it war 
+			(http://en.wikipedia.org/wiki/Irrealis_mood#Presumptive)
+		</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#IrrealisModality"/>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalModality">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1258"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1258</owl:versionInfo>
+      <rdfs:comment>
+      	In Inuktitut, conditionality is expressed by verbal inflection. Conditional mood signifies conditional relationships in a sentence. (Nowak 1996, p.39)
+      	
+      	A conditional relation is a logical relation in which the illocutionary act employing one of a pair of propositions is expressed or implied to be true or in force if the other proposition is true.
+        (www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAConditionalRelation.htm; http://www.isocat.org/datcat/DC-1258)
+        
+         Elke Nowak (1996), Transforming the images: Ergativity and transitivity in Inuktitut (Eskimo). Walter de Gruyter, Berlin.</rdfs:comment>
+      <rdfs:label>conditional</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf verbFormMood (dcif:conceptualDomain)</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalRealisModality">
+		<owl:versionInfo>ILPOSTS (Indian languages), http://purl.org/olia/ilposts.owl#Real is restricted to conditional participles, hence probably a subtype of ConditionalMood</owl:versionInfo>
+		<rdfs:comment>Conditional Mood (modality) with Realis meaning (ILPOSTS)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#ConditionalModality"/>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalIrrealisModality">
+		<owl:versionInfo>ILPOSTS (Indian languages), http://purl.org/olia/ilposts.owl#NonReal is restricted to conditional participles, hence probably a subtype of ConditionalMood</owl:versionInfo>
+		<rdfs:comment>Conditional Mood (modality) with Irrealis meaning (ILPOSTS)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#ConditionalModality"/>
+	</owl:Class>
+	
+	<!-- Mood -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasMood"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+		<owl:versionInfo>Mood feature pertains to grammaticalized moods (as expressed in verbal inflection), Modality refers to the underlying concept that can also be manifested by other grammatical or orthographic markers. Every Mood concept however, entails the corresponding Modality, hence modelled as subsmption between these.</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:ID="AbilitativeMood">
+		<owl:versionInfo>Adopted from ILPOSTS (for Indian languages), http://purl.org/olia/ilposts.owl#AbilitativeMood</owl:versionInfo>
+		<rdfs:comment>Abilitative is a mood that indicates ability, comparable to the use of "can" in English. (http://zbb.spinnwebe.com/viewtopic.php?f=7&amp;t=34901)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+		<rdfs:subClassOf rdf:resource="#AbilitativeModality"/>
+	</owl:Class>
+   <owl:Class rdf:ID="RelativeMood">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3836</rdfs:isDefinedBy>
+      <rdfs:comment>Mood to express reported speech (or indirect speech) as opposed to direct speech.</rdfs:comment>
+	  <owl:versionInfo>Clarify relationship with DirectSpeech</owl:versionInfo>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+	  <rdfs:subClassOf rdf:resource="#RelativeModality"/>
+	 </owl:Class>
+	<owl:Class rdf:ID="DebitiveMood">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3835</rdfs:isDefinedBy>
+      <rdfs:comment>Mood to express necessity or requirement</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="#DebitiveModality"/>
+	</owl:Class>	
+	<owl:Class rdf:ID="CausalMood">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+		<rdfs:subClassOf rdf:resource="#CausalModality"/>
+		<owl:versionInfo>Nowak (1996)</owl:versionInfo>
+		<rdfs:comment>In Inuktitut, causality is expressed by verbal inflection. Causal mood signifies causal relationships in a sentence. (Nowak 1996, p.39)
+		
+		Elke Nowak (1996), Transforming the images: Ergativity and transitivity in Inuktitut (Eskimo). Walter de Gruyter, Berlin.
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:ID="DeclarativeMood">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#declarativeModality</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Pertaining to the mood or mode of a verb form or clause such that it 
+			predicates a type of (formal) assertion (OED).
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#declarativeModality)
+			
+			Unlike DeclarativeModality, a DeclarativeMood is morphologically marked.
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="#DeclarativeModality"/>
+</rdfs:subClassOf>
+	<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+	</owl:Class>
+	<owl:Class rdf:ID="DubitiveMood">
+		<owl:versionInfo>http://purl.org/linguistics/gold/Dubitive</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="#DubitiveModality"/>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			DubitiveMood indicates a speaker's doubt or uncertainty about a proposition (Palmer 2001).
+			(http://purl.org/linguistics/gold/Dubitive)
+		</rdfs:comment>	
+	</owl:Class>
+	<owl:Class rdf:ID="HabitualMood">
+		<owl:versionInfo>adopted from ILPOSTS, http://purl.org/olia/ilposts.owl#HabitualMood, I assume that HabitualMood is equivalent with HabitualAspect, 
+		hence no corresponding HabitualModality has been introduced</owl:versionInfo>
 		<rdfs:comment>"Habitual" is normally considered to be an aspect. Occasionally, it is, however, also described as a mood, e.g., by Bittner (2008, p. 354) for Kalaalisut (Greenlandic).
 		
 		Maria Bittner (2008), Aspectual universals of temporal anaphora, In: Susan Deborah Rothstein (ed.), Theoretical and crosslinguistic approaches to the semantics of aspect, John Benjamins, Amsterdam, p. 349-386.
@@ -6210,22 +6897,21 @@ The NP or S complement of a preposition is placed inside the PP.
 		</owl:equivalentClass>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 	</owl:Class>
-    <owl:Class rdf:about="http://purl.org/olia/olia.owl#ImperativeMood">
-		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#imperativeModality</owl:versionInfo>
-		<rdfs:subClassOf>
-			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
-		</rdfs:subClassOf>
+	<owl:Class rdf:ID="ImperativeMood">
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			Pertaining to the mood or mode of a verb form or clause such that it 
 			predicates a command, request, or exhortation (OED).
 			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#imperativeModality)
 		</rdfs:comment>
-    </owl:Class>
-	<owl:Class rdf:about="http://purl.org/olia/olia.owl#QuotativeMood">
+		<rdfs:subClassOf rdf:resource="#ImperativeModality"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+	</owl:Class>
+	<owl:Class rdf:ID="QuotativeMood">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Quotative, MTE VForm=&quot;quotative&quot; (Estonian)</owl:versionInfo>
 		<rdfs:subClassOf>
 			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 		</rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="#QuotativeModality"/>
 		<rdfs:comment rdf:datatype="&xsd;string">A quotative is grammatical device to mark reported speech in some languages (http://en.wikipedia.org/wiki/Quotative), e.g., in Estonian.&lt;br/&gt;
 			
 			&#8216;Reportedly, while he was going (in his boat), he turned over.&#8217;
@@ -6239,6 +6925,8 @@ The NP or S complement of a preposition is placed inside the PP.
     <rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 </rdfs:subClassOf>
+	<rdfs:subClassOf rdf:resource="#DeclarativeModality"/>
+	<owl:versionInfo>TODO: check relationship with DeclarativeMood</owl:versionInfo>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 		The indicative is the unmarked mood. It is used when no special modal 
 		nuance in the clause or sentence is intended. It is the default mood 
@@ -6255,18 +6943,6 @@ The NP or S complement of a preposition is placed inside the PP.
 		http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#indicativeModality
 	</owl:versionInfo>
   </owl:Class>
-	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InterrogativeModality">
-		<owl:versionInfo>
-			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#interrogativeModality
-		</owl:versionInfo>
-		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
-			The interrogative modality serves to indicate interrogative quality.
-			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#interrogativeModality)
-		</rdfs:comment>
-		<rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
-</rdfs:subClassOf>
-	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#OptativeMood">
 		<owl:versionInfo>
 			http://purl.org/linguistics/gold/Optative,
@@ -6280,6 +6956,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="#OptativeModality"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubjunctiveMood">
 		<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
@@ -6295,6 +6972,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="#SubjunctiveModality"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#TimitiveMood">
 		<owl:versionInfo>http://purl.org/linguistics/gold/Timitive</owl:versionInfo>
@@ -6306,6 +6984,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="#TimitiveModality"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#IrrealisMood">
 		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#irrealisModality</owl:versionInfo>
@@ -6317,6 +6996,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		<rdfs:subClassOf>
 			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 		</rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="#IrrealisModality"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PresumptiveMood">
 		<owl:versionInfo>adopted from ILPOSTS (http://purl.org/olia/ilposts.owl#PresumptiveMood) for Indian languages</owl:versionInfo>
@@ -6329,7 +7009,8 @@ The NP or S complement of a preposition is placed inside the PP.
 			We will gladly go through all, be it peace or be it war 
 			(http://en.wikipedia.org/wiki/Irrealis_mood#Presumptive)
 		</rdfs:comment>
-		<rdfs:subClassOf rdf:resource="#IrrealisMood"/>
+		<rdfs:subClassOf rdf:resource="#PresumptiveModality"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalMood">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1258"/-->
@@ -6345,17 +7026,20 @@ The NP or S complement of a preposition is placed inside the PP.
       <rdfs:subClassOf>
          <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
       </rdfs:subClassOf>
+	  <rdfs:subClassOf rdf:resource="#ConditionalModality"/>
       <owl:versionInfo>subClassOf verbFormMood (dcif:conceptualDomain)</owl:versionInfo>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalRealisMood">
 		<owl:versionInfo>ILPOSTS (Indian languages), http://purl.org/olia/ilposts.owl#Real is restricted to conditional participles, hence probably a subtype of ConditionalMood</owl:versionInfo>
 		<rdfs:comment>Conditional Mood (modality) with Realis meaning (ILPOSTS)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="#ConditionalMood"/>
+		<rdfs:subClassOf rdf:resource="#ConditionalRealisModality"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalIrrealisMood">
 		<owl:versionInfo>ILPOSTS (Indian languages), http://purl.org/olia/ilposts.owl#NonReal is restricted to conditional participles, hence probably a subtype of ConditionalMood</owl:versionInfo>
 		<rdfs:comment>Conditional Mood (modality) with Irrealis meaning (ILPOSTS)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="#ConditionalMood"/>
+		<rdfs:subClassOf rdf:resource="#ConditionalIrrealisModality"/>
 	</owl:Class>
 	
 	<!-- Emphasis -->
@@ -6402,9 +7086,11 @@ The NP or S complement of a preposition is placed inside the PP.
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#First">
 		<owl:versionInfo>EAGLES, http://purl.org/linguistics/gold/First</owl:versionInfo>
-		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
-			Refers to the speaker and one or more nonparticipants, but not hearer(s). 
-			Contrasts with  FirstPersonInclusive (Crystal 1997: 285).
+		<rdfs:label>first person</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1288</rdfs:isDefinedBy>
+      <rdfs:comment>First person deixis is deictic reference that refers to the speaker, or both the speaker and referents grouped with the speaker (http://www.isocat.org/datcat/DC-1288)
+	  
+	  cf. gold:First: Refers to the speaker and one or more nonparticipants, but not hearer(s). Contrasts with  FirstPersonInclusive (Crystal 1997: 285).
 			(http://purl.org/linguistics/gold/First)
 		</rdfs:comment>
 		<rdfs:subClassOf>
@@ -6423,6 +7109,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		</rdfs:comment>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FirstInclusive">
+		<rdfs:subClassOf><owl:Class rdf:about="#Inclusive"/></rdfs:subClassOf>
 		<owl:versionInfo>
 			http://purl.org/linguistics/gold/FirstInclusive, 
 			modelled here as subconcept of First
@@ -6451,6 +7138,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		</rdfs:comment>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FirstExclusive">
+		<rdfs:subClassOf><owl:Class rdf:about="#Exclusive"/></rdfs:subClassOf>
 		<owl:versionInfo>
 			http://purl.org/linguistics/gold/FirstExclusive,
 			modelled as a subconcept of First here
@@ -6514,6 +7202,28 @@ The NP or S complement of a preposition is placed inside the PP.
 		</rdfs:comment>
   </owl:Class>
 	
+	<!-- Evidentiality -->
+    <owl:Class rdf:ID="VisualEvidentiality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3549</rdfs:isDefinedBy>
+      <rdfs:comment>VisualEvidentiality encodes the fact that the
+                        speaker came to believe the content of the expression through direct visual
+                        experience; they saw it [Palmer 2001: 57].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#EvidentialityFeature"/>
+	</owl:Class>
+	   <owl:Class rdf:ID="OtherSourceEvidentiality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3367</rdfs:isDefinedBy>
+      <rdfs:comment>An indication that the source of information is
+                        someone other than the speaker. [Aikhenvald 2006: 106]</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#EvidentialityFeature"/>
+	</owl:Class>
+   <owl:Class rdf:ID="DeductiveEvidentiality">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3150</rdfs:isDefinedBy>
+      <rdfs:comment>DeductiveEvidentiality encodes the fact that the
+                        speaker came to believe the content of the expression through a sound
+                        inference procedure. [Palmer 2001: 6-8].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#EvidentialityFeature"/>
+	</owl:Class>
+
 	<!-- Gender -->
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Feminine">
 		<owl:versionInfo>EAGLES, http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#feminineGender</owl:versionInfo>
@@ -6594,6 +7304,13 @@ The NP or S complement of a preposition is placed inside the PP.
 			(http://purl.org/linguistics/gold/Inanimate)
 		</rdfs:comment>
   </owl:Class>
+     <owl:Class rdf:ID="VegetableGender">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3541</rdfs:isDefinedBy>
+      <rdfs:comment>Vegetable gender refers to inanimates and exists
+                        in some four-way gender systems, e.g., masculine, feminine, neuter, and
+                        vegetable as in Bininj Gun-wok [Evans 2003: 202].</rdfs:comment>
+	   <rdfs:subClassOf rdf:resource="#InanimateGender"/>
+	  </owl:Class>
   
   	<!-- Tense -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#TenseFeature">
@@ -7091,6 +7808,117 @@ The NP or S complement of a preposition is placed inside the PP.
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DegreeFeature"/>
 </rdfs:subClassOf>
 	</owl:Class>
+	
+	<owl:Class rdf:ID="PlaceNoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3857</rdfs:isDefinedBy>
+      <rdfs:comment>noun expressing a location</rdfs:comment>
+		<owl:deprecated>equivalent to ProperNoun and hasSemanticRole some LocationRole</owl:deprecated>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#ProperNoun"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#LocationRole"></owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProperNoun"/>
+	</owl:Class>
+
+	 <owl:Class rdf:ID="InstrumentNoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3856</rdfs:isDefinedBy>
+      <rdfs:comment>noun expressing an instrument of the action</rdfs:comment>
+		<owl:deprecated>true</owl:deprecated>
+		<owl:versionInfo>deprecated, as merely a shorthand for Noun and hasSemanticRole some InstrumentRole</owl:versionInfo>
+			<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Noun"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#InstrumentRole"></owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="IntensiveNoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3859</rdfs:isDefinedBy>
+	  <owl:deprecated>true</owl:deprecated>
+	  <owl:versionInfo>deprecated, as merely a shorthand for CommonNoun and hasEmphasis some Emphatic</owl:versionInfo>
+      <rdfs:comment>noun that emphasizes another noun</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="#CommonNoun"/>
+			<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#CommonNoun"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasEmphasis"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#Emphatic"></owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
+   <owl:Class rdf:ID="TimeNoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3855</rdfs:isDefinedBy>
+      <rdfs:comment>noun expressing time</rdfs:comment>
+		<owl:deprecated>true</owl:deprecated>
+		<owl:versionInfo>deprecated, as merely a shorthand for Noun and hasSemanticRole some TimeRole</owl:versionInfo>
+			<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Noun"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#TimeRole"></owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="OnceNoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3853</rdfs:isDefinedBy>
+      <rdfs:comment>noun conveying the meaning that the action is performed once</rdfs:comment>
+		<owl:deprecated>true</owl:deprecated>
+		<owl:versionInfo>onceNoun [DC-3853] ``noun conveying the meaning that the action is performed once''. Clearly, this noun carries a meaning that is closely related to aspect information (e.g., SemelfactiveAspect), but as aspect is a verb-centered concept, it would have been counter-intuitive to model this as Noun and hasAspect some SemelfactiveAspect. Hence, this concept is directly adopted in the OLiA Reference Model, but marked as deprecated until an ontologically satisfying modeling of aspect-related features of nouns has been achieved.</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="#CommonNoun"/>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="MannerNoun">
+		<owl:deprecated>true</owl:deprecated>
+		<owl:versionInfo>deprecated, as merely a shorthand for CommonNoun and hasSemanticRole some MannerRole</owl:versionInfo>
+			<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#CommonNoun"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#MannerRole"></owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<rdfs:label>manner noun</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3854</rdfs:isDefinedBy>
+	  <rdfs:comment>noun expressing a manner</rdfs:comment>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="ElativeNoun">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3860</rdfs:isDefinedBy>
+      <rdfs:comment>noun to express both comparative and superlative</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CommonNoun"/>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ElativeDegree"/>
+	  <owl:versionInfo>added in compliance with ISOcat</owl:versionInfo>
+	</owl:Class>
+	  
+
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ElativeDegree">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#ElativeDegree, http://www.isocat.org/datcat/DC-1276, note that the latter conflates ElativeDegree and ElativeCase</owl:versionInfo>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MULTEXT-East Degree=&quot;elative&quot; (Adjective: Resian, Serbian, Macedonian)&lt;br/&gt;
@@ -7119,6 +7947,19 @@ The NP or S complement of a preposition is placed inside the PP.
 			rename all subconcepts to ...Case
 		</owl:versionInfo>
 		<owl:versionInfo>Note that also Indian case markers were included here (ILPOSTS). These are described differently, either as postpositions or as grammatical cases.</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:ID="ObjectiveCase">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2798</rdfs:isDefinedBy>
+      <rdfs:comment>Case used to express the direct object, indirect object, object of a preposition, object complement and subject of an infinitive.</rdfs:comment>
+		<rdfs:subClassOf><owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CaseFeature"/></rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="AversiveCase">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3096</rdfs:isDefinedBy>
+      <rdfs:comment>AversiveCase expresses fear or is literally
+                        translated as 'turning from' in some languages [Blake 2001:
+                        156].</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#CaseFeature"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FactiveCase">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#FactiveCase</owl:versionInfo>
@@ -7990,6 +8831,20 @@ The NP or S complement of a preposition is placed inside the PP.
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DefinitenessFeature"/>
 </rdfs:subClassOf>
 	</owl:Class>
+	
+	<owl:Class rdf:ID="StatusConstructus">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2997</rdfs:isDefinedBy>
+      <rdfs:comment>morphological form of the nominal head of noun+noun-phrases which in spite of a missing determiner (article) is invariably understood as semantically determined. (http://www.isocat.org/datcat/DC-2997)
+	  
+	  The construct state or status constructus is a noun form occurring in Afro-Asiatic languages. It is particularly common in Semitic languages (such as Arabic, Hebrew, and Syriac), in the Berber languages, and in the extinct Egyptian language. ... 
+	  In Semitic languages, nouns are placed in the construct state when they are semantically definite and modified by another noun in a genitive construction. Note that this differs from the genitive case of European languages in that it is the head (modified) noun rather than the dependent (modifying) noun which is marked. However, in Semitic languages with grammatical case (e.g. Classical Arabic), the modifying noun in a genitive construction is placed in the genitive case, in addition to marking the head noun with the construct state. ...
+	  The construct state is one of the three grammatical states of nouns in Arabic, the other two being the indefinite state and the definite state. ... (http://en.wikipedia.org/wiki/Construct_state)</rdfs:comment>
+	  <owl:versionInfo>According to the Arabic usage of this category, modeled here as a DefinitenessFeature, though not directly a subconcept of definite, because it has other functions in other languages.</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DefinitenessFeature"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Indefinite">
 		<owl:versionInfo>EAGLES, http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#indefinite</owl:versionInfo>
 		<rdfs:comment>
@@ -8083,10 +8938,27 @@ The NP or S complement of a preposition is placed inside the PP.
     </rdfs:subPropertyOf>
   </owl:ObjectProperty>
 
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasEvaluativeFeature">
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EvaluativeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasEvaluativeFeature"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+	<rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+
+  
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSemanticRole">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:range>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature">
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole">
 			<rdfs:subClassOf>
 				<owl:Restriction>
 					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
@@ -8107,7 +8979,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature">
 			<rdfs:subClassOf>
 				<owl:Restriction>
-					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSeparabilityFeature"/>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSeparability"/>
 					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
 				</owl:Restriction>
 			</rdfs:subClassOf>
@@ -8153,6 +9025,20 @@ The NP or S complement of a preposition is placed inside the PP.
 		</owl:Class>
 		</rdfs:range>
 	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasClusivity">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+		<rdfs:range>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ClusivityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasClusivity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+		</rdfs:range>
+	</owl:ObjectProperty>
+
 	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSpecificity">
 		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 		<rdfs:range>
@@ -8233,7 +9119,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature">
 			<rdfs:subClassOf>
 				<owl:Restriction>
-					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasInflection"/>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasInflectionType"/>
 					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
 				</owl:Restriction>
 			</rdfs:subClassOf>
@@ -8325,7 +9211,7 @@ The NP or S complement of a preposition is placed inside the PP.
                 Indication concerning the number of the person that ownes something.
                 (http://www.isocat.org/datcat/DC-1417)
 								
-				Inherent plural or singular of possessive pronouns aand possessive determiners.
+				Inherent plural or singular of possessive pronouns and possessive determiners.
 		</rdfs:comment>
       <rdfs:label>owner number</rdfs:label>
   </owl:ObjectProperty>
@@ -8441,6 +9327,19 @@ The NP or S complement of a preposition is placed inside the PP.
     </rdfs:domain>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasEvidentiality">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EvidentialityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasGender"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasGender">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:domain>
@@ -8505,7 +9404,7 @@ The NP or S complement of a preposition is placed inside the PP.
 		</owl:Class>
 	</rdfs:range>
   </owl:ObjectProperty>
-  
+
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasPerson">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:domain>
@@ -8575,14 +9474,33 @@ The NP or S complement of a preposition is placed inside the PP.
    </owl:ObjectProperty>
    
    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasMood">
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:subPropertyOf rdf:resource="#hasModality"/>
 	<rdfs:range>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature">
-			<rdfs:comment>Note that we do not posit that MoodFeature hasMood self, because MoodFeature can be used with either hasMood or hasModality</rdfs:comment>
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasMood"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
 		</owl:Class>
 	</rdfs:range>
   </owl:ObjectProperty>
-  
+
+     <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasModality">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ModalityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasModality"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasAspect">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
@@ -8630,17 +9548,19 @@ The NP or S complement of a preposition is placed inside the PP.
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasReduplicationType">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 	      <owl:versionInfo>cf. http://www.isocat.org/datcat/DC-2240</owl:versionInfo>
+
 	    <rdfs:range>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReduplicationTypeFeature">
 			<rdfs:subClassOf>
 				<owl:Restriction>
-					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasReducplicationType"/>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasReduplicationType"/>
 					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
 				</owl:Restriction>
 			</rdfs:subClassOf>
 		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
+
   
   <!-- ======================================================
      ||     SYNTACTIC RELATIONS AND STRUCTURES           ||
@@ -9971,6 +10891,7 @@ CONJP — Conjunction Phrase. Used to mark certain “multi-word” conjunctions
       <rdfs:subClassOf>
          <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature"/>
       </rdfs:subClassOf>
+	  <rdfs:subClassOf rdf:about="#InterrogativeModality"/>
       <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >There are two types of questions: direct questions (which are main clauses ending with a question
 mark) and indirect questions (which are subordinate clauses embedded under a verb). In this section, we
@@ -10057,6 +10978,7 @@ SBARQ â ´ Direct question introduced by a wh-word or wh-phrase. See sec
       <rdfs:subClassOf>
          <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature"/>
       </rdfs:subClassOf>
+	  <rdfs:subClassOf rdf:resource="#DeclarativeModality"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >S|Simple declarative clause, i.e. one that is not introduced by a (possibly empty) subordinating
 conjunction or wh-word and that does not exhibit subject-verb inversion.
@@ -10072,8 +10994,8 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 			<owl:intersectionOf rdf:parseType="Collection">
 				<owl:Class rdf:about="http://purl.org/olia/olia.owl#Sentence"/>
 				<owl:Restriction>
-					<owl:onProperty rdf:resource="#hasMood"/>
-					<owl:someValuesFrom rdf:resource="#DeclarativeMood"/>
+					<owl:onProperty rdf:resource="#hasModality"/>
+					<owl:someValuesFrom rdf:resource="#DeclarativeModality"/>
 				</owl:Restriction>
 			</owl:intersectionOf>
 		</owl:Class>
@@ -10093,7 +11015,16 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
       <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticUnit"/>
     </rdfs:subClassOf>
   </owl:Class>
+  
+     <owl:Class rdf:ID="Ideophone">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4192</rdfs:isDefinedBy>
+      <rdfs:comment>Ideophones are marked words that depict sensory imagery.</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticUnit"/>
+	  </rdfs:subClassOf>
+	</owl:Class>
 
+  
   <owl:Class rdf:ID="Phraseme">
 	<owl:versionInfo>http://purl.org/olia/ubyPos.owl#phraseme, no definition there</owl:versionInfo>
 	<rdfs:comment>Conventional lexical unit consisting of a particular phrase (CC)</rdfs:comment>
@@ -10143,7 +11074,29 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#LexicalUnit"/>
 	  </rdfs:subClassOf>
    </owl:Class>
-	
+    <owl:Class rdf:ID="QuestionWord">
+	 <owl:deprecated>true</owl:deprecated>
+		<owl:versionInfo>deprecated, as merely a shorthand for Lexeme and hasModality some InterrogativeModality</owl:versionInfo>
+			<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Lexeme"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasModality"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#InterrogativeModality"></owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<rdfs:label>question word</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4205</rdfs:isDefinedBy>
+      <rdfs:comment>A proform that is used in questions to stand for the item questioned.</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Lexeme"/>
+	  </rdfs:subClassOf>
+	</owl:Class>
+
+   
   <!-- ======================================================
      ||      SEMANTIC FEATURES           ||
      ====================================================== -->
@@ -10194,6 +11147,26 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 			(http://purl.org/olia/mte/multext-east.owl#Human)</owl:comment>
 	</owl:Class>
    
+   <!-- EvaluativeFeature -->
+	<owl:Class rdf:ID="PreferredEvaluative">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3416</rdfs:isDefinedBy>
+      <rdfs:comment>An evaluative property of a noun that indicates
+                        the speaker regards the person or object being referred to with favor or
+                        admiration.</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EvaluativeFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:ID="PejorativeEvaluative">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3380</rdfs:isDefinedBy>
+      <rdfs:comment>An evaluative property of a noun that indicates
+                        the speaker regards the person or object being referred to with distaste,
+                        contempt, or displeasure [Valentine 2001: 190-193].</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EvaluativeFeature"/>
+	  </rdfs:subClassOf>
+	</owl:Class>
+	
    	<!-- Countability -->
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Uncountable">
 		<owl:versionInfo>EAGLES, remodelling of MassNoun vs. CommonNoun</owl:versionInfo>
@@ -10654,6 +11627,58 @@ Words such as fully and completely are absolutes and do not receive -EXT.
 	</rdfs:subClassOf>
 	<owl:versionInfo>PTB bracketing guidelines, Bies et al. 1995</owl:versionInfo>
   </owl:Class>
+
+  
+  <!-- ======================================================
+     ||     LEXICAL RELATIONS            				||
+     ====================================================== -->
+  
+    <owl:Class rdf:ID="Homonym">
+	  <rdfs:label>homonym</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1301</rdfs:isDefinedBy>
+      <rdfs:comment>Word that sounds the same and is written the same as another word but is different in meaning.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LexicalRelation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+		
+	<owl:Class rdf:ID="Homophone">
+		<rdfs:label>homophone</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1302</rdfs:isDefinedBy>
+      <rdfs:comment>Word that sounds like another word, but is different in writiing or meaning.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LexicalRelation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="Homograph">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1300</rdfs:isDefinedBy>
+      <rdfs:comment>Word that is written like another, but that has a different pronunciation, meaning, and/or origin.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LexicalRelation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="ExpansionVariation">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1850</rdfs:isDefinedBy>
+      <rdfs:comment>Description of the kind of variation between full and abbreviated forms.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LexicalRelation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+
   
   <!-- ======================================================
      || DISCOURSE AND STYLE FEATURES     ||
@@ -10835,6 +11860,20 @@ Words such as fully and completely are absolutes and do not receive -EXT.
    </owl:Class>
 
    <!-- Usage/Frequency -->
+   <owl:Class rdf:ID="Impossible">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1866</rdfs:isDefinedBy>
+      <rdfs:comment>to denote something that cannot be considered as being correct in a given language</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+      </rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:ID="Possible">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1865</rdfs:isDefinedBy>
+      <rdfs:comment>Value that denotes a linguistic situation considered as being correct in the given language</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+      </rdfs:subClassOf>
+	</owl:Class>
    <owl:Class rdf:about="http://purl.org/olia/olia.owl#RarelyUsed">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1986"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1986</owl:versionInfo>
@@ -10844,7 +11883,7 @@ Words such as fully and completely are absolutes and do not receive -EXT.
                             </rdfs:comment>
       <rdfs:label>rarely used</rdfs:label>
       <rdfs:subClassOf>
-         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#Possible"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf frequency (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
@@ -10857,7 +11896,7 @@ Words such as fully and completely are absolutes and do not receive -EXT.
                             </rdfs:comment>
       <rdfs:label>commonly used</rdfs:label>
       <rdfs:subClassOf>
-         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+         <owl:Class rdf:about="#Possible"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf frequency (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
@@ -10870,10 +11909,27 @@ Words such as fully and completely are absolutes and do not receive -EXT.
                             </rdfs:comment>
       <rdfs:label>infrequently used</rdfs:label>
       <rdfs:subClassOf>
-         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+         <owl:Class rdf:about="#Possible"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf frequency (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
+   
+   <owl:Class rdf:ID="ContextualVariation">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1977</rdfs:isDefinedBy>
+      <rdfs:comment>Variation on a particular usage or immediate proximity of words.</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#Possible"/>
+      </rdfs:subClassOf>
+	</owl:Class>
+   
+   <owl:Class rdf:ID="TemporallyDefinedUsage">
+		<rdfs:label>dating</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1959</rdfs:isDefinedBy>
+      <rdfs:comment>Indication specifying whether the usage is old or modern.</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#Possible"/>
+      </rdfs:subClassOf>
+	</owl:Class>
    <owl:Class rdf:about="http://purl.org/olia/olia.owl#ModernUsage">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1962"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1962 (modern)</owl:versionInfo>
@@ -10883,7 +11939,7 @@ Words such as fully and completely are absolutes and do not receive -EXT.
                             </rdfs:comment>
       <rdfs:label>modern</rdfs:label>
       <rdfs:subClassOf>
-         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+         <owl:Class rdf:about="#TemporallyDefinedUsage"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf dating (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
@@ -10896,7 +11952,7 @@ Words such as fully and completely are absolutes and do not receive -EXT.
                             </rdfs:comment>
       <rdfs:label>old</rdfs:label>
 	  <rdfs:subClassOf>
-         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+         <owl:Class rdf:about="#TemporallyDefinedUsage"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf dating (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
@@ -10909,7 +11965,7 @@ Words such as fully and completely are absolutes and do not receive -EXT.
                             </rdfs:comment>
       <rdfs:label>geographical variant</rdfs:label>
 	  <rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+		<owl:Class rdf:about="#Possible"/>
 </rdfs:subClassOf>
    </owl:Class>
    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Honorific">
@@ -10921,7 +11977,7 @@ Words such as fully and completely are absolutes and do not receive -EXT.
                             </rdfs:comment>
       <rdfs:label>honorific</rdfs:label>
 	  <rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+		<owl:Class rdf:about="#Possible"/>
 </rdfs:subClassOf>
    </owl:Class>
    
