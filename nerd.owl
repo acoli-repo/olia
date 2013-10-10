@@ -1,0 +1,902 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY wikimeta "http://www.wikimeta.com#" >
+    <!ENTITY dbpedia "http://dbpedia.org/ontology/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY nerd "http://nerd.eurecom.fr/ontology#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY saplo "http://developer.saplo.com/method/text-tags#" >
+    <!ENTITY zemanta "http://developer.zemanta.com/docs/entity_type/" >
+    <!ENTITY alchemyapi "http://www.alchemyapi.com/api/entity/types.html#" >
+    <!ENTITY semitags "http://ner2.lmcloud.vse.cz/SemiTags/app/static/types#" >
+    <!ENTITY extractiv "http://wiki.extractiv.com/w/page/29179775/Entity-Extraction#" >
+    <!ENTITY yahoo "http://developer.yahoo.com/search/content/V2/contentAnalysis.html#" >
+    <!ENTITY opencalais "http://www.opencalais.com/documentation/calais-web-service-api/api-metadata/entity-index-and-definitions#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:extractiv="http://wiki.extractiv.com/w/page/29179775/Entity-Extraction#"
+     xmlns:zemanta="http://developer.zemanta.com/docs/entity_type/"
+     xmlns:nerd="http://nerd.eurecom.fr/ontology#"
+     xmlns:yahoo="http://developer.yahoo.com/search/content/V2/contentAnalysis.html#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:semitags="http://ner2.lmcloud.vse.cz/SemiTags/app/static/types#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:saplo="http://developer.saplo.com/method/text-tags#"
+     xmlns:opencalais="http://www.opencalais.com/documentation/calais-web-service-api/api-metadata/entity-index-and-definitions#"
+     xmlns:alchemyapi="http://www.alchemyapi.com/api/entity/types.html#"
+     xmlns:dbpedia="http://dbpedia.org/ontology/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:wikimeta="http://www.wikimeta.com#">
+    <Ontology rdf:about="http://nerd.eurecom.fr/ontology">
+        <imports rdf:resource="http://www.wikimeta.com"/>
+        <imports rdf:resource="http://dbpedia.org/ontology/"/>
+        <imports rdf:resource="http://developer.saplo.com/method/text-tags"/>
+        <imports rdf:resource="http://developer.yahoo.com/search/content/V2/contentAnalysis.html"/>
+        <imports rdf:resource="http://developer.zemanta.com/docs/entity_type/"/>
+        <imports rdf:resource="http://ner2.lmcloud.vse.cz/SemiTags/app/static/types"/>
+        <imports rdf:resource="http://wiki.extractiv.com/w/page/29179775/Entity-Extraction"/>
+        <imports rdf:resource="http://www.alchemyapi.com/api/entity/types.html"/>
+        <imports rdf:resource="http://www.opencalais.com/documentation/calais-web-service-api/api-metadata/entity-index-and-definitions"/>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->  
+    <!-- http://nerd.eurecom.fr/ontology#AdministrativeRegion -->
+
+    <Class rdf:about="&nerd;AdministrativeRegion">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;AdministrativeDivision"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;GovernmentalJurisdiction"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Aircraft -->
+
+    <Class rdf:about="&nerd;Aircraft">
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;AIRCRAFT"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Airline -->
+
+    <Class rdf:about="&nerd;Airline">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;AIRLINE"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Airport -->
+
+    <Class rdf:about="&nerd;Airport">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;AIRPORT"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Airport"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Album -->
+
+    <Class rdf:about="&nerd;Album">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Album"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;album"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Ambassador -->
+
+    <Class rdf:about="&nerd;Ambassador">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;AMBASSADOR"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Amount -->
+
+    <Class rdf:about="&nerd;Amount">
+        <equivalentClass rdf:resource="&wikimeta;AMOUNT"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Animal -->
+
+    <Class rdf:about="&nerd;Animal">
+        <equivalentClass rdf:resource="&dbpedia;Animal"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Architect -->
+
+    <Class rdf:about="&nerd;Architect">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Artist -->
+
+    <Class rdf:about="&nerd;Artist">
+        <rdfs:subClassOf rdf:resource="&zemanta;artist"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Astronaut -->
+
+    <Class rdf:about="&nerd;Astronaut">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Athlete -->
+
+    <Class rdf:about="&nerd;Athlete">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;ATHLETE"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Automobile -->
+
+    <Class rdf:about="&nerd;Automobile">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Automobile"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;AUTOMOBILE_MODEL"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Automobile"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Band -->
+
+    <Class rdf:about="&nerd;Band">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;BAND"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;MusicGroup"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;MusicGroup"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Bird -->
+
+    <Class rdf:about="&nerd;Bird">
+        <rdfs:subClassOf rdf:resource="&nerd;Animal"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;BIRD"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Book -->
+
+    <Class rdf:about="&nerd;Book">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Book"/>
+        <rdfs:subClassOf rdf:resource="&yahoo;book"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;book"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Bridge -->
+
+    <Class rdf:about="&nerd;Bridge">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;BRIDGE"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Bridge"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Broadcast -->
+
+    <Class rdf:about="&nerd;Broadcast">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Canal -->
+
+    <Class rdf:about="&nerd;Canal">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;CANAL"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Celebrity -->
+
+    <Class rdf:about="&nerd;Celebrity">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#City -->
+
+    <Class rdf:about="&nerd;City">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;CITY"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;City"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#ComicsCharacter -->
+
+    <Class rdf:about="&nerd;ComicsCharacter">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Company -->
+
+    <Class rdf:about="&nerd;Company">
+        <rdfs:subClassOf rdf:resource="&yahoo;company_name"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;company"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;Company"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Continent -->
+
+    <Class rdf:about="&nerd;Continent">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;CONTINENT"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Continent"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;Continent"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Country -->
+
+    <Class rdf:about="&nerd;Country">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;COUNTRY"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Country"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;Country"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Criminal -->
+
+    <Class rdf:about="&nerd;Criminal">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;CRIMINAL"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Drug -->
+
+    <Class rdf:about="&nerd;Drug">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Drug"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;DRUG"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Drug"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#EducationalInstitution -->
+
+    <Class rdf:about="&nerd;EducationalInstitution">
+        <rdfs:subClassOf rdf:resource="&zemanta;educational_institution"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;EDUCATIONAL_ORG"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#EmailAddress -->
+
+    <Class rdf:about="&nerd;EmailAddress">
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;EMAIL"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Event -->
+
+    <Class rdf:about="&nerd;Event">
+        <rdfs:subClassOf rdf:resource="&zemanta;event"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#FictionalCharacter -->
+
+    <Class rdf:about="&nerd;FictionalCharacter">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Function -->
+
+    <Class rdf:about="&nerd;Function">
+        <equivalentClass rdf:resource="&dbpedia;PersonFunction"/>
+        <equivalentClass rdf:resource="&opencalais;Position"/>
+        <equivalentClass rdf:resource="&wikimeta;FONC"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Holiday -->
+
+    <Class rdf:about="&nerd;Holiday">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Holiday"/>
+        <rdfs:subClassOf rdf:resource="&yahoo;holiday"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Time"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Holiday"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;Holiday"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Hospital -->
+
+    <Class rdf:about="&nerd;Hospital">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Hospital"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Insect -->
+
+    <Class rdf:about="&nerd;Insect">
+        <rdfs:subClassOf rdf:resource="&nerd;Animal"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;INSECT"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Island -->
+
+    <Class rdf:about="&nerd;Island">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;ISLAND"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Island"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Lake -->
+
+    <Class rdf:about="&nerd;Lake">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;LAKE"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Lake"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Legislature -->
+
+    <Class rdf:about="&nerd;Legislature">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Lighthouse -->
+
+    <Class rdf:about="&nerd;Lighthouse">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Lighthouse"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Location -->
+
+    <Class rdf:about="&nerd;Location">
+        <equivalentClass rdf:resource="&dbpedia;Place"/>
+        <equivalentClass rdf:resource="&extractiv;LOCATION"/>
+        <equivalentClass rdf:resource="&saplo;Location"/>
+        <equivalentClass rdf:resource="&semitags;location"/>
+        <equivalentClass rdf:resource="&wikimeta;LOC"/>
+        <equivalentClass rdf:resource="&yahoo;location"/>
+        <equivalentClass rdf:resource="&yahoo;place"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Magazine -->
+
+    <Class rdf:about="&nerd;Magazine">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Magazine"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;MAGAZINE"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Magazine"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Mayor -->
+
+    <Class rdf:about="&nerd;Mayor">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#MilitaryConflict -->
+
+    <Class rdf:about="&nerd;MilitaryConflict">
+        <rdfs:subClassOf rdf:resource="&dbpedia;MilitaryConflict"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Event"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;CONFLICT"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Mountain -->
+
+    <Class rdf:about="&nerd;Mountain">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;MOUNTAIN"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Mountain"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Movie -->
+
+    <Class rdf:about="&nerd;Movie">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Film"/>
+        <rdfs:subClassOf rdf:resource="&yahoo;movie_name"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;film"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;MOVIE"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Movie"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;Movie"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Museum -->
+
+    <Class rdf:about="&nerd;Museum">
+        <rdfs:subClassOf rdf:resource="&zemanta;museum"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#MusicalArtist -->
+
+    <Class rdf:about="&nerd;MusicalArtist">
+        <rdfs:subClassOf rdf:resource="&yahoo;music_artist"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Newspaper -->
+
+    <Class rdf:about="&nerd;Newspaper">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Newspaper"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;newspaper"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Newspaper"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#NonProfitOrganization -->
+
+    <Class rdf:about="&nerd;NonProfitOrganization">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#OperatingSystem -->
+
+    <Class rdf:about="&nerd;OperatingSystem">
+        <rdfs:subClassOf rdf:resource="&zemanta;operating_system"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;OPERATING_SYSTEM"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;OperatingSystem"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;OperatingSystem"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Organization -->
+
+    <Class rdf:about="&nerd;Organization">
+        <equivalentClass rdf:resource="&alchemyapi;Organization"/>
+        <equivalentClass rdf:resource="&dbpedia;Organisation"/>
+        <equivalentClass rdf:resource="&extractiv;ORGANIZATION"/>
+        <equivalentClass rdf:resource="&opencalais;Organization"/>
+        <equivalentClass rdf:resource="&saplo;Organization"/>
+        <equivalentClass rdf:resource="&semitags;organization"/>
+        <equivalentClass rdf:resource="&wikimeta;ORG"/>
+        <equivalentClass rdf:resource="&yahoo;organization"/>
+        <equivalentClass rdf:resource="&zemanta;organization"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Park -->
+
+    <Class rdf:about="&nerd;Park">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Park"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Person -->
+
+    <Class rdf:about="&nerd;Person">
+        <equivalentClass rdf:resource="&alchemyapi;Person"/>
+        <equivalentClass rdf:resource="&dbpedia;Person"/>
+        <equivalentClass rdf:resource="&extractiv;PERSON"/>
+        <equivalentClass rdf:resource="&opencalais;Person"/>
+        <equivalentClass rdf:resource="&saplo;Person"/>
+        <equivalentClass rdf:resource="&semitags;person"/>
+        <equivalentClass rdf:resource="&wikimeta;PERS"/>
+        <equivalentClass rdf:resource="&yahoo;person"/>
+        <equivalentClass rdf:resource="&zemanta;person"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#PhoneNumber -->
+
+    <Class rdf:about="&nerd;PhoneNumber">
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;PHONE_NUMBER"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;PhoneNumber"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#PoliticalEvent -->
+
+    <Class rdf:about="&nerd;PoliticalEvent">
+        <rdfs:subClassOf rdf:resource="&zemanta;political_party"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Event"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;PoliticalParty"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;PoliticalEvent"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Politician -->
+
+    <Class rdf:about="&nerd;Politician">
+        <rdfs:subClassOf rdf:resource="&zemanta;politician"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Product -->
+
+    <Class rdf:about="&nerd;Product">
+        <equivalentClass rdf:resource="&opencalais;Product"/>
+        <equivalentClass rdf:resource="&wikimeta;PROD"/>
+        <equivalentClass rdf:resource="&yahoo;product"/>
+        <equivalentClass rdf:resource="&zemanta;consumer_product"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#ProgrammingLanguage -->
+
+    <Class rdf:about="&nerd;ProgrammingLanguage">
+        <rdfs:subClassOf rdf:resource="&dbpedia;ProgrammingLanguage"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;programming_language"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;ProgrammingLanguage"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#RadioProgram -->
+
+    <Class rdf:about="&nerd;RadioProgram">
+        <rdfs:subClassOf rdf:resource="&zemanta;radio_program"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;RadioProgram"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;RadioProgram"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#RadioStation -->
+
+    <Class rdf:about="&nerd;RadioStation">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;RADIO_STATION"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;RadioStation"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;RadioStation"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Restaurant -->
+
+    <Class rdf:about="&nerd;Restaurant">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Restaurant"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#River -->
+
+    <Class rdf:about="&nerd;River">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;RIVER"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;River"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Road -->
+
+    <Class rdf:about="&nerd;Road">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;ROAD"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#SchoolNewspaper -->
+
+    <Class rdf:about="&nerd;SchoolNewspaper">
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;SchoolNewspaper"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#ShoppingMall -->
+
+    <Class rdf:about="&nerd;ShoppingMall">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;ShoppingMall"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#SoccerClub -->
+
+    <Class rdf:about="&nerd;SoccerClub">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#SoccerPlayer -->
+
+    <Class rdf:about="&nerd;SoccerPlayer">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Software -->
+
+    <Class rdf:about="&nerd;Software">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Software"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;software"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;SOFTWARE"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Song -->
+
+    <Class rdf:about="&nerd;Song">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Song"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;track"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Spacecraft -->
+
+    <Class rdf:about="&nerd;Spacecraft">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Spacecraft"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;SPACECRAFT"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#SportEvent -->
+
+    <Class rdf:about="&nerd;SportEvent">
+        <rdfs:subClassOf rdf:resource="&dbpedia;SportsEvent"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Event"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;SportsEvent"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#SportsLeague -->
+
+    <Class rdf:about="&nerd;SportsLeague">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;SPORTS_LEAGUE"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;SportsLeague"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#SportsTeam -->
+
+    <Class rdf:about="&nerd;SportsTeam">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;SPORTS_TEAM"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Stadium -->
+
+    <Class rdf:about="&nerd;Stadium">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Stadium"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Station -->
+
+    <Class rdf:about="&nerd;Station">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&alchemyapi;Station"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#TVStation -->
+
+    <Class rdf:about="&nerd;TVStation">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;TV_NETWORK"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;TVStation"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#TennisPlayer -->
+
+    <Class rdf:about="&nerd;TennisPlayer">
+        <rdfs:subClassOf rdf:resource="&nerd;Person"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Thing -->
+
+    <Class rdf:about="&nerd;Thing"/>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Time -->
+
+    <Class rdf:about="&nerd;Time">
+        <equivalentClass rdf:resource="&extractiv;TIME"/>
+        <equivalentClass rdf:resource="&wikimeta;TIME"/>
+        <equivalentClass rdf:resource="&zemanta;time"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#URL -->
+
+    <Class rdf:about="&nerd;URL">
+        <rdfs:subClassOf rdf:resource="&saplo;URL"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;URL"/>
+        <rdfs:subClassOf rdf:resource="&opencalais;URL"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#University -->
+
+    <Class rdf:about="&nerd;University">
+        <rdfs:subClassOf rdf:resource="&nerd;Organization"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;UNIVERSITY"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Valley -->
+
+    <Class rdf:about="&nerd;Valley">
+        <rdfs:subClassOf rdf:resource="&nerd;Location"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;VALLEY"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#VideoGame -->
+
+    <Class rdf:about="&nerd;VideoGame">
+        <rdfs:subClassOf rdf:resource="&dbpedia;VideoGame"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;computer_videogame"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;VIDEO_GAME"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Weapon -->
+
+    <Class rdf:about="&nerd;Weapon">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Weapon"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+        <rdfs:subClassOf rdf:resource="&extractiv;WEAPON"/>
+    </Class>
+    
+
+
+    <!-- http://nerd.eurecom.fr/ontology#Website -->
+
+    <Class rdf:about="&nerd;Website">
+        <rdfs:subClassOf rdf:resource="&dbpedia;Website"/>
+        <rdfs:subClassOf rdf:resource="&zemanta;website"/>
+        <rdfs:subClassOf rdf:resource="&nerd;Product"/>
+    </Class>
+</rdf:RDF>
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
