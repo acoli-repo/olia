@@ -24,23 +24,23 @@ nerd:Person a rdfs:Class ;
   owl:equivalentClass alchemy:Person ; 
   owl:equivalentClass opencalais:Person ; 
   owl:equivalentClass extractiv:PERSON ; 
-  
+
 nerd:Organization a rdfs:Class ;
   owl:equivalentClass dbpedia-owl:Organisation ;   
   owl:equivalentClass alchemy:Organization ;
   owl:equivalentClass opencalais:Organization ;
   owl:equivalentClass extractiv:ORGANIZATION ;
   owl:equivalentClass zemanta:organization ;
-  
+
 nerd:Device a rdfs:Class ;
   owl:equivalentClass dbpedia-owl:Device ; 
-  
+
 nerd:Biology a rdfs:Class ;  
   owl:equivalentClass zemanta:biology;
-  
+
 nerd:AnatomicalStructure a rdfs:Class ;
   owl:equivalentClass dbpedia-owl:AnatomicalStructure ;   
-  
+
 nerd:ChemicalCompound a rdfs:Class ;
   owl:equivalentClass dbpedia-owl:ChemicalCompound ;
 
@@ -66,7 +66,7 @@ nerd:Drug a rdfs:Class ;
   owl:equivalentClass dbpedia-owl:Drug ;
   owl:equivalentClass alchemy:Drug ; 
   owl:equivalentClass extractiv:Drug ; 
-   
+
 nerd:Activity a rdfs:Class ;
   owl:equivalentClass dbpedia-owl:Activity ;   
   
@@ -101,7 +101,7 @@ nerd:NaturalFeature a rdfs:Class ;
   
 nerd:GeographicFeature a rdfs:Class ;
   owl:equivalentClass alchemy:GeographicFeature;
-  
+
 nerd:MeanOfTransportation a rdfs:Class ;
   owl:equivalentClass dbpedia-owl:MeanOfTransportation ; 
   owl:equivalentClass extractiv:VEHICLE ;   
@@ -189,6 +189,7 @@ nerd:MedicalSympton a rdfs:Class ;
   owl:equivalentClass extractiv:MEDICAL_SYMPTON ; 
 
 nerd:Product a rdfs:Class ;
+  owl:equivalentClass alchemy:Product ;
   owl:equivalentClass opencalais:Product ;  
   owl:equivalentClass zemanta:consumer_product ;  
 
@@ -382,6 +383,7 @@ nerd:Amphibian a rdfs:Class ;
 nerd:Bird a rdfs:Class ;
   rdfs:subClassOf nerd:Animal ;  
   owl:equivalentClass dbpedia-owl:Bird ;   
+  owl:equivalentClass extractiv:BIRD ;   
 
 nerd:Mollusca a rdfs:Class ;
   rdfs:subClassOf nerd:Animal ;  
@@ -394,6 +396,7 @@ nerd:Reptile a rdfs:Class ;
 nerd:Insect a rdfs:Class ;
   rdfs:subClassOf nerd:Animal ;  
   owl:equivalentClass dbpedia-owl:Insect ; 
+  owl:equivalentClass extractiv:INSECT ; 
 
 nerd:Fish a rdfs:Class ;
   rdfs:subClassOf nerd:Animal ;  
@@ -530,19 +533,23 @@ nerd:Island a rdfs:Class ;
   owl:equivalentClass dbpedia-owl:Island ;  
   owl:equivalentClass extractiv:ISLAND ;  
 
-nerd:PoliticalDistrict a rdfs:Class ;
+nerd:StateOrCounty a rdfs:Class ;
   rdfs:subClassOf nerd:PopulatedPlace ;   
-  owl:equivalentClass alchemy:PoliticalDistrict ;
-  owl:equivalentClass opencalais:ProvinceOrState ;
+  owl:equivalentClass alchemy:StateOrCounty ;
   owl:equivalentClass extractiv:COUNTY ;
 
+nerd:PoliticalDistrict a rdfs:Class ;
+  rdfs:subClassOf nerd:StateOrCounty ; 
+  owl:equivalentClass alchemy:PoliticalDistrict ;
+  owl:equivalentClass opencalais:ProvinceOrState ;
+
 nerd:AdministrativeRegion a rdfs:Class ;
-  rdfs:subClassOf nerd:PopulatedPlace ;  
+  rdfs:subClassOf nerd:StateOrCounty ;  
   owl:equivalentClass dbpedia-owl:AdministrativeRegion ;  
   owl:equivalentClass alchemy:AdministrativeDivision ;  
 
 nerd:GovernmentalJurisdiction a rdfs:Class ;
-  rdfs:subClassOf nerd:PopulatedPlace ;  
+  rdfs:subClassOf nerd:StateOrCounty ;  
   owl:equivalentClass alchemy:GovernmentalJurisdiction ;   
    
 nerd:Skyscraper a rdfs:Class ;
@@ -1629,7 +1636,7 @@ nerd:Government a rdfs:Class ;
 
 nerd:Not-Government a rdfs:Class ;
   rdfs:subClassOf nerd:Organization ;  
-  owl:equivalentClass alchemy:NON_GOVERNMENT_ORG ;
+  owl:equivalentClass extractiv:NON_GOVERNMENT_ORG ;
   
 nerd:GovernmentAgency a rdfs:Class ;
   rdfs:subClassOf nerd:Government ;  
@@ -1675,8 +1682,9 @@ nerd:RadioStation a rdfs:Class ;
   
 nerd:Broadcast a rdfs:Class ;
   rdfs:subClassOf nerd:Organization ;  
-  owl:equivalentClass dbpedia-owl:Broadcast ;   
-  owl:equivalentClass zemanta:Broadcast ;   
+  owl:equivalentClass dbpedia-owl:Broadcast ;  
+  owl:equivalentClass extractiv:BROADCAST ;  
+  owl:equivalentClass zemanta:Broadcast ; 
   
 nerd:Band a rdfs:Class ;
   rdfs:subClassOf nerd:Organization ;  
@@ -2555,3 +2563,7 @@ nerd:FTP a rdfs:Class ;
 nerd:HTTP a rdfs:Class ;  
   rdfs:subClassOf nerd:Internet ;
   owl:equivalentClass extractiv:HTTP ;  
+  
+nerd:Misc a rdfs:Class ;
+  rdfs:subClassOf extractiv:LINKED_OTHER ;
+  
