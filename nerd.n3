@@ -8,86 +8,2550 @@
 @prefix zemanta: <http://developer.zemanta.com/docs/entity_type/> .
 @prefix nerd: <http://semantics.eurecom.fr/nerd/ontology#> .
 
-nerd:Continent a rdfs:Class ;  
-  rdfs:subClassOf zemanta:location ;
-  owl:equivalentClass alchemy:Continent ;
-  owl:equivalentClass dbpedia-owl:Continent ;
-  owl:equivalentClass extractiv:CONTINENT ;
-  owl:equivalentClass opencalais:Continent .
+############## NERD CORE AXIOMS ##############
+nerd:Species a rdfs:Class ;
+  rdfs:subClassOf nerd:Biology ;  
+  owl:equivalentClass dbpedia-owl:Species ;
+  owl:equivalentClass zemanta:organism_classification;
+  
+nerd:Place a rdfs:Class ;  
+  owl:equivalentClass dbpedia-owl:Place ;
+  owl:equivalentClass extractiv:LOCATION ;
+  owl:equivalentClass zemanta:location ;
 
+nerd:Person a rdfs:Class ;  
+  owl:equivalentClass dbpedia-owl:Person ; 
+  owl:equivalentClass alchemy:Person ; 
+  owl:equivalentClass opencalais:Person ; 
+  owl:equivalentClass extractiv:PERSON ; 
+  
+nerd:Organization a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Organisation ;   
+  owl:equivalentClass alchemy:Organization ;
+  owl:equivalentClass opencalais:Organization ;
+  owl:equivalentClass extractiv:ORGANIZATION ;
+  owl:equivalentClass zemanta:organization ;
+  
+nerd:Device a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Device ; 
+  
+nerd:Biology a rdfs:Class ;  
+  owl:equivalentClass zemanta:biology;
+  
+nerd:AnatomicalStructure a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:AnatomicalStructure ;   
+  
+nerd:ChemicalCompound a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:ChemicalCompound ;
+
+nerd:Event a rdfs:Class ;
+  rdfs:subClassOf nerd:Time ;
+  owl:equivalentClass dbpedia-owl:Event ;
+
+nerd:Work a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Work ;
+  owl:equivalentClass opencalais:Position ;
+
+nerd:Award a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Award ;
+
+nerd:Infrastructure a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Infrastructure ;  
+
+nerd:Currency a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Currency ; 
+  owl:equivalentClass opencalais:Currency ; 
+
+nerd:Drug a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Drug ;
+  owl:equivalentClass alchemy:Drug ; 
+  owl:equivalentClass extractiv:Drug ; 
+   
+nerd:Activity a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Activity ;   
+  
+nerd:Language a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Language ;
+  
+nerd:MusicGenre a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:MusicGenre ;        
+  owl:equivalentClass extractiv:MUSIC_GENRE ;
+
+nerd:EthnicGroup a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:EthnicGroup ;
+  owl:equivalentClass zemanta:people ;
+  
+nerd:PersonFunction a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:PersonFunction ;  
+  
+nerd:SupremeCourtOfTheUnitedStatesCase a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:SupremeCourtOfTheUnitedStatesCase ;
+
+nerd:Sales a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Sales ;
+
+nerd:Protein a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Protein ;  
+
+nerd:Beverage a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Beverage ;    
+
+nerd:NaturalFeature a rdfs:Class ;  
+  owl:equivalentClass opencalais:NaturalFeature ;
+  
+nerd:GeographicFeature a rdfs:Class ;
+  owl:equivalentClass alchemy:GeographicFeature;
+  
+nerd:MeanOfTransportation a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:MeanOfTransportation ; 
+  owl:equivalentClass extractiv:VEHICLE ;   
+  
+nerd:Planet a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Planet ;  
+  
+nerd:Colour a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:Colour ;
+  owl:equivalentClass extractiv:COLOUR ;
+  
+nerd:FieldTerminology a rdfs:Class ;
+  owl:equivalentClass alchemy:FieldTerminology ;    
+  owl:equivalentClass opencalais:IndustryTerm ;  
+
+nerd:Algorithm a rdfs:Class ;  
+  owl:equivalentClass extractiv:ALGORITHM ;  
+  
+nerd:FinancialMarketIndex a rdfs:Class ;
+  owl:equivalentClass alchemy:FinancialMarketIndex ;  
+  owl:equivalentClass opencalais:MarketIndex ;  
+  
+nerd:HealthCondition a rdfs:Class ;
+  owl:equivalentClass alchemy:HealthCondition ;
+  
+nerd:Holiday a rdfs:Class ;
+  owl:equivalentClass alchemy:Holiday ;
+  owl:equivalentClass opencalais:Holiday ;
+  owl:equivalentClass extractiv:HOLIDAY ;
+  
+nerd:OperatingSystem a rdfs:Class ;
+  owl:equivalentClass alchemy:OperatingSystem ; 
+  owl:equivalentClass opencalais:OperatingSystem ;
+  owl:equivalentClass extractiv:OPERATING_SYSTEM ;
+  owl:equivalentClass zemanta:operating_system ;
+    
+nerd:PrintMedia a rdfs:Class ;
+  owl:equivalentClass alchemy:PrintMedia ; 
+  owl:equivalentClass opencalais:PublishedMedium ;
+  
+nerd:RadioProgram a rdfs:Class ;
+  owl:equivalentClass alchemy:RadioProgram ;
+  owl:equivalentClass opencalais:RadioProgram ;
+  owl:equivalentClass zemanta:radio_program ;
+
+nerd:Sport a rdfs:Class ;
+  owl:equivalentClass alchemy:Sport ;  
+  
+nerd:Technology a rdfs:Class ;
+  owl:equivalentClass alchemy:Technology ;
+  owl:equivalentClass opencalais:Technology ;
+   
+nerd:PersonalInformation a rdfs:Class ;
+
+nerd:Age a rdfs:Class ;
+  rdfs:subClassOf nerd:PersonalInformation;
+  owl:equivalentClass extractiv:AGE;
+
+nerd:Address a rdfs:Class ;
+  rdfs:subClassOf nerd:PersonalInformation;
+  owl:equivalentClass extractiv:ADDRESS;
+
+nerd:EmailAddress a rdfs:Class ;
+  rdfs:subClassOf nerd:PersonalInformation ;
+  owl:equivalentClass opencalais:EmailAddress ;
+  owl:equivalentClass extractiv:EMAIL ;
+
+nerd:FaxNumber a rdfs:Class ;
+  rdfs:subClassOf nerd:PersonalInformation ;
+  owl:equivalentClass opencalais:FaxNumber ;
+  
+nerd:PhoneNumber a rdfs:Class ;
+  rdfs:subClassOf nerd:PersonalInformation ;
+  owl:equivalentClass opencalais:PhoneNumber ;
+  owl:equivalentClass extractiv:PHONE_NUMBER ;
+
+nerd:MedicalCondition a rdfs:Class ;
+  owl:equivalentClass opencalais:MedicalCondition ;  
+
+nerd:MedicalTreatment a rdfs:Class ;
+  owl:equivalentClass opencalais:MedicalTreatment ;  
+  owl:equivalentClass extractiv:MEDICAL_TREATMENT ;  
+    
+nerd:MedicalSympton a rdfs:Class ;
+  owl:equivalentClass extractiv:MEDICAL_SYMPTON ; 
+
+nerd:Product a rdfs:Class ;
+  owl:equivalentClass opencalais:Product ;  
+  owl:equivalentClass zemanta:consumer_product ;  
+
+nerd:ProgrammingLanguage a rdfs:Class ;
+  owl:equivalentClass opencalais:ProgrammingLanguage ;  
+  owl:equivalentClass extractiv:PROGRAMMING_LANGUAGE ;  
+  owl:equivalentClass zemanta:programming_language ;  
+  
+nerd:SportsGame a rdfs:Class ;
+  owl:equivalentClass opencalais:SportsGame ;  
+
+nerd:SportsTeamOwner a rdfs:Class ;
+  owl:equivalentClass extractiv:SPORTS_TEAM_OWNER ;  
+    
+nerd:Century a rdfs:Class ;
+  owl:equivalentClass extractiv:CENTURY ;  
+  
+nerd:Clothing a rdfs:Class ;
+  owl:equivalentClass extractiv:CLOTHING ;  
+  
+nerd:Crime a rdfs:Class ;
+  owl:equivalentClass extractiv:CRIME ;
+  
+nerd:Date a rdfs:Class ;
+  owl:equivalentClass extractiv:DATE ;
+
+nerd:DateRange a rdfs:Class ;
+  owl:equivalentClass extractiv:DATE_RANGE ;
+
+nerd:DayName a rdfs:Class ;
+  owl:equivalentClass extractiv:DAY_NAME ;
+  
+nerd:DayOfMonth a rdfs:Class ;
+  owl:equivalentClass extractiv:DAY_OF_MONTH ;
+  
+nerd:Decade a rdfs:Class ;
+  owl:equivalentClass extractiv:DECADE ;
+ 
+nerd:Duration a rdfs:Class ;
+  owl:equivalentClass extractiv:DURATION ;
+
+nerd:Explosive a rdfs:Class ;
+  owl:equivalentClass extractiv:EXPLOSIVE ;
+
+nerd:Fruit a rdfs:Class ;
+  owl:equivalentClass extractiv:FRUIT ;
+  
+nerd:Hemisphere a rdfs:Class ;
+  owl:equivalentClass extractiv:HEMISPHERE ;
+  
+nerd:Illness a rdfs:Class ;
+  owl:equivalentClass extractiv:ILLNESS ;
+  
+nerd:Lenght a rdfs:Class ;
+  owl:equivalentClass extractiv:LENGTH ;
+  
+nerd:Mass a rdfs:Class ;
+  owl:equivalentClass extractiv:MASS ;
+  
+nerd:Missile a rdfs:Class ;
+  owl:equivalentClass extractiv:MISSILE ;
+  
+nerd:MonetaryAmount a rdfs:Class ;
+  owl:equivalentClass extractiv:MONETARY_AMOUNT ;
+  
+nerd:MoneyRange rdfs:Class ;
+  owl:equivalentClass extractiv:MONEY_RANGE ;
+
+nerd:MonthName rdfs:Class ;
+  owl:equivalentClass extractiv:MONTH_NAME ; 
+
+nerd:MonthOfYear rdfs:Class ;
+  owl:equivalentClass extractiv:MONTH_OF_YEAR ; 
+
+nerd:Nationality rdfs:Class ;
+  owl:equivalentClass extractiv:NATIONALITY ;
+  
+nerd:Number rdfs:Class ;
+  owl:equivalentClass extractiv:NUMBER ;
+  
+nerd:NumberRange rdfs:Class ;
+  owl:equivalentClass extractiv:NUMBER_RANGE ;
+
+nerd:Ordinal rdfs:Class ;
+  owl:equivalentClass extractiv:ORDINAL ;
+
+nerd:Percent rdfs:Class ;
+  owl:equivalentClass extractiv:PERCENT ;
+  
+nerd:Protest rdfs:Class ;
+  owl:equivalentClass extractiv:PROTEST ;  
+  
+nerd:Protest rdfs:Class ;
+  owl:equivalentClass extractiv:REEF ;
+  
+nerd:RelativeDate rdfs:Class ;
+  owl:equivalentClass extractiv:RELATIVE_DATE ;
+  
+nerd:Religion rdfs:Class ;
+  owl:equivalentClass extractiv:RELIGION ;
+
+nerd:Season rdfs:Class ;
+  owl:equivalentClass extractiv:SEASON ;
+
+nerd:StockExchange rdfs:Class ;
+  owl:equivalentClass extractiv:STOCK_EXCHANGE ;
+  
+nerd:StockMarketIndex rdfs:Class ;
+  owl:equivalentClass extractiv:STOCK_MARKET_INDEX ;
+
+nerd:Temperature rdfs:Class ;
+  owl:equivalentClass extractiv:TEMPERATURE ;
+  
+nerd:Time rdfs:Class ;
+  owl:equivalentClass extractiv:TIME ;
+  owl:equivalentClass zemanta:time ;
+
+nerd:Velocity rdfs:Class ;
+  owl:equivalentClass extractiv:VELOCITY ;
+  
+nerd:Virus rdfs:Class ;
+  owl:equivalentClass extractiv:VIRUS ;
+  
+nerd:Volume rdfs:Class ;
+  owl:equivalentClass extractiv:VOLUME ;
+  
+nerd:WebBrowser rdfs:Class ;
+  owl:equivalentClass extractiv:WEB_BROWSER ;
+
+nerd:Year rdfs:Class ;
+  owl:equivalentClass extractiv:YEAR ;
+  
+nerd:YearRange rdfs:Class ;
+  owl:equivalentClass extractiv:YEAR_RANGE ;
+  
+nerd:Architecture rdfs:Class ;
+  owl:equivalentClass zemanta:architecture ;
+  
+nerd:PodcastFeed a rdfs:Class ;
+  owl:equivalentClass zemanta:podcast_feed ;  
+  
+nerd:Business a rdfs:Class ;
+  owl:equivalentClass zemanta:business ;  
+  
+nerd:Computer a rdfs:Class ;
+  owl:equivalentClass zemanta:computer ;
+  
+nerd:Food a rdfs:Class ;
+  owl:equivalentClass zemanta:food ;
+
+nerd:Internet a rdfs:Class ;
+  owl:equivalentClass zemanta:internet ; 
+  
+nerd:Music a rdfs:Class ;
+  owl:equivalentClass zemanta:music ;
+  
+nerd:Travel a rdfs:Class ;
+  owl:equivalentClass zemanta:travel ;  
+   
+nerd:TV a rdfs:Class ;
+  owl:equivalentClass zemanta:tv ;
+
+nerd:Wine a rdfs:Class ;
+  owl:equivalentClass zemanta:wine ;
+      
+############## NERD INFERRED AXIOMS ##############
+nerd:Eukaryote a rdfs:Class ;
+  rdfs:subClassOf nerd:Species ;  
+  owl:equivalentClass dbpedia-owl:Eukaryote ;
+
+nerd:Animal a rdfs:Class ;
+  rdfs:subClassOf nerd:Eukaryote ;  
+  owl:equivalentClass dbpedia-owl:Animal ;
+  
+nerd:Arachnid a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Arachnid ;
+  
+nerd:Crustacean a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Crustacean ;
+  
+nerd:Mammal a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Mammal ; 
+
+nerd:Amphibian a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Amphibian ; 
+
+nerd:Bird a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Bird ;   
+
+nerd:Mollusca a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Mollusca ; 
+
+nerd:Reptile a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Reptile ; 
+  
+nerd:Insect a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Insect ; 
+
+nerd:Fish a rdfs:Class ;
+  rdfs:subClassOf nerd:Animal ;  
+  owl:equivalentClass dbpedia-owl:Fish ; 
+  
+nerd:Fungus a rdfs:Class ;
+  rdfs:subClassOf nerd:Eukaryote ;  
+  owl:equivalentClass dbpedia-owl:Fungus ;
+  
+nerd:Plant a rdfs:Class ;
+  rdfs:subClassOf nerd:Eukaryote ;  
+  owl:equivalentClass dbpedia-owl:Plant ;
+  
+nerd:Gnetophytes a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:Gnetophytes ;
+  
+nerd:Cycad a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:Cycad ;  
+
+nerd:GreenAlga a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:GreenAlga ;  
+  
+nerd:Moss a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:Moss ;  
+  
+nerd:ClubMoss a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:ClubMoss ;  
+
+nerd:FloweringPlant a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:FloweringPlant ; 
+  
+nerd:Grape a rdfs:Class ;
+  rdfs:subClassOf nerd:FloweringPlant ;  
+  owl:equivalentClass dbpedia-owl:Grape ;   
+  
+nerd:Ginko a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:Ginko ; 
+
+nerd:Fern a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:Fern ; 
+
+nerd:Conifer a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass dbpedia-owl:Conifer ; 
+
+nerd:Vineyard a rdfs:Class ;
+  rdfs:subClassOf nerd:Plant ;  
+  owl:equivalentClass zemanta:vineyard ;
+
+nerd:Bacteria a rdfs:Class ;
+  rdfs:subClassOf nerd:Species ;  
+  owl:equivalentClass dbpedia-owl:Bacteria ;
+  
+nerd:Archaea a rdfs:Class ;
+  rdfs:subClassOf nerd:Species ;  
+  owl:equivalentClass dbpedia-owl:Archaea ;
+  
+nerd:SkyArea a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;  
+  owl:equivalentClass dbpedia-owl:SkyArea ;
+  owl:equivalentClass alchemy:SkyArea ;
+  
+nerd:SiteOfSpecialScientificInterest a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;  
+  owl:equivalentClass dbpedia-owl:SiteOfSpecialScientificInterest ;
+
+nerd:Valley a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;  
+  owl:equivalentClass dbpedia-owl:Valley ;
+  owl:equivalentClass extractiv:VALLEY ;
+
+nerd:Park a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;  
+  owl:equivalentClass dbpedia-owl:Park ;
+  owl:equivalentClass alchemy:Park ;
+  
+nerd:LunarCrater a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;  
+  owl:equivalentClass dbpedia-owl:LunarCrater ;
+  
+nerd:Ocean a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;  
+  owl:equivalentClass extractiv:OCEAN ;
+  
+nerd:PopulatedPlace a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;  
+  owl:equivalentClass dbpedia-owl:PopulatedPlace ;    
+  owl:equivalentClass alchemy:Facility ;
+  owl:equivalentClass opencalais:Facility ;
+
+nerd:Continent a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Continent ;
+  owl:equivalentClass alchemy:Continent ;
+  owl:equivalentClass opencalais:Continent ;
+  owl:equivalentClass extractiv:CONTINENT ;
+  
 nerd:Country a rdfs:Class ;
-  rdfs:subClassOf zemanta:location ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Country ;      
   owl:equivalentClass alchemy:Country ;
-  owl:equivalentClass dbpedia-owl:Country ;
+  owl:equivalentClass opencalais:Country ;
   owl:equivalentClass extractiv:COUNTRY ;
-  owl:equivalentClass opencalais:Country .
+
+nerd:Municipality a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Municipality ;
+
+nerd:Town a rdfs:Class ;
+  rdfs:subClassOf nerd:Municipality ;  
+  owl:equivalentClass dbpedia-owl:Town ;  
 
 nerd:City a rdfs:Class ;
-  rdfs:subClassOf zemanta:location ;
+  rdfs:subClassOf nerd:Municipality ;  
+  owl:equivalentClass dbpedia-owl:City ;  
   owl:equivalentClass alchemy:City ;
-  owl:equivalentClass dbpedia-owl:City ;
+  owl:equivalentClass opencalais:City ;
   owl:equivalentClass extractiv:CITY ;
-  owl:equivalentClass opencalais:City .
 
-nerd:Mountain a rdfs:Class ;
-  rdfs:subClassOf zemanta:location ;
-  rdfs:subClassOf dbpedia-owl:Place ;
-  rdfs:subClassOf opencalais:NaturalFeature ;
-  owl:equivalentClass alchemy:Mountain ;
-  owl:equivalentClass extractiv:MOUNTAIN .
+nerd:Village a rdfs:Class ;
+  rdfs:subClassOf nerd:Municipality ;  
+  owl:equivalentClass dbpedia-owl:Village ;  
+  
+nerd:Island a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Island ;  
+  owl:equivalentClass extractiv:ISLAND ;  
+
+nerd:PoliticalDistrict a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;   
+  owl:equivalentClass alchemy:PoliticalDistrict ;
+  owl:equivalentClass opencalais:ProvinceOrState ;
+  owl:equivalentClass extractiv:COUNTY ;
+
+nerd:AdministrativeRegion a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:AdministrativeRegion ;  
+  owl:equivalentClass alchemy:AdministrativeDivision ;  
+
+nerd:GovernmentalJurisdiction a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass alchemy:GovernmentalJurisdiction ;   
+   
+nerd:Skyscraper a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Skyscraper ;    
+  owl:equivalentClass alchemy:Skyscraper ;
+  
+nerd:Stadium a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Stadium ;      
+  owl:equivalentClass alchemy:Stadium ;      
+  owl:equivalentClass extractiv:STADIUM ;      
+
+nerd:Hospital a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Hospital ;   
+  owl:equivalentClass alchemy:Hospital ;   
+  owl:equivalentClass extractiv:HOSPITAL ;   
+  owl:equivalentClass extractiv:MEDICAL_FACILITY ;     
+
+nerd:Airport a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Airport ;
+  owl:equivalentClass alchemy:Airport ;   
+  owl:equivalentClass alchemy:AIRPORT ;   
+     
+nerd:LaunchPad a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:LaunchPad ; 
+  
+nerd:Lighthouse a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Lighthouse ;   
+  owl:equivalentClass alchemy:Lighthouse ;   
+ 
+nerd:Station a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Station ;
+  owl:equivalentClass alchemy:Station ;
+  
+nerd:Bridge a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:Bridge ;
+  owl:equivalentClass alchemy:Bridge ;
+  owl:equivalentClass extractiv:BRIDGE ;
+
+nerd:HistoricPlace a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;  
+  owl:equivalentClass alchemy:HistoricPlace ;
+
+nerd:Building a rdfs:Class ;
+  rdfs:subClassOf nerd:Architecture ;  
+  owl:equivalentClass extractiv:BUILDING ;
+  owl:equivalentClass zemanta:building ;
+
+nerd:Theater a rdfs:Class ;
+  rdfs:subClassOf nerd:Architecture ;  
+  owl:equivalentClass zemanta:theater ;
+
+nerd:Museum a rdfs:Class ;
+  rdfs:subClassOf nerd:Architecture ;  
+  owl:equivalentClass zemanta:museum ;
+
+nerd:HistoricBuilding a rdfs:Class ;
+  rdfs:subClassOf nerd:HistoricPlace ;  
+  owl:equivalentClass dbpedia-owl:HistoricBuilding ;
+
+nerd:ShoppingMall a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass dbpedia-owl:ShoppingMall ;
+  owl:equivalentClass alchemy:ShoppingMall ;
+
+nerd:Stream a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass dbpedia-owl:Stream ;
+
+nerd:Canal a rdfs:Class ;
+  rdfs:subClassOf nerd:Stream ;  
+  owl:equivalentClass dbpedia-owl:Canal ;
+  owl:equivalentClass extractiv:Canal ;
+
+nerd:River a rdfs:Class ;
+  rdfs:subClassOf nerd:Stream ;  
+  owl:equivalentClass dbpedia-owl:River ;
+  owl:equivalentClass alchemy:River ;
+  owl:equivalentClass extractiv:RIVER ;
 
 nerd:Lake a rdfs:Class ;
-  rdfs:subClassOf zemanta:location ;
-  rdfs:subClassOf opencalais:NaturalFeature ;
-  owl:equivalentClass alchemy:Lake ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
   owl:equivalentClass dbpedia-owl:Lake ;
-  owl:equivalentClass extractiv:LAKE .
+  owl:equivalentClass alchemy:Lake ;
+  owl:equivalentClass extractiv:LAKE ;
+  
+nerd:Gulf a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass extractiv:GULF ;
 
-nerd:Organization a rdfs:Class ;
-  owl:equivalentClass alchemy:Organization ;
-  owl:equivalentClass dbpedia-owl:Organisation ;
-  owl:equivalentClass extractiv:ORGANIZATION ;
-  owl:equivalentClass opencalais:Organization ;
-  owl:equivalentClass zemanta:organization .
+nerd:Sea a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass extractiv:SEA ;
+
+nerd:Cave a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass alchemy:Cave ;
+
+nerd:Glacier a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass alchemy:Glacier ;
+
+nerd:Island a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass alchemy:Island ;
+
+nerd:IslandGroup a rdfs:Class ;
+  rdfs:subClassOf nerd:PopulatedPlace ;  
+  owl:equivalentClass alchemy:IslandGroup ;
+
+nerd:Mountain a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass alchemy:Mountain ;
+  owl:equivalentClass extractiv:MOUNTAIN ;
+
+nerd:MountainPass a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass alchemy:MountainPass ;
+
+nerd:MountainRange a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass alchemy:MountainRange ;
+  
+nerd:Waterfall a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalFeature ;  
+  owl:equivalentClass alchemy:Waterfall ;  
+
+nerd:BodyOfWater a rdfs:Class ;
+  rdfs:subClassOf nerd:GeographicFeature ;  
+  owl:equivalentClass alchemy:BodyOfWater ;
+  owl:equivalentClass extractiv:WATER_BODY ;
+
+nerd:GeologicalFormation a rdfs:Class ;
+  rdfs:subClassOf nerd:GeographicFeature ;  
+  owl:equivalentClass alchemy:GeologicalFormation ;
+
+nerd:OilField a rdfs:Class ;
+  rdfs:subClassOf nerd:GeographicFeature ;  
+  owl:equivalentClass alchemy:OilField ;
+
+nerd:ProtectedArea a rdfs:Class ;
+  rdfs:subClassOf nerd:GeographicFeature ;  
+  owl:equivalentClass alchemy:ProtectedArea ;
+
+nerd:Academic a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Academic ;
+
+nerd:AircraftDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:AircraftDesigner ;
+
+nerd:Diplomat a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass extractiv:DIPLOMAT ;
+
+nerd:Doctor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass extractiv:DOCTOR ;
+
+nerd:Appointee a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Appointee ;
+
+nerd:ArchitectureFirmPartner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ArchitectureFirmPartner ;
+
+nerd:Astronomer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Astronomer ;
+
+nerd:Author a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Author ;
+
+nerd:AutomotiveDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:AutomotiveDesigner ;
+
+nerd:AwardJudge a rdfs:Class ;  
+  rdfs:subClassOf nerd:Judge ;  
+  owl:equivalentClass alchemy:AwardJudge ;
+
+nerd:AwardNominee a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:AwardNominee ;
+
+nerd:AwardWinner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:AwardWinner ;
+  
+nerd:Coach a rdfs:Class ;
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass extractiv:COACH ;
+  
+nerd:BasketballCoach a rdfs:Class ;  
+  rdfs:subClassOf nerd:Coach ;  
+  owl:equivalentClass alchemy:BasketballCoach ;
+
+nerd:Bassist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Bassist ;
+  
+nerd:Blogger a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Blogger ;
+  
+nerd:BoardMember a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:BoardMember ;  
+  
+nerd:Boxer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass alchemy:Boxer ;    
+ 
+nerd:BroadcastArtist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:BroadcastArtist ;   
+
+nerd:Chef a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Chef ;     
+  
+nerd:ChessPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ChessPlayer ;    
+  
+nerd:ChivalricOrderFounder a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ChivalricOrderFounder ;    
+  
+nerd:ChivalricOrderMember a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ChivalricOrderMember ;
+
+nerd:ChivalricOrderOfficer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ChivalricOrderOfficer ;
+  
+nerd:Collector a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Collector ;
+  
+nerd:ComicBookColorist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:ComicBookColorist ;  
+    
+nerd:ComicBookCreator a rdfs:Class ;  
+  rdfs:subClassOf nerd:ComicsCreator ;  
+  owl:equivalentClass alchemy:ComicBookCreator ; 
+
+nerd:ComicBookEditor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ComicBookEditor ; 
+  
+nerd:ComicBookInker a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ComicBookInker ;   
+
+nerd:ComicBookLetterer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ComicBookLetterer ;  
+
+nerd:ComicBookPenciler a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:ComicBookPenciler ;   
+
+nerd:ComicBookWriter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Writer ;  
+  owl:equivalentClass alchemy:ComicBookWriter ;   
+
+nerd:ComicStripArtist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:ComicStripArtist ;  
+
+nerd:ComicStripCreator a rdfs:Class ;  
+  rdfs:subClassOf nerd:ComicsCreator ;  
+  owl:equivalentClass alchemy:ComicStripCreator ;
+
+nerd:CompanyAdvisor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:CompanyAdvisor ;
+
+nerd:CompanyFounder a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:CompanyFounder ;
+
+nerd:CompanyShareholder a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:CompanyShareholder ;
+
+nerd:Composer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:Composer ;
+
+nerd:ComputerDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ComputerDesigner ;
+
+nerd:ComputerScientist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ComputerScientist ;
+
+nerd:ConductedEnsemble a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ConductedEnsemble ;
+
+nerd:Conductor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Conductor ;
+
+nerd:CricketBowler a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass alchemy:CricketBowler ;
+
+nerd:CricketCoach a rdfs:Class ;  
+  rdfs:subClassOf nerd:Coach ;  
+  owl:equivalentClass alchemy:CricketCoach ;
+  
+nerd:CricketPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass alchemy:CricketPlayer ;
+
+nerd:CricketUmpire a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:CricketUmpire ;
+
+nerd:Cyclist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athete ;  
+  owl:equivalentClass alchemy:Cyclist ;
+
+nerd:Dedicatee a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Dedicatee ;
+
+nerd:Dedicator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Dedicator ;
+
+nerd:Deity a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Deity ;
+
+nerd:DietFollower a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:DietFollower ;
+
+nerd:DisasterSurvivor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:DisasterSurvivor ;
+
+nerd:DisasterVictim a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:DisasterVictim ;
+
+nerd:Drummer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:Drummer ;
+  
+nerd:ElementDiscoverer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ElementDiscoverer ;
+
+nerd:FashionDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FashionDesigner ;
+
+nerd:FictionalUniverseCreator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FictionalUniverseCreator ;
+
+nerd:FilmActor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Actor ;  
+  owl:equivalentClass alchemy:FilmActor ;
+  owl:equivalentClass extractiv:SCREEN_ACTOR ;
+
+nerd:FilmArtDirector a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmArtDirector ;
+
+nerd:FilmArtDirector a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmArtDirector ;
+
+nerd:FilmCastingDirector a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmCastingDirector ;
+
+nerd:FilmCinematographer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmCinematographer ;
+  
+nerd:FilmCostumerDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmCostumerDesigner ;
+  
+nerd:FilmCrewmember a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:FilmCrewmember ;
+  
+nerd:FilmCritic a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:FilmCritic ;  
+
+nerd:FilmDirector a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmDirector ;    
+  
+nerd:FilmEditor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmEditor ;  
+
+nerd:FilmMusicContributor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmMusicContributor ;
+
+nerd:FilmProducer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmProducer ;
+
+nerd:FilmProductionDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmProductionDesigner ;
+
+nerd:FilmSetDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmSetDesigner ;
+
+nerd:FilmTheorist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:FilmTheorist ;
+
+nerd:FilmWriter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Writer ;  
+  owl:equivalentClass alchemy:Author ;
+
+nerd:FilmWriter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Writer ;  
+  owl:equivalentClass alchemy:Author ;
+
+nerd:FilmGenre a rdfs:Class ;
+  owl:equivalentClass extractiv:SCREEN_GENRE ;
+
+nerd:FootballCoach a rdfs:Class ;  
+  rdfs:subClassOf nerd:Coach ;  
+  owl:equivalentClass alchemy:FootballCoach ;
+
+nerd:FootballReferee a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:FootballReferee ;
+
+nerd:FootballTeamManager a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:FootballTeamManager ;
+
+nerd:FoundingFigure a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:FoundingFigure ;
+
+nerd:GameDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:GameDesigner ;
+
+nerd:GameDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:GameDesigner ;
+
+nerd:Golfer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass alchemy:Golfer ;
+
+nerd:Guitarist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:Guitarist ;
+
+nerd:HallOfFameInductee a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:HallOfFameInductee ;
+
+nerd:Hobbyist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Hobbyist ;
+
+nerd:HockeyCoach a rdfs:Class ;  
+  rdfs:subClassOf nerd:Coach ;  
+  owl:equivalentClass alchemy:HockeyCoach ;
+
+nerd:HockeyPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass alchemy:HockeyPlayer ;
+
+nerd:HonoraryDegreeRecipient a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:HonoraryDegreeRecipient ;
+
+nerd:Illustrator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Illustrator ;
+
+nerd:Interviewer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Interviewer ;
+
+nerd:Inventor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Inventor ;	
+
+nerd:LandscapeArchitect a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:LandscapeArchitect ;
+  
+nerd:LanguageCreator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:LanguageCreator ;
+
+nerd:Lyricist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:Lyricist ;
+
+nerd:MartialArtist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:MartialArtist ;
+
+nerd:MilitaryCommander a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:MilitaryCommander ;
+
+nerd:MilitaryPerson a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:MilitaryPerson ;
+
+nerd:Monarch a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Monarch ;
+
+nerd:Mountaineer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Mountaineer ;
+
+nerd:MusicalGroup a rdfs:Class ;  
+  rdfs:subClassOf nerd:Music ;  
+  owl:equivalentClass zemanta:musical_group ;
+  
+nerd:MusicalGroupMember a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:MusicalGroupMember ;
+  
+nerd:NoblePerson a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:NoblePerson ;
+  
+nerd:NobleTitle a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:NobleTitle ;
+
+nerd:OlympicAthlete a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:OlympicAthlete ;
+
+nerd:OlympicAthlete a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass alchemy:OlympicAthlete ;
+
+nerd:OperaCharacter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:OperaCharacter ;
+
+nerd:OperaDirector a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:OperaDirector ;
+  
+nerd:OperaLibretto a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:OperaLibretto ;
+
+nerd:OperaSinger a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:OperaSinger ;
+
+nerd:PeriodicalEditor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:PeriodicalEditor ;
+
+nerd:Physician a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Physician ;
+
+nerd:PoliticalAppointer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass alchemy:PoliticalAppointer ;
+
+nerd:ProAthlete a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass alchemy:ProAthlete ;
+
+nerd:ProgrammingLanguageDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ProgrammingLanguageDesigner ; 
+  
+nerd:ProgrammingLanguageDeveloper a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ProgrammingLanguageDeveloper ;   
+
+nerd:ProjectParticipant a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ProjectParticipant ; 
+  
+nerd:RecordingEngineer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:RecordingEngineer ; 
+
+nerd:RecordProducer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:RecordProducer ; 
+
+nerd:ReligiousLeader a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ReligiousLeader ; 
+
+nerd:SchoolFounder a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:SchoolFounder ; 
+
+nerd:ShipDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:ShipDesigner ; 
+
+nerd:Songwriter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Author ;  
+  owl:equivalentClass alchemy:Songwriter ; 
+
+nerd:SportsLeagueAwardWinner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:SportsLeagueAwardWinner ;
+
+nerd:SportsOfficial a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:SportsOfficial ;
+
+nerd:Surgeon a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Surgeon ;
+
+nerd:TheaterActor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Actor ;  
+  owl:equivalentClass alchemy:TheaterActor ;
+
+nerd:TheaterCharacter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:TheaterCharacter ;
+  
+nerd:TheaterChoreographer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:TheaterChoreographer ;
+
+nerd:TheaterDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:TheaterDesigner ;
+
+nerd:TheaterDirector a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:TheaterDirector ;
+
+nerd:TheaterProducer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:TheaterProducer ;
+
+nerd:TheatricalComposer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:TheatricalComposer ;
+
+nerd:TheatricalLyricist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:TheatricalLyricist ;
+
+nerd:Translator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:Translator ;
+
+nerd:TVActor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Actor ;  
+  owl:equivalentClass alchemy:TVActor ;
+
+nerd:TVCharacter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:TVCharacter ;
+
+nerd:TVDirector a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass alchemy:TVDirector ;
+
+nerd:TVPersonality a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:TVPersonality ;
+  
+nerd:TVProducer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:TVProducer ;
+
+nerd:TVProgramCreator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:TVProgramCreator ;
+
+nerd:TVWriter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass alchemy:TVWriter ;
+
+nerd:USGovernor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass extractiv:US_GOVERNOR ;
+
+nerd:USSenator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass extractiv:US_SENATOR ;
+
+nerd:USCabinetMember a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass extractiv:US_CABINET_MEMBER ;
+
+nerd:USCongressperson a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass alchemy:U.S.Congressperson ;
+
+nerd:USPresident a rdfs:Class ;  
+  rdfs:subClassOf nerd:President ; 
+  owl:equivalentClass alchemy:USPresident ;
+
+nerd:USVicePresident a rdfs:Class ;  
+  rdfs:subClassOf nerd:VicePresident ; 
+  owl:equivalentClass alchemy:USVicePresident ;
+
+nerd:USState a rdfs:Class ;  
+  rdfs:subClassOf nerd:PopulatedPlace ; 
+  owl:equivalentClass extractiv:US_STATE ;
+
+nerd:VideoGameActor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ; 
+  owl:equivalentClass alchemy:VideoGameActor ;
+
+nerd:VideoGameDesigner a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ; 
+  owl:equivalentClass alchemy:VideoGameDesigner ;
+
+nerd:VisualArtist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ; 
+  owl:equivalentClass alchemy:VisualArtist ;
+
+nerd:Cleric a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Cleric ;   
+
+nerd:Cardinal a rdfs:Class ;  
+  rdfs:subClassOf nerd:Cleric ;  
+  owl:equivalentClass dbpedia-owl:Cardinal ;   
+
+nerd:ChristianBishop a rdfs:Class ;  
+  rdfs:subClassOf nerd:Cleric ;  
+  owl:equivalentClass dbpedia-owl:ChristianBishop ;  
+  
+nerd:Pope a rdfs:Class ;  
+  rdfs:subClassOf nerd:Cleric ;  
+  owl:equivalentClass dbpedia-owl:Pope ;   
+
+nerd:Saint a rdfs:Class ;  
+  rdfs:subClassOf nerd:Cleric ;  
+  owl:equivalentClass dbpedia-owl:Saint ; 
+ 
+nerd:OfficeHolder a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:OfficeHolder ;   
+ 
+nerd:Astronaut a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Astronaut ; 
+  owl:equivalentClass alchemy:Astronaut ;
+
+nerd:BritishRoyalty a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:BritishRoyalty ;
+
+nerd:FictionalCharacter a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:FictionalCharacter ;
+  owl:equivalentClass alchemy:FictionalCreature ;
+
+nerd:ComicsCharacter a rdfs:Class ;  
+  rdfs:subClassOf nerd:FictionalCharacter ;  
+  owl:equivalentClass dbpedia-owl:ComicsCharacter ;
+  owl:equivalentClass alchemy:ComicStripCharacter ;
+
+nerd:Celebrity a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Celebrity ;
+  owl:equivalentClass alchemy:Celebrity ;
+
+nerd:Artist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Artist ;
+  owl:equivalentClass zemanta:artist ;
+  
+nerd:Actor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass dbpedia-owl:Actor ;
+
+nerd:AdultActor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Actor ;  
+  owl:equivalentClass dbpedia-owl:AdultActor ;
+
+nerd:VoiceActor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Actor ;  
+  owl:equivalentClass dbpedia-owl:VoiceActor ;
+
+nerd:MusicalArtist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass dbpedia-owl:MusicalArtist ;
+  owl:equivalentClass alchemy:MusicalArtist ;
+  
+nerd:ComicsCreator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass dbpedia-owl:ComicsCreator ;  
+  
+nerd:Comedian a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass dbpedia-owl:Comedian ;   
+  
+nerd:Writer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Artist ;  
+  owl:equivalentClass dbpedia-owl:Writer ;
+  
+nerd:Criminal a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Criminal ;  
+  owl:equivalentClass extractiv:CRIMINAL ;  
+  
+nerd:Scientist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Scientist ;   
+  
+nerd:Journalist a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Journalist ;  
+
+nerd:Judge a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Judge ;
+
+nerd:Architect a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Architect ;
+  owl:equivalentClass alchemy:Architect ;
+
+nerd:PokerPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:PokerPlayer ;
+
+nerd:Model a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Model ;
+
+nerd:Ambassador a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Ambassador ;  
+  owl:equivalentClass extractiv:AMBASSADOR ;  
+  
+nerd:PlayboyPlaymate a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:PlayboyPlaymate ;
+  
+nerd:Monarch a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Monarch ;  
+  
+nerd:SoccerManager a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:SoccerManager ;
+  
+nerd:Philosopher a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Philosopher ;   
+
+nerd:CollegeCoach a rdfs:Class ;  
+  rdfs:subClassOf nerd:Coach ;  
+  owl:equivalentClass dbpedia-owl:CollegeCoach ;   
+
+nerd:MilitaryPerson a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:MilitaryPerson ;
+
+nerd:Politician a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Politician ;
+  owl:equivalentClass alchemy:Politician ; 
+  owl:equivalentClass zemanta:politician ; 
+ 
+nerd:Governor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:Governor ; 
+ 
+nerd:MemberOfParliament a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:MemberOfParliament ;
+  
+nerd:Lieutenant a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:Lieutenant ;   
+
+nerd:Mayor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:Mayor ;
+  owl:equivalentClass extractiv:MAYOR ;
+  
+nerd:VicePrimeMinister a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:VicePrimeMinister ;  
+  
+nerd:VicePresident a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:VicePresident ;  
+  
+nerd:Senator a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:Senator ;  
+
+nerd:Congressman a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:Congressman ;   
+  
+nerd:Deputy a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:Deputy ;  
+  
+nerd:PrimeMinister a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:PrimeMinister ;  
+  
+nerd:President a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:President ; 	 
+  
+nerd:Chancellor a rdfs:Class ;  
+  rdfs:subClassOf nerd:Politician ;  
+  owl:equivalentClass dbpedia-owl:Chancellor ;  
+  
+nerd:Athlete a rdfs:Class ;  
+  rdfs:subClassOf nerd:Person ;  
+  owl:equivalentClass dbpedia-owl:Athlete ;  
+  owl:equivalentClass extractiv:Athlete ;
+  
+nerd:FigureSkater a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:FigureSkater ;    
+   
+nerd:GridironFootballPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:GridironFootballPlayer ;
+  
+nerd:AmericanFootballPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:GridironFootballPlayer ;  
+  owl:equivalentClass dbpedia-owl:AmericanFootballPlayer ;  
+ 
+nerd:CanadianFootballPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:GridironFootballPlayer ;  
+  owl:equivalentClass dbpedia-owl:CanadianFootballPlayer ; 
+
+nerd:NationalCollegiateAthleticAssociationAthlete a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:NationalCollegiateAthleticAssociationAthlete ;
+
+nerd:SoccerPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:SoccerPlayer ;
+  owl:equivalentClass alchemy:FootballPlayer ;
+
+nerd:Boxer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:Boxer ;
+
+nerd:TennisPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:TennisPlayer ;
+  owl:equivalentClass alchemy:TennisPlayer ;
+
+nerd:TennisTournamentChampion a rdfs:Class ;  
+  rdfs:subClassOf nerd:TennisPlayer ;
+  owl:equivalentClass alchemy:TennisTournamentChampion ;
+
+nerd:Wrestler a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:Wrestler ;
+  
+nerd:FormulaOneRacer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:FormulaOneRacer ;  
+
+nerd:Cricketer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:Cricketer ;
+
+nerd:IceHockeyPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:IceHockeyPlayer ;
+
+nerd:BasketballPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:BasketballPlayer ;
+
+nerd:GaelicGamesPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:GaelicGamesPlayer ;
+  
+nerd:RugbyPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:RugbyPlayer ;
+  
+nerd:BadmintonPlayer a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:BadmintonPlayer ;  
+
+nerd:NascarDriver a rdfs:Class ;  
+  rdfs:subClassOf nerd:Athlete ;  
+  owl:equivalentClass dbpedia-owl:NascarDriver ;
+
+nerd:ReligiousOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass extractiv:RELIGIOUS_ORG;
+
+nerd:MilitaryOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass extractiv:MILITARY_ORG;
+
+nerd:CriminalOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass extractiv:CRIMINAL_ORGANIZATION;
+
+nerd:TVStation a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:TelevisionStation ;  
+  owl:equivalentClass opencalais:TVStation ;  
+  owl:equivalentClass zemanta:tv_station ;    
+
+nerd:TVProgram a rdfs:Class ;
+  rdfs:subClassOf nerd:TV ;  
+  owl:equivalentClass zemanta:tv_program ;
+
+nerd:TelevisionEpisode a rdfs:Class ;
+  owl:equivalentClass dbpedia-owl:TelevisionEpisode ;  
+
+nerd:Club a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:Club ;   
+
+nerd:MusicGroup a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass opencalais:MusicGroup ;
+
+nerd:CollegeUniversity a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:CollegeUniversity ;
+
+nerd:CricketAdministrativeBody a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:CricketAdministrativeBody ;
+
+nerd:FinancialSupportProvider a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:FinancialSupportProvider ;
+
+nerd:FraternitySorority a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:FraternitySorority ;
+  
+nerd:Government a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:GOVERNMENT_ORG ;  
+  owl:equivalentClass zemanta:government ;  
+
+nerd:Not-Government a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:NON_GOVERNMENT_ORG ;
+  
+nerd:GovernmentAgency a rdfs:Class ;
+  rdfs:subClassOf nerd:Government ;  
+  owl:equivalentClass alchemy:GovernmentAgency ; 
+  owl:equivalentClass zemanta:government_agency ;
+  
+nerd:GovernmentBody a rdfs:Class ;
+  rdfs:subClassOf nerd:Government ;  
+  owl:equivalentClass zemanta:government_body ;
+
+nerd:LegislativeCommittee a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:LegislativeCommittee ; 
+
+nerd:MilitaryUnit a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:MilitaryUnit ;   
+  
+nerd:AstronomicalSurveyProjectOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:AstronomicalSurveyProjectOrganization ; 
+  
+nerd:AwardPresentingOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:AwardPresentingOrganization ;  
+  
+nerd:Legislature a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:Legislature ;
+  owl:equivalentClass alchemy:Legislature ;    
+
+nerd:Non-profitOrganisation a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:Non-profitOrganisation ;
+  owl:equivalentClass alchemy:Non-profitOrganisation ;   
+    
+nerd:RadioStation a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:RadioStation ;   
+  owl:equivalentClass opencalais:RadioStation ;   
+  owl:equivalentClass extractiv:RADIO_STATION ;   
+  owl:equivalentClass zemanta:radio_station ;   
+  
+nerd:Broadcast a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:Broadcast ;   
+  owl:equivalentClass zemanta:Broadcast ;   
+  
+nerd:Band a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:Band ;   
+  owl:equivalentClass alchemy:MusicGroup ;
+  owl:equivalentClass extractiv:BAND ;
+    
+nerd:SportsLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:SportsLeague ;   
+  owl:equivalentClass opencalais:SportsLeague ;   
+  owl:equivalentClass extractiv:SPORTS_LEAGUE ;   
+    
+nerd:LacrosseLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:LacrosseLeague ;     
+  
+nerd:PaintballLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:PaintballLeague ;  
+
+nerd:BaseballLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:BaseballLeague ; 
+
+nerd:InlineHockeyLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:InlineHockeyLeague ; 
+
+nerd:FieldHockeyLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:FieldHockeyLeague ; 
+
+nerd:HandballLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:HandballLeague ;
+
+nerd:GolfLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:GolfLeague ;
+
+nerd:BowlingLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:BowlingLeague ;
+
+nerd:VolleyballLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:VolleyballLeague ;
+
+nerd:CanadianFootballLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:CanadianFootballLeague ;
+
+nerd:IceHockeyLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:IceHockeyLeague ;
+
+nerd:SoccerLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:SoccerLeague ;
+
+nerd:MotorcycleRacingLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:MotorcycleRacingLeague ;
+
+nerd:VideoGamesLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:VideogamesLeague ;
+
+nerd:SpeedwayLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:SpeedwayLeague ;
+
+nerd:CurlingLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:CurlingLeague ;
+  
+nerd:CyclingLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:CyclingLeague ;
+  
+nerd:BasketballLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:BasketballLeague ;  
+  
+nerd:CricketLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:CricketLeague ;    
+  
+nerd:SoftballLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:SoftballLeague ;  
+
+nerd:MixedMartialArtsLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:MixedMartialArtsLeague ;   
+  
+nerd:MartialArtsOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass alchemy:MartialArtsOrganization ;   
+
+nerd:AutoRacingLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:AutoRacingLeague ;  
+
+nerd:PoloLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:PoloLeague ;
+      
+nerd:RugbyLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:RugbyLeague ;  
+
+nerd:TennisLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:TennisLeague ;  
+
+nerd:Radio-controlledRacingLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:Radio-controlledRacingLeague ;
+
+nerd:BoxingLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:BoxingLeague ;
+
+nerd:AustralianFootballLeague a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsLeague ;  
+  owl:equivalentClass dbpedia-owl:AustralianFootballLeague ;
+
+nerd:SportsTeam a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:SportsTeam ;  
+  owl:equivalentClass extractiv:SPORTS_TEAM ;  
+  owl:equivalentClass zemanta:sports_team ;  
+
+nerd:FootballOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass dbpedia-owl:SportsTeam ;
+  
+nerd:MembershipOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:MembershipOrganization ;
+
+nerd:NaturalOrCulturalPreservationAgency a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:NaturalOrCulturalPreservationAgency ;
+
+nerd:OrganizationCommittee a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:OrganizationCommittee ;
+
+nerd:PeriodicalPublisher a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:PeriodicalPublisher ;
+
+nerd:PoliticalParty a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;
+  owl:equivalentClass alchemy:PoliticalParty ;
+  owl:equivalentClass extractiv:POLITICAL_PARTY ;
+  owl:equivalentClass zemanta:political_party ;
+
+nerd:ReligiousOrder a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:ReligiousOrder ;
+
+nerd:ReligiousOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:ReligiousOrganization ;
+
+nerd:ReportIssuingInstitution a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:ReportIssuingInstitution ;
+
+nerd:SpaceAgency a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:SpaceAgency ;
+
+nerd:SportsAssociation a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:SportsAssociation ;
+
+nerd:StudentOrganization a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:StudentOrganization ;
+
+nerd:TopLevelDomainRegistry a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass alchemy:TopLevelDomainRegistry ;
+
+nerd:Union a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;
+  owl:equivalentClass extractiv:UNION ;
+
+nerd:TradeUnion a rdfs:Class ;
+  rdfs:subClassOf nerd:Union ;
+  owl:equivalentClass alchemy:TradeUnion ;
+
+nerd:CanadianFootballTeam a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsTeam ;  
+  owl:equivalentClass dbpedia-owl:CanadianFootballTeam ;
+
+nerd:SoccerClub a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsTeam ;  
+  owl:equivalentClass dbpedia-owl:SoccerClub ;
+  owl:equivalentClass alchemy:SoccerClub ;
+
+nerd:HockeyTeam a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsTeam ;  
+  owl:equivalentClass dbpedia-owl:HockeyTeam ;
+
+nerd:AmericanFootballTeam a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsTeam ;  
+  owl:equivalentClass dbpedia-owl:AmericanFootballTeam ;
+
+nerd:EducationInstitution a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:EducationInstitution ;
+  owl:equivalentClass extractiv:EDUCATIONAL_ORG ;
+  owl:equivalentClass zemanta:educational_institution ;
+  
+nerd:College a rdfs:Class ;
+  rdfs:subClassOf nerd:EducationInstitution ;  
+  owl:equivalentClass dbpedia-owl:College ;
+
+nerd:School a rdfs:Class ;
+  rdfs:subClassOf nerd:EducationInstitution ;  
+  owl:equivalentClass dbpedia-owl:School ;
+
+nerd:University a rdfs:Class ;
+  rdfs:subClassOf nerd:EducationInstitution ;  
+  owl:equivalentClass dbpedia-owl:University ;
+  owl:equivalentClass extractiv:UNIVERSITY ;
 
 nerd:Company a rdfs:Class ;
-  rdfs:subClassOf extractiv:Organization ;
-  owl:equivalentClass alchemy:Company ;
+  rdfs:subClassOf nerd:Organization ;
+  rfds:subClassOf Business ;  
   owl:equivalentClass dbpedia-owl:Company ;
+  owl:equivalentClass alchemy:Company ;
   owl:equivalentClass opencalais:Company ;
-  owl:equivalentClass zemanta:company .
+  owl:equivalentClass extractiv:COMMERCIAL_ORG ;
+  owl:equivalentClass zemanta:company ;
 
-nerd:Person a rdfs:Class ;
-  owl:equivalentClass alchemy:Person ;
-  owl:equivalentClass dbpedia-owl:Person ;
-  owl:equivalentClass extractiv:PERSON ;
-  owl:equivalentClass opencalais:Person ;
-  owl:equivalentClass zemanta:person .  
+nerd:Brand a rdfs:Class ;
+  rdfs:subClassOf nerd:Business ;  
+  owl:equivalentClass zemanta:brand ;  
 
-nerd:Athlete a rdfs:Class ;
-  rdfs:subClassOf nerd:Person ;
-  owl:equivalentClass dbpedia-owl:Athlete ;
-  owl:equivalentClass extractiv:Athlete .
+nerd:ShoppingCenter a rdfs:Class ;
+  rdfs:subClassOf nerd:Business ;  
+  owl:equivalentClass zemanta:shopping_center ;
 
-nerd:Politician a rdfs:Class ;
-  rdfs:subClassOf nerd:Person ;
-  owl:equivalentClass alchemy:Politician ;
-  owl:equivalentClass dbpedia-owl:Politician .
+nerd:Industry a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass zemanta:industry;  
 
-nerd:Basketball_Player a rdfs:Class ;
-  rdfs:subClassOf nerd:Athlete;
-  owl:equivalentClass alchemy:BasketballPlayer ;
-  owl:equivalentClass dbpedia-owl:Basketball Player .
+nerd:ElectronicsCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass extractiv:ELECTRONICS_ORG ;  
+
+nerd:EntertainmentCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass extractiv:ENTERTAINMENT_ORG ;
+
+nerd:MediaCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass extractiv:MEDIA_ORG ;
+
+nerd:FinancialCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass extractiv:FINANCIAL_ORG ;
+  
+nerd:PharmaceuticalCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass extractiv:PHARMACEUTICAL_COMPANY ;  
+
+nerd:Airline a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass dbpedia-owl:Airline ;
+  owl:equivalentClass alchemy:Airline ;  
+  owl:equivalentClass extractiv:AIRLINE ;  
+
+nerd:VehicleManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass extractiv:LAND_VEHICLE ;  
+
+nerd:AircraftManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:AircraftManufacturer ;  
+
+nerd:AirportOperator a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:AirportOperator ;    
+  
+nerd:ArchitectureFirm a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:ArchitectureFirm ;      
+
+nerd:AutomobileCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:AutomobileCompany ;  
+  owl:equivalentClass extractiv:CAR_COMPANY ;
+
+nerd:BicycleManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:BicycleManufacturer ;  
+
+nerd:BottledWater a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:BottledWater ;  
+
+nerd:BreweryBrandOfBeer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:BreweryBrandOfBeer ;  
+
+nerd:BroadcastDistributor a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:BroadcastDistributor ;
+
+nerd:CandyBarManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:CandyBarManufacturer ;
+
+nerd:CandyBarManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:CandyBarManufacturer ;
+
+nerd:ComicBookPublisher a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:ComicBookPublisher ;
+
+nerd:ComputerManufacturerBrand a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:ComputerManufacturerBrand ; 
+
+nerd:Distillery a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:Distillery ; 
+  
+nerd:EngineeringFirm a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:EngineeringFirm ; 
+
+nerd:FashionLabel a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:FashionLabel ; 
+
+nerd:FilmCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:FilmCompany ; 
+
+nerd:FilmDistributor a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:FilmDistributor ;
+  
+nerd:GamePublisher a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:GamePublisher ; 
+
+nerd:ManufacturingPlant a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:ManufacturingPlant ;
+
+nerd:MusicalInstrumentCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:MusicalInstrumentCompany ;
+
+nerd:OperatingSystemDeveloper a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:OperatingSystemDeveloper ;
+
+nerd:ProcessorManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:ProcessorManufacturer ;
+
+nerd:ProductionCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:ProductionCompany ;
+
+nerd:RadioNetwork a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:RadioNetwork ;
+
+nerd:RecordLabel a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:RecordLabel ;
+  owl:equivalentClass zemanta:record_label ;
+
+nerd:Restaurant a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:Restaurant ;
+  owl:equivalentClass extractiv:RESTAURANT ;
+  owl:equivalentClass zemanta:restaurant ;
+  
+nerd:RocketEngineDesigner a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:RocketEngineDesigner ;  
+
+nerd:RocketManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:RocketManufacturer ;
+
+nerd:ShipBuilder a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:ShipBuilder ; 
+
+nerd:SoftwareDeveloper a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:SoftwareDeveloper ; 
+
+nerd:SpacecraftManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:SpacecraftManufacturer ; 
+  
+nerd:SpiritBottler a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:SpiritBottler ; 
+
+nerd:SpiritProductManufacturer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:SpiritProductManufacturer ; 
+  
+nerd:TransportOperator a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:TransportOperator ;
+  
+nerd:TVNetwork a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:TVNetwork ;
+  owl:equivalentClass extractiv:TV_NETWORK ;
+   
+nerd:VentureFundedCompany a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:VentureFundedCompany ;  
+
+nerd:VentureInvestor a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:VentureInvestor ;  
+
+nerd:VideoGameDeveloper a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:VideoGameDeveloper ; 
+
+nerd:VideoGameEngineDeveloper a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:VideoGameEngineDeveloper ; 
+
+nerd:VideoGamePublisher a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:VideoGamePublisher ;
+  
+nerd:WineProducer a rdfs:Class ;
+  rdfs:subClassOf nerd:Company ;  
+  owl:equivalentClass alchemy:WineProducer ;  
+  owl:equivalentClass zemanta:wine_producer;
+  
+nerd:GeopoliticalOrganisation a rdfs:Class ;
+  rdfs:subClassOf nerd:Organization ;  
+  owl:equivalentClass dbpedia-owl:GeopoliticalOrganisation ;  
+ 
+nerd:Aircraft a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass dbpedia-owl:Aircraft ;   
+  owl:equivalentClass extractiv:AIRCRAFT ;
+  
+nerd:WaterCraft a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass extractiv:WATERCRAFT ;
+
+nerd:CivilianCraft a rdfs:Class ;
+  rdfs:subClassOf nerd:WaterCraft ;
+  owl:equivalentClass extractiv:CIVILIAN_WATERCRAFT ;
+
+nerd:MilitaryCraft a rdfs:Class ;
+  rdfs:subClassOf nerd:Aircraft ;
+  owl:equivalentClass extractiv:MILITARY_AIRCRAFT ;
+
+nerd:SpaceStation a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass dbpedia-owl:SpaceStation ;  
+  
+nerd:Ship a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass dbpedia-owl:Ship ;    
+  
+nerd:Rocket a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass dbpedia-owl:Rocket ;      
+  
+nerd:Automobile a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass dbpedia-owl:Automobile ;  
+  owl:equivalentClass alchemy:Automobile ;
+  owl:equivalentClass extractiv:AUTOMOBILE_MODEL ;
+
+nerd:Submarine a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass extractiv:SUBMARINE ;  
+  
+nerd:Helicopter a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass extractiv:HELICOPTER ;  
+  
+nerd:SpaceShuttle a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass dbpedia-owl:SpaceShuttle ; 
+  
+nerd:Scapecraft a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass dbpedia-owl:Scapecraft ;   
+  owl:equivalentClass extractiov:SPACECRAFT ;
+
+nerd:MilitaryShip a rdfs:Class ;
+  rdfs:subClassOf nerd:MeanOfTransportation ;  
+  owl:equivalentClass dbpedia-owl:MILITARY_SURFACE_SHIP ; 
+  
+nerd:Weapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Device ;  
+  owl:equivalentClass dbpedia-owl:Weapon ;  
+  owl:equivalentClass extractiv:WEAPON ;
+  
+nerd:BiologicalWeapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Weapon ;  
+  owl:equivalentClass extractiv:BIOLOGICAL_WEAPON ;  
+
+nerd:BluntWeapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Weapon ;  
+  owl:equivalentClass extractiv:BLUNT_WEAPON ;
+  
+nerd:BombWeapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Weapon ;  
+  owl:equivalentClass extractiv:BOMB_WEAPON ;
+  
+nerd:ChemicalWeapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Weapon ;  
+  owl:equivalentClass extractiv:CHEMICAL_WEAPON ;
+
+nerd:NuclearWeapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Weapon ;  
+  owl:equivalentClass extractiv:NUCLEAR_WEAPON ;
+
+nerd:SharpWeapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Weapon ;  
+  owl:equivalentClass extractiv:SHARP_WEAPON ;
+
+nerd:ShootingWeapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Weapon ;  
+  owl:equivalentClass extractiv:SHOOTING_WEAPON ;
+
+nerd:ProjectileWeapon a rdfs:Class ;
+  rdfs:subClassOf nerd:Weapon ;  
+  owl:equivalentClass extractiv:PROJECTILE_WEAPON ;
+
+nerd:AutomobileEngine a rdfs:Class ;
+  rdfs:subClassOf nerd:Device ;  
+  owl:equivalentClass dbpedia-owl:AutomobileEngine ;    
+
+nerd:Muscle a rdfs:Class ;
+  rdfs:subClassOf nerd:AnatomicalStructure ;  
+  owl:equivalentClass dbpedia-owl:Muscle ;  
+
+nerd:Brain a rdfs:Class ;
+  rdfs:subClassOf nerd:AnatomicalStructure ;  
+  owl:equivalentClass dbpedia-owl:Brain ; 
+
+nerd:Embryology a rdfs:Class ;
+  rdfs:subClassOf nerd:AnatomicalStructure ;  
+  owl:equivalentClass dbpedia-owl:Embryology ; 
+
+nerd:Lymph a rdfs:Class ;
+  rdfs:subClassOf nerd:AnatomicalStructure ;  
+  owl:equivalentClass dbpedia-owl:Lymph ;
+
+nerd:Bone a rdfs:Class ;
+  rdfs:subClassOf nerd:AnatomicalStructure ;  
+  owl:equivalentClass dbpedia-owl:Bone ;
+
+nerd:Artery a rdfs:Class ;
+  rdfs:subClassOf nerd:AnatomicalStructure ;  
+  owl:equivalentClass dbpedia-owl:Artery ;
+
+nerd:Nerve a rdfs:Class ;
+  rdfs:subClassOf nerd:AnatomicalStructure ;  
+  owl:equivalentClass dbpedia-owl:Nerve ;
+
+nerd:Vein a rdfs:Class ;
+  rdfs:subClassOf nerd:AnatomicalStructure ;  
+  owl:equivalentClass dbpedia-owl:Vein ;
+  
+nerd:PoliticalEvent a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass opencalais:PoliticalEvent ;
+
+nerd:EntertainmentAwardEvent a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass opencalais:EntertainmentAwardEvent ;
+
+nerd:Anniversary a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass alchemy:Anniversary ;
+  owl:equivalentClass opencalais:Anniversary ;
+
+nerd:Convention a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass dbpedia-owl:Convention ;
+
+nerd:SpaceMission a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass dbpedia-owl:SpaceMission ;
+
+nerd:YearInSpaceflight a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass dbpedia-owl:YearInSpaceflight ;
+
+nerd:FilmFestival a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass dbpedia-owl:FilmFestival ;
+
+nerd:MilitaryConflict a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass dbpedia-owl:MilitaryConflict ;
+  owl:equivalentClass extractiv:CONFLICT ;
+
+nerd:RadioShow a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass extractiv:RADIO_SHOW ;
+
+nerd:TVShow a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass alchemy:TelevisionShow ; 
+  owl:equivalentClass opencalais:TVShow ;
+
+nerd:MusicFestival a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass dbpedia-owl:MusicFestival ;
+
+nerd:SportsEvents a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;  
+  owl:equivalentClass dbpedia-owl:SportsEvents ;
+  owl:equivalentClass opencalais:SportsEvents ;
+  owl:equivalentClass opencalais:SPORTS_EVENT ;
+  
+nerd:GrandPrix a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsEvents ;  
+  owl:equivalentClass dbpedia-owl:GrandPrix ;
+
+nerd:Olympics a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsEvents ;  
+  owl:equivalentClass dbpedia-owl:Olympics ;
+
+nerd:Women'sTennisAssociationTournament a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsEvents ;  
+  owl:equivalentClass dbpedia-owl:Women'sTennisAssociationTournament ;
+
+nerd:MixedMartialArtsEvent a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsEvents ;  
+  owl:equivalentClass dbpedia-owl:MixedMartialArtsEvent ;
+
+nerd:Race a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsEvents ;  
+  owl:equivalentClass dbpedia-owl:Race ;
+
+nerd:WrestlingEvent a rdfs:Class ;
+  rdfs:subClassOf nerd:SportsEvents ;  
+  owl:equivalentClass dbpedia-owl:WrestlingEvent ;
+
+nerd:Software a rdfs:Class ;
+  rdfs:subClassOf nerd:Work ;  
+  owl:equivalentClass dbpedia-owl:Software ;
+  owl:equivalentClass extractiv:SOFTWARE ;
+  owl:equivalentClass zemanta:software ;
+
+nerd:VideoGame a rdfs:Class ;
+  rdfs:subClassOf nerd:Software ;  
+  owl:equivalentClass dbpedia-owl:VideoGame ;
+  owl:equivalentClass extractiv:VIDEO_GAME ;
+  owl:equivalentClass zemanta:computer_videogame ;
+
+nerd:MusicalWork a rdfs:Class ;
+  rdfs:subClassOf nerd:Work ;  
+  owl:equivalentClass dbpedia-owl:MusicalWork ;
+
+nerd:Single a rdfs:Class ;
+  rdfs:subClassOf nerd:MusicalWork ;  
+  owl:equivalentClass dbpedia-owl:Single ;
+
+nerd:Song a rdfs:Class ;
+  rdfs:subClassOf nerd:MusicalWork ;  
+  owl:equivalentClass dbpedia-owl:Song ;
+  owl:equivalentClass zemanta:track ;
+
+nerd:EurovisionSongContestEntry a rdfs:Class ;
+  rdfs:subClassOf nerd:Song ;  
+  owl:equivalentClass dbpedia-owl:EurovisionSongContestEntry ;
+
+nerd:Album a rdfs:Class ;
+  rdfs:subClassOf nerd:MusicalWork ;  
+  rdfs:subClassOf nerd:Music ;
+  owl:equivalentClass dbpedia-owl:Album ;
+  owl:equivalentClass opencalais:MusicAlbum ;
+  owl:equivalentClass extractiv:ALBUM ;
+  owl:equivalentClass zemanta:album
+
+nerd:TelevisionShow a rdfs:Class ;
+  rdfs:subClassOf nerd:Work ;  
+  owl:equivalentClass dbpedia-owl:TelevisionShow ;
+
+nerd:Musical a rdfs:Class ;
+  rdfs:subClassOf nerd:Work ;  
+  owl:equivalentClass dbpedia-owl:Musical ;
+
+nerd:Book a rdfs:Class ;
+  rdfs:subClassOf nerd:Work ;  
+  owl:equivalentClass dbpedia-owl:Book ;
+  owl:equivalentClass zemanta:book ;
+
+nerd:Journal a rdfs:Class ;
+  rdfs:subClassOf nerd:Work ;
+  owl:equivalentClass zemanta:journal ;
 
 nerd:Film a rdfs:Class ;
-  owl:equivalentClass alchemy:Movie ;
+  rdfs:subClassOf nerd:Work ;  
   owl:equivalentClass dbpedia-owl:Film ;
-  owl:equivalentClass extractiv:MOVIE ;
+  
+nerd:EntertainmentAward a rdfs:Class ;
+  rdfs:subClassOf nerd:Award ;
+  owl:equivalentClass alchemy:EntertainmentAward ;
+  owl:equivalentClass extractiv:ENTERTAINMENT_AWARD ;
+
+nerd:Road a rdfs:Class ;  
+  rdfs:subclass of nerd:Infrastructure ;
+  owl:equivalentClass dbpedia-owl:Road ;  
+  owl:equivalentClass extractiv:ROAD ;  
+  owl:equivalentClass zemanta:road ;
+  
+nerd:IllivitDrug a rdfs:Class ;  
+  rdfs:subclass of nerd:Drug ;
+  owl:equivalentClass extractiv:ILLICIT_DRUG ;  
+   
+nerd:Sport a rdfs:Class ;  
+  rdfs:subclass of nerd:Activity ;
+  owl:equivalentClass dbpedia-owl:Sport ;  
+  owl:equivalentClass extractiv:SPORT ;  
+
+nerd:SportPosition a rdfs:Class ;  
+  rdfs:subclass of nerd:Sport ;
+  owl:equivalentClass extractiv:SPORT_POSITION ;  
+  
+nerd:Game a rdfs:Class ;  
+  rdfs:subclass of nerd:Activity ;
+  owl:equivalentClass dbpedia-owl:Game ;  
+  owl:equivalentClass zemanta:game ;  
+  
+nerd:Movie a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;
+  owl:equivalentClass alchemy:Movie ;
   owl:equivalentClass opencalais:Movie ;
-  owl:equivalentClass zemanta:film .
+  owl:equivalentClass extractiv:Movie ;
+  owl:equivalentClass extractiv:Film ;
+  
+nerd:NaturalDisaster a rdfs:Class ;
+  rdfs:subClassOf nerd:Event ;
+  owl:equivalentClass alchemy:NaturalDisaster ;
+  owl:equivalentClass extractiv:NATURAL_DISASTER ;
+  
+nerd:TropicalCyclone a rdfs:Class ;
+  rdfs:subClassOf nerd:NaturalDisaster ;
+  owl:equivalentClass alchemy:TropicalCyclone ;
+    
+nerd:Magazine a rdfs:Class ;
+  rdfs:subClassOf nerd:PrintMedia ;
+  owl:equivalentClass alchemy:Magazine ;
+  owl:equivalentClass extractiv:MAGAZINE ;
+  owl:equivalentClass zemanta:magazine ;  
+  
+nerd:Newspaper a rdfs:Class ;
+  rdfs:subClassOf nerd:PrintMedia ;
+  owl:equivalentClass alchemy:Newspaper ;
+  owl:equivalentClass dbpedia-owl:Newspaper ;
+  owl:equivalentClass zemanta:newspaper ;  
 
-nerd:Automobile a rdfs:Class ;
-  rdfs:subClassOf extractiv:VEHICLE ;
-  owl:equivalentClass alchemy:Automobile ;
-  owl:equivalentClass dbpedia-owl:Automobile ;
+nerd:SchoolNewspaper a rdfs:Class ;
+  rdfs:subClassOf nerd:PrintMedia ;
+  owl:equivalentClass alchemy:SchoolNewspaper ;
+  owl:equivalentClass dbpedia-owl:SchoolNewspaper ;
+  
+nerd:Region a rdfs:Class ;
+  rdfs:subClassOf nerd:Place ;
+  owl:equivalentClass alchemy:Region ;
+  owl:equivalentClass opencalais:Region ;
 
+nerd:EnglishRegion a rdfs:Class ;
+  rdfs:subClassOf nerd:Region ;
+  owl:equivalentClass alchemy:EnglishRegion ;
+  
+nerd:FrenchRegion a rdfs:Class ;
+  rdfs:subClassOf nerd:Region ;
+  owl:equivalentClass alchemy:FrenchRegion ;
+
+nerd:ItalianRegion a rdfs:Class ;
+  rdfs:subClassOf nerd:Region ;
+  owl:equivalentClass alchemy:ItalianRegion ;
+  
+nerd:InternationalRegion a rdfs:Class ;
+  rdfs:subClassOf nerd:Region ;
+  owl:equivalentClass extractiv:INTERNATIONAL_REGION;
+
+nerd:LandRegion a rdfs:Class ;
+  rdfs:subClassOf nerd:Region ;
+  owl:equivalentClass extractiv:LAND_REGION;
+
+nerd:VideoGameRegion a rdfs:Class ;
+  rdfs:subClassOf nerd:Region ;
+  owl:equivalentClass alchemy:VideoGameRegion ;
+  
+nerd:WineRegion a rdfs:Class ;
+  rdfs:subClassOf nerd:Region ;
+  owl:equivalentClass alchemy:WineRegion ;
+  
+nerd:MartialArt a rdfs:Class ;
+  rdfs:subClassOf nerd:Sport ;
+  owl:equivalentClass alchemy:MartialArt ;
+  
+nerd:DrinkingEstablishment a rdfs:Class ;
+  rdfs:subClassOf nerd:Food	;
+  owl:equivalentClass zemanta:drinking_establishment ;
+
+nerd:Blog a rdfs:Class ;
+  rdfs:subClassOf nerd:Internet	;
+  owl:equivalentClass zemanta:blog ;  
+
+nerd:TopLevelDomain a rdfs:Class ;
+  rdfs:subClassOf nerd:Internet	;
+  owl:equivalentClass zemanta:top_level_domain ;  
+
+nerd:Website a rdfs:Class ;
+  rdfs:subClassOf nerd:Internet ;
+  owl:equivalentClass dbpedia-owl:Website ;
+  owl:equivalentClass zemanta:website ;   
+
+nerd:ListedSite a rdfs:Class ;
+  rdfs:subClassOf nerd:Website ;
+  owl:equivalentClass zemanta:listed_site ;
+
+nerd:ProtectedSite a rdfs:Class ;
+  rdfs:subClassOf nerd:Website ;
+  owl:equivalentClass zemanta:protected_site ;
+  
+nerd:Accomodation a rdfs:Class ;
+  rdfs:subClassOf nerd:Travel ;
+  owl:equivalentClass zemanta:accomodation ;
+  
+nerd:TouristAttraction a rdfs:Class ;
+  rdfs:subClassOf nerd:Travel ;
+  owl:equivalentClass zemanta:tourist_attraction ;
+  
+nerd:DigitalMeasure a rdfs:Class ;
+  rdfs:subClassOf nerd:FieldTerminology ;
+  owl:equivalentClass extractiv:DIGITAL_MEASURE ;  
+
+nerd:ElectronicsMeasure a rdfs:Class ;
+  rdfs:subClassOf nerd:FieldTerminology ;
+  owl:equivalentClass extractiv:ELECTRONICS_MEASURE ; 
+  
+nerd:DomainName a rdfs:Class ;
+  rdfs:subClassOf nerd:Internet ;
+  owl:equivalentClass extractiv:DOMAIN_NAME ;
+  
+nerd:URL a rdfs:Class ;  
+  rdfs:subClassOf nerd:Internet ;
+  owl:equivalentClass opencalais:URL ;
+  owl:equivalentClass extractiv:URL ;  
+  
+nerd:FTP a rdfs:Class ;  
+  rdfs:subClassOf nerd:Internet ;
+  owl:equivalentClass extractiv:FTP ;  
+
+nerd:HTTP a rdfs:Class ;  
+  rdfs:subClassOf nerd:Internet ;
+  owl:equivalentClass extractiv:HTTP ;  
