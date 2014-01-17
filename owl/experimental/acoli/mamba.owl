@@ -1,0 +1,570 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY penn "http://purl.org/olia/penn.owl#" >
+    <!ENTITY olia_system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/penn.owl#"
+     xml:base="http://purl.org/olia/penn.owl"
+     xmlns:penn="http://purl.org/olia/penn.owl#"
+     xmlns:olia_system="http://purl.org/olia/system.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo rdf:datatype="&xsd;string"
+            >2008-04-10 created
+2011-11-28 fixed typo (PR vs. RP)
+2011-11-31 added Punctuation (not addressed by Santorini 1990)
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >OLiA Annotation Model for Penn Treebank (PTB) part-of-speech annotation (Santorini 1990)
+
+Unless specified otherwise, all comments are taken from Santorini (1990). 
+
+References
+Beatrice Santorini (1990), Part-of-Speech tagging guidelines for the Penn Treebank Project, 3rd revision, 2nd printing, ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string"
+            >ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz</rdfs:isDefinedBy>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="#hasTag"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTier"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Adjective -->
+
+    <owl:Class rdf:about="#Adjective">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are adjectives, ordinal numerals, and ordinal numbers.
+Hyphenated compounds that are used as modifiers are tagged as adjectives, e.g. &quot;happy-go-lucky&quot;, &quot;one-of-a-kind&quot;, &quot;run-of-the-mill&quot;. Ordinal numbers are tagged as adjectives, as are compounds of the form &quot;n-th&quot; or &quot;X-est&quot;, like &quot;fourth-largest&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Adverb -->
+
+    <owl:Class rdf:about="#Adverb">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#CardinalNumber -->
+
+    <owl:Class rdf:about="#CardinalNumber">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are cardinal numbers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Conjunction -->
+
+    <owl:Class rdf:about="#Conjunction">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="#Conjunction"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes &quot;and&quot;, &quot;but&quot;, &quot;nor&quot;, &quot;or&quot;, &quot;yet&quot; (as in &quot;Yet it&#39;s cheap&quot;, &quot;cheap yet good&quot;), as well as the mathematical operators &quot;plus&quot;, &quot;minus&quot;, &quot;less&quot;, &quot;times&quot; (in the sense of &quot;multiplied by&quot;) and &quot;over&quot; (in the sense of &quot;divided by&quot;), when they are spelled out.
+For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Determiner -->
+
+    <owl:Class rdf:about="#Determiner">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes the articles &quot;a(n)&quot;, &quot;every&quot;, &quot;no&quot; and &quot;the&quot;, the indefinite determiners &quot;another&quot;,  &quot;any&quot; and &quot;some&quot;, &quot;each&quot;, &quot;either&quot; (as in &quot;either way&quot;), &quot;neither&quot; (as in &quot;neither decision&quot;), &quot;that&quot;, &quot;these&quot;, &quot;this&quot; and &quot;those&quot;, and instances of &quot;all&quot; and &quot;both&quot; when they do not precede a determiner or possessive pronoun (as in &quot;all roads&quot; or &quot;both times&quot;).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#ForeignWord -->
+
+    <owl:Class rdf:about="#ForeignWord">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#InfinitivalMarker -->
+
+    <owl:Class rdf:about="#InfinitivalMarker">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Interjection -->
+
+    <owl:Class rdf:about="#Interjection">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes &quot;my&quot; (as in &quot;My, what a gorgeous day&quot;), &quot;oh&quot;, &quot;please&quot;,  &quot;see&quot; (as in &quot;See	 it&#39;s like this&quot;), &quot;uh&quot;, &quot;well&quot; and &quot;yes&quot;, among others.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#MajorDelimiter -->
+
+    <owl:Class rdf:about="#MajorDelimiter">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#MinorDelimiter -->
+
+    <owl:Class rdf:about="#MinorDelimiter">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Noun -->
+
+    <owl:Class rdf:about="#Noun">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#OrdinalNumber -->
+
+    <owl:Class rdf:about="#OrdinalNumber">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#PairwiseDelimiter -->
+
+    <owl:Class rdf:about="#PairwiseDelimiter">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Participle -->
+
+    <owl:Class rdf:about="#Participle">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Particle -->
+
+    <owl:Class rdf:about="#Particle">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#PossessivePronoun -->
+
+    <owl:Class rdf:about="#PossessivePronoun">
+        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes the adjectival possessive forms &quot;my&quot;, &quot;your&quot;, &quot;his&quot;, &quot;her&quot;, &quot;its&quot;, &quot;one&#39;s&quot;, &quot;our&quot; and &quot;their&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#PossessiveWhPronoun -->
+
+    <owl:Class rdf:about="#PossessiveWhPronoun">
+        <rdfs:subClassOf rdf:resource="#PossessivePronoun"/>
+        <rdfs:subClassOf rdf:resource="#WhPronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Pronoun -->
+
+    <owl:Class rdf:about="#Pronoun">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#ProperNoun -->
+
+    <owl:Class rdf:about="#ProperNoun">
+        <rdfs:subClassOf rdf:resource="#Noun"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are singular or plural proper nouns.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Punctuation -->
+
+    <owl:Class rdf:about="#Punctuation">
+        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&olia_system;hasTier"/>
+                <owl:hasValue>pos</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:versionInfo
+            >Not addressed by Santorini (1990), but produced by real-world taggers, also cf. http://www.cis.upenn.edu/~treebank/tokenization.html for the treatment of PTB punctuation tags in the parsed Penn Treebank.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="#SubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="#Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Tag -->
+
+    <owl:Class rdf:about="#Tag">
+        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&olia_system;hasTier"/>
+                <owl:hasValue rdf:datatype="&xsd;string">pos</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Verb -->
+
+    <owl:Class rdf:about="#Verb">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#WhAdverb -->
+
+    <owl:Class rdf:about="#WhAdverb">
+        <rdfs:subClassOf rdf:resource="#Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#WhDeterminer -->
+
+    <owl:Class rdf:about="#WhDeterminer">
+        <rdfs:subClassOf rdf:resource="#Determiner"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes &quot;which&quot;, as well as that when it is used as a relative pronoun.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#WhPronoun -->
+
+    <owl:Class rdf:about="#WhPronoun">
+        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes &quot;what&quot;, &quot;who&quot; and &quot;whom&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
+
+    <owl:Class rdf:about="&olia_system;LinguisticAnnotation"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#adjective -->
+
+    <Adjective rdf:about="#adjective">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>JJ</hasTag>
+    </Adjective>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#adverb -->
+
+    <Adverb rdf:about="#adverb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>AB</hasTag>
+    </Adverb>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#cardinalNumber -->
+
+    <CardinalNumber rdf:about="#cardinalNumber">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>RG</hasTag>
+    </CardinalNumber>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#coordinatingConjunction -->
+
+    <owl:Thing rdf:about="#coordinatingConjunction">
+        <rdf:type rdf:resource="#CoordinatingConjunction"/>
+        <hasTag>KN</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#determiner -->
+
+    <owl:Thing rdf:about="#determiner">
+        <rdf:type rdf:resource="#Determiner"/>
+        <hasTag>DT</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#foreignWord -->
+
+    <ForeignWord rdf:about="#foreignWord">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>UO</hasTag>
+    </ForeignWord>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#infinitiveMarker -->
+
+    <owl:Thing rdf:about="#infinitiveMarker">
+        <rdf:type rdf:resource="#InfinitivalMarker"/>
+        <hasTag>IE</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#interjection -->
+
+    <owl:Thing rdf:about="#interjection">
+        <rdf:type rdf:resource="#Interjection"/>
+        <hasTag>IN</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#majorDelimiter -->
+
+    <owl:Thing rdf:about="#majorDelimiter"/>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#minorDelimiter -->
+
+    <owl:Thing rdf:about="#minorDelimiter"/>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#noun -->
+
+    <Noun rdf:about="#noun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>NN</hasTag>
+    </Noun>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#ordinalNumber -->
+
+    <owl:Thing rdf:about="#ordinalNumber">
+        <rdf:type rdf:resource="#OrdinalNumber"/>
+        <hasTag>RO</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#pairwiseDelimiter -->
+
+    <owl:Thing rdf:about="#pairwiseDelimiter"/>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#participle -->
+
+    <owl:Thing rdf:about="#participle">
+        <rdf:type rdf:resource="#Participle"/>
+        <hasTag>PC</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#particle -->
+
+    <owl:Thing rdf:about="#particle">
+        <rdf:type rdf:resource="#Particle"/>
+        <hasTag>PL</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#possessivePronoun -->
+
+    <PossessivePronoun rdf:about="#possessivePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>PS</hasTag>
+    </PossessivePronoun>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#preposition -->
+
+    <owl:Thing rdf:about="#preposition"/>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#pronoun -->
+
+    <owl:Thing rdf:about="#pronoun">
+        <rdf:type rdf:resource="#Pronoun"/>
+        <hasTag>PN</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#properNoun -->
+
+    <owl:Thing rdf:about="#properNoun">
+        <rdf:type rdf:resource="#ProperNoun"/>
+        <hasTag>PM</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#subordinatingConjunction -->
+
+    <owl:Thing rdf:about="#subordinatingConjunction">
+        <rdf:type rdf:resource="#SubordinatingConjunction"/>
+        <hasTag>SN</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#verb -->
+
+    <owl:Thing rdf:about="#verb">
+        <rdf:type rdf:resource="#Verb"/>
+        <hasTag>VB</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#whadverb -->
+
+    <WhAdverb rdf:about="#whadverb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </WhAdverb>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#whdeterminer -->
+
+    <owl:Thing rdf:about="#whdeterminer">
+        <rdf:type rdf:resource="#WhDeterminer"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#whpossessive -->
+
+    <owl:Thing rdf:about="#whpossessive">
+        <rdf:type rdf:resource="#PossessiveWhPronoun"/>
+        <hasTag>HS</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#whpronoun -->
+
+    <owl:Thing rdf:about="#whpronoun">
+        <rdf:type rdf:resource="#WhPronoun"/>
+    </owl:Thing>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,804 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY proiel "file://home/maria/Data/experimental/acoli/proiel.owl#" >
+    <!ENTITY system2 "file://home/maria/Data/Ontologies/owl/core/system.owl#" >
+]>
+
+
+<rdf:RDF xmlns="file://home/maria/Data/experimental/acoli/proiel.owl#"
+     xml:base="file://home/maria/Data/experimental/acoli/proiel.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:system2="file://home/maria/Data/Ontologies/owl/core/system.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:proiel="file://home/maria/Data/experimental/acoli/proiel.owl#">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo rdf:datatype="&xsd;string"
+            >2010-01-05 created by Maria Sukhareva sukhareva@em.uni-frankfurt.de(RDF)</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >annotation model of PROIEL from http://folk.uio.no/daghaug/syntactic_guidelines.pdf</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string"
+            >http://folk.uio.no/daghaug/syntactic_guidelines.pdf</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="file://home/maria/Data/Ontologies/owl/core/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file://home/maria/Data/Ontologies/owl/core/system.owl#hasSource -->
+
+    <owl:ObjectProperty rdf:about="&system2;hasSource"/>
+    
+
+
+    <!-- file://home/maria/Data/Ontologies/owl/core/system.owl#hasTarget -->
+
+    <owl:ObjectProperty rdf:about="&system2;hasTarget"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file://home/maria/Data/Ontologies/owl/core/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="&system2;hasTag"/>
+    
+
+
+    <!-- file://home/maria/Data/Ontologies/owl/core/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="&system2;hasTier"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file://home/maria/Data/Ontologies/owl/core/system.owl#Feature -->
+
+    <owl:Class rdf:about="&system2;Feature"/>
+    
+
+
+    <!-- file://home/maria/Data/Ontologies/owl/core/system.owl#LinguisticAnnotation -->
+
+    <owl:Class rdf:about="&system2;LinguisticAnnotation"/>
+    
+
+
+    <!-- file://home/maria/Data/Ontologies/owl/core/system.owl#Relation -->
+
+    <owl:Class rdf:about="&system2;Relation"/>
+    
+
+
+    <!-- file://home/maria/Data/Ontologies/owl/core/system.owl#UnitOfAnnotation -->
+
+    <owl:Class rdf:about="&system2;UnitOfAnnotation"/>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Adjunct -->
+
+    <owl:Class rdf:about="#Adjunct">
+        <rdfs:subClassOf rdf:resource="#Peripheral"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#AdnominalPartitive -->
+
+    <owl:Class rdf:about="#AdnominalPartitive">
+        <rdfs:subClassOf rdf:resource="#Adnominals"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Adnominals -->
+
+    <owl:Class rdf:about="#Adnominals">
+        <rdfs:subClassOf rdf:resource="#DependencyLabel"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#AdverbialAppositions -->
+
+    <owl:Class rdf:about="#AdverbialAppositions">
+        <rdfs:subClassOf rdf:resource="#Peripheral"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Adverbials -->
+
+    <owl:Class rdf:about="#Adverbials">
+        <rdfs:subClassOf rdf:resource="#Adjunct"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Agent -->
+
+    <owl:Class rdf:about="#Agent">
+        <rdfs:subClassOf rdf:resource="#Argument"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Apposition -->
+
+    <owl:Class rdf:about="#Apposition">
+        <rdfs:subClassOf rdf:resource="#Adnominals"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Argument -->
+
+    <owl:Class rdf:about="#Argument">
+        <rdfs:label rdf:datatype="&xsd;string">argument</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#SentenceLevelRelations"/>
+        <rdfs:comment
+            >ARG for arguments, to be used whenever it is not possible to d
+ecide
+whenever an element is an OBJect or an OBLique</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#ArgumentsOfNouns -->
+
+    <owl:Class rdf:about="#ArgumentsOfNouns">
+        <rdfs:subClassOf rdf:resource="#Adnominals"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Attributive -->
+
+    <owl:Class rdf:about="#Attributive">
+        <rdfs:label rdf:datatype="&xsd;string">attributive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Adnominals"/>
+        <rdfs:comment
+            >An attributive is a WHNP complement of a copular verb such as &quot;to be&quot;, &quot;to seem&quot;, &quot;to appear&quot;.
+
+&quot;What is that?&quot; 
+attr (is, What)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Auxiliary -->
+
+    <owl:Class rdf:about="#Auxiliary">
+        <rdfs:label rdf:datatype="&xsd;string">auxiliary</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#SentenceLevelRelations"/>
+        <rdfs:comment
+            >Items that are not covered by other tags are simply given the t
+ag Aux, which
+serves to mark auxiliary verbs, modal particles, focus part
+icles, negation etc.
+Information about these items is always recoverable from th
+e categorial infor-
+mation in their morphology. The intuition behind the relati
+on Aux is that it
+serves to mark off &#8217;grammatical words&#8217; as opposed to &#8217;lexical
+words&#8217;. There are
+certain adverbs whose meaning can sometimes be so weakened t
+hat they appear
+as grammatical words (
+ergo
+signalling simple progression for example), so the
+distinction between Aux and ADV is not always clear</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Complement -->
+
+    <owl:Class rdf:about="#Complement">
+        <rdfs:label rdf:datatype="&xsd;string">complement</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Argument"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Coordination -->
+
+    <owl:Class rdf:about="#Coordination">
+        <rdfs:label rdf:datatype="&xsd;string">coordination</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#SentenceLevelRelations"/>
+        <rdfs:comment
+            >A coordination is the relation between an element of a conjunct and the coordinating conjunction word of the conjunct. (Note: different dependency grammars have different treatments of coordination. We take one conjunct of a conjunction (normally the first) as the head of the conjunction.)
+
+&quot;Bill is big and honest&quot; 
+cc(big, and)
+
+&quot;They either ski or snowboard&quot; 
+cc(ski, or)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#DependencyLabel -->
+
+    <owl:Class rdf:about="#DependencyLabel">
+        <rdfs:subClassOf rdf:resource="&system2;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#DependencyRelation -->
+
+    <owl:Class rdf:about="#DependencyRelation">
+        <rdfs:subClassOf rdf:resource="&system2;Relation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system2;hasSource"/>
+                <owl:someValuesFrom rdf:resource="#Token"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system2;hasTarget"/>
+                <owl:someValuesFrom rdf:resource="#Token"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Nonsubj -->
+
+    <owl:Class rdf:about="#Nonsubj">
+        <rdfs:subClassOf rdf:resource="#SentenceLevelRelations"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#NounPhrasesWithoutNoun -->
+
+    <owl:Class rdf:about="#NounPhrasesWithoutNoun">
+        <rdfs:subClassOf rdf:resource="#DependencyLabel"/>
+        <rdfs:comment
+            >Sometimes a sentence-level function is not filled by a noun, b
+ut by an adjective,
+participle or a numeral. Such elements should be given the ap
+propriate function
+in the sentence, and should
+not
+be related to an empty node representing the
+&#8217;elliptical&#8217; subject, object or otherwise: Before opting for such an analysis, the annotators should ma
+ke
+sure that the
+adjective/participle is not predicative. The example abov
+e means &#8216;The wise
+ones answered&#8217;. If the sentence meant &#8216;Being wise, they answ
+ered&#8217; or &#8216;They
+answered wisely&#8217;,
+prudentes
+would have been an XADV, see section 10.9.2.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Object -->
+
+    <owl:Class rdf:about="#Object">
+        <rdfs:label rdf:datatype="&xsd;string">object</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Argument"/>
+        <rdfs:subClassOf rdf:resource="#Nonsubj"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Oblique -->
+
+    <owl:Class rdf:about="#Oblique">
+        <rdfs:subClassOf rdf:resource="#Argument"/>
+        <rdfs:subClassOf rdf:resource="#Coordination"/>
+        <rdfs:subClassOf rdf:resource="#Nonsubj"/>
+        <rdfs:subClassOf rdf:resource="#Peripheral"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#ParentheticalPredicate -->
+
+    <owl:Class rdf:about="#ParentheticalPredicate">
+        <rdfs:subClassOf rdf:resource="#Root"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Peripheral -->
+
+    <owl:Class rdf:about="#Peripheral">
+        <rdfs:subClassOf rdf:resource="#SentenceLevelRelations"/>
+        <rdfs:comment
+            >PER for peripheral (not subject or object) elements, ie. OB
+L or ADV.
+This should be used whenever it is not possible to decide whet
+her an
+element is an argument or an adjunct.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Predicate -->
+
+    <owl:Class rdf:about="#Predicate">
+        <rdfs:subClassOf rdf:resource="#Root"/>
+        <owl:disjointWith rdf:resource="#NounPhrasesWithoutNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#PredicativeComplements -->
+
+    <owl:Class rdf:about="#PredicativeComplements">
+        <rdfs:subClassOf rdf:resource="#Argument"/>
+        <owl:disjointWith rdf:resource="#Peripheral"/>
+        <rdfs:comment
+            >The relation XOBJ is used for subject and object complements
+(as well as other
+functions as explained in section 16.5) which are introduce
+d by verbs like
+esse,
+uideri, appellari, fieri
+(subject complements) and
+facere, creare
+(object comple-
+ments), as well as in verbless absolute ablatives (see secti
+on 10.7). The relation
+itself does not make clear whether we are dealing with a subje
+ct predicative
+or an object predicative.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Relative -->
+
+    <owl:Class rdf:about="#Relative">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >relative (word introducing a rcmod )</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Subjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Root -->
+
+    <owl:Class rdf:about="#Root">
+        <rdfs:subClassOf rdf:resource="&system2;LinguisticAnnotation"/>
+        <rdfs:comment
+            >PRED, PARPRED and VOC relations are allowed
+directly under the root.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#SentenceLevelRelations -->
+
+    <owl:Class rdf:about="#SentenceLevelRelations">
+        <rdfs:subClassOf rdf:resource="#DependencyLabel"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Subject -->
+
+    <owl:Class rdf:about="#Subject">
+        <rdfs:label rdf:datatype="&xsd;string">subject</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Argument"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Subjunction -->
+
+    <owl:Class rdf:about="#Subjunction">
+        <rdfs:subClassOf rdf:resource="#Adjunct"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Token -->
+
+    <owl:Class rdf:about="#Token">
+        <rdfs:subClassOf rdf:resource="&system2;UnitOfAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#Vocative -->
+
+    <owl:Class rdf:about="#Vocative">
+        <rdfs:subClassOf rdf:resource="#Root"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#abbrev -->
+
+    <owl:Thing rdf:about="#abbrev">
+        <system2:hasTag rdf:datatype="&xsd;string">abbrev</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#acomp -->
+
+    <owl:Thing rdf:about="#acomp">
+        <system2:hasTag rdf:datatype="&xsd;string">acomp</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#adnom -->
+
+    <owl:Thing rdf:about="#adnom">
+        <rdf:type rdf:resource="#Adnominals"/>
+        <system2:hasTag>adnom</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#adv -->
+
+    <Adverbials rdf:about="#adv">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTier>adv</system2:hasTier>
+    </Adverbials>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#advcl -->
+
+    <owl:Thing rdf:about="#advcl">
+        <system2:hasTag rdf:datatype="&xsd;string">advcl</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#advmod -->
+
+    <owl:Thing rdf:about="#advmod">
+        <system2:hasTag rdf:datatype="&xsd;string">advmod</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#ag -->
+
+    <Agent rdf:about="#ag">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag>ag</system2:hasTag>
+    </Agent>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#agent -->
+
+    <owl:Thing rdf:about="#agent">
+        <system2:hasTag rdf:datatype="&xsd;string">agent</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#amod -->
+
+    <owl:Thing rdf:about="#amod">
+        <system2:hasTag rdf:datatype="&xsd;string">amod</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#apos -->
+
+    <Apposition rdf:about="#apos">
+        <rdf:type rdf:resource="#AdverbialAppositions"/>
+        <rdf:type rdf:resource="#Relative"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag>apos</system2:hasTag>
+    </Apposition>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#appos -->
+
+    <owl:Thing rdf:about="#appos">
+        <system2:hasTag rdf:datatype="&xsd;string">apos</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#arg -->
+
+    <Argument rdf:about="#arg">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag rdf:datatype="&xsd;string">arg</system2:hasTag>
+    </Argument>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#atr -->
+
+    <owl:Thing rdf:about="#atr">
+        <rdf:type rdf:resource="#Attributive"/>
+        <rdf:type rdf:resource="#Relative"/>
+        <system2:hasTag rdf:datatype="&xsd;string">atr</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#aux -->
+
+    <owl:Thing rdf:about="#aux">
+        <rdf:type rdf:resource="#Auxiliary"/>
+        <system2:hasTag rdf:datatype="&xsd;string">aux</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#auxpass -->
+
+    <owl:Thing rdf:about="#auxpass">
+        <system2:hasTag rdf:datatype="&xsd;string">auxpass</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#comp -->
+
+    <Complement rdf:about="#comp">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag rdf:datatype="&xsd;string">comp</system2:hasTag>
+    </Complement>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#dep -->
+
+    <owl:Thing rdf:about="#dep">
+        <system2:hasTag rdf:datatype="&xsd;string">dep</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#mod -->
+
+    <owl:Thing rdf:about="#mod">
+        <system2:hasTag rdf:datatype="&xsd;string">mod</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#narg -->
+
+    <owl:Thing rdf:about="#narg">
+        <rdf:type rdf:resource="#ArgumentsOfNouns"/>
+        <system2:hasTag>narg</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#nonsub -->
+
+    <Nonsubj rdf:about="#nonsub">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag>nonsub</system2:hasTag>
+    </Nonsubj>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#nsubj -->
+
+    <owl:Thing rdf:about="#nsubj">
+        <system2:hasTag rdf:datatype="&xsd;string">nsubj</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#obj -->
+
+    <owl:Thing rdf:about="#obj">
+        <rdf:type rdf:resource="#Object"/>
+        <system2:hasTag rdf:datatype="&xsd;string">obj</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#obl -->
+
+    <owl:Thing rdf:about="#obl">
+        <rdf:type rdf:resource="#Oblique"/>
+        <system2:hasTag>obl</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#parpred -->
+
+    <owl:Thing rdf:about="#parpred">
+        <rdf:type rdf:resource="#ParentheticalPredicate"/>
+        <system2:hasTag>parpred</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#part -->
+
+    <owl:Thing rdf:about="#part">
+        <rdf:type rdf:resource="#AdnominalPartitive"/>
+        <system2:hasTag>part</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#pcomp -->
+
+    <owl:Thing rdf:about="#pcomp">
+        <system2:hasTag>pcomp</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#per -->
+
+    <owl:Thing rdf:about="#per">
+        <rdf:type rdf:resource="#Peripheral"/>
+        <system2:hasTag>per</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#pred -->
+
+    <owl:Thing rdf:about="#pred">
+        <rdf:type rdf:resource="#Predicate"/>
+        <system2:hasTag>pred</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#prt -->
+
+    <owl:Thing rdf:about="#prt">
+        <system2:hasTag rdf:datatype="&xsd;string">prt</system2:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#rel -->
+
+    <Relative rdf:about="#rel">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag rdf:datatype="&xsd;string">rel</system2:hasTag>
+    </Relative>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#root -->
+
+    <Root rdf:about="#root">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag>pred</system2:hasTag>
+    </Root>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#sub -->
+
+    <Subject rdf:about="#sub">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag rdf:datatype="&xsd;string">sub</system2:hasTag>
+    </Subject>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#voc -->
+
+    <Vocative rdf:about="#voc">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag>voc</system2:hasTag>
+    </Vocative>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#xadv -->
+
+    <NounPhrasesWithoutNoun rdf:about="#xadv">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTier>xadv</system2:hasTier>
+    </NounPhrasesWithoutNoun>
+    
+
+
+    <!-- file://home/maria/Data/experimental/acoli/proiel.owl#xobj -->
+
+    <PredicativeComplements rdf:about="#xobj">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system2:hasTag>xobj</system2:hasTag>
+    </PredicativeComplements>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Object"/>
+            <rdf:Description rdf:about="#Oblique"/>
+            <rdf:Description rdf:about="#Subject"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
