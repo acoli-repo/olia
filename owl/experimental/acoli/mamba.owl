@@ -104,6 +104,14 @@ Hyphenated compounds that are used as modifiers are tagged as adjectives, e.g. &
     
 
 
+    <!-- http://purl.org/olia/penn.owl#CaseFeature -->
+
+    <owl:Class rdf:about="#CaseFeature">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#Conjunction -->
 
     <owl:Class rdf:about="#Conjunction">
@@ -123,6 +131,22 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#Definiteness -->
+
+    <owl:Class rdf:about="#Definiteness">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Degree -->
+
+    <owl:Class rdf:about="#Degree">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#Determiner -->
 
     <owl:Class rdf:about="#Determiner">
@@ -133,10 +157,26 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#Feature -->
+
+    <owl:Class rdf:about="#Feature">
+        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#ForeignWord -->
 
     <owl:Class rdf:about="#ForeignWord">
         <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Gender -->
+
+    <owl:Class rdf:about="#Gender">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
     </owl:Class>
     
 
@@ -175,12 +215,36 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#Mood -->
+
+    <owl:Class rdf:about="#Mood">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#MorphologicalFeature -->
+
+    <owl:Class rdf:about="#MorphologicalFeature">
+        <rdfs:subClassOf rdf:resource="#Feature"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#Noun -->
 
     <owl:Class rdf:about="#Noun">
         <rdfs:subClassOf rdf:resource="#Tag"/>
         <rdfs:comment rdf:datatype="&xsd;string"
             >This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Number -->
+
+    <owl:Class rdf:about="#Number">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
     </owl:Class>
     
 
@@ -219,6 +283,14 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#PerfectForm -->
+
+    <owl:Class rdf:about="#PerfectForm">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#PossessivePronoun -->
 
     <owl:Class rdf:about="#PossessivePronoun">
@@ -244,6 +316,14 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
         <rdfs:subClassOf rdf:resource="#Tag"/>
         <rdfs:comment rdf:datatype="&xsd;string"
             >This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#PronounForm -->
+
+    <owl:Class rdf:about="#PronounForm">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
     </owl:Class>
     
 
@@ -304,6 +384,22 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#Verbform -->
+
+    <owl:Class rdf:about="#Verbform">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Voice -->
+
+    <owl:Class rdf:about="#Voice">
+        <rdfs:subClassOf rdf:resource="#MorphologicalFeature"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#WhAdverb -->
 
     <owl:Class rdf:about="#WhAdverb">
@@ -355,6 +451,21 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#abbreviation -->
+
+    <owl:Thing rdf:about="#abbreviation"/>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#active -->
+
+    <owl:Thing rdf:about="#active">
+        <rdf:type rdf:resource="#Voice"/>
+        <hasTag>AKT</hasTag>
+    </owl:Thing>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#adjective -->
 
     <Adjective rdf:about="#adjective">
@@ -382,11 +493,47 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#common -->
+
+    <Gender rdf:about="#common">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>UTR</hasTag>
+    </Gender>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#comparative -->
+
+    <owl:Thing rdf:about="#comparative">
+        <rdf:type rdf:resource="#Degree"/>
+        <hasTag>KOM</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#compound -->
+
+    <CaseFeature rdf:about="#compound">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>SMS</hasTag>
+    </CaseFeature>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#coordinatingConjunction -->
 
     <owl:Thing rdf:about="#coordinatingConjunction">
         <rdf:type rdf:resource="#CoordinatingConjunction"/>
         <hasTag>KN</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#definite -->
+
+    <owl:Thing rdf:about="#definite">
+        <rdf:type rdf:resource="#Definiteness"/>
+        <hasTag>DEF</hasTag>
     </owl:Thing>
     
 
@@ -406,6 +553,42 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
         <rdf:type rdf:resource="&owl;Thing"/>
         <hasTag>UO</hasTag>
     </ForeignWord>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#genitive -->
+
+    <owl:Thing rdf:about="#genitive">
+        <rdf:type rdf:resource="#CaseFeature"/>
+        <hasTag>GEN</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#imperative -->
+
+    <owl:Thing rdf:about="#imperative">
+        <rdf:type rdf:resource="#Verbform"/>
+        <hasTag>IMP</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#indefinite -->
+
+    <owl:Thing rdf:about="#indefinite">
+        <rdf:type rdf:resource="#Definiteness"/>
+        <hasTag>IND</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#infinitive -->
+
+    <Verbform rdf:about="#infinitive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>INF</hasTag>
+    </Verbform>
     
 
 
@@ -433,9 +616,36 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#masculine -->
+
+    <owl:Thing rdf:about="#masculine">
+        <rdf:type rdf:resource="#Gender"/>
+        <hasTag>MAS</hasTag>
+    </owl:Thing>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#minorDelimiter -->
 
     <owl:Thing rdf:about="#minorDelimiter"/>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#neuter -->
+
+    <owl:Thing rdf:about="#neuter">
+        <rdf:type rdf:resource="#Gender"/>
+        <hasTag>NEU</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#nominative -->
+
+    <owl:Thing rdf:about="#nominative">
+        <rdf:type rdf:resource="#CaseFeature"/>
+        <hasTag>NOM</hasTag>
+    </owl:Thing>
     
 
 
@@ -445,6 +655,15 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
         <rdf:type rdf:resource="&owl;Thing"/>
         <hasTag>NN</hasTag>
     </Noun>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#object -->
+
+    <PronounForm rdf:about="#object">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>OBJ</hasTag>
+    </PronounForm>
     
 
 
@@ -481,6 +700,33 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#perfect -->
+
+    <PerfectForm rdf:about="#perfect">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>PRF</hasTag>
+    </PerfectForm>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#plural -->
+
+    <Number rdf:about="#plural">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>PLU</hasTag>
+    </Number>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#positive -->
+
+    <Degree rdf:about="#positive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>POS</hasTag>
+    </Degree>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#possessivePronoun -->
 
     <PossessivePronoun rdf:about="#possessivePronoun">
@@ -493,6 +739,24 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     <!-- http://purl.org/olia/penn.owl#preposition -->
 
     <owl:Thing rdf:about="#preposition"/>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#present -->
+
+    <Verbform rdf:about="#present">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>PRS</hasTag>
+    </Verbform>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#preterite -->
+
+    <owl:Thing rdf:about="#preterite">
+        <rdf:type rdf:resource="#Verbform"/>
+        <hasTag>PRT</hasTag>
+    </owl:Thing>
     
 
 
@@ -514,11 +778,65 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     
 
 
+    <!-- http://purl.org/olia/penn.owl#s-form -->
+
+    <Voice rdf:about="#s-form">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>SFO</hasTag>
+    </Voice>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#singular -->
+
+    <owl:Thing rdf:about="#singular">
+        <rdf:type rdf:resource="#Number"/>
+        <hasTag>SIN</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#subject -->
+
+    <PronounForm rdf:about="#subject">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>SUB</hasTag>
+    </PronounForm>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#subjunctive -->
+
+    <Mood rdf:about="#subjunctive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>KON</hasTag>
+    </Mood>
+    
+
+
     <!-- http://purl.org/olia/penn.owl#subordinatingConjunction -->
 
     <owl:Thing rdf:about="#subordinatingConjunction">
         <rdf:type rdf:resource="#SubordinatingConjunction"/>
         <hasTag>SN</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#superlative -->
+
+    <owl:Thing rdf:about="#superlative">
+        <rdf:type rdf:resource="#Degree"/>
+        <hasTag>SUV</hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#supinum -->
+
+    <owl:Thing rdf:about="#supinum">
+        <rdf:type rdf:resource="#Verbform"/>
+        <hasTag>SUP</hasTag>
     </owl:Thing>
     
 
@@ -536,6 +854,7 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <WhAdverb rdf:about="#whadverb">
         <rdf:type rdf:resource="&owl;Thing"/>
+        <hasTag>HA</hasTag>
     </WhAdverb>
     
 
@@ -544,6 +863,7 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Thing rdf:about="#whdeterminer">
         <rdf:type rdf:resource="#WhDeterminer"/>
+        <hasTag>HD</hasTag>
     </owl:Thing>
     
 
@@ -561,6 +881,7 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Thing rdf:about="#whpronoun">
         <rdf:type rdf:resource="#WhPronoun"/>
+        <hasTag>HP</hasTag>
     </owl:Thing>
 </rdf:RDF>
 
