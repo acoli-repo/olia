@@ -36,7 +36,7 @@
 	2012-02-10 Sourceforge commit
 	2014-03-20 merged with olia-is.owl
 	2014-03-20 *Category to *Unit, TextOrganizationalUnit to TextStructuralUnit
-	2014-03-21 DiscourseFunction, hasDiscourseFunction, PresentationalRelation, SubjectMatterRelation
+	2014-03-21 DiscourseFunction, hasDiscourseFunction, PresentationalRelation, SubjectMatterRelation, EntityTypes, RelationCue
 	
 	</owl:versionInfo>
         <rdfs:comment rdf:datatype="&xsd;string">OLiA ontology for discourse annotation, i.e.
@@ -113,6 +113,23 @@
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasAttributionSource -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasAttributionSource">
+        <rdfs:range rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AttributionSource"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasPragmaticFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseSegment"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasBridgingType -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasBridgingType">
@@ -126,6 +143,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasDefiniteness -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasDefiniteness">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSemanticFeature"/>
     </owl:ObjectProperty>
     
 
@@ -150,6 +175,22 @@
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasEntityType -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasEntityType">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSemanticFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasFactuality -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasFactuality">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSemanticFeature"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasInformationStatus -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasInformationStatus">
@@ -164,6 +205,14 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasPolarity -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasPolarity">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSemanticFeature"/>
     </owl:ObjectProperty>
     
 
@@ -183,6 +232,20 @@
             </owl:Class>
         </rdfs:domain>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasReferentiality -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasReferentiality">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSemanticFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasSemanticFeature -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasSemanticFeature"/>
     
 
 
@@ -259,13 +322,21 @@
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Abstract -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Abstract">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextStructuralUnit"/>
         <rdfs:comment rdf:datatype="&xsd;string">When a separate section of a document contains an abstract or summary of the
 document, this schema should be used. If, within the text of the article, a sentence or paragraph
 adequately summarizes the document, then the relation SUMMARY-S or SUMMARY-N should be
 selected. The schema ABSTRACT is reserved for a summary which is separate from the body of the
 text itself. (Carlson and Marcu 2001)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#AbstractEntity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#AbstractEntity">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#EntityType"/>
+        <rdfs:comment>Categories specified for referring expressions (Poesio &amp; Artstein 2006): Abstract, Animate, Concrete, Person, Plan, Space, Time</rdfs:comment>
     </owl:Class>
     
 
@@ -306,6 +377,24 @@ text itself. (Carlson and Marcu 2001)</rdfs:comment>
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#AlternativeLexicalization -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#AlternativeLexicalization">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#RelationCue"/>
+        <rdfs:comment>Alternative lexicalization: a discourse relation is inferred, but insertion of an
+Implicit connective leads to redundancy in its expression due to the relation being alternatively
+lexicalized by some other expression.
+
+These are cases where a discourse relation is inferred between adjacent sentences but where providing
+an Implicit connective leads to redundancy in the expression of the relation. This is because the
+relation is alternatively lexicalized by some “non-connective expression”. Such expressions include
+(1) those which have two parts, one referring to the relation and another anaphorically to Arg1; (2)
+those which have just one part referring anaphorically to Arg1; (3) those which have just one part
+referring to the relation.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Analogy_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Analogy_RST">
@@ -324,17 +413,19 @@ text itself. (Carlson and Marcu 2001)</rdfs:comment>
     
 
 
-    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Animate -->
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#AnimateEntity -->
 
-    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Animate">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory"/>
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#AnimateEntity">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ConcreteEntity"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit -->
 
-    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit"/>
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit">
+        <rdfs:comment>AnnotationUnit was introduced to account for annotating strings (selected according to certain criteria) directly with discourse information. Where structured elements (e.g., from syntax or semantics) represent the basis of annotation, the annotations should be directly anchored with them.</rdfs:comment>
+    </owl:Class>
     
 
 
@@ -363,6 +454,16 @@ Markers are &quot;although&quot;, &quot;however&quot;, and &quot;while&quot;.</r
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#NarrowFocus"/>
         <rdfs:comment>Narrow focus on one single non-verbal constituent in the focus.
 Corresponding to &quot;narrow focus&quot;  (van Valin &amp; Lapolla 1997), or &quot;argument focus&quot; (Lambrecht 1994). &quot;Term focus&quot; as suggested by Güldemann &amp; Fiedler would be more precise (adverbials also fall in this group, but no verbs).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Assertion -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Assertion">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PropositionalFactuality"/>
+        <rdfs:comment>Assertion proposition AOs are associated with a communication type of attribution (“Comm” for short), conveyed by standard verbs of communication (Levin, 1993) such as say, mention, claim, argue, explain etc.
+(Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
     
 
@@ -407,6 +508,15 @@ The Satellite attributes the Nucleus to a source.
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#AttributionSource -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#AttributionSource">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticFeature"/>
+        <rdfs:comment>Classification of Attribute relations with respect to different types of agents that act as source of Attribution. (Prasad et al. 2007)</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Author -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Author">
@@ -414,6 +524,15 @@ The Satellite attributes the Nucleus to a source.
         <rdfs:comment rdf:datatype="&xsd;string">Most of the time, the WSJ articles in our corpus did not include title and
 author information. However, in a small number of cases, a line about the author was included at
 the end of the text. In such cases, the schema Author was used to link this with the rest of the text. (Carlson and Marcu 2001)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#AuthorAttributionSource -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#AuthorAttributionSource">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AttributionSource"/>
+        <rdfs:comment>Source is writer of text (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
     
 
@@ -441,6 +560,16 @@ relation holds. In contrast with the CIRCUMSTANCE relation, the information or t
 BACKGROUND relation is not always specified clearly or delimited sharply. Hence, the CIRCUM-
 STANCE relation is stronger than BACKGROUND. 
 (Carlson and Marcu 2001)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Belief -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Belief">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PropositionalFactuality"/>
+        <rdfs:comment>Belief proposition AOs are associated with a “belief” type of attribution, conveyed by propositional attitude verbs (Hintikka, 1971) such as believe, think, expect, suppose, imagine, etc.
+(Prasad et al. 2007, for PDTB)</rdfs:comment>
     </owl:Class>
     
 
@@ -474,6 +603,7 @@ STANCE relation is stronger than BACKGROUND.
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#CausePrecedesEffect_PDTB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CausePrecedesEffect_PDTB">
+        <rdfs:label>result</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCause"/>
         <rdfs:comment rdf:datatype="&xsd;string">PDTB &quot;Result&quot;: The situation in Arg2 is the effect brought about by the situation described in Arg1. (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
@@ -624,10 +754,11 @@ A typical marker is &quot;although&quot; (in PTDB and RSTDTB).</rdfs:comment>
     
 
 
-    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Concrete -->
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ConcreteEntity -->
 
-    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Concrete">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory"/>
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ConcreteEntity">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#EntityType"/>
+        <rdfs:comment>Categories specified for referring expressions (Poesio &amp; Artstein 2006): Abstract, Animate, Concrete, Person, Plan, Space, Time</rdfs:comment>
     </owl:Class>
     
 
@@ -765,6 +896,9 @@ Also referred to as &quot;identificational focus&quot;, or &quot;alternative foc
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#CounterexpectedConcession_PDTB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CounterexpectedConcession_PDTB">
+        <rdfs:label>counterexpectation</rdfs:label>
+        <rdfs:label>contra-expectation</rdfs:label>
+        <rdfs:label>contraexpectation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Concession"/>
         <rdfs:comment rdf:datatype="&xsd;string">Arg1 creates an expectation that Arg2 denies. (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
@@ -826,6 +960,18 @@ It is important to understand which subclasses of focus can be expressed by gram
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#DeterminateAttribution -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DeterminateAttribution">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Attribution"/>
+        <rdfs:comment>Classification of Attribute relations with respect to their &quot;determinacy&quot;, which signals a context that cancels what would otherwise be an entailment of attribution.
+The determinacy feature captures the fact that the attribution over a relation or argument can itself be cancelled in particular contexts, such as within negated, conditional, and infinitive contexts.
+Determinate contexts are simply marked by the default “Null”. (Prasad et al. 2007)
+</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#DiscourseEntity -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseEntity">
@@ -877,10 +1023,17 @@ Note that Attribution is modelled here as a relation (as in RST), not as a featu
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#DiscourseSegment -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseSegment">
+        <rdfs:label>argument (PDTB)</rdfs:label>
+        <rdfs:label>discourse segment</rdfs:label>
+        <rdfs:label>discourse unit</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseEntity"/>
         <rdfs:comment rdf:datatype="&xsd;string">Cognitive representation representing a longer stretch of discourse (Grosz and Sidner 1986), defined by a particular &quot;discourse segment purpose&quot; (Grosz and Sidner 1986), a specific propositional content of the relation between dependent DiscourseSegments, or the propositional content of the text contained in a minimal discourse segment (Mann and Thompson 1988). DiscourseSegments are interconnected by DiscourseRelations in a hierarchical and sequential structure.</rdfs:comment>
         <rdfs:comment rdf:datatype="&xsd;string">Discourse segment (discourse unit) is a segment of discourse that represents either an elementary discourse unit (e.g., a clause, proposition) or a complex discourse unit (constituted by several discourse units). Depending on theory, discourse segments reflect the scope of quantifiers and discourse connectives (Kamp 1982, Asher and Lascarides 2003), turn- or paragraph-like structures (Grosz and Sidner 1986) or range and domain of discourse relations (cf. Mann and Thompson 1988, Carlson et al. 2003).</rdfs:comment>
         <rdfs:comment rdf:datatype="&xsd;string">Near-synonyms in RST literature are &quot;discourse unit&quot; (Carlsson et al. 2003) and &quot;text span&quot; (Mann and Thompson 1988).</rdfs:comment>
+        <rdfs:comment>roughly corresponds to the notion of &quot;Arguments&quot; in PDTB:
+
+Argument of a Relation, e.g., a connective. Syntactically characterized as Simple clauses, certain VP coordinations (the conjunction in a coordinated verb phase is not annotated as a distinct discourse connective, but one or more verb phrases within the coordinated structure can be annotated as the argument of another connective), certain nominalizations, anaphoric expressions denoting abstract objects  (like &quot;this&quot;, or &quot;that&quot; or &quot;so&quot;), responses to questions
+(Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
     
 
@@ -911,6 +1064,7 @@ An item presents a (not necessarily exclusive) alternative for the other(s). (Ma
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#EffectPrecedesCause_PDTB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#EffectPrecedesCause_PDTB">
+        <rdfs:label>reason</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCause"/>
         <rdfs:comment rdf:datatype="&xsd;string">PDTB &quot;Reason&quot;: The situation described in Arg2 is the cause and the situation described in Arg1 is the effect. (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
@@ -1148,6 +1302,15 @@ being realized.
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#EntityType -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#EntityType">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticFeature"/>
+        <rdfs:comment>Categories specified for referring expressions (Poesio &amp; Artstein 2006): Abstract, Animate, Concrete, Person, Plan, Space, Time</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#EpistemicCause_HDRB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#EpistemicCause_HDRB">
@@ -1220,6 +1383,7 @@ temic” (Sweetser 1990), “speech-act” (Sweetser
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#EquivalentRestatement_PDTB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#EquivalentRestatement_PDTB">
+        <rdfs:label>equivalence</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Restatement"/>
         <rdfs:comment rdf:datatype="&xsd;string">Arg1 and Arg2 describe the same situation from different perspectives. (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
@@ -1235,6 +1399,19 @@ span of the relationship on a scale of good to bad. An evaluation can be an appr
 rating, interpretation, or assessment of a situation. The evaluation can be the viewpoint of the
 writer or another agent in the text. 
 (Carlson and Marcu 2001)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#EventualFactuality -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#EventualFactuality">
+        <rdfs:label>eventuality</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Factuality"/>
+        <rdfs:comment>When eventuality AOs occur with attribution, it conveys an agent’s intention/attitude towards a considered event, state or action. Eventuality AOs occur with “control” types of attribution (“Ctrl” for short), conveyed by any of three different classes of control verbs (Sag and Pollard, 1991). The
+first kind is anchored by a verb of influence like persuade, permit, order, and involve one agent influencing another agent to perform (or not perform) an action. The second kind is anchored by a verb of commitment like promise, agree, try, intend, refuse, decline, and involve an agent committing
+to perform (or not perform) an action. The third kind is anchored by a verb of orientation like want, expect, wish, yearn, and involve desire, expectation, or some similar mental orientation towards some state(s) of affairs. These sub-distinctions are not encoded in the annotation, but we have used the definitions as a guide for identifying these predicates.
+(Prasad et al. 2007, for PDTB)</rdfs:comment>
     </owl:Class>
     
 
@@ -1297,6 +1474,7 @@ cf. Al-Saif and Markert (2010) &quot;Exemplification&quot; in the LADTB corpus</
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ExpectedConcession_PDTB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ExpectedConcession_PDTB">
+        <rdfs:label>expectation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Concession"/>
         <rdfs:comment rdf:datatype="&xsd;string">Arg2 creates an expectation that Arg1 denies. (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
@@ -1314,6 +1492,16 @@ Explanation: Infer a causal relation between DS0 and DS1. (Wolf et al. 2003)</rd
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ExplicitConnective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ExplicitConnective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#RelationCue"/>
+        <rdfs:comment>Explicit discourse connectives ... are drawn primarily from well-defined syntactic classes, i.e., Subordinating conjunctions (e.g., because, when, since, although), Coordinating conjunctions (e.g., and, or, nor):, (ADVP and PP) adverbials (e.g., however, otherwise, then, as a result, for example).
+(Prasad et al. 2007, PDTB)</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ExpressionFocus -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ExpressionFocus">
@@ -1324,6 +1512,18 @@ The pragmatic use of focus (or ‘management of CG’) does not
 involve any change in the truth-value of the sentence. Only the semantic use of focus (or ‘content of CG’) has such an effect. Pragmatic uses of focus include answers to wh-questions, corrections, confirmations, parallel expressions and delimitations.
 
 (Féry et al. 2007)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#FactiveFactuality -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#FactiveFactuality">
+        <rdfs:label>fact</rdfs:label>
+        <rdfs:label>factive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Factuality"/>
+        <rdfs:comment>Facts AOs involve attribution to an agent of an evaluation towards or knowledge of a proposition whose truth is taken for granted (i.e., presupposed). Fact AOs are associated with a “factive” type of attribution (“Ftv” for short), conveyed by “factive” and “semi-factive verbs” (Kiparsky and Kiparsky, 1971; Karttunen, 1971) such as regret, forget, remember, know, see, hear, etc.
+(Prasad et al. 2007, PDTB)</rdfs:comment>
     </owl:Class>
     
 
@@ -1353,6 +1553,16 @@ involve any change in the truth-value of the sentence. Only the semantic use of 
         <rdfs:comment rdf:datatype="&xsd;string">Arg2 is a situation that has either been presented as a fact in the prior discourse or is believed
 by somebody other than the speaker/writer. “Factual present” is really a special case of the subtype
 “hypothetical”. (Prasad et al. 2007)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Factuality -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Factuality">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticFeature"/>
+        <rdfs:comment>PDTB (applied to AttributionObjects)
+Classification of Attribute relations with respect to the &quot;Type&quot;, i.e., the nature of the relationship between agents and AOs, leading to different inferences about the degree of factuality of the AO (Prasad et al. 2007).</rdfs:comment>
     </owl:Class>
     
 
@@ -1502,9 +1712,44 @@ would arise should the situation come true. (Carlson and Marcu 2001)</rdfs:comme
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ImplicitConnective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ImplicitConnective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ImplicitRelation"/>
+        <rdfs:comment>Implicit discourse connectives (...) are inserted between paragraph-internal adjacent sentence pairs not related explicitly by any of the syntactically-defined set of Explicit connectives. (...) the reader must attempt to infer a discourse relation between the adjacent sentences, and “annotation” consists of inserting a connective expression that best conveys the inferred relation. Connectives inserted in this way to express inferred relations are called Implicit connectives. Multiple discourse relations (Webber et al., 1999) can also be inferred, and are annotated by inserting multiple Implicit connectives.
+
+The goal of annotating Implicit connectives in the PDTB is to capture relations between abstract
+objects that are not realized explicitly in the text (by one of a set of the lexically-defined Explicit
+connectives) and are left to be inferred by the reader.
+(Prasad et al. 2007, PDTB)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ImplicitRelation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ImplicitRelation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#RelationCue"/>
+        <rdfs:comment>In PDTB: Two kinds of implicit relations are distinguished: ImplicitConnectives (where a connective and an associated relation can be inferred) and EntityRelations (where neither connective nor relation can be inferred but referential coherence is observed). While the former is actually annotated in PDTB, the latter is not, hence no subclass here.
+
+PDTB Entity Relation: no discourse relation can be inferred and where the second sentence only serves to provide some further description of an entity in the first sentence (akin to entity-based coherence (Knott et al., 2001))
+
+Entity-based coherence captures cases where the implicit relation between adjacent sentences is not between their AO
+interpretations, but is rather a form of entity-based coherence (Knott et al., 2001) in which the same
+entity is realized in both sentences</rdfs:comment>
+        <rdfs:comment>PDTB Entity Relation: no discourse relation can be inferred and where the second sentence only serves to provide some further description of an entity in the first sentence (akin to entity-based coherence (Knott et al., 2001))
+
+Entity-based coherence captures cases where the implicit relation between adjacent sentences is not between their AO
+interpretations, but is rather a form of entity-based coherence (Knott et al., 2001) in which the same
+entity is realized in both sentences</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ImplicitlyAssertedCondition_PDTB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ImplicitlyAssertedCondition_PDTB">
+        <rdfs:label>implicit assertion</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCondition"/>
         <rdfs:comment rdf:datatype="&xsd;string">Special rhetorical uses of if-constructions when the intepretation of the conditional construction is an implicit assertion. (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
@@ -1515,6 +1760,18 @@ would arise should the situation come true. (Carlson and Marcu 2001)</rdfs:comme
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Indefinite">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Definiteness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#IndeterminateAttribution -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#IndeterminateAttribution">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Attribution"/>
+        <rdfs:comment>Classification of Attribute relations with respect to their &quot;determinacy&quot;, which signals a context that cancels what would otherwise be an entailment of attribution.
+The determinacy feature captures the fact that the attribution over a relation or argument can itself be cancelled in particular contexts, such as within negated, conditional, and infinitive contexts.
+
+The attribution over a relation or argument can itself be cancelled in particular contexts, such as within negated, conditional, and infinitive contexts. Such indeterminacy is indicated by the value “Indet”. (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
     
 
@@ -1537,6 +1794,15 @@ would arise should the situation come true. (Carlson and Marcu 2001)</rdfs:comme
 A feature X of an expression α is a Givenness feature iff X indicates
 whether the denotation of α is present in the CG or not, and/or indicates the degree to which it is present in the immediate CG.
 (Féry et al. 2007)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#InheritedAttributionSource -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#InheritedAttributionSource">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AttributionSource"/>
+        <rdfs:comment>Since attribution can have scope over an entire relation, arguments can be annotated with a fourth value “Inh”, to indicate that their source value is inherited from the relation. (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
     
 
@@ -1681,6 +1947,18 @@ to the nucleus. It is often indicated by the preposition by.
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#NegatedAttribution">
         <rdfs:label>negated attribution</rdfs:label>
         <rdfs:label>negative attribution</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Attribution"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#NegativePolarity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasPolarity"/>
+                        <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Attribution"/>
         <rdfs:subClassOf>
             <owl:Class>
@@ -1692,6 +1970,30 @@ lite, or source, of the attribution in order for the ATTRIBUTION-N relation to h
 (Carlson and Marcu 2001)
 
 Verbs of attribution are negated on the surface - syntactically (e.g., didn’t say, don’t think) or lexically (e.g., denied), and the negation reverses the polarity of the attributed relation or argument content (Horn, 1978). The interpretation of the contrastive relation denoted by but requires that Arg2 should be interpreted under the scope of negation.
+(Prasad et al. 2007)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#NegativePolarity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#NegativePolarity">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Polarity"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#UnmarkedPolarity"/>
+        <rdfs:comment>The scopal polarity feature is annotated on relations and their arguments to identify cases where verbs
+of attribution are negated on the surface - syntactically (e.g., didn’t say, don’t think) or lexically (e.g.,
+denied), but where the negation in fact reverses the polarity of the attributed relation or argument
+content (Horn, 1978). Example (162) illustrates such a case. The but clause entails an interpretation
+such as I think it’s not a main consideration, for which the negation must take narrow scope over the
+embedded clause rather than the higher clause. In particular, the interpretation of the contrastive
+relation denoted by but requires that Arg2 should be interpreted under the scope of negation.
+(162) “Having the dividend increases is a supportive element in the market outlook, but
+I don’t think it’s a main consideration,” he says. (0090)
+
+To capture such entailments with surface negations on attribution verbs, an argument of a connective
+is marked “Neg” for scopal polarity when the interpretation of the connective requires the surface
+negation to take semantic scope over the lower argument. Thus, in Example (162), scopal polarity is
+marked as “Neg” for Arg2.
 (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
     
@@ -1738,9 +2040,11 @@ Also referred to as &quot;assertive focus&quot; or &quot;completive focus&quot;.
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Attribution"/>
-                    <owl:Class>
-                        <owl:complementOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#NegatedAttribution"/>
-                    </owl:Class>
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#UnmarkedPolarity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasPolarity"/>
+                        <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+                    </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -1773,6 +2077,15 @@ Also referred to as &quot;assertive focus&quot; or &quot;completive focus&quot;.
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Result_RST"/>
         <rdfs:comment rdf:datatype="&xsd;string">N caused S; presentation of N is more central to W&#39;s purposes in putting forth the N-S combination than is the presentation of S.
 (Mann and Taboada 2010)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#NonspecificAttributionSource -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#NonspecificAttributionSource">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AttributionSource"/>
+        <rdfs:comment>Source is some arbitrary individual(s) indicated via a non-specific reference in the text.  (Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
     
 
@@ -1870,7 +2183,8 @@ Then infer commonalities between members of E(DS0) and E(DS1).
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Person -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Person">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AnimateEntity"/>
+        <rdfs:comment>Categories specified for referring expressions (Poesio &amp; Artstein 2006): Abstract, Animate, Concrete, Person, Plan, Space, Time</rdfs:comment>
     </owl:Class>
     
 
@@ -1888,7 +2202,8 @@ Then infer commonalities between members of E(DS0) and E(DS1).
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Plan -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Plan">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#EntityType"/>
+        <rdfs:comment>Categories specified for referring expressions (Poesio &amp; Artstein 2006): Abstract, Animate, Concrete, Person, Plan, Space, Time</rdfs:comment>
     </owl:Class>
     
 
@@ -1900,6 +2215,22 @@ Then infer commonalities between members of E(DS0) and E(DS1).
         <rdfs:comment rdf:datatype="&xsd;string">POINT-OF-ORIGIN refers to the geographic location in which the events in the
 story take place. Use this schema if this information is designated separately at the beginning or
 end of the article or section of the article. It should be linked to a TEXT or SECTIONTEXT schema. (Carlson and Marcu 2001)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Polarity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Polarity">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticFeature"/>
+        <rdfs:comment>PDTB: applied to attributions
+
+Classification of Attribute relations with respect to their &quot;scopal polarity&quot;, marked when surface negated attribution reverses the polarity of the attributed AO. 
+The scopal polarity feature is annotated on relations and their arguments to identify cases where verbs
+of attribution are negated on the surface - syntactically (e.g., didn’t say, don’t think) or lexically (e.g.,
+denied), but where the negation in fact reverses the polarity of the attributed relation or argument
+content (Horn, 1978).
+(Prasad et al. 2007)</rdfs:comment>
     </owl:Class>
     
 
@@ -1981,12 +2312,12 @@ example: Yes, she DID kiss him.
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasTarget"/>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSource"/>
                         <owl:onClass rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit"/>
                         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasTarget"/>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSource"/>
                         <owl:onClass rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticUnit"/>
                         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                     </owl:Restriction>
@@ -1997,12 +2328,12 @@ example: Yes, she DID kiss him.
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSource"/>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasTarget"/>
                         <owl:onClass rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit"/>
                         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasSource"/>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasTarget"/>
                         <owl:onClass rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticUnit"/>
                         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                     </owl:Restriction>
@@ -2208,6 +2539,17 @@ sitional content of one of the arguments.
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#PropositionalFactuality -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#PropositionalFactuality">
+        <rdfs:label>proposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Factuality"/>
+        <rdfs:comment>Proposition AOs involve attribution to an agent of his/her commitment towards the truth of a proposition. A further distinction captures differences in the degree of that commitment, by distinguishing between “assertions” and “beliefs”.
+(Prasad et al. 2007, PDTB)</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Purpose_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Purpose_RST">
@@ -2264,6 +2606,20 @@ sitional content of one of the arguments.
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Markable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#RelationCue -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#RelationCue">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit"/>
+        <rdfs:comment>relation (PDTB)</rdfs:comment>
+        <rdfs:comment>In PDTB, Relations are organized according to their structural type (material manifestation). To avoid a terminological clash, these are referred to as RelationCue here.
+
+EntityRelations, however, do not represent a RelationCue as they are not physically materialized, but need to be inferred.</rdfs:comment>
+        <rdfs:comment>cue word</rdfs:comment>
+        <rdfs:comment>discourse marker</rdfs:comment>
     </owl:Class>
     
 
@@ -2364,20 +2720,13 @@ SECTIONTITLE and SECTIONTEXT. Usually, the section title occurs on a separate li
     
 
 
-    <!-- http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory -->
-
-    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticFeature"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Categories specified for referring expressions (Poesio &amp; Artstein 2006).</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#SemanticCause -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Cause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">The situations described in Arg1 and Arg2 are causally influenced and the two are not in a conditional relation. (Prasad et al. 2007)</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string">The situations described in Arg1 and Arg2 are causally influenced and the two are not in a conditional relation. (Prasad et al. 2007)
+
+The classification of causal relations in RST/RSTDTB and PDTB is hard to be aligneable, further, hence original definitions preserved with suffixed relations</rdfs:comment>
     </owl:Class>
     
 
@@ -2521,7 +2870,8 @@ or SECTIONTEXT schema. (Carlson and Marcu 2001)</rdfs:comment>
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Space -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Space">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#EntityType"/>
+        <rdfs:comment>Categories specified for referring expressions (Poesio &amp; Artstein 2006): Abstract, Animate, Concrete, Person, Plan, Space, Time</rdfs:comment>
     </owl:Class>
     
 
@@ -2529,6 +2879,7 @@ or SECTIONTEXT schema. (Carlson and Marcu 2001)</rdfs:comment>
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#SpecializedRestatement_PDTB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#SpecializedRestatement_PDTB">
+        <rdfs:label>specification</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Restatement"/>
         <rdfs:comment rdf:datatype="&xsd;string">Arg2 describes the situation described in Arg1 in more detail. Typical connectives for “specification” are specifically,
 indeed and in fact. (Prasad et al. 2007)</rdfs:comment>
@@ -2840,7 +3191,8 @@ Title). (Carlson and Marcu 2001)</rdfs:comment>
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Time -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Time">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCategory"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#EntityType"/>
+        <rdfs:comment>Categories specified for referring expressions (Poesio &amp; Artstein 2006): Abstract, Animate, Concrete, Person, Plan, Space, Time</rdfs:comment>
     </owl:Class>
     
 
@@ -2949,6 +3301,33 @@ cf. Wolf et al.&#39;s (2003) &quot;ViolatedExpectation&quot;: Infer that normall
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Contigency"/>
         <rdfs:comment rdf:datatype="&xsd;string">S affects the realization of N; N is realized provided that S is not realized.
 (Mann and Taboada 2010)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#UnmarkedFactuality -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#UnmarkedFactuality">
+        <rdfs:label>attribution type null</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PropositionalFactuality"/>
+        <rdfs:comment>In the absence of an independent occurrence of attribution on an argument, as for Arg2 of Example (158), a “Null” value for the type on the argument means that it needs to be derived by independent (here, undefined) considerations under the scope of the relation. 
+
+(158) When Mr. Green won a $240,000 verdict in a land condemnation case against the State in June 1983, he says Judge O’Kicki unexpectedly awarded him an additional $100,000. (0267)
+
+Note that unlike the “Inh” value of the source feature, “Null” does not indicate inheritance. In a subordinate clause, for example, while the relation denoted by the subordinating conjunction may be asserted, the clause content itself may be “presupposed”, as seems to be the case in (158). However, we found these differences difficult to determine at times, and consequently leave this undefined in the scheme.
+(Prasad et al. 2007, for PDTB)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#UnmarkedPolarity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#UnmarkedPolarity">
+        <rdfs:label>positive</rdfs:label>
+        <rdfs:label>default polarity</rdfs:label>
+        <rdfs:label>unmarked polarity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Polarity"/>
+        <rdfs:comment>&quot;Null&quot; marking in PDTB, i.e. Default (or NonNegated)</rdfs:comment>
     </owl:Class>
     
 
