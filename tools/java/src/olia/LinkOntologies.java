@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.mindswap.pellet.jena.PelletReasonerFactory;
 
 import com.hp.hpl.jena.ontology.*;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 /** performs a semiautomated linking between two ontologies based on overlapping concept names<br/>
@@ -70,21 +72,31 @@ public class LinkOntologies {
 		Hashtable<String,Set<OntClass>> word2uclass = new Hashtable<String,Set<OntClass>>();
 		for(Map.Entry<String,OntClass> e : upperModelClasses.entrySet()) {
 			System.err.print(".");
-			String s=e.getKey();
 			OntClass o=e.getValue();
-			String[] parsed = parseCamelCase(s);
-			for(int i = 0; i<parsed.length; i++) {
-				String word = parsed[i];
+			HashSet<String> strings = new HashSet<String>();
+			strings.add(e.getKey());
+
+			// add labels
+			ExtendedIterator<RDFNode> literals = o.listLabels(null);
+			while(literals!=null && literals.hasNext()) 
+				strings.add(literals.next().toString());
+			
+			
+			for(String s : strings) {
+				String[] parsed = parseCamelCase(s);
+				for(int i = 0; i<parsed.length; i++) {
+					String word = parsed[i];
+					Set<OntClass> uclasses = word2uclass.get(word);
+					if(uclasses==null) uclasses=new HashSet<OntClass>();
+					uclasses.add(o);
+					word2uclass.put(word, uclasses);
+				}
+				String word = s;
 				Set<OntClass> uclasses = word2uclass.get(word);
 				if(uclasses==null) uclasses=new HashSet<OntClass>();
 				uclasses.add(o);
 				word2uclass.put(word, uclasses);
 			}
-			String word = s;
-			Set<OntClass> uclasses = word2uclass.get(word);
-			if(uclasses==null) uclasses=new HashSet<OntClass>();
-			uclasses.add(o);
-			word2uclass.put(word, uclasses);
 		}
 		System.err.println(".. ok");
 
