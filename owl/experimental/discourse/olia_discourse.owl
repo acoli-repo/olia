@@ -5,7 +5,6 @@
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY ont "http://www.co-ode.org/ontologies/ont.owl#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
@@ -13,7 +12,6 @@
 <rdf:RDF xmlns="http://purl.org/olia/discourse/olia_discourse.owl#"
      xml:base="http://purl.org/olia/discourse/olia_discourse.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:ont="http://www.co-ode.org/ontologies/ont.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -142,6 +140,16 @@
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasDiscourseStructuralPattern -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasDiscourseStructuralPattern">
+        <rdfs:domain rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation"/>
+        <rdfs:range rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseStructuralPattern"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasPragmaticFeature"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasInformationStatus -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#hasInformationStatus">
@@ -218,16 +226,6 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.co-ode.org/ontologies/ont.owl#hasDiscourseStructuralPattern -->
-
-    <owl:ObjectProperty rdf:about="&ont;hasDiscourseStructuralPattern">
-        <rdfs:domain rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation"/>
-        <rdfs:range rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseStructuralPattern"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#hasPragmaticFeature"/>
     </owl:ObjectProperty>
     
 
@@ -685,6 +683,7 @@ The items are conjoined to form a unit in which each item plays a comparable rol
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Contigency -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Contigency">
+        <rdfs:label>contingency</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#CoherenceRelation"/>
         <rdfs:comment rdf:datatype="&xsd;string">The situations are (assumed to be) related by an abstract notion of recurrence or habituality (Carlson and Marcu 2001), often, one of the situations described in Arg1 and Arg2 causally influences the other. (Prasad et al. 2007).
 
@@ -863,6 +862,8 @@ It is important to understand which subclasses of focus can be expressed by gram
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation">
+        <rdfs:label>rhetorical relation</rdfs:label>
+        <rdfs:label>discourse relation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticRelation"/>
         <rdfs:comment rdf:datatype="&xsd;string">Relation between discourse segments. (Mann and Thompson 1988)
 In order to distangle discourse-syntactic (paratactic/hypotactic) and functional-semantic aspects, DiscourseRelation is distinguished from DiscourseStructuralPattern: DiscourseRelations defined discourse relations in terms of their communicative function and underlying semantics. An RST antithesis, for example, is thus to be defined both as a ContrastRelation (subclass of DiscourseRelation) and as a HypotacticDiscourseRelation (subclass of DiscourseStructuralPattern).
@@ -896,6 +897,8 @@ Note that Attribution is modelled here as a relation (as in RST), not as a featu
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Disjunctive -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Disjunctive">
+        <rdfs:label>disjunction</rdfs:label>
+        <rdfs:label>disjunctive</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Alternative"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation"/>
         <rdfs:comment rdf:datatype="&xsd;string">Two situations are evoked in the discourse but only one of them holds. (Prasad et al. 2007)
@@ -1473,6 +1476,10 @@ not used in tagging the corpus. (Carlson and Marcu 2001)</rdfs:comment>
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation">
+        <rdfs:label>subordination</rdfs:label>
+        <rdfs:label>mononuclear</rdfs:label>
+        <rdfs:label>hypotaxis</rdfs:label>
+        <rdfs:label>mononuclear relation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseStructuralPattern"/>
         <rdfs:comment rdf:datatype="&xsd;string">Subordinating or Mononuclear Relations (RST):
 The most frequent structural pattern is that two spans of text (virtually always adjacent, but exceptions can be found) are related such that one of them has a specific role relative to the other. A paradigm case is a claim followed by evidence for the claim. RST posits an &quot;Evidence&quot; relation between the two spans. It also says that the claim is more essential to the text than the particular evidence, and this essentiality is represented by calling the claim span a nucleus and the evidence span a satellite.
@@ -1672,6 +1679,8 @@ to the nucleus. It is often indicated by the preposition by.
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#NegatedAttribution -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#NegatedAttribution">
+        <rdfs:label>negated attribution</rdfs:label>
+        <rdfs:label>negative attribution</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Attribution"/>
         <rdfs:subClassOf>
             <owl:Class>
@@ -1831,6 +1840,9 @@ Then infer commonalities between members of E(DS0) and E(DS1).
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation">
+        <rdfs:label>multinuclear</rdfs:label>
+        <rdfs:label>parataxis</rdfs:label>
+        <rdfs:label>coordination</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseStructuralPattern"/>
         <rdfs:comment rdf:datatype="&xsd;string">Coordinating or Multinuclear relations.</rdfs:comment>
     </owl:Class>
@@ -2046,6 +2058,16 @@ Not to be confused with &quot;predicate focus&quot;, as this is applied here to 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#PredicateFocus">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#WideFocus"/>
         <rdfs:comment>Following Lambrecht (1994), predicate focus is wide verb phrase focus. Not to be confused with PredicateCenteredFocus.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Preference_RST -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Preference_RST">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#NonContrastiveComparison"/>
+        <rdfs:comment>The relation compares two situations, acts, events, etc., and assigns a clear preference for one of the situations, acts, events, etc. The preferred situation, act, event, etc. is the nucleus.
+(Lynn Carlson and Daniel Marcu. 2001. Discourse Tagging Manual. ISI Tech Report ISI-TR-545. July 2001. http://www.isi.edu/~marcu/discourse/tagging-ref-manual.pdf)</rdfs:comment>
     </owl:Class>
     
 
