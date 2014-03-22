@@ -424,7 +424,9 @@ referring to the relation.</rdfs:comment>
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit">
-        <rdfs:comment>AnnotationUnit was introduced to account for annotating strings (selected according to certain criteria) directly with discourse information. Where structured elements (e.g., from syntax or semantics) represent the basis of annotation, the annotations should be directly anchored with them.</rdfs:comment>
+        <rdfs:comment>AnnotationUnit was introduced to account for annotating strings (selected according to certain criteria) directly with discourse information. Where structured elements (e.g., from syntax or semantics) represent the basis of annotation, the annotations should be directly anchored with them.
+
+Here, we are concerned with discourse annotation only. Syntactically or semantically defined units of annotations are thus considered opaque objects, as these are to be described in terms of the OLiA Reference Model.</rdfs:comment>
     </owl:Class>
     
 
@@ -724,6 +726,7 @@ relation, the spans, entities, etc. are not in contrast. (Carlson and Marcu 2001
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Concession -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Concession">
+        <rdfs:label>violated expectation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ContrastiveComparison"/>
         <rdfs:comment rdf:datatype="&xsd;string">One of the arguments describes a situation A which causes C, while the other asserts (or implies) the complement of C.
 (Prasad et al. 2007)
@@ -1898,6 +1901,21 @@ A LIST is a multinuclear relation whose elements can be listed, but which are no
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCondition"/>
         <rdfs:comment rdf:datatype="&xsd;string">A manner satellite explains the way in which something is done. (It sometimes also expresses some sort of similarity/comparison.) The satellite answers the question “in what manner?” or “in what way?”. A MANNER relation is less “goal-oriented” than a MEANS relation, and often is more of a description of the style of an action.
 (Carlson and Marcu 2001)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#MapObject -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#MapObject">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#AnnotationUnit"/>
+        <rdfs:comment>An object on the map used for deictic references.
+Language expressions may also depend on the visual, as opposed to verbal, context. An utterance like Could you pass me the salt? , uttered, e.g.,
+at a restaurant, is usually understandable even if salt hasn’t been mentioned
+before; the recipient can recover the referent of the expression the salt from the visual context. (An even clearer example is Could you please close
+the window? .) We will use the term deictic references to refer to these
+expressions.
+(Artstein &amp; Poesio, 2006, ARRAU)</rdfs:comment>
     </owl:Class>
     
 
