@@ -11,9 +11,7 @@ for file in */*; do
 		else rm -f $file; fi;
 	fi;
 done
-cp discrel/index.html .
-cp discrel/refresh.sh .
-for file in */*.owl */*.rdf; do 
+for file in */*.owl */*.rdf discrel/index.html discrel/refresh.sh; do 
 	tgt=`echo $file | sed s/'.*\/'//`;
 	if [ -e $TGT/$tgt ] ; then echo ok >&/dev/null; 
 	else ln -s $file $tgt; chmod a+r $tgt; 
