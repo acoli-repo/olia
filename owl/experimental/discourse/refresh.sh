@@ -1,7 +1,7 @@
 #!/bin/bash
 # update content
 svn update svn://svn.code.sf.net/p/olia/code/trunk/owl/experimental/discourse discrel; 
-svn update svn://svn.code.sf.net/p/olia/code/trunk/owl/experimental/is is; 
+# svn update svn://svn.code.sf.net/p/olia/code/trunk/owl/experimental/is is; 
 chmod -R a+r .;
 
 # update symlinks
