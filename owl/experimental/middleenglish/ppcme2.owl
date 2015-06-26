@@ -1,0 +1,3038 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY olia "file:/home/maria/Data/Ontologies/owl/core/olia.owl#" >
+    <!ENTITY experimental "file:///home/maria/Data/Ontologies/owl/experimental/" >
+    <!ENTITY olia_system "file:///home/maria/Data/Ontologies/owl/core/system.owl#" >
+    <!ENTITY penn "file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#" >
+    <!ENTITY penn2 "file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#" >
+]>
+
+
+<rdf:RDF xmlns="&experimental;penn.owl#"
+     xml:base="file:/home/maria/Data/Ontologies/owl/experimental/penn.owl"
+     xmlns:penn="file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#"
+     xmlns:olia="file:/home/maria/Data/Ontologies/owl/core/olia.owl#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:penn2="&experimental;penn.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:experimental="file:///home/maria/Data/Ontologies/owl/experimental/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:olia_system="file:///home/maria/Data/Ontologies/owl/core/system.owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >OLiA Annotation Model for Penn Treebank (PTB) part-of-speech annotation (Santorini 1990)
+
+Unless specified otherwise, all comments are taken from Santorini (1990). 
+
+References
+Beatrice Santorini (1990), Part-of-Speech tagging guidelines for the Penn Treebank Project, 3rd revision, 2nd printing, ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string"
+            >ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz</rdfs:isDefinedBy>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/core/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTag"/>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#versionInfo -->
+
+    <owl:DatatypeProperty rdf:about="&experimental;penn.owl#versionInfo"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/core/olia.owl#BeAuxiliary -->
+
+    <owl:Class rdf:about="&olia;BeAuxiliary"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/core/olia.owl#MainVerb -->
+
+    <owl:Class rdf:about="&olia;MainVerb"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ALSO -->
+
+    <owl:Class rdf:about="#ALSO">
+        <rdfs:subClassOf rdf:resource="#Adverb"/>
+        <rdfs:subClassOf rdf:resource="#Particle"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="#PrepositionOrSubordinatingConjunction"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >NOT (ONLY) X BUT (ALSO) Y) ALSO, unlike NOT (ONLY), attaches as a sister to the conjunction. 
+the words ALSO (except when = AS) and EKE
+(the latter only in Middle English) 
+It is an adverb and a particle but never a preposition</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Adjective -->
+
+    <owl:Class rdf:about="#Adjective">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Adjectives, ordinal numbers, color  terms that modify nouns, complements of copula verbs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Adverb -->
+
+    <owl:Class rdf:about="#Adverb">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Adverbs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#AdverbialParticle -->
+
+    <owl:Class rdf:about="#AdverbialParticle">
+        <rdfs:subClassOf rdf:resource="#Particle"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BackwardDoubleQuote -->
+
+    <owl:Class rdf:about="#BackwardDoubleQuote">
+        <rdfs:subClassOf rdf:resource="#DoubleQuote"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Be -->
+
+    <owl:Class rdf:about="#Be">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BeImperative -->
+
+    <owl:Class rdf:about="#BeImperative">
+        <rdfs:subClassOf rdf:resource="#Be"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BeInfinitive -->
+
+    <owl:Class rdf:about="#BeInfinitive">
+        <rdfs:subClassOf rdf:resource="#Be"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BePast -->
+
+    <owl:Class rdf:about="#BePast">
+        <rdfs:subClassOf rdf:resource="#Be"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BePastTense -->
+
+    <owl:Class rdf:about="#BePastTense">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes the conditional form of the verb to be.
+EXAMPLES:
+If I were/VBD rich...
+If I were/VBD to win the lottery...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BePerfectParticiple -->
+
+    <owl:Class rdf:about="#BePerfectParticiple">
+        <rdfs:subClassOf rdf:resource="#Be"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BePresent -->
+
+    <owl:Class rdf:about="#BePresent">
+        <rdfs:subClassOf rdf:resource="#Be"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;BeAuxiliary"/>
+                    <rdf:Description rdf:about="&olia;MainVerb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BePresentParticiple -->
+
+    <owl:Class rdf:about="#BePresentParticiple">
+        <rdfs:subClassOf rdf:resource="#Be"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BePresentTense -->
+
+    <owl:Class rdf:about="#BePresentTense">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are verbforms in present tense. This class includes 3rd person singular or other than 3rd person singular verbforms.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CardinalNumber -->
+
+    <owl:Class rdf:about="#CardinalNumber">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are cardinal numbers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CardinalNumberPossessive -->
+
+    <owl:Class rdf:about="#CardinalNumberPossessive">
+        <rdfs:subClassOf rdf:resource="#CardinalNumber"/>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#Class -->
+
+    <owl:Class rdf:about="&experimental;penn.owl#Class"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Clitic -->
+
+    <owl:Class rdf:about="#Clitic">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Colon -->
+
+    <owl:Class rdf:about="#Colon">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Comma -->
+
+    <owl:Class rdf:about="#Comma">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CommonNoun -->
+
+    <owl:Class rdf:about="#CommonNoun">
+        <rdfs:subClassOf rdf:resource="#Noun"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are common nouns in singular or plural, or mass nouns.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CommonNounPlural -->
+
+    <owl:Class rdf:about="#CommonNounPlural">
+        <rdfs:subClassOf rdf:resource="#CommonNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CommonNounPluralPossessive -->
+
+    <owl:Class rdf:about="#CommonNounPluralPossessive">
+        <rdfs:subClassOf rdf:resource="#CommonNounPlural"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CommonNounSingular -->
+
+    <owl:Class rdf:about="#CommonNounSingular">
+        <rdfs:subClassOf rdf:resource="#CommonNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CommonNounSingularPossessive -->
+
+    <owl:Class rdf:about="#CommonNounSingularPossessive">
+        <rdfs:subClassOf rdf:resource="#CommonNounSingular"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ComparativeAdjective -->
+
+    <owl:Class rdf:about="#ComparativeAdjective">
+        <rdfs:subClassOf rdf:resource="#Adjective"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Thenne_ADV quene_NPR Igrayne_NPR waxid_VBD dayly_ADV
+gretter_ADJR and_CONJ gretter_ADJR ._.
+he_PRO lovithe_VBP Arthure_NPR bettir_ADVR than_P us_PRO ;_.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ComparativeAdverb -->
+
+    <owl:Class rdf:about="#ComparativeAdverb">
+        <rdfs:subClassOf rdf:resource="#Adverb"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are comparative adverbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Complementizer -->
+
+    <owl:Class rdf:about="#Complementizer">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment
+            >THAT, +TE, and variants introducing any kind of subordinate clause are tagged C. See also AS (complementizer), AS, SO, THAN (preposition), IF. 
+
+and_CONJ sei+t_VBP +tat_C it_PRO was_BED ano+ter_D+OTHER body_N
+
+and_CONJ was_BED i-schore_VAN monk_N in_P an_D abbay_N
++tat_C he_PRO hym_PRO self_N bulde_VBD
+
+dohter_N he_PRO cleope+d_VBP hire_PRO ._, for-+ti_P+D
++tt_C ha_PRO understonde_VBP ._, +tt_C he_PRO hire_PRO
+luueliche_ADJ liues_N$ luue_N leare+d_VBP ._, as_P feader_N
+ah_MD his_PRO$ dohter_N ._.
+
+Al_Q swo_ADV he_PRO de+d_DOP +to_D men_NS +de_C sennen_NS
+habbe+d_HVP forhaten_VBN te_TO laten_VB</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Conjunction -->
+
+    <owl:Class rdf:about="#Conjunction">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="#Conjunction"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >The following items are tagged CONJ when used as coordinating conjunctions:  AND, NE, NEITHER, NOR, OR, OTHER (= OR)
+It is possible for two coordinating conjunctions to be adjacent.
+
+    And_CONJ nor_CONJ is this the right answer .
+
+    But_CONJ neither_CONJ is this the right answer .
+
+In instances of correlative conjunction, each of the correlative conjunctions is tagged CONJ:  BOTH ... AND, EITHER ... OR, (EITHER) +GE ... +GE, NEITHER ... NOR
+
+    both_CONJ you and_CONJ I
+
+    either_CONJ or_CONJ I
+
+    ai+der_CONJ +ge_CONJ hodede_VAN +ge_CONJ leawede_ADJ
+
+    neither_CONJ you nor_CONJ I</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#DatatypeProperty -->
+
+    <owl:Class rdf:about="&experimental;penn.owl#DatatypeProperty"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Determiner -->
+
+    <owl:Class rdf:about="#Determiner">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >The following words are tagged D when used as determiners:  A(N), THAT, THE, THESE, THIS, THOSE, YON, YONDER
+Demonstratives are always tagged D, regardless of whether they precede a noun. Note the difference between ordinary determiners and wh- words in this regard  and_CONJ cristened_VBD hym_PRO at_P +te_D citee_N Dortik_NPR ,_, +tat_D     is_BEP Dorchestre_NPR 
+    +tat_D is_BEP Friday_NPR
+    +Tis_D +tat_C is_BEP i-seide_VAN in_P +te_D comyn_ADJ table_N
+
+    For_FOR to_TO brynge_VB +tis_D aboute_RP Machometus_NPR norsched_VBD and_CONJ fedde_VBD a_D faire_ADJ camel_N</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Do -->
+
+    <owl:Class rdf:about="#Do">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoImperative -->
+
+    <owl:Class rdf:about="#DoImperative">
+        <rdfs:subClassOf rdf:resource="#Do"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoInfinitive -->
+
+    <owl:Class rdf:about="#DoInfinitive">
+        <rdfs:subClassOf rdf:resource="#Do"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoPassiveParticiple -->
+
+    <owl:Class rdf:about="#DoPassiveParticiple">
+        <rdfs:subClassOf rdf:resource="#Do"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoPast -->
+
+    <owl:Class rdf:about="#DoPast">
+        <rdfs:subClassOf rdf:resource="#Do"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoPerfectParticiple -->
+
+    <owl:Class rdf:about="#DoPerfectParticiple">
+        <rdfs:subClassOf rdf:resource="#Do"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoPresent -->
+
+    <owl:Class rdf:about="#DoPresent">
+        <rdfs:subClassOf rdf:resource="#Do"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoPresentParticiple -->
+
+    <owl:Class rdf:about="#DoPresentParticiple">
+        <rdfs:subClassOf rdf:resource="#Do"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoubleQuote -->
+
+    <owl:Class rdf:about="#DoubleQuote">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ELSE -->
+
+    <owl:Class rdf:about="#ELSE">
+        <rdfs:subClassOf rdf:resource="#Particle"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="#PrepositionOrSubordinatingConjunction"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="#Adverb"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ExistententialThere -->
+
+    <owl:Class rdf:about="#ExistententialThere">
+        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ExistentialThere -->
+
+    <owl:Class rdf:about="#ExistentialThere">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Existential &quot;there&quot; is the unstressed &quot;there&quot; that triggers inversion of the inflected verb and the logical subject of a sentence, e.g. &quot;There/EX was a party in progress.&quot;, &quot;There/EX ensued a melee.&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#FocusParticle -->
+
+    <owl:Class rdf:about="#FocusParticle">
+        <rdfs:subClassOf rdf:resource="#Particle"/>
+        <rdfs:comment
+            >The following words, all of which also have other uses, are tagged FP when used as focus particles:
+
+    all periods 	ALONE, BUT, EVEN, ONLY
+    only Middle English 	FORTH, ONE, YET</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ForToClitic -->
+
+    <owl:Class rdf:about="#ForToClitic">
+        <rdfs:subClassOf rdf:resource="#Clitic"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ForeignWord -->
+
+    <owl:Class rdf:about="#ForeignWord">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >If a potential foreign word has an entry in the OED, it is not tagged as FW. This is true even for nouns that retain a foreign plural.
+
+Abbreviations of foreign terms do not count as words in the above sense and are tagged as FW. Some examples include:
+
+    B.A., e.g., etc., i.e., M.A.
+
+Foreign names and certain common Latin liturgical texts are treated as proper nouns.
+
+Foreign language titles are generally tagged FW.
+
+    In_P that_D Alcoranum_FW it_PRO is_BEP i-wrete_VAN
+
+    in_P the_D prologe_N on_P Regum_FW
+
+    iij._NUM stories_NS of_P the_D ij._NUM book_N of_P Paralypomynon_NPR
+    and_CONJ of_P Regum_FW</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ForwardDoubleQuote -->
+
+    <owl:Class rdf:about="#ForwardDoubleQuote">
+        <rdfs:subClassOf rdf:resource="#DoubleQuote"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#FullStop -->
+
+    <owl:Class rdf:about="#FullStop">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Have -->
+
+    <owl:Class rdf:about="#Have">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#HaveImperative -->
+
+    <owl:Class rdf:about="#HaveImperative">
+        <rdfs:subClassOf rdf:resource="#Have"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#HaveInfinitive -->
+
+    <owl:Class rdf:about="#HaveInfinitive">
+        <rdfs:subClassOf rdf:resource="#Have"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#HavePassiveParticiple -->
+
+    <owl:Class rdf:about="#HavePassiveParticiple">
+        <rdfs:subClassOf rdf:resource="#Have"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#HavePast -->
+
+    <owl:Class rdf:about="#HavePast">
+        <rdfs:subClassOf rdf:resource="#Have"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#HavePerfectParticiple -->
+
+    <owl:Class rdf:about="#HavePerfectParticiple">
+        <rdfs:subClassOf rdf:resource="#Have"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#HavePresent -->
+
+    <owl:Class rdf:about="#HavePresent">
+        <rdfs:subClassOf rdf:resource="#Have"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#HavePresentParticiple -->
+
+    <owl:Class rdf:about="#HavePresentParticiple">
+        <rdfs:subClassOf rdf:resource="#Have"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Imperative -->
+
+    <owl:Class rdf:about="#Imperative">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#IndefinitePronoun -->
+
+    <owl:Class rdf:about="#IndefinitePronoun">
+        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#IndefiniteSubjectPronoun -->
+
+    <owl:Class rdf:about="#IndefiniteSubjectPronoun">
+        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Infinitive -->
+
+    <owl:Class rdf:about="#Infinitive">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Interjection -->
+
+    <owl:Class rdf:about="#Interjection">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >INTJ is only used to tag words that are difficult or impossible to tag any other way, like the following:
+
+    AH, ALAS, AMEN, AYE, FAREWELL, FIE, GAR (&lt; God), GOOD-BYE, GRAMERCY, HA, HULLO, LA, LO, NAY, NO, OH, PARDEE, POOF, WASSAIL, WELAWEI, YEA, YES, WITECRIST</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LIneBreak -->
+
+    <owl:Class rdf:about="#LIneBreak">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LeftBracket -->
+
+    <owl:Class rdf:about="#LeftBracket">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LeftCurlyBracket -->
+
+    <owl:Class rdf:about="#LeftCurlyBracket">
+        <rdfs:subClassOf rdf:resource="#LeftBracket"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LeftRoundBracket -->
+
+    <owl:Class rdf:about="#LeftRoundBracket">
+        <rdfs:subClassOf rdf:resource="#LeftBracket"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LeftSquareBracket -->
+
+    <owl:Class rdf:about="#LeftSquareBracket">
+        <rdfs:subClassOf rdf:resource="#LeftBracket"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ListMarker -->
+
+    <owl:Class rdf:about="#ListMarker"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ModalVerb -->
+
+    <owl:Class rdf:about="#ModalVerb">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes all verbs that don&#39;t take an -s ending in the third person singular present: &quot;can&quot;, 
+&quot;could&quot;, (&quot;dare&quot;), &quot;may&quot;, &quot;might&quot;, &quot;must&quot;, &quot;ought&quot;, &quot;shall&quot;, &quot;should&quot;, &quot;will&quot;, &quot;would&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ModalVerbUntensed -->
+
+    <owl:Class rdf:about="#ModalVerbUntensed">
+        <rdfs:subClassOf rdf:resource="#ModalVerb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#NamedIndividual -->
+
+    <owl:Class rdf:about="&experimental;penn.owl#NamedIndividual"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Negation -->
+
+    <owl:Class rdf:about="#Negation">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment
+            >The negative particles NE and NOT are tagged NEG, as are NO and NONE in WHETHER OR NOT clauses. NE is also used as a coordinating conjunction (CONJ), and NOT is also used as a quantifier (Q).
+
+    non_Q senne_N ne_NEG mai_MD bien_BE idon_DAN bute_P +durh_P
+    unhersumnesse_N</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Noun -->
+
+    <owl:Class rdf:about="#Noun">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#ObjectProperty -->
+
+    <owl:Class rdf:about="&experimental;penn.owl#ObjectProperty"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#OneNumber -->
+
+    <owl:Class rdf:about="#OneNumber">
+        <rdfs:subClassOf rdf:resource="#CardinalNumber"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#OnePossessive -->
+
+    <owl:Class rdf:about="#OnePossessive">
+        <rdfs:subClassOf rdf:resource="#OneNumber"/>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#Ontology -->
+
+    <owl:Class rdf:about="&experimental;penn.owl#Ontology"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#OtherPronoun -->
+
+    <owl:Class rdf:about="#OtherPronoun">
+        <rdfs:subClassOf rdf:resource="#IndefinitePronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#OtherPronounPlural -->
+
+    <owl:Class rdf:about="#OtherPronounPlural">
+        <rdfs:subClassOf rdf:resource="#OtherPronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#OtherPronounPluralPossessive -->
+
+    <owl:Class rdf:about="#OtherPronounPluralPossessive">
+        <rdfs:subClassOf rdf:resource="#OtherPronounPlural"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#OtherPronounPossessive -->
+
+    <owl:Class rdf:about="#OtherPronounPossessive">
+        <rdfs:subClassOf rdf:resource="#OtherPronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Particle -->
+
+    <owl:Class rdf:about="#Particle">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PassiveParticiple -->
+
+    <owl:Class rdf:about="#PassiveParticiple">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PastParticiple -->
+
+    <owl:Class rdf:about="#PastParticiple">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This is a verb in past participle.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PastVerb -->
+
+    <owl:Class rdf:about="#PastVerb">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PerfectParticiple -->
+
+    <owl:Class rdf:about="#PerfectParticiple">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="#PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes the personal pronouns proper,  without regard for case distinctions (&quot;I&quot;, &quot;me&quot;, &quot;you&quot;, &quot;he&quot;, &quot;him&quot;, etc.), the reflexive pronouns ending in -self or -selves, and the nominal possessive pronouns &quot;mine&quot;, &quot;yours&quot;, &quot;his&quot;, &quot;hers&quot;, &quot;ours&quot; and &quot;theirs&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PossesiveIndefinitePronoun -->
+
+    <owl:Class rdf:about="#PossesiveIndefinitePronoun">
+        <rdfs:subClassOf rdf:resource="#IndefinitePronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PossessiveEnding -->
+
+    <owl:Class rdf:about="#PossessiveEnding">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >The possessive ending on nouns ending in &#39;s or  is split off by the tagging algorithm and tagged as if it
+were a separate word. e.g. &quot;John/ NP &#39;s/POS idea&quot;, &quot;the parents/NNS&#39;/POS distress&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PossessivePronoun -->
+
+    <owl:Class rdf:about="#PossessivePronoun">
+        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes the adjectival possessive forms &quot;my&quot;, &quot;your&quot;, &quot;his&quot;, &quot;her&quot;, &quot;its&quot;, &quot;one&#39;s&quot;, &quot;our&quot; and &quot;their&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PossessiveWhPronoun -->
+
+    <owl:Class rdf:about="#PossessiveWhPronoun">
+        <rdfs:subClassOf rdf:resource="#PossessivePronoun"/>
+        <rdfs:subClassOf rdf:resource="#WhPronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PrepositionOrSubordinatingConjunction -->
+
+    <owl:Class rdf:about="#PrepositionOrSubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="#Conjunction"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >We make no explicit distinction between prepositions and subordinating conjunctions. (The distinction is not lost, however - a preposition is an IN that precedes a noun phrase or a prepositional phrase, and a subordinate conjunction is an IN that precedes a clause).
+The preposition &quot;to&quot; has its own special tag TO.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Present -->
+
+    <owl:Class rdf:about="#Present">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PresentParticiple -->
+
+    <owl:Class rdf:about="#PresentParticiple">
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Pronoun -->
+
+    <owl:Class rdf:about="#Pronoun">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ProperNoun -->
+
+    <owl:Class rdf:about="#ProperNoun">
+        <rdfs:subClassOf rdf:resource="#Noun"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are singular or plural proper nouns.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ProperNounPlural -->
+
+    <owl:Class rdf:about="#ProperNounPlural">
+        <rdfs:subClassOf rdf:resource="#ProperNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ProperNounPluralPossessive -->
+
+    <owl:Class rdf:about="#ProperNounPluralPossessive">
+        <rdfs:subClassOf rdf:resource="#ProperNounPlural"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ProperNounSingular -->
+
+    <owl:Class rdf:about="#ProperNounSingular">
+        <rdfs:subClassOf rdf:resource="#ProperNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ProperNounSingularPossessive -->
+
+    <owl:Class rdf:about="#ProperNounSingularPossessive">
+        <rdfs:subClassOf rdf:resource="#ProperNounSingular"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Punctuation -->
+
+    <owl:Class rdf:about="#Punctuation">
+        <rdfs:subClassOf rdf:resource="&system;LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="#PrepositionOrSubordinatingConjunction"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Quantifier -->
+
+    <owl:Class rdf:about="#Quantifier">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#QuantifierComparative -->
+
+    <owl:Class rdf:about="#QuantifierComparative">
+        <rdfs:subClassOf rdf:resource="#Quantifier"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#QuantifierPossessive -->
+
+    <owl:Class rdf:about="#QuantifierPossessive">
+        <rdfs:subClassOf rdf:resource="#Quantifier"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#QuantifierSuperlative -->
+
+    <owl:Class rdf:about="#QuantifierSuperlative">
+        <rdfs:subClassOf rdf:resource="#Quantifier"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RightBracket -->
+
+    <owl:Class rdf:about="#RightBracket">
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RightCurlyBracket -->
+
+    <owl:Class rdf:about="#RightCurlyBracket">
+        <rdfs:subClassOf rdf:resource="#RightBracket"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RightRoundBracket -->
+
+    <owl:Class rdf:about="#RightRoundBracket">
+        <rdfs:subClassOf rdf:resource="#RightBracket"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RightSquareBracket -->
+
+    <owl:Class rdf:about="#RightSquareBracket">
+        <rdfs:subClassOf rdf:resource="#RightBracket"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#SUCH -->
+
+    <owl:Class rdf:about="#SUCH"/>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="&experimental;penn.owl#SubordinatingConjunction"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#SuperlativeAdjective -->
+
+    <owl:Class rdf:about="#SuperlativeAdjective">
+        <rdfs:subClassOf rdf:resource="#Adjective"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >in_P the_D greatest_ADJS church_N of_P London_NPR</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#SuperlativeAdverb -->
+
+    <owl:Class rdf:about="#SuperlativeAdverb">
+        <rdfs:subClassOf rdf:resource="#Adverb"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >These are superlative adverbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Symbol -->
+
+    <owl:Class rdf:about="#Symbol">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This tag should be used for mathematical, scientific and technical symbols or expressions that aren&#39;t words of English. It should not used for any and all technical expressions. For instance, the names of chemicals, units of measurements (including abbreviations thereof)  and the like should be tagged as nouns.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Tag -->
+
+    <owl:Class rdf:about="#Tag">
+        <rdfs:subClassOf rdf:resource="&system;LinguisticAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#Thing -->
+
+    <owl:Class rdf:about="&experimental;penn.owl#Thing"/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ToParticle -->
+
+    <owl:Class rdf:about="#ToParticle">
+        <rdfs:subClassOf rdf:resource="#Particle"/>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Verb -->
+
+    <owl:Class rdf:about="#Verb">
+        <rdfs:subClassOf rdf:resource="#Tag"/>
+        <rdfs:comment
+            >Subjunctive forms and not distinguished from indicative forms</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WhAdverb -->
+
+    <owl:Class rdf:about="#WhAdverb">
+        <rdfs:subClassOf rdf:resource="#Adverb"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes &quot;how&quot;, &quot;where&quot;, &quot;why&quot;, etc. When in a temporal sense is tagged as wh-adverb.  In the sense of &quot;if&quot;,  on the other hand, it is a subordinating conjunction.
+EXAMPLES:
+&quot;When/WRB he finally arrived,  I was on my way out.&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WhDeterminer -->
+
+    <owl:Class rdf:about="#WhDeterminer">
+        <rdfs:subClassOf rdf:resource="#Determiner"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes &quot;which&quot;, as well as that when it is used as a relative pronoun.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WhPronoun -->
+
+    <owl:Class rdf:about="#WhPronoun">
+        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >This category includes &quot;what&quot;, &quot;who&quot; and &quot;whom&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WhetherConjunction -->
+
+    <owl:Class rdf:about="#WhetherConjunction"/>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl#nonfinalpunctuation -->
+
+    <owl:Class rdf:about="&experimental;penn.owl#nonfinalpunctuation"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
+
+    <owl:Class rdf:about="&system;LinguisticAnnotation"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/core/system.owl#hasTag -->
+
+    <owl:Thing rdf:about="&olia_system;hasTag">
+        <rdf:type rdf:resource="&experimental;penn.owl#DatatypeProperty"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:///home/maria/Data/Ontologies/owl/experimental/penn.owl -->
+
+    <Ontology rdf:about="&experimental;penn.owl">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <versionInfo rdf:datatype="&xsd;string"
+            >2008-04-10 created
+2011-11-28 fixed typo (PR vs. RP)
+2011-11-31 added Punctuation (not addressed by Santorini 1990)
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</versionInfo>
+    </Ontology>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ADJ -->
+
+    <owl:Thing rdf:about="#ADJ">
+        <rdf:type rdf:resource="#Adjective"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ADJ</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >adjective, ordinal numeral, ordinal number</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ADJR -->
+
+    <penn:ComparativeAdjective rdf:about="#ADJR">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ADJR</olia_system:hasTag>
+    </penn:ComparativeAdjective>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ADJS -->
+
+    <NamedIndividual rdf:about="#ADJS">
+        <rdf:type rdf:resource="#SuperlativeAdjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ADJS</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ADV -->
+
+    <NamedIndividual rdf:about="#ADV">
+        <rdf:type rdf:resource="#Adverb"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ADV</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >adverb, negation</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Adjective -->
+
+    <owl:Thing rdf:about="#Adjective">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Adverb -->
+
+    <Class rdf:about="#Adverb">
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BackwardDoubleQuote -->
+
+    <owl:Thing rdf:about="#BackwardDoubleQuote">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BaseForm -->
+
+    <Thing rdf:about="#BaseForm">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BePastTense -->
+
+    <owl:Thing rdf:about="#BePastTense">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#BePresentTense -->
+
+    <Class rdf:about="#BePresentTense">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#C -->
+
+    <NamedIndividual rdf:about="#C">
+        <rdf:type rdf:resource="&experimental;penn.owl#SubordinatingConjunction"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">C</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CD -->
+
+    <owl:Thing rdf:about="#CD">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NUM</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CONJ -->
+
+    <NamedIndividual rdf:about="#CONJ">
+        <rdf:type rdf:resource="#CoordinatingConjunction"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">CONJ</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CardinalNumber -->
+
+    <Thing rdf:about="#CardinalNumber">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Class -->
+
+    <owl:Thing rdf:about="#Class">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Colon -->
+
+    <owl:Thing rdf:about="#Colon">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Comma -->
+
+    <Class rdf:about="#Comma">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CommonNoun -->
+
+    <owl:Thing rdf:about="#CommonNoun">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ComparativeAdjective -->
+
+    <Class rdf:about="#ComparativeAdjective">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ComparativeAdverb -->
+
+    <Thing rdf:about="#ComparativeAdverb">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="#ComparativeAdverb"/>
+        <rdf:type rdf:resource="&owl;Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>ADVR</olia_system:hasTag>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Conjunction -->
+
+    <Thing rdf:about="#Conjunction">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#CoordinatingConjunction -->
+
+    <Thing rdf:about="#CoordinatingConjunction">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#D -->
+
+    <NamedIndividual rdf:about="#D">
+        <rdf:type rdf:resource="#Determiner"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">D</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >determiner, also article</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DatatypeProperty -->
+
+    <Class rdf:about="#DatatypeProperty">
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Determiner -->
+
+    <Class rdf:about="#Determiner">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Dollar -->
+
+    <owl:Thing rdf:about="#Dollar">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#DoubleQuote -->
+
+    <owl:Thing rdf:about="#DoubleQuote">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#EX -->
+
+    <penn:ExistentialThere rdf:about="#EX">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">EX</olia_system:hasTag>
+    </penn:ExistentialThere>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ExistentialThere -->
+
+    <owl:Thing rdf:about="#ExistentialThere">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#FW -->
+
+    <owl:Thing rdf:about="#FW">
+        <rdf:type rdf:resource="#ForeignWord"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">FW</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#FocusParticle -->
+
+    <Thing rdf:about="#FocusParticle">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>FP</olia_system:hasTag>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ForeignWord -->
+
+    <Thing rdf:about="#ForeignWord">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ForwardDoubleQuote -->
+
+    <Class rdf:about="#ForwardDoubleQuote">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#FullStop -->
+
+    <owl:Thing rdf:about="#FullStop">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#GerundOrPresentParticiple -->
+
+    <Thing rdf:about="#GerundOrPresentParticiple">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#IN -->
+
+    <NamedIndividual rdf:about="#IN">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">IN</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Interjection -->
+
+    <Class rdf:about="#Interjection">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LS -->
+
+    <NamedIndividual rdf:about="#LS">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">LS</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LeftBracket -->
+
+    <Class rdf:about="#LeftBracket">
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LeftCurlyBracket -->
+
+    <Class rdf:about="#LeftCurlyBracket">
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LeftRoundBracket -->
+
+    <Class rdf:about="#LeftRoundBracket">
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#LeftSquareBracket -->
+
+    <Class rdf:about="#LeftSquareBracket">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ListItemMarker -->
+
+    <owl:Thing rdf:about="#ListItemMarker">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#MD -->
+
+    <owl:Thing rdf:about="#MD">
+        <rdf:type rdf:resource="#ModalVerb"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">MD</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ModalVerb -->
+
+    <owl:Thing rdf:about="#ModalVerb">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#NN -->
+
+    <Thing rdf:about="#NN">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NN</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Noun singular or mass</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#NNP -->
+
+    <owl:Thing rdf:about="#NNP">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NNP</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Proper noun singular</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#NNPS -->
+
+    <NamedIndividual rdf:about="#NNPS">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NNPS</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Proper noun plural</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#NNS -->
+
+    <owl:Thing rdf:about="#NNS">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NNS</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string">Noun plural</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#NamedIndividual -->
+
+    <owl:Thing rdf:about="#NamedIndividual">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Noun -->
+
+    <Class rdf:about="#Noun">
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ObjectProperty -->
+
+    <Class rdf:about="#ObjectProperty">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Ontology -->
+
+    <Thing rdf:about="#Ontology">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PDT -->
+
+    <Thing rdf:about="#PDT">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PDT</olia_system:hasTag>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#POS -->
+
+    <Thing rdf:about="#POS">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">POS</olia_system:hasTag>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PP -->
+
+    <NamedIndividual rdf:about="#PP">
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PP</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >PP is the used Tag in &quot;Part-of-Speech Tagging Guidelines for the Penn Treebank Project&quot;,  Beatrice Santorini, 15.03.1991&quot;
+(http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/Penn-Treebank-Tagset.ps 21.11.07)</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PPpossessive -->
+
+    <owl:Thing rdf:about="#PPpossessive">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PP$</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >PP$is the used Tag in &quot;Part-of-Speech Tagging Guidelines for the Penn Treebank Project&quot;,  Beatrice Santorini, 15.03.1991&quot;
+(http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/Penn-Treebank-Tagset.ps 21.11.07)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PRO -->
+
+    <owl:Thing rdf:about="#PRO">
+        <rdf:type rdf:resource="#PersonalPronoun"/>
+        <olia_system:hasTag>PRO</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PRO$ -->
+
+    <owl:Thing rdf:about="#PRO$">
+        <rdf:type rdf:resource="#PossessivePronoun"/>
+        <olia_system:hasTag>PRO$</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PRP -->
+
+    <NamedIndividual rdf:about="#PRP">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PRP</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >PRP is the used Tag in &quot;Part of Speech Tagging Guidelines for the Penn Treebank Project, June 1990&quot; (ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz  21.11.07)</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PRPpossessive -->
+
+    <owl:Thing rdf:about="#PRPpossessive">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PRP$</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >PRP$ is the used Tag in &quot;Part of Speech Tagging Guidelines for the Penn Treebank Project, June 1990&quot; (ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz  21.11.07)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Particle -->
+
+    <owl:Thing rdf:about="#Particle">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PastParticiple -->
+
+    <Thing rdf:about="#PastParticiple">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PersonalPronoun -->
+
+    <Thing rdf:about="#PersonalPronoun">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PossessiveEnding -->
+
+    <owl:Thing rdf:about="#PossessiveEnding">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PossessivePronoun -->
+
+    <Class rdf:about="#PossessivePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PossessiveWhPronoun -->
+
+    <Class rdf:about="#PossessiveWhPronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Predeterminer -->
+
+    <owl:Thing rdf:about="#Predeterminer">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#PrepositionOrSubordinatingConjunction -->
+
+    <owl:Thing rdf:about="#PrepositionOrSubordinatingConjunction">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Pronoun -->
+
+    <Class rdf:about="#Pronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#ProperNoun -->
+
+    <owl:Thing rdf:about="#ProperNoun">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Punctuation -->
+
+    <owl:Thing rdf:about="#Punctuation">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <versionInfo
+            >Not addressed by Santorini (1990), but produced by real-world taggers, also cf. http://www.cis.upenn.edu/~treebank/tokenization.html for the treatment of PTB punctuation tags in the parsed Penn Treebank.</versionInfo>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Q -->
+
+    <owl:Thing rdf:about="#Q">
+        <rdf:type rdf:resource="#Quantifier"/>
+        <olia_system:hasTag>Q</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Q$ -->
+
+    <owl:Thing rdf:about="#Q$">
+        <rdf:type rdf:resource="#QuantifierPossessive"/>
+        <olia_system:hasTag>Q$</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#QR -->
+
+    <penn:QuantifierComparative rdf:about="#QR">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>QR</olia_system:hasTag>
+    </penn:QuantifierComparative>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#QS -->
+
+    <owl:Thing rdf:about="#QS">
+        <rdf:type rdf:resource="#QuantifierSuperlative"/>
+        <olia_system:hasTag>QS</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RP -->
+
+    <NamedIndividual rdf:about="#RP">
+        <rdf:type rdf:resource="#AdverbialParticle"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">RP</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Restriction -->
+
+    <Thing rdf:about="#Restriction">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RightBracket -->
+
+    <owl:Thing rdf:about="#RightBracket">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RightCurlyBracket -->
+
+    <Class rdf:about="#RightCurlyBracket">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RightRoundBracket -->
+
+    <Class rdf:about="#RightRoundBracket">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#RightSquareBracket -->
+
+    <Class rdf:about="#RightSquareBracket">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#SYM -->
+
+    <owl:Thing rdf:about="#SYM">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="#Symbol"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">SYM</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#SubordinatingConjunction -->
+
+    <Class rdf:about="#SubordinatingConjunction">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#SuperlativeAdjective -->
+
+    <penn:SuperlativeAdverb rdf:about="#SuperlativeAdjective">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </penn:SuperlativeAdverb>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#SuperlativeAdverb -->
+
+    <Thing rdf:about="#SuperlativeAdverb">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Symbol -->
+
+    <Thing rdf:about="#Symbol">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#TO -->
+
+    <penn:ToParticle rdf:about="#TO">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">TO</olia_system:hasTag>
+    </penn:ToParticle>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Tag -->
+
+    <owl:Thing rdf:about="#Tag">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Thing -->
+
+    <Class rdf:about="#Thing">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#To -->
+
+    <Thing rdf:about="#To">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#UH -->
+
+    <NamedIndividual rdf:about="#UH">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">UH</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >interjections, exclamation</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VAG -->
+
+    <owl:Thing rdf:about="#VAG">
+        <rdf:type rdf:resource="#PresentParticiple"/>
+        <olia_system:hasTag>VAG</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VAN -->
+
+    <penn:PassiveParticiple rdf:about="#VAN">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>VAN</olia_system:hasTag>
+    </penn:PassiveParticiple>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VB -->
+
+    <NamedIndividual rdf:about="#VB">
+        <rdf:type rdf:resource="#Infinitive"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">VB</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VBD -->
+
+    <NamedIndividual rdf:about="#VBD">
+        <rdf:type rdf:resource="#PastVerb"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">VBD</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VBG -->
+
+    <NamedIndividual rdf:about="#VBG">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">VBG</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VBI -->
+
+    <owl:Thing rdf:about="#VBI">
+        <olia_system:hasTag>VBI</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VBN -->
+
+    <penn:PastParticiple rdf:about="#VBN">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="#PerfectParticiple"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">VBN</olia_system:hasTag>
+    </penn:PastParticiple>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VBP -->
+
+    <owl:Thing rdf:about="#VBP">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="#Present"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">VBP</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Verb non 3-rd person singular present</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#VBZ -->
+
+    <Thing rdf:about="#VBZ">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">VBZ</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Verb 3-rd person singular present</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#Verb -->
+
+    <Thing rdf:about="#Verb">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WADV -->
+
+    <penn:WhAdverb rdf:about="#WADV">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>WADV</olia_system:hasTag>
+    </penn:WhAdverb>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WARD -->
+
+    <owl:Thing rdf:about="#WARD">
+        <olia_system:hasTag>WARD</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WD -->
+
+    <penn:WhDeterminer rdf:about="#WD">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>WD</olia_system:hasTag>
+    </penn:WhDeterminer>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WDT -->
+
+    <owl:Thing rdf:about="#WDT">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">WDT</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WP -->
+
+    <NamedIndividual rdf:about="#WP">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">WP</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WPRO -->
+
+    <owl:Thing rdf:about="#WPRO">
+        <rdf:type rdf:resource="#WhPronoun"/>
+        <olia_system:hasTag>WPRO</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WPpossessive -->
+
+    <NamedIndividual rdf:about="#WPpossessive">
+        <rdf:type rdf:resource="#PossessiveWhPronoun"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">WPRO$</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WQ -->
+
+    <penn:WhetherConjunction rdf:about="#WQ">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>WQ</olia_system:hasTag>
+    </penn:WhetherConjunction>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WRB -->
+
+    <Thing rdf:about="#WRB">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">WRB</olia_system:hasTag>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WhAdverb -->
+
+    <owl:Thing rdf:about="#WhAdverb">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WhDeterminer -->
+
+    <Thing rdf:about="#WhDeterminer">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#WhPronoun -->
+
+    <Thing rdf:about="#WhPronoun">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#alsoAdverb -->
+
+    <penn:ALSO rdf:about="#alsoAdverb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>ALSO</olia_system:hasTag>
+    </penn:ALSO>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#backwardDoubleQuote -->
+
+    <owl:Thing rdf:about="#backwardDoubleQuote">
+        <rdf:type rdf:resource="#BackwardDoubleQuote"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <olia_system:hasTag>&#39;&#39;</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#beImperative -->
+
+    <penn:BeImperative rdf:about="#beImperative">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>BEI</olia_system:hasTag>
+    </penn:BeImperative>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#beInfinitive -->
+
+    <penn:BeInfinitive rdf:about="#beInfinitive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>BE</olia_system:hasTag>
+    </penn:BeInfinitive>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#bePast -->
+
+    <penn:BePast rdf:about="#bePast">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>BED</olia_system:hasTag>
+    </penn:BePast>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#bePerfectParticiple -->
+
+    <penn:BePerfectParticiple rdf:about="#bePerfectParticiple">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>BEN</olia_system:hasTag>
+    </penn:BePerfectParticiple>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#bePresent -->
+
+    <owl:Thing rdf:about="#bePresent">
+        <rdf:type rdf:resource="#BePresent"/>
+        <olia_system:hasTag>BEP</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#bePresentParticiple -->
+
+    <penn:BePresentParticiple rdf:about="#bePresentParticiple">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>BAG</olia_system:hasTag>
+    </penn:BePresentParticiple>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#cardinalNumber -->
+
+    <penn:CardinalNumber rdf:about="#cardinalNumber">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>NUM</olia_system:hasTag>
+    </penn:CardinalNumber>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#cardinalNumberPossessive -->
+
+    <owl:Thing rdf:about="#cardinalNumberPossessive">
+        <rdf:type rdf:resource="#CardinalNumberPossessive"/>
+        <olia_system:hasTag>NUM$</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#colon -->
+
+    <NamedIndividual rdf:about="#colon">
+        <rdf:type rdf:resource="#Colon"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>:</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#comma -->
+
+    <penn:Comma rdf:about="#comma">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>,</olia_system:hasTag>
+    </penn:Comma>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#commonNounPlural -->
+
+    <penn:CommonNounPlural rdf:about="#commonNounPlural">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>NS</olia_system:hasTag>
+    </penn:CommonNounPlural>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#commonNounPluralPossessive -->
+
+    <penn:CommonNounPluralPossessive rdf:about="#commonNounPluralPossessive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>NS$</olia_system:hasTag>
+    </penn:CommonNounPluralPossessive>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#commonNounSingularPossessive -->
+
+    <owl:Thing rdf:about="#commonNounSingularPossessive">
+        <rdf:type rdf:resource="#CommonNounSingularPossessive"/>
+        <olia_system:hasTag>N$</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#complementizer -->
+
+    <owl:Thing rdf:about="#complementizer">
+        <rdf:type rdf:resource="#Complementizer"/>
+        <olia_system:hasTag>C</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#doImperative -->
+
+    <owl:Thing rdf:about="#doImperative">
+        <rdf:type rdf:resource="#DoImperative"/>
+        <olia_system:hasTag>DOI</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#doInfinitive -->
+
+    <owl:Thing rdf:about="#doInfinitive">
+        <rdf:type rdf:resource="#DoInfinitive"/>
+        <olia_system:hasTag>DO</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#doPassiveParticiple -->
+
+    <owl:Thing rdf:about="#doPassiveParticiple">
+        <rdf:type rdf:resource="#DoPassiveParticiple"/>
+        <olia_system:hasTag>DAN</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#doPast -->
+
+    <owl:Thing rdf:about="#doPast">
+        <rdf:type rdf:resource="#DoPast"/>
+        <olia_system:hasTag>DOD</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#doPerfectParticiple -->
+
+    <owl:Thing rdf:about="#doPerfectParticiple">
+        <rdf:type rdf:resource="#DoPerfectParticiple"/>
+        <olia_system:hasTag>DON</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#doPresent -->
+
+    <owl:Thing rdf:about="#doPresent">
+        <rdf:type rdf:resource="#DoPresent"/>
+        <olia_system:hasTag>DOP</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#doPresentParticiple -->
+
+    <penn:DoPresentParticiple rdf:about="#doPresentParticiple">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>DAG</olia_system:hasTag>
+    </penn:DoPresentParticiple>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#dollar -->
+
+    <owl:Thing rdf:about="#dollar">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <olia_system:hasTag>$</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#doubleQuote -->
+
+    <penn:DoubleQuote rdf:about="#doubleQuote">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>&quot;</olia_system:hasTag>
+    </penn:DoubleQuote>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#elseAdverb -->
+
+    <owl:Thing rdf:about="#elseAdverb">
+        <rdf:type rdf:resource="#ELSE"/>
+        <olia_system:hasTag>ELSE</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#existentialThere -->
+
+    <penn:ExistententialThere rdf:about="#existentialThere">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>EX</olia_system:hasTag>
+    </penn:ExistententialThere>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#focusParticle -->
+
+    <owl:Thing rdf:about="#focusParticle">
+        <rdf:type rdf:resource="#FocusParticle"/>
+        <olia_system:hasTag>FP</olia_system:hasTag>
+        <rdfs:comment
+            >The following words, all of which also have other uses, are tagged FP when used as focus particles: 
+all periods 	ALONE, BUT, EVEN, ONLY
+only Middle English 	FORTH, ONE, YET
+Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP 
++tan_ADV wil_MD +te_PRO liste_VB stele_VB by_P +te_PRO alane_FP</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#forToClitic -->
+
+    <owl:Thing rdf:about="#forToClitic">
+        <rdf:type rdf:resource="#ForToClitic"/>
+        <olia_system:hasTag>FOR+TO</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#forwardDoubleQuote -->
+
+    <penn:ForwardDoubleQuote rdf:about="#forwardDoubleQuote">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>``</olia_system:hasTag>
+    </penn:ForwardDoubleQuote>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#fullStop -->
+
+    <owl:Thing rdf:about="#fullStop">
+        <rdf:type rdf:resource="#FullStop"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <olia_system:hasTag>.</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#genid7 -->
+
+    <Class/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#genid8 -->
+
+    <Class/>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#hasValue -->
+
+    <DatatypeProperty rdf:about="#hasValue">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#haveImperative -->
+
+    <owl:Thing rdf:about="#haveImperative">
+        <rdf:type rdf:resource="#HaveImperative"/>
+        <olia_system:hasTag>HVI</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#haveInfinitive -->
+
+    <owl:Thing rdf:about="#haveInfinitive">
+        <rdf:type rdf:resource="#HaveInfinitive"/>
+        <olia_system:hasTag>HV</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#havePassiveParticiple -->
+
+    <penn:HavePassiveParticiple rdf:about="#havePassiveParticiple">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>HAN</olia_system:hasTag>
+    </penn:HavePassiveParticiple>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#havePast -->
+
+    <penn:HavePast rdf:about="#havePast">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>HVD</olia_system:hasTag>
+    </penn:HavePast>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#havePerfectParticiple -->
+
+    <owl:Thing rdf:about="#havePerfectParticiple">
+        <rdf:type rdf:resource="#HavePerfectParticiple"/>
+        <olia_system:hasTag>HVN</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#havePresent -->
+
+    <penn:HavePresent rdf:about="#havePresent">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>HVP</olia_system:hasTag>
+    </penn:HavePresent>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#havePresentParticiple -->
+
+    <owl:Thing rdf:about="#havePresentParticiple">
+        <rdf:type rdf:resource="#HavePresentParticiple"/>
+        <olia_system:hasTag>HAG</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#hyphen -->
+
+    <Thing rdf:about="#hyphen">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="#Symbol"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">HYPH</olia_system:hasTag>
+    </Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#indefiniteSubjectPronoun -->
+
+    <penn:IndefiniteSubjectPronoun rdf:about="#indefiniteSubjectPronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>MAN</olia_system:hasTag>
+    </penn:IndefiniteSubjectPronoun>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#interjection -->
+
+    <owl:Thing rdf:about="#interjection">
+        <rdf:type rdf:resource="#Interjection"/>
+        <olia_system:hasTag>INTJ</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#leftCurlyBracket -->
+
+    <penn:LeftCurlyBracket rdf:about="#leftCurlyBracket">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>-LCB-</olia_system:hasTag>
+        <olia_system:hasTag>{</olia_system:hasTag>
+    </penn:LeftCurlyBracket>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#leftRoundBracket -->
+
+    <penn:LeftRoundBracket rdf:about="#leftRoundBracket">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>-LRB-</olia_system:hasTag>
+        <olia_system:hasTag>(</olia_system:hasTag>
+    </penn:LeftRoundBracket>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#leftSquareBracket -->
+
+    <NamedIndividual rdf:about="#leftSquareBracket">
+        <rdf:type rdf:resource="#LeftSquareBracket"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>[</olia_system:hasTag>
+        <olia_system:hasTag>-LSB-</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#lineBreak -->
+
+    <owl:Thing rdf:about="#lineBreak">
+        <rdf:type rdf:resource="#LIneBreak"/>
+        <olia_system:hasTag>LB</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#listMarker -->
+
+    <owl:Thing rdf:about="#listMarker">
+        <rdf:type rdf:resource="#ListMarker"/>
+        <olia_system:hasTag>LS</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#modalVerbUntensed -->
+
+    <owl:Thing rdf:about="#modalVerbUntensed">
+        <rdf:type rdf:resource="#ModalVerbUntensed"/>
+        <olia_system:hasTag>MD0</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#negation -->
+
+    <penn:Negation rdf:about="#negation">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>NEG</olia_system:hasTag>
+    </penn:Negation>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#nonfinalpunctuation -->
+
+    <owl:Class rdf:about="#nonfinalpunctuation">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#nonfinalpunctuation"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>NFP</olia_system:hasTag>
+    </owl:Class>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#noun -->
+
+    <owl:Thing rdf:about="#noun">
+        <rdf:type rdf:resource="#CommonNounSingular"/>
+        <rdf:type rdf:resource="#Noun"/>
+        <olia_system:hasTag>N</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#onProperty -->
+
+    <owl:Thing rdf:about="#onProperty">
+        <rdf:type rdf:resource="&experimental;penn.owl#ObjectProperty"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#oneNumber -->
+
+    <penn:OneNumber rdf:about="#oneNumber">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>ONE</olia_system:hasTag>
+    </penn:OneNumber>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#onePossessive -->
+
+    <penn:OnePossessive rdf:about="#onePossessive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>ONE$</olia_system:hasTag>
+    </penn:OnePossessive>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#onePronoun -->
+
+    <owl:Thing rdf:about="#onePronoun">
+        <olia_system:hasTag>ONE</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#otherPronounPlural -->
+
+    <penn:OtherPronounPlural rdf:about="#otherPronounPlural">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>OTHERS</olia_system:hasTag>
+    </penn:OtherPronounPlural>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#otherPronounPluralPossessive -->
+
+    <owl:Thing rdf:about="#otherPronounPluralPossessive">
+        <rdf:type rdf:resource="#OtherPronounPluralPossessive"/>
+        <olia_system:hasTag>OTHERS$</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#otherPronounPossessive -->
+
+    <penn:OtherPronounPossessive rdf:about="#otherPronounPossessive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>OTHER$</olia_system:hasTag>
+    </penn:OtherPronounPossessive>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#possessiveImpersonalPronoun -->
+
+    <owl:Thing rdf:about="#possessiveImpersonalPronoun">
+        <rdf:type rdf:resource="#PossesiveIndefinitePronoun"/>
+        <olia_system:hasTag>ONE$</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#prepositionOrSubordinatingConjunction -->
+
+    <owl:Thing rdf:about="#prepositionOrSubordinatingConjunction">
+        <rdf:type rdf:resource="#PrepositionOrSubordinatingConjunction"/>
+        <olia_system:hasTag>P</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#properNounPlural -->
+
+    <penn:ProperNounPlural rdf:about="#properNounPlural">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>NPRS</olia_system:hasTag>
+    </penn:ProperNounPlural>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#properNounPluralPossessive -->
+
+    <penn:ProperNounPluralPossessive rdf:about="#properNounPluralPossessive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>NPRS$</olia_system:hasTag>
+    </penn:ProperNounPluralPossessive>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#properNounSingular -->
+
+    <owl:Thing rdf:about="#properNounSingular">
+        <rdf:type rdf:resource="#ProperNounSingular"/>
+        <olia_system:hasTag>NPR</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#properNounSingularPossessive -->
+
+    <penn:ProperNounSingularPossessive rdf:about="#properNounSingularPossessive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>NPR$</olia_system:hasTag>
+    </penn:ProperNounSingularPossessive>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#rightCurlyBracket -->
+
+    <owl:Thing rdf:about="#rightCurlyBracket">
+        <rdf:type rdf:resource="&experimental;penn.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="#RightCurlyBracket"/>
+        <olia_system:hasTag>}</olia_system:hasTag>
+        <olia_system:hasTag>-RCB-</olia_system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#rightRoundBracket -->
+
+    <NamedIndividual rdf:about="#rightRoundBracket">
+        <rdf:type rdf:resource="#RightRoundBracket"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>)</olia_system:hasTag>
+        <olia_system:hasTag>-RRB-</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#rightSquareBracket -->
+
+    <NamedIndividual rdf:about="#rightSquareBracket">
+        <rdf:type rdf:resource="#RightSquareBracket"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>-RSB-</olia_system:hasTag>
+        <olia_system:hasTag>]</olia_system:hasTag>
+    </NamedIndividual>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#suchAdverb -->
+
+    <penn:SUCH rdf:about="#suchAdverb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>SUCH</olia_system:hasTag>
+    </penn:SUCH>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#versionInfo -->
+
+    <owl:Thing rdf:about="#versionInfo">
+        <rdf:type rdf:resource="&experimental;penn.owl#DatatypeProperty"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- file:/home/maria/Data/Ontologies/owl/experimental/penn.owl#wordOther -->
+
+    <penn:OtherPronoun rdf:about="#wordOther">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <olia_system:hasTag>OTHER</olia_system:hasTag>
+    </penn:OtherPronoun>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
+
+    <Thing rdf:about="&system;LinguisticAnnotation">
+        <rdf:type rdf:resource="&experimental;penn.owl#Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Thing>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:Thing rdf:about="&system;hasTag">
+        <rdf:type rdf:resource="&experimental;penn.owl#DatatypeProperty"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:Thing rdf:about="&system;hasTier">
+        <rdf:type rdf:resource="&experimental;penn.owl#DatatypeProperty"/>
+        <rdf:type rdf:resource="&experimental;penn.owl#Thing"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <Class rdf:about="&owl;Thing">
+        <rdf:type rdf:resource="&owl;Class"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
