@@ -1,0 +1,422 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY olia_system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/penn.owl#"
+     xml:base="http://purl.org/olia/penn.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:olia_system="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/alpino.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">2008-04-10 created
+2011-11-28 fixed typo (PR vs. RP)
+2011-11-31 added Punctuation (not addressed by Santorini 1990)
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;string">OLiA Annotation Model for  LASSY alpino part-of-speech annotation http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html
+
+References
+http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html
+
+http://nederbooms.ccl.kuleuven.be/test/tags
+
+http://www.let.rug.nl/vannoord/Lassy/</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string">ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz</rdfs:isDefinedBy>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTag"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTier"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">These are adjectives, ordinal numerals, and ordinal numbers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This category includes most words that end in -ly as well as degree words like &quot;quite&quot;, &quot;too&quot; and &quot;very&quot;, posthead modifiers like &quot;enough&quot; and &quot;indeed&quot; (as in &quot;good enough&quot;, &quot;very well indeed&quot;), and negative markers like &quot;not&quot;, &quot;n&apos; t&quot; and &quot;never&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#CardinalNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#CardinalNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">These are cardinal numbers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Complementizer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Complementizer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Determiner -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Determiner">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This category includes the articles &quot;a(n)&quot;, &quot;every&quot;, &quot;no&quot; and &quot;the&quot;, the indefinite determiners &quot;another&quot;,  &quot;any&quot; and &quot;some&quot;, &quot;each&quot;, &quot;either&quot; (as in &quot;either way&quot;), &quot;neither&quot; (as in &quot;neither decision&quot;), &quot;that&quot;, &quot;these&quot;, &quot;this&quot; and &quot;those&quot;, and instances of &quot;all&quot; and &quot;both&quot; when they do not precede a determiner or possessive pronoun (as in &quot;all roads&quot; or &quot;both times&quot;).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Fixed -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Fixed">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment>(part of) a fixed expression</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#MWU -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#MWU">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment>multiword units</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Name -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Name">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Particle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Particle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Prefix -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Prefix">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment>the first conjunct in constructions like: 
+electronica-	en telecommunicatieconcern	
+voedsel- en landbouworganisatie</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Preposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Preposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#PronominalAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#PronominalAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Punctuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Punctuation">
+        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&olia_system;hasTier"/>
+                <owl:hasValue>pos</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:versionInfo>Not addressed by Santorini (1990), but produced by real-world taggers, also cf. http://www.cis.upenn.edu/~treebank/tokenization.html for the treatment of PTB punctuation tags in the parsed Penn Treebank.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Tag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Tag">
+        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/penn.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
+
+    <owl:Class rdf:about="&olia_system;LinguisticAnnotation"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#adj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#adj">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Adjective"/>
+        <olia_system:hasTag>adj</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#adv -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#adv">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Adverb"/>
+        <olia_system:hasTag>adv</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#comp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#comp">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Complementizer"/>
+        <olia_system:hasTag>comp</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#det -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#det">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Determiner"/>
+        <olia_system:hasTag>det</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#fixed -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#fixed">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Fixed"/>
+        <olia_system:hasTag>fixed</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#mwu -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#mwu">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#MWU"/>
+        <olia_system:hasTag>mwu</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#name -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#name">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Name"/>
+        <olia_system:hasTag>name</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#noun -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#noun">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Noun"/>
+        <olia_system:hasTag>noun</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#num -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#num">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#CardinalNumber"/>
+        <olia_system:hasTag>num</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#part -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#part">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Particle"/>
+        <olia_system:hasTag>part</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#pp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#pp">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#PronominalAdverb"/>
+        <olia_system:hasTag>pp</olia_system:hasTag>
+        <rdfs:comment>Pronominal adverb like English &quot;whereof&quot;, &quot;hereby&quot; etc. 
+Dutch: &quot;ertegen&quot; (thereagainst):
+Hij protesteert ertegen. 
+&quot;erin&quot; (therein): 
+We doken erin.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#prefix -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#prefix">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Prefix"/>
+        <olia_system:hasTag>prefix</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#prep -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#prep">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Preposition"/>
+        <olia_system:hasTag>prep</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#pron -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#pron">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Pronoun"/>
+        <olia_system:hasTag>pron</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#punct -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#punct">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Punctuation"/>
+        <olia_system:hasTag>punct</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#tag -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#tag">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Tag"/>
+        <olia_system:hasTag>tag</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#verb -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#verb">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#Verb"/>
+        <olia_system:hasTag>verb</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/penn.owl#vg -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/penn.owl#vg">
+        <rdf:type rdf:resource="http://purl.org/olia/penn.owl#CoordinatingConjunction"/>
+        <olia_system:hasTag>vg</olia_system:hasTag>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
