@@ -11,6 +11,30 @@ if echo $HOME | grep '^$' >& /dev/null; then
 	else HOME=`whereis $0 | egrep -m 1 '.' | sed -e s/'^[^\/]*'// -e s/'\/[^\/]*$'//`;
 	fi;
 fi;
+
+if [ $OSTYPE = 'cygwin' ]; then
+	PWD="cygpath -w -a .";
+#	NORM="sed s/'\\'/'\/'/g";
+else 
+	PWD=pwd;
+#	NORM=cat;
+fi;
+
+if echo $UPPER | grep -v ':/' >/dev/null; then
+	if [ -e $UPPER ]; then			
+		UPPER=file://localhost/`$PWD`/$UPPER;
+		echo $UPPER;
+	fi;
+fi;
+
+if echo $LOWER | grep -v ':/' >/dev/null; then
+	if [ -e $LOWER ]; then			
+		LOWER=file://localhost/`$PWD`/$LOWER;
+		echo $LOWER;
+	fi;
+fi;
+
+
 CLASSPATH=$HOME/java/bin:`find $HOME/java/lib | egrep '.zip$|.jar$' | perl -e 'while(<>) { s/\n/:/gs; print; }'`.;
 if [ $OSTYPE = 'cygwin' ] ; then
 	CLASSPATH=`echo $CLASSPATH | sed s/':'/'\n'/g`;
@@ -18,7 +42,19 @@ if [ $OSTYPE = 'cygwin' ] ; then
 		cygpath -w $file;
 		done | perl -e 'while(<>) { s/\n/;/gs; print; }'`;
 fi;
-java -classpath $CLASSPATH olia/LinkOntologies $UPPER $LOWER $OUT $FLAGS
+
+LinkOntologies=olia/LinkOntologies;
+
+if [ ! -e $HOME/java/bin/$LinkOntologies.class ]; then
+	echo -n compiling $LinkOntologies ".." 1>&2;
+	mkdir $HOME/java/bin 1>&2;
+	if javac -d $HOME/java/bin -classpath $CLASSPATH $HOME/java/src/$LinkOntologies.java;
+	then echo . ok 1>&2;
+	else echo . failed 1>&2;
+	fi;
+fi;
+
+java -classpath $CLASSPATH olia/LinkOntologies $UPPER $LOWER $OUT $FLAGS;
 
 if [ -e $OUT ] ; then
 	TMP=$OUT.tmp;
