@@ -68,6 +68,38 @@ Unless specified otherwise, all comments are taken from http://universaldependen
     
 
 
+    <!-- http://purl.org/olia/universal_dependencies.owl#CaseDependent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#CaseDependent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/universal_dependencies.owl#CompoundingDependent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#CompoundingDependent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/universal_dependencies.owl#Coordination -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#Coordination">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/universal_dependencies.owl#Definite -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#Definite">
@@ -113,6 +145,14 @@ Unless specified otherwise, all comments are taken from http://universaldependen
     
 
 
+    <!-- http://purl.org/olia/universal_dependencies.owl#LooseJoiningDependent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#LooseJoiningDependent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/universal_dependencies.owl#Mood -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#Mood">
@@ -140,10 +180,34 @@ Unless specified otherwise, all comments are taken from http://universaldependen
     
 
 
+    <!-- http://purl.org/olia/universal_dependencies.owl#NonCoreClausalPredicateDependent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#NonCoreClausalPredicateDependent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/universal_dependencies.owl#NounDependent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#NounDependent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/universal_dependencies.owl#Number -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#Number">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NominalInflectionalFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/universal_dependencies.owl#OtherDependent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#OtherDependent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
     </owl:Class>
     
 
@@ -171,6 +235,14 @@ Instances represent the actual tag.</rdfs:comment>
     
 
 
+    <!-- http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/universal_dependencies.owl#Tense -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#Tense">
@@ -184,6 +256,11 @@ Instances represent the actual tag.</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#UniversalDependency">
         <rdfs:subClassOf rdf:resource="&olia_system;Feature"/>
+        <rdfs:comment>The Dependencies are created as distinct classes with a partially polymorphic hierarchy. The hierarchy is taken from:
+http://universaldependencies.org/u/dep/index.html
+
+Individuals are created and named per possible tag:
+udep_&lt;tag&gt;</rdfs:comment>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/index.html</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -246,7 +323,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#adjectivalModifierDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#adjectivalModifierDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NounDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/amod</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -282,7 +359,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#adverbialClauseModifierDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#adverbialClauseModifierDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NonCoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/advcl</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -291,7 +368,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#adverbialModifierDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#adverbialModifierDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NonCoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/advmod</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -300,7 +377,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#appositionalModifierDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#appositionalModifierDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NounDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/appos</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -309,7 +386,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#auxiliaryDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#auxiliaryDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/aux</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -327,7 +404,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#caseMarkingDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#caseMarkingDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CaseDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/case</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -336,7 +413,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#clausalComplementDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#clausalComplementDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/ccomp</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -345,7 +422,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#clausalModifierNounDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#clausalModifierNounDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NounDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/acl</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -354,7 +431,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#clausalPassiveSubjectDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#clausalPassiveSubjectDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/csubjpass</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -363,7 +440,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#clausalSubjectDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#clausalSubjectDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/csubj</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -372,7 +449,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#compoundDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#compoundDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CompoundingDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/compound</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -381,7 +458,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#conjunctDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#conjunctDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#Coordination"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/conj</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -399,7 +476,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#coordinatingConjunctionDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#coordinatingConjunctionDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#Coordination"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/cc</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -408,7 +485,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#copulaDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#copulaDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/cop</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -426,7 +503,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#determinerDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#determinerDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NounDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/det</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -435,7 +512,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#directObjectDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#directObjectDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/dobj</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -444,7 +521,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#discourseElementDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#discourseElementDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/discourse</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -453,7 +530,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#dislocatedElementDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#dislocatedElementDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#LooseJoiningDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/dislocated</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -462,7 +539,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#expletiveDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#expletiveDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/expl</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -471,7 +548,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#foreignWordDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#foreignWordDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CompoundingDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/foreign</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -480,7 +557,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#goesWithDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#goesWithDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CompoundingDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/goeswith</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -489,7 +566,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#indirectObjectDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#indirectObjectDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/iobj</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -507,7 +584,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#listDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#listDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#LooseJoiningDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/list</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -516,7 +593,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#markerDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#markerDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/mark</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -525,7 +602,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#multiWordExpressionDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#multiWordExpressionDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CompoundingDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/mwe</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -534,7 +611,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#nameDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#nameDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CompoundingDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/name</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -543,7 +620,8 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#negationModifierDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#negationModifierDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NonCoreClausalPredicateDependent"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NounDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/neg</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -552,7 +630,8 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#nominalModifierDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#nominalModifierDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NonCoreClausalPredicateDependent"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NounDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/nmod</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -561,7 +640,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#nominalSubjectDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#nominalSubjectDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/nsubj</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -597,7 +676,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#numericModifierDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#numericModifierDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#NounDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/nummod</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -606,7 +685,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#openClausalComplementDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#openClausalComplementDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/xcomp</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -623,7 +702,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#overridenDisfluencyDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#overridenDisfluencyDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#LooseJoiningDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/reparandum</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -632,7 +711,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#parataxisDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#parataxisDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#LooseJoiningDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/parataxis</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -650,7 +729,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#passiveAuxiliaryDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#passiveAuxiliaryDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/auxpass</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -659,7 +738,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#passiveNominalSubjectDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#passiveNominalSubjectDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#CoreClausalPredicateDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/nsubjpass</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -713,7 +792,8 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#punctuationDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#punctuationDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#Coordination"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/punct</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -731,7 +811,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#remnantInEllipsisDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#remnantInEllipsisDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#LooseJoiningDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/remnant</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -740,7 +820,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#rootDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#rootDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#OtherDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/root</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -767,7 +847,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#unspecifiedDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#unspecifiedDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#OtherDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/dep</rdfs:isDefinedBy>
     </owl:Class>
     
@@ -785,7 +865,7 @@ Better suggestions?</rdfs:comment>
     <!-- http://purl.org/olia/universal_dependencies.owl#vocativeDependency -->
 
     <owl:Class rdf:about="http://purl.org/olia/universal_dependencies.owl#vocativeDependency">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#UniversalDependency"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/universal_dependencies.owl#SpecialClausalDependent"/>
         <rdfs:isDefinedBy>http://universaldependencies.org/u/dep/vocative</rdfs:isDefinedBy>
     </owl:Class>
     
