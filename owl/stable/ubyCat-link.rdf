@@ -14,21 +14,21 @@
 
 <rdf:RDF xmlns="http://purl.org/olia/ubyCat.owl#"
      xml:base="http://purl.org/olia/ubyCat.owl"
+     xmlns:olia-top="http://purl.org/olia/olia-top.owl#"
      xmlns:olia="http://purl.org/olia/olia.owl#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:ubyCat="http://purl.org/olia/ubyCat.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:olia-top="http://purl.org/olia/olia-top.owl#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ubyCat="http://purl.org/olia/ubyCat.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/ubyCat-link.rdf">
+        <rdfs:comment>Uby POS Linking Model</rdfs:comment>
         <owl:versionInfo>2013/03/03-04 created (CC)
 2013/05/30 renamed from ubyPos to ubyCat (CC)
 		
 Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de</owl:versionInfo>
         <owl:versionInfo>TODO: clarify WordFormAttribute, WordForm; introduce ObjectProperties ?
 add non-POS properties</owl:versionInfo>
-        <rdfs:comment>Uby POS Linking Model</rdfs:comment>
         <owl:imports rdf:resource="http://purl.org/olia/olia-top.owl"/>
         <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
         <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
@@ -45,18 +45,12 @@ add non-POS properties</owl:versionInfo>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <owl:AnnotationProperty rdf:about="&rdfs;subClassOf"/>
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://www.w3.org/2000/01/rdf-schema#subClassOf -->
 
+    <owl:AnnotationProperty rdf:about="&rdfs;subClassOf"/>
     
 
 
@@ -107,115 +101,633 @@ add non-POS properties</owl:versionInfo>
     
 
 
+    <!-- http://purl.org/olia/ubyCat.owl#Abbreviation -->
+
+    <owl:Class rdf:about="&ubyCat;Abbreviation">
+        <rdfs:subClassOf rdf:resource="&olia;Abbreviation"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;abbreviation">
+        <rdf:type rdf:resource="&ubyCat;Abbreviation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#AbbreviationAcronym -->
+
+    <owl:Class rdf:about="&ubyCat;AbbreviationAcronym">
+        <rdfs:subClassOf rdf:resource="&olia;Acronym"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;abbreviationAcronym">
+        <rdf:type rdf:resource="&ubyCat;AbbreviationAcronym"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#AbbreviationInitialism -->
+
+    <owl:Class rdf:about="&ubyCat;AbbreviationInitialism">
+        <rdfs:subClassOf rdf:resource="&olia;Initialism"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;abbreviationInitialism">
+        <rdf:type rdf:resource="&ubyCat;AbbreviationInitialism"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Adjective -->
+
+    <owl:Class rdf:about="&ubyCat;Adjective">
+        <rdfs:subClassOf rdf:resource="&olia;Adjective"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;adjective">
+        <rdf:type rdf:resource="&ubyCat;Adjective"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Adposition -->
+
+    <owl:Class rdf:about="&ubyCat;Adposition">
+        <rdfs:subClassOf rdf:resource="&olia;Adposition"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;adposition">
+        <rdf:type rdf:resource="&ubyCat;Adposition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#AdpositionCircumposition -->
+
+    <owl:Class rdf:about="&ubyCat;AdpositionCircumposition">
+        <rdfs:subClassOf rdf:resource="&olia;Circumposition"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;adpositionCircumposition">
+        <rdf:type rdf:resource="&ubyCat;AdpositionCircumposition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#AdpositionPostposition -->
+
+    <owl:Class rdf:about="&ubyCat;AdpositionPostposition">
+        <rdfs:subClassOf rdf:resource="&olia;Postposition"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;adpositionPostposition">
+        <rdf:type rdf:resource="&ubyCat;AdpositionPostposition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#AdpositionPreposition -->
+
+    <owl:Class rdf:about="&ubyCat;AdpositionPreposition">
+        <rdfs:subClassOf rdf:resource="&olia;Preposition"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;adpositionPreposition">
+        <rdf:type rdf:resource="&ubyCat;AdpositionPreposition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Adverb -->
+
+    <owl:Class rdf:about="&ubyCat;Adverb">
+        <rdfs:subClassOf rdf:resource="&olia;Adverb"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;adverb">
+        <rdf:type rdf:resource="&ubyCat;Adverb"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#AdverbPronominal -->
+
+    <owl:Class rdf:about="&ubyCat;AdverbPronominal">
+        <rdfs:subClassOf rdf:resource="&olia;PronominalAdverb"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;adverbPronominal">
+        <rdf:type rdf:resource="&ubyCat;AdverbPronominal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Affix -->
+
+    <owl:Class rdf:about="&ubyCat;Affix">
+        <rdfs:subClassOf rdf:resource="&olia;Affix"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;affix">
+        <rdf:type rdf:resource="&ubyCat;Affix"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#AffixPrefix -->
+
+    <owl:Class rdf:about="&ubyCat;AffixPrefix">
+        <rdfs:subClassOf rdf:resource="&olia;Prefix"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;affixPrefix">
+        <rdf:type rdf:resource="&ubyCat;AffixPrefix"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#AffixSuffix -->
+
+    <owl:Class rdf:about="&ubyCat;AffixSuffix">
+        <rdfs:subClassOf rdf:resource="&olia;Suffix"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;affixSuffix">
+        <rdf:type rdf:resource="&ubyCat;AffixSuffix"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Conjunction -->
+
+    <owl:Class rdf:about="&ubyCat;Conjunction">
+        <rdfs:subClassOf rdf:resource="&olia;Conjunction"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;conjunction">
+        <rdf:type rdf:resource="&ubyCat;Conjunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#ConjunctionCoordinating -->
+
+    <owl:Class rdf:about="&ubyCat;ConjunctionCoordinating">
+        <rdfs:subClassOf rdf:resource="&olia;CoordinatingConjunction"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;conjunctionCoordinating">
+        <rdf:type rdf:resource="&ubyCat;ConjunctionCoordinating"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#ConjunctionSubordinating -->
+
+    <owl:Class rdf:about="&ubyCat;ConjunctionSubordinating">
+        <rdfs:subClassOf rdf:resource="&olia;SubordinatingConjunction"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;conjunctionSubordinating">
+        <rdf:type rdf:resource="&ubyCat;ConjunctionSubordinating"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Contraction -->
+
+    <owl:Class rdf:about="&ubyCat;Contraction">
+        <rdfs:subClassOf rdf:resource="&olia;Contraction"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;contraction">
+        <rdf:type rdf:resource="&ubyCat;Contraction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Determiner -->
+
+    <owl:Class rdf:about="&ubyCat;Determiner">
+        <rdfs:subClassOf rdf:resource="&olia;Determiner"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;determiner">
+        <rdf:type rdf:resource="&ubyCat;Determiner"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#DeterminerDefinite -->
+
+    <owl:Class rdf:about="&ubyCat;DeterminerDefinite">
+        <rdfs:subClassOf rdf:resource="&olia;DefiniteArticle"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;determinerDefinite">
+        <rdf:type rdf:resource="&ubyCat;DeterminerDefinite"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#DeterminerDemonstrative -->
+
+    <owl:Class rdf:about="&ubyCat;DeterminerDemonstrative">
+        <rdfs:subClassOf rdf:resource="&olia;DemonstrativeDeterminer"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;determinerDemonstrative">
+        <rdf:type rdf:resource="&ubyCat;DeterminerDemonstrative"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#DeterminerIndefinite -->
+
+    <owl:Class rdf:about="&ubyCat;DeterminerIndefinite">
+        <rdfs:subClassOf rdf:resource="&olia;IndefiniteDeterminer"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;determinerIndefinite">
+        <rdf:type rdf:resource="&ubyCat;DeterminerIndefinite"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#DeterminerInterrogative -->
+
+    <owl:Class rdf:about="&ubyCat;DeterminerInterrogative">
+        <rdfs:subClassOf rdf:resource="&olia;InterrogativeDeterminer"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;determinerInterrogative">
+        <rdf:type rdf:resource="&ubyCat;DeterminerInterrogative"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#DeterminerPossessive -->
+
+    <owl:Class rdf:about="&ubyCat;DeterminerPossessive">
+        <rdfs:subClassOf rdf:resource="&olia;PossessiveDeterminer"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;determinerPossessive">
+        <rdf:type rdf:resource="&ubyCat;DeterminerPossessive"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Interjection -->
+
+    <owl:Class rdf:about="&ubyCat;Interjection">
+        <rdfs:subClassOf rdf:resource="&olia;Interjection"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;interjection">
+        <rdf:type rdf:resource="&ubyCat;Interjection"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.org/olia/ubyCat.owl#LexicalEntry -->
 
     <owl:Class rdf:about="&ubyCat;LexicalEntry">
         <rdfs:subClassOf rdf:resource="&olia;LexicalUnit"/>
     </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;lexicalEntry">
+        <rdf:type rdf:resource="&ubyCat;LexicalEntry"/>
+    </owl:NamedIndividual>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#abbreviation -->
+    <!-- http://purl.org/olia/ubyCat.owl#Noun -->
 
-    <owl:Class rdf:about="&ubyCat;Abbreviation">
-        <rdfs:subClassOf rdf:resource="&olia;Abbreviation"/>
+    <owl:Class rdf:about="&ubyCat;Noun">
+        <rdfs:subClassOf rdf:resource="&olia;Noun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;noun">
+        <rdf:type rdf:resource="&ubyCat;Noun"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#NounCommon -->
+
+    <owl:Class rdf:about="&ubyCat;NounCommon">
+        <rdfs:subClassOf rdf:resource="&olia;CommonNoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;nounCommon">
+        <rdf:type rdf:resource="&ubyCat;NounCommon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#NounProper -->
+
+    <owl:Class rdf:about="&ubyCat;NounProper">
+        <rdfs:subClassOf rdf:resource="&olia;ProperNoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;nounProper">
+        <rdf:type rdf:resource="&ubyCat;NounProper"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#NounProperFirstName -->
+
+    <owl:Class rdf:about="&ubyCat;NounProperFirstName">
+        <rdfs:subClassOf rdf:resource="&olia;GivenName"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;nounProperFirstName">
+        <rdf:type rdf:resource="&ubyCat;NounProperFirstName"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#NounProperLastName -->
+
+    <owl:Class rdf:about="&ubyCat;NounProperLastName">
+        <rdfs:subClassOf rdf:resource="&olia;FamilyName"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;nounProperLastName">
+        <rdf:type rdf:resource="&ubyCat;NounProperLastName"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Numeral -->
+
+    <owl:Class rdf:about="&ubyCat;Numeral">
+        <rdfs:subClassOf rdf:resource="&olia;Numeral"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;numeral">
+        <rdf:type rdf:resource="&ubyCat;Numeral"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Particle -->
+
+    <owl:Class rdf:about="&ubyCat;Particle">
+        <rdfs:subClassOf rdf:resource="&olia;Particle"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;particle">
+        <rdf:type rdf:resource="&ubyCat;Particle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#ParticleAnswer -->
+
+    <owl:Class rdf:about="&ubyCat;ParticleAnswer">
+        <rdfs:subClassOf rdf:resource="&olia;AffirmativeParticle"/>
+        <owl:versionInfo>I assume that a particleAnswer for a negative response would be a particleNegative. If this refers to the remainder, it most should roughly correspond to AffirmativeParticle</owl:versionInfo>
     </owl:Class>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#abbreviationAcronym -->
+    <!-- http://purl.org/olia/ubyCat.owl#ParticleComparative -->
 
-    <owl:Class rdf:about="&ubyCat;AbbreviationAcronym">
-        <rdfs:subClassOf rdf:resource="&olia;Acronym"/>
+    <owl:Class rdf:about="&ubyCat;ParticleComparative">
+        <rdfs:subClassOf rdf:resource="&olia;ComparativeParticle"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;particleComparative">
+        <rdf:type rdf:resource="&ubyCat;ParticleComparative"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#ParticleInfinitive -->
+
+    <owl:Class rdf:about="&ubyCat;ParticleInfinitive">
+        <rdfs:subClassOf rdf:resource="&olia;InfinitiveParticle"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;particleInfinitive">
+        <rdf:type rdf:resource="&ubyCat;ParticleInfinitive"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#ParticleNegative -->
+
+    <owl:Class rdf:about="&ubyCat;ParticleNegative">
+        <rdfs:subClassOf rdf:resource="&olia;NegativeParticle"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;particleNegative">
+        <rdf:type rdf:resource="&ubyCat;ParticleNegative"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Phraseme -->
+
+    <owl:Class rdf:about="&ubyCat;Phraseme">
+        <rdfs:subClassOf rdf:resource="&olia;Phraseme"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;phraseme">
+        <rdf:type rdf:resource="&ubyCat;Phraseme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Pronoun -->
+
+    <owl:Class rdf:about="&ubyCat;Pronoun">
+        <rdfs:subClassOf rdf:resource="&olia;Pronoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;pronoun">
+        <rdf:type rdf:resource="&ubyCat;Pronoun"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#PronounDemonstrative -->
+
+    <owl:Class rdf:about="&ubyCat;PronounDemonstrative">
+        <rdfs:subClassOf rdf:resource="&olia;DemonstrativePronoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;pronounDemonstrative">
+        <rdf:type rdf:resource="&ubyCat;PronounDemonstrative"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#PronounIndefinite -->
+
+    <owl:Class rdf:about="&ubyCat;PronounIndefinite">
+        <rdfs:subClassOf rdf:resource="&olia;IndefinitePronoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;pronounIndefinite">
+        <rdf:type rdf:resource="&ubyCat;PronounIndefinite"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#PronounInterrogative -->
+
+    <owl:Class rdf:about="&ubyCat;PronounInterrogative">
+        <rdfs:subClassOf rdf:resource="&olia;InterrogativePronoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;pronounInterrogative">
+        <rdf:type rdf:resource="&ubyCat;PronounInterrogative"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#PronounPersonal -->
+
+    <owl:Class rdf:about="&ubyCat;PronounPersonal">
+        <rdfs:subClassOf rdf:resource="&olia;PersReflPronoun"/>
+        <owl:versionInfo>An olia:PersonalPronoun is irreflexive</owl:versionInfo>
     </owl:Class>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#abbreviationInitialism -->
+    <!-- http://purl.org/olia/ubyCat.owl#PronounPersonalIrreflexive -->
 
-    <owl:Class rdf:about="&ubyCat;AbbreviationInitialism">
-        <rdfs:subClassOf rdf:resource="&olia;Initialism"/>
+    <owl:Class rdf:about="&ubyCat;PronounPersonalIrreflexive">
+        <rdfs:subClassOf rdf:resource="&olia;PersonalPronoun"/>
+        <owl:versionInfo>An olia:PersonalPronoun is always irreflexive</owl:versionInfo>
     </owl:Class>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#adjective -->
+    <!-- http://purl.org/olia/ubyCat.owl#PronounPersonalReflexive -->
 
-    <owl:Class rdf:about="&ubyCat;Adjective">
-        <rdfs:subClassOf rdf:resource="&olia;Adjective"/>
+    <owl:Class rdf:about="&ubyCat;PronounPersonalReflexive">
+        <rdfs:subClassOf rdf:resource="&olia;ReflexivePronoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;pronounPersonalReflexive">
+        <rdf:type rdf:resource="&ubyCat;PronounPersonalReflexive"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#PronounPossessive -->
+
+    <owl:Class rdf:about="&ubyCat;PronounPossessive">
+        <rdfs:subClassOf rdf:resource="&olia;PossessivePronoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;pronounPossessive">
+        <rdf:type rdf:resource="&ubyCat;PronounPossessive"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#PronounRelative -->
+
+    <owl:Class rdf:about="&ubyCat;PronounRelative">
+        <rdfs:subClassOf rdf:resource="&olia;RelativePronoun"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;pronounRelative">
+        <rdf:type rdf:resource="&ubyCat;PronounRelative"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#SeparableParticle -->
+
+    <owl:Class rdf:about="&ubyCat;SeparableParticle">
+        <rdfs:subClassOf rdf:resource="&olia;Particle"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Separable"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&olia;hasSeparability"/>
+                        <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#adposition -->
+    <!-- http://purl.org/olia/ubyCat.owl#Symbol -->
 
-    <owl:Class rdf:about="&ubyCat;Adposition">
-        <rdfs:subClassOf rdf:resource="&olia;Adposition"/>
+    <owl:Class rdf:about="&ubyCat;Symbol">
+        <rdfs:subClassOf rdf:resource="&olia;Symbol"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;symbol">
+        <rdf:type rdf:resource="&ubyCat;Symbol"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#Verb -->
+
+    <owl:Class rdf:about="&ubyCat;Verb">
+        <rdfs:subClassOf rdf:resource="&olia;Verb"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;verb">
+        <rdf:type rdf:resource="&ubyCat;Verb"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#VerbAuxiliary -->
+
+    <owl:Class rdf:about="&ubyCat;VerbAuxiliary">
+        <rdfs:subClassOf rdf:resource="&olia;AuxiliaryVerb"/>
+    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;verbAuxiliary">
+        <rdf:type rdf:resource="&ubyCat;VerbAuxiliary"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ubyCat.owl#VerbFormMood -->
+
+    <owl:Class rdf:about="&ubyCat;VerbFormMood">
+        <rdfs:subClassOf rdf:resource="&olia-top;MoodFeature"/>
     </owl:Class>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#adpositionCircumposition -->
+    <!-- http://purl.org/olia/ubyCat.owl#VerbMain -->
 
-    <owl:Class rdf:about="&ubyCat;AdpositionCircumposition">
-        <rdfs:subClassOf rdf:resource="&olia;Circumposition"/>
+    <owl:Class rdf:about="&ubyCat;VerbMain">
+        <rdfs:subClassOf rdf:resource="&olia;MainVerb"/>
     </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;verbMain">
+        <rdf:type rdf:resource="&ubyCat;VerbMain"/>
+    </owl:NamedIndividual>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#adpositionPostposition -->
+    <!-- http://purl.org/olia/ubyCat.owl#VerbModal -->
 
-    <owl:Class rdf:about="&ubyCat;AdpositionPostposition">
-        <rdfs:subClassOf rdf:resource="&olia;Postposition"/>
+    <owl:Class rdf:about="&ubyCat;VerbModal">
+        <rdfs:subClassOf rdf:resource="&olia;ModalVerb"/>
     </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#adpositionPreposition -->
-
-    <owl:Class rdf:about="&ubyCat;AdpositionPreposition">
-        <rdfs:subClassOf rdf:resource="&olia;Preposition"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#adverb -->
-
-    <owl:Class rdf:about="&ubyCat;Adverb">
-        <rdfs:subClassOf rdf:resource="&olia;Adverb"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#adverbPronominal -->
-
-    <owl:Class rdf:about="&ubyCat;AdverbPronominal">
-        <rdfs:subClassOf rdf:resource="&olia;PronominalAdverb"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#affix -->
-
-    <owl:Class rdf:about="&ubyCat;Affix">
-        <rdfs:subClassOf rdf:resource="&olia;Affix"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#affixPrefix -->
-
-    <owl:Class rdf:about="&ubyCat;AffixPrefix">
-        <rdfs:subClassOf rdf:resource="&olia;Prefix"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#affixSuffix -->
-
-    <owl:Class rdf:about="&ubyCat;AffixSuffix">
-        <rdfs:subClassOf rdf:resource="&olia;Suffix"/>
-    </owl:Class>
+	
+    <owl:NamedIndividual rdf:about="&ubyCat;verbModal">
+        <rdf:type rdf:resource="&ubyCat;VerbModal"/>
+    </owl:NamedIndividual>
     
 
 
@@ -227,90 +739,10 @@ add non-POS properties</owl:versionInfo>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#conjunction -->
-
-    <owl:Class rdf:about="&ubyCat;Conjunction">
-        <rdfs:subClassOf rdf:resource="&olia;Conjunction"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#conjunctionCoordinating -->
-
-    <owl:Class rdf:about="&ubyCat;ConjunctionCoordinating">
-        <rdfs:subClassOf rdf:resource="&olia;CoordinatingConjunction"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#conjunctionSubordinating -->
-
-    <owl:Class rdf:about="&ubyCat;ConjunctionSubordinating">
-        <rdfs:subClassOf rdf:resource="&olia;SubordinatingConjunction"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#contraction -->
-
-    <owl:Class rdf:about="&ubyCat;Contraction">
-        <rdfs:subClassOf rdf:resource="&olia;Contraction"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.org/olia/ubyCat.owl#degree -->
 
     <owl:Class rdf:about="&ubyCat;degree">
         <rdfs:subClassOf rdf:resource="&olia-top;DegreeFeature"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#determiner -->
-
-    <owl:Class rdf:about="&ubyCat;Determiner">
-        <rdfs:subClassOf rdf:resource="&olia;Determiner"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#determinerDefinite -->
-
-    <owl:Class rdf:about="&ubyCat;DeterminerDefinite">
-        <rdfs:subClassOf rdf:resource="&olia;DefiniteArticle"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#determinerDemonstrative -->
-
-    <owl:Class rdf:about="&ubyCat;DeterminerDemonstrative">
-        <rdfs:subClassOf rdf:resource="&olia;DemonstrativeDeterminer"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#determinerIndefinite -->
-
-    <owl:Class rdf:about="&ubyCat;DeterminerIndefinite">
-        <rdfs:subClassOf rdf:resource="&olia;IndefiniteDeterminer"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#determinerInterrogative -->
-
-    <owl:Class rdf:about="&ubyCat;DeterminerInterrogative">
-        <rdfs:subClassOf rdf:resource="&olia;InterrogativeDeterminer"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#determinerPossessive -->
-
-    <owl:Class rdf:about="&ubyCat;DeterminerPossessive">
-        <rdfs:subClassOf rdf:resource="&olia;PossessiveDeterminer"/>
     </owl:Class>
     
 
@@ -331,107 +763,10 @@ add non-POS properties</owl:versionInfo>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#interjection -->
-
-    <owl:Class rdf:about="&ubyCat;Interjection">
-        <rdfs:subClassOf rdf:resource="&olia;Interjection"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#noun -->
-
-    <owl:Class rdf:about="&ubyCat;Noun">
-        <rdfs:subClassOf rdf:resource="&olia;Noun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#nounCommon -->
-
-    <owl:Class rdf:about="&ubyCat;NounCommon">
-        <rdfs:subClassOf rdf:resource="&olia;CommonNoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#nounProper -->
-
-    <owl:Class rdf:about="&ubyCat;NounProper">
-        <rdfs:subClassOf rdf:resource="&olia;ProperNoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#nounProperFirstName -->
-
-    <owl:Class rdf:about="&ubyCat;NounProperFirstName">
-        <rdfs:subClassOf rdf:resource="&olia;GivenName"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#nounProperLastName -->
-
-    <owl:Class rdf:about="&ubyCat;NounProperLastName">
-        <rdfs:subClassOf rdf:resource="&olia;FamilyName"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#numeral -->
-
-    <owl:Class rdf:about="&ubyCat;Numeral">
-        <rdfs:subClassOf rdf:resource="&olia;Numeral"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.org/olia/ubyCat.owl#partOfSpeech -->
 
     <owl:Class rdf:about="&ubyCat;partOfSpeech">
         <rdfs:subClassOf rdf:resource="&olia-top;MorphosyntacticCategory"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#particle -->
-
-    <owl:Class rdf:about="&ubyCat;Particle">
-        <rdfs:subClassOf rdf:resource="&olia;Particle"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#particleAnswer -->
-
-    <owl:Class rdf:about="&ubyCat;ParticleAnswer">
-        <rdfs:subClassOf rdf:resource="&olia;AffirmativeParticle"/>
-        <owl:versionInfo>I assume that a particleAnswer for a negative response would be a particleNegative. If this refers to the remainder, it most should roughly correspond to AffirmativeParticle</owl:versionInfo>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#particleComparative -->
-
-    <owl:Class rdf:about="&ubyCat;ParticleComparative">
-        <rdfs:subClassOf rdf:resource="&olia;ComparativeParticle"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#particleInfinitive -->
-
-    <owl:Class rdf:about="&ubyCat;ParticleInfinitive">
-        <rdfs:subClassOf rdf:resource="&olia;InfinitiveParticle"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#particleNegative -->
-
-    <owl:Class rdf:about="&ubyCat;ParticleNegative">
-        <rdfs:subClassOf rdf:resource="&olia;NegativeParticle"/>
     </owl:Class>
     
 
@@ -444,159 +779,10 @@ add non-POS properties</owl:versionInfo>
     
 
 
-    <!-- http://purl.org/olia/ubyCat.owl#phraseme -->
-
-    <owl:Class rdf:about="&ubyCat;Phraseme">
-        <rdfs:subClassOf rdf:resource="&olia;Phraseme"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronoun -->
-
-    <owl:Class rdf:about="&ubyCat;Pronoun">
-        <rdfs:subClassOf rdf:resource="&olia;Pronoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronounDemonstrative -->
-
-    <owl:Class rdf:about="&ubyCat;PronounDemonstrative">
-        <rdfs:subClassOf rdf:resource="&olia;DemonstrativePronoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronounIndefinite -->
-
-    <owl:Class rdf:about="&ubyCat;PronounIndefinite">
-        <rdfs:subClassOf rdf:resource="&olia;IndefinitePronoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronounInterrogative -->
-
-    <owl:Class rdf:about="&ubyCat;PronounInterrogative">
-        <rdfs:subClassOf rdf:resource="&olia;InterrogativePronoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronounPersonal -->
-
-    <owl:Class rdf:about="&ubyCat;PronounPersonal">
-        <rdfs:subClassOf rdf:resource="&olia;PersReflPronoun"/>
-        <owl:versionInfo>An olia:PersonalPronoun is irreflexive</owl:versionInfo>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronounPersonalIrreflexive -->
-
-    <owl:Class rdf:about="&ubyCat;PronounPersonalIrreflexive">
-        <rdfs:subClassOf rdf:resource="&olia;PersonalPronoun"/>
-        <owl:versionInfo>An olia:PersonalPronoun is always irreflexive</owl:versionInfo>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronounPersonalReflexive -->
-
-    <owl:Class rdf:about="&ubyCat;PronounPersonalReflexive">
-        <rdfs:subClassOf rdf:resource="&olia;ReflexivePronoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronounPossessive -->
-
-    <owl:Class rdf:about="&ubyCat;PronounPossessive">
-        <rdfs:subClassOf rdf:resource="&olia;PossessivePronoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#pronounRelative -->
-
-    <owl:Class rdf:about="&ubyCat;PronounRelative">
-        <rdfs:subClassOf rdf:resource="&olia;RelativePronoun"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#separableParticle -->
-
-    <owl:Class rdf:about="&ubyCat;SeparableParticle">
-        <rdfs:subClassOf rdf:resource="&olia;Particle"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&olia;Separable"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&olia;hasSeparability"/>
-                        <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#symbol -->
-
-    <owl:Class rdf:about="&ubyCat;Symbol">
-        <rdfs:subClassOf rdf:resource="&olia;Symbol"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.org/olia/ubyCat.owl#tense -->
 
     <owl:Class rdf:about="&ubyCat;tense">
         <rdfs:subClassOf rdf:resource="&olia-top;TenseFeature"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#verb -->
-
-    <owl:Class rdf:about="&ubyCat;Verb">
-        <rdfs:subClassOf rdf:resource="&olia;Verb"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#verbAuxiliary -->
-
-    <owl:Class rdf:about="&ubyCat;VerbAuxiliary">
-        <rdfs:subClassOf rdf:resource="&olia;AuxiliaryVerb"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#verbFormMood -->
-
-    <owl:Class rdf:about="&ubyCat;VerbFormMood">
-        <rdfs:subClassOf rdf:resource="&olia-top;MoodFeature"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#verbMain -->
-
-    <owl:Class rdf:about="&ubyCat;VerbMain">
-        <rdfs:subClassOf rdf:resource="&olia;MainVerb"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/olia/ubyCat.owl#verbModal -->
-
-    <owl:Class rdf:about="&ubyCat;VerbModal">
-        <rdfs:subClassOf rdf:resource="&olia;ModalVerb"/>
     </owl:Class>
     
 
@@ -608,6 +794,9 @@ add non-POS properties</owl:versionInfo>
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
+
+    
+
 
     
 
@@ -823,5 +1012,5 @@ add non-POS properties</owl:versionInfo>
 
 
 
-<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
 
