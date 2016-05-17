@@ -16,6 +16,7 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:olia_top="http://purl.org/olia/olia-top.owl#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
   xml:base="http://purl.org/olia/olia.owl">
   <owl:Ontology rdf:about="http://purl.org/olia/olia.owl">
 	<owl:versionInfo>TODO: simplify {Interrogative,Indefinite,...}/{Cardinal,Multiplicative,...}Quantifier dichothomies
@@ -131,6 +132,8 @@
 	13/06/28 ISOcat additions: Masdar, Ideophone, DeficientVerb (deprecated), IndefiniteMultiplicativeQuantifier, PermissiveModality, WeakObligativeModality, ExistentialPronoun (deprecated), InstrumentNoun, PhysicalAbilitiveModality, MedioPassiveVoice, InterrogativeCardinalQuantifier, CompletiveAspect, PseudopassiveVoice, LetterNumeral, ContextualVariation, Homograph, CollectivePronoun, PossessiveRelativePronoun, ExpansionVariation, CausativeVoice, Augmentative, FusedPronounAuxiliary, AntiCausativeVoice, StatusConstructus, PreferredEvaluative, PejorativeEvaluative, CommissiveForce, ActionalForce, VolitiveForce
 		hasEvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), HortativeModality (from GOLD, missing in the corresponding ISOcat export)
 		disentangled Modality and Mood: for every Mood, created a corresponding Modality as superclass; XYMood is subconcept of Mood and XYModality concept, hasMood only for Mood, hasModality for Modality	
+	16/04/18 selected French labels for the Bambara Reference Corpus (BRC)
+		added OnomatopoeticWord, QualitativeVerb, PredicativeMarker
 	OWL/DL validation
 	
 Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
@@ -384,8 +387,9 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#Clitic">
 	   <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1903"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1903 (cliticness), http://purl.org/olia/mte/multext-east.owl#Cliticness</owl:versionInfo>
-	  <owl:deprecated>Note that the original MULTEXT-East definition of cliticness conflates four different aspects under this label: (a) whether an element *is* a clitic, (b) whether an element *contains* a clitic, (c) whether an element *should contain* a clitic that is, however, represented as a separate token, and (d) whether an element is part of a collocation.
-	  In the MULTEXT-East ontology (and here), this is made explicit by CliticElement, NoncliticElement, ElementWithClitic, ElementWithoutClitic and Collocation. Instead of the original "Clitic", CliticElement (state of being a clitic) and Cliticization (process of adding a clitic) are to be used</owl:deprecated>
+	  <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+	  <owl:versionInfo>Deprecated: Note that the original MULTEXT-East definition of cliticness conflates four different aspects under this label: (a) whether an element *is* a clitic, (b) whether an element *contains* a clitic, (c) whether an element *should contain* a clitic that is, however, represented as a separate token, and (d) whether an element is part of a collocation.
+	  In the MULTEXT-East ontology (and here), this is made explicit by CliticElement, NoncliticElement, ElementWithClitic, ElementWithoutClitic and Collocation. Instead of the original "Clitic", CliticElement (state of being a clitic) and Cliticization (process of adding a clitic) are to be used</owl:versionInfo>
       <rdfs:comment>Categorization of the different types of clitics
 	  (MultText-East; http://www.isocat.org/datcat/DC-1903)
       </rdfs:comment>
@@ -626,7 +630,18 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
 	</rdfs:subClassOf>
-	</owl:Class>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#OnomatopoeticWord">
+	<owl:versionInfo>Bambara Reference Corpus "Onomatopée", http://cormand.huma-num.fr</owl:versionInfo>
+	<rdfs:comment>no definition given</rdfs:comment>
+	<rdfs:label xml:lang="en">onomatopoetic word</rdfs:label>
+	<rdfs:label xml:lang="fr">onomatopée</rdfs:label>
+	<skos:altLabel xml:lang="fr">onomatopée</skos:altLabel>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
+	</rdfs:subClassOf>
+  </owl:Class>
+  
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Contraction">
 	<owl:versionInfo>Uby POS, undocumented, http://purl.org/olia/ubyPos.owl</owl:versionInfo>
 	<rdfs:comment>no definition given</rdfs:comment>
@@ -663,6 +678,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	of a verb, and the object of a preposition.
 	(http://en.wikipedia.org/wiki/Noun 19.09.06)
 	</rdfs:comment>
+	<rdfs:label xml:lang="en">noun</rdfs:label>
+	<rdfs:label xml:lang="fr">nom</rdfs:label>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb">
     <rdfs:subClassOf>
@@ -677,8 +694,12 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		the person, gender, and/or number of some of its arguments (subject, object, etc.).
 		(http://en.wikipedia.org/wiki/Verb 19.09.06)
 	</rdfs:comment>
+	<rdfs:label xml:lang="en">verb</rdfs:label>
+	<rdfs:label xml:lang="fr">verbe</rdfs:label>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#PronounOrDeterminer">
+	<rdfs:label xml:lang="en">pronoun or determiner</rdfs:label>
+	<rdfs:label xml:lang="fr">pronom / determinatif</rdfs:label>
 	<owl:versionInfo>
 		EAGLES top-level category PronounOrDeterminer (PD).
 		
@@ -771,11 +792,13 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</rdfs:comment>
     <rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
-</rdfs:subClassOf>
+	</rdfs:subClassOf>
+	<rdfs:label xml:lang="en">adverb</rdfs:label>
+	<rdfs:label xml:lang="fr">adverbe</rdfs:label>
   </owl:Class>
      <owl:Class rdf:ID="ParticleAdverb">
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1917</rdfs:isDefinedBy>
-	  <owl:deprecated>true</owl:deprecated>
+	  <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
       <rdfs:comment>Word that is both an adverb and a particle.</rdfs:comment>
 	  <owl:versionInfo>merely a shorthand for the intersection of Adverb and Particle, hence deprecated</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="#Adverb"/>
@@ -852,7 +875,9 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</rdfs:comment>
     <rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticCategory"/>
-</rdfs:subClassOf>
+	</rdfs:subClassOf>
+	<rdfs:label xml:lang="en">conjunction</rdfs:label>
+	<rdfs:label xml:lang="fr">conjonction</rdfs:label>
   </owl:Class>
   
   <!-- Residual -->
@@ -886,6 +911,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
      and employed to represent them for the sake of brevity. For example, the word "abbreviation" 
      can be abbreviated as "abbr." or "abbrev."
      (http://en.wikipedia.org/wiki/Abbreviation 19.09.06)</rdfs:comment>
+	 <rdfs:label xml:lang="en">abbreviation</rdfs:label>
+	 <rdfs:label xml:lang="fr">abreviation</rdfs:label>
   </owl:Class>
   <owl:Class rdf:ID="CollectivePronoun">
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3006</rdfs:isDefinedBy>
@@ -913,6 +940,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
     </rdfs:subClassOf>
+	<rdfs:label xml:lang="en">foreign word</rdfs:label>
+	<rdfs:label xml:lang="fr">mot etranger</rdfs:label>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Symbol">
     <rdfs:subClassOf>
@@ -1012,6 +1041,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
     <rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adposition"/>
 </rdfs:subClassOf>
+	<rdfs:label xml:lang="en">preposition</rdfs:label>
+	<rdfs:label xml:lang="fr">préposition</rdfs:label>
   </owl:Class>
 
   
@@ -1142,6 +1173,9 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia.owl#Noun"/>
     </rdfs:subClassOf>
+	<rdfs:label xml:lang="en">proper noun</rdfs:label>
+	<rdfs:label xml:lang="fr">nom propre</rdfs:label>
+	<rdfs:label xml:lang="en">proper name</rdfs:label>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#CommonNoun">
 	<owl:versionInfo>
@@ -1391,13 +1425,20 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
       <owl:versionInfo>subClassOf verb (dcif:isA)</owl:versionInfo>
    </owl:Class>
    <owl:Class rdf:ID="DeficientVerb">
-		<owl:deprecated>true</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>This is an ill-defined concept originating from ISOcat. It is however, not possible to circumscribe it in OLiA as it lacks an established concept of deficiency. Despite the unsatisfactory definition, this was thus adopted in OLiA for compatibility with ISOcat, but marked as deprecated.</owl:versionInfo>
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3007</rdfs:isDefinedBy>
       <rdfs:comment>verb lacking certain morphosyntactic properties</rdfs:comment>
 		<rdfs:subClassOf>
 			<owl:Class rdf:about="#Verb"/>
 		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:ID="QualitativeVerb">
+		<rdfs:comment>no definition given</rdfs:comment>
+		<owl:versionInfo>adopted from the Bambara Reference Corpus (BRC, http://cormand.huma-num.fr/gloses.html)</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="#MainVerb"/>
+		<rdfs:label xml:lang="en">qualitative verb</rdfs:label>
+		<rdfs:label xml:lang="fr">verbe qualitatif</rdfs:label>
 	</owl:Class>
 	<owl:Class rdf:ID="AgentiveVerb">
 		<rdfs:comment>
@@ -1559,6 +1600,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAParticiple.htm 19.09.06)
 	
 	Non-finite form of a verb other than the infinitive that is used in many languages possibly in conjunction with an auxiliary and that functions attributively, predicatively or adverbially. (http://www.isocat.org/datcat/DC-1341)</rdfs:comment>
+	<rdfs:label xml:lang="en">participle</rdfs:label>
+	<rdfs:label xml:lang="fr">participe</rdfs:label>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalParticiple">
 		<owl:versionInfo>adopted from ILPOSTS for Indian languages</owl:versionInfo>
@@ -1663,6 +1706,9 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 
   <!-- Verb/AuxiliaryVerb -->
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#AuxiliaryVerb">
+	    <rdfs:label xml:lang="en">auxiliary verb</rdfs:label>
+		<skos:altLabel xml:lang="en">auxiliary</skos:altLabel>
+		<rdfs:label xml:lang="fr">auxiliaire</rdfs:label>
 		<rdfs:subClassOf>
 			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
 		</rdfs:subClassOf>
@@ -1795,6 +1841,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 			an adjective or an other constituent which expresses the predicate.
 			(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsACopula.htm 19.09.06)
 		</rdfs:comment>
+		<rdfs:label xml:lang="en">copula</rdfs:label>
+		<rdfs:label xml:lang="fr">copule</rdfs:label>
 	</owl:Class>
 
   <!-- Verb/FiniteVerb -->
@@ -1908,8 +1956,10 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 			(http://en.wikipedia.org/wiki/Determiner 19.09.06)
 		</rdfs:comment>
 		<rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
-</rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">determiner</rdfs:label>
+		<rdfs:label xml:lang="fr">determinatif</rdfs:label>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AttributivePronoun">
 		<rdfs:comment>
@@ -1941,7 +1991,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 				In Romanian, there are specific forms for the so-called emphatic determiner, which may accompany both a noun and a personal pronoun: fata &#238;ns&#259;&#351;i (the girl herself), also ea &#238;ns&#259;&#351;i (she herself). e.g., 
 			&#238;nsele/&#238;nsumi, &#238;nsemi/&#238;nsumi, &#238;nsene/&#238;nsumi, &#238;nsev&#259;/&#238;nsumi, &#238;nse&#351;i/&#238;nsumi, &#238;nse&#355;i/&#238;nsumi, &#238;nsumi, &#238;nsu&#351;i/&#238;nsumi, &#238;nsu&#355;i/&#238;nsumi 
 			(http://purl.org/olia/mte/multext-east.owl#EmphaticDeterminer)</rdfs:comment>
-		<owl:deprecated>shorthand for Determiner and hasEmphasis some Emphatic</owl:deprecated>
+		<owl:deprecated  rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:versionInfo>deprecated: merely shorthand for Determiner and hasEmphasis some Emphatic</owl:versionInfo>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -2097,8 +2148,10 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 				non-interrogatives, but rather from demonstratives, cf. English "that".
 				Should be abandoned unless language-independent evidence for its existence 
 				is provided.
+				
+				DEPRECATED: to be replaced by InterrogativeDeterminer or RelativeDeterminer
 		</owl:versionInfo>
-		<owl:deprecated>to be replaced by InterrogativeDeterminer or RelativeDeterminer</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Determiner"/>
 		</rdfs:subClassOf>
@@ -2474,7 +2527,8 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Pronoun"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf pronoun (dcif:isA)</owl:versionInfo>
-    	<owl:deprecated>shorthand for Pronoun and hasEmphasis some Emphatic</owl:deprecated>
+    	<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:versionInfo>DEPRECATED: shorthand for Pronoun and hasEmphasis some Emphatic</owl:versionInfo>
     	<owl:equivalentClass>
     		<owl:Class>
     			<owl:intersectionOf rdf:parseType="Collection">
@@ -2575,13 +2629,15 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	
 	<!-- Pronoun/WHPronoun -->
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHPronoun">
-		<owl:deprecated>to be replaced with InterrogativePronoun or RelativePronoun</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>TODO: Check cross-linguistic validity of this class.
 				This class is based on surface criteria of Indo-European languages.
 				In other (and even IE) languages, relative pronouns are partly also derived from
 				non-interrogatives, but rather from demonstratives, cf. English "that".
 				Should be abandoned unless language-independent evidence for its existence 
 				is provided.
+				
+				DEPRECATED: to be replaced with InterrogativePronoun or RelativePronoun
 		</owl:versionInfo>
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Pronoun"/>
@@ -2677,6 +2733,7 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PersonalPronoun">
 		  <rdfs:label>irreflexive personal pronoun</rdfs:label>
 		  <rdfs:label>personal pronoun</rdfs:label>
+		  <rdfs:label xml:lang="fr">pronom personnel</rdfs:label>
 		  <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3013 (irreflexive personal pronoun)</rdfs:isDefinedBy>
 		<owl:versionInfo>EAGLES PersReflPronoun with "Special PronounType"="Personal".</owl:versionInfo>
 		<owl:versionInfo>TODO: the SIL definition (also used in GOLD) is nonsatisfactory. 
@@ -3344,9 +3401,11 @@ Left square bracket
 			(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsANumeral.htm 19.09.06)
 		</rdfs:comment>
 		<rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Quantifier"/>
-</rdfs:subClassOf>
-	</owl:Class>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Quantifier"/>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">numeral</rdfs:label>
+		<rdfs:label xml:lang="fr">numératif</rdfs:label>
+		</owl:Class>
 	<owl:Class rdf:ID="NominalNumber">
 		<owl:versionInfo>adopted from Dzongkha tagset (Chunkgu et al. 2010, http://purl.org/olia/dzongkha.owl#NominalNumber)</owl:versionInfo>
 		<rdfs:comment>Nominal numbers are used to identify or refer the things. It does not show the quantity or rank.
@@ -3392,7 +3451,7 @@ Left square bracket
 		<rdfs:comment>e.g., ambelor/ambii, ambilor/ambii, am&#226;nduror/am&#226;ndoi, am&#226;ndurora/am&#226;ndoi, c&#226;te&#351;ipatru, tuspatru (ro, http://purl.org/olia/mte/multext-east.owl#CollectiveNumeral)</rdfs:comment>
 	</owl:Class>
 	<owl:Class rdf:ID="NumeralBoth">
-		<owl:deprecated>true</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>The ISOcat definition entails that this just represents the value of "2". I guess, this is not true, but that this Numeral is actually a DualQuantifier (and should be renamed as such), otherwise, it should be eliminated</owl:versionInfo>
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1938</rdfs:isDefinedBy>
       <rdfs:comment>Numeric value for two.</rdfs:comment>
@@ -3490,6 +3549,8 @@ Left square bracket
 	<!-- Adjective -->
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective">
 		<owl:versionInfo>the subclassification of Adjective currently conflates syntactic (PredicativeAdjective), morphological (ParticipleAdjective) and semantic (QualifierAdjective, RelativeAdjective) criteria. to be resolved</owl:versionInfo>
+		<rdfs:label xml:lang="fr">adjectif</rdfs:label>
+		<rdfs:label xml:lang="en">adjective</rdfs:label>
 	</owl:Class>
 	<owl:Class rdf:ID="CharacteristicAdjective">
 		<rdfs:comment>It is an adjective, which expresses the character and feature of subject or an object, while modifying a noun.
@@ -3604,11 +3665,12 @@ Left square bracket
    </owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#OrdinalAdjective">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1338"/-->
-		<owl:deprecated>The DCR definition and this term are incorrect. 
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:versionInfo>DEPRECATED: The DCR definition and this term are incorrect. 
 			"Ordinal adjective" entered ISOcat from MULTEXT-East, where it was originally applied to relational adjectives (Slovene, Resian, Ukrainian, Czech).
 			"Ordinal adjective" is a mistranslation from Slovene _vrstni pridevniki_ that should be properly rendered in English as "relational adjective" (Derzhanski and Kotsyba 2009).
 			However, the Macedonian MULTEXT v.4 guidelines use this category for ordinal numerals. Due to its inherent ambiguity, this category is to be avoided. 
-		</owl:deprecated>
+		</owl:versionInfo>
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1338</owl:versionInfo>
       <rdfs:comment>
                             Adjective expressing a numeric ranking.
@@ -3708,7 +3770,8 @@ Left square bracket
 		</rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CausalAdverb">
-		<owl:deprecated>equivalent to Adverb and hasSemanticRole some CauseRole</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:versionInfo>DEPRECATED: equivalent to Adverb and hasSemanticRole some CauseRole</owl:versionInfo>
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#CausalAdverb</owl:versionInfo>
 		<owl:equivalentClass>
 			<owl:Class>
@@ -3737,8 +3800,10 @@ Left square bracket
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#VerbalParticle"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MannerAdverb">
-		<owl:deprecated>equivalent to Adverb and hasSemanticRole some MannerRole</owl:deprecated>
-		<owl:versionInfo>ILPOSTS, http://purl.org/olia/ilposts.owl#MannerAdverb</owl:versionInfo>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:versionInfo>DEPRECATED: equivalent to Adverb and hasSemanticRole some MannerRole
+		
+		from ILPOSTS, http://purl.org/olia/ilposts.owl#MannerAdverb</owl:versionInfo>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -3753,8 +3818,10 @@ Left square bracket
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#LocationAdverb">
-		<owl:deprecated>equivalent to Adverb and hasSemanticRole some LocationRole</owl:deprecated>
-		<owl:versionInfo>ILPOSTS, http://purl.org/olia/ilposts.owl#LocationAdverb</owl:versionInfo>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:versionInfo>ILPOSTS, http://purl.org/olia/ilposts.owl#LocationAdverb
+					DEPRECATED: equivalent to Adverb and hasSemanticRole some LocationRole
+		</owl:versionInfo>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -4024,7 +4091,7 @@ Left square bracket
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Particle"/>
 	</owl:Class>
 	<owl:Class rdf:ID="ExistentialPronoun">
-		<owl:deprecated>true</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>merely a shorthand for ExistentialParticle and Pronoun, hence deprecated</owl:versionInfo>
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3012</rdfs:isDefinedBy>
       <rdfs:comment>pronoun that indicates the existence of something or someone</rdfs:comment>
@@ -4044,6 +4111,13 @@ Left square bracket
 			
 			In the Bulgarian MTE specs, Particle/Type=verbal(v) is used to form different type of verbal syntactical relationships, e.g. to create future tense (&#1097;&#1077; &#1075;&#1086;&#1074;&#1086;&#1088;&#1080;&#1096;), or particles like &#1089;&#1077;, &#1076;&#1072;. (Dimitrova et al. 2009) 
 			The Romanian MTE v4 specs provide a more fine-grained subclassification of (verbal) particles (MTE v4, http://purl.org/olia/mte/multext-east.owl#VerbalParticle)</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:ID="PredicativeMarker">
+		<owl:versionInfo>adopted from Bambara Reference Corpus, http://cormand.huma-num.fr/gloses.html</owl:versionInfo>
+		<rdfs:comment>no definition given</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="#VerbalParticle"/>
+		<rdfs:label xml:lang="en">predicative marker</rdfs:label>
+		<rdfs:label xml:lang="fr">marque predicative</rdfs:label>
 	</owl:Class>
 	<owl:Class rdf:ID="TenseMarkingParticle">
 		<owl:versionInfo>adopted from Dzongkha tagset (Chungku et al. 2010, http://purl.org/olia/dzongkha.owl#TenseMarker)</owl:versionInfo>
@@ -4932,10 +5006,11 @@ Left square bracket
 
 	<!-- CoordTypeFeature -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CoordTypeFeature">
-		<owl:deprecated>reimplemented as class hierarchy</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:versionInfo>DEPRECATED: reimplemented as class hierarchy</owl:versionInfo>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Simple">
-		<owl:deprecated>reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
 		<owl:versionInfo>EAGLES</owl:versionInfo>
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CoordTypeFeature"/>
@@ -4946,7 +5021,7 @@ Left square bracket
 		</rdfs:comment>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Correlative">
-		<owl:deprecated>reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
 		<owl:versionInfo>EAGLES</owl:versionInfo>
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CoordTypeFeature"/>
@@ -4959,7 +5034,7 @@ Left square bracket
 		</rdfs:comment>
 	</owl:Class>
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#NonInitial">
-    	<owl:deprecated>reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
+    	<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
 		<owl:versionInfo>EAGLES</owl:versionInfo>
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CoordTypeFeature"/>
@@ -4970,7 +5045,7 @@ Left square bracket
 		</rdfs:comment>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Initial">
-		<owl:deprecated>reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
 		<owl:versionInfo>EAGLES</owl:versionInfo>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			When two distinct words occur, as in German "weder...noch...", then 
@@ -4984,10 +5059,10 @@ Left square bracket
 
 	<!-- SubordTypeFeature -->
 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SubordTypeFeature">
-		<owl:deprecated>reimplemented as concepts</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">reimplemented as concepts</owl:deprecated>
 	</owl:Class>
 	 <owl:Class rdf:about="http://purl.org/olia/olia.owl#WithFinite">
-	 	<owl:deprecated>reimplemented within SubordinatingConjunction taxonomy</owl:deprecated>
+	 	<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">reimplemented within SubordinatingConjunction taxonomy</owl:deprecated>
 		<owl:versionInfo>EAGLES</owl:versionInfo>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			For example, in German the subordinating conjunction "weil" introduces 
@@ -4999,7 +5074,7 @@ Left square bracket
 </rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WithComparative">
-		<owl:deprecated>reimplemented within SubordinatingConjunction taxonomy</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">reimplemented within SubordinatingConjunction taxonomy</owl:deprecated>
 		<owl:versionInfo>EAGLES</owl:versionInfo>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
 			For example, in German the subordinating conjunction "als" is followed 
@@ -5012,7 +5087,7 @@ Left square bracket
 </rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WithInfinite">
-		<owl:deprecated>reimplemented within SubordinatingConjunction taxonomy</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">reimplemented within SubordinatingConjunction taxonomy</owl:deprecated>
 		<owl:versionInfo>EAGLES</owl:versionInfo>
 		<rdfs:subClassOf>
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SubordTypeFeature"/>
@@ -7812,7 +7887,7 @@ The NP or S complement of a preposition is placed inside the PP.
 	<owl:Class rdf:ID="PlaceNoun">
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3857</rdfs:isDefinedBy>
       <rdfs:comment>noun expressing a location</rdfs:comment>
-		<owl:deprecated>equivalent to ProperNoun and hasSemanticRole some LocationRole</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">equivalent to ProperNoun and hasSemanticRole some LocationRole</owl:deprecated>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -7830,7 +7905,7 @@ The NP or S complement of a preposition is placed inside the PP.
 	 <owl:Class rdf:ID="InstrumentNoun">
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3856</rdfs:isDefinedBy>
       <rdfs:comment>noun expressing an instrument of the action</rdfs:comment>
-		<owl:deprecated>true</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>deprecated, as merely a shorthand for Noun and hasSemanticRole some InstrumentRole</owl:versionInfo>
 			<owl:equivalentClass>
 			<owl:Class>
@@ -7847,7 +7922,7 @@ The NP or S complement of a preposition is placed inside the PP.
 	
 	<owl:Class rdf:ID="IntensiveNoun">
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3859</rdfs:isDefinedBy>
-	  <owl:deprecated>true</owl:deprecated>
+	  <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 	  <owl:versionInfo>deprecated, as merely a shorthand for CommonNoun and hasEmphasis some Emphatic</owl:versionInfo>
       <rdfs:comment>noun that emphasizes another noun</rdfs:comment>
 	  <rdfs:subClassOf rdf:resource="#CommonNoun"/>
@@ -7867,7 +7942,7 @@ The NP or S complement of a preposition is placed inside the PP.
    <owl:Class rdf:ID="TimeNoun">
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3855</rdfs:isDefinedBy>
       <rdfs:comment>noun expressing time</rdfs:comment>
-		<owl:deprecated>true</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>deprecated, as merely a shorthand for Noun and hasSemanticRole some TimeRole</owl:versionInfo>
 			<owl:equivalentClass>
 			<owl:Class>
@@ -7885,13 +7960,13 @@ The NP or S complement of a preposition is placed inside the PP.
 	<owl:Class rdf:ID="OnceNoun">
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3853</rdfs:isDefinedBy>
       <rdfs:comment>noun conveying the meaning that the action is performed once</rdfs:comment>
-		<owl:deprecated>true</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>onceNoun [DC-3853] ``noun conveying the meaning that the action is performed once''. Clearly, this noun carries a meaning that is closely related to aspect information (e.g., SemelfactiveAspect), but as aspect is a verb-centered concept, it would have been counter-intuitive to model this as Noun and hasAspect some SemelfactiveAspect. Hence, this concept is directly adopted in the OLiA Reference Model, but marked as deprecated until an ontologically satisfying modeling of aspect-related features of nouns has been achieved.</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="#CommonNoun"/>
 	</owl:Class>
 	
 	<owl:Class rdf:ID="MannerNoun">
-		<owl:deprecated>true</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>deprecated, as merely a shorthand for CommonNoun and hasSemanticRole some MannerRole</owl:versionInfo>
 			<owl:equivalentClass>
 			<owl:Class>
@@ -9262,7 +9337,7 @@ The NP or S complement of a preposition is placed inside the PP.
 	
 	
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSubordType">
-  	<owl:deprecated>remodelled within the hierarchy</owl:deprecated>
+  	<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">remodelled within the hierarchy</owl:deprecated>
     <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#SubordinatingConjunction"/>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
   </owl:ObjectProperty>
@@ -10891,9 +10966,7 @@ CONJP — Conjunction Phrase. Used to mark certain “multi-word” conjunctions
       <rdfs:subClassOf>
          <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature"/>
       </rdfs:subClassOf>
-	  <rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia.owl#InterrogativeModality"/>
-	  </rdfs:subClassOf>
+	  <rdfs:subClassOf rdf:resource="#InterrogativeModality"/>
       <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >There are two types of questions: direct questions (which are main clauses ending with a question
 mark) and indirect questions (which are subordinate clauses embedded under a verb). In this section, we
@@ -11038,9 +11111,9 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 			</owl:intersectionOf>
 		</owl:Class>
 	</owl:equivalentClass>
-	<owl:subClassOf>
+	<rdfs:subClassOf>
 		<owl:Class rdf:about="#FixedExpression"/>
-	</owl:subClassOf>
+	</rdfs:subClassOf>
 	</owl:Class>
 
 	 
@@ -11077,7 +11150,7 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 	  </rdfs:subClassOf>
    </owl:Class>
     <owl:Class rdf:ID="QuestionWord">
-	 <owl:deprecated>true</owl:deprecated>
+	 <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
 		<owl:versionInfo>deprecated, as merely a shorthand for Lexeme and hasModality some InterrogativeModality</owl:versionInfo>
 			<owl:equivalentClass>
 			<owl:Class>
@@ -11145,8 +11218,8 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Human">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Human</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Animate"/>
-		<owl:comment>For Slavic languages, animacy, and in particular, Humanness, defines so-called "sub-genders" that manifest themselves in the accusative ending of masculine and neuter singular nouns. Humans are by definition animate. 
-			(http://purl.org/olia/mte/multext-east.owl#Human)</owl:comment>
+		<rdfs:comment>For Slavic languages, animacy, and in particular, Humanness, defines so-called "sub-genders" that manifest themselves in the accusative ending of masculine and neuter singular nouns. Humans are by definition animate. 
+			(http://purl.org/olia/mte/multext-east.owl#Human)</rdfs:comment>
 	</owl:Class>
    
    <!-- EvaluativeFeature -->
