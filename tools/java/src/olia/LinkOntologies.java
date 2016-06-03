@@ -78,8 +78,12 @@ public class LinkOntologies {
 
 			// add labels
 			ExtendedIterator<RDFNode> literals = o.listLabels(null);
-			while(literals!=null && literals.hasNext()) 
-				strings.add(literals.next().toString());
+			while(literals!=null && literals.hasNext()) {
+				String literal = literals.next().toString();
+				strings.add(literal);
+				strings.add(literal.toLowerCase());
+				strings.add(literal.replaceFirst("@[a-z]+$","").replaceFirst("\\^\\^[^ ]*$",""));
+			}
 			
 			
 			for(String s : strings) {
