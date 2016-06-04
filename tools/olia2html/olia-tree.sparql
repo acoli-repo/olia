@@ -1,0 +1,16 @@
+# testable against http://www.sparql.org/sparql.html, for example
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT DISTINCT ?parent ?child ?equiv ?superprop ?prop
+FROM <http://purl.org/olia/olia.owl>
+WHERE {
+	{ 	?child rdfs:subClassOf/(owl:equivalentClass?/(owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first)* ?parent 
+		FILTER(!ISBLANK(?child) && !ISBLANK(?parent))
+	} UNION { 
+		?child owl:equivalentClass+ ?equiv.
+		FILTER(!ISBLANK(?child) && !ISBLANK(?equiv))
+	} UNION { 
+		?prop rdfs:subPropertyOf ?superprop 
+	}
+}
