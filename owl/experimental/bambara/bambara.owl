@@ -38,6 +38,7 @@
             >http://cormand.huma-num.fr/gloses.html</rdfs:seeAlso>
         <owl:versionInfo xml:lang="en"
             >2016-04-03 created (CC)
+2016-07-04 updated with input from Valentin Vydrine
 
 Christian Chiarcos (CC)</owl:versionInfo>
         <dc:creator xml:lang="en"
@@ -48,11 +49,11 @@ Christian Chiarcos (CC)</owl:versionInfo>
 Bambara / Bamanankan (bam) is a West African language of the Mande group, primarily spoken in Mali.
 The Bambara Reference Corpus is accessible from  http://cormand.huma-num.fr.
 
-Note that there are several tags expression uncertainty or indistinguishability of two parts of speech, written with &quot;/&quot;. In these cases, they are treated as conjunctiion here, because either interpretation would be feasible.
+Note that there are several tags expressing uncertainty, or indistinguishability of two parts of speech, resp. a high likelihood of conversion, written with &quot;/&quot;. In these cases, they are treated as conjunction here, because either interpretation would be feasible.
 
 Also note that derivation is currently not supported in OLiA. Selectional restrictions for morphosyntactic features are thus not formalized.
 
-Unless marked otherwise, this ontology and all quotes herein follows http://cormand.huma-num.fr/gloses.html. Comments are made by ontology editors.
+Unless marked otherwise, this ontology and all quotes herein follows http://cormand.huma-num.fr/gloses.html and explicit feedback by BRC developers (Valentin Vydrine, Damien Nouvel). Comments are made by ontology editor(s).
 
 Christian Chiarcos (christian.chiarcos@web.de), 2016-04-03</rdfs:comment>
         <owl:imports rdf:resource="&olia;system.owl"/>
@@ -168,6 +169,8 @@ Christian Chiarcos (christian.chiarcos@web.de), 2016-04-03</rdfs:comment>
 
     <owl:Class rdf:about="#Adverbe">
         <rdfs:subClassOf rdf:resource="#POS"/>
+        <rdfs:comment xml:lang="en"
+            >Note that Auxiliaire is not to be confused with auxiliary (verb). This category refers to closed-class expressions with primarily grammatical function. (V. Vydrine)</rdfs:comment>
     </owl:Class>
     
 
@@ -213,6 +216,8 @@ prt</owl:versionInfo>
 
     <owl:Class rdf:about="#Copule">
         <rdfs:subClassOf rdf:resource="#Auxiliaire"/>
+        <rdfs:comment xml:lang="en"
+            >Note that the Bambara copula is not a verbal element. Even though it syntactically resembles a verb, it is morphologically different and non-verbal in origin. (V. Vydrine)</rdfs:comment>
     </owl:Class>
     
 
@@ -273,6 +278,8 @@ prt</owl:versionInfo>
 
     <owl:Class rdf:about="#MarquePredicative">
         <rdfs:subClassOf rdf:resource="#Auxiliaire"/>
+        <rdfs:comment xml:lang="en"
+            >Predicative markers represent the syntactic center of the sentence. They resemble, but are different from both verbs and copulas and they must not be confused with particles which serve a peripheral function in sentences, only. (V. Vydrine)</rdfs:comment>
     </owl:Class>
     
 
@@ -310,6 +317,8 @@ prt</owl:versionInfo>
 
     <owl:Class rdf:about="#Num&#233;ratif">
         <rdfs:subClassOf rdf:resource="#POS"/>
+        <rdfs:comment xml:lang="en"
+            >Num&#233;ratif refers to cardinal numbers, ordinal numbers are adjectives, non-numeric quantifiers are determiners. (V. Vydrine)</rdfs:comment>
     </owl:Class>
     
 
@@ -318,6 +327,8 @@ prt</owl:versionInfo>
 
     <owl:Class rdf:about="#Onomatopee">
         <rdfs:subClassOf rdf:resource="#POS"/>
+        <rdfs:comment xml:lang="en"
+            >Onomatop&#233;e refers to the onomatopoetic mimicking of natural sounds, e.g., as made by an animal, when these are not lexicalized as another constituent, e.g., a noun. In this sense, Onomatop&#233;e is related to interjection. (V. Vydrine)</rdfs:comment>
     </owl:Class>
     
 
@@ -344,6 +355,8 @@ conv.n, n.prop/dtm/prn/n/ptcp/adj (2x), n/intj (2x), vt (2x)</rdfs:comment>
 
     <owl:Class rdf:about="#Participe">
         <rdfs:subClassOf rdf:resource="#POS"/>
+        <rdfs:comment xml:lang="en"
+            >As in Europen languages, Bambara participles are multi-functional, they have morphological characteristics of verbs, but often syntactic characteristics of Adjectives. (V. Vydrine)</rdfs:comment>
     </owl:Class>
     
 
@@ -352,6 +365,10 @@ conv.n, n.prop/dtm/prn/n/ptcp/adj (2x), n/intj (2x), vt (2x)</rdfs:comment>
 
     <owl:Class rdf:about="#Particule">
         <rdfs:subClassOf rdf:resource="#Auxiliaire"/>
+        <rdfs:comment xml:lang="en"
+            >Bambara particles convey modal/episthemic senses. In the BRC tagset, particle only refers to elements at the syntactic periphery of sentences. In this regard, they differ fundamentally from perdicative markers (V. Vydrine)</rdfs:comment>
+        <owl:versionInfo xml:lang="en"
+            >TODO: Valentin mentioned a possible relation with determiners. To be confirmed.</owl:versionInfo>
     </owl:Class>
     
 
@@ -1367,6 +1384,8 @@ conv.n, n.prop/dtm/prn/n/ptcp/adj (2x), n/intj (2x), vt (2x)</rdfs:comment>
             - la apr&#232;s une syllabe orale &#224; consonnes r ou l ;
             - ra dans tous les autres cas</rdfs:comment>
         <system:hasTagEndingWith>PFV.INTR</system:hasTagEndingWith>
+        <rdfs:comment xml:lang="en"
+            >Perfective intransitive marker (V. Vydrine)</rdfs:comment>
     </owl:Thing>
     
 
@@ -1412,12 +1431,14 @@ conv.n, n.prop/dtm/prn/n/ptcp/adj (2x), n/intj (2x), vt (2x)</rdfs:comment>
 
     <Flexion rdf:about="#PL2">
         <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTagEndingWith>PL2</system:hasTagEndingWith>
+        <rdfs:comment xml:lang="en"
+            >There is no semantic difference between PL and PL2, the latter is used with specific lexemes. (V. Vydrine)</rdfs:comment>
         <rdfs:comment xml:lang="fr"
             >-l&#250;/-n&#250;;
             prn, n, dtm;
             marque non-productive du pluriel (se combine avec les pronoms n&#236;n, &#242;, m&#237;n, et avec le nom m&#224;a &#8216;homme&#8217;);
             -n&#250; apr&#232;s une voyelle nasale, -l&#250; ailleurs</rdfs:comment>
-        <system:hasTagEndingWith>PL2</system:hasTagEndingWith>
     </Flexion>
     
 
@@ -1853,7 +1874,8 @@ suffixe verbal du progressif (va de paire avec le pm b&#603;&#769; (affirmatif),
     <Adverbe rdf:about="#adv">
         <rdf:type rdf:resource="&owl;Thing"/>
         <system:hasTag>adv</system:hasTag>
-        <rdfs:comment>adverbe</rdfs:comment>
+        <rdfs:comment xml:lang="en"
+            >adverb (in postverbal position) [V. Vydrine]</rdfs:comment>
     </Adverbe>
     
 
@@ -2001,6 +2023,8 @@ suffixe verbal du progressif (va de paire avec le pm b&#603;&#769; (affirmatif),
         <rdf:type rdf:resource="#Pr&#233;position"/>
         <rdf:type rdf:resource="&owl;Thing"/>
         <system:hasTag>prep/conj</system:hasTag>
+        <rdfs:comment xml:lang="en"
+            >all Bambara prepositions can also be used as conjunctions (not necessarily the other way around) [V. Vydrine]</rdfs:comment>
     </Conjonction>
     
 
@@ -2038,11 +2062,11 @@ suffixe verbal du progressif (va de paire avec le pm b&#603;&#769; (affirmatif),
 
     <!-- http://purl.org/olia/bambara.owl#v -->
 
-    <Verbe rdf:about="#v">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="#v">
+        <rdf:type rdf:resource="#VerbeDynamique"/>
         <system:hasTag>v</system:hasTag>
         <rdfs:comment>verbe</rdfs:comment>
-    </Verbe>
+    </owl:Thing>
     
 
 
