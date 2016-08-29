@@ -135,6 +135,7 @@
 	16/04/18 selected French labels for the Bambara Reference Corpus (BRC)
 		added OnomatopoeticWord, QualitativeVerb, PredicativeMarker
 	OWL/DL validation
+	16/08/29 added Frame for compliance with lexinfo
 	
 Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</owl:versionInfo>
@@ -11099,7 +11100,14 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 	  </rdfs:subClassOf>
 	</owl:Class>
 
-  
+  <owl:Class rdf:ID="Frame">
+	<owl:versionInfo>Introduced to account for semantic frames in lexinfo, note that full-fledged semantic role annotation is subject to specialized resources (FrameNet, Verbnet, etc.) and beyond the scope of OLiA. For compliance with lexinfo, however, these have been added to OLiA.</owl:versionInfo>
+	<rdfs:comment>According to "Frame Semantics, deriving from the work of Charles J. Fillmore and colleagues (Fillmore 1976, 1977, 1982, 1985, Fillmore and Baker 2001, 2010) ... [,] the meanings of most words can best be understood on the basis of a semantic frame: a description of a type of event, relation, or entity and the participants in it. For example, the concept of cooking typically involves a person doing the cooking (Cook), the food that is to be cooked (Food), something to hold the food while cooking (Container) and a source of heat (Heating_instrument)." (https://framenet.icsi.berkeley.edu/fndrupal/about)</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="#LexicalUnit"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	
   <owl:Class rdf:ID="Phraseme">
 	<owl:versionInfo>http://purl.org/olia/ubyPos.owl#phraseme, no definition there</owl:versionInfo>
 	<rdfs:comment>Conventional lexical unit consisting of a particular phrase (CC)</rdfs:comment>
