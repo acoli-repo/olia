@@ -31,6 +31,8 @@
 	2013/06/27 AgreementFeature (from ISOcat, as superclass of NominalAgreementClass, Person, Gender, Number; not as a relation between words)	
 	2013/06/28 EvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), ModalityFeature (Modality and Mood distinction revised)
 	2016/04/18 fixed minor validity warnings
+	2016/08/29 added MovementFeature as cover term for Rising and Control (for compliance with lexinfo)
+
 
     Christian Chiarcos, chiarcos@uni-potsdam.de</rdfs:comment>
     <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
@@ -350,6 +352,17 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
 	</rdfs:comment>
 	<owl:versionInfo>EAGLES</owl:versionInfo>
   </owl:Class>
+  
+    <owl:Class rdf:ID="MovementFeature">
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+	</rdfs:subClassOf>
+	<rdfs:comment>
+		In generative grammar, syntactic alternations of semantically equivalent utterances are explained by movement operations.
+		Even though alternative analyses have been proposed, we keep this conventional term to account for syntactic phenomena such as Raising and Control.
+	</rdfs:comment>
+	<owl:versionInfo>Introduced as part of the lexinfo extension as a cover term for Raising and Control properties of (lexical entries of) syntactic verbs.</owl:versionInfo>
+  </owl:Class>
 
    <owl:Class rdf:ID="ReduplicationTypeFeature">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2240"/-->
@@ -530,6 +543,7 @@ An in Eagles additional language-specific attribute for nouns/ noun phrases is D
       <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
     </rdfs:subClassOf>
   </owl:Class>
+  
   <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept">
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Note that olia_system:LinguisticAnnotation, olia_system:UnitOfAnnotation and olia_system:Feature pertain to the usage of type labels and annotated features according to a particular annotation scheme, whereas, here, category and feature mean linguistic concepts. Thus, an olia:MorphosyntacticCategory (etc.) is not necessarily represented by a olia_system:UnitOfAnnotation.</owl:versionInfo>
