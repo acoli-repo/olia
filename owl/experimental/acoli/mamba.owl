@@ -25,20 +25,18 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="">
         <owl:versionInfo rdf:datatype="&xsd;string"
-            >2008-04-10 created
-2011-11-28 fixed typo (PR vs. RP)
-2011-11-31 added Punctuation (not addressed by Santorini 1990)
+            >2017-06-10 removed uncorrect comments from Penn Treebank, moved to stable (CC)
+			2014-01-17 created by forking from penn.owl (MS)
 
-Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+CC Christian Chiarcos, Goethe Universität Frankfurt, Germany
+MS Maria Sukhareva, Goethe Universität Frankfurt, Germany</owl:versionInfo>
         <rdfs:comment rdf:datatype="&xsd;string"
-            >OLiA Annotation Model for Penn Treebank (PTB) part-of-speech annotation (Santorini 1990)
-
-Unless specified otherwise, all comments are taken from Santorini (1990). 
-
-References
-Beatrice Santorini (1990), Part-of-Speech tagging guidelines for the Penn Treebank Project, 3rd revision, 2nd printing, ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz</rdfs:comment>
+            >OLiA Annotation Model for the Mamba POS tags (Swedish), now superseded by SUC2
+			
+			cf. https://stp.lingfil.uu.se/~nivre/swedish_treebank/MAMBAlex.html
+			Note that this only covers POS tags.</rdfs:comment>
         <rdfs:isDefinedBy rdf:datatype="&xsd;string"
-            >ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz</rdfs:isDefinedBy>
+            >https://stp.lingfil.uu.se/~nivre/swedish_treebank/MAMBAlex.html</rdfs:isDefinedBy>
     </owl:Ontology>
     
 
@@ -82,8 +80,7 @@ Beatrice Santorini (1990), Part-of-Speech tagging guidelines for the Penn Treeba
     <owl:Class rdf:about="#Adjective">
         <rdfs:subClassOf rdf:resource="#Tag"/>
         <rdfs:comment rdf:datatype="&xsd;string"
-            >These are adjectives, ordinal numerals, and ordinal numbers.
-Hyphenated compounds that are used as modifiers are tagged as adjectives, e.g. &quot;happy-go-lucky&quot;, &quot;one-of-a-kind&quot;, &quot;run-of-the-mill&quot;. Ordinal numbers are tagged as adjectives, as are compounds of the form &quot;n-th&quot; or &quot;X-est&quot;, like &quot;fourth-largest&quot;.</rdfs:comment>
+            >These are adjectives, ordinal numerals, and ordinal numbers.</rdfs:comment>
     </owl:Class>
     
 
@@ -126,9 +123,6 @@ Hyphenated compounds that are used as modifiers are tagged as adjectives, e.g. &
 
     <owl:Class rdf:about="#CoordinatingConjunction">
         <rdfs:subClassOf rdf:resource="#Conjunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes &quot;and&quot;, &quot;but&quot;, &quot;nor&quot;, &quot;or&quot;, &quot;yet&quot; (as in &quot;Yet it&#39;s cheap&quot;, &quot;cheap yet good&quot;), as well as the mathematical operators &quot;plus&quot;, &quot;minus&quot;, &quot;less&quot;, &quot;times&quot; (in the sense of &quot;multiplied by&quot;) and &quot;over&quot; (in the sense of &quot;divided by&quot;), when they are spelled out.
-For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:comment>
     </owl:Class>
     
 
@@ -153,8 +147,6 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Class rdf:about="#Determiner">
         <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes the articles &quot;a(n)&quot;, &quot;every&quot;, &quot;no&quot; and &quot;the&quot;, the indefinite determiners &quot;another&quot;,  &quot;any&quot; and &quot;some&quot;, &quot;each&quot;, &quot;either&quot; (as in &quot;either way&quot;), &quot;neither&quot; (as in &quot;neither decision&quot;), &quot;that&quot;, &quot;these&quot;, &quot;this&quot; and &quot;those&quot;, and instances of &quot;all&quot; and &quot;both&quot; when they do not precede a determiner or possessive pronoun (as in &quot;all roads&quot; or &quot;both times&quot;).</rdfs:comment>
     </owl:Class>
     
 
@@ -195,8 +187,6 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Class rdf:about="#Interjection">
         <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes &quot;my&quot; (as in &quot;My, what a gorgeous day&quot;), &quot;oh&quot;, &quot;please&quot;,  &quot;see&quot; (as in &quot;See	 it&#39;s like this&quot;), &quot;uh&quot;, &quot;well&quot; and &quot;yes&quot;, among others.</rdfs:comment>
     </owl:Class>
     
 
@@ -238,7 +228,7 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     <owl:Class rdf:about="#Noun">
         <rdfs:subClassOf rdf:resource="#Tag"/>
         <rdfs:comment rdf:datatype="&xsd;string"
-            >This is a class, we inserted to structure the tagset.</rdfs:comment>
+            >This is a class inserted to structure the tagset.</rdfs:comment>
     </owl:Class>
     
 
@@ -279,8 +269,6 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Class rdf:about="#Particle">
         <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
     </owl:Class>
     
 
@@ -297,8 +285,6 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Class rdf:about="#PossessivePronoun">
         <rdfs:subClassOf rdf:resource="#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes the adjectival possessive forms &quot;my&quot;, &quot;your&quot;, &quot;his&quot;, &quot;her&quot;, &quot;its&quot;, &quot;one&#39;s&quot;, &quot;our&quot; and &quot;their&quot;.</rdfs:comment>
     </owl:Class>
     
 
@@ -317,7 +303,7 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
     <owl:Class rdf:about="#Pronoun">
         <rdfs:subClassOf rdf:resource="#Tag"/>
         <rdfs:comment rdf:datatype="&xsd;string"
-            >This is a class, we inserted to structure the tagset.</rdfs:comment>
+            >This is a class inserted only to structure the tagset.</rdfs:comment>
     </owl:Class>
     
 
@@ -334,8 +320,6 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Class rdf:about="#ProperNoun">
         <rdfs:subClassOf rdf:resource="#Noun"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >These are singular or plural proper nouns.</rdfs:comment>
     </owl:Class>
     
 
@@ -414,8 +398,6 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Class rdf:about="#WhDeterminer">
         <rdfs:subClassOf rdf:resource="#Determiner"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes &quot;which&quot;, as well as that when it is used as a relative pronoun.</rdfs:comment>
     </owl:Class>
     
 
@@ -424,8 +406,6 @@ For in the sense of &quot;because&quot; is a coordinating conjunction.</rdfs:com
 
     <owl:Class rdf:about="#WhPronoun">
         <rdfs:subClassOf rdf:resource="#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes &quot;what&quot;, &quot;who&quot; and &quot;whom&quot;.</rdfs:comment>
     </owl:Class>
     
 

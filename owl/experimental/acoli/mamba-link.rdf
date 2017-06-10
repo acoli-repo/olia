@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY olia "http://purl.org/olia/olia.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY mamba-syntax "http://purl.org/olia/mamba-syntax.owl#" >
+    <!ENTITY mamba "http://purl.org/olia/mamba.owl#" >
+]>
+
+
+
+
+<rdf:RDF xmlns="http://purl.org/olia/mamba-link.rdf#"
+     xml:base="http://purl.org/olia/mamba-link.rdf"
+     xmlns:olia="http://purl.org/olia/olia.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about=""/>
+    
+<owl:Ontology rdf:about="http://purl.org/olia/mamba-link.rdf">
+	<owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+	<owl:imports rdf:resource="http://purl.org/olia/mamba.owl"/>
+    <rdfs:comment>OLiA linking model for Mamba POS (no syntax) categories and syntax
+    
+    2014-01-17 created with semiautomated linker, manually verified (MS)
+    2017-06-10 moved to stable, fixed data, merged with mamba-linking.owl, split into mamba-link.rdf and mamba-syntax-link.rdf (CC)
+    
+    TODO: verify definitions
+    
+    MS Maria Sukhareva, GU Frankfurt
+    CC Christian Chiarcos, GU Frankfurt
+    </rdfs:comment>
+</owl:Ontology>
+
+
+
+    <!-- Morphological Linking -->
+
+    <rdf:Description rdf:about="&mamba;Adjective">
+        <rdfs:subClassOf rdf:resource="&olia;Adjective"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;Adverb">
+        <rdfs:subClassOf rdf:resource="&olia;Adverb"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;WhAdverb">
+        <rdfs:subClassOf rdf:resource="&olia;WHTypeAdverbs"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;CardinalNumber">
+        <rdfs:subClassOf rdf:resource="&olia;CardinalNumber"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="&olia;CoordinatingConjunction"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;SubordinatingConjunction">
+        <rdf:Description rdf:about="&olia;SubordinatingConjunction"/>
+    </rdf:Description>
+    
+    <rdf:Description rdf:about="&mamba;WhDeterminer">
+        <rdfs:subClassOf rdf:resource="&olia;WHDeterminer"/>
+    </rdf:Description>
+    
+    <rdf:Description rdf:about="&mamba;Determiner">
+        <rdfs:subClassOf rdf:resource="&olia;Determiner"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;ForeignWord">
+        <rdfs:subClassOf rdf:resource="&olia;Foreign"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;InfinitivalMarker">
+        <rdfs:subClassOf rdf:resource="&olia;Infinitive"/>
+	<rdfs:subClassOf rdf:resource="&olia;Marker"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;Interjection">
+        <rdfs:subClassOf rdf:resource="&olia;Interjection"/>
+    </rdf:Description>
+    
+    <rdf:Description rdf:about="&mamba;Noun">
+        <rdfs:subClassOf rdf:resource="&olia;Noun"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;ProperNoun">
+        <rdfs:subClassOf rdf:resource="&olia;ProperNoun"/>
+    </rdf:Description>
+    
+    <rdf:Description rdf:about="&mamba;OrdinalNumber">
+        <rdfs:subClassOf rdf:resource="&olia;OrdinalNumber"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;Participle">
+        <rdfs:subClassOf rdf:resource="&olia;Participle"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;Particle">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Preposition"/>
+                    <rdf:Description rdf:about="&olia;Unique"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+    <rdf:Description rdf:about="&mamba;Pronoun">
+        <rdfs:subClassOf rdf:resource="&olia;Pronoun"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;PossessivePronoun">
+        <rdfs:subClassOf rdf:resource="&olia;PossessivePronoun"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;WhPronoun">
+        <rdfs:subClassOf rdf:resource="&olia;WHPronoun"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="&mamba;Verb">
+        <rdfs:subClassOf rdf:resource="&olia;Verb"/>
+    </rdf:Description>
+</rdf:RDF>
