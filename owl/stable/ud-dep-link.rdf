@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY olia "http://purl.org/olia/olia.owl#" >
+    <!ENTITY olia-top "http://purl.org/olia/olia-top.owl#" >
+    <!ENTITY all2 "http://fginter.github.io/docs/u/dep/all.html#" >
+]>
+
+<rdf:RDF xmlns="http://purl.org/olia/ud-dep-link.rdf#"
+     xml:base="http://purl.org/olia/ud-dep-link.rdf"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:olia="http://purl.org/olia/olia.owl#"
+     xmlns:all="http://fginter.github.io/docs/u/pos/all.html#"
+     xmlns:olia-top="http://purl.org/olia/olia-top.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"	 
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://purl.org/olia/ud-dep-link.rdf">
+        <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+		<owl:imports rdf:resource="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false"/>
+		               <rdfs:comment>OLiA Annotation Model for the Universal Dependencies
+
+note that this points to a copy of the official UD guidelines locally maintained by Filip Ginter
+</rdfs:comment>
+
+				<owl:versionInfo xml:lang="en">
+2016-06-10 extended by merging with a linking model bootstrapped from English UD (CF, CC)
+2016-06-19 created, but incomplete (CC)
+
+CC Christian Chiarcos, Goethe-Universität Frankfurt
+CF Christian Fäth, Goethe-Universität Frankfurt
+</owl:versionInfo>
+				
+<rdfs:comment>
+The linking has been partially extrapolated from the existing linking of the Stanford UD model using this query:
+
+#The Graph &lt;Stanford&gt; is filled with stanford.owl and stanford-link.rdf
+#The Graph &lt;udep&gt; contains the UD Annotationmodel
+
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+
+
+#SELECT ?s ?tag ?udep ?olia
+CONSTRUCT {
+    ?udep rdfs:subClassOf ?olia
+}
+WHERE {
+  GRAPH &lt;stanford&gt; {
+    ?inst &lt;http://purl.org/olia/system.owl#hasTag&gt; ?tag .
+    ?inst rdf:type ?s .
+    ?s rdfs:subClassOf* ?olia .
+    FILTER (strstarts(str(?olia), &quot;http://purl.org/olia/olia&quot;))
+  }
+  GRAPH &lt;udep&gt; {
+    ?udep ?subClassOf &lt;http://fginter.github.io/docs/u/dep/all.html#dep&gt;
+  }
+  FILTER (strends(str(?udep), str(?tag)))
+}</rdfs:comment>
+
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+	     <!-- http://fginter.github.io/docs/u/dep/all.html#acl -->
+
+    <owl:Class rdf:about="&all2;acl">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;AdnominalConstituent"/>
+                    <rdf:Description rdf:about="&olia;Clause"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+	 
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#advcl -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#advcl">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdverbialModifier"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Clause"/>
+    </owl:Class>
+    
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#advmod -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#advmod">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdverbialModifier"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Clause"/>
+    </owl:Class>
+    
+    <!-- http://fginter.github.io/docs/u/dep/all.html#amod -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#amod">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adjective"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#appos -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#appos">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Apposition"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#aux -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#aux">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AuxiliaryVerb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#auxpass -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#auxpass">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AuxiliaryVerb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#cc -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#cc">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Coordination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#ccomp -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#ccomp">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SubordinateClause"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticComplement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#conj -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#conj">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Conjunct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#cop -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#cop">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AuxiliaryVerb"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Copula"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#csubj -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#csubj">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Clause"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#csubjpass -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#csubjpass">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Clause"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#UndergoerMacroRole"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#dep -->
+
+	
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#dep">
+        <rdfs:subClassOf rdf:resource="#UDAnnotationConcept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#det -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#det">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Determiner"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#dobj -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#dobj">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#DirectObject"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticComplement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#expl -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#expl">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ExpletivePronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#iobj -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#iobj">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#IndirectObject"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticComplement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#mark -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#mark">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticComplement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#mwe -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#mwe">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#neg -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#neg">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Negation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#nmod -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#nmod">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#nsubj -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#nsubj">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#NounPhrase"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#nsubjpass -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#nsubjpass">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#NounPhrase"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#UndergoerMacroRole"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#nummod -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#nummod">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#parataxis -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#parataxis">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Coordination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#punct -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#punct">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fginter.github.io/docs/u/dep/all.html#xcomp -->
+
+    <owl:Class rdf:about="http://fginter.github.io/docs/u/dep/all.html#xcomp">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticComplement"/>
+    </owl:Class>
+
+    <!-- http://purl.org/olia/ud-link.rdf#UDAnnotationConcept -->
+
+    <owl:Class rdf:about="#UDAnnotationConcept"/>	
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
