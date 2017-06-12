@@ -1,0 +1,2719 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY oliasys "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/iswoc.owl#"
+     xml:base="http://purl.org/olia/iswoc.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:oliasys="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/iswoc.owl">
+        <owl:versionInfo rdf:datatype="&xsd;string">2017-06-12 created (CF)
+            
+            CF Christian Faeth faeth@em.uni-frankfurt.de</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;string">OLiA Annotation Model of PROIEL ISWOC</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string">https://github.com/iswoc/iswoc-treebank/blob/master/README.md</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Case">
+        <rdfs:label>case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Degree -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Degree">
+        <rdfs:label>degree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Gender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Gender">
+        <rdfs:label>gender</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Inflection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Inflection">
+        <rdfs:label>inflection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#InformationStatus -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Mood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Mood">
+        <rdfs:label>mood</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#MorphosyntacticFeature -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature">
+        <rdfs:subClassOf rdf:resource="&oliasys;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Number -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Number">
+        <rdfs:label>number</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#PartOfSpeech -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#PartOfSpeech">
+        <rdfs:subClassOf rdf:resource="&oliasys;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Person">
+        <rdfs:label>person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Predicate_identity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Predicate_identity">
+        <rdfs:label>Predicate identity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;false&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Relation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Relation">
+        <rdfs:subClassOf rdf:resource="&oliasys;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Strength -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Strength">
+        <rdfs:label>strength</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Tense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Tense">
+        <rdfs:label>tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Voice -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#Voice">
+        <rdfs:label>voice</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#ablative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#ablative">
+        <rdfs:label>ablative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#acc-gen -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#acc-gen">
+        <rdfs:label>acc-gen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#acc-inf -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#acc-inf">
+        <rdfs:label>acc-inf</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#acc-sit -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#acc-sit">
+        <rdfs:label>acc-sit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#accusative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#accusative">
+        <rdfs:label>accusative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#accusative_or_dative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#accusative_or_dative">
+        <rdfs:label>accusative or dative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#active -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#active">
+        <rdfs:label>active</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Voice"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#adjective">
+        <rdfs:label>adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#adnominal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#adnominal">
+        <rdfs:label>adnominal</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#adnominal_argument -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#adnominal_argument">
+        <rdfs:label>adnominal argument</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#adverb">
+        <rdfs:label>adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#adverbial -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#adverbial">
+        <rdfs:label>adverbial</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#agens -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#agens">
+        <rdfs:label>agens</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#annotatable_undecided -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#annotatable_undecided">
+        <rdfs:label>annotatable (undecided)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#aorist -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#aorist">
+        <rdfs:label>aorist</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#apposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#apposition">
+        <rdfs:label>apposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#apposition_or_attribute -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#apposition_or_attribute">
+        <rdfs:label>apposition or attribute</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#argument -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#argument">
+        <rdfs:label>argument (object or oblique)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#article -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#article">
+        <rdfs:label>article</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#attribute -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#attribute">
+        <rdfs:label>attribute</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#auxiliary -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#auxiliary">
+        <rdfs:label>auxiliary</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#cardinal_numeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#cardinal_numeral">
+        <rdfs:label>cardinal numeral</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#common_noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#common_noun">
+        <rdfs:label>common noun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#comparative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#comparative">
+        <rdfs:label>comparative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Degree"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#complement -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#complement">
+        <rdfs:label>complement</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#conjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#conjunction">
+        <rdfs:label>conjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#dative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#dative">
+        <rdfs:label>dative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#demonstrative_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#demonstrative_pronoun">
+        <rdfs:label>demonstrative pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#dual -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#dual">
+        <rdfs:label>dual</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Number"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#expletive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#expletive">
+        <rdfs:label>expletive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#external_subject -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#external_subject">
+        <rdfs:label>external subject</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;false&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#feminine -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#feminine">
+        <rdfs:label>feminine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Gender"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#feminine_or_neuter -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#feminine_or_neuter">
+        <rdfs:label>feminine or neuter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Gender"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#finite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#finite">
+        <rdfs:label>finite</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#finiteness_unspecified -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#finiteness_unspecified">
+        <rdfs:label>finiteness unspecified</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#first_person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#first_person">
+        <rdfs:label>first person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Person"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#foreign_word -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#foreign_word">
+        <rdfs:label>foreign word</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#future -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#future">
+        <rdfs:label>future</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#future_perfect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#future_perfect">
+        <rdfs:label>future perfect</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#genitive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#genitive">
+        <rdfs:label>genitive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#genitive_or_dative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#genitive_or_dative">
+        <rdfs:label>genitive or dative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gerund -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#gerund">
+        <rdfs:label>gerund</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gerundive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#gerundive">
+        <rdfs:label>gerundive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#imperative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#imperative">
+        <rdfs:label>imperative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#imperfect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#imperfect">
+        <rdfs:label>imperfect</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#indefinite_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#indefinite_pronoun">
+        <rdfs:label>indefinite pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#indicative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#indicative">
+        <rdfs:label>indicative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#indicative_or_imperative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#indicative_or_imperative">
+        <rdfs:label>indicative or imperative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#indicative_or_subjunctive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#indicative_or_subjunctive">
+        <rdfs:label>indicative or subjunctive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#inferred_from_non-specific -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#inferred_from_non-specific">
+        <rdfs:label>inferred from non-specific</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#infinitive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#infinitive">
+        <rdfs:label>infinitive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#infinitive_marker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#infinitive_marker">
+        <rdfs:label>infinitive marker</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#inflecting -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#inflecting">
+        <rdfs:label>inflecting</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Inflection"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#instrumental -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#instrumental">
+        <rdfs:label>instrumental</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#interjection">
+        <rdfs:label>interjection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#interrogative_adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#interrogative_adverb">
+        <rdfs:label>interrogative adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#interrogative_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#interrogative_pronoun">
+        <rdfs:label>interrogative pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#kind -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#kind">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#locative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#locative">
+        <rdfs:label>locative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#masculine -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#masculine">
+        <rdfs:label>masculine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Gender"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#masculine_feminine_or_neuter -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#masculine_feminine_or_neuter">
+        <rdfs:label>masculine, feminine or neuter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Gender"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#masculine_or_feminine -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#masculine_or_feminine">
+        <rdfs:label>masculine or feminine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Gender"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#masculine_or_neuter -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#masculine_or_neuter">
+        <rdfs:label>masculine or neuter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Gender"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#middle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#middle">
+        <rdfs:label>middle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Voice"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#middle_or_passive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#middle_or_passive">
+        <rdfs:label>middle or passive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Voice"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#neuter -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#neuter">
+        <rdfs:label>neuter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Gender"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#new -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#new">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#no_case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#no_case">
+        <rdfs:label>no case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#no_degree -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#no_degree">
+        <rdfs:label>no degree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Degree"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#nominative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#nominative">
+        <rdfs:label>nominative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#non-inflecting -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#non-inflecting">
+        <rdfs:label>non-inflecting</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Inflection"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#non-specific -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#non-specific">
+        <rdfs:label>non-specific</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#non-specific_old -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#non-specific_old">
+        <rdfs:label>non-specific old</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#non-subject -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#non-subject">
+        <rdfs:label>non-subject (object, oblique or adverbial)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#object -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#object">
+        <rdfs:label>object</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#oblique -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#oblique">
+        <rdfs:label>oblique</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#oblique_case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#oblique_case">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#old -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#old">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#old-inact -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#old-inact">
+        <rdfs:label>old-inact</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#open_adverbial_complement -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#open_adverbial_complement">
+        <rdfs:label>open adverbial complement</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#open_objective_complement -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#open_objective_complement">
+        <rdfs:label>open objective complement</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#optative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#optative">
+        <rdfs:label>optative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#ordinal_numeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#ordinal_numeral">
+        <rdfs:label>ordinal numeral</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#parenthetical_predication -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#parenthetical_predication">
+        <rdfs:label>parenthetical predication</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#participle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#participle">
+        <rdfs:label>participle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#partitive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#partitive">
+        <rdfs:label>partitive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#passive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#passive">
+        <rdfs:label>passive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Voice"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#past -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#past">
+        <rdfs:label>past</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#perfect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#perfect">
+        <rdfs:label>perfect</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#peripheral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#peripheral">
+        <rdfs:label>peripheral (oblique or adverbial)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#personal_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#personal_pronoun">
+        <rdfs:label>personal pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#personal_reflexive_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#personal_reflexive_pronoun">
+        <rdfs:label>personal reflexive pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#pluperfect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#pluperfect">
+        <rdfs:label>pluperfect</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#plural -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#plural">
+        <rdfs:label>plural</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Number"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#positive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#positive">
+        <rdfs:label>positive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Degree"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#possessive_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#possessive_pronoun">
+        <rdfs:label>possessive pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#possessive_reflexive_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#possessive_reflexive_pronoun">
+        <rdfs:label>possessive reflexive pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#predicate -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#predicate">
+        <rdfs:label>predicate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#preposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#preposition">
+        <rdfs:label>preposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#present -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#present">
+        <rdfs:label>present</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#proper_noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#proper_noun">
+        <rdfs:label>proper noun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#quantifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#quantifier">
+        <rdfs:label>quantifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#quantifier_restriction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#quantifier_restriction">
+        <rdfs:label>quantifier restriction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#reciprocal_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#reciprocal_pronoun">
+        <rdfs:label>reciprocal pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#relative_adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#relative_adverb">
+        <rdfs:label>relative adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#relative_pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#relative_pronoun">
+        <rdfs:label>relative pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#resultative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#resultative">
+        <rdfs:label>resultative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#second_person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#second_person">
+        <rdfs:label>second person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Person"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#singular -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#singular">
+        <rdfs:label>singular</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Number"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#strong -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#strong">
+        <rdfs:label>strong</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Strength"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#subject -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#subject">
+        <rdfs:label>subject</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#subjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#subjunction">
+        <rdfs:label>subjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#subjunctive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#subjunctive">
+        <rdfs:label>subjunctive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#subjunctive_or_imperative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#subjunctive_or_imperative">
+        <rdfs:label>subjunctive or imperative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#superlative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#superlative">
+        <rdfs:label>superlative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Degree"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#supine -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#supine">
+        <rdfs:label>supine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#third_person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#third_person">
+        <rdfs:label>third person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Person"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#unannotatable -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#unannotatable">
+        <rdfs:label>unannotatable</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#InformationStatus"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#unassigned -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#unassigned">
+        <rdfs:label>unassigned</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#uncertain_case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#uncertain_case">
+        <rdfs:label>uncertain case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#uncertain_degree -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#uncertain_degree">
+        <rdfs:label>uncertain degree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Degree"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#uncertain_gender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#uncertain_gender">
+        <rdfs:label>uncertain gender</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Gender"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#uncertain_mood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#uncertain_mood">
+        <rdfs:label>uncertain mood</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Mood"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#uncertain_number -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#uncertain_number">
+        <rdfs:label>uncertain number</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Number"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#uncertain_person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#uncertain_person">
+        <rdfs:label>uncertain person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Person"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#uncertain_tense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#uncertain_tense">
+        <rdfs:label>uncertain tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Tense"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#unspecified -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#unspecified">
+        <rdfs:label>unspecified</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Voice"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#verb">
+        <rdfs:label>verb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#PartOfSpeech"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#vocative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#vocative">
+        <rdfs:label>vocative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Relation"/>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:comment> primary=&quot;true&quot; secondary=&quot;true&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#vocative_case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#vocative_case">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#weak -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#weak">
+        <rdfs:label>weak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Strength"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#weak_or_strong -->
+
+    <owl:Class rdf:about="http://purl.org/olia/iswoc.owl#weak_or_strong">
+        <rdfs:label>weak or strong</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/iswoc.owl#Strength"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#A- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#A-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#adjective"/>
+        <oliasys:hasTag>A-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#C- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#C-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#conjunction"/>
+        <oliasys:hasTag>C-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Df -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Df">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#adverb"/>
+        <oliasys:hasTag>Df</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Dq -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Dq">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#relative_adverb"/>
+        <oliasys:hasTag>Dq</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Du -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Du">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#interrogative_adverb"/>
+        <oliasys:hasTag>Du</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#F- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#F-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#foreign_word"/>
+        <oliasys:hasTag>F-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#G- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#G-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#subjunction"/>
+        <oliasys:hasTag>G-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#I- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#I-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#interjection"/>
+        <oliasys:hasTag>I-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Ma -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Ma">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#cardinal_numeral"/>
+        <oliasys:hasTag>Ma</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Mo -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Mo">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#ordinal_numeral"/>
+        <oliasys:hasTag>Mo</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#N- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#N-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#infinitive_marker"/>
+        <oliasys:hasTag>N-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Nb -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Nb">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#common_noun"/>
+        <oliasys:hasTag>Nb</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Ne -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Ne">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#proper_noun"/>
+        <oliasys:hasTag>Ne</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Pc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Pc">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#reciprocal_pronoun"/>
+        <oliasys:hasTag>Pc</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Pd -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Pd">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#demonstrative_pronoun"/>
+        <oliasys:hasTag>Pd</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Pi -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Pi">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#interrogative_pronoun"/>
+        <oliasys:hasTag>Pi</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Pk -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Pk">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#personal_reflexive_pronoun"/>
+        <oliasys:hasTag>Pk</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Pp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Pp">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#personal_pronoun"/>
+        <oliasys:hasTag>Pp</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Pr -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Pr">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#relative_pronoun"/>
+        <oliasys:hasTag>Pr</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Ps -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Ps">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#possessive_pronoun"/>
+        <oliasys:hasTag>Ps</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Pt -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Pt">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#possessive_reflexive_pronoun"/>
+        <oliasys:hasTag>Pt</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Px -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Px">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#indefinite_pronoun"/>
+        <oliasys:hasTag>Px</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#Py -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#Py">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#quantifier"/>
+        <oliasys:hasTag>Py</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#R- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#R-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#preposition"/>
+        <oliasys:hasTag>R-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#S- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#S-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#article"/>
+        <oliasys:hasTag>S-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#V- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#V-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#verb"/>
+        <oliasys:hasTag>V-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#X- -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#X-">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#unassigned"/>
+        <oliasys:hasTag>X-</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#acc_gen -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#acc_gen">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#acc-gen"/>
+        <oliasys:hasTag>acc_gen</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#acc_inf -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#acc_inf">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#acc-inf"/>
+        <oliasys:hasTag>acc_inf</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#acc_sit -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#acc_sit">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#acc-sit"/>
+        <oliasys:hasTag>acc_sit</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#adnom -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#adnom">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#adnominal"/>
+        <oliasys:hasTag>adnom</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#adv -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#adv">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#adverbial"/>
+        <oliasys:hasTag>adv</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#ag -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#ag">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#agens"/>
+        <oliasys:hasTag>ag</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#apos -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#apos">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#apposition"/>
+        <oliasys:hasTag>apos</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#arg -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#arg">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#argument"/>
+        <oliasys:hasTag>arg</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#atr -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#atr">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#attribute"/>
+        <oliasys:hasTag>atr</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#aux -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#aux">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#auxiliary"/>
+        <oliasys:hasTag>aux</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_a -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_a">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#accusative"/>
+        <oliasys:hasTag>a</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_b -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_b">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#ablative"/>
+        <oliasys:hasTag>b</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_c -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_c">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#genitive_or_dative"/>
+        <oliasys:hasTag>c</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_d -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_d">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#dative"/>
+        <oliasys:hasTag>d</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_e -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_e">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#accusative_or_dative"/>
+        <oliasys:hasTag>e</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_g -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_g">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#genitive"/>
+        <oliasys:hasTag>g</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_i -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_i">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#instrumental"/>
+        <oliasys:hasTag>i</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_l -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_l">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#locative"/>
+        <oliasys:hasTag>l</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_n -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_n">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#nominative"/>
+        <oliasys:hasTag>n</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_o -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_o">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#oblique_case"/>
+        <oliasys:hasTag>o</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_v -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_v">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#vocative_case"/>
+        <oliasys:hasTag>v</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_x -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_x">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#uncertain_case"/>
+        <oliasys:hasTag>x</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#case_z -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#case_z">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#no_case"/>
+        <oliasys:hasTag>z</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#comp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#comp">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#complement"/>
+        <oliasys:hasTag>comp</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#degree_c -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#degree_c">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#comparative"/>
+        <oliasys:hasTag>c</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#degree_p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#degree_p">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#positive"/>
+        <oliasys:hasTag>p</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#degree_s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#degree_s">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#superlative"/>
+        <oliasys:hasTag>s</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#degree_x -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#degree_x">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#uncertain_degree"/>
+        <oliasys:hasTag>x</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#degree_z -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#degree_z">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#no_degree"/>
+        <oliasys:hasTag>z</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#expl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#expl">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#expletive"/>
+        <oliasys:hasTag>expl</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gender_f -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#gender_f">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#feminine"/>
+        <oliasys:hasTag>f</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gender_m -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#gender_m">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#masculine"/>
+        <oliasys:hasTag>m</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gender_n -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#gender_n">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#neuter"/>
+        <oliasys:hasTag>n</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gender_o -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#gender_o">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#masculine_or_neuter"/>
+        <oliasys:hasTag>o</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gender_p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#gender_p">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#masculine_or_feminine"/>
+        <oliasys:hasTag>p</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gender_q -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#gender_q">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#masculine_feminine_or_neuter"/>
+        <oliasys:hasTag>q</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gender_r -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#gender_r">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#feminine_or_neuter"/>
+        <oliasys:hasTag>r</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#gender_x -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#gender_x">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#uncertain_gender"/>
+        <oliasys:hasTag>x</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#inflection_i -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#inflection_i">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#inflecting"/>
+        <oliasys:hasTag>i</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#inflection_n -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#inflection_n">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#non-inflecting"/>
+        <oliasys:hasTag>n</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#info_unannotatable -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#info_unannotatable">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#unannotatable"/>
+        <oliasys:hasTag>info_unannotatable</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#kind -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#kind">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#kind"/>
+        <oliasys:hasTag>kind</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_d -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_d">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#gerund"/>
+        <oliasys:hasTag>d</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_e -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_e">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#indicative_or_subjunctive"/>
+        <oliasys:hasTag>e</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_f -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_f">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#indicative_or_imperative"/>
+        <oliasys:hasTag>f</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_g -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_g">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#gerundive"/>
+        <oliasys:hasTag>g</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_h -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_h">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#subjunctive_or_imperative"/>
+        <oliasys:hasTag>h</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_i -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_i">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#indicative"/>
+        <oliasys:hasTag>i</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_m -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_m">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#imperative"/>
+        <oliasys:hasTag>m</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_n -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_n">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#infinitive"/>
+        <oliasys:hasTag>n</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_o -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_o">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#optative"/>
+        <oliasys:hasTag>o</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_p">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#participle"/>
+        <oliasys:hasTag>p</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_s">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#subjunctive"/>
+        <oliasys:hasTag>s</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_t -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_t">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#finite"/>
+        <oliasys:hasTag>t</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_u -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_u">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#supine"/>
+        <oliasys:hasTag>u</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_x -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_x">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#uncertain_mood"/>
+        <oliasys:hasTag>x</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#mood_y -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#mood_y">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#finiteness_unspecified"/>
+        <oliasys:hasTag>y</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#narg -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#narg">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#adnominal_argument"/>
+        <oliasys:hasTag>narg</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#new -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#new">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#new"/>
+        <oliasys:hasTag>new</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#no_info_status -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#no_info_status">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#annotatable_undecided"/>
+        <oliasys:hasTag>no_info_status</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#non_spec -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#non_spec">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#non-specific"/>
+        <oliasys:hasTag>non_spec</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#non_spec_inf -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#non_spec_inf">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#inferred_from_non-specific"/>
+        <oliasys:hasTag>non_spec_inf</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#non_spec_old -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#non_spec_old">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#non-specific_old"/>
+        <oliasys:hasTag>non_spec_old</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#nonsub -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#nonsub">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#non-subject"/>
+        <oliasys:hasTag>nonsub</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#number_d -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#number_d">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#dual"/>
+        <oliasys:hasTag>d</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#number_p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#number_p">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#plural"/>
+        <oliasys:hasTag>p</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#number_s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#number_s">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#singular"/>
+        <oliasys:hasTag>s</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#number_x -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#number_x">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#uncertain_number"/>
+        <oliasys:hasTag>x</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#obj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#obj">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#object"/>
+        <oliasys:hasTag>obj</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#obl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#obl">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#oblique"/>
+        <oliasys:hasTag>obl</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#old -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#old">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#old"/>
+        <oliasys:hasTag>old</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#old_inact -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#old_inact">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#old-inact"/>
+        <oliasys:hasTag>old_inact</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#parpred -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#parpred">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#parenthetical_predication"/>
+        <oliasys:hasTag>parpred</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#part -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#part">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#partitive"/>
+        <oliasys:hasTag>part</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#per -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#per">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#peripheral"/>
+        <oliasys:hasTag>per</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#person_1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#person_1">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#first_person"/>
+        <oliasys:hasTag>1</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#person_2 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#person_2">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#second_person"/>
+        <oliasys:hasTag>2</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#person_3 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#person_3">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#third_person"/>
+        <oliasys:hasTag>3</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#pid -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#pid">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#Predicate_identity"/>
+        <oliasys:hasTag>pid</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#pred -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#pred">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#predicate"/>
+        <oliasys:hasTag>pred</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#quant -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#quant">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#quantifier_restriction"/>
+        <oliasys:hasTag>quant</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#rel -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#rel">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#apposition_or_attribute"/>
+        <oliasys:hasTag>rel</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#strength_s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#strength_s">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#strong"/>
+        <oliasys:hasTag>s</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#strength_t -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#strength_t">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#weak_or_strong"/>
+        <oliasys:hasTag>t</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#strength_w -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#strength_w">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#weak"/>
+        <oliasys:hasTag>w</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#sub -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#sub">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#subject"/>
+        <oliasys:hasTag>sub</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_a -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_a">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#aorist"/>
+        <oliasys:hasTag>a</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_f -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_f">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#future"/>
+        <oliasys:hasTag>f</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_i -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_i">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#imperfect"/>
+        <oliasys:hasTag>i</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_l -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_l">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#pluperfect"/>
+        <oliasys:hasTag>l</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_p">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#present"/>
+        <oliasys:hasTag>p</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_r -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_r">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#perfect"/>
+        <oliasys:hasTag>r</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_s -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_s">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#resultative"/>
+        <oliasys:hasTag>s</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_t -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_t">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#future_perfect"/>
+        <oliasys:hasTag>t</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_u -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_u">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#past"/>
+        <oliasys:hasTag>u</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#tense_x -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#tense_x">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#uncertain_tense"/>
+        <oliasys:hasTag>x</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#voc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#voc">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#vocative"/>
+        <oliasys:hasTag>voc</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#voice_a -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#voice_a">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#active"/>
+        <oliasys:hasTag>a</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#voice_e -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#voice_e">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#middle_or_passive"/>
+        <oliasys:hasTag>e</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#voice_m -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#voice_m">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#middle"/>
+        <oliasys:hasTag>m</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#voice_p -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#voice_p">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#passive"/>
+        <oliasys:hasTag>p</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#voice_x -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#voice_x">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#unspecified"/>
+        <oliasys:hasTag>x</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#x -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#x">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#uncertain_person"/>
+        <oliasys:hasTag>x</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#xadv -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#xadv">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#open_adverbial_complement"/>
+        <oliasys:hasTag>xadv</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#xobj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#xobj">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#open_objective_complement"/>
+        <oliasys:hasTag>xobj</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iswoc.owl#xsub -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/iswoc.owl#xsub">
+        <rdf:type rdf:resource="http://purl.org/olia/iswoc.owl#external_subject"/>
+        <oliasys:hasTag>xsub</oliasys:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.org/olia/iswoc.owl#new">
+        <rdfs:label>new</rdfs:label>
+        <rdfs:comment></rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/iswoc.owl#kind">
+        <rdfs:label>kind</rdfs:label>
+        <rdfs:comment></rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/iswoc.owl#old">
+        <rdfs:label>old</rdfs:label>
+        <rdfs:comment></rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
