@@ -1,0 +1,3479 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY ycoe "http://purl.org/olia/ycoe.owl#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/ycoe.owl#"
+     xml:base="http://purl.org/olia/ycoe.owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:ycoe="http://purl.org/olia/ycoe.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >OLiA Annotation Model for the York-Toronto-Helsinki Parsed Corpus of Old English Prose (YCOE) POS tags
+
+Comments, unless marked otherwise, are taken from 
+(1) the YCOE annotation guidelines (http://www-users.york.ac.uk/~lang22/YCOE/YcoeHome.htm, esp. http://www-users.york.ac.uk/~lang22/YCOE/doc/annotation/YcoeLite.htm#complete_label_list)</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string"
+            >http://www-users.york.ac.uk/~lang22/YCOE/YcoeHome.htm</rdfs:isDefinedBy>
+        <owl:versionInfo xml:lang="en"
+            >TODO: add syntactic labels from http://www-users.york.ac.uk/~lang22/YCOE/doc/annotation/YcoeLite.htm#complete_label_list
+2017-06-16 created for POS tags and extended POS tags (CC)
+
+CC Christian Chiarcos, Goethe-Universit&#228;t Frankfurt</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&owl;versionInfo"/>
+    <owl:AnnotationProperty rdf:about="&system;hasTag"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="#hasValue"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#versionInfo -->
+
+    <owl:AnnotationProperty rdf:about="&owl;versionInfo">
+        <rdf:type rdf:resource="&owl;DatatypeProperty"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#Feature -->
+
+    <owl:Class rdf:about="&system;Feature"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#UnitOfAnnotation -->
+
+    <owl:Class rdf:about="&system;UnitOfAnnotation"/>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AccusativeCase -->
+
+    <owl:Class rdf:about="#AccusativeCase">
+        <rdfs:label xml:lang="en">accusative case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Adjective -->
+
+    <owl:Class rdf:about="#Adjective">
+        <rdfs:label xml:lang="en">Adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#AdjectiveAdverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AdjectiveAdverb -->
+
+    <owl:Class rdf:about="#AdjectiveAdverb">
+        <rdfs:label xml:lang="en"
+            >Adjectives and Adverbs</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Adverb -->
+
+    <owl:Class rdf:about="#Adverb">
+        <rdfs:label xml:lang="en">Adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#AdjectiveAdverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AdverbialParticle -->
+
+    <owl:Class rdf:about="#AdverbialParticle">
+        <rdfs:label xml:lang="en"
+            >Adverbial particle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+        <rdfs:comment xml:lang="en"
+            >note that RP can adjoin to verbs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AmbiguousVerbForm -->
+
+    <owl:Class rdf:about="#AmbiguousVerbForm">
+        <rdfs:label xml:lang="en">ambiguous form</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#VerbForm"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="#AuxiliaryVerb">
+        <rdfs:label xml:lang="en">Auxiliary verbs</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Be -->
+
+    <owl:Class rdf:about="#Be">
+        <rdfs:label xml:lang="en">The verb BE</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Case -->
+
+    <owl:Class rdf:about="#Case">
+        <rdfs:label xml:lang="en">case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:comment xml:lang="en"
+            >Extended POS tags (case may be marked on N, D, MAN, Q(R/S, NR, NUM, PRO, WPRO, PRO$, ADJ(R/S), WADJ, participles, infinitives; temporal locative and directional marked on ADV, WADV)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#CommonNoun -->
+
+    <owl:Class rdf:about="#CommonNoun">
+        <rdfs:label xml:lang="en"
+            >Common noun, singular or plural</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#NominalPronominal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ComparativeAdjective -->
+
+    <owl:Class rdf:about="#ComparativeAdjective">
+        <rdfs:label xml:lang="en"
+            >Comparative Adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#AdjectiveAdverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ComparativeAdverb -->
+
+    <owl:Class rdf:about="#ComparativeAdverb">
+        <rdfs:label xml:lang="en"
+            >Comparative Adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#AdjectiveAdverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ComparativeQuantifier -->
+
+    <owl:Class rdf:about="#ComparativeQuantifier">
+        <rdfs:label xml:lang="en"
+            >Comparative Quantifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#QuantifierNumeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Complementizer -->
+
+    <owl:Class rdf:about="#Complementizer">
+        <rdfs:label xml:lang="en">Complementizer</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="#CoordinatingConjunction">
+        <rdfs:label xml:lang="en"
+            >Coordinating conjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#DativeCase -->
+
+    <owl:Class rdf:about="#DativeCase">
+        <rdfs:label xml:lang="en">dative case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Determiner -->
+
+    <owl:Class rdf:about="#Determiner">
+        <rdfs:label xml:lang="en">Determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Directional -->
+
+    <owl:Class rdf:about="#Directional">
+        <rdfs:label xml:lang="en">directional</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Case"/>
+        <rdfs:comment xml:lang="en"
+            >extended POS tag marked on ADV, WADV</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#FinalPunctuation -->
+
+    <owl:Class rdf:about="#FinalPunctuation">
+        <rdfs:label xml:lang="en"
+            >final punctuation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#FocusParticle -->
+
+    <owl:Class rdf:about="#FocusParticle">
+        <rdfs:label xml:lang="en">Focus particle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ForeignWord -->
+
+    <owl:Class rdf:about="#ForeignWord">
+        <rdfs:label xml:lang="en">Foreign word</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#GenitiveCase -->
+
+    <owl:Class rdf:about="#GenitiveCase">
+        <rdfs:label xml:lang="en">genitive case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Have -->
+
+    <owl:Class rdf:about="#Have">
+        <rdfs:label xml:lang="en">The verb HAVE</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Imperative -->
+
+    <owl:Class rdf:about="#Imperative">
+        <rdfs:label xml:lang="en">imperative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#VerbForm"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ImperativeOrSubjunctive -->
+
+    <owl:Class rdf:about="#ImperativeOrSubjunctive">
+        <rdfs:label xml:lang="en"
+            >ambiguous imperative/subjunctive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#VerbForm"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#IndefiniteMan -->
+
+    <owl:Class rdf:about="#IndefiniteMan">
+        <rdfs:label xml:lang="en"
+            >Indefinite &#39;man&#39;</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#NominalPronominal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Indicative -->
+
+    <owl:Class rdf:about="#Indicative">
+        <rdfs:label xml:lang="en"
+            >unambiguous indicative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#VerbForm"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Infinitive -->
+
+    <owl:Class rdf:about="#Infinitive">
+        <rdfs:label xml:lang="en">infinitive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#VerbForm"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#InstrumentalCase -->
+
+    <owl:Class rdf:about="#InstrumentalCase">
+        <rdfs:label xml:lang="en"
+            >instrumental case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Interjection -->
+
+    <owl:Class rdf:about="#Interjection">
+        <rdfs:label xml:lang="en">Interjection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Locative -->
+
+    <owl:Class rdf:about="#Locative">
+        <rdfs:label xml:lang="en">locative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Case"/>
+        <rdfs:comment xml:lang="en"
+            >extended POS tag marked on ADV, WADV</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Misc -->
+
+    <owl:Class rdf:about="#Misc">
+        <rdfs:label xml:lang="en">Miscellaneous</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ModalVerb -->
+
+    <owl:Class rdf:about="#ModalVerb">
+        <rdfs:label xml:lang="en">Modal verbs</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Negation -->
+
+    <owl:Class rdf:about="#Negation">
+        <rdfs:label xml:lang="en">Negation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+        <rdfs:comment xml:lang="en"
+            >note that NEG can adjoin to verbs, quantifiers, conjunctions, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NominalPronominal -->
+
+    <owl:Class rdf:about="#NominalPronominal">
+        <rdfs:label xml:lang="en"
+            >Nominals and Pronominals</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NominativeCase -->
+
+    <owl:Class rdf:about="#NominativeCase">
+        <rdfs:label xml:lang="en">nominative case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NonFinalPunctuation -->
+
+    <owl:Class rdf:about="#NonFinalPunctuation">
+        <rdfs:label xml:lang="en"
+            >Non-final punctuation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NonLinguisticTag -->
+
+    <owl:Class rdf:about="#NonLinguisticTag">
+        <rdfs:label xml:lang="en"
+            >Non-linguistic tags</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NonText -->
+
+    <owl:Class rdf:about="#NonText">
+        <rdfs:label xml:lang="en"
+            >non-text material</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#NonLinguisticTag"/>
+        <rdfs:comment xml:lang="en"
+            >CODE 	Indicates non-text material</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Numeral -->
+
+    <owl:Class rdf:about="#Numeral">
+        <rdfs:label xml:lang="en">Numeral</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#QuantifierNumeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#OtherVerb -->
+
+    <owl:Class rdf:about="#OtherVerb">
+        <rdfs:label xml:lang="en"
+            >All other verbs (except BE, HAVE, modals and auxiliaries)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PartOfSpeech -->
+
+    <owl:Class rdf:about="#PartOfSpeech">
+        <rdfs:label xml:lang="en"
+            >Part-of-Speech Labels</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PastParticiple -->
+
+    <owl:Class rdf:about="#PastParticiple">
+        <rdfs:label xml:lang="en">past participle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#VerbForm"/>
+        <rdfs:comment xml:lang="en"
+            >past participle (verbal or adjectival)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PastTense -->
+
+    <owl:Class rdf:about="#PastTense">
+        <rdfs:label xml:lang="en">past tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="#PersonalPronoun">
+        <rdfs:label xml:lang="en"
+            >Personal pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#NominalPronominal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PossessivePronoun -->
+
+    <owl:Class rdf:about="#PossessivePronoun">
+        <rdfs:label xml:lang="en"
+            >Possessive pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#NominalPronominal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Preposition -->
+
+    <owl:Class rdf:about="#Preposition">
+        <rdfs:label xml:lang="en"
+            >Preposition or subordinating conjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PresentParticiple -->
+
+    <owl:Class rdf:about="#PresentParticiple">
+        <rdfs:label xml:lang="en"
+            >present participle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#VerbForm"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PresentTense -->
+
+    <owl:Class rdf:about="#PresentTense">
+        <rdfs:label xml:lang="en">present tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ProperNoun -->
+
+    <owl:Class rdf:about="#ProperNoun">
+        <rdfs:label xml:lang="en"
+            >Proper noun, singular or plural</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#NominalPronominal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Punctuation -->
+
+    <owl:Class rdf:about="#Punctuation">
+        <rdfs:label xml:lang="en">Punctuation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Quantifier -->
+
+    <owl:Class rdf:about="#Quantifier">
+        <rdfs:label xml:lang="en">Quantifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#QuantifierNumeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QuantifierNumeral -->
+
+    <owl:Class rdf:about="#QuantifierNumeral">
+        <rdfs:label xml:lang="en"
+            >Quantifiers and numerals</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Subjunctive -->
+
+    <owl:Class rdf:about="#Subjunctive">
+        <rdfs:label xml:lang="en"
+            >unambiguous subjunctive</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#VerbForm"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#SuperlativeAdjective -->
+
+    <owl:Class rdf:about="#SuperlativeAdjective">
+        <rdfs:label xml:lang="en"
+            >Superlative Adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#AdjectiveAdverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#SuperlativeAdverb -->
+
+    <owl:Class rdf:about="#SuperlativeAdverb">
+        <rdfs:label xml:lang="en"
+            >Superlative Adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#AdjectiveAdverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#SuperlativeQuantifier -->
+
+    <owl:Class rdf:about="#SuperlativeQuantifier">
+        <rdfs:label xml:lang="en"
+            >Superlative Quantifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#QuantifierNumeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Temporal -->
+
+    <owl:Class rdf:about="#Temporal">
+        <rdfs:label xml:lang="en">temporal</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Case"/>
+        <rdfs:comment xml:lang="en"
+            >extended POS tag marked on ADV, WADV</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Tense -->
+
+    <owl:Class rdf:about="#Tense">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:comment xml:lang="en"
+            >Verbs are organized according to three conflicting principles: 
+(1) lemma/grammatical function (be, have, modals, aux. vs. other),
+(2) tense (present, past), and
+(3) verb form (imperative, subjunctive, participle, ambiguous form).
+
+For modelling efficiency, these are disentangled by rendering (2) and (3) as Features under the upper concept &quot;Verb&quot; (also missing in YCOE).
+
+Christian Chiarcos, 2017-06-16</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#TokenIdentifier -->
+
+    <owl:Class rdf:about="#TokenIdentifier">
+        <rdfs:label xml:lang="en"
+            >Token identifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#NonLinguisticTag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#UnknownWord -->
+
+    <owl:Class rdf:about="#UnknownWord">
+        <rdfs:label xml:lang="en"
+            >unknown or problematic word</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Misc"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Verb -->
+
+    <owl:Class rdf:about="#Verb">
+        <rdfs:label xml:lang="en">Verb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PartOfSpeech"/>
+        <rdfs:comment xml:lang="en"
+            >Verbs are organized according to three conflicting principles: 
+(1) lemma/grammatical function (be, have, modals, aux. vs. other),
+(2) tense (present, past), and
+(3) verb form (imperative, subjunctive, participle, ambiguous form).
+
+For modelling efficiency, these are disentangled by rendering (2) and (3) as Features under the upper concept &quot;Verb&quot; (also missing in YCOE).
+
+Christian Chiarcos, 2017-06-16</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VerbForm -->
+
+    <owl:Class rdf:about="#VerbForm">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:comment xml:lang="en"
+            >Verbs are organized according to three conflicting principles: 
+(1) lemma/grammatical function (be, have, modals, aux. vs. other),
+(2) tense (present, past), and
+(3) verb form (imperative, subjunctive, participle, ambiguous form).
+
+For modelling efficiency, these are disentangled by rendering (2) and (3) as Features under the upper concept &quot;Verb&quot; (also missing in YCOE).
+
+Christian Chiarcos, 2017-06-16</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WHAdjective -->
+
+    <owl:Class rdf:about="#WHAdjective">
+        <rdfs:label xml:lang="en">Wh-adjective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#WHWord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WHAdverb -->
+
+    <owl:Class rdf:about="#WHAdverb">
+        <rdfs:label xml:lang="en">Wh-adverb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#WHWord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WHPronoun -->
+
+    <owl:Class rdf:about="#WHPronoun">
+        <rdfs:label xml:lang="en">Wh-pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#WHWord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WHWord -->
+
+    <owl:Class rdf:about="#WHWord">
+        <rdfs:label xml:lang="en">Wh-words</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Whether -->
+
+    <owl:Class rdf:about="#Whether">
+        <rdfs:label xml:lang="en">WHETHER</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#WHWord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJ -->
+
+    <owl:Thing rdf:about="#ADJ">
+        <rdf:type rdf:resource="#Adjective"/>
+        <system:hasTag>ADJ</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJR -->
+
+    <ComparativeAdjective rdf:about="#ADJR">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJR</system:hasTag>
+    </ComparativeAdjective>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJR_A -->
+
+    <ComparativeAdjective rdf:about="#ADJR_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJR^A</system:hasTag>
+    </ComparativeAdjective>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJR_D -->
+
+    <owl:Thing rdf:about="#ADJR_D">
+        <rdf:type rdf:resource="#ComparativeAdjective"/>
+        <rdf:type rdf:resource="#DativeCase"/>
+        <system:hasTag>ADJR^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJR_G -->
+
+    <owl:Thing rdf:about="#ADJR_G">
+        <rdf:type rdf:resource="#ComparativeAdjective"/>
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <system:hasTag>ADJR^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJR_I -->
+
+    <InstrumentalCase rdf:about="#ADJR_I">
+        <rdf:type rdf:resource="#ComparativeAdjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJR^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJS -->
+
+    <SuperlativeAdjective rdf:about="#ADJS">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJS</system:hasTag>
+    </SuperlativeAdjective>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJS_A -->
+
+    <AccusativeCase rdf:about="#ADJS_A">
+        <rdf:type rdf:resource="#SuperlativeAdjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJS^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJS_D -->
+
+    <owl:Thing rdf:about="#ADJS_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type rdf:resource="#SuperlativeAdjective"/>
+        <system:hasTag>ADJS^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJS_G -->
+
+    <SuperlativeAdjective rdf:about="#ADJS_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJS^G</system:hasTag>
+    </SuperlativeAdjective>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJS_I -->
+
+    <InstrumentalCase rdf:about="#ADJS_I">
+        <rdf:type rdf:resource="#SuperlativeAdjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJS^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJ_A -->
+
+    <AccusativeCase rdf:about="#ADJ_A">
+        <rdf:type rdf:resource="#Adjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJ^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJ_D -->
+
+    <owl:Thing rdf:about="#ADJ_D">
+        <rdf:type rdf:resource="#Adjective"/>
+        <rdf:type rdf:resource="#DativeCase"/>
+        <system:hasTag>ADJ^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJ_G -->
+
+    <GenitiveCase rdf:about="#ADJ_G">
+        <rdf:type rdf:resource="#Adjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJ^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADJ_I -->
+
+    <InstrumentalCase rdf:about="#ADJ_I">
+        <rdf:type rdf:resource="#Adjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJ^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADV -->
+
+    <owl:Thing rdf:about="#ADV">
+        <rdf:type rdf:resource="#Adverb"/>
+        <system:hasTag>ADV</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADVR -->
+
+    <owl:Thing rdf:about="#ADVR">
+        <rdf:type rdf:resource="#ComparativeAdverb"/>
+        <system:hasTag>ADVR</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADVS -->
+
+    <SuperlativeAdverb rdf:about="#ADVS">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADVS</system:hasTag>
+    </SuperlativeAdverb>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADV_D -->
+
+    <Adverb rdf:about="#ADV_D">
+        <rdf:type rdf:resource="#Directional"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADV^D</system:hasTag>
+    </Adverb>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADV_L -->
+
+    <Locative rdf:about="#ADV_L">
+        <rdf:type rdf:resource="#Adverb"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADV^L</system:hasTag>
+    </Locative>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ADV_T -->
+
+    <Temporal rdf:about="#ADV_T">
+        <rdf:type rdf:resource="#Adverb"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADV^T</system:hasTag>
+    </Temporal>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AX -->
+
+    <owl:Thing rdf:about="#AX">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AX</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXD -->
+
+    <owl:Thing rdf:about="#AXD">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXD</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXDI -->
+
+    <owl:Thing rdf:about="#AXDI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXDI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXDS -->
+
+    <owl:Thing rdf:about="#AXDS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXDS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXG -->
+
+    <owl:Thing rdf:about="#AXG">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXG_A -->
+
+    <owl:Thing rdf:about="#AXG_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXG^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXG_D -->
+
+    <DativeCase rdf:about="#AXG_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXG^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXG_G -->
+
+    <owl:Thing rdf:about="#AXG_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXG^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXG_I -->
+
+    <owl:Thing rdf:about="#AXG_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXG^I</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXI -->
+
+    <owl:Thing rdf:about="#AXI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Imperative"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXN -->
+
+    <owl:Thing rdf:about="#AXN">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXN</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXN_A -->
+
+    <AccusativeCase rdf:about="#AXN_A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXN^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXN_D -->
+
+    <DativeCase rdf:about="#AXN_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXN^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXN_G -->
+
+    <owl:Thing rdf:about="#AXN_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXN^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXN_I -->
+
+    <InstrumentalCase rdf:about="#AXN_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXN^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXP -->
+
+    <owl:Thing rdf:about="#AXP">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXPI -->
+
+    <owl:Thing rdf:about="#AXPI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXPI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AXPS -->
+
+    <owl:Thing rdf:about="#AXPS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXPS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AX_A -->
+
+    <owl:Thing rdf:about="#AX_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AX^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AX_D -->
+
+    <DativeCase rdf:about="#AX_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AX^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AX_G -->
+
+    <GenitiveCase rdf:about="#AX_G">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AX^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AX_I -->
+
+    <InstrumentalCase rdf:about="#AX_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AX^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BAG -->
+
+    <owl:Thing rdf:about="#BAG">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BAG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BAG_A -->
+
+    <AccusativeCase rdf:about="#BAG_A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BAG^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BAG_D -->
+
+    <DativeCase rdf:about="#BAG_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BAG^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BAG_G -->
+
+    <owl:Thing rdf:about="#BAG_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BAG^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BAG_I -->
+
+    <InstrumentalCase rdf:about="#BAG_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BAG^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BE -->
+
+    <owl:Thing rdf:about="#BE">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BE</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BED -->
+
+    <owl:Thing rdf:about="#BED">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BED</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEDI -->
+
+    <owl:Thing rdf:about="#BEDI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEDI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEDS -->
+
+    <owl:Thing rdf:about="#BEDS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEDS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEI -->
+
+    <owl:Thing rdf:about="#BEI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Imperative"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEN -->
+
+    <owl:Thing rdf:about="#BEN">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEN</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEN_A -->
+
+    <AccusativeCase rdf:about="#BEN_A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEN^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEN_D -->
+
+    <owl:Thing rdf:about="#BEN_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEN^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEN_G -->
+
+    <GenitiveCase rdf:about="#BEN_G">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEN^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEN_I -->
+
+    <InstrumentalCase rdf:about="#BEN_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEN^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEP -->
+
+    <owl:Thing rdf:about="#BEP">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEPH -->
+
+    <owl:Thing rdf:about="#BEPH">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#ImperativeOrSubjunctive"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEPH</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEPI -->
+
+    <owl:Thing rdf:about="#BEPI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEPI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BEPS -->
+
+    <owl:Thing rdf:about="#BEPS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEPS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BE_A -->
+
+    <AccusativeCase rdf:about="#BE_A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BE^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BE_D -->
+
+    <DativeCase rdf:about="#BE_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BE^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BE_G -->
+
+    <owl:Thing rdf:about="#BE_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BE^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#BE_I -->
+
+    <owl:Thing rdf:about="#BE_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BE^I</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#C -->
+
+    <owl:Thing rdf:about="#C">
+        <rdf:type rdf:resource="#Complementizer"/>
+        <system:hasTag>C</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#CODE -->
+
+    <NonText rdf:about="#CODE">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>CODE</system:hasTag>
+    </NonText>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#CONJ -->
+
+    <owl:Thing rdf:about="#CONJ">
+        <rdf:type rdf:resource="#CoordinatingConjunction"/>
+        <system:hasTag>CONJ</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#D -->
+
+    <owl:Thing rdf:about="#D">
+        <rdf:type rdf:resource="#Determiner"/>
+        <system:hasTag>D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#D_A -->
+
+    <Determiner rdf:about="#D_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>D^A</system:hasTag>
+    </Determiner>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#D_D -->
+
+    <owl:Thing rdf:about="#D_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type rdf:resource="#Determiner"/>
+        <system:hasTag>D^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#D_G -->
+
+    <GenitiveCase rdf:about="#D_G">
+        <rdf:type rdf:resource="#Determiner"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>D^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#D_I -->
+
+    <owl:Thing rdf:about="#D_I">
+        <rdf:type rdf:resource="#Determiner"/>
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <system:hasTag>D^I</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#FP -->
+
+    <owl:Thing rdf:about="#FP">
+        <rdf:type rdf:resource="#FocusParticle"/>
+        <system:hasTag>FP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#FW -->
+
+    <owl:Thing rdf:about="#FW">
+        <rdf:type rdf:resource="#ForeignWord"/>
+        <system:hasTag>FW</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HAG -->
+
+    <owl:Thing rdf:about="#HAG">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HAG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HAG_A -->
+
+    <owl:Thing rdf:about="#HAG_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HAG^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HAG_D -->
+
+    <owl:Thing rdf:about="#HAG_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HAG^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HAG_G -->
+
+    <GenitiveCase rdf:about="#HAG_G">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HAG^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HAG_I -->
+
+    <InstrumentalCase rdf:about="#HAG_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HAG^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HV -->
+
+    <owl:Thing rdf:about="#HV">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HV</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVD -->
+
+    <owl:Thing rdf:about="#HVD">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVD</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVDI -->
+
+    <owl:Thing rdf:about="#HVDI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVDI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVDS -->
+
+    <owl:Thing rdf:about="#HVDS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVDS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVI -->
+
+    <owl:Thing rdf:about="#HVI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Imperative"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVN -->
+
+    <owl:Thing rdf:about="#HVN">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVN</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVN_A -->
+
+    <owl:Thing rdf:about="#HVN_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVN^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVN_D -->
+
+    <DativeCase rdf:about="#HVN_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVN^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVN_G -->
+
+    <owl:Thing rdf:about="#HVN_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVN^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVN_I -->
+
+    <owl:Thing rdf:about="#HVN_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVN^I</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVP -->
+
+    <owl:Thing rdf:about="#HVP">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVPI -->
+
+    <owl:Thing rdf:about="#HVPI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVPI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HVPS -->
+
+    <owl:Thing rdf:about="#HVPS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVPS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HV_A -->
+
+    <owl:Thing rdf:about="#HV_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HV^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HV_D -->
+
+    <DativeCase rdf:about="#HV_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HV^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HV_G -->
+
+    <GenitiveCase rdf:about="#HV_G">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HV^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#HV_I -->
+
+    <owl:Thing rdf:about="#HV_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HV^I</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ID -->
+
+    <owl:Thing rdf:about="#ID">
+        <rdf:type rdf:resource="#TokenIdentifier"/>
+        <system:hasTag>ID</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#INTERJ -->
+
+    <Interjection rdf:about="#INTERJ">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>INTERJ</system:hasTag>
+    </Interjection>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MAN -->
+
+    <owl:Thing rdf:about="#MAN">
+        <rdf:type rdf:resource="#IndefiniteMan"/>
+        <system:hasTag>MAN</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MAN_A -->
+
+    <IndefiniteMan rdf:about="#MAN_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>MAN^A</system:hasTag>
+    </IndefiniteMan>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MAN_D -->
+
+    <DativeCase rdf:about="#MAN_D">
+        <rdf:type rdf:resource="#IndefiniteMan"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>MAN^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MAN_G -->
+
+    <GenitiveCase rdf:about="#MAN_G">
+        <rdf:type rdf:resource="#IndefiniteMan"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>MAN^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MAN_I -->
+
+    <IndefiniteMan rdf:about="#MAN_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>MAN^I</system:hasTag>
+    </IndefiniteMan>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MD -->
+
+    <owl:Thing rdf:about="#MD">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MD</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MDD -->
+
+    <owl:Thing rdf:about="#MDD">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MDD</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MDDI -->
+
+    <owl:Thing rdf:about="#MDDI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MDDI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MDDS -->
+
+    <owl:Thing rdf:about="#MDDS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MDDS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MDI -->
+
+    <owl:Thing rdf:about="#MDI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Imperative"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MDI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MDP -->
+
+    <owl:Thing rdf:about="#MDP">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MDP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MDPI -->
+
+    <owl:Thing rdf:about="#MDPI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MDPI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MDPS -->
+
+    <owl:Thing rdf:about="#MDPS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MDPS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MD_A -->
+
+    <AccusativeCase rdf:about="#MD_A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MD^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MD_D -->
+
+    <DativeCase rdf:about="#MD_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MD^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MD_G -->
+
+    <GenitiveCase rdf:about="#MD_G">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MD^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#MD_I -->
+
+    <InstrumentalCase rdf:about="#MD_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MD^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#N -->
+
+    <CommonNoun rdf:about="#N">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>N</system:hasTag>
+    </CommonNoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NEG -->
+
+    <Negation rdf:about="#NEG">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:comment
+            >note that NEG can adjoin to verbs, quantifiers, conjunctions, etc.</rdfs:comment>
+        <system:hasTag>NEG</system:hasTag>
+    </Negation>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NR -->
+
+    <ProperNoun rdf:about="#NR">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NR</system:hasTag>
+    </ProperNoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NR_A -->
+
+    <owl:Thing rdf:about="#NR_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="#ProperNoun"/>
+        <system:hasTag>NR^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NR_D -->
+
+    <DativeCase rdf:about="#NR_D">
+        <rdf:type rdf:resource="#ProperNoun"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NR^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NR_G -->
+
+    <owl:Thing rdf:about="#NR_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type rdf:resource="#ProperNoun"/>
+        <system:hasTag>NR^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NR_I -->
+
+    <InstrumentalCase rdf:about="#NR_I">
+        <rdf:type rdf:resource="#ProperNoun"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NR^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NUM -->
+
+    <owl:Thing rdf:about="#NUM">
+        <rdf:type rdf:resource="#Numeral"/>
+        <system:hasTag>NUM</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NUM_A -->
+
+    <AccusativeCase rdf:about="#NUM_A">
+        <rdf:type rdf:resource="#Numeral"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NUM^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NUM_D -->
+
+    <DativeCase rdf:about="#NUM_D">
+        <rdf:type rdf:resource="#Numeral"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NUM^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NUM_G -->
+
+    <GenitiveCase rdf:about="#NUM_G">
+        <rdf:type rdf:resource="#Numeral"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NUM^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NUM_I -->
+
+    <InstrumentalCase rdf:about="#NUM_I">
+        <rdf:type rdf:resource="#Numeral"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NUM^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#N_A -->
+
+    <CommonNoun rdf:about="#N_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>N^A</system:hasTag>
+    </CommonNoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#N_D -->
+
+    <owl:Thing rdf:about="#N_D">
+        <rdf:type rdf:resource="#CommonNoun"/>
+        <rdf:type rdf:resource="#DativeCase"/>
+        <system:hasTag>N^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#N_G -->
+
+    <owl:Thing rdf:about="#N_G">
+        <rdf:type rdf:resource="#CommonNoun"/>
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <system:hasTag>N^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#N_I -->
+
+    <InstrumentalCase rdf:about="#N_I">
+        <rdf:type rdf:resource="#CommonNoun"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>N^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#P -->
+
+    <owl:Thing rdf:about="#P">
+        <rdf:type rdf:resource="#Preposition"/>
+        <system:hasTag>P</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO -->
+
+    <owl:Thing rdf:about="#PRO">
+        <rdf:type rdf:resource="#PersonalPronoun"/>
+        <system:hasTag>PRO</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO_ -->
+
+    <PossessivePronoun rdf:about="#PRO_">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PRO$</system:hasTag>
+    </PossessivePronoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO_A -->
+
+    <owl:Thing rdf:about="#PRO_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="#PersonalPronoun"/>
+        <system:hasTag>PRO^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO_D -->
+
+    <owl:Thing rdf:about="#PRO_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type rdf:resource="#PersonalPronoun"/>
+        <system:hasTag>PRO^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO_G -->
+
+    <PersonalPronoun rdf:about="#PRO_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PRO^G</system:hasTag>
+    </PersonalPronoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO_I -->
+
+    <PersonalPronoun rdf:about="#PRO_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PRO^I</system:hasTag>
+    </PersonalPronoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO__A -->
+
+    <owl:Thing rdf:about="#PRO__A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="#PossessivePronoun"/>
+        <system:hasTag>PRO$^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO__D -->
+
+    <DativeCase rdf:about="#PRO__D">
+        <rdf:type rdf:resource="#PossessivePronoun"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PRO$^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO__G -->
+
+    <GenitiveCase rdf:about="#PRO__G">
+        <rdf:type rdf:resource="#PossessivePronoun"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PRO$^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PRO__I -->
+
+    <PossessivePronoun rdf:about="#PRO__I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>PRO$^I</system:hasTag>
+    </PossessivePronoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Q -->
+
+    <Quantifier rdf:about="#Q">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>Q</system:hasTag>
+    </Quantifier>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QR -->
+
+    <ComparativeQuantifier rdf:about="#QR">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>QR</system:hasTag>
+    </ComparativeQuantifier>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QR_A -->
+
+    <AccusativeCase rdf:about="#QR_A">
+        <rdf:type rdf:resource="#ComparativeQuantifier"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>QR^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QR_D -->
+
+    <owl:Thing rdf:about="#QR_D">
+        <rdf:type rdf:resource="#ComparativeQuantifier"/>
+        <rdf:type rdf:resource="#DativeCase"/>
+        <system:hasTag>QR^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QR_G -->
+
+    <owl:Thing rdf:about="#QR_G">
+        <rdf:type rdf:resource="#ComparativeQuantifier"/>
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <system:hasTag>QR^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QR_I -->
+
+    <owl:Thing rdf:about="#QR_I">
+        <rdf:type rdf:resource="#ComparativeQuantifier"/>
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <system:hasTag>QR^I</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QS -->
+
+    <owl:Thing rdf:about="#QS">
+        <rdf:type rdf:resource="#SuperlativeQuantifier"/>
+        <system:hasTag>QS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QS_A -->
+
+    <AccusativeCase rdf:about="#QS_A">
+        <rdf:type rdf:resource="#SuperlativeQuantifier"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>QS^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QS_D -->
+
+    <SuperlativeQuantifier rdf:about="#QS_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>QS^D</system:hasTag>
+    </SuperlativeQuantifier>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QS_G -->
+
+    <SuperlativeQuantifier rdf:about="#QS_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>QS^G</system:hasTag>
+    </SuperlativeQuantifier>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QS_I -->
+
+    <InstrumentalCase rdf:about="#QS_I">
+        <rdf:type rdf:resource="#SuperlativeQuantifier"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>QS^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Q_A -->
+
+    <owl:Thing rdf:about="#Q_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="#Quantifier"/>
+        <system:hasTag>Q^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Q_D -->
+
+    <Quantifier rdf:about="#Q_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>Q^D</system:hasTag>
+    </Quantifier>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Q_G -->
+
+    <Quantifier rdf:about="#Q_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>Q^G</system:hasTag>
+    </Quantifier>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Q_I -->
+
+    <Quantifier rdf:about="#Q_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>Q^I</system:hasTag>
+    </Quantifier>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#RP -->
+
+    <owl:Thing rdf:about="#RP">
+        <rdf:type rdf:resource="#AdverbialParticle"/>
+        <system:hasTag>RP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VAG -->
+
+    <owl:Thing rdf:about="#VAG">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VAG</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VAG_A -->
+
+    <owl:Thing rdf:about="#VAG_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VAG^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VAG_D -->
+
+    <owl:Thing rdf:about="#VAG_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VAG^D</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VAG_G -->
+
+    <owl:Thing rdf:about="#VAG_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VAG^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VAG_I -->
+
+    <InstrumentalCase rdf:about="#VAG_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VAG^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VB -->
+
+    <owl:Thing rdf:about="#VB">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VB</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBD -->
+
+    <owl:Thing rdf:about="#VBD">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBD</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBDI -->
+
+    <owl:Thing rdf:about="#VBDI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBDI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBDS -->
+
+    <owl:Thing rdf:about="#VBDS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBDS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBI -->
+
+    <owl:Thing rdf:about="#VBI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Imperative"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBN -->
+
+    <owl:Thing rdf:about="#VBN">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBN</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBN_A -->
+
+    <owl:Thing rdf:about="#VBN_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBN^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBN_D -->
+
+    <DativeCase rdf:about="#VBN_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBN^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBN_G -->
+
+    <GenitiveCase rdf:about="#VBN_G">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBN^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBN_I -->
+
+    <InstrumentalCase rdf:about="#VBN_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBN^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBP -->
+
+    <owl:Thing rdf:about="#VBP">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AmbiguousVerbForm"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBP</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBPH -->
+
+    <owl:Thing rdf:about="#VBPH">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ImperativeOrSubjunctive"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBPH</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBPI -->
+
+    <owl:Thing rdf:about="#VBPI">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Indicative"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBPI</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VBPS -->
+
+    <owl:Thing rdf:about="#VBPS">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentTense"/>
+                    <rdf:Description rdf:about="#Subjunctive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBPS</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VB_A -->
+
+    <AccusativeCase rdf:about="#VB_A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VB^A</system:hasTag>
+    </AccusativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VB_D -->
+
+    <DativeCase rdf:about="#VB_D">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VB^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VB_G -->
+
+    <GenitiveCase rdf:about="#VB_G">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VB^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#VB_I -->
+
+    <InstrumentalCase rdf:about="#VB_I">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VB^I</system:hasTag>
+    </InstrumentalCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADJ -->
+
+    <owl:Thing rdf:about="#WADJ">
+        <rdf:type rdf:resource="#WHAdjective"/>
+        <system:hasTag>WADJ</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADJ_A -->
+
+    <owl:Thing rdf:about="#WADJ_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="#WHAdjective"/>
+        <system:hasTag>WADJ^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADJ_D -->
+
+    <DativeCase rdf:about="#WADJ_D">
+        <rdf:type rdf:resource="#WHAdjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>WADJ^D</system:hasTag>
+    </DativeCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADJ_G -->
+
+    <GenitiveCase rdf:about="#WADJ_G">
+        <rdf:type rdf:resource="#WHAdjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>WADJ^G</system:hasTag>
+    </GenitiveCase>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADJ_I -->
+
+    <owl:Thing rdf:about="#WADJ_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type rdf:resource="#WHAdjective"/>
+        <system:hasTag>WADJ^I</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADV -->
+
+    <owl:Thing rdf:about="#WADV">
+        <rdf:type rdf:resource="#WHAdverb"/>
+        <system:hasTag>WADV</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADV_D -->
+
+    <WHAdverb rdf:about="#WADV_D">
+        <rdf:type rdf:resource="#Directional"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>WADV^D</system:hasTag>
+    </WHAdverb>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADV_L -->
+
+    <owl:Thing rdf:about="#WADV_L">
+        <rdf:type rdf:resource="#Locative"/>
+        <rdf:type rdf:resource="#WHAdverb"/>
+        <system:hasTag>WADV^L</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WADV_T -->
+
+    <Temporal rdf:about="#WADV_T">
+        <rdf:type rdf:resource="#WHAdverb"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>WADV^T</system:hasTag>
+    </Temporal>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WPRO -->
+
+    <owl:Thing rdf:about="#WPRO">
+        <rdf:type rdf:resource="#WHPronoun"/>
+        <system:hasTag>WPRO</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WPRO_A -->
+
+    <owl:Thing rdf:about="#WPRO_A">
+        <rdf:type rdf:resource="#AccusativeCase"/>
+        <rdf:type rdf:resource="#WHPronoun"/>
+        <system:hasTag>WPRO^A</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WPRO_D -->
+
+    <WHPronoun rdf:about="#WPRO_D">
+        <rdf:type rdf:resource="#DativeCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>WPRO^D</system:hasTag>
+    </WHPronoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WPRO_G -->
+
+    <owl:Thing rdf:about="#WPRO_G">
+        <rdf:type rdf:resource="#GenitiveCase"/>
+        <rdf:type rdf:resource="#WHPronoun"/>
+        <system:hasTag>WPRO^G</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WPRO_I -->
+
+    <WHPronoun rdf:about="#WPRO_I">
+        <rdf:type rdf:resource="#InstrumentalCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>WPRO^I</system:hasTag>
+    </WHPronoun>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WQ -->
+
+    <Whether rdf:about="#WQ">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>WQ</system:hasTag>
+    </Whether>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#XX -->
+
+    <UnknownWord rdf:about="#XX">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>XX</system:hasTag>
+    </UnknownWord>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#finalPunctuation -->
+
+    <owl:Thing rdf:about="#finalPunctuation">
+        <rdf:type rdf:resource="#FinalPunctuation"/>
+        <system:hasTag>.</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#nonFinalPunctuation -->
+
+    <NonFinalPunctuation rdf:about="#nonFinalPunctuation">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>,</system:hasTag>
+    </NonFinalPunctuation>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
