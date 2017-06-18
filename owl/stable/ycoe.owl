@@ -31,7 +31,8 @@ Comments, unless marked otherwise, are taken from
             >http://www-users.york.ac.uk/~lang22/YCOE/YcoeHome.htm</rdfs:isDefinedBy>
         <owl:versionInfo xml:lang="en"
             >TODO: add syntactic labels from http://www-users.york.ac.uk/~lang22/YCOE/doc/annotation/YcoeLite.htm#complete_label_list
-2017-06-16 created for POS tags and extended POS tags (CC)
+			2017-06-18 added N^N and D^N
+			2017-06-16 created for POS tags and extended POS tags (CC)
 
 CC Christian Chiarcos, Goethe-Universit&#228;t Frankfurt</owl:versionInfo>
         <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
@@ -914,6 +915,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="&owl;Thing"/>
         <system:hasTag>ADJ^A</system:hasTag>
     </AccusativeCase>
+    <NominativeCase rdf:about="#ADJ_N">
+        <rdf:type rdf:resource="#Adjective"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>ADJ^N</system:hasTag>
+    </NominativeCase>
     
 
 
@@ -1102,6 +1108,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <system:hasTag>AXG^A</system:hasTag>
     </owl:Thing>
     
+    <owl:Thing rdf:about="#AXG_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXG^N</system:hasTag>
+    </owl:Thing>
 
 
     <!-- http://purl.org/olia/ycoe.owl#AXG_D -->
@@ -1201,6 +1219,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         </rdf:type>
         <system:hasTag>AXN^A</system:hasTag>
     </AccusativeCase>
+    <NominativeCase rdf:about="#AXN_N">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AXN^N</system:hasTag>
+    </NominativeCase>
     
 
 
@@ -1320,6 +1350,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         </rdf:type>
         <system:hasTag>AX^A</system:hasTag>
     </owl:Thing>
+    <owl:Thing rdf:about="#AX_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>AX^N</system:hasTag>
+    </owl:Thing>
     
 
 
@@ -1404,6 +1446,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         </rdf:type>
         <system:hasTag>BAG^A</system:hasTag>
     </AccusativeCase>
+    <NominativeCase rdf:about="#BAG_N">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BAG^N</system:hasTag>
+    </NominativeCase>
     
 
 
@@ -1571,6 +1625,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         </rdf:type>
         <system:hasTag>BEN^A</system:hasTag>
     </AccusativeCase>
+    <NominativeCase rdf:about="#BEN_A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BEN^N</system:hasTag>
+    </NominativeCase>
     
 
 
@@ -1708,6 +1774,19 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <system:hasTag>BE^A</system:hasTag>
     </AccusativeCase>
     
+    <NominativeCase rdf:about="#BE_N">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Be"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>BE^N</system:hasTag>
+    </NominativeCase>
+    
 
 
     <!-- http://purl.org/olia/ycoe.owl#BE_D -->
@@ -1825,7 +1904,14 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <system:hasTag>D^G</system:hasTag>
     </GenitiveCase>
     
+    <!-- http://purl.org/olia/ycoe.owl#D_G -->
 
+    <NominativeCase rdf:about="#D_N">
+        <rdf:type rdf:resource="#Determiner"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>D^N</system:hasTag>
+    </NominativeCase>
+    
 
     <!-- http://purl.org/olia/ycoe.owl#D_I -->
 
@@ -1884,6 +1970,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
             </owl:Class>
         </rdf:type>
         <system:hasTag>HAG^A</system:hasTag>
+    </owl:Thing>
+    <owl:Thing rdf:about="#HAG_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HAG^N</system:hasTag>
     </owl:Thing>
     
 
@@ -2052,6 +2150,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         </rdf:type>
         <system:hasTag>HVN^A</system:hasTag>
     </owl:Thing>
+    <owl:Thing rdf:about="#HVN_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HVN^N</system:hasTag>
+    </owl:Thing>
     
 
 
@@ -2171,6 +2281,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         </rdf:type>
         <system:hasTag>HV^A</system:hasTag>
     </owl:Thing>
+    <owl:Thing rdf:about="#HV_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Have"/>
+                    <rdf:Description rdf:about="#Infinitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>HV^N</system:hasTag>
+    </owl:Thing>
     
 
 
@@ -2258,6 +2380,12 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="#AccusativeCase"/>
         <rdf:type rdf:resource="&owl;Thing"/>
         <system:hasTag>MAN^A</system:hasTag>
+    </IndefiniteMan>
+    
+    <IndefiniteMan rdf:about="#MAN_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>MAN^N</system:hasTag>
     </IndefiniteMan>
     
 
@@ -2440,6 +2568,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         </rdf:type>
         <system:hasTag>MD^A</system:hasTag>
     </AccusativeCase>
+    <NominativeCase rdf:about="#MD_N">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#ModalVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>MD^N</system:hasTag>
+    </NominativeCase>
     
 
 
@@ -2530,6 +2670,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="#ProperNoun"/>
         <system:hasTag>NR^A</system:hasTag>
     </owl:Thing>
+    <owl:Thing rdf:about="#NR_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type rdf:resource="#ProperNoun"/>
+        <system:hasTag>NR^N</system:hasTag>
+    </owl:Thing>
     
 
 
@@ -2579,6 +2724,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="&owl;Thing"/>
         <system:hasTag>NUM^A</system:hasTag>
     </AccusativeCase>
+    <NominativeCase rdf:about="#NUM_N">
+        <rdf:type rdf:resource="#Numeral"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>NUM^N</system:hasTag>
+    </NominativeCase>
     
 
 
@@ -2650,6 +2800,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <system:hasTag>N^I</system:hasTag>
     </InstrumentalCase>
     
+    <NominativeCase rdf:about="#N_N">
+        <rdf:type rdf:resource="#CommonNoun"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>N^N</system:hasTag>
+    </NominativeCase>
 
 
     <!-- http://purl.org/olia/ycoe.owl#P -->
@@ -2685,6 +2840,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="#AccusativeCase"/>
         <rdf:type rdf:resource="#PersonalPronoun"/>
         <system:hasTag>PRO^A</system:hasTag>
+    </owl:Thing>
+    <owl:Thing rdf:about="#PRO_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type rdf:resource="#PersonalPronoun"/>
+        <system:hasTag>PRO^N</system:hasTag>
     </owl:Thing>
     
 
@@ -2725,6 +2885,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="#AccusativeCase"/>
         <rdf:type rdf:resource="#PossessivePronoun"/>
         <system:hasTag>PRO$^A</system:hasTag>
+    </owl:Thing>
+    <owl:Thing rdf:about="#PRO__N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type rdf:resource="#PossessivePronoun"/>
+        <system:hasTag>PRO$^N</system:hasTag>
     </owl:Thing>
     
 
@@ -2784,6 +2949,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="&owl;Thing"/>
         <system:hasTag>QR^A</system:hasTag>
     </AccusativeCase>
+    <NominativeCase rdf:about="#QR_N">
+        <rdf:type rdf:resource="#ComparativeQuantifier"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>QR^N</system:hasTag>
+    </NominativeCase>
     
 
 
@@ -2834,6 +3004,12 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <system:hasTag>QS^A</system:hasTag>
     </AccusativeCase>
     
+    <NominativeCase rdf:about="#QS_N">
+        <rdf:type rdf:resource="#SuperlativeQuantifier"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>QS^N</system:hasTag>
+    </NominativeCase>
+    
 
 
     <!-- http://purl.org/olia/ycoe.owl#QS_D -->
@@ -2872,6 +3048,12 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="#AccusativeCase"/>
         <rdf:type rdf:resource="#Quantifier"/>
         <system:hasTag>Q^A</system:hasTag>
+    </owl:Thing>
+    
+    <owl:Thing rdf:about="#Q_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type rdf:resource="#Quantifier"/>
+        <system:hasTag>Q^N</system:hasTag>
     </owl:Thing>
     
 
@@ -2944,6 +3126,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
             </owl:Class>
         </rdf:type>
         <system:hasTag>VAG^A</system:hasTag>
+    </owl:Thing>
+    <owl:Thing rdf:about="#VAG_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PresentParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VAG^N</system:hasTag>
     </owl:Thing>
     
 
@@ -3113,6 +3307,19 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <system:hasTag>VBN^A</system:hasTag>
     </owl:Thing>
     
+    <owl:Thing rdf:about="#VBN_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                    <rdf:Description rdf:about="#PastParticiple"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VBN^N</system:hasTag>
+    </owl:Thing>
+    
 
 
     <!-- http://purl.org/olia/ycoe.owl#VBN_D -->
@@ -3247,6 +3454,18 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         </rdf:type>
         <system:hasTag>VB^A</system:hasTag>
     </AccusativeCase>
+    <NominativeCase rdf:about="#VB_N">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Infinitive"/>
+                    <rdf:Description rdf:about="#OtherVerb"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+        <system:hasTag>VB^N</system:hasTag>
+    </NominativeCase>
     
 
 
@@ -3316,6 +3535,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="#AccusativeCase"/>
         <rdf:type rdf:resource="#WHAdjective"/>
         <system:hasTag>WADJ^A</system:hasTag>
+    </owl:Thing>
+    <owl:Thing rdf:about="#WADJ_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type rdf:resource="#WHAdjective"/>
+        <system:hasTag>WADJ^N</system:hasTag>
     </owl:Thing>
     
 
@@ -3404,6 +3628,11 @@ Christian Chiarcos, 2017-06-16</rdfs:comment>
         <rdf:type rdf:resource="#AccusativeCase"/>
         <rdf:type rdf:resource="#WHPronoun"/>
         <system:hasTag>WPRO^A</system:hasTag>
+    </owl:Thing>
+    <owl:Thing rdf:about="#WPRO_N">
+        <rdf:type rdf:resource="#NominativeCase"/>
+        <rdf:type rdf:resource="#WHPronoun"/>
+        <system:hasTag>WPRO^N</system:hasTag>
     </owl:Thing>
     
 
