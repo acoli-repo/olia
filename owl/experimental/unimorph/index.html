@@ -1,0 +1,195 @@
+<h1 id="unimorph-annotation-model">UniMorph Annotation Model</h1>
+
+<p>We provide an OWL2/DL formalization of the Annotation Schema of the Universal Morphology community project (<a href="http://unimorph.org">http://unimorph.org</a>) as well as HTML visualization(s) generated from it.</p>
+
+<p>It follows three main objectives:</p>
+
+<ul>
+<li><p>Formalize the annotation guidelines in a machine-readable way, in order to <i>facilitate its linking</i> with the Universal Dependency specifications (<a href="http://universaldependencies.org/">http://universaldependencies.org/</a>) as well as other efforts to create and to harmonize linguistic (annotation) terminology.</p></li>
+<li><p>Provide a <i>convenient, searchable and browseable web representation</i> of the UniMorph guidelines. We are currently in the process to evaluate different OWL visualization tools, both text/html-based as well as graphical tools.</p></li>
+<li><p>Provide a <i>declarative linking</i> with other terminologies (see above) that allows </p>
+
+<ul><li>to express uncertainty and metadata about the mapping, but also</li>
+<li>to provide both language-independent and language-specific mapping rules.</li></ul>
+
+<p>In particular, the mapping rules must not be hidden in a particular implementation, but should be transparent.</p></li>
+</ul>
+
+<p>RDF provides such a formalism, as previously demonstrated, e.g., for <i>linguistic annotations</i> in general (OLiA, <a href="http://purl.org/olia">http://purl.org/olia</a>; GOLD, <a href="http://linguistics-ontology.org/">http://linguistics-ontology.org/</a>, ISOcat: <a href="http://isocat.org/">http://isocat.org/</a>), for <i>typological databases</i> (Typological Database System, <a href="http://tds2.dans.knaw.nl/">http://tds2.dans.knaw.nl/</a>), for <i>cross-linguistic morphosyntax</i> (Multext-East, <a href="http://nl.ijs.si/ME/">http://nl.ijs.si/ME/</a>), for <i>cross-resource semantics</i> (PreMOn, <a href="http://premon.fbk.eu">http://premon.fbk.eu</a>), for grammatical notes in <i>dictionaries</i> (LexInfo, <a href="http://www.lexinfo.net/">http://www.lexinfo.net/</a>), etc.</p>
+
+<p>Any questions and remarks regarding this data should be directed to Christian Chiarcos via chiarcos@informatik.uni-frankfurt.de.</p>
+
+<ol>
+<li><a href="#approach">Approach</a> <br>
+1.1 <a href="#owl">Annotation Model (OWL)</a> <br>
+1.2 <a href="#html">HTML rendering</a> <br>
+1.3 <a href="#link">Linking</a></li>
+<li><a href="#dist">Distribution</a></li>
+<li><a href="#cont">Contributors</a></li>
+<li><a href="#open">Open issues</a></li>
+</ol>
+
+
+
+<h2 id="1-approach">1. Approach <a id="approach"></a></h2>
+
+<h3 id="11-annotation-model-owl">1.1 Annotation Model (OWL) <a id="owl"></a></h3>
+
+<p>We provide the UniMorph ontology based on Sylak-Glassman (2016). With respect to its textual content/definitions (represented as rdfs:comment), this is an except of Sylak-Glassman, with argumentative sections, diagrams and most examples removed. In terms of its semantics, this is OWL2/DL (<i>ALCHO(D)</i>), in terms of its format, it is RDF/XML, resp. TTL (Turtle).</p>
+
+<p>In the annotation model, individual features  (e.g., “POL”) are represented as individuals (instances), feature categories (e.g., “Politeness”) are represented as concepts (classes). Groups of features (e.g., “(speaker-)addressee honorific”) are represented as subclass of concepts. The individual <code>:POL</code> (representing the feature “POL”) is thus an instance of <code>:AddresseeHonorific</code>, which is a subclass of <code>:PolitenessFeature</code>.</p>
+
+<p>Feature individuals have the property <code>:hasLabel</code> with the String value as found in the data (e.g., “POL” for <code>:POL</code>) and an <code>rdfs:label</code> with a human-readable representation (e.g., “polite” for <code>:POL</code>). Features or the associated classes should have an rdfs:comment that gives an excerpt from Sylak-Glassman (2016). Open issues and design decisions are documented using <code>owl:versionInfo</code>.</p>
+
+<p>The annotation model can be edited using Protégé (<a href="http://protege.stanford.edu/">http://protege.stanford.edu/</a>). However, it can also be edited directly using a simple text editor with syntax highlighting. (See <a href="#manual">below</a> for manually editing ontologies.)</p>
+
+<h3 id="12-html-rendering">1.2 HTML rendering<a id="html"></a></h3>
+
+<p>We explore different HTML renderers for the Annotation Model. At the moment, a text-based visualization is chosen, generated with OWLDoc (<a href="https://code.google.com/archive/p/co-ode-owl-plugins/downloads">https://code.google.com/archive/p/co-ode-owl-plugins/downloads</a>) and Protégé 4.0.</p>
+
+<p>For details on the generation of the HTML rendering, see <a href="#owldoc">below</a>.</p>
+
+
+
+<h3 id="13-linking">1.3 Linking<a id="link"></a></h3>
+
+<p>Given the annotation model, we focus on feature-level linking. A feature can be linked to either an OWL class or another individual. The choice depends on the modeling of the target resource. Taking the Universal Dependencies as an example, they provide language-specific and language-independent documentations. Language-independent features should thus be modeled as concepts (classes), with language-specific features as individuals (instances of these classes). (This is the modelling of the UD ontologies from <a href="http://fginter.github.io/docs/">http://fginter.github.io/docs/</a> and of the Multext-East ontologies under <a href="http://nl.ijs.si/ME/">http://nl.ijs.si/ME/</a>.)</p>
+
+<p>Unimorph features can thus be linked with UD concepts by being defined as instances of these concepts as follows:</p>
+
+<p><code>:POL rdf:type ud:Polite.</code></p>
+
+<p>Unlike UD with language-specific different definitions, Unimorph features are (supposed to be) cross-linguistically applicable, with only LGSPEC features reserved for language specifics. At the moment, no language-specific documentation is provided. Accordingly, it is not necessary to replicate the Annotation Model for every individual language. Instead, language specifics can be captured by using different linking models.</p>
+
+<p>A linking model is an ontology that imports the source ontology (here, the UniMorph ontology) and a target vocabulary (formalized as an ontology, e.g., for UD). <br>
+It provides <code>rdf:type</code> (resp. <code>rdfs:subClassOf</code> and <code>rdfs:subPropertyOf</code>) statements for UniMorph features (resp. classes and properties). <br>
+A language-independent linking model can be provided, but as the linking is modelled separated from the terminology, it is possible to provide an alternative linking model, e.g., a language-specific model that complements the language-independent linking model with linkings for LGSPEC features or revised feature mappings.</p>
+
+
+
+<h2 id="2-distribution">2. Distribution<a id="dist"></a></h2>
+
+<p>The UniMorph Annotation Model and the contents of this directory is a pre-release draft only intended to elicitate community feedback and guide its further development. A production-ready version will be published as open source (CC-BY for data, Apache license for code) with an accompanying publication. If you intend to use the data provided as is <em>before its official publication</em>, please contact me under christian.chiarcos@web.de to help me keeping track of possible forks. Attribution is welcome (see <a href="#cont">contributors</a>).</p>
+
+
+
+<h3 id="21-unimorph-annotation-model-and-documentation">2.1 Unimorph annotation model and documentation</h3>
+
+<ul>
+<li><code><a href="unimorph.owl">unimorph.owl</a></code> <br>
+Unimorph Annotation Model, RDF/XML (“official ontology”)</li>
+<li><code><a href="unimorph.svg">unimorph.svg</a></code> <br>
+Unimorph data model (class structure, “TBox”), generated from  <code>unimorph.owl</code> using WebVOWL (<a href="http://visualdataweb.de/webvowl/">http://visualdataweb.de/webvowl/</a>)</li>
+<li><code><a href="html/index.html">html/index.html</a></code> (etc.) <br>
+HTML rendering of the full ontology, produced by OWLDoc as described here</li>
+<li><code><a href="Readme.md">Readme.md</a></code> <br>
+this file</li>
+</ul>
+
+<h3 id="22-auxiliary-files">2.2 Auxiliary files</h3>
+
+<ul>
+<li><code><a href="unimorph.ttl">unimorph.ttl</a></code> <br>
+Unimorph Annotation Model, RDF/TTL (Turtle edition) <br>
+This file was manually created and validated, it is the source for <code>unimorph.owl</code>, which was produced using Protégé 4.0 and OWL API 2.2.1.1138</li>
+<li><code><a href="fix-owldoc-html.sh">fix-owldoc-html.sh</a></code> <br>
+after OWLDoc export, apply this script to unescape HTML tags in Literal values, cf. <a href="#owldoc">Appendix</a></li>
+</ul>
+
+<h3 id="23-external-data-sources">2.3 External data sources</h3>
+
+<ul>
+<li><code><a href="doc">doc/*</a></code> <br>
+Selected unimorph documentation</li>
+<li><code><a href="retrieve.sh">retrieve.sh</a></code> <br>
+Helper script that creates a local copy of all Unimorph data files and their annotations</li>
+<li><code><a href="tags.tsv">tags.tsv</a></code> <br>
+list of tags (feature bundles) and their usage across all UniMorph languages <br>
+generated by retrieve.sh</li>
+</ul>
+
+<h2 id="3-contributors">3. Contributors<a id="cont"></a></h2>
+
+<ul>
+<li>Prof. Dr. Christian Chiarcos [CC] <br>
+Applied Computational Linguistics (ACoLi) <br>
+Goethe University Frankfurt, Germany <br>
+chiarcos@informatik.uni-frankfurt.de</li>
+</ul>
+
+
+
+<h2 id="4-open-issues">4. Open issues<a id="open"></a></h2>
+
+<ul>
+<li>elicitate feedback from Unimorph community and adjust the ontology</li>
+<li>integrate tags.tsv</li>
+<li>develop a linking model</li>
+<li>release and publication</li>
+</ul>
+
+
+
+<h1 id="appendix">Appendix</h1>
+
+
+
+<h2 id="a-generating-html-using-owldoc">A. Generating HTML using OWLDoc<a id="owldoc"></a></h2>
+
+<p>OWLDoc provides an HTML rendering of any OWL file, but note that by default, it does not support the embedding of HTML code inside Literals. Therefore, HTML code embedded in rdfs:comment (etc.) is escaped and has to be unescaped after running OWLDoc.</p>
+
+<p>Generation process:</p>
+
+<ol>
+<li>add the OWLDoc plugin to the local Protégé installation: Grab a zip archive from <a href="https://code.google.com/archive/p/co-ode-owl-plugins/downloads">https://code.google.com/archive/p/co-ode-owl-plugins/downloads</a>, unpack its contents to the plugins directory, restart Protégé (4.x) and load an ontology. In the menu, you should find “Export OWLDoc” under “Tools”.</li>
+<li>Open the Annotation Model in Protégé, with the OWLDoc plugin installed</li>
+<li>Select “Tools” and “Export OWLDoc” from the menu</li>
+<li>Provide the path of the target directory and export there</li>
+<li>Fix the HTML encoding <br>
+<ul><li>Unix:  <br>
+<ul><li>open the shell, run the provided <code>fix-owldoc-html.sh</code> script on the output directory (say, <code>$OUT</code>), e.g., <br>
+<code>$&gt; fix-owldoc-html.sh $(find $OUT | egrep 'htm[l]?$')</code></li></ul></li>
+<li>Windows with Notepad++: <br>
+<ul><li>open all generated HTML files in Notepad++ (and only these)</li>
+<li>press <code>&lt;CTRL&gt;+H</code> for replacement</li>
+<li>set “Find what” to <code>&lt;</code></li>
+<li>set “Replace with” to <code>&lt;</code></li>
+<li>select “replace All in All Documents”</li>
+<li>save all files and enjoy ;)</li></ul></li></ul></li>
+</ol>
+
+
+
+<h2 id="b-manually-editing-ontologies">B. Manually editing ontologies<a id="manual"></a></h2>
+
+<p>For manual edits of the Annotation Model or Linking Model, one can either work on the RDF/XML provided or serialize in another RDF format, e.g., Turtle (TTL)* or JSON/LD, using RDF APIs such as Apache Jena (<a href="https://jena.apache.org/">https://jena.apache.org/</a>) or full-fledged editors such as Protégé. However, manual edits should be followed by a syntax check. For manually edited RDF/XML, this can be done using xmllint (<a href="http://xmlsoft.org/xmllint.html">http://xmlsoft.org/xmllint.html</a>) or an XML editor such as Oxygen (<a href="https://www.oxygenxml.com/">https://www.oxygenxml.com/</a>); for RDF/TTL, this could be <a href="http://ttl.summerofcode.be/">http://ttl.summerofcode.be/</a>. Also, a manually edited ontology should be loaded in Protégé (or an OWL API) to make sure that it preserved OWL2/DL semantics. If another format than RDF/XML was used for manual edits, please also provide an export to RDF/XML.</p>
+
+<p>Note that Annotation Model rdfs:comment statements contains excerpts of a written text, i.e., often relatively complex string values, and in particular, reserved characters such as <code>"</code> (reserved in Turtle and XML), <code>&amp;</code>, <code>&lt;</code> and <code>&gt;</code> (reserved in XML). </p>
+
+<p>When <b>working with RDF/XML</b>, please use the following escape characters for CDATA (literal) content: <br>
+<code>&amp;</code> to be replaced by <code>&amp;amp;</code> <br>
+<code>"</code> to be replaced by <code>&amp;quot;</code> <br>
+<code>&lt;</code> to be replaced by <code>&amp;lt;</code> <br>
+<code>&gt;</code> to be replaced by <code>&amp;gt;</code></p>
+
+<p>When editing with Protégé, these replacements should be performed by the tool.</p>
+
+<p>When <b>working with RDF/TTL (Turtle)</b>, please note that when a literal contains <code>"</code>, the literal should be written in pairs of triple double quotes rather than single double quotes, e.g., </p>
+
+<p><code>:Animacy rdfs:comment """Yamamoto (1999:1) writes that animacy "can ... """@en.</code>    (CORRECT, escaped)</p>
+
+<p><del><code>:Animacy rdfs:comment "Yamamoto (1999:1) writes that animacy "can ... "@en.</code></del>        (INCORRECT, non-escaped)</p>
+
+<p>Unfortunately, some RDF APIs (incl. the OWL API used by Protégé 4.x) may occasionally produce non-escaped TTL output. This requires a manual fix before the file can be loaded in Protégé, again:</p>
+
+<ul>
+<li><p>Using Perl or sed (under Un*x), the following replacement rule may be applied: <br>
+<code>s/(rdfs:comment ")([^"][^@]*[^"])("@)/$1""$2""$3/g</code></p></li>
+<li><p>Using Notepad++ (under Windows): <br>
+open the TTL file <br>
+press <code>&lt;CTRL&gt;+H</code> <br>
+check “Regular expression” <br>
+set “Find what” to <code>(rdfs:comment ")([^"][^@]*[^"])("@)</code> <br>
+set “Replace with” to <code>$1""$2""$3</code> <br>
+click “Find next”, “Replace” and/or “Replace All” until no more replacements are necessary.</p></li>
+</ul>

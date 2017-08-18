@@ -26,8 +26,8 @@ Any questions and remarks regarding this data should be directed to Christian Ch
 3. [Contributors](#cont)
 4. [Open issues](#open)
 
-## 1. Approach <a name="approach"></a>
-### 1.1 Annotation Model (OWL) <a name="owl"></a>
+## 1. Approach <a id="approach"></a>
+### 1.1 Annotation Model (OWL) <a id="owl"></a>
 We provide the UniMorph ontology based on Sylak-Glassman (2016). With respect to its textual content/definitions (represented as rdfs:comment), this is an except of Sylak-Glassman, with argumentative sections, diagrams and most examples removed. In terms of its semantics, this is OWL2/DL (<i>ALCHO(D)</i>), in terms of its format, it is RDF/XML, resp. TTL (Turtle).
 
 In the annotation model, individual features  (e.g., "POL") are represented as individuals (instances), feature categories (e.g., "Politeness") are represented as concepts (classes). Groups of features (e.g., "(speaker-)addressee honorific") are represented as subclass of concepts. The individual <code>:POL</code> (representing the feature "POL") is thus an instance of <code>:AddresseeHonorific</code>, which is a subclass of <code>:PolitenessFeature</code>.
@@ -36,12 +36,12 @@ Feature individuals have the property <code>:hasLabel</code> with the String val
 
 The annotation model can be edited using Protégé (http://protege.stanford.edu/). However, it can also be edited directly using a simple text editor with syntax highlighting. (See [below](#manual) for manually editing ontologies.)
 
-### 1.2 HTML rendering<a name="html"></a>
+### 1.2 HTML rendering<a id="html"></a>
 We explore different HTML renderers for the Annotation Model. At the moment, a text-based visualization is chosen, generated with OWLDoc (https://code.google.com/archive/p/co-ode-owl-plugins/downloads) and Protégé 4.0.
 
 For details on the generation of the HTML rendering, see [below](#owldoc).
 		
-### 1.3 Linking<a name="link"></a>
+### 1.3 Linking<a id="link"></a>
 Given the annotation model, we focus on feature-level linking. A feature can be linked to either an OWL class or another individual. The choice depends on the modeling of the target resource. Taking the Universal Dependencies as an example, they provide language-specific and language-independent documentations. Language-independent features should thus be modeled as concepts (classes), with language-specific features as individuals (instances of these classes). (This is the modelling of the UD ontologies from http://fginter.github.io/docs/ and of the Multext-East ontologies under http://nl.ijs.si/ME/.)
 
 Unimorph features can thus be linked with UD concepts by being defined as instances of these concepts as follows:
@@ -54,42 +54,42 @@ A linking model is an ontology that imports the source ontology (here, the UniMo
 It provides <code>rdf:type</code> (resp. <code>rdfs:subClassOf</code> and <code>rdfs:subPropertyOf</code>) statements for UniMorph features (resp. classes and properties).
 A language-independent linking model can be provided, but as the linking is modelled separated from the terminology, it is possible to provide an alternative linking model, e.g., a language-specific model that complements the language-independent linking model with linkings for LGSPEC features or revised feature mappings.
 
-## 2. Distribution<a name="dist"></a>
+## 2. Distribution<a id="dist"></a>
 The UniMorph Annotation Model and the contents of this directory is a pre-release draft only intended to elicitate community feedback and guide its further development. A production-ready version will be published as open source (CC-BY for data, Apache license for code) with an accompanying publication. If you intend to use the data provided as is *before its official publication*, please contact me under christian.chiarcos@web.de to help me keeping track of possible forks. Attribution is welcome (see [contributors](#cont)).
 
 ### 2.1 Unimorph annotation model and documentation
-* <code>unimorph.owl</code>
+* <code><a href="unimorph.owl">unimorph.owl</a></code>
 	Unimorph Annotation Model, RDF/XML ("official ontology")
-* <code>unimorph.svg</code>
+* <code><a href="unimorph.svg">unimorph.svg</a></code>
 	Unimorph data model (class structure, "TBox"), generated from  <code>unimorph.owl</code> using WebVOWL (http://visualdataweb.de/webvowl/)
-* <code>html/index.html</code> (etc.)
+* <code><a href="html/index.html">html/index.html</a></code> (etc.)
 	HTML rendering of the full ontology, produced by OWLDoc as described here
-* <code>Readme.md</code>
+* <code><a href="Readme.md">Readme.md</a></code>
 	this file
 	
 ### 2.2 Auxiliary files
-* <code>unimorph.ttl</code>
+* <code><a href="unimorph.ttl">unimorph.ttl</a></code>
 	Unimorph Annotation Model, RDF/TTL (Turtle edition)
 	This file was manually created and validated, it is the source for <code>unimorph.owl</code>, which was produced using Protégé 4.0 and OWL API 2.2.1.1138
-* <code>fix-owldoc-html.sh</code>
+* <code><a href="fix-owldoc-html.sh">fix-owldoc-html.sh</a></code>
 	after OWLDoc export, apply this script to unescape HTML tags in Literal values, cf. [Appendix](#owldoc)
 	
 ### 2.3 External data sources
-* <code>doc/*</code>
+* <code><a href="doc">doc/*</a></code>
 	Selected unimorph documentation
-* <code>retrieve.sh</code>
+* <code><a href="retrieve.sh">retrieve.sh</a></code>
 	Helper script that creates a local copy of all Unimorph data files and their annotations
-* <code>tags.tsv</code>
+* <code><a href="tags.tsv">tags.tsv</a></code>
 	list of tags (feature bundles) and their usage across all UniMorph languages
 	generated by retrieve.sh
 
-## 3. Contributors<a name="cont"></a>
+## 3. Contributors<a id="cont"></a>
 * Prof. Dr. Christian Chiarcos [CC]
 Applied Computational Linguistics (ACoLi)
 Goethe University Frankfurt, Germany
 chiarcos@informatik.uni-frankfurt.de
 
-## 4. Open issues<a name="open"></a>
+## 4. Open issues<a id="open"></a>
 * elicitate feedback from Unimorph community and adjust the ontology
 * integrate tags.tsv
 * develop a linking model
@@ -97,7 +97,7 @@ chiarcos@informatik.uni-frankfurt.de
 
 # Appendix
 
-## A. Generating HTML using OWLDoc<a name="owldoc"></a>
+## A. Generating HTML using OWLDoc<a id="owldoc"></a>
 OWLDoc provides an HTML rendering of any OWL file, but note that by default, it does not support the embedding of HTML code inside Literals. Therefore, HTML code embedded in rdfs:comment (etc.) is escaped and has to be unescaped after running OWLDoc.
 
 Generation process:
@@ -119,7 +119,7 @@ Generation process:
      * save all files and enjoy ;)
 
 
-## B. Manually editing ontologies<a name="manual"></a>
+## B. Manually editing ontologies<a id="manual"></a>
 
 For manual edits of the Annotation Model or Linking Model, one can either work on the RDF/XML provided or serialize in another RDF format, e.g., Turtle (TTL)* or JSON/LD, using RDF APIs such as Apache Jena (https://jena.apache.org/) or full-fledged editors such as Protégé. However, manual edits should be followed by a syntax check. For manually edited RDF/XML, this can be done using xmllint (http://xmlsoft.org/xmllint.html) or an XML editor such as Oxygen (https://www.oxygenxml.com/); for RDF/TTL, this could be http://ttl.summerofcode.be/. Also, a manually edited ontology should be loaded in Protégé (or an OWL API) to make sure that it preserved OWL2/DL semantics. If another format than RDF/XML was used for manual edits, please also provide an export to RDF/XML.
 
