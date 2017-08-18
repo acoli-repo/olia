@@ -1,0 +1,280 @@
+@prefix : <http://purl.org/olia/unimorph.owl#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix unimorph: <http://purl.org/olia/unimorph.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@base <http://purl.org/olia/unimorph.owl> .
+
+<http://purl.org/olia/unimorph.owl> rdf:type owl:Ontology ;
+                                    
+                                    rdfs:comment """Annotation Model for the Universal Morphology (UniMorph) project
+
+The Universal Morphology (UniMorph) project is a collaborative effort to improve how NLP handles complex morphology in the world's languages. The goal of UniMorph is to annotate morphological data in a universal schema that allows an inflected word from any language to be defined by its lexical meaning, typically carried by the lemma, and by a rendering of its inflectional form in terms of a bundle of morphological features from our schema. The specification of the schema is described here and in Sylak-Glassman (2016). 
+
+Unless marked otherwise, all comments are drawn from Sylak-Glassman (2016). At present, the UniMorph Schema accounts for inflectional morphology only, not derivational morphology.
+
+References:
+John Sylak-Glassman (2016), The Composition and Use of the Universal Morphological Feature Schema (UniMorph Schema). Working Draft v. 2, Center for Language and Speech Processing, Johns Hopkins University, jcsg@jhu.edu. June 2, 2016, https://unimorph.github.io/doc/unimorph-schema.pdf
+
+History:
+2017-08-07 Aktionsart [CC]
+
+Contributors:
+CC - Christian Chiarcos, christian.chiarcos@web.de"""@en .
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/olia/unimorph.owl#hasLabel
+
+:hasLabel rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/olia/unimorph.owl#Aktionsart
+
+:Aktionsart rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Feature ;
+            
+            rdfs:comment "Aktionsart refers to the \inherent temporal features" of a verb (Klein 1994:29-31), which can be seen as the linguistic correlates to how the action described by a verb unfolds in real life. The term aktionsart (plural aktionsarten; capitalization adapted to English) was originally used by Agrell (1908) to refer to "secondary modifications of basic verb meanings by means of affixes," as in German erblühen `to start flowering' from blühen `to flower' (Klein 1994:17). Aktionsart is now used to refer to the kind of semantic distinctions that underlie the morphological distinctions that Agrell (1908) noticed. (Sylak-Glasman 2016, p. 8f.)"@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Atelic
+
+:Atelic rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Dynamic ;
+        
+        owl:disjointWith :Telic ;
+        
+        rdfs:comment """Atelic (`no culmination') `to sneeze, run'
+
+Telic verbs have a well-dened terminal point at which an action naturally terminates with a result Comrie (1976a:44-45). A test for telicity introduced by Klein (1974:106-107) is whether an action, when interrupted, can be felicitously described as having occurred. For example, if someone is drowning and they are interrupted, one cannot say \someone drowned." In contrast, if someone is playing and is interrupted, one can felicitously say \someone played." These examples, quoted in Comrie (1976a:45), illustrate the telicity of \drown" and the atelicity of \play." The action of drowning naturally terminates and yields a result whereas the action of playing need not ever necessarily terminate.
+(Sylak-Glasman 2016, p.9-10)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Durative
+
+:Durative rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Dynamic ;
+          
+          owl:disjointWith :Punctual ;
+          
+          rdfs:comment """Both telic and atelic (atel) situations can be divided into punctual (pct) and durative (dur) events (Comrie 1976a:41-44). To illustrate the distinction, compare two atelic verbs, \sneeze" and \run." One can run for an hour, and for that whole time the running is uninterrupted. There
+are not small points in time where the action of running has ceased. However, if one says that someone sneezed for an hour, the interpretation is that multiple events necessarily had to occur, and that there were small breaks between those events in which the event was not occurring. \Run" is therefore durative because its action can extend over a time span. \Sneeze" is punctual because, lexically, it has no duration: It is a single event that takes place for an instant and the action cannot be understood as extending over a time span. Forcibly extending a punctual action over a time span, for example by specifically stating a duration, forces a repetitive interpretation. 
+
+Sylak-Glasman 2016, p.10
+"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Dynamic
+
+:Dynamic rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Aktionsart ;
+         
+         owl:disjointWith :Stative ;
+         
+         rdfs:comment """The first distinction is between stative (stat) and dynamic (dyn) verbs.
+
+Eventives / Dynamics (`true only over a span of time' requires eort to maintain) `to die, build sth, sneeze, run' (Sylak-Glasman 2016, p. 9)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Feature
+
+:Feature rdf:type owl:Class ;
+         
+         rdfs:comment """"The first step in constructing the Universal Morphological Feature Schema was to identify the dimensions of meaning (i.e. morphological categories) that are expressed by overt inflectional morphology in the world's languages. These were identied by surveying the linguistic typology literature for common agreement features, and then by identifying the kinds of inflectional morphology that are typically associated with each part of speech." (Sylak-Glasman 2016, p. 6)
+
+Note that feature values are modeled as instances, not as classes, because "[t]he UniMorph Schema features represent semantic "atoms" that are never decomposed into more fine-grained meanings in any natural language." (Sylak-Glasman 2016, p. 5)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Punctual
+
+:Punctual rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Dynamic ;
+          
+          rdfs:comment """Both telic and atelic (atel) situations can be divided into punctual (pct) and durative (dur) events (Comrie 1976a:41-44). To illustrate the distinction, compare two atelic verbs, \sneeze" and \run." One can run for an hour, and for that whole time the running is uninterrupted. There
+are not small points in time where the action of running has ceased. However, if one says that someone sneezed for an hour, the interpretation is that multiple events necessarily had to occur, and that there were small breaks between those events in which the event was not occurring. \Run" is therefore durative because its action can extend over a time span. \Sneeze" is punctual because, lexically, it has no duration: It is a single event that takes place for an instant and the action cannot be understood as extending over a time span. Forcibly extending a punctual action over a time span, for example by specifically stating a duration, forces a repetitive interpretation. 
+
+Sylak-Glasman 2016, p.10
+"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Stative
+
+:Stative rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Aktionsart ;
+         
+         rdfs:comment """(true at any instant, requires no eort to remain true) `to know, love'
+
+Comrie (1976a:48-50) defines stative verbs as those whose action will continue (or continue to hold true) without any additional eort being applied. Moreover, a stative action usually continues without any internal change in the type of action that is occurring. For example, in \John knows Chris," no effort is required on John's part to continue to know someone and there is no internal dynamic to the action of knowing. However, in "John is building a shed," continued eort is required on John's part to continue building and the action of building involves dierent phases that progress to an endpoint.
+(Sylak-Glasman 2016, p. 9)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Telic
+
+:Telic rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Dynamic ;
+       
+       rdfs:comment """Telic (`builds to a culmination') `to drown, build sth'
+
+Telic verbs have a well-dened terminal point at which an action naturally terminates with a result Comrie (1976a:44-45). A test for telicity introduced by Klein (1974:106-107) is whether an action, when interrupted, can be felicitously described as having occurred. For example, if someone is drowning and they are interrupted, one cannot say \someone drowned." In contrast, if someone is playing and is interrupted, one can felicitously say \someone played." These examples, quoted in Comrie (1976a:45), illustrate the telicity of \drown" and the atelicity of \play." The action of drowning naturally terminates and yields a result whereas the action of playing need not ever necessarily terminate.
+(Sylak-Glasman 2016, p.9-10)"""@en .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://purl.org/olia/unimorph.owl#ACCMP
+
+:ACCMP rdf:type :Durative ,
+                :Telic ,
+                owl:Thing ;
+       
+       rdfs:label "accomplishment"@en ;
+       
+       :hasLabel "ACCMP" ;
+       
+       rdfs:comment """The distinction between punctual and durative telic verbs is (...) diffcult to describe. The actions of both verbs terminate in a result, but achievements (ach; punctual telic verbs) occur quickly and tend to mark a rapid state transition. For example, "die" represents an achievement because it marks a result that comes about instantly. A durative telic verb, such as "build," marks a result that takes place only after a span of time, and this is called, somewhat confusingly, an accomplishment (accmp).
+(Sylak-Glasman 2016, p. 10)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#ACH
+
+:ACH rdf:type :Punctual ,
+              :Telic ,
+              owl:Thing ;
+     
+     rdfs:label "achievement"@en ;
+     
+     :hasLabel "ACH" ;
+     
+     rdfs:comment """The distinction between punctual and durative telic verbs is (...) diffcult to describe. The actions of both verbs terminate in a result, but achievements (ach; punctual telic verbs) occur quickly and tend to mark a rapid state transition. For example, "die" represents an achievement because it marks a result that comes about instantly. A durative telic verb, such as "build," marks a result that takes place only after a span of time, and this is called, somewhat confusingly, an accomplishment (accmp).
+(Sylak-Glasman 2016, p. 10)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#ACTY
+
+:ACTY rdf:type :Atelic ,
+               :Durative ,
+               owl:Thing ;
+      
+      rdfs:label "activity"@en ;
+      
+      :hasLabel "ACTY" ;
+      
+      rdfs:comment """Atelic punctual verbs like \sneeze" are termed semelfactive (semel; Comrie 1976a:42) and atelic durative verbs are termed activities (acty; Vendler 1957:146). 
+(Sylak-Glasman 2016, p. 19)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#ATEL
+
+:ATEL rdf:type :Atelic ,
+               owl:Thing ;
+      
+      :hasLabel "ATEL" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#DUR
+
+:DUR rdf:type :Durative ,
+              owl:Thing ;
+     
+     :hasLabel "DUR" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#DYN
+
+:DYN rdf:type :Dynamic ,
+              owl:Thing ;
+     
+     :hasLabel "DYN" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#PCT
+
+:PCT rdf:type :Punctual ,
+              owl:Thing ;
+     
+     :hasLabel "PCT" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#SEMEL
+
+:SEMEL rdf:type :Atelic ,
+                :Punctual ,
+                owl:Thing ;
+       
+       rdfs:label "semelfactive"@en ;
+       
+       :hasLabel "SEMEL" ;
+       
+       rdfs:comment """Atelic punctual verbs like \sneeze" are termed semelfactive (semel; Comrie 1976a:42) and atelic durative verbs are termed activities (acty; Vendler 1957:146). 
+(Sylak-Glasman 2016, p. 19)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#STAT
+
+:STAT rdf:type :Stative ,
+               owl:Thing ;
+      
+      :hasLabel "STAT" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#TEL
+
+:TEL rdf:type :Telic ,
+              owl:Thing ;
+     
+     :hasLabel "TEL" .
+
+
+
+
+###  Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net
+
