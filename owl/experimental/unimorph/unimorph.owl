@@ -40,6 +40,7 @@ History:
 2017-08-14 Case, Comparison, Definiteness, Deixis, Evidentiality, Finiteness, Gender, Information Structure, Interrogativity, Mood, Number, Part of Speech, Person, Polarity [CC]
 2017-08-16 Politeness, Possession, Switch-Reference, Tense, Valency, Voice, Argument Marking [CC]
 2017-08-16 RDF/TTL validation (http://ttl.summerofcode.be/), OWL2/DL validation (Prot&#195;&#169;g&#195;&#169;, expressivity ALCHO(D)) [CC]
+2017-08-24 checked against UniMorph data [CC]
 &lt;br/&gt;
 Contributors:
 CC - Christian Chiarcos, christian.chiarcos@web.de</rdfs:comment>
@@ -2627,10 +2628,11 @@ Telic verbs have a well-defined terminal point at which an action naturally term
 
     <owl:Thing rdf:about="#HAB">
         <rdf:type rdf:resource="#IterativeAspect"/>
+        <rdfs:label xml:lang="en">habitual aspect</rdfs:label>
+        <hasLabel>HAB</hasLabel>
         <rdfs:comment xml:lang="en"
             >Habitual aspect: Infinite instances of the same TSit occur fully within an unbounded TT
 	(Sylak-Glassman 2016, p.15)</rdfs:comment>
-        <hasLabel>habitual aspect</hasLabel>
     </owl:Thing>
     
 
@@ -3494,17 +3496,12 @@ Telic verbs have a well-defined terminal point at which an action naturally term
 
     <!-- http://purl.org/olia/unimorph.owl#POS -->
 
-    <SpeculativeMood rdf:about="#POS">
-        <rdf:type rdf:resource="#Polarity"/>
+    <Polarity rdf:about="#POS">
         <rdf:type rdf:resource="&owl;Thing"/>
         <rdfs:label>positive</rdfs:label>
-        <rdfs:label>potential mood</rdfs:label>
         <rdfs:label>affirmative</rdfs:label>
         <hasLabel>POS</hasLabel>
-        <hasLabel>POT</hasLabel>
-        <rdfs:comment xml:lang="en"
-            >[M]any languages exhibit a potential mood, including Finnish. The potential mood is translated &quot;may&quot; in the sense of &quot;may or may not, depending on circumstances.&quot; (Sylak-Glassman 2016, p.32)</rdfs:comment>
-    </SpeculativeMood>
+    </Polarity>
     
 
 
@@ -3515,6 +3512,18 @@ Telic verbs have a well-defined terminal point at which an action naturally term
         <rdfs:label>behind</rdfs:label>
         <hasLabel>POST</hasLabel>
     </PlaceMorpheme>
+    
+
+
+    <!-- http://purl.org/olia/unimorph.owl#POT -->
+
+    <owl:Thing rdf:about="#POT">
+        <rdf:type rdf:resource="#SpeculativeMood"/>
+        <rdfs:label xml:lang="en">potential mood</rdfs:label>
+        <hasLabel>POT</hasLabel>
+        <rdfs:comment xml:lang="en"
+            >[M]any languages exhibit a potential mood, including Finnish. The potential mood is translated &quot;may&quot; in the sense of &quot;may or may not, depending on circumstances.&quot; (Sylak-Glassman 2016, p.32)</rdfs:comment>
+    </owl:Thing>
     
 
 
@@ -4697,6 +4706,302 @@ Telic verbs have a well-defined terminal point at which an action naturally term
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="#POL"/>
+            <rdf:Description rdf:about="#PHOR"/>
+            <rdf:Description rdf:about="#LGSPEC"/>
+            <rdf:Description rdf:about="#AUNPRP"/>
+            <rdf:Description rdf:about="#BANTU10"/>
+            <rdf:Description rdf:about="#PROX"/>
+            <rdf:Description rdf:about="#DITR"/>
+            <rdf:Description rdf:about="#PRIV"/>
+            <rdf:Description rdf:about="#IND"/>
+            <rdf:Description rdf:about="#ACH"/>
+            <rdf:Description rdf:about="#INT"/>
+            <rdf:Description rdf:about="#RECP"/>
+            <rdf:Description rdf:about="#ALN"/>
+            <rdf:Description rdf:about="#QUOT"/>
+            <rdf:Description rdf:about="#NOM"/>
+            <rdf:Description rdf:about="#INFM"/>
+            <rdf:Description rdf:about="#PSS2DF"/>
+            <rdf:Description rdf:about="#LOG"/>
+            <rdf:Description rdf:about="#reference"/>
+            <rdf:Description rdf:about="#INCL"/>
+            <rdf:Description rdf:about="#BEL"/>
+            <rdf:Description rdf:about="#PSS3D"/>
+            <rdf:Description rdf:about="#CN_R_MN"/>
+            <rdf:Description rdf:about="#ARGER"/>
+            <rdf:Description rdf:about="#PSS2PF"/>
+            <rdf:Description rdf:about="#NAKH2"/>
+            <rdf:Description rdf:about="#NAKH4"/>
+            <rdf:Description rdf:about="#CFOC"/>
+            <rdf:Description rdf:about="#ON"/>
+            <rdf:Description rdf:about="#BANTU20"/>
+            <rdf:Description rdf:about="#INS"/>
+            <rdf:Description rdf:about="#APUD"/>
+            <rdf:Description rdf:about="#ACFOC"/>
+            <rdf:Description rdf:about="#REFL"/>
+            <rdf:Description rdf:about="#INDF"/>
+            <rdf:Description rdf:about="#NEG"/>
+            <rdf:Description rdf:about="#NAKH7"/>
+            <rdf:Description rdf:about="#V_PTCP"/>
+            <rdf:Description rdf:about="#DUR"/>
+            <rdf:Description rdf:about="#CIRC"/>
+            <rdf:Description rdf:about="#PSS2SF"/>
+            <rdf:Description rdf:about="#VERS"/>
+            <rdf:Description rdf:about="#BYWAY"/>
+            <rdf:Description rdf:about="#MED"/>
+            <rdf:Description rdf:about="#PROG"/>
+            <rdf:Description rdf:about="#GEN"/>
+            <rdf:Description rdf:about="#TOP"/>
+            <rdf:Description rdf:about="#AB"/>
+            <rdf:Description rdf:about="#FORM_ELEV"/>
+            <rdf:Description rdf:about="#LKLY"/>
+            <rdf:Description rdf:about="#fourthPerson"/>
+            <rdf:Description rdf:about="#FRML"/>
+            <rdf:Description rdf:about="#ONHR"/>
+            <rdf:Description rdf:about="#COMP"/>
+            <rdf:Description rdf:about="#BANTU4"/>
+            <rdf:Description rdf:about="#FUT"/>
+            <rdf:Description rdf:about="#EQTV"/>
+            <rdf:Description rdf:about="#SS"/>
+            <rdf:Description rdf:about="#POST"/>
+            <rdf:Description rdf:about="#BANTU19"/>
+            <rdf:Description rdf:about="#PSS2PM"/>
+            <rdf:Description rdf:about="#BANTU5"/>
+            <rdf:Description rdf:about="#RCT"/>
+            <rdf:Description rdf:about="#INTER"/>
+            <rdf:Description rdf:about="#INAN"/>
+            <rdf:Description rdf:about="#ARGNO"/>
+            <rdf:Description rdf:about="#ARG1"/>
+            <rdf:Description rdf:about="#SEMEL"/>
+            <rdf:Description rdf:about="#LOW"/>
+            <rdf:Description rdf:about="#BANTU18"/>
+            <rdf:Description rdf:about="#FOC"/>
+            <rdf:Description rdf:about="#ADM"/>
+            <rdf:Description rdf:about="#COND_APO"/>
+            <rdf:Description rdf:about="#predication"/>
+            <rdf:Description rdf:about="#ABS"/>
+            <rdf:Description rdf:about="#EVEN"/>
+            <rdf:Description rdf:about="#DSADV"/>
+            <rdf:Description rdf:about="#ALL"/>
+            <rdf:Description rdf:about="#BANTU3"/>
+            <rdf:Description rdf:about="#NAKH5"/>
+            <rdf:Description rdf:about="#BANTU17"/>
+            <rdf:Description rdf:about="#SEGMA"/>
+            <rdf:Description rdf:about="#NOREF"/>
+            <rdf:Description rdf:about="#ANIM"/>
+            <rdf:Description rdf:about="#BANTU22"/>
+            <rdf:Description rdf:about="#FOREG"/>
+            <rdf:Description rdf:about="#BANTU1"/>
+            <rdf:Description rdf:about="#APPRX"/>
+            <rdf:Description rdf:about="#PSS1DI"/>
+            <rdf:Description rdf:about="#INTR"/>
+            <rdf:Description rdf:about="#SSADV"/>
+            <rdf:Description rdf:about="#VIS"/>
+            <rdf:Description rdf:about="#APPL"/>
+            <rdf:Description rdf:about="#FH"/>
+            <rdf:Description rdf:about="#SG"/>
+            <rdf:Description rdf:about="#ARGAB"/>
+            <rdf:Description rdf:about="#COND_PROT"/>
+            <rdf:Description rdf:about="#ASSUM"/>
+            <rdf:Description rdf:about="#ARG3"/>
+            <rdf:Description rdf:about="#SEN"/>
+            <rdf:Description rdf:about="#PSS3PF"/>
+            <rdf:Description rdf:about="#PROPR"/>
+            <rdf:Description rdf:about="#DIR"/>
+            <rdf:Description rdf:about="#thirdPerson"/>
+            <rdf:Description rdf:about="#STELEV"/>
+            <rdf:Description rdf:about="#PSS1D"/>
+            <rdf:Description rdf:about="#AUPRP"/>
+            <rdf:Description rdf:about="#DET"/>
+            <rdf:Description rdf:about="#NAKH1"/>
+            <rdf:Description rdf:about="#GPAUC"/>
+            <rdf:Description rdf:about="#STAT"/>
+            <rdf:Description rdf:about="#SUB"/>
+            <rdf:Description rdf:about="#EXCL"/>
+            <rdf:Description rdf:about="#NFIN"/>
+            <rdf:Description rdf:about="#BANTU13"/>
+            <rdf:Description rdf:about="#LIT"/>
+            <rdf:Description rdf:about="#MPOL"/>
+            <rdf:Description rdf:about="#SPEC"/>
+            <rdf:Description rdf:about="#SIMMA"/>
+            <rdf:Description rdf:about="#PURP"/>
+            <rdf:Description rdf:about="#V"/>
+            <rdf:Description rdf:about="#NVSEN"/>
+            <rdf:Description rdf:about="#PSS1S"/>
+            <rdf:Description rdf:about="#CLF"/>
+            <rdf:Description rdf:about="#TERM"/>
+            <rdf:Description rdf:about="#firstPerson"/>
+            <rdf:Description rdf:about="#OBV"/>
+            <rdf:Description rdf:about="#PSS2SFORM"/>
+            <rdf:Description rdf:about="#NAKH3"/>
+            <rdf:Description rdf:about="#PSS3SF"/>
+            <rdf:Description rdf:about="#OR"/>
+            <rdf:Description rdf:about="#CAUS"/>
+            <rdf:Description rdf:about="#ANTIP"/>
+            <rdf:Description rdf:about="#MASC"/>
+            <rdf:Description rdf:about="#HOD"/>
+            <rdf:Description rdf:about="#PROPN"/>
+            <rdf:Description rdf:about="#HUM"/>
+            <rdf:Description rdf:about="#N"/>
+            <rdf:Description rdf:about="#PSS2P"/>
+            <rdf:Description rdf:about="#POS"/>
+            <rdf:Description rdf:about="#ABV"/>
+            <rdf:Description rdf:about="#PFV"/>
+            <rdf:Description rdf:about="#NALN"/>
+            <rdf:Description rdf:about="#ABL"/>
+            <rdf:Description rdf:about="#ADP"/>
+            <rdf:Description rdf:about="#DED"/>
+            <rdf:Description rdf:about="#BANTU23"/>
+            <rdf:Description rdf:about="#ATEL"/>
+            <rdf:Description rdf:about="#HRSY"/>
+            <rdf:Description rdf:about="#INTEN"/>
+            <rdf:Description rdf:about="#NSPEC"/>
+            <rdf:Description rdf:about="#zeroPerson"/>
+            <rdf:Description rdf:about="#AVOID"/>
+            <rdf:Description rdf:about="#IMP"/>
+            <rdf:Description rdf:about="#DAT"/>
+            <rdf:Description rdf:about="#PERM"/>
+            <rdf:Description rdf:about="#RMT"/>
+            <rdf:Description rdf:about="#BFOC"/>
+            <rdf:Description rdf:about="#RL"/>
+            <rdf:Description rdf:about="#PSS3P"/>
+            <rdf:Description rdf:about="#DYN"/>
+            <rdf:Description rdf:about="#PRT"/>
+            <rdf:Description rdf:about="#PROL"/>
+            <rdf:Description rdf:about="#FEM"/>
+            <rdf:Description rdf:about="#HAB"/>
+            <rdf:Description rdf:about="#BANTU2"/>
+            <rdf:Description rdf:about="#LFOC"/>
+            <rdf:Description rdf:about="#BANTU12"/>
+            <rdf:Description rdf:about="#PSS3SM"/>
+            <rdf:Description rdf:about="#CMPR"/>
+            <rdf:Description rdf:about="#TRANS"/>
+            <rdf:Description rdf:about="#BANTU9"/>
+            <rdf:Description rdf:about="#ACTY"/>
+            <rdf:Description rdf:about="#IRR"/>
+            <rdf:Description rdf:about="#POT"/>
+            <rdf:Description rdf:about="#ESS"/>
+            <rdf:Description rdf:about="#IMMED"/>
+            <rdf:Description rdf:about="#SIM"/>
+            <rdf:Description rdf:about="#NAKH8"/>
+            <rdf:Description rdf:about="#ITER"/>
+            <rdf:Description rdf:about="#COMPV"/>
+            <rdf:Description rdf:about="#oneDAY"/>
+            <rdf:Description rdf:about="#V_MSDR"/>
+            <rdf:Description rdf:about="#IPFV"/>
+            <rdf:Description rdf:about="#PST"/>
+            <rdf:Description rdf:about="#TR"/>
+            <rdf:Description rdf:about="#SPRL"/>
+            <rdf:Description rdf:about="#REM"/>
+            <rdf:Description rdf:about="#BANTU16"/>
+            <rdf:Description rdf:about="#REF2"/>
+            <rdf:Description rdf:about="#PL"/>
+            <rdf:Description rdf:about="#PRF"/>
+            <rdf:Description rdf:about="#CONJ"/>
+            <rdf:Description rdf:about="#ERG"/>
+            <rdf:Description rdf:about="#REF1"/>
+            <rdf:Description rdf:about="#INVN"/>
+            <rdf:Description rdf:about="#COL"/>
+            <rdf:Description rdf:about="#REL"/>
+            <rdf:Description rdf:about="#AT"/>
+            <rdf:Description rdf:about="#PROXM"/>
+            <rdf:Description rdf:about="#PRX"/>
+            <rdf:Description rdf:about="#secondPerson"/>
+            <rdf:Description rdf:about="#PSSD"/>
+            <rdf:Description rdf:about="#PFOC"/>
+            <rdf:Description rdf:about="#PRP"/>
+            <rdf:Description rdf:about="#V_CVB"/>
+            <rdf:Description rdf:about="#NEUT"/>
+            <rdf:Description rdf:about="#AUX"/>
+            <rdf:Description rdf:about="#NAKH6"/>
+            <rdf:Description rdf:about="#AGFOC"/>
+            <rdf:Description rdf:about="#PSS2S"/>
+            <rdf:Description rdf:about="#STSUPR"/>
+            <rdf:Description rdf:about="#PSS2SM"/>
+            <rdf:Description rdf:about="#BANTU6"/>
+            <rdf:Description rdf:about="#PASS"/>
+            <rdf:Description rdf:about="#PRO"/>
+            <rdf:Description rdf:about="#ARGP"/>
+            <rdf:Description rdf:about="#PART"/>
+            <rdf:Description rdf:about="#PSS1P"/>
+            <rdf:Description rdf:about="#MID"/>
+            <rdf:Description rdf:about="#BANTU21"/>
+            <rdf:Description rdf:about="#PSS3PM"/>
+            <rdf:Description rdf:about="#ARGAC"/>
+            <rdf:Description rdf:about="#HIGH"/>
+            <rdf:Description rdf:about="#SBJV"/>
+            <rdf:Description rdf:about="#ACCMP"/>
+            <rdf:Description rdf:about="#ARGDA"/>
+            <rdf:Description rdf:about="#NOMS"/>
+            <rdf:Description rdf:about="#PAUC"/>
+            <rdf:Description rdf:about="#REAL"/>
+            <rdf:Description rdf:about="#VOC"/>
+            <rdf:Description rdf:about="#ADJ"/>
+            <rdf:Description rdf:about="#BANTU11"/>
+            <rdf:Description rdf:about="#COND"/>
+            <rdf:Description rdf:about="#PCT"/>
+            <rdf:Description rdf:about="#TEL"/>
+            <rdf:Description rdf:about="#BEN"/>
+            <rdf:Description rdf:about="#FORM"/>
+            <rdf:Description rdf:about="#PSS1PE"/>
+            <rdf:Description rdf:about="#ACC"/>
+            <rdf:Description rdf:about="#DECL"/>
+            <rdf:Description rdf:about="#TRI"/>
+            <rdf:Description rdf:about="#IN"/>
+            <rdf:Description rdf:about="#ACT"/>
+            <rdf:Description rdf:about="#BANTU14"/>
+            <rdf:Description rdf:about="#BANTU7"/>
+            <rdf:Description rdf:about="#PROSP"/>
+            <rdf:Description rdf:about="#NUM"/>
+            <rdf:Description rdf:about="#PSS2D"/>
+            <rdf:Description rdf:about="#DU"/>
+            <rdf:Description rdf:about="#FORM_HUMB"/>
+            <rdf:Description rdf:about="#IFOC"/>
+            <rdf:Description rdf:about="#NHUM"/>
+            <rdf:Description rdf:about="#NFH"/>
+            <rdf:Description rdf:about="#ARG2"/>
+            <rdf:Description rdf:about="#PSS2DM"/>
+            <rdf:Description rdf:about="#OPT"/>
+            <rdf:Description rdf:about="#INTJ"/>
+            <rdf:Description rdf:about="#INV"/>
+            <rdf:Description rdf:about="#modification"/>
+            <rdf:Description rdf:about="#PSS3DF"/>
+            <rdf:Description rdf:about="#VISU"/>
+            <rdf:Description rdf:about="#INFER"/>
+            <rdf:Description rdf:about="#ONVR"/>
+            <rdf:Description rdf:about="#DRCT"/>
+            <rdf:Description rdf:about="#FIN"/>
+            <rdf:Description rdf:about="#ARGS"/>
+            <rdf:Description rdf:about="#DS"/>
+            <rdf:Description rdf:about="#PSS1PI"/>
+            <rdf:Description rdf:about="#PRS"/>
+            <rdf:Description rdf:about="#PSS1DE"/>
+            <rdf:Description rdf:about="#ANTE"/>
+            <rdf:Description rdf:about="#AVR"/>
+            <rdf:Description rdf:about="#ARGBE"/>
+            <rdf:Description rdf:about="#NVIS"/>
+            <rdf:Description rdf:about="#ART"/>
+            <rdf:Description rdf:about="#BANTU8"/>
+            <rdf:Description rdf:about="#PSS3S"/>
+            <rdf:Description rdf:about="#PSS3DM"/>
+            <rdf:Description rdf:about="#OBLIG"/>
+            <rdf:Description rdf:about="#BANTU15"/>
+            <rdf:Description rdf:about="#COM"/>
+            <rdf:Description rdf:about="#REMT"/>
+            <rdf:Description rdf:about="#DEB"/>
+            <rdf:Description rdf:about="#PSS2SINFM"/>
+            <rdf:Description rdf:about="#IMPRS"/>
+            <rdf:Description rdf:about="#GRPL"/>
+            <rdf:Description rdf:about="#ADV"/>
+            <rdf:Description rdf:about="#AUD"/>
+            <rdf:Description rdf:about="#RPRT"/>
+            <rdf:Description rdf:about="#DEF"/>
+        </owl:distinctMembers>
+    </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">

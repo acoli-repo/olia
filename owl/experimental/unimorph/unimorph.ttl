@@ -28,6 +28,7 @@ History:
 2017-08-14 Case, Comparison, Definiteness, Deixis, Evidentiality, Finiteness, Gender, Information Structure, Interrogativity, Mood, Number, Part of Speech, Person, Polarity [CC]
 2017-08-16 Politeness, Possession, Switch-Reference, Tense, Valency, Voice, Argument Marking [CC]
 2017-08-16 RDF/TTL validation (http://ttl.summerofcode.be/), OWL2/DL validation (Protégé, expressivity ALCHO(D)) [CC]
+2017-08-24 checked against UniMorph data [CC]
 <br/>
 Contributors:
 CC - Christian Chiarcos, christian.chiarcos@web.de"""@en ;
@@ -2668,10 +2669,12 @@ owl:Thing rdf:type owl:Class .
 :HAB rdf:type :IterativeAspect ,
               owl:Thing ;
      
-     rdfs:comment """Habitual aspect: Infinite instances of the same TSit occur fully within an unbounded TT
-	(Sylak-Glassman 2016, p.15)"""@en ;
+     rdfs:label "habitual aspect"@en ;
      
-     :hasLabel "habitual aspect" .
+     :hasLabel "HAB" ;
+     
+     rdfs:comment """Habitual aspect: Infinite instances of the same TSit occur fully within an unbounded TT
+	(Sylak-Glassman 2016, p.15)"""@en .
 
 
 
@@ -3583,17 +3586,12 @@ owl:Thing rdf:type owl:Class .
 ###  http://purl.org/olia/unimorph.owl#POS
 
 :POS rdf:type :Polarity ,
-              :SpeculativeMood ,
               owl:Thing ;
      
      rdfs:label "positive" ,
-                "potential mood" ,
                 "affirmative" ;
      
-     :hasLabel "POS" ,
-               "POT" ;
-     
-     rdfs:comment "[M]any languages exhibit a potential mood, including Finnish. The potential mood is translated "may" in the sense of "may or may not, depending on circumstances." (Sylak-Glassman 2016, p.32)"@en .
+     :hasLabel "POS" .
 
 
 
@@ -3605,6 +3603,19 @@ owl:Thing rdf:type owl:Class .
       rdfs:label "behind" ;
       
       :hasLabel "POST" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#POT
+
+:POT rdf:type :SpeculativeMood ,
+              owl:Thing ;
+     
+     rdfs:label "potential mood"@en ;
+     
+     :hasLabel "POT" ;
+     
+     rdfs:comment "[M]any languages exhibit a potential mood, including Finnish. The potential mood is translated "may" in the sense of "may or may not, depending on circumstances." (Sylak-Glassman 2016, p.32)"@en .
 
 
 
@@ -4835,6 +4846,300 @@ owl:Thing rdf:type owl:Class .
 #################################################################
 
 
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :POL
+                        :PHOR
+                        :LGSPEC
+                        :AUNPRP
+                        :BANTU10
+                        :PROX
+                        :DITR
+                        :PRIV
+                        :IND
+                        :ACH
+                        :INT
+                        :RECP
+                        :ALN
+                        :QUOT
+                        :NOM
+                        :INFM
+                        :PSS2DF
+                        :LOG
+                        :reference
+                        :INCL
+                        :BEL
+                        :PSS3D
+                        :CN_R_MN
+                        :ARGER
+                        :PSS2PF
+                        :NAKH2
+                        :NAKH4
+                        :CFOC
+                        :ON
+                        :BANTU20
+                        :INS
+                        :APUD
+                        :ACFOC
+                        :REFL
+                        :INDF
+                        :NEG
+                        :NAKH7
+                        :V_PTCP
+                        :DUR
+                        :CIRC
+                        :PSS2SF
+                        :VERS
+                        :BYWAY
+                        :MED
+                        :PROG
+                        :GEN
+                        :TOP
+                        :AB
+                        :FORM_ELEV
+                        :LKLY
+                        :fourthPerson
+                        :FRML
+                        :ONHR
+                        :COMP
+                        :BANTU4
+                        :FUT
+                        :EQTV
+                        :SS
+                        :POST
+                        :BANTU19
+                        :PSS2PM
+                        :BANTU5
+                        :RCT
+                        :INTER
+                        :INAN
+                        :ARGNO
+                        :ARG1
+                        :SEMEL
+                        :LOW
+                        :BANTU18
+                        :FOC
+                        :ADM
+                        :COND_APO
+                        :predication
+                        :ABS
+                        :EVEN
+                        :DSADV
+                        :ALL
+                        :BANTU3
+                        :NAKH5
+                        :BANTU17
+                        :SEGMA
+                        :NOREF
+                        :ANIM
+                        :BANTU22
+                        :FOREG
+                        :BANTU1
+                        :APPRX
+                        :PSS1DI
+                        :INTR
+                        :SSADV
+                        :VIS
+                        :APPL
+                        :FH
+                        :SG
+                        :ARGAB
+                        :COND_PROT
+                        :ASSUM
+                        :ARG3
+                        :SEN
+                        :PSS3PF
+                        :PROPR
+                        :DIR
+                        :thirdPerson
+                        :STELEV
+                        :PSS1D
+                        :AUPRP
+                        :DET
+                        :NAKH1
+                        :GPAUC
+                        :STAT
+                        :SUB
+                        :EXCL
+                        :NFIN
+                        :BANTU13
+                        :LIT
+                        :MPOL
+                        :SPEC
+                        :SIMMA
+                        :PURP
+                        :V
+                        :NVSEN
+                        :PSS1S
+                        :CLF
+                        :TERM
+                        :firstPerson
+                        :OBV
+                        :PSS2SFORM
+                        :NAKH3
+                        :PSS3SF
+                        :OR
+                        :CAUS
+                        :ANTIP
+                        :MASC
+                        :HOD
+                        :PROPN
+                        :HUM
+                        :N
+                        :PSS2P
+                        :POS
+                        :ABV
+                        :PFV
+                        :NALN
+                        :ABL
+                        :ADP
+                        :DED
+                        :BANTU23
+                        :ATEL
+                        :HRSY
+                        :INTEN
+                        :NSPEC
+                        :zeroPerson
+                        :AVOID
+                        :IMP
+                        :DAT
+                        :PERM
+                        :RMT
+                        :BFOC
+                        :RL
+                        :PSS3P
+                        :DYN
+                        :PRT
+                        :PROL
+                        :FEM
+                        :HAB
+                        :BANTU2
+                        :LFOC
+                        :BANTU12
+                        :PSS3SM
+                        :CMPR
+                        :TRANS
+                        :BANTU9
+                        :ACTY
+                        :IRR
+                        :POT
+                        :ESS
+                        :IMMED
+                        :SIM
+                        :NAKH8
+                        :ITER
+                        :COMPV
+                        :oneDAY
+                        :V_MSDR
+                        :IPFV
+                        :PST
+                        :TR
+                        :SPRL
+                        :REM
+                        :BANTU16
+                        :REF2
+                        :PL
+                        :PRF
+                        :CONJ
+                        :ERG
+                        :REF1
+                        :INVN
+                        :COL
+                        :REL
+                        :AT
+                        :PROXM
+                        :PRX
+                        :secondPerson
+                        :PSSD
+                        :PFOC
+                        :PRP
+                        :V_CVB
+                        :NEUT
+                        :AUX
+                        :NAKH6
+                        :AGFOC
+                        :PSS2S
+                        :STSUPR
+                        :PSS2SM
+                        :BANTU6
+                        :PASS
+                        :PRO
+                        :ARGP
+                        :PART
+                        :PSS1P
+                        :MID
+                        :BANTU21
+                        :PSS3PM
+                        :ARGAC
+                        :HIGH
+                        :SBJV
+                        :ACCMP
+                        :ARGDA
+                        :NOMS
+                        :PAUC
+                        :REAL
+                        :VOC
+                        :ADJ
+                        :BANTU11
+                        :COND
+                        :PCT
+                        :TEL
+                        :BEN
+                        :FORM
+                        :PSS1PE
+                        :ACC
+                        :DECL
+                        :TRI
+                        :IN
+                        :ACT
+                        :BANTU14
+                        :BANTU7
+                        :PROSP
+                        :NUM
+                        :PSS2D
+                        :DU
+                        :FORM_HUMB
+                        :IFOC
+                        :NHUM
+                        :NFH
+                        :ARG2
+                        :PSS2DM
+                        :OPT
+                        :INTJ
+                        :INV
+                        :modification
+                        :PSS3DF
+                        :VISU
+                        :INFER
+                        :ONVR
+                        :DRCT
+                        :FIN
+                        :ARGS
+                        :DS
+                        :PSS1PI
+                        :PRS
+                        :PSS1DE
+                        :ANTE
+                        :AVR
+                        :ARGBE
+                        :NVIS
+                        :ART
+                        :BANTU8
+                        :PSS3S
+                        :PSS3DM
+                        :OBLIG
+                        :BANTU15
+                        :COM
+                        :REMT
+                        :DEB
+                        :PSS2SINFM
+                        :IMPRS
+                        :GRPL
+                        :ADV
+                        :AUD
+                        :RPRT
+                        :DEF
+                      )
+] .
 [ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( :POL
                         :PHOR
