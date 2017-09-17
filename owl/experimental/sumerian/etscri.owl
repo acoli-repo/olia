@@ -1,0 +1,2244 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY etscri "http://purl.org/olia/etscri.owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/etscri.owl#"
+     xml:base="http://purl.org/olia/etscri.owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:etscri="http://purl.org/olia/etscri.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment xml:lang="en"
+            >Electronic Text Corpus of Sumerian Royal Inscriptions (ETSCRI): OLiA Annotation Model
+
+This document is a formal specification of the annotation guidelines of the ETSCRI corpus as found under http://oracc.museum.upenn.edu/etcsri/index.html. Unless marked otherwise, the textual content of this ontology is an excerpt of this site. Literal quotes are not marked as such, instead, comments by the ontology editors are explicitly marked.
+
+The Electronic Text Corpus of Sumerian Royal Inscriptions (ETCSRI) project&#39;s main objective is the creation of an annotated, grammatically and morphologically analyzed, transliterated, trilingual (Sumerian-English-Hungarian), parallel corpus of all Sumerian royal inscriptions.
+
+Sumerian is a now extinct language that was spoken in the southern part of ancient Mesopotamia, present-day Iraq. It is an isolate without known cognate languages. Its first written sources that can be analyzed linguistically date from around the middle of the third millennium BCE. The grammar of the Sumerian language has been the subject of intensive inquiry since the first half of the 20th century. There have been, however, two main obstacles to the research on Sumerian grammar. First, scholars tried to describe Sumerian grammar using the grammatical categories of the linguistic tradition based on the Greek and Latin languages. Second, the linguistic data needed for the research was not available in an easily accessible form; the scholars had to rely mostly on their own personal collections of Sumerian texts whose size and reliability depended on the interest and status of the scholar. Most of these personal collections were useful only for the collector as they had the form of card-collections with idiosyncratic conventions, and the data on the cards could be processed only manually.
+
+The theoretical framework used for describing Sumerian has changed thoroughly since the 1980&#39;s. A number of articles and grammatical descriptions have been published or become available whose authors were informed on the results of modern descriptive linguistics (see, e.g. Attinger 1993, the papers of Black &#8212; Z&#243;lyomi 2000, Black &#8212; Z&#243;lyomi 2007, Coghill &#8212; Deutscher 2002, Jagersma 2010, Michalowski 1980 and 2004, Woods 2008, Z&#243;lyomi 1996, 2005, 2007b, and 2014). These authors discarded the straightjacket of traditional linguistics and described Sumerian with reference to linguistic analysis carried out on non-European languages. The consequence has been a much better understanding of Sumerian grammar and that the results of grammatical research on Sumerian can now be related to the results of modern descriptive linguistics based on cross-linguistic research.
+
+The corpus of Sumerian monumental inscriptions commissioned by Mesopotamian kings, i.e. the corpus of royal inscriptions, consists of approximately 25.000 lines that correspond to roughly 50.000 words. The earliest texts come from the 25th century BCE, while the latest texts to be included in the corpus come from the end of the Old Babylonian Period (= 16th c. BCE). This historically and linguistically important group of Sumerian texts therefore spans almost one thousand years, making it an ideal object of diachronic linguistic studies.
+
+ETCSRI is developed at the Department of Assyriology and Hebrew Studies (Institute of Ancient Studies, E&#246;tv&#246;s L. University, Budapest) by a research team led by G&#225;bor Z&#243;lyomi as part of The Open Richly Annotated Cuneiform Corpus with the continuous assistance and help of Steve Tinney.
+
+Funding for ETCSRI was provided by the Hungarian Scientific Research Fund (OTKA) between 2008.10.01&#8212;2013.03.30 (project no. K75104). 
+
+The ETSCRI annotation model was created in the context of the project Machine Translation and Automated Analysis of Cuneiform (MTAAC), headed by Heather Baker (U Toronto, Canada), Christian Chiarcos (GU Frankfurt, Germany) and Robert Englund (UCLA, US) and jointly funded by SSHRC, DFG and NEH in as a Trans-Atlantic Platform for the Social Sciences and Humanities (T-AP): Digging into Data challenge award (2017-2019).
+
+References
+
+Z&#243;lyomi, G&#225;bor - Tanos, B&#225;lint - S&#246;vegj&#225;rt&#243;, Szilvia. The Electronic Text Corpus of Sumerian Royal Inscriptions. 2008-. &lt;http://oracc.museum.upenn.edu/etcsri/index.html&gt;</rdfs:comment>
+        <owl:versionInfo xml:lang="en"
+            >history
+2017-09-17 created for  M2, mostly (CC)
+
+contributors
+CC - Christian Chiarcos</owl:versionInfo>
+        <rdfs:isDefinedBy xml:lang="en"
+            >http://oracc.museum.upenn.edu/etcsri/index.html</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagContaining -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTagContaining"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagMatching -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTagMatching"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagStartingWith -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTagStartingWith"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTier"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#omment -->
+
+    <owl:DatatypeProperty rdf:about="&rdfs;omment"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#M1 -->
+
+    <owl:Class rdf:about="#M1">
+        <rdfs:subClassOf rdf:resource="#MorphemicRepresentation"/>
+        <owl:versionInfo
+            >M1 contains the actual morphological segmentation. Note that the individual morphemes have not been copied, but only the M2 glosses.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#M1Disambiguator -->
+
+    <owl:Class rdf:about="#M1Disambiguator">
+        <rdfs:subClassOf rdf:resource="#MorphemicRepresentation"/>
+        <rdfs:comment xml:lang="en"
+            >Homographic word forms (i.e. word forms that have the same OR but differ in their morphemic representations [= M1]) and homomorphemic word forms (i.e. morphemic representations that are identical but receive different morphemic glossing [M2]) will, however, be distinguished by disambiguators in the lemmatized transliteration.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#M2 -->
+
+    <owl:Class rdf:about="#M2">
+        <rdfs:label xml:lang="en">description</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#MorphemicGlossing"/>
+        <owl:versionInfo
+            >M2 contains the actual feature annotations</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#M2Disambiguator -->
+
+    <owl:Class rdf:about="#M2Disambiguator">
+        <rdfs:subClassOf rdf:resource="#MorphemicGlossing"/>
+        <rdfs:comment xml:lang="en"
+            >Homographic word forms (i.e. word forms that have the same OR but differ in their morphemic representations [= M1]) and homomorphemic word forms (i.e. morphemic representations that are identical but receive different morphemic glossing [M2]) will, however, be distinguished by disambiguators in the lemmatized transliteration.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MorphemicGlossing -->
+
+    <owl:Class rdf:about="#MorphemicGlossing">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasTier"/>
+                <owl:hasValue>M2</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en"
+            >In ETCSRI every word form is represented on three levels:
+
+- in orthographic representation, or transliteration;
+- in morphemic representation (M1); and
+- in morphemic glossing representation (M2).
+
+All three representations of a given word form are stored in the project&#39;s glossary under the heading of the lemma to which the word form is assigned.
+
+The morphemic glossing (henceforth, M2) of each word form is presented in the ##-part of the @form lines in the glossary. The morphemic glossing used by ETCSR attempts to follow the guidelines of Lehmann 2004. The grammatical morphemes are listed with their morphemic glossing correspondences on the page &quot;Morphological parsing&quot; of this portal. Ex. (5) below shows the morphemic representation of the word form transliterated as lugal-a-ni with its morphemic glossing:
+
+(5) @form lugal-a-ni /lugal #N1=lugal.N3=ani.N5=ra ##N1=STEM.N3=3-SG-H-POSS.N5=DAT-H
+
+In M2, in the glossary file (sux.glo), stems are represented by the gloss describing the kind of stem, e.g. &quot;STEM&quot;, or &quot;STEM-RDP&quot; etc., while in the proper name file (qpn.glo) stems are referred to as &quot;NAME&quot; as in ex. (6) below.
+
+Unidentifiable morphemes are marked with an &quot;X&quot; in morphemic glossing. In ex. (6) below, which contains a word form from Gudea 53 [E3/1.01.07.053], 4, the morpheme /e/ cannot be identified on the basis of the context; consequently it is glossed as &quot;X&quot;.
+
+(6) @form ?ir?-nun-na-ke? %sux /?ir?-nun-na #N1=?irnuna.N5=ak.N5=e ##N1=NAME.N5=GEN.N5=X</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MorphemicRepresentation -->
+
+    <owl:Class rdf:about="#MorphemicRepresentation">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&system;hasTier"/>
+                <owl:hasValue>M1</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en"
+            >In ETCSRI every word form is represented on three levels:
+
+- in orthographic representation, or transliteration;
+- in morphemic representation (M1); and
+- in morphemic glossing representation (M2).
+
+All three representations of a given word form are stored in the project&#39;s glossary under the heading of the lemma to which the word form is assigned.
+
+The morphemic representation of each word form is presented in the #-part (= MORPH) of the @form lines in the glossary. ETCSRI uses special conventions (detailed below) to encode an analysis of Sumerian that follows a modified version of the analysis outlined in Z&#243;lyomi 2007b. This approach describes Sumerian using the model of so-called template morphology (see, e.g., Stump 1998), which arranges all morphemes into structural slots. The grammatical morphemes are listed with their morphemic glossing correspondences on the page &quot;Morphological parsing&quot; of this portal. Ex. (1) below shows the M1 of the word form transliterated as lugal-a-ni:
+
+(1) @form lugal-a-ni /lugal #N1=lugal.N3=ani.N5=ra
+
+Each morpheme is represented by a complex symbol that consists of a position tag (= p-tag) followed after an equals sign by the morpheme itself. The symbols are seperated by periods. A position-tag gives the morpheme&#39;s position within the nominal, verbal, or non-finite verbal template, and has the form like N1 which means &quot;the first slot of the nominal template&quot; (for the nominal, verbal, and non-finite verbal templates, cf. the document entitled &quot;ETCSRI&#39;s Morphological Parsing&quot;). In M1, stems are represented by the Citation Form (= CF) used by ePSD. If the stem is fully or partially reduplicated, then it is represented by its reconstructed form in M1 (for example, the PF form of ?ar will be ?a?a, the pluralform of dim? will be dimdim). In case of verbs using suppletive stems, the stems are represented by the Citation Form of the suppletive stem in M1. In ex. (2) below, for example, the stem is represented by &quot;lah&quot;, although this verbal form is listed in the glossary file (sux.glo) under the lemma de [bring], and the verbal form is lemmatized as de[bring] in the text file.
+
+(2) @form mu-na-lah? /lah? #V4=mu.V6=nn.V7=a.V11=n.V12=lah.V14=&#248;
+
+The Sumerian NP contains no suffixes but enclitics cumulated at its right end. Consequently, word forms listed in the glossary may contain no grammatical morphemes at all, grammatical morphemes relating to the head may occur in the glossary entry of the modifier or the possessor in NPs which include also a modifier and/or a non-pronominal possessor, as shown in ex. 3 below:
+
+(3) dumu ki a?? {d}nin-?ir?-su-ka-ke?
+
+The NP in ex. (3) above contains four lexemes (the last one, the divine name is itself complex but its inner structure is disregarded here). Parts of this NP will be listed under five different glossary entries:
+
+@form dumu #N1=dumu
+
+@form kiabs #N1=ki.N5=&#248;
+
+@form kiabs_a??
+
+@form a?? #NV2=a?
+
+@form {d}nin-?ir?-su-ka-ke? #N1=nin?irsuk.N5=ak.N5=e
+
+The head of the NP is &quot;dumu&quot;, but the ergative case-marker in N5 indicating the syntactic function of the NP will occur in the glossary entry of &quot;nin?irsuk&quot;, the possessor of &quot;dumu&quot;. An M1 like &quot;#N1=dumu&quot; indicates that &quot;dumu&quot;
+(a) is the head of a NP that contains either a modifier and/or a non-pronominal possessor, or
+(b) occurs in a sequence of NPs among which only the last one is case-marked.
+The form &quot;#N1=dumu&quot; stands in contrast with a form like, e.g., &quot;#N1=dumu.N5=ra&quot; which is the head of a NP that consists only of a head.
+
+The M1 &quot;N1=nin?irsuk.N5=ak.N5=e&quot; indicates by having two morphemes with an N5 position-tag that it functions as the possessor of a NP. In contrast, an M1 like &quot;N1=nin?irsuk.N5=ak&quot; may indicate that it is either
+(a) a left-dislocated (i.e., anticipated) possessor, or
+(b) the possessor of a NP that occurs in a sequence of NPs among which only the last one is case-marked.
+
+Unidentifiable morphemes are marked with an &quot;x&quot; in M1. In the verbal form in ex. (4) below, the morpheme in V11 cannot be specified because of obscurity of the context (Statue B [E3/1.1.7], ix 25).
+
+(4) @form he?-mi-?al? /?al? #V1=ha.V2=i.V4=m.V5=b.V10=i.V11=x.V12=?al.V14=&#248; ##V1=MOD1.V2=FIN.V4=VEN.V5=3-NH.V10=L2.V11=X.V12=STEM.V14=X</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#NonFiniteVerbalSlot -->
+
+    <owl:Class rdf:about="#NonFiniteVerbalSlot">
+        <rdfs:label xml:lang="en"
+            >non-finite verbal slot</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PTag"/>
+        <rdfs:comment xml:lang="en"
+            >So called adjectives are considered non-finite verbal forms.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#NounPhraseSlot -->
+
+    <owl:Class rdf:about="#NounPhraseSlot">
+        <rdfs:subClassOf rdf:resource="#PTag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#OrthographicWord -->
+
+    <owl:Class rdf:about="#OrthographicWord">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:comment xml:lang="en"
+            >In ETCSRI every word form is represented on three levels:
+
+- in orthographic representation, or transliteration;
+- in morphemic representation (M1); and
+- in morphemic glossing representation (M2).
+
+All three representations of a given word form are stored in the project&#39;s glossary under the heading of the lemma to which the word form is assigned.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#PTag -->
+
+    <owl:Class rdf:about="#PTag">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:comment
+            >Each morpheme is represented by a complex symbol that consists of a position tag (= p-tag) followed after an equals sign by the morpheme itself. The symbols are seperated by periods. A position-tag gives the morpheme&#39;s position within the nominal, verbal, or non-finite verbal template, and has the form like N1 which means &quot;the first slot of the nominal template&quot;  (for the nominal, verbal, and non-finite verbal templates, cf. the document entitled &quot;ETCSRI&#39;s Morphological Parsing&quot;).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#VerbalSlot -->
+
+    <owl:Class rdf:about="#VerbalSlot">
+        <rdfs:label xml:lang="en"
+            >finite verb slot</rdfs:label>
+        <rdfs:label xml:lang="en">verbal slot</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#PTag"/>
+        <owl:versionInfo xml:lang="en"
+            >note that these can be conflated with non-finite verbal slots, hence we have two alternative tag definitions to initial and non-initial V elements</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#Feature -->
+
+    <owl:Class rdf:about="&system;Feature"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#UnitOfAnnotation -->
+
+    <owl:Class rdf:about="&system;UnitOfAnnotation"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#ABL -->
+
+    <owl:Thing rdf:about="#ABL">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >ablative case-marker</rdfs:label>
+        <rdfs:label xml:lang="en">ablative prefix</rdfs:label>
+        <system:hasTagContaining>=ABL</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#ABS -->
+
+    <owl:Thing rdf:about="#ABS">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >absolutive case-marker</rdfs:label>
+        <system:hasTagContaining>=ABS</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#ADV -->
+
+    <owl:Thing rdf:about="#ADV">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >adverbiative suffix</rdfs:label>
+        <system:hasTagContaining>=ADV</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >ADV is in fact a derivative morpheme.</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#ANT -->
+
+    <M2 rdf:about="#ANT">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >prefix of anteriority</rdfs:label>
+        <system:hasTagContaining>=ANT</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COM -->
+
+    <M2 rdf:about="#COM">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >comitative case-marker</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >comitative prefix</rdfs:label>
+        <system:hasTagContaining>=COM</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COOR -->
+
+    <owl:Thing rdf:about="#COOR">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >coordinator prefix</rdfs:label>
+        <system:hasTagContaining>=COOR</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COP -->
+
+    <owl:Thing rdf:about="#COP">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >the independent copula</rdfs:label>
+        <system:hasTagContaining>=COP</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COP-1-PL -->
+
+    <M2 rdf:about="#COP-1-PL">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >first person plural form of the enclitic copula</rdfs:label>
+        <system:hasTagContaining>=COP-1-PL</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COP-1-SG -->
+
+    <M2 rdf:about="#COP-1-SG">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >first person singular form of the enclitic copula (df)</rdfs:label>
+        <system:hasTagContaining>=COP-1-SG</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COP-2-PL -->
+
+    <owl:Thing rdf:about="#COP-2-PL">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >second person plural form of the enclitic copula</rdfs:label>
+        <system:hasTagContaining>=COP-2-PL</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COP-2-SG -->
+
+    <owl:Thing rdf:about="#COP-2-SG">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >second person singular form of the enclitic copula</rdfs:label>
+        <system:hasTagContaining>=COP-2-SG</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COP-3-PL -->
+
+    <owl:Thing rdf:about="#COP-3-PL">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >third person plural form of the enclitic copula</rdfs:label>
+        <system:hasTagContaining>=COP-3-PL</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#COP-3-SG -->
+
+    <M2 rdf:about="#COP-3-SG">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person singular form of the enclitic copula</rdfs:label>
+        <system:hasTagContaining>=COP-3-SG</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#DAT -->
+
+    <owl:Thing rdf:about="#DAT">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en">dative prefix</rdfs:label>
+        <system:hasTagContaining>=DAT</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#DAT-H -->
+
+    <owl:Thing rdf:about="#DAT-H">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >human dative case-marker (df)</rdfs:label>
+        <system:hasTagContaining>=DAT-H</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#DAT-NH -->
+
+    <owl:Thing rdf:about="#DAT-NH">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >non-human dative case-marker</rdfs:label>
+        <system:hasTagContaining>=DAT-NH</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#DEM -->
+
+    <M2 rdf:about="#DEM">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >demonstrative pronoun</rdfs:label>
+        <system:hasTagContaining>=DEM</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#DEM2 -->
+
+    <M2 rdf:about="#DEM2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >demonstrative pronoun</rdfs:label>
+        <system:hasTagContaining>=DEM2</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#EQU -->
+
+    <M2 rdf:about="#EQU">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >equative case-marker</rdfs:label>
+        <system:hasTagContaining>=EQU</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#ERG -->
+
+    <owl:Thing rdf:about="#ERG">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >ergative case-marker (df)</rdfs:label>
+        <system:hasTagContaining>=ERG</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#EXCEPT -->
+
+    <owl:Thing rdf:about="#EXCEPT">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >particle referring to an exception to a negative statement</rdfs:label>
+        <system:hasTagContaining>=EXCEPT</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >For /nanna/ cf. Edzard 2003: 158 and Veenker and Johnson 2009: 361&#8211;362.</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#FIN -->
+
+    <M2 rdf:about="#FIN">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">finite-marker</rdfs:label>
+        <system:hasTagContaining>=FIN</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#FIN-L2 -->
+
+    <M2 rdf:about="#FIN-L2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >lenghtened finite-marker signaling the syncopation of the vowel of the L2 prefix</rdfs:label>
+        <system:hasTagContaining>=FIN-L2</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >The compensatory lenghtening of the finite marker occurs when the L2 prefix in V10 (preceded by a pronominal prefix in either V5 or V6) or the vowel of the L1 prefix becomes syncopated. In these verbal forms the lenghtening of FIN is considered and glossed as the marker of L2. (Cf. Jagersma 2006)</rdfs:comment>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#FIN-LI -->
+
+    <M2 rdf:about="#FIN-LI">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >lenghtened finite-marker signaling the syncopation of the vowel of the L1 prefix</rdfs:label>
+        <system:hasTagContaining>=FIN-LI</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >The compensatory lenghtening of the finite marker occurs when the L2 prefix in V10 (preceded by a pronominal prefix in either V5 or V6) or the vowel of the L1 prefix becomes syncopated. In these verbal forms the lenghtening of FIN is considered and glossed as the marker of L2. (Cf. Jagersma 2006)</rdfs:comment>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#GEN -->
+
+    <M2 rdf:about="#GEN">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >genitive case-marker</rdfs:label>
+        <system:hasTagContaining>=GEN</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L1 -->
+
+    <owl:Thing rdf:about="#L1">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >locative1 case-marker (df)</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >locative1 prefix</rdfs:label>
+        <system:hasTagContaining>=L1</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L1-SYN -->
+
+    <M2 rdf:about="#L1-SYN">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >syncopated locative1 prefix</rdfs:label>
+        <system:hasTagContaining>=L1-SYN</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L2 -->
+
+    <owl:Thing rdf:about="#L2">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >locative2 prefix</rdfs:label>
+        <system:hasTagContaining>=L2</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L2-H -->
+
+    <M2 rdf:about="#L2-H">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >human locative2 case-marker</rdfs:label>
+        <system:hasTagContaining>=L2-H</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L2-NH -->
+
+    <owl:Thing rdf:about="#L2-NH">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >non-human locative2 case-marker</rdfs:label>
+        <system:hasTagContaining>=L2-NH</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L2-SYN -->
+
+    <owl:Thing rdf:about="#L2-SYN">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >syncopated locative2 prefix</rdfs:label>
+        <system:hasTagContaining>=L2-SYN</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L3 -->
+
+    <M2 rdf:about="#L3">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >locative3 prefix</rdfs:label>
+        <system:hasTagContaining>=L3</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L3-H -->
+
+    <M2 rdf:about="#L3-H">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >human locative3 case-marker</rdfs:label>
+        <system:hasTagContaining>=L3-H</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L3-NH -->
+
+    <owl:Thing rdf:about="#L3-NH">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >non-human locative3 case-marker</rdfs:label>
+        <system:hasTagContaining>=L3-NH</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#L4 -->
+
+    <owl:Thing rdf:about="#L4">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >locative4 case-marker</rdfs:label>
+        <system:hasTagContaining>=L4</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >L4 is assumed to be an archaic locative case-marker (perhaps corresponding to the L1 verbal prefix /ni/) used only in forms like nu2-a-zu-ne (cf. Krecher 1993)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#LOC-OB -->
+
+    <M2 rdf:about="#LOC-OB">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >locative prefix used as causative marker in OB texts</rdfs:label>
+        <system:hasTagContaining>=LOC-OB</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#M2 -->
+
+    <owl:Class rdf:about="#M2">
+        <rdf:type rdf:resource="#M2"/>
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTagContaining>=M2</system:hasTagContaining>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MID -->
+
+    <M2 rdf:about="#MID">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">middle prefix</rdfs:label>
+        <system:hasTagContaining>=MID</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MOD1 -->
+
+    <owl:Thing rdf:about="#MOD1">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en">modal1 prefix</rdfs:label>
+        <system:hasTagContaining>=MOD1</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MOD2 -->
+
+    <owl:Thing rdf:about="#MOD2">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en">modal2 prefix</rdfs:label>
+        <system:hasTagContaining>=MOD2</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MOD3 -->
+
+    <M2 rdf:about="#MOD3">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">modal3 prefix</rdfs:label>
+        <system:hasTagContaining>=MOD3</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MOD4 -->
+
+    <M2 rdf:about="#MOD4">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">modal4 prefix</rdfs:label>
+        <system:hasTagContaining>=MOD4</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MOD5 -->
+
+    <M2 rdf:about="#MOD5">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">modal5 prefix</rdfs:label>
+        <system:hasTagContaining>=MOD5</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MOD6 -->
+
+    <owl:Thing rdf:about="#MOD6">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en">modal6 prefix</rdfs:label>
+        <system:hasTagContaining>=MOD6</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#MOD7 -->
+
+    <M2 rdf:about="#MOD7">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">modal7 prefix</rdfs:label>
+        <system:hasTagContaining>=MOD7</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#N1 -->
+
+    <owl:Thing rdf:about="#N1">
+        <rdf:type rdf:resource="#NounPhraseSlot"/>
+        <rdfs:label xml:lang="en">head</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >(Noun Phrase Slot 1) = Head</rdfs:comment>
+        <system:hasTagContaining>N1=</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#N2 -->
+
+    <NounPhraseSlot rdf:about="#N2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">modifier</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >(Noun Phrase Slot 2) = Modifier</rdfs:comment>
+        <system:hasTagContaining>N2=</system:hasTagContaining>
+    </NounPhraseSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#N3 -->
+
+    <owl:Thing rdf:about="#N3">
+        <rdf:type rdf:resource="#NounPhraseSlot"/>
+        <rdfs:label xml:lang="en">possessor</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >(Noun Phrase Slot 3) = Possessor (a Noun Phrase or a possessive enclitic)</rdfs:comment>
+        <system:hasTagContaining>N3=</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#N4 -->
+
+    <owl:Thing rdf:about="#N4">
+        <rdf:type rdf:resource="#NounPhraseSlot"/>
+        <rdfs:label xml:lang="en">plural-marker</rdfs:label>
+        <system:hasTagContaining>N4=</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >(Noun Phrase Slot 4) = Plural-marker or the ordinal number suffix</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#N5 -->
+
+    <NounPhraseSlot rdf:about="#N5">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">case-marker</rdfs:label>
+        <system:hasTagContaining>N5=</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >(Noun Phrase Slot 5) = Case-marker</rdfs:comment>
+    </NounPhraseSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#N6 -->
+
+    <owl:Thing rdf:about="#N6">
+        <rdf:type rdf:resource="#NounPhraseSlot"/>
+        <rdfs:label xml:lang="en">copula</rdfs:label>
+        <system:hasTagContaining>N6=</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >(Noun Phrase Slot 6) = Copula</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#NEG -->
+
+    <owl:Thing rdf:about="#NEG">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en">negative prefix</rdfs:label>
+        <system:hasTagContaining>=NEG</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#NV1 -->
+
+    <NonFiniteVerbalSlot rdf:about="#NV1">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label
+            >1st non-finite verbal slot</rdfs:label>
+        <system:hasTagContaining>NV1=</system:hasTagContaining>
+    </NonFiniteVerbalSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#NV2 -->
+
+    <owl:Thing rdf:about="#NV2">
+        <rdf:type rdf:resource="#NonFiniteVerbalSlot"/>
+        <rdfs:label
+            >2nd non-finite verbal slot</rdfs:label>
+        <system:hasTagContaining>NV2=</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#NV3 -->
+
+    <owl:Thing rdf:about="#NV3">
+        <rdf:type rdf:resource="#M2"/>
+        <rdf:type rdf:resource="#NonFiniteVerbalSlot"/>
+        <rdfs:label
+            >3rd non-finite verbal slot</rdfs:label>
+        <rdfs:label xml:lang="en">NV4</rdfs:label>
+        <system:hasTagContaining>=NV3</system:hasTagContaining>
+        <system:hasTagContaining>NV3=</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#NV4 -->
+
+    <NonFiniteVerbalSlot rdf:about="#NV4">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label
+            >4th non-finite verbal slot</rdfs:label>
+        <system:hasTagContaining>NV4=</system:hasTagContaining>
+    </NonFiniteVerbalSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#ORD -->
+
+    <owl:Thing rdf:about="#ORD">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >later form of the ordinal number suffix</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >ordinal number suffix</rdfs:label>
+        <system:hasTagContaining>=ORD</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#PF -->
+
+    <M2 rdf:about="#PF">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >presen-future marker</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >present-future marker</rdfs:label>
+        <system:hasTagContaining>=PF</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#PL -->
+
+    <M2 rdf:about="#PL">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">plural-marker</rdfs:label>
+        <system:hasTagContaining>=PL</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#PLEN -->
+
+    <owl:Thing rdf:about="#PLEN">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >verbal suffix marking the plurality of S or P</rdfs:label>
+        <system:hasTagContaining>=PLEN</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >PLEN is attested only rarely (cf. Krecher 1965 and 1987).</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#STEM -->
+
+    <owl:Thing rdf:about="#STEM">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en">verbal stem</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >verbal stem (df)</rdfs:label>
+        <system:hasTagContaining>=STEM</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#STEM-PF -->
+
+    <M2 rdf:about="#STEM-PF">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >present-future verbal stem</rdfs:label>
+        <system:hasTagContaining>=STEM-PF</system:hasTagContaining>
+        <system:hasTagMatching>=STEM[^=]*-PF</system:hasTagMatching>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#STEM-PL -->
+
+    <M2 rdf:about="#STEM-PL">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >plural verbal stem</rdfs:label>
+        <system:hasTagMatching>=STEM[^=]*-PL</system:hasTagMatching>
+        <system:hasTagContaining>=STEM-PL</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#STEM-RDP -->
+
+    <M2 rdf:about="#STEM-RDP">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >reduplicated verbal stem</rdfs:label>
+        <system:hasTagContaining>=STEM-RDP</system:hasTagContaining>
+        <system:hasTagMatching>=STEM[^=]*-RDP</system:hasTagMatching>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#SUB -->
+
+    <M2 rdf:about="#SUB">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">subordinator</rdfs:label>
+        <system:hasTagContaining>=SUB</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#TERM -->
+
+    <owl:Thing rdf:about="#TERM">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >terminative case-marker</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >terminative prefix</rdfs:label>
+        <system:hasTagContaining>=TERM</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V1 -->
+
+    <owl:Thing rdf:about="#V1">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 1</rdfs:label>
+        <system:hasTagStartingWith>V1=</system:hasTagStartingWith>
+        <system:hasTagMatching>[^N]V1=</system:hasTagMatching>
+        <rdfs:comment xml:lang="en"
+            >Verbal Slot 1 = The modal prefix ha-, negative prefix nu-, prefix of anteriority</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V10 -->
+
+    <VerbalSlot rdf:about="#V10">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">verbal slot 10</rdfs:label>
+        <system:hasTagMatching>[^N]V10=</system:hasTagMatching>
+        <rdfs:comment xml:lang="en"
+            >Dimensional IV: locative1, locative2, or locative3 prefix</rdfs:comment>
+        <system:hasTagStartingWith>V10=</system:hasTagStartingWith>
+    </VerbalSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V11 -->
+
+    <VerbalSlot rdf:about="#V11">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">verbal slot 11</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >Final Pronominal prefix (referring to A or P, depending on the tense)</rdfs:comment>
+        <system:hasTagMatching>[^N]V11=</system:hasTagMatching>
+        <system:hasTagStartingWith>V11=</system:hasTagStartingWith>
+    </VerbalSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V12 -->
+
+    <owl:Thing rdf:about="#V12">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 12</rdfs:label>
+        <system:hasTagStartingWith>V12=</system:hasTagStartingWith>
+        <system:hasTagMatching>[^N]V12=</system:hasTagMatching>
+        <rdfs:comment xml:lang="en">stem</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V13 -->
+
+    <VerbalSlot rdf:about="#V13">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">verbal slot 13</rdfs:label>
+        <system:hasTagStartingWith>V13=</system:hasTagStartingWith>
+        <system:hasTagMatching>[^N]V13=</system:hasTagMatching>
+        <rdfs:comment xml:lang="en"
+            >present-future marker (in intransitive verbs)</rdfs:comment>
+    </VerbalSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V14 -->
+
+    <owl:Thing rdf:about="#V14">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 14</rdfs:label>
+        <system:hasTagMatching>[^N]V14=</system:hasTagMatching>
+        <system:hasTagStartingWith>V14=</system:hasTagStartingWith>
+        <rdfs:comment xml:lang="en"
+            >pronominal suffix (referring A, S, or P depending on the tense)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V15 -->
+
+    <VerbalSlot rdf:about="#V15">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">verbal slot 15</rdfs:label>
+        <system:hasTagMatching>[^N]V15=</system:hasTagMatching>
+        <rdfs:comment xml:lang="en">Subordinator</rdfs:comment>
+        <system:hasTagStartingWith>V15=</system:hasTagStartingWith>
+    </VerbalSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V2 -->
+
+    <VerbalSlot rdf:about="#V2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">verbal slot 2</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >Modal prefixes other than ha-, the finite-marker prefixes</rdfs:comment>
+        <system:hasTagMatching>[^N]V2=</system:hasTagMatching>
+        <system:hasTagStartingWith>V2=</system:hasTagStartingWith>
+    </VerbalSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V3 -->
+
+    <owl:Thing rdf:about="#V3">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 3</rdfs:label>
+        <system:hasTagMatching>[^N]V3=</system:hasTagMatching>
+        <system:hasTagStartingWith>V3=</system:hasTagStartingWith>
+        <rdfs:comment xml:lang="en"
+            >Coordinator prefix</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V4 -->
+
+    <owl:Thing rdf:about="#V4">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 4</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >Ventive (cislocative) prefix</rdfs:comment>
+        <system:hasTagMatching>[^N]V4=</system:hasTagMatching>
+        <system:hasTagStartingWith>V4=</system:hasTagStartingWith>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V5 -->
+
+    <owl:Thing rdf:about="#V5">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 5</rdfs:label>
+        <system:hasTagStartingWith>V5=</system:hasTagStartingWith>
+        <system:hasTagMatching>[^N]V5=</system:hasTagMatching>
+        <rdfs:comment xml:lang="en"
+            >Middle prefix or 3nh pronominal prefix (specifying the person, gender and number of the first in the sequence of dimensional prefixes)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V6 -->
+
+    <owl:Thing rdf:about="#V6">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 6</rdfs:label>
+        <system:hasTagMatching>[^N]V6=</system:hasTagMatching>
+        <rdfs:comment xml:lang="en"
+            >Initial Pronominal prefix (specifying the person, gender and number of the first in the sequence of dimensional prefixes)x</rdfs:comment>
+        <system:hasTagStartingWith>V6=</system:hasTagStartingWith>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V7 -->
+
+    <VerbalSlot rdf:about="#V7">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">verbal slot 7</rdfs:label>
+        <system:hasTagMatching>[^N]V7=</system:hasTagMatching>
+        <system:hasTagStartingWith>V7=</system:hasTagStartingWith>
+        <rdfs:comment xml:lang="en"
+            >Dimensional I: dative prefix</rdfs:comment>
+    </VerbalSlot>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V8 -->
+
+    <owl:Thing rdf:about="#V8">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 8</rdfs:label>
+        <system:hasTagMatching>[^N]V8=</system:hasTagMatching>
+        <system:hasTagStartingWith>V8=</system:hasTagStartingWith>
+        <rdfs:comment xml:lang="en"
+            >Dimensional II: comitative prefix</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#V9 -->
+
+    <owl:Thing rdf:about="#V9">
+        <rdf:type rdf:resource="#VerbalSlot"/>
+        <rdfs:label xml:lang="en">verbal slot 9</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >Dimensional III: ablative or terminative prefix</rdfs:comment>
+        <system:hasTagStartingWith>V9=</system:hasTagStartingWith>
+        <system:hasTagMatching>[^N]V9=</system:hasTagMatching>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#VEN -->
+
+    <owl:Thing rdf:about="#VEN">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >ventive (cislocative) prefix</rdfs:label>
+        <system:hasTagContaining>=VEN</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#abl -->
+
+    <M1Disambiguator rdf:about="#abl">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">ablative</rdfs:label>
+        <system:hasTagContaining>\abl</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the ablative (= ends in M1 as .N5=ta)</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#abs -->
+
+    <owl:Thing rdf:about="#abs">
+        <rdf:type rdf:resource="#M1Disambiguator"/>
+        <rdfs:label xml:lang="en">absolutive</rdfs:label>
+        <system:hasTagContaining>\abs</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the absolutive (= ends in M1 as .N5=&#248;)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#adv -->
+
+    <M1Disambiguator rdf:about="#adv">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">adverbiative</rdfs:label>
+        <system:hasTagContaining>\abv</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form ends with the adverbiative (= ends in M1 as .N5=e&#353;) [NOT USED]</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#com -->
+
+    <owl:Thing rdf:about="#com">
+        <rdf:type rdf:resource="#M1Disambiguator"/>
+        <rdfs:label xml:lang="en">comitative</rdfs:label>
+        <system:hasTagContaining>\com</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the comitative (= ends in M1 as .N5=da)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#cop -->
+
+    <M1Disambiguator rdf:about="#cop">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">copula</rdfs:label>
+        <system:hasTagContaining>\cop</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form ends with a copula (= ends in M1 as N6=COP-) [NOT USED]</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#dat -->
+
+    <M1Disambiguator rdf:about="#dat">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">dative</rdfs:label>
+        <rdfs:label xml:lang="en">human dative</rdfs:label>
+        <system:hasTagContaining>\dat</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >either (1) word form is in the human dative (= last N5 in M1 is /ra/) or (2) verbal form contains a dative prefix</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#dem1 -->
+
+    <M1Disambiguator rdf:about="#dem1">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label
+            >demonstrative pronoun</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/e/ in N2 of M1 is the demonstrative pronoun (= is DEM1 in M2)</rdfs:comment>
+        <system:hasTagContaining>\dem1</system:hasTagContaining>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#dem2 -->
+
+    <M2Disambiguator rdf:about="#dem2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >demonstrative pronoun</rdfs:label>
+        <system:hasTagContaining>\dem2</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/bi/ in N3 of M1 is the demonstrative pronoun(= is DEM2 in M2)</rdfs:comment>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#ed -->
+
+    <M2 rdf:about="#ed">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">&#39;a</rdfs:label>
+        <system:hasTagContaining>=ed</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#erg -->
+
+    <M1Disambiguator rdf:about="#erg">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label>ergative</rdfs:label>
+        <system:hasTagContaining>\erg</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the ergative (= last N5 in M1 is /e/)</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-PL -->
+
+    <M2 rdf:about="#first-PL">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >first person plural IPP</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >first person plural suffix in plural transitive preterite verbal forms</rdfs:label>
+        <system:hasTagContaining>=1-PL</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-PL-A -->
+
+    <owl:Thing rdf:about="#first-PL-A">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >first person plural agent suffix</rdfs:label>
+        <system:hasTagContaining>=1-PL-A</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-PL-POSS -->
+
+    <owl:Thing rdf:about="#first-PL-POSS">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >1st person plural possessive enclitic</rdfs:label>
+        <system:hasTagContaining>=1-PL-POSS</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-PL-S -->
+
+    <owl:Thing rdf:about="#first-PL-S">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >first person plural subject suffix (df)</rdfs:label>
+        <system:hasTagContaining>=1-PL-S</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-SG-A -->
+
+    <M2 rdf:about="#first-SG-A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >first person singular agent suffix (df)</rdfs:label>
+        <system:hasTagContaining>=1-SG-A</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-SG-A-OB -->
+
+    <M2 rdf:about="#first-SG-A-OB">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >first person singular FPP construed with an agent in OB texts</rdfs:label>
+        <system:hasTagContaining>=1-SG-A-OB</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-SG-P -->
+
+    <owl:Thing rdf:about="#first-SG-P">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >first person singular patient suffix</rdfs:label>
+        <system:hasTagContaining>=1-SG-P</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-SG-POSS -->
+
+    <owl:Thing rdf:about="#first-SG-POSS">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >1st person singular possessive enclitic</rdfs:label>
+        <system:hasTagContaining>=1-SG-POSS</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#first-SG-S -->
+
+    <owl:Thing rdf:about="#first-SG-S">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >first person singular subject suffix</rdfs:label>
+        <system:hasTagContaining>=1-SG-S</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#gen -->
+
+    <M1Disambiguator rdf:about="#gen">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label>genitive</rdfs:label>
+        <system:hasTagContaining>\gen</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the genitive (= ends in M1 as .N5=ak)</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#gen_abs -->
+
+    <M1Disambiguator rdf:about="#gen_abs">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label
+            >sequence of a genitive and an absolutive case-marker</rdfs:label>
+        <system:hasTagContaining>\gen\abs</system:hasTagContaining>
+        <rdfs:omment xml:lang="en"
+            >word form ends with a sequence of a genitive and an absolutive case-marker (ends in M1 as .N5=ak.N5=&#248;) [UNUSED]</rdfs:omment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#l1 -->
+
+    <M1Disambiguator rdf:about="#l1">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label>locative1</rdfs:label>
+        <system:hasTagContaining>\l1</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the locative1 (= last N5 in M1 is /&#39;a/)</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#l2 -->
+
+    <M1Disambiguator rdf:about="#l2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label>locative2</rdfs:label>
+        <system:hasTagContaining>\l2</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the locative2 (= last N5 in M1 is /&#39;a/) [UNUSED]</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#l3 -->
+
+    <M1Disambiguator rdf:about="#l3">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label>locative3</rdfs:label>
+        <system:hasTagContaining>\l3</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the locative3 (= last N5 in M1 is /e/)</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#n5al2 -->
+
+    <owl:Thing rdf:about="#n5al2">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">locative2</rdfs:label>
+        <system:hasTagContaining>\n5al2</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/&#39;a/ in the last N5 of M1 is locative2 (= is L2-NH in M2)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#n5edat -->
+
+    <M2Disambiguator rdf:about="#n5edat">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">dative</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/e/ in the last N5 of M1 is dative (= is DAT-NH in M2)</rdfs:comment>
+        <system:hasTagContaining>\n5edat</system:hasTagContaining>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#n5el3 -->
+
+    <owl:Thing rdf:about="#n5el3">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">locative3</rdfs:label>
+        <system:hasTagContaining>\n5el3</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/e/ in the last N5 of M1 is locative3 (= is L3-NH in M2)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#n5ral2 -->
+
+    <owl:Thing rdf:about="#n5ral2">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">locative2</rdfs:label>
+        <system:hasTagContaining>\n5ral2</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/ra/ in the last N5 of M1 is locative2 (= is L2-H in M2) [UNUSED]</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#n5ral3 -->
+
+    <M2Disambiguator rdf:about="#n5ral3">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">locative3</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/ra/ in the last N5 of M1 is locative3 (= is L2-H in M2) [UNUSED]</rdfs:comment>
+        <system:hasTagContaining>\n5ral3</system:hasTagContaining>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#n6sg2 -->
+
+    <M2Disambiguator rdf:about="#n6sg2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">2-SG</rdfs:label>
+        <system:hasTagContaining>\n6sg2</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/men/ in N6 of M1 is 2nd ps sg. (= is COP-2-SG in M2) [UNUSED]</rdfs:comment>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-PL -->
+
+    <M2 rdf:about="#second-PL">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >second person plural suffix in plural transitive preterite verbal forms</rdfs:label>
+        <system:hasTagContaining>=2-PL</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-PL-A -->
+
+    <M2 rdf:about="#second-PL-A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >second person plural agent suffix</rdfs:label>
+        <system:hasTagContaining>=2-PL-A</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-PL-POSS -->
+
+    <owl:Thing rdf:about="#second-PL-POSS">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >2nd person plural possessive enclitic</rdfs:label>
+        <system:hasTagContaining>=2-PL-POSS</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-PL-S -->
+
+    <M2 rdf:about="#second-PL-S">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >second person plural subject suffix (df)</rdfs:label>
+        <system:hasTagContaining>=2-PL-S</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-SG -->
+
+    <owl:Thing rdf:about="#second-SG">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >second person singular IPP</rdfs:label>
+        <system:hasTagContaining>=2-SG</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-SG-A -->
+
+    <owl:Thing rdf:about="#second-SG-A">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >second person singular FPP construed with an agent</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >second person singular agent suffix</rdfs:label>
+        <system:hasTagContaining>=2-SG-A</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-SG-P -->
+
+    <owl:Thing rdf:about="#second-SG-P">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >second person singular patient suffix</rdfs:label>
+        <system:hasTagContaining>=2-SG-P</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-SG-POSS -->
+
+    <M2 rdf:about="#second-SG-POSS">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >2nd person singular possessive enclitic</rdfs:label>
+        <system:hasTagContaining>=2-SG-POSS</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#second-SG-S -->
+
+    <M2 rdf:about="#second-SG-S">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >second person singular subject suffix</rdfs:label>
+        <system:hasTagContaining>=2-SG-S</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#term -->
+
+    <owl:Thing rdf:about="#term">
+        <rdf:type rdf:resource="#M1Disambiguator"/>
+        <rdfs:label xml:lang="en">terminative</rdfs:label>
+        <system:hasTagContaining>\term</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >word form is in the terminative (= last N5 in M1 is /&#353;e/) [UNUSED]</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-NH -->
+
+    <owl:Thing rdf:about="#third-NH">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >third person singular non-human initial pronominal prefix</rdfs:label>
+        <system:hasTagContaining>=3-NH</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-PL -->
+
+    <M2 rdf:about="#third-PL">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person plural IPP</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >third person plural suffix in plural transitive preterite verbal forms (df)</rdfs:label>
+        <system:hasTagContaining>=3-PL</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-PL-A -->
+
+    <M2 rdf:about="#third-PL-A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person plural agent suffix in present-future verbal forms</rdfs:label>
+        <system:hasTagContaining>=3-PL-A</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-PL-H-P -->
+
+    <M2 rdf:about="#third-PL-H-P">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person plurtal human FPP construed with a patient</rdfs:label>
+        <system:hasTagContaining>=3-PL-H-P</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-PL-P -->
+
+    <owl:Thing rdf:about="#third-PL-P">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >second person plural patient suffix (df)</rdfs:label>
+        <system:hasTagContaining>=3-PL-P</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-PL-POSS -->
+
+    <M2 rdf:about="#third-PL-POSS">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >3rd person plural possessive enclitic</rdfs:label>
+        <system:hasTagContaining>=3-PL-POSS</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-PL-S -->
+
+    <owl:Thing rdf:about="#third-PL-S">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >second person plural subject suffix</rdfs:label>
+        <system:hasTagContaining>=3-PL-S</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-A -->
+
+    <M2 rdf:about="#third-SG-A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person singular human or non-human agent suffix</rdfs:label>
+        <system:hasTagContaining>=3-SG-A</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-H -->
+
+    <M2 rdf:about="#third-SG-H">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person singular human IPP</rdfs:label>
+        <system:hasTagContaining>=3-SG-H</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-H-A -->
+
+    <M2 rdf:about="#third-SG-H-A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person singular human FPP construed with an agent (df)</rdfs:label>
+        <system:hasTagContaining>=3-SG-H-A</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-H-L3 -->
+
+    <M2 rdf:about="#third-SG-H-L3">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person singular human FPP construed with a participant in L3</rdfs:label>
+        <system:hasTagContaining>=3-SG-H-L3</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >For final pronominal prefixes being construed with a participant in L3 cf. Z&#243;lyomi 1999: 221, fn 13 (with a different terminology) and Jagersma 2006.</rdfs:comment>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-H-P -->
+
+    <owl:Thing rdf:about="#third-SG-H-P">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >third person singular human FPP construed with a patient</rdfs:label>
+        <system:hasTagContaining>=3-SG-H-P</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-H-POSS -->
+
+    <M2 rdf:about="#third-SG-H-POSS">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >3rd person singular human possessive enclitic</rdfs:label>
+        <system:hasTagContaining>=3-SG-H-POSS</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-NH-A -->
+
+    <M2 rdf:about="#third-SG-NH-A">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person singular non-human FPP construed with an agent</rdfs:label>
+        <system:hasTagContaining>=3-SG-NH-A</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-NH-L3 -->
+
+    <owl:Thing rdf:about="#third-SG-NH-L3">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >third person singular non-human FPP construed with a participant in L3</rdfs:label>
+        <system:hasTagContaining>=3-SG-NH-L3</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >For final pronominal prefixes being construed with a participant in L3 cf. Z&#243;lyomi 1999: 221, fn 13 (with a different terminology) and Jagersma 2006.</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-NH-P -->
+
+    <M2 rdf:about="#third-SG-NH-P">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person singular non-human FPP construed with a patient (df)</rdfs:label>
+        <system:hasTagContaining>=3-SG-NH-P</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-NH-POSS -->
+
+    <M2 rdf:about="#third-SG-NH-POSS">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >3rd person singular non-human possessive enclitic</rdfs:label>
+        <system:hasTagContaining>=3-SG-NH-POSS</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-P -->
+
+    <owl:Thing rdf:about="#third-SG-P">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >third person singular human or non-human subject suffix (df)</rdfs:label>
+        <system:hasTagContaining>=3-SG-P</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-S -->
+
+    <owl:Thing rdf:about="#third-SG-S">
+        <rdf:type rdf:resource="#M2"/>
+        <rdfs:label xml:lang="en"
+            >third person singular human or non-human subject suffix</rdfs:label>
+        <system:hasTagContaining>=3-SG-S</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#third-SG-S-OB -->
+
+    <M2 rdf:about="#third-SG-S-OB">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en"
+            >third person singular human or non-human subject suffix in OB texts</rdfs:label>
+        <system:hasTagContaining>=3-SG-S-OB</system:hasTagContaining>
+    </M2>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v10l1 -->
+
+    <M1Disambiguator rdf:about="#v10l1">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">locative1</rdfs:label>
+        <system:hasTagContaining>\v10l1</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >there is a locative1 prefix in V10 ( = /ni/ or /n/ in M1)</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v10l3 -->
+
+    <M2Disambiguator rdf:about="#v10l3">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">locative3</rdfs:label>
+        <system:hasTagContaining>\v10l3</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/i/ in V10 of M1 is the locative3 prefix (= is L3 in M2)</rdfs:comment>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v11bl3 -->
+
+    <owl:Thing rdf:about="#v11bl3">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">3-SG-NH-L3</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/b/ in V11 of M1 is the 3rd ps sg non-human FPP construed with a participant in L3 (= is 3-SG-NH-L3)</rdfs:comment>
+        <system:hasTagContaining>\v11bl3</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v11nh3a -->
+
+    <M2Disambiguator rdf:about="#v11nh3a">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">3-SG-NH-A</rdfs:label>
+        <system:hasTagContaining>\v11nh3a</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/b/ in V11 of M1 is the 3rd ps sg non-human FPP construed with a agent (= is 3-SG-NH-A) [UNUSED]</rdfs:comment>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v11nl3 -->
+
+    <M2Disambiguator rdf:about="#v11nl3">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">3-SG-H-L3</rdfs:label>
+        <system:hasTagContaining>\v11nl3</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/n/ in V11 of M1 is the 3rd ps sg human FPP construed with a participant in L3 (= is 3-SG-H-L3) [UNUSED]</rdfs:comment>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v11sg1a -->
+
+    <M1Disambiguator rdf:about="#v11sg1a">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">1-SG-A</rdfs:label>
+        <system:hasTagContaining>\v11sg1a</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >in V11 there is a /?/ in M1 (= the verbal form has a 1-SG-A in M2)</rdfs:comment>
+    </M1Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v11sg2a -->
+
+    <owl:Thing rdf:about="#v11sg2a">
+        <rdf:type rdf:resource="#M1Disambiguator"/>
+        <rdfs:label xml:lang="en">2-SG-A</rdfs:label>
+        <system:hasTagContaining>\v11sg2a</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >in V11 there is a /y/ in M1 (= the verbal form has a 2-SG-A in M2)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v11sg3p -->
+
+    <owl:Thing rdf:about="#v11sg3p">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">3-SG-H-P</rdfs:label>
+        <system:hasTagContaining>\v11sg3p</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/n/ in V11 of M1 is the 3rd ps sg human FPP construed with a patient (= is 3-SG-H-P)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14pl1 -->
+
+    <M2Disambiguator rdf:about="#v14pl1">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">1-PL</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/enden/ in V14 of M1 is 1st ps pl suffix in plural transitive preterite verbal forms (= is 1-PL in M2) [UNUSED]</rdfs:comment>
+        <system:hasTagContaining>\v14pl1</system:hasTagContaining>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14pl1a -->
+
+    <owl:Thing rdf:about="#v14pl1a">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">1-PL-A</rdfs:label>
+        <system:hasTagContaining>\v14pl1a</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/enden/ in V14 of M1 is 1st ps pl agent suffix (= is 1-PL-A in M2) [UNUSED]</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14pl2 -->
+
+    <owl:Thing rdf:about="#v14pl2">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">2-PL</rdfs:label>
+        <system:hasTagContaining>\v14pl2</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/enzen/ in V14 of M1 is 2nd ps pl suffix in plural transitive preterite verbal forms (= is 2-PL in M2) [UNUSED]</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14pl2a -->
+
+    <owl:Thing rdf:about="#v14pl2a">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">2-PL-A</rdfs:label>
+        <system:hasTagContaining>\v14pl2a</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/enzen/ in V14 of M1 is 2nd ps pl agent suffix (= is 2-PL-A in M2) [UNUSED]</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14pl3p -->
+
+    <owl:Thing rdf:about="#v14pl3p">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">3-PL-P</rdfs:label>
+        <system:hasTagContaining>\v14pl3p</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/e&#353;/ in V14 of M1 is 3rd ps pl patient suffix (= is 3-PL-P in M2) [UNUSED]</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14sg1p -->
+
+    <M2Disambiguator rdf:about="#v14sg1p">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">1-SG-P</rdfs:label>
+        <system:hasTagContaining>\v14sg1p</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/en/ in V14 of M1 is 1st ps sg patient suffix (= is 1-SG-P in M2) [UNUSED]</rdfs:comment>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14sg1s -->
+
+    <M2Disambiguator rdf:about="#v14sg1s">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">1-SG-S</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/en/ in V14 of M1 is 1st ps sg subject suffix (= is 1-SG-S in M2) [UNUSED]</rdfs:comment>
+        <system:hasTagContaining>\v14sg1s</system:hasTagContaining>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14sg2a -->
+
+    <owl:Thing rdf:about="#v14sg2a">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">2-SG-A</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/en/ in V14 of M1 is 2nd ps sg agent suffix (= is 2-SG-A in M2) [UNUSED]</rdfs:comment>
+        <system:hasTagContaining>\v14sg2a</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14sg2p -->
+
+    <M2Disambiguator rdf:about="#v14sg2p">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">2-SG-P</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/en/ in V14 of M1 is 2nd ps sg patient suffix (= is 2-SG-P in M2) [UNUSED]</rdfs:comment>
+        <system:hasTagContaining>\v14sg2p</system:hasTagContaining>
+    </M2Disambiguator>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14sg2s -->
+
+    <owl:Thing rdf:about="#v14sg2s">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">2-SG-S</rdfs:label>
+        <system:hasTagContaining>\v14sg2s</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/en/ in V14 of M1 is 2nd ps sg subject suffix (= is 2-SG-S in M2) [UNUSED]</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v14sg3s -->
+
+    <owl:Thing rdf:about="#v14sg3s">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">3-SG-S</rdfs:label>
+        <rdfs:comment xml:lang="en"
+            >/&#248;/ in V14 of M1 is 3rd ps sg subject suffix (= is 3-SG-S in M2)</rdfs:comment>
+        <system:hasTagContaining>\v14sg3s</system:hasTagContaining>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v2l1 -->
+
+    <owl:Thing rdf:about="#v2l1">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">finite</rdfs:label>
+        <system:hasTagContaining>\v2l1</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/ii/ in V2 of M1 is the lenghtened finite-marker signaling the syncopation of the vowel of the L1 prefix (= is FIN-L1 in M2) [UNUSED]</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v5nh3 -->
+
+    <owl:Thing rdf:about="#v5nh3">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">3-NH</rdfs:label>
+        <system:hasTagContaining>\v5nh3</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >/ba/ in V5 of M1 is 3rd ps sg non-human IPP (= is 3-NH in M2)</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/etscri.owl#v6sg1 -->
+
+    <owl:Thing rdf:about="#v6sg1">
+        <rdf:type rdf:resource="#M2Disambiguator"/>
+        <rdfs:label xml:lang="en">1-SG</rdfs:label>
+        <system:hasTagContaining>\v6sg1</system:hasTagContaining>
+        <rdfs:comment xml:lang="en"
+            >the initial pronominal prefix in V6 is 1st ps. sg. [UNUSED]</rdfs:comment>
+    </owl:Thing>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
