@@ -137,6 +137,7 @@
 	OWL/DL validation
 	16/08/29 added Frame, hasMovementFeature, Control and Raising for compliance with lexinfo
 	17/06/26 fixed occasional type errors at owl:deprecated
+	18/01/08 added Converb (for Eastern Armenian National Corpus)
 	
 Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</owl:versionInfo>
@@ -531,6 +532,14 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:versionInfo>Normally realized by derivation rather than inflection, unless other evidence is provided, OLiA follows *both* the modelling of EAGLES (Collective rdf:type Number) and the modelling of the MTE ontology (Collective rdf:type MorphologicalDerivation, cf. http://purl.org/olia/mte/multext-east.owl#Collective)</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Derivation"/>
 	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Nominalization">
+		<owl:versionInfo>TODO: compare against Lehmann, Handbuch Relativsätze</owl:versionInfo>
+		<owl:versionInfo>Nominalization is the process of forming a noun from (mostly) a verbal form, often marked morphologically or via zero derivation. (Hasmik Sargsian and Christian Chiarcos)</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Derivation"/>
+	</owl:Class>
+
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Diminuitive">
 		<rdfs:comment>A diminutive is a formation of a word used to convey a slight degree of the root meaning, smallness of the object or quality named, encapsulation, intimacy, or endearment. It is the opposite of an augmentative. (http://en.wikipedia.org/wiki/Diminutive)</rdfs:comment>
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Diminuitive, in MTE v.4 originally modelled as an aspect of Degree, but this is a misplacement. 
@@ -1581,10 +1590,21 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#VerbalNoun"/>
 	</owl:Class>
 
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Converb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#NonFiniteVerb"/>
+    </rdfs:subClassOf>
+    <owl:versionInfo>Introduced to account for Converbs in Armenian and other languages, a generalization over деепричастие</owl:versionInfo>
+	<owl:versionInfo>TODO: clarify terminological relation between Converb, Supine and AdverbialParticiple</owl:versionInfo>
+	<rdfs:comment>A converb is "[...] a nonfinite verb form whose main function is to mark adverbial subordination. Another way of putting it is that converbs are verbal adverbs, just like participles are verbal adjectives." 
+Haspelmath, M., &amp; König, E. (1995). Converbs in cross-linguistic perspective, p. 3</rdfs:comment>
+  </owl:Class>
+	
   
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Supine">
     <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/olia.owl#NonFiniteVerb"/>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#Converb"/>
     </rdfs:subClassOf>
     <owl:versionInfo>EAGLES NonFiniteVerb with VerbForm="Supine".</owl:versionInfo>
 	<rdfs:comment>
