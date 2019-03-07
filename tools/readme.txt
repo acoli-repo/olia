@@ -1,2 +1,4 @@
 tools for creation, validation, visualization and manipulation of OLiA ontologies
-	linker: semiautomated creation of linking models
+- link.sh: semiautomated creation of linking models
+- validate*sh syntax validation
+- eval-linking.sh

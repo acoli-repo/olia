@@ -1,0 +1,115 @@
+# should be applied to plain sequences of tags
+# expect conll:POS to hold the current tag
+# generate conll:TGT
+
+prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix conll: <http://ufal.mff.cuni.cz/conll2009-st/task-description.html#> 
+prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
+prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
+prefix system: <http://purl.org/olia/system.owl#>
+
+# retrieve all OLiA superclasses for SRC
+INSERT {
+	?w conll:OLIA ?c
+} WHERE {
+	GRAPH <http://purl.org/olia/src> {
+		?x system:hasTag ?p .
+		?x a/rdfs:subClassOf* ?c . # todo: add alternatives
+		FILTER(contains(str(?c),'olia.owl#'))
+	}
+	?w a nif:Word;
+		conll:POS ?p.
+};	
+
+# reduce OLiA superclasses to those that do not have an OLiA subclass among the candidates
+DELETE {
+	?w conll:OLIA ?d
+} WHERE {
+	?w conll:OLIA ?c, ?d.
+	GRAPH <http://purl.org/olia/olia.owl> {
+		?c rdfs:subClassOf+ ?d . # todo: add alternatives
+	}
+};	
+
+# for TGT graph: retrieve exact tags
+INSERT {
+	?w conll:TGT ?p
+} WHERE {
+	?w conll:OLIA ?u.
+	GRAPH <http://purl.org/olia/src> {
+		?x system:hasTag ?p .
+		?x a/rdfs:subClassOf* ?u . # todo: add alternatives
+	}
+};
+
+
+# for TGT graph: retrieve all more specific tags
+INSERT {
+	?w conll:TGT ?p
+} WHERE {
+	?w conll:OLIA ?u.
+	GRAPH <http://purl.org/olia/olia.owl> {
+		?o rdfs:subClassOf+ ?u # todo: add alternatives
+	}
+	GRAPH <http://purl.org/olia/src> {
+		?x system:hasTag ?p .
+		?x a/rdfs:subClassOf* ?o . # todo: add alternatives
+	}
+};
+
+# for TGT graph: retrieve more general tags
+INSERT {
+	?w conll:TGT ?p
+} WHERE {
+	?w conll:OLIA ?o.
+	FILTER(NOT EXISTS { ?w conll:TGT [] })
+	GRAPH <http://purl.org/olia/olia.owl> {
+		?o rdfs:subClassOf+ ?u # todo: add alternatives
+	}
+	GRAPH <http://purl.org/olia/src> {
+		?x system:hasTag ?p .
+		?x a/rdfs:subClassOf+ ?u . # todo: add alternatives
+	}
+	MINUS {
+		GRAPH <http://purl.org/olia/olia.owl> {
+			?o rdfs:subClassOf+ ?v.
+			?v rdfs:subClassOf+ ?u. # todo: add alternatives
+		}
+		GRAPH <http://purl.org/olia/src> {
+			?x system:hasTag ?p .
+			?x a/rdfs:subClassOf+ ?v . # todo: add alternatives
+		}
+	}
+};
+
+# # for every unanalyzed tag with an OLiA interpretation: attach all src tags that aren't used
+# INSERT {
+	# ?w conll:TGT ?p
+# } WHERE {
+	# ?w #a nif:Word. # 
+		# conll:OLIA ?o.
+	# FILTER(NOT EXISTS { ?w conll:TGT [] })
+	# GRAPH <http://purl.org/olia/src> {
+		# [] system:hasTag ?p
+	# } 
+	# MINUS { [a nif:Word ] conll:TGT ?p }
+# };
+
+# consolidate multiple entries for TGT in one |-separated string
+INSERT {
+	?w conll:TGT ?merged
+} WHERE {
+	{ SELECT ?w (GROUP_CONCAT(distinct ?p; separator="|") as ?merged)
+	  WHERE {
+		?w conll:TGT ?p
+	  } GROUP BY ?w ORDER BY ?w ?p 
+	}
+};
+
+# remove individual TGT values
+DELETE {
+	?w conll:TGT ?x
+} WHERE {
+	?w conll:TGT ?x,?y.
+	FILTER(strlen(?x)<strlen(?y))
+};
