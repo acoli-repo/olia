@@ -10,9 +10,14 @@
 
 ANNO_MODEL=$1;
 LINKING_MODEL=$2;
+OLIA=$3;
 if [ -z $LINKING_MODEL ]; then
 	LINKING_MODEL=`echo $ANNO_MODEL | sed s/'\.owl$'/'-link.rdf'/`;
 fi;
+if [ -z OLIA ]; then
+	OLIA=../owl/core/olia.owl;
+fi;
+OLIA_TOP=`echo $OLIA | sed s/'\.owl$'/'-top.owl'/`
 
 # set to your "official" installations, if necessary
 CONLL_RDF=$HOME/conll-rdf;
@@ -35,9 +40,10 @@ fi;
 # help #
 ########
 
-echo synopsis: $0 ANNO_MODEL "[LINKING_MODEL]" 1>&2;
-echo '  'ANNO_MODEL'    'OLiA annotation model '(url or file)' 1>&2;
-echo '  'LINKING_MODEL' 'OLiA linking model, if missing, extrapolate from ANNO_MODEL 1>&2;
+echo synopsis: $0 ANNO_MODEL "[LINKING_MODEL [REFERENCE_MODEL] ]" 1>&2;
+echo '  'ANNO_MODEL'      'OLiA annotation model '(url or file)' 1>&2;
+echo '  'LINKING_MODEL'   'OLiA linking model, by default extrapolated from ANNO_MODEL 1>&2;
+echo '  'REFERENCE_MODEL' 'OLiA reference model, by default ../owl/core/olia.owl 1>&2;
 echo '  'check reversibility for all system:hasTag values whether they can be recovered from OLiA 1>&2;
 
 #############
@@ -56,7 +62,8 @@ $RUN CoNLLStreamExtractor \
 $RUN CoNLLRDFUpdater -custom \
 	-model $ANNO_MODEL http://purl.org/olia/src \
 	-model $LINKING_MODEL http://purl.org/olia/src \
-	-model http://purl.org/olia/olia.owl \
+	-model $OLIA http://purl.org/olia/olia.owl \
+	-model $OLIA_TOP http://purl.org/olia/olia.owl \
 	-updates \
 		eval-linking.sparql | \
-$RUN CoNLLRDFFormatter -conll POS TGT 
+$RUN CoNLLRDFFormatter -conll POS TGT OLIA

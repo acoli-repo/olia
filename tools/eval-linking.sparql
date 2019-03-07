@@ -1,12 +1,14 @@
 # should be applied to plain sequences of tags
 # expect conll:POS to hold the current tag
 # generate conll:TGT
+# note that this can also be used for decoding OLiA against a particular tagset
 
 prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 prefix conll: <http://ufal.mff.cuni.cz/conll2009-st/task-description.html#> 
 prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
 prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
 prefix system: <http://purl.org/olia/system.owl#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
 
 # retrieve all OLiA superclasses for SRC
 INSERT {
@@ -14,12 +16,27 @@ INSERT {
 } WHERE {
 	GRAPH <http://purl.org/olia/src> {
 		?x system:hasTag ?p .
-		?x a/rdfs:subClassOf* ?c . # todo: add alternatives
+		?x a/(rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))* ?c .
 		FILTER(contains(str(?c),'olia.owl#'))
 	}
 	?w a nif:Word;
 		conll:POS ?p.
 };	
+
+# retrieve all OLiA superclasses for SRC
+INSERT {
+	?w conll:OLIA ?c
+} WHERE {
+	GRAPH <http://purl.org/olia/src> {
+		?x system:hasTag ?p .
+		?x a/(rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))* ?c .
+		FILTER(contains(str(?c),'olia-top.owl#'))
+	}
+	?w a nif:Word;
+		conll:POS ?p.
+	FILTER(NOT EXISTS { ?w conll:OLIA [] })
+};	
+
 
 # reduce OLiA superclasses to those that do not have an OLiA subclass among the candidates
 DELETE {
@@ -27,18 +44,24 @@ DELETE {
 } WHERE {
 	?w conll:OLIA ?c, ?d.
 	GRAPH <http://purl.org/olia/olia.owl> {
-		?c rdfs:subClassOf+ ?d . # todo: add alternatives
+		?c (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?d .
 	}
 };	
 
-# for TGT graph: retrieve exact tags
+# for TGT graph: retrieve exact tags 
 INSERT {
 	?w conll:TGT ?p
 } WHERE {
 	?w conll:OLIA ?u.
 	GRAPH <http://purl.org/olia/src> {
 		?x system:hasTag ?p .
-		?x a/rdfs:subClassOf* ?u . # todo: add alternatives
+		?x a ?o.
+		?o (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))* ?u .
+		FILTER(NOT EXISTS { 
+			?o (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?tmp.
+			?tmp (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?u.
+			[ a ?tmp ] system:hasTag ?q.
+		})
 	}
 };
 
@@ -48,12 +71,13 @@ INSERT {
 	?w conll:TGT ?p
 } WHERE {
 	?w conll:OLIA ?u.
+	FILTER(NOT EXISTS { ?w conll:TGT [] })
 	GRAPH <http://purl.org/olia/olia.owl> {
-		?o rdfs:subClassOf+ ?u # todo: add alternatives
+		?o (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?u .
 	}
 	GRAPH <http://purl.org/olia/src> {
 		?x system:hasTag ?p .
-		?x a/rdfs:subClassOf* ?o . # todo: add alternatives
+		?x a/(rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))* ?o .
 	}
 };
 
@@ -64,20 +88,20 @@ INSERT {
 	?w conll:OLIA ?o.
 	FILTER(NOT EXISTS { ?w conll:TGT [] })
 	GRAPH <http://purl.org/olia/olia.owl> {
-		?o rdfs:subClassOf+ ?u # todo: add alternatives
+		?o (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))* ?u .
 	}
 	GRAPH <http://purl.org/olia/src> {
 		?x system:hasTag ?p .
-		?x a/rdfs:subClassOf+ ?u . # todo: add alternatives
+		?x a/(rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?u .
 	}
 	MINUS {
 		GRAPH <http://purl.org/olia/olia.owl> {
-			?o rdfs:subClassOf+ ?v.
-			?v rdfs:subClassOf+ ?u. # todo: add alternatives
+			?o (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?v .
+			?v (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?u .
 		}
 		GRAPH <http://purl.org/olia/src> {
 			?x system:hasTag ?p .
-			?x a/rdfs:subClassOf+ ?v . # todo: add alternatives
+			?x a/(rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?v .
 		}
 	}
 };
