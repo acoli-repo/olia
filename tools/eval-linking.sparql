@@ -123,7 +123,7 @@ INSERT {
 INSERT {
 	?w conll:TGT ?merged
 } WHERE {
-	{ SELECT ?w (GROUP_CONCAT(distinct ?p; separator="|") as ?merged)
+	{ SELECT ?w (GROUP_CONCAT(distinct ?p; separator=", ") as ?merged)
 	  WHERE {
 		?w conll:TGT ?p
 	  } GROUP BY ?w ORDER BY ?w ?p 
@@ -136,4 +136,24 @@ DELETE {
 } WHERE {
 	?w conll:TGT ?x,?y.
 	FILTER(strlen(?x)<strlen(?y))
+};
+
+# consolidate multiple entries for OLIA in one |-separated string
+INSERT {
+	?w conll:OLIA ?merged
+} WHERE {
+	{ SELECT ?w (GROUP_CONCAT(distinct ?o; separator=", ") as ?merged)
+	  WHERE {
+		?w conll:OLIA ?p.
+		BIND(str(?p) as ?o)
+	  } GROUP BY ?w ORDER BY ?w ?o 
+	}
+};
+
+# remove individual OLIA values
+DELETE {
+	?w conll:OLIA ?x
+} WHERE {
+	?w conll:OLIA ?x,?y.
+	FILTER(strlen(str(?x))<strlen(str(?y)))
 };

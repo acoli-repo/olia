@@ -14,7 +14,7 @@ OLIA=$3;
 if [ -z $LINKING_MODEL ]; then
 	LINKING_MODEL=`echo $ANNO_MODEL | sed s/'\.owl$'/'-link.rdf'/`;
 fi;
-if [ -z OLIA ]; then
+if [ -z $OLIA ]; then
 	OLIA=../owl/core/olia.owl;
 fi;
 OLIA_TOP=`echo $OLIA | sed s/'\.owl$'/'-top.owl'/`
@@ -50,11 +50,15 @@ echo '  'check reversibility for all system:hasTag values whether they can be re
 # retrieval #
 #############
 
+TMP=$0.tmp;
+
 # retrieve tags
 rapper $ANNO_MODEL | grep 'system.owl#hasTag>' | grep '"' | \
-sed s/'.*"\([^"]*\)".*'/'\1'/ | sort -u | \
-\
-#
+sed s/'.*"\([^"]*\)".*'/'\1'/ | sort -u > $TMP;
+
+echo $ANNO_MODEL system:hasTag `wc -l $TMP` 1>&2:
+
+cat $TMP | \
 $RUN CoNLLStreamExtractor \
 	"http://pubs.opengroup.org/onlinepubs/009695399/functions/stdin.html#" \
 	POS  \
