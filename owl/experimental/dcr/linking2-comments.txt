@@ -1,0 +1,74 @@
+DCR linking May 2010
+
+Step (i): 76 OLiA Reference Model concepts (e.g., http://nachhalt.sfb632.uni-potsdam.de/owl/olia.owl#AttributiveAdjective and attributiveAdjective/DC-1243); 
+Step (ii): 155 concepts (e.g., for http://nachhalt.sfb632.uni-potsdam.de/owl/olia.owl#ExclamatoryPronoun and exclamativePronoun/DC-1285). 
+			For 48 concepts, no candidate could be confirmed in step (ii)
+			and for 79 concepts, no candidate
+total 358
+			
+For well-defined morphosyntactic concepts that were missing, the OLiA Reference Model has been updated.
+
+Since 2010, however, ISOcat developed further, and novel concepts have been added, e.g., as part of the incorporation of 
+GOLD into ISOcat (RELISH-Ref), or new profiles being created, e.g., for the Polish National Corpus.
+
+To assess the amount of modifications that have occurred in the last three years, the linking with the morphosyntactic profile 
+was revised in May 2013.
+
+Step (i): 	249 OLiA Reference Model concepts automatically linked
+Step (ii): 	130 OLiA Reference Model concepts confirmed
+			For 229 concepts, no candidate could be confirmed
+			For 100 OLiA Reference Model concepts, no candidate
+708 concepts in total (morphology, morphosyntax, syntax)
+			
+Coverage of OLiA as compared to ISOcat
+Step (i):	276 ISOcat concepts automatically linked*
+Step (ii):	106 ISOcat concepts confirmed
+			For 179 ISOcat concepts, no candidate could be confirmed
+			For 112 ISOcat concepts, no candidate
+673 concepts in total (morphosyntax)
+
+* the discrepancy is due to the number of duplicates in ISOcat
+
+Analysis of the unlinked parts:
+- systematic gaps, e.g.
+	\begin{description}
+	\item[Evidentiality] (added to GOLD in June 2009, and subsequently to ISOcat): In the NLP-oriented OLiA architecture, no evidentiality tagging has encountered so far, and it was not part of the 2005 GOLD edition used as a basis for the ontology)
+	\item[ProQuantifier and elaborate treatment of paucal] (added to OLiA during the ontological reconstruction of the MULTEXT-East scheme (Chiarcos and Erjavec 2010)
+	\end{description}
+- overspecific categories in ISOcat, including
+	\begin{description}
+	\item[categories for feature bundles] (e.g., non-animate_dual_vernacular [DC-3683] which conflates usage-related information (vernacular) with gender (non-animate) and number (dual))
+	\item[language-specific categories] (e.g., PRO.3 [DC-4204], "refers to the form 'die' in Negerhollands, when it functions as a pronominal demonstrative, a third person singular inanimate or impersonal pronoun, or as an expletive subject in an existential construction.")
+	\item[resource-specific categories] (e.g., ADJA [DC-2794], for attributive adjectives in the German STTS tagset, or preverbalParticleLmf [DC-1455] for preverbal particles according to the Lexical Markup Framework)
+	\end{description}
+- overloaded or ill-defined categories in ISOcat, including
+	\begin{description}
+	\item[yes, no] In ISOcat, these concepts are heavily overloaded and can be values for different attributes. Their semantics is thus context-dependent. In OLiA, this is made explicit by introducing individual concepts for the respective positive and negative values of an attribute, e.g., for 
+	\item[ApocopeMood] "a mood indicated by apocope". This concept conflates a phonological process (apocope) with a morphosyntactic feature (Mood) without providing a morphosyntactic (functional) definition in terms of the latter. The ontological status of this feature is thus remarkably different from other subconcepts of Mood, like, say, debitiveMood [DC-3835] which is characterized in functional terms as "Mood to express necessity or requirement". In ISOcat, these difficulties might have lead to the absence of a \emph{dcif:conceptualDomain} assignment to the feature verbFormMood [DC-1427], thereby exploiting the structural underspecification of ISOcat. In OLiA, the corresponding concept can be circumscribed by Apocope and hasMood some Mood. More appropriate, however, would be a proper modeling in terms of a morphosyntactic categorization.
+	\end{description}
+- categories for data structures and data processing rather than morphosyntactic concepts, including 
+	\begin{description}
+	\item[field identifiers] for interlinear glossing: word_level_gloss_national [DC-3773], word_level_gloss_English [DC-3772]
+	\item[annotation procedures]: addComponentLemma [DC-2202], "Operation that adds the lemma of a specific component."
+	\end{description}
+- meta data categories in ISOcat, e.g.,
+	\begin{description}
+	\item[countryCoding] [DC-2092] Designation of the standard used to code the country.
+	\item[creationDate] [DC-2251] Date of creation
+	\item[Citation] [DC-3111] (to facilitate linking to bibliographic entries)
+	\end{description}
+
+From these categories, systematic gaps only constitute about ... and the OLiA ontologies have been updated accordingly.
+
+As for the other unlinked sections, they are partially due to structural design elements: 
+With broadly defined profiles and little support to create elaborate hierarchical structures, information of meta data, data structures and processing instructions are conflated with morphosyntactic concepts in an unstructured pool of terms.
+A better approach would be to create a separate (sub-) profile for these categories. For metadata, a corresponding profile is already present (with entries partially redundant with the morphosyntactic profile, e.g., )
+
+OLiA does not provide the necessary elements to represent language resources. For this purpose, other 
+
+Most of them, however, partially reveal different philosophies: The radical bottom-up approach of ISOcat has led researchers and engineers to include concepts that are specific to their particular application [REF], language [REF] or tool set [REF]  (also, "ill-defined" concepts may represent application-specific shorthands for more complex models). While there is nothing wrong with fine-grained classifications, ISOcat currently lacks the capability to represent the relationship between these specific categories and more general concepts. Accordingly, the sheer application of ISOcat to facilitate interoperability is limited to the extent that a more elaborate inventory of structural relations over ISOcat concepts are introduced and used to formally define the different concepts. RelCat represents an effort to establish a richer inventory of relations, but it is still work in progress. With the release of ISOcat data under an open license that was decided in early 2013 (Menzo Windhouwer, personal communication, February 2013), it may be possible that the community will more readily adopt ISOcat and contribute to the development of more rigidly structured terminology repositories on that basis.
+
+In parts, this has already been accomplished, e.g., Thorsten Trippel developed an OWL formalization of a subset of the metadata profile of ISOcat. Within the morphosyntactic profile, the GOLD hierarchy has been incorporated and might subsequently be used as a nucleus for the reorganization of this profile, at least. In preparation of this paper, we developed several scripts that infer a more exhaustive hierarchical structure over ISOcat based on structural information (dcif:isA, dcif:conceptualDomain), on naming conventions for concepts (e.g., the head heuristic: attributiveAdjective [DC-1243] $\sqsubseteq$ adjective [DC-1230]), and on the text of definitions (i.e., whether the first noun phrase encountered can be mapped to a concept).\footnote{This feature was relatively noisy, hence used in early experiments only.} This hierarchical representation of the morphosyntactic profile of ISOcat (and similarly, any other ISOcat profile) may represent a nucleus for subsequent efforts to develop a better structured terminology repository, or even to develop alternative possible proposals to organize the set of terms as envisioned as part of the RelCat effort.
+
+For the time being, however, ISOcat seems not to be directly usable to facilitate NLP interoperability beyond using \emph{identical} concepts. In its present state, ISOcat contributes little to the interoperability between related terms in different NLP tools or electronic resources unless two tools or data sources point exactly to the same term. In particular, it does not support \emph{structural inferences}. For an annotation $a$ mapped to a concept $A$ that is a subconcept of $B$, we would like to determine whether another annotation $b$ mapped to $B$ represents compatible (equivalent, more generic, more specific, related) information. With this information, more complex problems can be addressed, and even novel NLP algorithms can be developed. One example was described by Chiarcos (2010), who used ontological specifications in terms of OLiA to combine morphosyntactic annotations from 7 different NLP tools for German, thereby extending the established ensemble combination approach (Brill & Wu 1998) to the combination of NLP tools with \emph{different} annotation schemes. A similar application of ontology-based specifications has been described by Pareja (2010) for the disambiguation of the Spanish particle \emph{se}.
+

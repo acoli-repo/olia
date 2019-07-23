@@ -1,0 +1,1195 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.owl-ontologies.com/unnamed.owl#"
+  xml:base="http://www.owl-ontologies.com/unnamed.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="IndefiniteDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="DemonstrativeDeterminer"/>
+              <owl:Class rdf:ID="PartitiveDeterminer"/>
+              <owl:Class rdf:ID="PossessiveDeterminer"/>
+              <owl:Class rdf:ID="WHDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DetType=Indefinite</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PronounOrDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EaglesCategory"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:PD
+
+the existence of this class is controversial ! seemingly, it has been introduced for reasons of lexical ambiguity in European languages thus it could be described by the joint better than as an independent class
+
+indeed, at least one fundamental difference is merged here: determiners are purely modifiers whereas pronouns contribute independent meaning: this could be one criterion for higher-level organization of the ontology
+
+for the sub-classes, no exclusivity is required as Eagles allows a hybrid ("both") category</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Abbreviation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Residual"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Abbreviation</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Symbol">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Symbol</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Gerund">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NonFiniteVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VerbForm=Gerund</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="RelativePronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >whtype=relative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="InterrogativePronoun"/>
+              <owl:Class rdf:ID="ExclamatoryPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WHPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ExclamatoryDeterminer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Exclamatory</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="InterrogativeDeterminer"/>
+              <owl:Class rdf:ID="RelativeDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHDeterminer"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DefiniteArticle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ArticleType=Definite</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="IndefiniteArticle"/>
+              <owl:Class rdf:ID="PartitiveArticle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Article"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OrdinalNumber">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Numeral"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="CardinalNumber"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Ordinal</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ExclamatoryAdverb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WHTypeAdverbs"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Exclamatory</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="InterrogativeAdverb"/>
+              <owl:Class rdf:ID="RelativeAdverb"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PartitiveArticle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DefiniteArticle"/>
+              <owl:Class rdf:about="#IndefiniteArticle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ArticleType=partitive
+(optional for French)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ImperativeVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FiniteVerb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PronominalAdverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AdverbType=Pronominal
+(can but don't have to be used for pronominal references, thus this special and diachronically important case is better described by the iuntersection of this with personal pronoun)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="DegreeAdverb"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Adverb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ThirdPersonPronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Person=Third</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="FirstPersonPronoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="SecondPersonPronoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SubordinatingConjunction">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="CoordinatingConjunction"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Subordinating
+
+the language-specific Eagles feature of subord-type is ignored.
+nevertheless it is oftren assumed that the distinction between subordination and coordination is notz a binary one. instead, intermediate values could exist as exemplified for these features developed especially for German</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Conjunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Preposition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Adposition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Preposition</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="Postposition"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Infinitive">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NonFiniteVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >verb form=Infinitive</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#FiniteVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >finiteness=finite</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#NonFiniteVerb"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PossessivePronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PronType=Possessive</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="DemonstrativePronoun"/>
+              <owl:Class rdf:ID="IndefinitePronoun"/>
+              <owl:Class rdf:about="#WHPronoun"/>
+              <owl:Class rdf:ID="PersReflPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SubjunctiveVerb">
+    <rdfs:subClassOf rdf:resource="#FiniteVerb"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MassNoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="CountableNoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Countability=mass (optional)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Noun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#IndefinitePronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PronType=Indefinite</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativePronoun"/>
+              <owl:Class rdf:about="#PossessivePronoun"/>
+              <owl:Class rdf:about="#WHPronoun"/>
+              <owl:Class rdf:about="#PersReflPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReciprocalPronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersReflPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="PersonalPronoun"/>
+              <owl:Class rdf:ID="ReflexivePronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >special pronoun type=reciprocal</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Supine">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VerbForm=Supine
+NB: similar to infinitive of motion verbs</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NonFiniteVerb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SecondPersonPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Person=Second</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#ThirdPersonPronoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#FirstPersonPronoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Interjection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:I</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ConditionalVerb">
+    <rdfs:subClassOf rdf:resource="#FiniteVerb"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RelativeAdverb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHTypeAdverbs"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=relative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#InterrogativeAdverb"/>
+              <owl:Class rdf:about="#ExclamatoryAdverb"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ReflexivePronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >special pronoun type=reflexive</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersReflPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#PersonalPronoun"/>
+              <owl:Class rdf:about="#ReciprocalPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#FirstPersonPronoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#SecondPersonPronoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Person=First</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#ThirdPersonPronoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Adjective">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EAGLES AJ
+degree,gender,number,case and inflection type are ignored
+though "use" is optional, it is included as this is a point where possible problems with the adv/adj distinction might arise</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Adverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles AV
+degree (semantic rather than POS-relevant) ignored
+
+ParticleAdverbs are (again) better described by the join of particles or adverbs rather than positing an independent category
+
+GeneralAdverbs are not included: this a wastebag for non-degree adverbs</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SentenceFinalPunctuation">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="RightParentheticalPunctuation"/>
+              <owl:Class rdf:ID="SentenceMedialPunctuation"/>
+              <owl:Class rdf:ID="LeftParentheticalPunctuation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Punctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RightParentheticalPunctuation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Punctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#SentenceFinalPunctuation"/>
+              <owl:Class rdf:about="#SentenceMedialPunctuation"/>
+              <owl:Class rdf:about="#LeftParentheticalPunctuation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ing">
+    <rdfs:subClassOf rdf:resource="#Gerund"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >just as an example for multiple inheritance:
+EAGLES suggested verbForm:Ing as a cover term for the Gerund-Participle-Merger in English </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Participle"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Punctuation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:PU
+
+Wilson &amp; Leech (1996) propose two alternative classifications: I will only implement the more interesting, i.e. position (the aöternative is just enumeration of possible signbs)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NonFiniteVerb">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#FiniteVerb"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Finiteness=non-finite</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RelativeDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#InterrogativeDeterminer"/>
+              <owl:Class rdf:about="#ExclamatoryDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Relative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHDeterminer"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FamiliarSecondPersonPronoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="PoliteSecondPersonPronoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >politeness="familiar"
+"limited to second person pronouns"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SecondPersonPronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PartitiveDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DetType=Partitive</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#Article"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:about="#WHDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InterrogativeAdverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Interrogative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHTypeAdverbs"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#RelativeAdverb"/>
+              <owl:Class rdf:about="#ExclamatoryAdverb"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PredicativeAdjective">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >use="predicative"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Adjective"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="AttributiveAdjective"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#EaglesCategory">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >direct children of this node are the major categories of EAGLES</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#DemonstrativePronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PronType=Demonstrative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#IndefinitePronoun"/>
+              <owl:Class rdf:about="#PossessivePronoun"/>
+              <owl:Class rdf:about="#WHPronoun"/>
+              <owl:Class rdf:about="#PersReflPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CardinalNumber">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Cardinal</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Numeral"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#OrdinalNumber"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InterrogativeDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHDeterminer"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Interrogative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#RelativeDeterminer"/>
+              <owl:Class rdf:about="#ExclamatoryDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#IndefiniteArticle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DefiniteArticle"/>
+              <owl:Class rdf:about="#PartitiveArticle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ArticleType=indefinite</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#DegreeAdverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AdverbType=Degree</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Adverb"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#PronominalAdverb"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Circumposition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adposition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Circumposition
+
+the relationship between circumpositions and pre-/postpositions is not clear
+
+against the procedure applied otherwise, I'd recommend that we do not prohibit Circumpositions from being Prepositions or Postpositions, though the Eagles feature assignment (with all optional values implemented) would possibly rule this out</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Unique">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles U
+
+according to the definition and examples, this seems to be closely related to "particle" (i.e. uninflected function words -- in a broader sense, everything which is not inflected is a particle, i.e. including interjections, in GOLD, uninflected items such as adpositions, conjucntions and interjections are excluded: "A particle is a partOfSpeech whose members do not belong to one of the main classes of words, is invariable, and typically has grammatical or pragmatic meaning.")
+
+
+"    The unique value (U) is applied to categories with a unique or
+    very small membership, such as negative
+particle, which are
+    ‘unassigned’ to any of the standard part-of-speech categories. The
+    value unique cannot
+always be strictly applied, since (for example)
+    Greek has three negative particles, ??  ,   ??  , and o  . (p.7)
+    No subcategories are recommended, although it is expected that
+    tagsets for individual languages will need
+to identify such one-member
+    word-classes as Negative particle, Existential particle, Infinitive
+    marker,
+etc"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#EaglesCategory"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InterrogativePronoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#RelativePronoun"/>
+              <owl:Class rdf:about="#ExclamatoryPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >whtype=interrogative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DemonstrativeDeterminer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >detType=Demonstrative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:about="#WHDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#Article"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AuxiliaryVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >status=auxiliary
+NB: we do not represent main verbs explicitly
+but accordingly, semi-auxiliaries cannot be represented either</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProperNoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="CommonNoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >type=proper</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Noun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Conjunction">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:C</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#EaglesCategory"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Acronym">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Acronym</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CountableNoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#MassNoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >countability=countable (optional)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Noun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Pronoun">
+    <rdfs:subClassOf rdf:resource="#PronounOrDeterminer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >this is the Eagles:PronounDeterminer with Category Pronoun
+
+note that the Eagles original class (i.e. motivated by the category "both") arises due to ambiguity of lexemes, which can wqithin such an ontology better described as "belonging to the join of two classes"
+
+ignored inflectional features such as case, gender, number, and possessive (i.e. inherent number of possessive pronouns)
+
+DetType is not relevant for Pronouns</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FusedPrepArt">
+    <rdfs:subClassOf rdf:resource="#Preposition"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Adposition:Type=FusedPrepArt
+"       The additional value Fused prep-art is for the benefit of those
+       who do not find it practical to split fused
+words such as French au (=
+       `a + le) into two textwords. This very common phenomenon of a fused
+       preposition
++ article in West European languages should preferably,
+       however, be handled by assigning two tags to the
+same orthographic
+       word (one for the preposition and one for the article). (p.12)"
+
+=> identified with Preposition+Article</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Preposition"/>
+          <owl:Class rdf:about="#Article"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#PersReflPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >prontype=pers/refl
+this class should be replaced by its sub-classification as it is induced by surface ambiguity only</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativePronoun"/>
+              <owl:Class rdf:about="#IndefinitePronoun"/>
+              <owl:Class rdf:about="#PossessivePronoun"/>
+              <owl:Class rdf:about="#WHPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PoliteSecondPersonPronoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#FamiliarSecondPersonPronoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#SecondPersonPronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Politeness=polite
+"limited to second-person pronoun"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Article">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:about="#WHDeterminer"/>
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles AT
+
+as the ontology-based approach is compatible with both
+subsuming articles under determiners and keeping
+articles as a separate class => sub-class of determiners which is disjoint with the other determiner classes
+
+inflectional features such as gender, number and case are ignored</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CommonNoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >type=common</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Noun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#ProperNoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#AttributiveAdjective">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >use="attributive"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Adjective"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#PredicativeAdjective"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ExclamatoryPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >whtype=exclamatory</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LeftParentheticalPunctuation">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#SentenceFinalPunctuation"/>
+              <owl:Class rdf:about="#SentenceMedialPunctuation"/>
+              <owl:Class rdf:about="#RightParentheticalPunctuation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Punctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PossessiveDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+              <owl:Class rdf:about="#WHDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DetType=Possessive</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Noun">
+    <rdfs:subClassOf rdf:resource="#EaglesCategory"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:N
+
+exclude grammatical information, i.e. gender, number, case, definiteness</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WHDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DetType=Int/Rel
+see remarks on WHPronoun</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SentenceMedialPunctuation">
+    <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#SentenceFinalPunctuation"/>
+              <owl:Class rdf:about="#RightParentheticalPunctuation"/>
+              <owl:Class rdf:about="#LeftParentheticalPunctuation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Adposition">
+    <rdfs:subClassOf rdf:resource="#EaglesCategory"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles: AP</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WHTypeAdverbs">
+    <rdfs:subClassOf rdf:resource="#Adverb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >polarity=wh-type
+non-wh-Type does not exist as this is simply the complement of this class
+
+again, see remarks on WHPronoun</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CoordinatingConjunction">
+    <rdfs:subClassOf rdf:resource="#Conjunction"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#SubordinatingConjunction"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Coordinating
+
+the optional CoordType is ignored as this is a purely distributional feature (repetition/pairing of expressions forming complex conjunctions)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Postposition">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#Preposition"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Postposition</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Adposition"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PersonalPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >special-pronoun type=personal</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#ReflexivePronoun"/>
+              <owl:Class rdf:about="#ReciprocalPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PersReflPronoun"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Formula">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Formula</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="IndicativeVerb">
+    <rdfs:subClassOf rdf:resource="#FiniteVerb"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Participle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VerbForm=participle</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#NonFiniteVerb"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Foreign">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=ForeignWord</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Numeral">
+    <rdfs:subClassOf rdf:resource="#EaglesCategory"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:NU
+
+Function:Pronoun/Determiner/Adjective is possibly better described by intersection with these categories rather than i the ontology directly
+
+nmo grammatical features (gender,number,case)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Determiner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >this is the Eagles:PronounDeterminer with Category Determiner
+
+note that the Eagles original class (i.e. motivated by the category "both") arises due to ambiguity of lexemes, which can wqithin such an ontology better described as "belonging to the join of two classes"
+
+Person,PronType,SpecialPronType,Politeness are relevant for Pronouns only</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#PronounOrDeterminer"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WHPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Prontype=IntRel
+note: this class should be replaced by its subclasses as it is introduced for reasons of surface-ambiguity only</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativePronoun"/>
+              <owl:Class rdf:about="#IndefinitePronoun"/>
+              <owl:Class rdf:about="#PossessivePronoun"/>
+              <owl:Class rdf:about="#PersReflPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Verb">
+    <rdfs:subClassOf rdf:resource="#EaglesCategory"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:V
+again, grammatical information is skipped, i.e. person, gender, number, tense, voice, aspect
+skip  optional information (separability, reflexivity, auxiliary, aux-function)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Residual">
+    <rdfs:subClassOf rdf:resource="#EaglesCategory"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles R
+
+the Type "Unclassified" is not considered as it is a dummy classs
+
+further, we do not require exclusivity here as this is possibly outside the domain of linguistic categories and possibly overlaps could occur (e.g. LaTeX which is a symbol which can be read as an Acronym or acronyms which are related to Abbreviartions, e.g. GNU "Gnu is not Unix")
+
+grammatical infomation is skipped
+
+    The residual value (R) is assigned to classes of textword which
+    lie outside the traditionally accepted range
+of grammatical classes,
+    although they occur quite commonly in many texts and very commonly in
+    some. 
+    For example: foreign words, or mathematical formulae. It can be
+    argued that these are on the fringes of the
+grammar or lexicon of the
+    language in which the text is written. Nevertheless, they need to be
+    tagged.(p7f.)
+    Although words in the Residual category are on the periphery of
+    the lexicon, they may take some of the
+grammatical characteristics,
+    e.g., of nouns. Acronyms such as IBM are similar to proper nouns;
+    symbols such
+as alphabetic characters can vary for singular and plural
+    (e.g. How many Ps are there in ‘psychopath’?), and
+are in this respect
+    like common nouns. In some languages (e.g. Portuguese) such symbols
+    also have gender.
+It is quite reasonable that in some tagging schemes
+    some of these classes of word will be classified under
+other parts of
+    speech. (p.10)</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="KB_093645_ObjectProperty_29"/>
+  <owl:DatatypeProperty rdf:ID="KB_093645_DatatypeProperty_30"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1, Build 284)  http://protege.stanford.edu -->

@@ -1,0 +1,1292 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/basque.owl#"
+     xml:base="http://purl.org/olia/basque.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/basque.owl">
+        <owl:versionInfo>2011-09-11 created
+
+Note that all Basque labels are given as absolutive plural noun phrases (as in the original tagset description). Further, it seems that some of the labels used by EusTagger deviate from the documentation that is formalized in this ontology (there seem to have been a number of simplifications, and Punctuation is more fine-grained subcategorized).
+
+Translated examples marked by ??? are uncertain translations.
+
+hasTier property is missing, undefined by document and in demo.
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <rdfs:isDefinedBy>http://ixa2.si.ehu.es/edblkontsulta/labur-eus.htm</rdfs:isDefinedBy>
+        <rdfs:comment>OLiA Annotation Model for the morphosyntactic annotation of Basque as produced by Morfeus/EusTagger, a morphological analyzer and a lemmatizer/tagger for Basque (Ezeiza et al. 1998, details: http://ixa.si.ehu.es/Ixa/Produktuak/1274695175, http://ixa.si.ehu.es/Ixa/Produktuak/1273217967; demo: http://ixa2.si.ehu.es/demo/analisianali.jsp).
+Probably the same categories were used for the annotation of the Basque AnCora corpus (http://ixa.si.ehu.es/Ixa/Produktuak/1274695486), a 155.000 word sub-corpus of the EPEC (Reference Corpus for the Processing of Basque). 
+
+Unless stated otherwise, the information provided in the ontology is taken from http://ixa2.si.ehu.es/edblkontsulta/labur-eus.htm. For translation and interpretation of the tagset documentation, we consulted Sagüés (2011), http://en.wikipedia.org/wiki/Basque_language and google translate.
+
+References:
+
+Ezeiza N., Aduriz I., Alegria I., Arriola J.M., Urizar R. 1998. Combining Stochastic and Rule-Based Methods for Disambiguation in Agglutinative Languages COLING-ACL&#39;98. Pgs. 380 - 384. Vol 1. Montreal (Canada). August 10-14, 1998. 
+
+Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebastian), Spain</rdfs:comment>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Abbreviation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Abbreviation">
+        <rdfs:label xml:lang="eu">laburdurak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
+        <rdfs:comment>e.g., &quot;etab.&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Acronym -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Acronym">
+        <rdfs:label xml:lang="eu">siglak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
+        <rdfs:comment>e.g., &quot;EHU&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Adjective">
+        <rdfs:label xml:lang="eu">adjektiboak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Adverb">
+        <rdfs:label xml:lang="eu">adberbioak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#AspectMarkingMorpheme -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#AspectMarkingMorpheme">
+        <rdfs:label xml:lang="eu">aspektu-morfemak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <rdfs:comment>e.g., &quot;-0&quot; (base-form), &quot;-ko&quot; (forms synthetic future forms)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory">
+        <rdfs:label xml:lang="eu">kategoria lagungarriak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#LexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#AuxiliaryVerb">
+        <rdfs:label xml:lang="eu">aditz laguntzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
+        <rdfs:comment>e.g., &quot;du&quot; (v.aux.3sg.abs-3sg.erg.prs)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#CommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#CommonNoun">
+        <rdfs:label xml:lang="eu">izenak arruntak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
+        <rdfs:comment>e.g., zuhaitz &quot;tree&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#CompoundVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#CompoundVerb">
+        <rdfs:label xml:lang="eu">aditzak konposatuak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
+        <rdfs:comment>e.g., &quot;lo egin&quot; (to sleep)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Conjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Conjunction">
+        <rdfs:label xml:lang="eu">loturazkoak juntagailuak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Connective"/>
+        <rdfs:comment>e.g., &quot;edo&quot; (or)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Connective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Connective">
+        <rdfs:label xml:lang="eu">loturazkoak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DeclensionMorpheme -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#DeclensionMorpheme">
+        <rdfs:label xml:lang="eu">deklinabide morfemak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <owl:versionInfo>&quot;declension&quot; probably means &quot;nominal/adjectival declension&quot;</owl:versionInfo>
+        <rdfs:comment>e.g., &quot;-aren&quot; (gen.poss.sg.anim.)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DegreeMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#DegreeMarker">
+        <rdfs:label xml:lang="eu">graduatzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <rdfs:comment>e.g., &quot;-ago&quot; (cpv.)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DeicticDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#DeicticDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak erakusleak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Determiner"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Determiner -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Determiner">
+        <rdfs:label xml:lang="eu">determinatzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DistributiveQuantifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#DistributiveQuantifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak zehaztuak banatzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer"/>
+        <rdfs:comment>e.g., &quot;bina&quot; (two)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Ellipsis -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Ellipsis">
+        <rdfs:label xml:lang="eu">elipsia</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#EmphaticDeicticDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#EmphaticDeicticDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak erakusleak indartuak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#DeicticDeterminer"/>
+        <rdfs:comment>e.g., &quot;berori&quot; (it)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#EmphaticPersonalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#EmphaticPersonalPronoun">
+        <rdfs:label xml:lang="eu">izenordainak pertsonalak indartuak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PersonalPronoun"/>
+        <rdfs:comment>e.g., &quot;neu&quot; (I)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#FactiveVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#FactiveVerb">
+        <rdfs:label xml:lang="eu">aditzak faktitiboak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
+        <rdfs:comment>e.g., &quot;etorrarazi&quot; (matching)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#FullStop -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#FullStop">
+        <rdfs:label xml:lang="eu">puntua</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PunctuationMark"/>
+        <owl:versionInfo>&quot;puntua&quot; means &quot;point&quot;, but as there is the category &quot;beste puntuazio zeinuak&quot; which &quot;may be merged with puntua&quot; (puntuaren pareko izan daitezkeenak), this is probably the most prototypical use of the full stop, i.e., as sentence-final marker.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#GeneralLexicalCategory -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#GeneralLexicalCategory">
+        <rdfs:label xml:lang="eu">kategoria nagusiak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#LexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#GeneralQuantifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#GeneralQuantifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak orokorrak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QuantifyingDeterminer"/>
+        <rdfs:comment>e.g., &quot;guzti&quot; (all)</rdfs:comment>
+        <owl:versionInfo>Seems to mean &quot;all quantifier&quot;.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Hyphen -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Hyphen">
+        <rdfs:label xml:lang="eu">marra</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <rdfs:comment>e.g., &quot;-&quot;</rdfs:comment>
+        <owl:versionInfo>unclear why &quot;marra&quot; (lit. &quot;line&quot;, e.g., &quot;-&quot;) is considered a morphological category ...</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IndefinitePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#IndefinitePronoun">
+        <rdfs:label xml:lang="eu">izenordainak mugagabeak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#UndefinedAmountPronoun"/>
+        <rdfs:comment>e.g., &quot;norbait&quot; (someone)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Interjection">
+        <rdfs:label xml:lang="eu">interjekzioak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:comment>e.g., &quot;alajaina !&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#InterrogativeAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#InterrogativeAdjective">
+        <rdfs:label xml:lang="eu">adjektiboak galdetzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Adjective"/>
+        <rdfs:comment>e.g., &quot;nongo&quot; (where ???)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#InterrogativeAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#InterrogativeAdverb">
+        <rdfs:label xml:lang="eu">adberbioak galdetzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Adverb"/>
+        <rdfs:comment>e.g., &quot;noiz&quot; (when ???)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#InterrogativePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#InterrogativePronoun">
+        <rdfs:label xml:lang="eu">izenordainak galdetzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#UndefinedAmountPronoun"/>
+        <rdfs:comment>e.g., &quot;nor&quot; (who)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#InterrogativeQualifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#InterrogativeQualifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak nolokotzaileak galdetzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QualifyingDeterminer"/>
+        <rdfs:comment>e.g., &quot;zein&quot; (how many ???)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#LexicalCategory -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#LexicalCategory">
+        <rdfs:label xml:lang="eu">kategoria lexikalak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#MorphologicalCategory -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#MorphologicalCategory">
+        <rdfs:label xml:lang="eu">kategoria morfologikoak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#NormalAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalAdjective">
+        <rdfs:label xml:lang="eu">adjektiboak arruntak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Adjective"/>
+        <rdfs:comment>e.g., &quot;benetako&quot; (true)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#NormalAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalAdverb">
+        <rdfs:label xml:lang="eu">adberbioak arruntak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Adverb"/>
+        <rdfs:comment>e.g., &quot;gaur&quot; (today), &quot;negarrez&quot; (crying)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#NormalDeicticDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalDeicticDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak erakusleak arruntak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#DeicticDeterminer"/>
+        <rdfs:comment>e.g., &quot;hau&quot; (this)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#NormalPersonalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalPersonalPronoun">
+        <rdfs:label xml:lang="eu">izenordainak pertsonalak arruntak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PersonalPronoun"/>
+        <rdfs:comment>e.g., &quot;ni&quot; (I)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#NormalQualifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalQualifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak nolakotzaileak arruntak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QualifyingDeterminer"/>
+        <rdfs:comment>e.g. &quot;edozein&quot; (any)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Noun">
+        <rdfs:label xml:lang="eu">izenak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Numeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Numeral">
+        <rdfs:label xml:lang="eu">zenbakiak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
+        <rdfs:comment>e.g., &quot;bat&quot; (one)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#OrdinalQuantifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#OrdinalQuantifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak ordinalak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer"/>
+        <rdfs:comment>e.g., &quot;bigarren&quot; (second)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#OtherLexicalCategory -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#OtherLexicalCategory">
+        <rdfs:label xml:lang="eu">bestelakoak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:comment>e.g., &quot;baldin&quot; (required)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#OtherPointSymbol -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#OtherPointSymbol">
+        <rdfs:label xml:lang="eu">beste puntuazio zeinuak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PunctuationMark"/>
+        <owl:versionInfo>Original note: &quot;may be merged with FullStop&quot; (beste puntuazio zeinuak).
+Therefore probably a use of the point different from its function as sentence-final marker.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Particle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Particle">
+        <rdfs:label xml:lang="eu">partikulak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:comment>e.g., &quot;omen&quot; (say ???), &quot;ote&quot; (if ???)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PeriphrasticVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#PeriphrasticVerb">
+        <rdfs:label xml:lang="eu">aditzak perifrastikoak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
+        <rdfs:comment>e.g., &quot;ahal izan&quot; (to be)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PersonName -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#PersonName">
+        <rdfs:label xml:lang="eu">pertsona-izen bereziak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
+        <rdfs:comment>e.g., &quot;Mikel&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#PersonalPronoun">
+        <rdfs:label xml:lang="eu">izenordainak pertsonalak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PlaceName -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#PlaceName">
+        <rdfs:label xml:lang="eu">leku-izen bereziak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
+        <rdfs:comment>e.g., &quot;Donostia&quot; (Spanish: San Sebastian)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Prefix -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Prefix">
+        <rdfs:label xml:lang="eu">aurrizkiak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <rdfs:comment>e.g., &quot;ber-&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Pronoun">
+        <rdfs:label xml:lang="eu">izenordainak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PunctuationMark -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#PunctuationMark">
+        <rdfs:label xml:lang="eu">puntuazio-zeinuak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PunctuationSymbol -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#PunctuationSymbol">
+        <rdfs:label xml:lang="eu">puntuazio sinboloak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PunctuationMark"/>
+        <rdfs:comment>e.g., parenthesis, long hyphen, quotation marks, ...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#QualifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#QualifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak nolakotzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Determiner"/>
+        <owl:versionInfo xml:lang="en">http://www.wordmeaning.org/vasque/nolakotzaile.htm: qualifier
+(but according to the example, it seems to mean &quot;quantifier&quot;, actually, ...)</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#QuantifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#QuantifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Determiner"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ReciprocalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#ReciprocalPronoun">
+        <rdfs:label xml:lang="eu">izenordainak elkarkariak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
+        <rdfs:comment>e.g., &quot;elkar&quot; (mutual)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ReflexivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#ReflexivePronoun">
+        <rdfs:label xml:lang="eu">izenordainak bihurkariak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
+        <rdfs:comment>e.g., &quot;-(r)en burua&quot; (&lt; burua &quot;head&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#RelationalSuffix -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#RelationalSuffix">
+        <rdfs:label xml:lang="eu">erlazio atzitkiak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <rdfs:comment>e.g., &quot;-(e)la&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#SentenceConnective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#SentenceConnective">
+        <rdfs:label xml:lang="eu">loturazkoak lokailuak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Connective"/>
+        <rdfs:comment>e.g., &quot;hala ere&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#SimpleVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#SimpleVerb">
+        <rdfs:label xml:lang="eu">aditzak sinpleak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
+        <rdfs:comment>e.g., ekarri &quot;brought&quot; (participle perfect)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak zehaztuak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QuantifyingDeterminer"/>
+        <rdfs:comment>e.g., &quot;bi&quot; (two)</rdfs:comment>
+        <owl:versionInfo>corresponds to category &quot;Numeral&quot;</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Suffix -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Suffix">
+        <rdfs:label xml:lang="eu">atzizkiak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <rdfs:comment>e.g., &quot;-pe&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Symbol -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Symbol">
+        <rdfs:label xml:lang="eu">sinboloak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
+        <rdfs:comment>e.g., &quot;km&quot;, &quot;cm&quot;, &quot;g&quot;,... </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#SyntheticVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#SyntheticVerb">
+        <rdfs:label xml:lang="eu">aditz sintetikoak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
+        <rdfs:comment>e.g., &quot;dator&quot; (v.prs.3sg.abs. of etorri)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#UndefinedAmountPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#UndefinedAmountPronoun">
+        <rdfs:label xml:lang="eu">izenordainak zehaztugabeak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#UndefinedAmountQuantifyingDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#UndefinedAmountQuantifyingDeterminer">
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak zehaztugabeak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QuantifyingDeterminer"/>
+        <owl:versionInfo>seems to mean subset-indicating (existential) quantifier</owl:versionInfo>
+        <rdfs:comment>e.g., zenbait &quot;some&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#Verb">
+        <rdfs:label xml:lang="eu">aditza</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#VerbTypeMorpheme -->
+
+    <owl:Class rdf:about="http://purl.org/olia/basque.owl#VerbTypeMorpheme">
+        <rdfs:label xml:lang="eu">aditz-mota morfemak</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <owl:versionInfo>&quot;aditz mota&quot; means &quot;verb type&quot; (http://littera.deusto.es/enwiki/index.php/User:LeticiaEchevarria)</owl:versionInfo>
+        <rdfs:comment>e.g., &quot;-tu&quot;, &quot;-t(z)e&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADB">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Adverb"/>
+        <system:hasTagStartingWith>ADB</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADBARR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADBARR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#NormalAdverb"/>
+        <system:hasTagStartingWith>ADBARR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADBGAL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADBGAL">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#InterrogativeAdverb"/>
+        <system:hasTagStartingWith>ADBGAL</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADI">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
+        <system:hasTagStartingWith>ADI</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADIADK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADIADK">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#CompoundVerb"/>
+        <system:hasTagStartingWith>ADIADK</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADIADP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADIADP">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#PeriphrasticVerb"/>
+        <system:hasTagStartingWith>ADIADP</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADIFAK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADIFAK">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#FactiveVerb"/>
+        <system:hasTagStartingWith>ADIFAK</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADISIN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADISIN">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#SimpleVerb"/>
+        <system:hasTagStartingWith>ADISIN</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADJ">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Adjective"/>
+        <system:hasTagStartingWith>ADJ</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADJARR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADJARR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#NormalAdjective"/>
+        <system:hasTagStartingWith>ADJARR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADJGAL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADJGAL">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#InterrogativeAdjective"/>
+        <system:hasTagStartingWith>ADJGAL</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADL">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryVerb"/>
+        <system:hasTagStartingWith>ADL</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ADT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ADT">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#SyntheticVerb"/>
+        <system:hasTagStartingWith>ADT</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#AMM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#AMM">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#VerbTypeMorpheme"/>
+        <system:hasTagStartingWith>AMM</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ASP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ASP">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#AspectMarkingMorpheme"/>
+        <system:hasTagStartingWith>ASP</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ATZ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ATZ">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Suffix"/>
+        <system:hasTagStartingWith>ATZ</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#AUR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#AUR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Prefix"/>
+        <system:hasTagStartingWith>AUR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#BPM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#BPM">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#OtherPointSymbol"/>
+        <system:hasTagStartingWith>BPM</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#BST -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#BST">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#OtherLexicalCategory"/>
+        <system:hasTagStartingWith>BST</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DEK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DEK">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#DeclensionMorpheme"/>
+        <system:hasTagStartingWith>DEK</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DET -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DET">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Determiner"/>
+        <system:hasTagStartingWith>DET</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETBAN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETBAN">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#DistributiveQuantifyingDeterminer"/>
+        <system:hasTagMatching>^DET.*BAN</system:hasTagMatching>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETDZG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETDZG">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#UndefinedAmountQuantifyingDeterminer"/>
+        <system:hasTagMatching>^DET.*DZG</system:hasTagMatching>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETDZH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETDZH">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer"/>
+        <system:hasTagMatching>^DET.*DZH</system:hasTagMatching>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETERK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETERK">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#DeicticDeterminer"/>
+        <system:hasTagStartingWith>DETERK</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETERKARR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETERKARR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#NormalDeicticDeterminer"/>
+        <system:hasTagStartingWith>DETERKARR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETERKIND -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETERKIND">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#EmphaticDeicticDeterminer"/>
+        <system:hasTagStartingWith>DETERKIND</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETNOL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETNOL">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#QualifyingDeterminer"/>
+        <system:hasTagStartingWith>DETNOL</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETNOLARR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETNOLARR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#NormalQualifyingDeterminer"/>
+        <system:hasTagStartingWith>DETNOLARR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETNOLGAL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETNOLGAL">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#InterrogativeQualifyingDeterminer"/>
+        <system:hasTagStartingWith>DETNOLGAL</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETORD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETORD">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#OrdinalQuantifyingDeterminer"/>
+        <system:hasTagMatching>^DET.*ORD</system:hasTagMatching>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETORO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETORO">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#GeneralQuantifyingDeterminer"/>
+        <system:hasTagMatching>^DET.*ORO</system:hasTagMatching>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#DETZNB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#DETZNB">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#QuantifyingDeterminer"/>
+        <system:hasTagStartingWith>DETZNB</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ELI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ELI">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Ellipsis"/>
+        <system:hasTagStartingWith>ELI</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ERL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ERL">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#RelationalSuffix"/>
+        <system:hasTagStartingWith>ERL</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#GRA -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#GRA">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#DegreeMarker"/>
+        <system:hasTagStartingWith>GRA</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IOR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IOR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
+        <system:hasTagStartingWith>IOR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IORBIH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IORBIH">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#ReflexivePronoun"/>
+        <system:hasTagStartingWith>IORBIH</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IORELK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IORELK">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#ReciprocalPronoun"/>
+        <system:hasTagStartingWith>IORELK</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IORIZG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IORIZG">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#UndefinedAmountPronoun"/>
+        <system:hasTagStartingWith>IORIZG</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IORIZGGAL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IORIZGGAL">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#InterrogativePronoun"/>
+        <system:hasTagStartingWith>IORIZGGAL</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IORIZGMGB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IORIZGMGB">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#IndefinitePronoun"/>
+        <system:hasTagStartingWith>IORIZGMGB</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IORPER -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IORPER">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#PersonalPronoun"/>
+        <system:hasTagStartingWith>IORPER</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IORPERARR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IORPERARR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#NormalPersonalPronoun"/>
+        <system:hasTagStartingWith>IORPERARR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IORPERIND -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IORPERIND">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#EmphaticPersonalPronoun"/>
+        <system:hasTagStartingWith>IORPERIND</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#ITJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#ITJ">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Interjection"/>
+        <system:hasTagStartingWith>ITJ</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IZE -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IZE">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
+        <system:hasTagStartingWith>IZE</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IZEARR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IZEARR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#CommonNoun"/>
+        <system:hasTagStartingWith>IZEARR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IZEIZB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IZEIZB">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#PersonName"/>
+        <system:hasTagStartingWith>IZEIZB</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IZELIB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IZELIB">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#PlaceName"/>
+        <system:hasTagStartingWith>IZELIB</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#IZEZKI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#IZEZKI">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Numeral"/>
+        <system:hasTagStartingWith>IZEZKI</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#LAB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#LAB">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Abbreviation"/>
+        <system:hasTagStartingWith>LAB</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#LOT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#LOT">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Connective"/>
+        <system:hasTagStartingWith>LOT</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#LOTJNT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#LOTJNT">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Conjunction"/>
+        <system:hasTagStartingWith>LOTJNT</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#LOTLOK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#LOTLOK">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#SentenceConnective"/>
+        <system:hasTagStartingWith>LOTLOK</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#MAR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#MAR">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Hyphen"/>
+        <system:hasTagStartingWith>MAR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PNT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#PNT">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#FullStop"/>
+        <system:hasTagStartingWith>PNT</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PRT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#PRT">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Particle"/>
+        <system:hasTagStartingWith>PRT</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#PSB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#PSB">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#PunctuationSymbol"/>
+        <system:hasTagStartingWith>PSB</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#SIG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#SIG">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Acronym"/>
+        <system:hasTagStartingWith>SIG</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/basque.owl#SNB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/basque.owl#SNB">
+        <rdf:type rdf:resource="http://purl.org/olia/basque.owl#Symbol"/>
+        <system:hasTagStartingWith>SNB</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

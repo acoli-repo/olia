@@ -1,0 +1,4018 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:susa="http://www.domain3.com#"
+    xmlns:stts="http://www.domain2.com#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:sfb632="http://www.domain5.com#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns="http://www.owl-ontologies.com/unnamed.owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:meno="http://www.domain4.com#"
+  xml:base="http://www.owl-ontologies.com/unnamed.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://protege.stanford.edu/plugins/owl/protege"/>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://www.domain3.com#SubstitutiveRelativePronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RelativePronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#SubstitutiveWHPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PNQ.r</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#TO">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Unique"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >infinitival to (CC: could be analyzed as a sub-type of subordination)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VHZ">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Have"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"has"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Present"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RelativePronoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="InterrogativePronoun"/>
+              <owl:Class rdf:ID="ExclamatoryPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >whtype=relative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WHPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OrdinalNumber">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Numeral"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="CardinalNumber"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Ordinal</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#SubstitutivePersonalPronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#SubstitutivePronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PP...
+
+cf. http://www.ilc.cnr.it/EAGLES96/morphsyn/node366.html#SECTION00074100000000000000</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#POS">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"echte POS-Tags"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#PInt">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InterrogativePronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >inetrrogative pronouns</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#QuantifierDeterminerPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D...
+
+very heterogenuous, possibly, a more fine-grained analysis has to be done, relating each single tag with an own Eagles class
+
+according to the examples, prototypical formss collected here can be used as determiners, some have ambiguity with pronouns (but  this ambiguity is not resolved), thus a coarse-grained mapping to EAGLES is to put D into the Determiner class</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Determiner"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONDEM_P">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >	     PRONDEM:P pronominal adverbs formed from demonstrative
+	     pronouns, e.g. "dessentwegen" (ß4.3.12.1)
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PronominalAdverb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRONDEM"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VMK">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Past"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#ModalVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"ought, used" as catenative</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PastParticiple">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Participle"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V.N...</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#Additional">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"nicht-linguistische Tags"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#SubjunctiveVerb">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain4.com#Imperative"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#FiniteVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V.Sub</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SubjunctiveVerb"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain4.com#IndicativeVerb"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#AP">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Adposition</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PossessivePronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="DemonstrativePronoun"/>
+              <owl:Class rdf:ID="IndefinitePronoun"/>
+              <owl:Class rdf:about="#WHPronoun"/>
+              <owl:Class rdf:ID="PersReflPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PronType=Possessive</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#DB">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#QuantifierDeterminerPronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >quantifying determiners or pronouns
+
+        DBa     +All    all
+        DB2     +Both   both
+        DBh     half    half
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SubjunctiveVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FiniteVerb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#APPG">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PossessiveDeterminer"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Attributive Possessive Pronoun
+
+according to Eagles 96 (http://www.ilc.cnr.it/EAGLES96/morphsyn/node454.html#SECTION00084100000000000000), a possessive determiner
+
+  APPGf   +Her    her
+        APPGm   +His    his
+        APPGh1  ITS     its
+        APPGi1  +My     my
+        APPGi2  +Our    our
+        APPGh2  Their   their
+        APPGy   +Your   your</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#AttributivePronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PNQV">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PNQVG whosever
+PNQVO whomever
+PNQVS whoever
+
+not mentioned in EAGLES document, in my intuition rather relative than interrogative pronouns, if not purely adverbs</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#SubstitutiveWHPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YD">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >dash</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SentenceMedialPunctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VMPP">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#VM"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Participle"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partizip Perfekt, modal "er hat gekonnt"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#PInd">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IndefinitePronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >indefinite pronouns</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#KOKOM">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#KO"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Vergleichspartikel, ohne Satz "als, wie"
+
+könnte auch asl Präposition (wie "bis") verstanden werden</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SubordinatingConjunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WHTypeAdverb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Adverb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >polarity=wh-type
+non-wh-Type does not exist as this is simply the complement of this class
+
+again, see remarks on WHPronoun</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#PronounOrDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#WordClass"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.domain4.com#Determiner"/>
+          <owl:Class rdf:about="http://www.domain4.com#Pronoun"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PronounOrDeterminer"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PD
+
+the only relevant sub-class as described in 8.5.5 is the person distinction which is applied to PersonalPronouns only. Accordingly, no further subclassification necessary</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#NN">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#N"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Appellativa "Tisch, Herr, das Reisen"
+		     NN&lt;ABK Abkurzung
+		     NN&lt;ADJ substantivierte Adjektive "der Alte"
+		     NN&lt;CARD Kardinalzahl "Hunderte"
+		     NN&lt;FRACT Bruchzahl "ein Viertel"
+		     NN&lt;ORD Ordinalzahl "ein Vierter"
+		     NN&lt;VINF substantivierter Innitiv "das Spielen"
+		     NN&lt;VPART </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CommonNoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PPER">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#P"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PersonalPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >irreexive Personalpronomina</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#IW">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Preposition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"with"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YO">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bullet, pilcrom, or other special symbol visually marking a text division</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#CARD">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CardinalNumber"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Kardinalzahl, "zwei Manner, im Jahre 1994"
+     NurfurKardinalzahlenwirdunterdenNumeraliaeineeigeneWortklassedeniert.
+     Ordinal, Multiplikativ und Fraktalzahlen werden entsprechend ihrer Distribution zu den Adjektiven oder Nomina gezahlt</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PI">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#P"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indefinitpronomina</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PPOS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Possessivpronomina</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#P"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#CC">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CoordinatingConjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Conjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Conjunction</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#N">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nomina</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SentenceFinalPunctuation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Punctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="RightParentheticalPunctuation"/>
+              <owl:Class rdf:about="#SentenceMedialPunctuation"/>
+              <owl:Class rdf:ID="LeftParentheticalPunctuation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#PPer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersonalPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >personal pronoun</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ing">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Gerund"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >just as an example for multiple inheritance:
+EAGLES suggested verbForm:Ing as a cover term for the Gerund-Participle-Merger in English </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Participle"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Unique">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >subsumes different "particles": isolate forms, uninflectable, which have not been included anwhere else
+
+NB: http://www.ilc.cnr.it/EAGLES96/morphsyn/node700.html#SECTION000153100000000000000 lists exactly the forms collected here
+
+Particle-Type	infinitive 	to (+ Infin.) 	UI	
+negative 	not, n't 	UN	
+existential 	there (is/are) 	UX</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Unique"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PNQ0q">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#SubstitutiveInterrogativePronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >interrogative whom</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NonFiniteVerb">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#FiniteVerb"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Finiteness=non-finite</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VBD">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VBDR were
+VBDZ was</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Past"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Be"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#CS">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubordinatingConjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >subordinating conjunction
+
+        CS      +although       although
+        CS      +because        because
+        CS22    case    case
+        CS21    Even    even
+        CS21    except  except
+        CSf     For     for
+        CST22   how     how
+        CS22    if      if
+        CS21    insofar insofar
+        CS      lest    lest
+        CS32    long    long
+        CS      Now     now
+        CS      +Once   once
+        CS21    provided        provided
+        CS      providing       providing
+        CSN     +&lt;apos>n        than
+        CS22    that    that
+        CS22    though  though
+        CS      Unless  unless
+        CSn     +When   when
+        CSr     Where   where
+        CS      Whereas whereas
+        CSW     +Whether        whether
+        CS      While   while
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Conjunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PartitiveDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="DemonstrativeDeterminer"/>
+              <owl:Class rdf:ID="IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:ID="WHDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DetType=Partitive</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="Article"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#VLEX">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >  VLEX lexical verb (ß 4.3.2.2), e.g. "walk", cf. German "wollen" in "ich will ein Eis"
+
+note: transitivity in EAGLES ignored</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#V"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="AuxiliaryVerb"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#ADV">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adverb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Adverb "schon, bald, doch"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#WHTypeAdverb"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#PronominalAdverb"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CardinalNumber">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Cardinal</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#OrdinalNumber"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Numeral"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DegreeAdverb">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#PronominalAdverb"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AdverbType=Degree</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adverb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#WordClass">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://gandalf.aksis.uib.no/menota/guidelines/
+v. 1.1 (5 May 2004)
+
+EAGLES conformant, mapping thus straight-forward, see text file for critical points
+
+integrated comments by "Ludger Zeevaert" &lt;zeevaert@uni-hamburg.de> (LZ)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#DA">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >quantifiers
+
+        DA2     Few     few
+        DAr     Former  former
+        DAr     latter  latter
+        DAT     least   least
+        DAR     LESS    less
+        DA1     little  little
+        DA2     MANY    many
+        DAR     MORE    more
+        DAT     +Most   most
+        DA1     +Much   much
+        DAg     own     own
+        DAy     +Same   same
+        DA2q    Several several
+        DAz     +Such   such
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#QuantifierDeterminerPronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YN">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >colon, ":"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SentenceMedialPunctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONEXPL">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONQUANT"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONDEM"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >     PRONEXPL expletive pronouns, e.g. "there" in "there is a man" (ß4.3.10.8)
+	      Expletive pronouns (also called „impersonal pronouns“,
+	      „pleonastic pronouns“) are pronouns,	  
+	      which do not have any meaning,
+	      but are syntactically required
+
+	      We also use PRONEXPL for pre-field es in German "es
+	      kamen Sportler"
+
+here regarded as personal pronoun (equal form)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPOS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPRS"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersonalPronoun"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONINT"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRON"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONRFL"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONREL"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#InterrogativePronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >whtype=interrogative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#RelativePronoun"/>
+              <owl:Class rdf:about="#ExclamatoryPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WHPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#VTR">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >       VTR transitive verb (ß 4.3.2.2), e.g. "buy"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#VLEX"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YP">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >silent pause (speech)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#AuxiliaryVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >status=auxiliary
+NB: we do not represent main verbs explicitly
+but accordingly, semi-auxiliaries cannot be represented either</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VMINF">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Innitiv, modal "wollen"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Infinitive"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#VM"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PPX">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >reflexive personal pronoun
+
+herself, itself, yourselves ...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutivePersonalPronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ReflexivePronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Have">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"have"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CountableNoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >countability=countable (optional)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="MassNoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Noun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YC">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >comma</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SentenceMedialPunctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PNQSr">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >relative who</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutiveRelativePronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Unassigned">
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Residual"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >U
+
+against Eagles, this does not cover one-word categories, but non-POS Elements, thus Residual
+
+Some words are corrupt, difficult to analyse, belonging to another language or indeterminate for other reason. These words are marked as unassigned, U.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PPY">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersonalPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutivePersonalPronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SecondPersonPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2nd person personal pronoun, "you"
+
+PPY...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VDZ">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"does"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Present"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Do"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#UH">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Interjection"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >interjection, in CHRISTINE replaced with a range of different U-tags
+
+UH</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#MC">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >cardinal number</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#CardinalNumber"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Numeral"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PTKZU">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#PTK"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"zu" vor Innitiv "zu gehen"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#Tag">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >STTS Tags, organized according to main groups
+Schiller et al. (1999)
+kleines Tagset, ohne lexikalische und morphologische Information</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#LeftParentheticalPunctuation">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#SentenceFinalPunctuation"/>
+              <owl:Class rdf:about="#SentenceMedialPunctuation"/>
+              <owl:Class rdf:about="#RightParentheticalPunctuation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Punctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Infinitive">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#NonfiniteVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Infinitive"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V...Inf
+
+can be tensed (8.5.8.2), but this is not represented here</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WHDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DetType=Int/Rel
+see remarks on WHPronoun</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SentenceMedialPunctuation">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#SentenceFinalPunctuation"/>
+              <owl:Class rdf:about="#RightParentheticalPunctuation"/>
+              <owl:Class rdf:about="#LeftParentheticalPunctuation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Punctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#ModalVerb">
+    <rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VM...
+
+Eagles:
+The auxiliaries in English subdivide into the primary verbs `be', `have', and `do', which can also function as main verbs, and the modal auxiliaries such as `can', `will', and `would', which are uninflected, and always function as auxiliaries.
+http://www.ilc.cnr.it/EAGLES96/morphsyn/node158.html#SECTION00054800000000000000</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YM">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >filled pause (speech)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VV0">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >non-modal, non-aux
+
+VV0...</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#BaseForm"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#SubstitutivePronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P...
+
+in genera, this seems to correspond to Pronoun, but I am not sure about "none" in EAGLES
+
+by linking it to Pronoun, "none" can be found as both "Unique" and "Pronoun"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#SUBCOM">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >    SUBCOM subordinative conjunction: complementizer (ß 4.3.5), e.g. "that"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#SUB"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PTKA">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partikel bei Adjektiv "am schonsten", oder Adverb "zu schnell"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#PTK"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Do">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VD...
+
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Formula">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Formula</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#N">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Noun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N noun, General case, e.g. "water" (ß4.3.1.1)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#COOR">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CoordinatingConjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >COOR coordinative conjunction (ß 4.3.6), e.g. "and", "or"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#BaseForm">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Infinitive"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V.0...
+
+Infinitive or identical indicative verb form
+
+see general remarks on Infinitive/Indicative ambiguity at susa:Verb, in linking equated with infinitive
+
+BTW: not possible to set in the intersection between infinitive and indicative (note: this should be empty => does this cause any results in the reasoner ???)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Participle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VerbForm=participle</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#NonFiniteVerb"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Determiner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >this is the Eagles:PronounDeterminer with Category Determiner
+
+note that the Eagles original class (i.e. motivated by the category "both") arises due to ambiguity of lexemes, which can wqithin such an ontology better described as "belonging to the join of two classes"
+
+Person,PronType,SpecialPronType,Politeness are relevant for Pronouns only
+
+cf.
+http://www.ilc.cnr.it/EAGLES96/morphsyn/node454.html#SECTION00084100000000000000:
+Type 	possessive 	your 	DV2	
+demonstrative 	those 	DDp	
+Wh-type 	what 	DW	
+indefinite 	every 	DIs
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PronounOrDeterminer"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#WHPronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Prontype=IntRel
+note: this class should be replaced by its subclasses as it is introduced for reasons of surface-ambiguity only
+
+note that WHPronoun is my term, it is not required that these have to begin with wh in English, though prototypical instances do</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativePronoun"/>
+              <owl:Class rdf:about="#IndefinitePronoun"/>
+              <owl:Class rdf:about="#PossessivePronoun"/>
+              <owl:Class rdf:about="#PersReflPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#KOUI">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >unterordnende Konjunktion ("um zu leben") mit zu und Innitiv ("anstatt zu fragen")</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#KOU"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PRELS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >substituierend</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#PREL"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#RelativePronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#ZZ">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Symbol"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#NonPOS"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ZZ,,, singular letter, name of letter
+
+related to Symbol, though not fully identical
+(but cf. Letters as prototypical instances of Residual under http://www.ilc.cnr.it/EAGLES96/morphsyn/node715.html#SECTION000164200000000000000)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VAFIN">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="ImperativeVerb"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#VA"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >finites Verb, aux "du bist, wir werden"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FiniteVerb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YB">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >paragraph break
+
+YB, YB...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PPI">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1st person pronoun
+
+PPI...</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FirstPersonPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutivePersonalPronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersonalPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#IndefiniteDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:about="#WHDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Determiner"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DetType=Indefinite</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#P">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Adposition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P adpositions: preposition/postposition/X-positions (ß4.3.4),
+  e.g. "before" in "before two years", "ago" in "two years ago",
+  cf. German "um ... willen" in "um unseres Vaters willen"
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#ATn">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Unique"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"no"
+
+assigned to Unique, but only due to lack of alternatives </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Article"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Symbol">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Symbol</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#DDet">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Demonstrative determinatives</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Determiner"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YIL">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >left quotes</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#LeftParentheticalPunctuation"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PNQSq">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >interrogative who</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#SubstitutiveInterrogativePronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PN1">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#SubstitutiveIndefinitePronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >singular indefinite pronoun ("one")</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#VPretPart">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Participle"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >preterite participle
+
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VVD">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Past"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VVD...
+
+non-modal, non-aux verbs</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ImperativeVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FiniteVerb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#ICS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ambiguous:I or CS
+
+        ICSt    +After  after
+        ICSt    +Before before
+        ICS     +considering    considering
+        ICSx    Save    save
+        ICSt    +Since  since
+        ICSt    till    till
+        ICSt    Until   until
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Preposition"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#CS"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PronominalAdverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AdverbType=Pronominal
+(can but don't have to be used for pronominal references, thus this special and diachronically important case is better described by the iuntersection of this with personal pronoun)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adverb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#DegreeAdverb"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PPG">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutivePersonalPronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReflexivePronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >substitutive possessive pronoun (~ personal pronoun in genitive)
+
+PPG...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YPR">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >")"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RightParentheticalPunctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YIR">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    > right "</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RightParentheticalPunctuation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Adposition">
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >always Prepositions, cf. 8.5.10</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Preposition"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RRR">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >comparative adverb other than more, less</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#RR"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ThirdPersonPronoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#FirstPersonPronoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Person=Third</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#SecondPersonPronoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SubordinatingConjunction">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#CoordinatingConjunction"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Subordinating
+
+the language-specific Eagles feature of subord-type is ignored.
+nevertheless it is oftren assumed that the distinction between subordination and coordination is notz a binary one. instead, intermediate values could exist as exemplified for these features developed especially for German</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Conjunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Preposition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adposition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Preposition</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="Postposition"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONINT">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONREL"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONDEM"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#InterrogativePronoun"/>
+          <owl:Class rdf:ID="InterrogativeDeterminer"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONEXPL"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONRFL"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPOS"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONQUANT"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRON"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPRS"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >     PRONINT interrogative pronouns, e.g. "who" (ß4.3.10.2)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#IF">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Preposition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"for"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#APPR">
+    <rdfs:subClassOf rdf:resource="#Preposition"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#AP"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Praposition; Zirkumposition "links in der Stadt", "ohne mich"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#DDQ">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#WHDeterminer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >interrogative or relative pronouns, attributive</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#ADJA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#ADJ"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attributives Adjektiv "das gro e Haus"
+	 ADJA&lt;ABK
+	 ADJA&lt;FRACT
+	 ADJA&lt;ORD
+	 ADJA&lt;VPART</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AttributiveAdjective"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONRFL">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONQUANT"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRON"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPRS"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONEXPL"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReflexivePronoun"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPOS"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONINT"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONDEM"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >     PRONRFL reflexive pronouns, e.g. "myself" (ß4.3.10.5)
+	     This category should be
+	     used only if the language possesses pronouns, which are always usedas
+	     reflexives, e.g. the English reflexive pronouns (not the German
+	     pronouns of the type "ich
+	     sch‰me mich", where the ambiguity
+	     personal/reflexive is resolved in the argument structure
+	     of the given verb).
+</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONREL"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VVINF">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Innitiv, voll "gehen, ankommen"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#VV"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Infinitive"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PresentParticiple">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V.G
+
+NB: as the memebers in this group are defined based on lexical forms, this does not correspond to the Eagles class "Participle" or "Gerund", but to "ing" !</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ing"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PTKANT">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#PTK"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Antwortpartikel "ja, nein, danke, bitte"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VMFIN">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FiniteVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >finites Verb, modal "durfen"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#VM"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Supine">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VerbForm=Supine
+NB: similar to infinitive of motion verbs</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#NonFiniteVerb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#CLF">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CLF classifier
+
+definition ?</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RRQ">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >interrogartive or relative adverbs (where, how, when)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#WHTypeAdverb"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#RR"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ConditionalVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FiniteVerb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RelativeAdverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=relative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="InterrogativeAdverb"/>
+              <owl:Class rdf:ID="ExclamatoryAdverb"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#WHTypeAdverb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONPRS_P">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >  PRONPRS:P pronominal adverbs formed from personal
+		       pronouns, e.g. "meinetwegen" (ß4.3.12.1)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#PronominalAdverb"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPRS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Conjunction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Conjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C
+
+besides the sub-categories, C# denotes this class (8.5.11)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#FW">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Foreign"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#NonPOS"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >foreign word not capable being allocated a ,pore specific reference to its English context, FW, FWg, FWs</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#JJ">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Adjective"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Adjective"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >general adjective</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PAV">
+    <rdfs:subClassOf rdf:resource="#PronominalAdverb"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#P"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pronominaladverbien</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ReflexivePronoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#PersonalPronoun"/>
+              <owl:Class rdf:ID="ReciprocalPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >special pronoun type=reflexive</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersReflPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#XX">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Unique"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"not"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PNQOr">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutiveRelativePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >relative whom</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PPH">
+    <rdfs:subClassOf rdf:resource="#ThirdPersonPronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >3rd person personal pronoun
+
+PPH...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutivePersonalPronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersonalPronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PDAT">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attribuierend</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#PD"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Punctuation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:PU
+
+Wilson &amp; Leech (1996) propose two alternative classifications: I will only implement the more interesting, i.e. position (the aöternative is just enumeration of possible signbs)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#AT1e">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"every"
+
+http://www.ilc.cnr.it/EAGLES96/morphsyn/node454.html#SECTION00084100000000000000: indefinite determiner</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#IndefiniteDeterminer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FamiliarSecondPersonPronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SecondPersonPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >politeness="familiar"
+"limited to second person pronouns"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="PoliteSecondPersonPronoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RelativeDeterminer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Relative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#InterrogativeDeterminer"/>
+              <owl:Class rdf:ID="ExclamatoryDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#WHDeterminer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#NUC">
+    <rdfs:subClassOf rdf:resource="#CardinalNumber"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Numeral"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cardinal</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain4.com#NUO"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#Punctuation">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#Additional"/>
+    <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >STTS $...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PredicativeAdjective">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >use="predicative"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#AttributiveAdjective"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adjective"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#DET">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DET determiner (ß4.3.11)
+    Determiners include articles, e.g. "the". 
+    They do not include demonstratives (cf. $4.3.10.3), nor quantifiers    
+    (including ordinal numbers, e.g. "two" ß4.3.8)
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DemonstrativePronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PronType=Demonstrative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#IndefinitePronoun"/>
+              <owl:Class rdf:about="#PossessivePronoun"/>
+              <owl:Class rdf:about="#WHPronoun"/>
+              <owl:Class rdf:about="#PersReflPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Numeral">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >M...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VDN">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"done"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Do"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#PastParticiple"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#APZR">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Circumposition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Zirkumposition rechts "von jetzt an"
+
+Die Gleichsetzung mit Circumposition ist evtl. unvollständig, da eine andere Definition von Zirkumposition beide Teile als zusammengehörig beschreiben würde</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#AP"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#NonfiniteVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ignored tense for infinitives</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain4.com#FiniteVerb"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#ITJ">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Interjection"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Interjektion "mhm, ach, tja"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#InterrogativeDeterminer">
+    <rdfs:subClassOf rdf:resource="#WHDeterminer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Interrogative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#RelativeDeterminer"/>
+              <owl:Class rdf:about="#ExclamatoryDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Circumposition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adposition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Circumposition
+
+the relationship between circumpositions and pre-/postpositions is not clear
+
+against the procedure applied otherwise, I'd recommend that we do not prohibit Circumpositions from being Prepositions or Postpositions, though the Eagles feature assignment (with all optional values implemented) would possibly rule this out</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Adverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R...
+
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adverb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DemonstrativeDeterminer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >detType=Demonstrative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:about="#WHDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Determiner"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#Article"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Adjective">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adjective"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AJ
+
+(no differentiation between attributive and predicative)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Present">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="IndicativeVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"present" forms not identical to infinitive
+
+V.M: 1sg
+V.Z: 3sg</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Determiner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >D</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#FB">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >prefix, if separeted by hyphen</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#NonPOS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#KOU">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >unterordnende Konjunktion (inferierbar aus Tag-Bezeichnung)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SubordinatingConjunction"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#KO"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProperNoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#CommonNoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >type=proper</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Noun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VVG">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#PresentParticiple"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VVG...
+
+non-modal, non-aux</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VMo">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"can, dare"
+
+is not Indicative as identical to BaseForm => replaced
+
+"o" here is possibly misspelled for "0"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#BaseForm"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#ModalVerb"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Acronym">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Acronym</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Pronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PronounOrDeterminer"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >this is the Eagles:PronounDeterminer with Category Pronoun
+
+note that the Eagles original class (i.e. motivated by the category "both") arises due to ambiguity of lexemes, which can wqithin such an ontology better described as "belonging to the join of two classes"
+
+ignored inflectional features such as case, gender, number, and possessive (i.e. inherent number of possessive pronouns)
+
+DetType is not relevant for Pronouns</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PTKNEG">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Negationspartikel "nicht"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#PTK"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#FA">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#NonPOS"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Residual"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >suffix, is seperated by a hyphen</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FusedPrepArt">
+    <rdfs:subClassOf rdf:resource="#Preposition"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Adposition:Type=FusedPrepArt
+"       The additional value Fused prep-art is for the benefit of those
+       who do not find it practical to split fused
+words such as French au (=
+       `a + le) into two textwords. This very common phenomenon of a fused
+       preposition
++ article in West European languages should preferably,
+       however, be handled by assigning two tags to the
+same orthographic
+       word (one for the preposition and one for the article). (p.12)"
+
+=> identified with Preposition+Article</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Preposition"/>
+          <owl:Class rdf:about="#Article"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#_AT">
+    <rdfs:subClassOf rdf:resource="#Determiner"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRON"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >If you need to differentiate between substantive and attributive
+paradigms of pronouns, then append SU and AT
+respectively. Substantive pronouns replace the whole NP, attributive
+ones have the function of a determiner
+</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#_SU"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#PoliteSecondPersonPronoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#FamiliarSecondPersonPronoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SecondPersonPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Politeness=polite
+"limited to second-person pronoun"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#AttributiveAdjective">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >use="attributive"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adjective"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#PredicativeAdjective"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ExclamatoryPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >whtype=exclamatory</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#WHPronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#APPRART">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Praposition mit Artikel "im Haus", "zur Sache"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#AP"/>
+    <rdfs:subClassOf rdf:resource="#FusedPrepArt"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#FM">
+    <owl:equivalentClass>
+      <owl:Class rdf:about="#Foreign"/>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#Additional"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >fremdsprachlich
+
+Fremdsprachliches Material "Er hat das mit _A big sh _ ubersetzt"
+	    zur Abgrenzung von NN:
+		Deutsche Flexion => NN
+		Gro geschrieben, wenn das entsprechende Wort in Originalsprache kleingeschrieben
+		wurde => NN, z.B. die Contras</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#PossessiveDeterminer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DetType=Possessive
+
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+              <owl:Class rdf:about="#WHDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Determiner"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Noun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:N
+
+exclude grammatical information, i.e. gender, number, case, definiteness</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#APPO">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#AP"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Postposition "ihm zufolge", "der Sache wegen"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Postposition"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#SubstitutiveIndefinitePronoun">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutivePronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IndefinitePronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#AttributivePronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    > </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#NonPOS">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >separated morphological elements, formulae, equations, foreign words
+
+with the exception of separated morphological elements (, this is prototypical for Residual
+
++ added GG (~ FA) and ZZ (single Letter) here</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VD0">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Do"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"do"
+
+(as infinitive or as indicative)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#BaseForm"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CoordinatingConjunction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Conjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#SubordinatingConjunction"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Coordinating
+
+the optional CoordType is ignored as this is a purely distributional feature (repetition/pairing of expressions forming complex conjunctions)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VHG">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"having"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#PresentParticiple"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Have"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#JA">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >predicatively used adjectives
+
+     JA      ablaze  ablaze
+        JA      akin    akin
+        JA      alike   alike
+        JA      alive   alive
+        JA      alone   alone
+        JA      amiss   amiss
+        JA      ashamed ashamed
+        JA      asleep  asleep
+        JA      atune   atune
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#PredicativeAdjective"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Adjective"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PWAT">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attribuierend</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#InterrogativeDeterminer"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#PW"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VHN">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"had" as past participle</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#PastParticiple"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Have"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VMd">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#ModalVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"could"
+
+"d" here is possibly mnisspelled for "D"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Past"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#NC">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CommonNoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >apellatives
+
+common noun</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Noun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#SubstitutiveInterrogativePronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#SubstitutiveWHPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#InterrogativePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PNQ.q</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VBZ">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Be"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Present"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"is"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#JB">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attributively used adjective
+
+        JBR     inner   inner
+        JB      interspecies    inter&lt;hyphen>species
+        JB      interior        interior
+        JB      interlayer      interlayer
+        JB      intratissue     intratissue
+        JB      inverse inverse
+        JB      joint   joint
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#AttributiveAdjective"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Adjective"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#VMOD">
+    <rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#V"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >  VMOD modal verb (ß 4.3.2.2), e.g. "can", cf. German "wollen" in "in will gehen"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#IndicativeVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FiniteVerb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VAPP">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#VA"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partizip Perfekt, aux "gewesen"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Participle"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YH">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hyphen, "-"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Punctuation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#SentenceMedialPunctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PWAV">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#PW"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >adverbiale InterrogativRelativpronomin</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#WHTypeAdverb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#DD">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >determiner or pronouns including demonstrative pronouns, without deeper analysis, this can be loosely associated with Determiner only (it is, via QuantifierDeterminerPronoun)
+
+(very heterogenuous)
+
+        DD1q    Another another
+        DDy     Any     any
+        DD1b22  bit     bit
+        DD1q    EACH    each
+        DD1e    either  either
+        DDf     ENOUGH  enough
+        DD232   good    good
+        DD232   great   great
+        DDo22   lot     lot
+        DD1n    Neither neither
+        DD1q41  one     one
+        DDo     plenty  plenty
+        DD22    rest    rest
+        DDi     +Some   some
+        DD2i    +These  these
+        DD1i    +This   this
+        DD2a    Those   those
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Determiner"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Verb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:V
+again, grammatical information is skipped, i.e. person, gender, number, tense, voice, aspect
+skip  optional information (separability, reflexivity, auxiliary, aux-function)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Residual">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles R
+
+the Type "Unclassified" is not considered as it is a dummy classs
+
+further, we do not require exclusivity here as this is possibly outside the domain of linguistic categories and possibly overlaps could occur (e.g. LaTeX which is a symbol which can be read as an Acronym or acronyms which are related to Abbreviartions, e.g. GNU "Gnu is not Unix")
+
+grammatical infomation is skipped
+
+    The residual value (R) is assigned to classes of textword which
+    lie outside the traditionally accepted range
+of grammatical classes,
+    although they occur quite commonly in many texts and very commonly in
+    some. 
+    For example: foreign words, or mathematical formulae. It can be
+    argued that these are on the fringes of the
+grammar or lexicon of the
+    language in which the text is written. Nevertheless, they need to be
+    tagged.(p7f.)
+    Although words in the Residual category are on the periphery of
+    the lexicon, they may take some of the
+grammatical characteristics,
+    e.g., of nouns. Acronyms such as IBM are similar to proper nouns;
+    symbols such
+as alphabetic characters can vary for singular and plural
+    (e.g. How many Ps are there in ‘psychopath’?), and
+are in this respect
+    like common nouns. In some languages (e.g. Portuguese) such symbols
+    also have gender.
+It is quite reasonable that in some tagging schemes
+    some of these classes of word will be classified under
+other parts of
+    speech. (p.10)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Punctuation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Y...
+
+Punctuation and text-structuring symbols</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YG">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >logical position of transformationally moved/deleted item</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PTC">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Unique"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PTC particle (ß4.3.9), e.g. German  "ja"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#PronounOrDeterminer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:PD
+
+the existence of this class is controversial ! seemingly, it has been introduced for reasons of lexical ambiguity in European languages thus it could be described by the joint better than as an independent class
+
+the differentiating feature seems to be attributive vs. substitutive usage, cf. examples of English possessive pronouns (only substitutive) in http://www.ilc.cnr.it/EAGLES96/morphsyn/node366.html#SECTION00074100000000000000
+
+indeed, at least one fundamental difference is merged here: determiners are purely modifiers whereas pronouns contribute independent meaning: this could be one criterion for higher-level organization of the ontology
+
+for the sub-classes, no exclusivity is required as Eagles allows a hybrid ("both") category</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VDD">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#PresentParticiple"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Do"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"doing"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Determiner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DD...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#QuantifierDeterminerPronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#PPer3">
+    <rdfs:subClassOf rdf:resource="#ThirdPersonPronoun"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#PPer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >3rd person</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YF">
+    <rdfs:subClassOf rdf:resource="#SentenceFinalPunctuation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >full stop, Americal "period", "."</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Verb">
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VVIMP">
+    <rdfs:subClassOf rdf:resource="#ImperativeVerb"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#VV"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Imperativ, voll "komm !"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PartitiveArticle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="DefiniteArticle"/>
+              <owl:Class rdf:ID="IndefiniteArticle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ArticleType=partitive
+(optional for French)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#PPer1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1stPerson</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FirstPersonPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#PPer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PTK">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partikel</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Unique"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#V">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V verb, General case, e.g. "sleep" (ß4.3.2.1)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Verb"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#SubstitutiveWHPronoun">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutivePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PNQ...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Tag">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SUSANNE TagSet and its mapping to Eagles
+
+English examples from "Morphosyntactic
+Phenomena Encoded in Lexicons and Corpora A Common Proposal and
+Applications to European Languages EAG---CLWG---MORPHSYN/R
+Version of 31st Aug, 1996", http://www.ilc.cnr.it/EAGLES96/morphsyn/)
+
+SUSANNE structuring strategy: subsume everything which starts with the same sequence of symbols</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Preposition">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Tag"/>
+    <rdfs:subClassOf rdf:resource="#Preposition"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#FD">
+    <rdfs:subClassOf rdf:resource="#Residual"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#NonPOS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >distorted word (speech)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PD">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#P"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Demonstrativpronomina</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Infinitive">
+    <rdfs:subClassOf rdf:resource="#NonFiniteVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >verb form=Infinitive</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#NP">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Noun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ProperNoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Propria
+
+NP</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Past">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#IndicativeVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"Past"
+V. D...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#EX">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Unique"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >existential "there", cf. REX</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VVN">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#PastParticiple"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VVN...
+
+non-modal, non-aux</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Adverb">
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AV
+
+grade inflection ignored</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adverb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VV">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#V"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Alle anderen (d.h.weder VA noch VM) Verben werden als VV klassiziert.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#IndefinitePronoun">
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PronType=Indefinite</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativePronoun"/>
+              <owl:Class rdf:about="#PossessivePronoun"/>
+              <owl:Class rdf:about="#WHPronoun"/>
+              <owl:Class rdf:about="#PersReflPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RG">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Adverb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"qualifyer" i.e. adverb modifcying advjective or adverb
+
+RG, RG...
+
+includes "very", thus identical to Eagles "DegreeAdverb" ?
+(cf. http://www.ilc.cnr.it/EAGLES96/morphsyn/node540.html#SECTION000104100000000000000)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#DegreeAdverb"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ReciprocalPronoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersReflPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >special pronoun type=reciprocal</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#PersonalPronoun"/>
+              <owl:Class rdf:about="#ReflexivePronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Noun">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Tag"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N...
+
+number distinction is (against Eagles recommendation, http://www.ilc.cnr.it/EAGLES96/morphsyn/node56.html#SECTION00044000000000000000) not represented here</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VA">
+    <rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#V"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >die potentiellen Auxiliare "haben", "sein" und "werden" gekennzeichnet,
+      unabhangig davon, ob sie im Satz tatsachlich als Voll oder Hilfsverben gebraucht
+      sind.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SecondPersonPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Person=Second</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#ThirdPersonPronoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#FirstPersonPronoun"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#VN">
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#V"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VN verbal noun (4.3.12.2)
+   Some of the Chadic
+   languages have morphologically opaque verbal noun stems in
+   the progresive aspect, i.e. it is not obvious from the morphology that
+   we deal with a deverbal noun, instead of a verb proper. In such cases,
+   use the tag VN.
+
+N and V are not defined as disjoint in the EAGLES categorization yet, so we assign VN to both nouns and verbs (possibly a specific verb form ? a participle ?)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Noun"/>
+    <rdfs:subClassOf rdf:resource="#Verb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YE">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"..."</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Symbol"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#_SU">
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRON"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#_AT"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >If you need to differentiate between substantive and attributive
+paradigms of pronouns, then append SU and AT
+respectively. Substantive pronouns replace the whole NP, attributive
+ones have the function of a determiner
+
+
+TODO: sub-classification of  combined tags</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Adjective">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EAGLES AJ
+degree,gender,number,case and inflection type are ignored
+though "use" is optional, it is included as this is a point where possible problems with the adv/adj distinction might arise</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#CommonNoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CommonNoun"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NN...
+
+ND has been included here as it is comparable with temporal situating as in NNa, NNp, NNT..., </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Noun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RP">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ParticleAdverb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Adverb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >adverbial use of prepositions
+
+RP, RPK
+
+corresponds to recommended Eagles adverb-type:particle, cf. http://www.ilc.cnr.it/EAGLES96/morphsyn/node540.html#SECTION000104100000000000000</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RRT">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >superlative adverb other than most, least</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#RR"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YX">
+    <rdfs:subClassOf rdf:resource="#SentenceFinalPunctuation"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"!"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#XY">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Formula"/>
+          <owl:Class rdf:about="#Symbol"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#Additional"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nichtwörter
+Nichtwort, Sonderzeichen enthaltend "D2XW3"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Residual"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PRF">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#P"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >reflexive Personalpronomina</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ReflexivePronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PNX1">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutiveIndefinitePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >singular indefinite reflexive "oneself"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#MF">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Numeral"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >fraction
+
+(not included by Eagles recommendation http://www.ilc.cnr.it/EAGLES96/morphsyn/node659.html#SECTION000134100000000000000; thus mapped onto Numeral)
+
+BTW: could be interpreted as OrdinalNumber according to surface form</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Numeral"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Interjection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >U...</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Interjection"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Tag"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InterrogativeAdverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Interrogative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#RelativeAdverb"/>
+              <owl:Class rdf:about="#ExclamatoryAdverb"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#WHTypeAdverb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#ADV_P">
+    <rdfs:subClassOf rdf:resource="#PronominalAdverb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >    ADV:P pronominal adverbs (ß4.3.12.1), e.g. "dar¸ber", "hier¸ber",
+    "wor¸ber" (Definition ?)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#ADV"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#IndefiniteArticle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DefiniteArticle"/>
+              <owl:Class rdf:about="#PartitiveArticle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ArticleType=indefinite</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Unique">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles U
+
+according to the definition and examples, this seems to be closely related to "particle" (i.e. uninflected function words -- in a broader sense, everything which is not inflected is a particle, i.e. including interjections, in GOLD, uninflected items such as adpositions, conjucntions and interjections are excluded: "A particle is a partOfSpeech whose members do not belong to one of the main classes of words, is invariable, and typically has grammatical or pragmatic meaning.")
+
+
+"    The unique value (U) is applied to categories with a unique or
+    very small membership, such as negative
+particle, which are
+    ‘unassigned’ to any of the standard part-of-speech categories. The
+    value unique cannot
+always be strictly applied, since (for example)
+    Greek has three negative particles, ??  ,   ??  , and o  . (p.7)
+    No subcategories are recommended, although it is expected that
+    tagsets for individual languages will need
+to identify such one-member
+    word-classes as Negative particle, Existential particle, Infinitive
+    marker,
+etc"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Conjunction">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:C</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Imperative">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V.Imp</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain4.com#IndicativeVerb"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#FiniteVerb"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.domain4.com#SubjunctiveVerb"/>
+    <rdfs:subClassOf rdf:resource="#ImperativeVerb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#NUO">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ordinal</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Numeral"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.domain4.com#NUC"/>
+    <rdfs:subClassOf rdf:resource="#OrdinalNumber"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#II">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Preposition"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >general preposition
+
+        II      into    into
+        II32    keeping keeping
+        II32    means   means
+        II      near    near
+        II32    need    need
+        II21    Next    next
+        II22    o&lt;apos> of
+        II      +off    off
+        II      +on     on
+        II      onto    onto
+        II      opposite        opposite
+        II21    Other   other
+        II21    Out     out
+        II      out&lt;apos>n      out&lt;blank>of
+        II      Outside outside
+        II      OVER    over
+        II21    owing   owing
+        II43    part    part
+        II      Past    past
+        IIp     per     per
+        II32    place   place
+        II32    possession      possession
+        II21    Prior   prior
+        II32    regard  regard
+        II      Regarding       regarding
+        II32    respect respect
+        II32    search  search
+        II32    spite   spite
+        II21    subject subject
+        II32    terms   term
+        II21    thanks  thank
+        II21    thanks  thanks
+        II      Through through
+        II      throughout      throughout
+        II      Thru    thru
+        II      times   times
+        II22    to      to
+        II21    together        together
+        II32    top     top
+        II32    touch   touch
+        II      Toward  toward
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#IndicativeVerb">
+    <rdfs:subClassOf rdf:resource="#IndicativeVerb"/>
+    <owl:disjointWith rdf:resource="http://www.domain4.com#SubjunctiveVerb"/>
+    <owl:disjointWith rdf:resource="http://www.domain4.com#Imperative"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#FiniteVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V.Ind</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VAIMP">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#VA"/>
+    <rdfs:subClassOf rdf:resource="#ImperativeVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Imperativ, aux "sei ruhig !"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#MD">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ordinal number
+
+   eigth, ninth</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#OrdinalNumber"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Numeral"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YPL">
+    <rdfs:subClassOf rdf:resource="#LeftParentheticalPunctuation"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"("</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VM">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#V"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modalverben umfa t "konnen, mussen, wollen, durfen, mogen" und auch die KonjunktivForm von "mogen, mochten" und "sollen".
+
+no Category for modal verbs, thus not distinguished from non-aux verbs</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#AT1">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#IndefiniteArticle"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >indefinite article
+
+=> indef.article (cf. http://www.ilc.cnr.it/EAGLES96/morphsyn/node499.html#SECTION00094100000000000000)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#SUB">
+    <rdfs:subClassOf rdf:resource="#SubordinatingConjunction"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SUB subordinative conjunction (ß 4.3.5), e.g. "if", "that", "when"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#PPer2">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2nd person</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SecondPersonPronoun"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#PPer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#GG">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Germanic genitive 's (put here because of its diachronic origin as a morphological element, cf. FA)
+
+Eagles:  Hence, in the present tagset, case is not applied to nouns, and the ` 's' is treated as a postposition.
+http://www.ilc.cnr.it/EAGLES96/morphsyn/node56.html#SECTION00044000000000000000, cf. also http://www.ilc.cnr.it/EAGLES96/morphsyn/node586.html#SECTION000114100000000000000</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Postposition"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#NonPOS"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VBG">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#PresentParticiple"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Be"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"being"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#BTO">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"in order" introducing infinitive (cf. TO)
+
+according to http://www.ilc.cnr.it/EAGLES96/morphsyn/node623.html#SECTION000124300000000000000 this is a subordinating conjunction</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Conjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#SubordinatingConjunction"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Adposition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles: AP</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VB0">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#BaseForm"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"be"</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Be"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#IO">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"of"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Preposition"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Verb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V...
+
+NB: Eagles on verbal inflection:
+
+Since it is impractical, however, given the current capabilities of tagging software, to resolve automatically the ambiguity of these six morphological functions, it is a common practice to assign a single value to the base form, or else to assign two values, one for the finite and one for the non-finite functions. Because of this, the tables below show two tagsets: one tagset representing the 6 attribute-values above, and a reduced tagset (`RTags'), which resembles most tagsets so far used for the English language in reducing the six values to two.
+http://www.ilc.cnr.it/EAGLES96/morphsyn/node150.html#SECTION00054000000000000000
+
+thus, straight equation of BaseForm with Infinitive etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Tag"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#GeneralSentenceInternalPuncuation">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#LeftParentheticalPunctuation"/>
+          <owl:Class rdf:about="#RightParentheticalPunctuation"/>
+          <owl:Class rdf:about="#SentenceMedialPunctuation"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#Punctuation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >$(
+$( sonstige Satzzeichen; satzintern "- () []"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONPOS">
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONEXPL"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONQUANT"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONINT"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONDEM"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONREL"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#PossessivePronoun"/>
+          <owl:Class rdf:about="#PossessiveDeterminer"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPRS"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRON"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONRFL"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >     PRONPOS possessive pronouns, e.g. "your" (ß4.3.10.6)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Postposition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Postposition</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#Preposition"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Adposition"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#NE">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eigennamen "Hans, Hamburg, HSV"
+	NE&lt;ABK</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#N"/>
+    <rdfs:subClassOf rdf:resource="#ProperNoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PersonalPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >special-pronoun type=personal</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PersReflPronoun"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#ReflexivePronoun"/>
+              <owl:Class rdf:about="#ReciprocalPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#ADJD">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#ADJ"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PredicativeAdjective"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >adverbiales ("er f‰hrt schnell") oder pradikatives ("er ist schnell") Adjektiv
+	 ADJD&lt;FRACT Bruchzahl "halb voll"
+	 ADJD&lt;NN Ursprungliche Nomina "mir ist angst"
+	 ADJD&lt;ORD Ordinalzahl "zu dritt"
+	 ADJD&lt;VPART Partizip Perfekt "gebraucht kaufen"
+	 ADJD&lt;VPART Partizip Prasens "rasend werden"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PW">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Interrogativpronomina</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#P"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RT">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >temporal adverb, RT, RT...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Adverb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONQUANT">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONDEM"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#IndefiniteDeterminer"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#PRON"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >     PRONQUANT quantifiers (ß4.3.10.9), e.g. German "jeder", "alle", "kein"
+
+hat Berührungspunkte mit IndefiniteDeterminer ("every")</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONEXPL"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONRFL"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONREL"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPRS"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONINT"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONPOS"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#V">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Verben</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VVIZU">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#VV"/>
+    <rdfs:subClassOf rdf:resource="#Infinitive"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Innitiv mit "zu", voll "anzukommen, loszulassen"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#SubstitutiveNegativePronoun">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutivePronoun"/>
+    <rdfs:subClassOf rdf:resource="#Unique"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >nbegative substitutive pronoun "none"
+
+without any additional information on "none" in EAGLES, I will put it to Unassigned (Negative Particle)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#LE">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Conjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#CoordinatingConjunction"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >   "pre-co-ordinator" first of paired co-ordinating markers (ß3.71)
+
+   "both, not, only, either, neither"
+
+coordinating conjunction, cf. 
+
+initial 	both (...and) 	CCI	
+non-initial 	(neither ...) nor 	CCM
+
+at http://www.ilc.cnr.it/EAGLES96/morphsyn/node622.html#SECTION000124200000000000000</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PIAT">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PI"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attribuierende Indenitpronomina ohne Determinierer</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#IndefiniteDeterminer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRON">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >pronoun
+
+umfasst auch Quantifizierer !
+
+a loose sub-class of PronounOrDeterminer, but treatment of Quantifiers is unclear in Eagles (if these are determiners, this inclusion is  proper)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#PronounOrDeterminer"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#KOUS">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#KOU"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >unterordnende Konjunktion miut Satz"weil, da , damit, wenn, ob" </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VH0">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Have"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"have"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#BaseForm"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PREL">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain2.com#P"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relativpronomina</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#ADJ">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Adjektiv</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RR">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >general adverb
+
+RR, RR...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Adverb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PRELAT">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PREL"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attribuierend</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RelativeDeterminer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Article">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Tag"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AT...
+
+        AT1     +A      a
+        AT1     +an     an
+        AT1e    +Every  every
+        ATn     +No     no
+        AT      +The    the
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Abbreviation">
+    <rdfs:subClassOf rdf:resource="#Residual"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=Abbreviation</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VVPP">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Partizip Perfekt, voll "gegangen, angekommen"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#VV"/>
+    <rdfs:subClassOf rdf:resource="#Participle"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Gerund">
+    <rdfs:subClassOf rdf:resource="#NonFiniteVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VerbForm=Gerund</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PWS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >substituierend</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PW"/>
+    <rdfs:subClassOf rdf:resource="#InterrogativePronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Noun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nouns can be divided into two categories, appellatives and propria. They are all marked with an N for noun. ... In marginal cases, it may be difficult to decide whether a noun is a common or a proper name; in that case this field may be marked with an @.
+
+N</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Noun"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Adjective">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Tag"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >J...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RL">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >adverb of place or direction
+
+RL, RL...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Adverb"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ExclamatoryDeterminer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Exclamatory</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#InterrogativeDeterminer"/>
+              <owl:Class rdf:about="#RelativeDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#WHDeterminer"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DefiniteArticle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ArticleType=Definite</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#IndefiniteArticle"/>
+              <owl:Class rdf:about="#PartitiveArticle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#InfinitiveMarker">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >8.5.13 Infinitive marker (IM)
+
+The infinitive marker is undeclined and only marked as IM. In Old Norse it usually has the form at.
+
+("particle")</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Unique"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ExclamatoryAdverb">
+    <rdfs:subClassOf rdf:resource="#WHTypeAdverb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHType=Exclamatory</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#InterrogativeAdverb"/>
+              <owl:Class rdf:about="#RelativeAdverb"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#VPresPart">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain4.com#Participle"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >present participle</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#Comma">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Satzzeichen: $, Komma ","</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SentenceMedialPunctuation"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#Punctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#SentenceFinalPunctuation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >$.
+$.Satzbeendende Interpunktion ". ? ! ; :"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SentenceFinalPunctuation"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#Punctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VVZ">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Present"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VVZ...
+
+3sg of full verbs</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PPOSS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >substituierende Possessivpronomina</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PPOS"/>
+    <rdfs:subClassOf rdf:resource="#PossessivePronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#VINTR">
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#VLEX"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >       VINTR intransitive verb (ß 4.3.2.2), e.g. "sleep"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#AT">
+    <rdfs:subClassOf rdf:resource="#DefiniteArticle"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"the"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Article"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FiniteVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >finiteness=finite</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Verb"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#NonFiniteVerb"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MassNoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Countability=mass (optional)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#CountableNoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Noun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONDEM">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#DemonstrativePronoun"/>
+          <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONEXPL"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPRS"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONQUANT"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONREL"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#PRON"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONPOS"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONINT"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONRFL"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >     PRONDEM demonstrative pronouns, e.g. "this" (ß4,3.10.3)
+	     Notice that German displays a demonstrative pronoun that is in
+	     most cases homonymous to the definite article.
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#PN">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >nbegative substitutive pronoun "none"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#SubstitutiveNegativePronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#ADV">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adverb"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >adverb (ß4.3.7), e.g. "soon"
+    (including adverbial numerals, e.g. "twice" ß4.3.8)
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#P">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pronomen</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#ART">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bestimmter "der, die, das" oder unbestimmter Artikel "ein, eine"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Interjection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:I</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#KO">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Konjunktion</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#POS"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#NN">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NN...
+
+common nouns with sevaral sub-types</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#CommonNoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FirstPersonPronoun">
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#ThirdPersonPronoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Person=First</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#SecondPersonPronoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#VDITR">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >       VDITR ditransitive verb (ß 4.3.2.2), e.g. "give"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#VLEX"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Adverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles AV
+degree (semantic rather than POS-relevant) ignored
+
+GeneralAdverbs are not included: this a wastebag for non-degree adverbs</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EaglesCategory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#AT">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Article, but cf. 8.5.7 where as an alternative, these postulate an independent group
+
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#Determiner"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Pronoun">
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P - substitutive
+
+In recent grammars the traditional category pronoun is usually divided into pronouns in a strict sense (words replacing a noun) and determinatives (adjunct words), and that is our recommendation as well, cf. ch. 8.5.3 and 8.5.4 below. However, in some projects (i.e. the Old Norwegian lemmatised corpus) there is only a single category pronoun, and we have therefore added in ch. 8.5.5 a combined category, pronouns and determiners (cf. EAGLES, major categories).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#FiniteVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >not an own tag, but classified in this way, cf. 8.5.8.1
+
+tense ignored
+
+person ignored
+
+actie and middle ignored
+
+morph class ignored
+
+Enc should be considered further</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#Verb"/>
+    <owl:disjointWith rdf:resource="http://www.domain4.com#NonfiniteVerb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#KON">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#KO"/>
+    <rdfs:subClassOf rdf:resource="#CoordinatingConjunction"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >nebenordnende Konjunktion "und, oder, aber"nebenordnende Konjunktion "und, oder, aber"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PPOSAT">
+    <rdfs:subClassOf rdf:resource="#PossessiveDeterminer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attribuierend</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PPOS"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Numeral">
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NU</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#RightParentheticalPunctuation">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#SentenceFinalPunctuation"/>
+              <owl:Class rdf:about="#SentenceMedialPunctuation"/>
+              <owl:Class rdf:about="#LeftParentheticalPunctuation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Punctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Participle">
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#NonfiniteVerb"/>
+    <rdfs:subClassOf rdf:resource="#Participle"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V.Part
+
+inflected like adjectives (8.5.8.2), thus could be related to Adjective, too</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PIDAT">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PI"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attribuierende Indenitpronomina, mit Determiner
+
+PIDAT is a contextual variant of PIAT, accordingly, both are grouped
+  together in TigerSTTS, but in ELM-DE, too:
+  http://www.ilc.cnr.it/EAGLES96/TT-rep/node49.html#SECTION000103000000000000000 
+=> here, too</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#IndefiniteDeterminer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#CS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >subjunction</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SubordinatingConjunction"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#Conjunction"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#A">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >adjective, (ß 4.3.3), e.g. Spanish "aburrido" (boring)
+  (including cardinal numerals, e.g. "second" ß4.3.8)
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Adjective"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain5.com#POS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PIS">
+    <rdfs:subClassOf rdf:resource="#IndefinitePronoun"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PI"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >substituierende Indenitpronomina</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#NP">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Noun"/>
+    <rdfs:subClassOf rdf:resource="#ProperNoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NP...
+
+proper Noun</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ParticleAdverb">
+    <rdfs:subClassOf rdf:resource="#Adverb"/>
+    <rdfs:subClassOf rdf:resource="#Unique"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >included for English
+
+redundant, as ParticleAdverbs are (again) better described by the join of particles (i.e. Unique)  or adverbs rather than positing an independent category
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#EaglesCategory">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >direct children of this node are the major categories of EAGLES</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#NPRP">
+    <rdfs:subClassOf rdf:resource="#ProperNoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >  NPRP proper noun, e.g. "Peter" (ß4.3.1.2)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#N"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >semicolon</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+    <rdfs:subClassOf rdf:resource="#SentenceMedialPunctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#VAUX">
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#V"/>
+    <rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >  VAUX auxiliary verb (ß 4.3.2.2), e.g. "have", cf. "be" in "be
+  destroyed", cf. German "haben" in the formation of perfect tenses
+  ("gegessen haben")
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#POS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Encoding Standard for Morphology and
+Syntax (Layer III:POS)
+============================================
+http://www.ling.uni-potsdam.de/~goetze/sfb/guidelines.html (Wed Nov 23
+13:47:35 CET 2005)
+
+prim‰r entwickelt von SFB632-D2 (in Zusammenarbeit mit SFB632-D1,
+deren PCC-Annotation derzeit Tiger-STTS ist)
+vorr. auch eingesetzt von SFB632-B4
+
+ignored _CLIT distinction (4.3.12.3)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VBM">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Be"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"am"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Present"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YR">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >interruption point (speech)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#REX">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Adverb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >apposition-introducing "for example", "for instance", "namely" 
+
+(alteernatively a nominal subjunction ?)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Be">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Verb"/>
+    <rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >forms of "be"
+
+VB...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YQ">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"?"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SentenceFinalPunctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PersReflPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >prontype=pers/refl
+this class should be replaced by its sub-classification as it is induced by surface ambiguity only</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativePronoun"/>
+              <owl:Class rdf:about="#IndefinitePronoun"/>
+              <owl:Class rdf:about="#PossessivePronoun"/>
+              <owl:Class rdf:about="#WHPronoun"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CommonNoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#ProperNoun"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >type=common</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Noun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#CC">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >coordinating conjunction
+
+  CC      +And    and
+        CC31    as      as
+        CCB     +But    but
+        CCn     +Nor    nor
+        CCr     +Or     or
+        CC      plus    plus
+        CC32    well    well
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.domain3.com#Conjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#CoordinatingConjunction"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Article">
+    <rdfs:subClassOf rdf:resource="#Determiner"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DemonstrativeDeterminer"/>
+              <owl:Class rdf:about="#IndefiniteDeterminer"/>
+              <owl:Class rdf:about="#PossessiveDeterminer"/>
+              <owl:Class rdf:about="#WHDeterminer"/>
+              <owl:Class rdf:about="#PartitiveDeterminer"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles AT
+
+as the ontology-based approach is compatible with both
+subsuming articles under determiners and keeping
+articles as a separate class => sub-class of determiners which is disjoint with the other determiner classes
+
+inflectional features such as gender, number and case are ignored</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#Interjection">
+    <rdfs:subClassOf rdf:resource="#Interjection"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IT</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONREL">
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONDEM"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONINT"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >     PRONREL relative pronouns, e.g. "which" (ß4.3.10.7)</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONPOS"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONRFL"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONEXPL"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#PRON"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#RelativePronoun"/>
+          <owl:Class rdf:about="#RelativeDeterminer"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONQUANT"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.domain5.com#PRONPRS"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#PRONPRS">
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONPOS"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONREL"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONINT"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONQUANT"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONRFL"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >personal pronouns, e.g. "you" (ß4.3.10.1)</rdfs:comment>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONEXPL"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#PRON"/>
+    <owl:disjointWith rdf:resource="http://www.domain5.com#PRONDEM"/>
+    <rdfs:subClassOf rdf:resource="#PersReflPronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#NCOM">
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#N"/>
+    <rdfs:subClassOf rdf:resource="#CommonNoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >  NCOM common noun, e.g. "house" (ß4.3.1.2)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#YT">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >YTL: begin bold, YTR: end bold</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Punctuation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#DPos">
+    <rdfs:subClassOf rdf:resource="#PossessiveDeterminer"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#Determiner"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Possessive Determinatives</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain5.com#VCOP">
+    <rdfs:subClassOf rdf:resource="#AuxiliaryVerb"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain5.com#V"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >  VCOP copular verb (ß 4.3.2.2.), e.g. "be" in "be happy"
+
+no EAGLES category, possibly best interpreted as Auxliary
+(consistent with SUSANNE, where "be" in all instances is grouped together)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VAINF">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#VA"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Innitiv, aux "werden, sein"</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Infinitive"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain4.com#RelativeParticle">
+    <rdfs:subClassOf rdf:resource="http://www.domain4.com#WordClass"/>
+    <rdfs:subClassOf rdf:resource="#Unique"/>
+    <rdfs:subClassOf rdf:resource="#SubordinatingConjunction"/>
+    <rdfs:subClassOf rdf:resource="#RelativePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    > Relative particle (RP)
+
+The relative particle is undeclined and only marked as RP. In Old Norse it usually has the form er or sem. Some grammarians would classify the relative particle as a subjunction, while others tend to look upon it as a pronoun.
+
+what kind of pronoun ? (relative pronoun ?)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#VVFIN">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#VV"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#ImperativeVerb"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#FiniteVerb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >finites Verb, voll "du gehst, wir kommen an"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#VHD">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Past"/>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Have"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >"had" (past)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#RA">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >postmodifying adverbs and adverb-like phrases ("ego, B.C.")
+
+RA...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Adverb"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PTKVZ">
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PTK"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >abgetrennter Verbzusatz "er kommt an, er fahrt rad"</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#TRUNC">
+    <rdfs:subClassOf rdf:resource="#Residual"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Kompositionserstglieder
+KompositionsErstglied "An und Abreise"
+
+impossible to link to anything more specific than Residual</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#Additional"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#ND">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >direction
+
+northeast</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#CommonNoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Numeral">
+    <rdfs:subClassOf rdf:resource="#EaglesCategory"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eagles:NU
+
+Function:Pronoun/Determiner/Adjective is possibly better described by intersection with these categories rather than i the ontology directly
+
+nmo grammatical features (gender,number,case)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Foreign">
+    <owl:equivalentClass rdf:resource="http://www.domain2.com#FM"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Type=ForeignWord</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Residual"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain2.com#PDS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >substituierend</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain2.com#PD"/>
+    <rdfs:subClassOf rdf:resource="#DemonstrativePronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#FO">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >formula, math expression, adress ....
+FO,FO...</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#NonPOS"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.domain3.com#Conjunction">
+    <rdfs:subClassOf rdf:resource="http://www.domain3.com#Tag"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C...
+
+for logical reasons, added LE here</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="KB_093645_ObjectProperty_29"/>
+  <owl:DatatypeProperty rdf:ID="KB_093645_DatatypeProperty_30"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1, Build 284)  http://protege.stanford.edu -->

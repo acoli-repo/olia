@@ -1,0 +1,2 @@
+- index.html generated from Readme.md using https://stackedit.io/editor#
+- html/index.html manally adjusted: shows only individuals in the right pane by default now

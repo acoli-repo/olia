@@ -1,0 +1,3137 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY knott "http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#"
+     xml:base="http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:knott="http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo
+            >2016-09-03 created by CC
+
+christian.chiarcos@web.de</owl:versionInfo>
+        <rdfs:comment
+            >OLiA Annotation Model for discourse markers from Knott (1996), following his figures B.3ff.
+
+Note that non-shared multicategorial labels are not modelled, as these are visual tools rather than formal categories. For OWL consistency, several disjointness axioms had to be dropped (see comments). 
+As for Knott&#39;s anonymous classes, these have been interpreted for Sequence and Cause, for others, placeholders have been used instead.
+
+Note that B.8 contained a duplication which has been preserved. Also note that the exclusivity assertions are incorrect and thus not axiomatized.
+
+Also note that Knott does not deal with actual annotations, but provides a classification of cue phrases. In schemes like PDTB, however, such cues have been used for annotating implicit discourse relations.
+
+References:
+Alistair Knott (1996), A data-driven methodology for motivating a set of coherence relations, PhD thesis, University of Edinburgh, http://www.cs.otago.ac.nz/staffpriv/alik/papers/thesis.pdf</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="&system;hasTag"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Accordingly -->
+
+    <owl:Class rdf:about="#Accordingly">
+        <rdfs:subClassOf rdf:resource="#_H"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AdditionalInformation -->
+
+    <owl:Class rdf:about="#AdditionalInformation">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AdditiveNonFirst -->
+
+    <owl:Class rdf:about="#AdditiveNonFirst">
+        <rdfs:subClassOf rdf:resource="#NonFirst"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#After -->
+
+    <owl:Class rdf:about="#After">
+        <rdfs:subClassOf rdf:resource="#When"/>
+        <rdfs:subClassOf rdf:resource="#_N"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AfterThis -->
+
+    <owl:Class rdf:about="#AfterThis">
+        <rdfs:subClassOf rdf:resource="#Then1"/>
+        <rdfs:subClassOf rdf:resource="#_E"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#And"/>
+                    <rdf:Description rdf:about="#TemporallyNonFirst"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Furthermore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Afterwards -->
+
+    <owl:Class rdf:about="#Afterwards">
+        <rdfs:subClassOf rdf:resource="#TemporallyNonFirst"/>
+        <rdfs:subClassOf rdf:resource="#_E"/>
+        <rdfs:subClassOf rdf:resource="#_M"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AllInAll -->
+
+    <owl:Class rdf:about="#AllInAll">
+        <rdfs:subClassOf rdf:resource="#InConclusion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AllTheSame -->
+
+    <owl:Class rdf:about="#AllTheSame">
+        <rdfs:subClassOf rdf:resource="#But"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Also -->
+
+    <owl:Class rdf:about="#Also">
+        <rdfs:subClassOf rdf:resource="#AdditiveNonFirst"/>
+        <rdfs:subClassOf rdf:resource="#_AC"/>
+        <rdfs:subClassOf rdf:resource="#_L"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Alternatively -->
+
+    <owl:Class rdf:about="#Alternatively">
+        <rdfs:subClassOf rdf:resource="#Or"/>
+        <owl:disjointWith rdf:resource="#Otherwise"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#And -->
+
+    <owl:Class rdf:about="#And">
+        <rdfs:subClassOf rdf:resource="#AdditiveNonFirst"/>
+        <rdfs:subClassOf rdf:resource="#_AC"/>
+        <rdfs:subClassOf rdf:resource="#_C"/>
+        <rdfs:subClassOf rdf:resource="#_L"/>
+        <rdfs:subClassOf rdf:resource="#_W"/>
+        <owl:disjointWith rdf:resource="#Otherwise"/>
+        <owl:disjointWith rdf:resource="#Unless"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Anyway -->
+
+    <owl:Class rdf:about="#Anyway">
+        <rdfs:subClassOf rdf:resource="#NonFirst"/>
+        <rdfs:subClassOf rdf:resource="#Restatement"/>
+        <rdfs:subClassOf rdf:resource="#Result"/>
+        <rdfs:subClassOf rdf:resource="#_AF"/>
+        <rdfs:subClassOf rdf:resource="#_K"/>
+        <owl:disjointWith rdf:resource="#Or"/>
+        <owl:disjointWith rdf:resource="#SoThat"/>
+        <owl:disjointWith rdf:resource="#_I"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#As1 -->
+
+    <owl:Class rdf:about="#As1">
+        <rdfs:subClassOf rdf:resource="#_O"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#As2 -->
+
+    <owl:Class rdf:about="#As2">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Because"/>
+                    <rdf:Description rdf:about="#Since"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AsAResult -->
+
+    <owl:Class rdf:about="#AsAResult">
+        <rdfs:subClassOf rdf:resource="#_D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AsLongAs -->
+
+    <owl:Class rdf:about="#AsLongAs">
+        <rdfs:subClassOf rdf:resource="#_AA"/>
+        <owl:disjointWith rdf:resource="#_AB"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AsSoonAs -->
+
+    <owl:Class rdf:about="#AsSoonAs">
+        <rdfs:subClassOf rdf:resource="#After"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AtAnyRate -->
+
+    <owl:Class rdf:about="#AtAnyRate">
+        <rdfs:subClassOf rdf:resource="#OrRather"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#AtThat -->
+
+    <owl:Class rdf:about="#AtThat">
+        <rdfs:subClassOf rdf:resource="#_H"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Because -->
+
+    <owl:Class rdf:about="#Because">
+        <rdfs:subClassOf rdf:resource="#ExclusiveCause"/>
+        <rdfs:subClassOf rdf:resource="#NonTemporalCause"/>
+        <owl:disjointWith rdf:resource="#ToTheExtentThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Beforehand -->
+
+    <owl:Class rdf:about="#Beforehand">
+        <rdfs:subClassOf rdf:resource="#ExclusiveTemporal"/>
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+        <owl:disjointWith rdf:resource="#Since"/>
+        <owl:disjointWith rdf:resource="#_J"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Besides -->
+
+    <owl:Class rdf:about="#Besides">
+        <rdfs:subClassOf rdf:resource="#Furthermore"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Anyway"/>
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#But -->
+
+    <owl:Class rdf:about="#But">
+        <rdfs:subClassOf rdf:resource="#ExclusiveNegativePolarity"/>
+        <rdfs:subClassOf rdf:resource="#_R"/>
+        <rdfs:subClassOf rdf:resource="#_V"/>
+        <owl:disjointWith rdf:resource="#Though"/>
+        <owl:disjointWith rdf:resource="#_W"/>
+        <owl:disjointWith rdf:resource="#_X"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Cause -->
+
+    <owl:Class rdf:about="#Cause">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Clearly -->
+
+    <owl:Class rdf:about="#Clearly">
+        <rdfs:subClassOf rdf:resource="#ItFollowsThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ConsideringThat -->
+
+    <owl:Class rdf:about="#ConsideringThat">
+        <rdfs:subClassOf rdf:resource="#ExclusiveCause"/>
+        <rdfs:subClassOf rdf:resource="#NonTemporalCause"/>
+        <owl:disjointWith rdf:resource="#ToTheExtentThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ContrastiveNonFirst -->
+
+    <owl:Class rdf:about="#ContrastiveNonFirst">
+        <rdfs:subClassOf rdf:resource="#NonFirst"/>
+        <owl:disjointWith rdf:resource="#GeneralizedSequentialPosition"/>
+        <owl:disjointWith rdf:resource="#TemporallyNonFirst"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#CuePhrase -->
+
+    <owl:Class rdf:about="#CuePhrase"/>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#DespiteThis -->
+
+    <owl:Class rdf:about="#DespiteThis">
+        <rdfs:subClassOf rdf:resource="#AllTheSame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Digression -->
+
+    <owl:Class rdf:about="#Digression">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Either1 -->
+
+    <owl:Class rdf:about="#Either1">
+        <rdfs:subClassOf rdf:resource="#AdditiveNonFirst"/>
+        <rdfs:subClassOf rdf:resource="#_AC"/>
+        <rdfs:subClassOf rdf:resource="#_AF"/>
+        <owl:disjointWith rdf:resource="#Too"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Either2 -->
+
+    <owl:Class rdf:about="#Either2">
+        <rdfs:subClassOf rdf:resource="#_S"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Even -->
+
+    <owl:Class rdf:about="#Even">
+        <rdfs:subClassOf rdf:resource="#ExclusiveAdditionalInformation"/>
+        <owl:disjointWith rdf:resource="#InTruth"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Eventually -->
+
+    <owl:Class rdf:about="#Eventually">
+        <rdfs:subClassOf rdf:resource="#Finally"/>
+        <rdfs:subClassOf rdf:resource="#Until"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#EverSince -->
+
+    <owl:Class rdf:about="#EverSince">
+        <rdfs:subClassOf rdf:resource="#ExclusiveTemporal"/>
+        <rdfs:subClassOf rdf:resource="#Since"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveAdditionalInformation -->
+
+    <owl:Class rdf:about="#ExclusiveAdditionalInformation">
+        <rdfs:subClassOf rdf:resource="#AdditionalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveCause -->
+
+    <owl:Class rdf:about="#ExclusiveCause">
+        <rdfs:subClassOf rdf:resource="#Cause"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveDigression -->
+
+    <owl:Class rdf:about="#ExclusiveDigression">
+        <rdfs:subClassOf rdf:resource="#Digression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveHypothetical -->
+
+    <owl:Class rdf:about="#ExclusiveHypothetical">
+        <rdfs:subClassOf rdf:resource="#Hypothetical"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveNegativePolarity -->
+
+    <owl:Class rdf:about="#ExclusiveNegativePolarity">
+        <rdfs:subClassOf rdf:resource="#NegativePolarity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveRestatement -->
+
+    <owl:Class rdf:about="#ExclusiveRestatement">
+        <rdfs:subClassOf rdf:resource="#Restatement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveResult -->
+
+    <owl:Class rdf:about="#ExclusiveResult">
+        <rdfs:subClassOf rdf:resource="#Result"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveSequence -->
+
+    <owl:Class rdf:about="#ExclusiveSequence">
+        <rdfs:subClassOf rdf:resource="#Sequence"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveSimilarity -->
+
+    <owl:Class rdf:about="#ExclusiveSimilarity">
+        <rdfs:subClassOf rdf:resource="#ExclusiveSimilarity"/>
+        <rdfs:subClassOf rdf:resource="#Similarity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ExclusiveTemporal -->
+
+    <owl:Class rdf:about="#ExclusiveTemporal">
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Finally -->
+
+    <owl:Class rdf:about="#Finally">
+        <rdfs:subClassOf rdf:resource="#GeneralizedSequentialPosition"/>
+        <rdfs:subClassOf rdf:resource="#_F"/>
+        <rdfs:subClassOf rdf:resource="#_M"/>
+        <owl:disjointWith rdf:resource="#Next"/>
+        <owl:disjointWith rdf:resource="#OnTheOtherHand"/>
+        <owl:disjointWith rdf:resource="#Secondly"/>
+        <owl:disjointWith rdf:resource="#While2"/>
+        <owl:disjointWith rdf:resource="#_G"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#First -->
+
+    <owl:Class rdf:about="#First">
+        <rdfs:subClassOf rdf:resource="#Firstly"/>
+        <owl:disjointWith rdf:resource="#ForOneThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Firstly -->
+
+    <owl:Class rdf:about="#Firstly">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                    <rdf:Description rdf:about="#Sequence"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#NonFirst"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#For -->
+
+    <owl:Class rdf:about="#For">
+        <rdfs:subClassOf rdf:resource="#As2"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ForExample -->
+
+    <owl:Class rdf:about="#ForExample">
+        <rdfs:subClassOf rdf:resource="#ExclusiveResult"/>
+        <rdfs:subClassOf rdf:resource="#_A"/>
+        <owl:disjointWith rdf:resource="#Therefore"/>
+        <owl:disjointWith rdf:resource="#_B"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ForOneThing -->
+
+    <owl:Class rdf:about="#ForOneThing">
+        <rdfs:subClassOf rdf:resource="#Firstly"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#FromThenOn -->
+
+    <owl:Class rdf:about="#FromThenOn">
+        <rdfs:subClassOf rdf:resource="#Afterwards"/>
+        <rdfs:subClassOf rdf:resource="#_E"/>
+        <owl:disjointWith rdf:resource="#Later"/>
+        <owl:disjointWith rdf:resource="#Until"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Furthermore -->
+
+    <owl:Class rdf:about="#Furthermore">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#And"/>
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                    <rdf:Description rdf:about="#InAddition"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#GeneralizedSequentialPosition -->
+
+    <owl:Class rdf:about="#GeneralizedSequentialPosition">
+        <rdfs:subClassOf rdf:resource="#NonFirst"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#HavingSaidThat -->
+
+    <owl:Class rdf:about="#HavingSaidThat">
+        <rdfs:subClassOf rdf:resource="#AllTheSame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Hypothetical -->
+
+    <owl:Class rdf:about="#Hypothetical">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#If -->
+
+    <owl:Class rdf:about="#If">
+        <rdfs:subClassOf rdf:resource="#_AA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#IfEver -->
+
+    <owl:Class rdf:about="#IfEver">
+        <rdfs:subClassOf rdf:resource="#_AB"/>
+        <owl:disjointWith rdf:resource="#IfOnly"/>
+        <owl:disjointWith rdf:resource="#OnTheAssumptionThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#IfOnly -->
+
+    <owl:Class rdf:about="#IfOnly">
+        <rdfs:subClassOf rdf:resource="#_AB"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#IfSo -->
+
+    <owl:Class rdf:about="#IfSo">
+        <rdfs:subClassOf rdf:resource="#Then2"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InAddition -->
+
+    <owl:Class rdf:about="#InAddition">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Also"/>
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InCase -->
+
+    <owl:Class rdf:about="#InCase">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Cause"/>
+                    <rdf:Description rdf:about="#ExclusiveCause"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#NonHypotheticalCause"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InConclusion -->
+
+    <owl:Class rdf:about="#InConclusion">
+        <rdfs:subClassOf rdf:resource="#Restatement"/>
+        <rdfs:subClassOf rdf:resource="#_B"/>
+        <owl:disjointWith rdf:resource="#OrRather"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InFact -->
+
+    <owl:Class rdf:about="#InFact">
+        <rdfs:subClassOf rdf:resource="#ExclusiveAdditionalInformation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InOrderThat -->
+
+    <owl:Class rdf:about="#InOrderThat">
+        <rdfs:subClassOf rdf:resource="#SoThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InShort -->
+
+    <owl:Class rdf:about="#InShort">
+        <rdfs:subClassOf rdf:resource="#ThatIs"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InThat -->
+
+    <owl:Class rdf:about="#InThat">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveCause"/>
+                    <rdf:Description rdf:about="#NonTemporalCause"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InTruth -->
+
+    <owl:Class rdf:about="#InTruth">
+        <rdfs:subClassOf rdf:resource="#InFact"/>
+        <owl:disjointWith rdf:resource="#Indeed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Incidentially -->
+
+    <owl:Class rdf:about="#Incidentially">
+        <rdfs:subClassOf rdf:resource="#ExclusiveDigression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Indeed -->
+
+    <owl:Class rdf:about="#Indeed">
+        <rdfs:subClassOf rdf:resource="#InFact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#InsofarAs -->
+
+    <owl:Class rdf:about="#InsofarAs">
+        <rdfs:subClassOf rdf:resource="#NonTemporalCause"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Instantly -->
+
+    <owl:Class rdf:about="#Instantly">
+        <rdfs:subClassOf rdf:resource="#_G"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Instead -->
+
+    <owl:Class rdf:about="#Instead">
+        <rdfs:subClassOf rdf:resource="#_Q"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ItFollowsThat -->
+
+    <owl:Class rdf:about="#ItFollowsThat">
+        <rdfs:subClassOf rdf:resource="#ExclusiveResult"/>
+        <rdfs:subClassOf rdf:resource="#InShort"/>
+        <rdfs:subClassOf rdf:resource="#_D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#JustAs -->
+
+    <owl:Class rdf:about="#JustAs">
+        <rdfs:subClassOf rdf:resource="#ExclusiveSimilarity"/>
+        <owl:disjointWith rdf:resource="#_AC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Lastly -->
+
+    <owl:Class rdf:about="#Lastly">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                    <rdf:Description rdf:about="#Finally"/>
+                    <rdf:Description rdf:about="#SequentialPosition"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Next"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Later -->
+
+    <owl:Class rdf:about="#Later">
+        <rdfs:subClassOf rdf:resource="#AfterThis"/>
+        <rdfs:subClassOf rdf:resource="#Afterwards"/>
+        <rdfs:subClassOf rdf:resource="#_M"/>
+        <rdfs:comment
+            >removed disjointness from Then1 for OWL/DL consistency</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Meanwhile -->
+
+    <owl:Class rdf:about="#Meanwhile">
+        <rdfs:subClassOf rdf:resource="#While1"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#And"/>
+                    <rdf:Description rdf:about="#ExclusiveTemporal"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Then1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#NegativePolarity -->
+
+    <owl:Class rdf:about="#NegativePolarity">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Next -->
+
+    <owl:Class rdf:about="#Next">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                    <rdf:Description rdf:about="#SequentialPosition"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#NonFirst -->
+
+    <owl:Class rdf:about="#NonFirst">
+        <rdfs:subClassOf rdf:resource="#Sequence"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#NonHypotheticalCause -->
+
+    <owl:Class rdf:about="#NonHypotheticalCause">
+        <rdfs:subClassOf rdf:resource="#Cause"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#NonTemporalCause -->
+
+    <owl:Class rdf:about="#NonTemporalCause">
+        <rdfs:subClassOf rdf:resource="#NonHypotheticalCause"/>
+        <owl:disjointWith rdf:resource="#NowThat"/>
+        <owl:disjointWith rdf:resource="#When"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#NowThat -->
+
+    <owl:Class rdf:about="#NowThat">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveCause"/>
+                    <rdf:Description rdf:about="#NonHypotheticalCause"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#When"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Nthly -->
+
+    <owl:Class rdf:about="#Nthly">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                    <rdf:Description rdf:about="#SequentialPosition"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Secondly"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#OnConditionThat -->
+
+    <owl:Class rdf:about="#OnConditionThat">
+        <rdfs:subClassOf rdf:resource="#AsLongAs"/>
+        <rdfs:subClassOf rdf:resource="#If"/>
+        <owl:disjointWith rdf:resource="#SupposingThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#OnOneHand -->
+
+    <owl:Class rdf:about="#OnOneHand">
+        <rdfs:subClassOf rdf:resource="#_Z"/>
+        <owl:disjointWith rdf:resource="#While2"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#OnTheAssumptionThat -->
+
+    <owl:Class rdf:about="#OnTheAssumptionThat">
+        <rdfs:subClassOf rdf:resource="#SupposingThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#OnTheContrary -->
+
+    <owl:Class rdf:about="#OnTheContrary">
+        <rdfs:subClassOf rdf:resource="#Even"/>
+        <rdfs:subClassOf rdf:resource="#Indeed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#OnTheGroundsThat -->
+
+    <owl:Class rdf:about="#OnTheGroundsThat">
+        <rdfs:subClassOf rdf:resource="#Because"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#OnTheOtherHand -->
+
+    <owl:Class rdf:about="#OnTheOtherHand">
+        <rdfs:subClassOf rdf:resource="#ContrastiveNonFirst"/>
+        <rdfs:subClassOf rdf:resource="#_V"/>
+        <owl:disjointWith rdf:resource="#Though"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Once -->
+
+    <owl:Class rdf:about="#Once">
+        <rdfs:subClassOf rdf:resource="#When"/>
+        <rdfs:subClassOf rdf:resource="#_N"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Or -->
+
+    <owl:Class rdf:about="#Or">
+        <rdfs:subClassOf rdf:resource="#NonFirst"/>
+        <rdfs:subClassOf rdf:resource="#_Y"/>
+        <owl:disjointWith rdf:resource="#TemporallyNonFirst"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#OrRather -->
+
+    <owl:Class rdf:about="#OrRather">
+        <rdfs:subClassOf rdf:resource="#_I"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveRestatement"/>
+                    <rdf:Description rdf:about="#ThatIs"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#ToSummarize"/>
+        <rdfs:comment
+            >removed disjhointness from ThatIs for OWL consistency</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Otherwise -->
+
+    <owl:Class rdf:about="#Otherwise">
+        <rdfs:subClassOf rdf:resource="#_W"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveNegativePolarity"/>
+                    <rdf:Description rdf:about="#Or"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Rather -->
+
+    <owl:Class rdf:about="#Rather">
+        <rdfs:subClassOf rdf:resource="#_Q"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Restatement -->
+
+    <owl:Class rdf:about="#Restatement">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Result -->
+
+    <owl:Class rdf:about="#Result">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Secondly -->
+
+    <owl:Class rdf:about="#Secondly">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                    <rdf:Description rdf:about="#SequentialPosition"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Thirdly"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Sequence -->
+
+    <owl:Class rdf:about="#Sequence">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#SequentialPosition -->
+
+    <owl:Class rdf:about="#SequentialPosition">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#And"/>
+                    <rdf:Description rdf:about="#GeneralizedSequentialPosition"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Whereas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Similarity -->
+
+    <owl:Class rdf:about="#Similarity">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Since -->
+
+    <owl:Class rdf:about="#Since">
+        <rdfs:subClassOf rdf:resource="#NonTemporalCause"/>
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+        <owl:disjointWith rdf:resource="#ToTheExtentThat"/>
+        <owl:disjointWith rdf:resource="#When"/>
+        <owl:disjointWith rdf:resource="#_B"/>
+        <owl:disjointWith rdf:resource="#_J"/>
+        <owl:disjointWith rdf:resource="#_K"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#So -->
+
+    <owl:Class rdf:about="#So">
+        <rdfs:subClassOf rdf:resource="#ExclusiveResult"/>
+        <rdfs:subClassOf rdf:resource="#Result"/>
+        <owl:disjointWith rdf:resource="#SoThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#SoThat -->
+
+    <owl:Class rdf:about="#SoThat">
+        <rdfs:subClassOf rdf:resource="#ExclusiveResult"/>
+        <rdfs:subClassOf rdf:resource="#Result"/>
+        <rdfs:subClassOf rdf:resource="#_C"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#SupposingThat -->
+
+    <owl:Class rdf:about="#SupposingThat">
+        <rdfs:subClassOf rdf:resource="#If"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Temporal -->
+
+    <owl:Class rdf:about="#Temporal">
+        <rdfs:subClassOf rdf:resource="#CuePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#TemporallyNonFirst -->
+
+    <owl:Class rdf:about="#TemporallyNonFirst">
+        <rdfs:subClassOf rdf:resource="#NonFirst"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ThatIs -->
+
+    <owl:Class rdf:about="#ThatIs">
+        <rdfs:subClassOf rdf:resource="#Restatement"/>
+        <rdfs:subClassOf rdf:resource="#_B"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#TheInstant -->
+
+    <owl:Class rdf:about="#TheInstant">
+        <rdfs:subClassOf rdf:resource="#AsSoonAs"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Then1 -->
+
+    <owl:Class rdf:about="#Then1">
+        <rdfs:subClassOf rdf:resource="#And"/>
+        <rdfs:subClassOf rdf:resource="#_K"/>
+        <owl:disjointWith rdf:resource="#Whereas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Then2 -->
+
+    <owl:Class rdf:about="#Then2">
+        <rdfs:subClassOf rdf:resource="#ExclusiveHypothetical"/>
+        <owl:disjointWith rdf:resource="#_AA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ThenAgain -->
+
+    <owl:Class rdf:about="#ThenAgain">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveNegativePolarity"/>
+                    <rdf:Description rdf:about="#_Y"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveNegativePolarity"/>
+                    <rdf:Description rdf:about="#OnTheOtherHand"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Thereby -->
+
+    <owl:Class rdf:about="#Thereby">
+        <rdfs:subClassOf rdf:resource="#_G"/>
+        <owl:disjointWith rdf:resource="#_H"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Therefore -->
+
+    <owl:Class rdf:about="#Therefore">
+        <rdfs:subClassOf rdf:resource="#ExclusiveResult"/>
+        <rdfs:subClassOf rdf:resource="#Result"/>
+        <rdfs:subClassOf rdf:resource="#So"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Thirdly -->
+
+    <owl:Class rdf:about="#Thirdly">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveSequence"/>
+                    <rdf:Description rdf:about="#SequentialPosition"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ThisWay -->
+
+    <owl:Class rdf:about="#ThisWay">
+        <rdfs:subClassOf rdf:resource="#SoThat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Though -->
+
+    <owl:Class rdf:about="#Though">
+        <rdfs:subClassOf rdf:resource="#While2"/>
+        <rdfs:subClassOf rdf:resource="#_R"/>
+        <rdfs:subClassOf rdf:resource="#_V"/>
+        <owl:disjointWith rdf:resource="#Whereas"/>
+        <owl:disjointWith rdf:resource="#_W"/>
+        <rdfs:comment
+            >removed disjointness with Whereas for OWL/DL compliancy</rdfs:comment>
+        <rdfs:comment
+            >removed disjointness with _X for OWL consistency</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ToSummarize -->
+
+    <owl:Class rdf:about="#ToSummarize">
+        <rdfs:subClassOf rdf:resource="#_I"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ToTheExtentThat -->
+
+    <owl:Class rdf:about="#ToTheExtentThat">
+        <rdfs:subClassOf rdf:resource="#ExclusiveCause"/>
+        <rdfs:subClassOf rdf:resource="#NonTemporalCause"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ToThisEnd -->
+
+    <owl:Class rdf:about="#ToThisEnd">
+        <rdfs:subClassOf rdf:resource="#ExclusiveResult"/>
+        <rdfs:subClassOf rdf:resource="#Therefore"/>
+        <rdfs:subClassOf rdf:resource="#_C"/>
+        <owl:disjointWith rdf:resource="#_E"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Too -->
+
+    <owl:Class rdf:about="#Too">
+        <rdfs:subClassOf rdf:resource="#Also"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Unless -->
+
+    <owl:Class rdf:about="#Unless">
+        <rdfs:subClassOf rdf:resource="#ExclusiveNegativePolarity"/>
+        <rdfs:subClassOf rdf:resource="#_P"/>
+        <rdfs:subClassOf rdf:resource="#_U"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Until -->
+
+    <owl:Class rdf:about="#Until">
+        <rdfs:subClassOf rdf:resource="#_E"/>
+        <rdfs:subClassOf rdf:resource="#_M"/>
+        <rdfs:subClassOf rdf:resource="#_U"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#When -->
+
+    <owl:Class rdf:about="#When">
+        <rdfs:subClassOf rdf:resource="#NonHypotheticalCause"/>
+        <rdfs:subClassOf rdf:resource="#_J"/>
+        <owl:disjointWith rdf:resource="#_B"/>
+        <owl:disjointWith rdf:resource="#_K"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#Whereas -->
+
+    <owl:Class rdf:about="#Whereas">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#And"/>
+                    <rdf:Description rdf:about="#OnTheOtherHand"/>
+                    <rdf:Description rdf:about="#While2"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#While1 -->
+
+    <owl:Class rdf:about="#While1">
+        <rdfs:subClassOf rdf:resource="#_O"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#While2 -->
+
+    <owl:Class rdf:about="#While2">
+        <rdfs:subClassOf rdf:resource="#ContrastiveNonFirst"/>
+        <rdfs:subClassOf rdf:resource="#_X"/>
+        <rdfs:subClassOf rdf:resource="#_Z"/>
+        <owl:disjointWith rdf:resource="#_Y"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_A -->
+
+    <owl:Class rdf:about="#_A">
+        <rdfs:subClassOf rdf:resource="#Result"/>
+        <owl:disjointWith rdf:resource="#_C"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_AA -->
+
+    <owl:Class rdf:about="#_AA">
+        <rdfs:subClassOf rdf:resource="#ExclusiveHypothetical"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_AB -->
+
+    <owl:Class rdf:about="#_AB">
+        <rdfs:subClassOf rdf:resource="#If"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_AC -->
+
+    <owl:Class rdf:about="#_AC">
+        <owl:equivalentClass rdf:resource="#_L"/>
+        <rdfs:subClassOf rdf:resource="#Similarity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_AF -->
+
+    <owl:Class rdf:about="#_AF">
+        <rdfs:subClassOf rdf:resource="#_K"/>
+        <owl:disjointWith rdf:resource="#_AG"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_AG -->
+
+    <owl:Class rdf:about="#_AG">
+        <owl:equivalentClass rdf:resource="#_X"/>
+        <rdfs:subClassOf rdf:resource="#_K"/>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_B -->
+
+    <owl:Class rdf:about="#_B">
+        <rdfs:subClassOf rdf:resource="#_A"/>
+        <owl:disjointWith rdf:resource="#_K"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_C -->
+
+    <owl:Class rdf:about="#_C">
+        <rdfs:subClassOf rdf:resource="#Result"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_D -->
+
+    <owl:Class rdf:about="#_D">
+        <rdfs:subClassOf rdf:resource="#Therefore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_E -->
+
+    <owl:Class rdf:about="#_E">
+        <rdfs:subClassOf rdf:resource="#_AF"/>
+        <rdfs:subClassOf rdf:resource="#_C"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_F -->
+
+    <owl:Class rdf:about="#_F">
+        <rdfs:subClassOf rdf:resource="#ExclusiveResult"/>
+        <rdfs:subClassOf rdf:resource="#_E"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_G -->
+
+    <owl:Class rdf:about="#_G">
+        <rdfs:subClassOf rdf:resource="#AsAResult"/>
+        <rdfs:subClassOf rdf:resource="#_F"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#And"/>
+                    <rdf:Description rdf:about="#ExclusiveResult"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_H -->
+
+    <owl:Class rdf:about="#_H">
+        <rdfs:subClassOf rdf:resource="#_G"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_I -->
+
+    <owl:Class rdf:about="#_I">
+        <rdfs:subClassOf rdf:resource="#ExclusiveRestatement"/>
+        <rdfs:subClassOf rdf:resource="#Restatement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_J -->
+
+    <owl:Class rdf:about="#_J">
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_K -->
+
+    <owl:Class rdf:about="#_K">
+        <rdfs:subClassOf rdf:resource="#_J"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_L -->
+
+    <owl:Class rdf:about="#_L">
+        <rdfs:subClassOf rdf:resource="#_K"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_M -->
+
+    <owl:Class rdf:about="#_M">
+        <rdfs:subClassOf rdf:resource="#_J"/>
+        <rdfs:subClassOf rdf:resource="#_K"/>
+        <owl:disjointWith rdf:resource="#_N"/>
+        <owl:disjointWith rdf:resource="#_O"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_N -->
+
+    <owl:Class rdf:about="#_N">
+        <rdfs:subClassOf rdf:resource="#When"/>
+        <rdfs:subClassOf rdf:resource="#_J"/>
+        <owl:disjointWith rdf:resource="#_O"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_O -->
+
+    <owl:Class rdf:about="#_O">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveTemporal"/>
+                    <rdf:Description rdf:about="#_J"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_P -->
+
+    <owl:Class rdf:about="#_P">
+        <rdfs:subClassOf rdf:resource="#NegativePolarity"/>
+        <owl:disjointWith rdf:resource="#_Q"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_Q -->
+
+    <owl:Class rdf:about="#_Q">
+        <rdfs:subClassOf rdf:resource="#NegativePolarity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_R -->
+
+    <owl:Class rdf:about="#_R">
+        <rdfs:subClassOf rdf:resource="#_P"/>
+        <owl:disjointWith rdf:resource="#_S"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_S -->
+
+    <owl:Class rdf:about="#_S">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#ExclusiveNegativePolarity"/>
+                    <rdf:Description rdf:about="#_P"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#_Z"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_T -->
+
+    <owl:Class rdf:about="#_T">
+        <rdfs:subClassOf rdf:resource="#_P"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_U -->
+
+    <owl:Class rdf:about="#_U">
+        <rdfs:subClassOf rdf:resource="#_T"/>
+        <owl:disjointWith rdf:resource="#_V"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_V -->
+
+    <owl:Class rdf:about="#_V">
+        <rdfs:subClassOf rdf:resource="#_R"/>
+        <rdfs:subClassOf rdf:resource="#_T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_W -->
+
+    <owl:Class rdf:about="#_W">
+        <rdfs:subClassOf rdf:resource="#_R"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_X -->
+
+    <owl:Class rdf:about="#_X">
+        <rdfs:subClassOf rdf:resource="#_V"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_Y -->
+
+    <owl:Class rdf:about="#_Y">
+        <rdfs:subClassOf rdf:resource="#_X"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#_Z -->
+
+    <owl:Class rdf:about="#_Z">
+        <rdfs:subClassOf rdf:resource="#ExclusiveNegativePolarity"/>
+        <rdfs:subClassOf rdf:resource="#_P"/>
+        <rdfs:comment
+            >removed disjointness from _T for OWL consistency</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#accordingly -->
+
+    <owl:Thing rdf:about="#accordingly">
+        <rdf:type rdf:resource="#Accordingly"/>
+        <system:hasTag>accordingly</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#actually -->
+
+    <InFact rdf:about="#actually">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>actually</system:hasTag>
+    </InFact>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#after -->
+
+    <owl:Thing rdf:about="#after">
+        <rdf:type rdf:resource="#After"/>
+        <system:hasTag>after</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#after_this -->
+
+    <AfterThis rdf:about="#after_this">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>after this</system:hasTag>
+    </AfterThis>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#afterwards -->
+
+    <owl:Thing rdf:about="#afterwards">
+        <rdf:type rdf:resource="#Afterwards"/>
+        <system:hasTag>afterwards</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#all_in_all -->
+
+    <owl:Thing rdf:about="#all_in_all">
+        <rdf:type rdf:resource="#AllInAll"/>
+        <system:hasTag>all in all</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#all_the_same -->
+
+    <AllTheSame rdf:about="#all_the_same">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>all the same</system:hasTag>
+    </AllTheSame>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#also -->
+
+    <owl:Thing rdf:about="#also">
+        <rdf:type rdf:resource="#Also"/>
+        <system:hasTag>also</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#alternatively -->
+
+    <Alternatively rdf:about="#alternatively">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>alternatively</system:hasTag>
+    </Alternatively>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#although -->
+
+    <owl:Thing rdf:about="#although">
+        <rdf:type rdf:resource="#Though"/>
+        <system:hasTag>although</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#and -->
+
+    <And rdf:about="#and">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>and</system:hasTag>
+    </And>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#anyhow -->
+
+    <Anyway rdf:about="#anyhow">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>anyhow</system:hasTag>
+    </Anyway>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#anyway -->
+
+    <Anyway rdf:about="#anyway">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>anyway</system:hasTag>
+    </Anyway>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as1 -->
+
+    <As1 rdf:about="#as1">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>as</system:hasTag>
+    </As1>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as2 -->
+
+    <As2 rdf:about="#as2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>as</system:hasTag>
+    </As2>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as3 -->
+
+    <owl:Thing rdf:about="#as3">
+        <rdf:type rdf:resource="#JustAs"/>
+        <system:hasTag>as</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as_a_matter_of_fact -->
+
+    <InFact rdf:about="#as_a_matter_of_fact">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag
+            >as a matter of fact</system:hasTag>
+    </InFact>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as_a_result -->
+
+    <AsAResult rdf:about="#as_a_result">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>as a result</system:hasTag>
+    </AsAResult>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as_a_sonsequence -->
+
+    <owl:Thing rdf:about="#as_a_sonsequence">
+        <rdf:type rdf:resource="#AsAResult"/>
+        <system:hasTag
+            >as a sonsequence</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as_long_as -->
+
+    <owl:Thing rdf:about="#as_long_as">
+        <rdf:type rdf:resource="#AsLongAs"/>
+        <system:hasTag>as long as</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as_soon_as -->
+
+    <owl:Thing rdf:about="#as_soon_as">
+        <rdf:type rdf:resource="#AsSoonAs"/>
+        <system:hasTag>as soon as</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#as_well -->
+
+    <owl:Thing rdf:about="#as_well">
+        <rdf:type rdf:resource="#Too"/>
+        <system:hasTag>as well</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#assuming_that -->
+
+    <owl:Thing rdf:about="#assuming_that">
+        <rdf:type rdf:resource="#OnTheAssumptionThat"/>
+        <system:hasTag>assuming that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#at_any_rate -->
+
+    <owl:Thing rdf:about="#at_any_rate">
+        <rdf:type rdf:resource="#AtAnyRate"/>
+        <system:hasTag>at any rate</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#at_last -->
+
+    <owl:Thing rdf:about="#at_last">
+        <rdf:type rdf:resource="#Eventually"/>
+        <system:hasTag>at last</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#at_least -->
+
+    <AtAnyRate rdf:about="#at_least">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>at least</system:hasTag>
+    </AtAnyRate>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#at_once -->
+
+    <Instantly rdf:about="#at_once">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>at once</system:hasTag>
+    </Instantly>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#at_that -->
+
+    <AtThat rdf:about="#at_that">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>at that</system:hasTag>
+    </AtThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#because -->
+
+    <Because rdf:about="#because">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>because</system:hasTag>
+    </Because>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#beforehand -->
+
+    <owl:Thing rdf:about="#beforehand">
+        <rdf:type rdf:resource="#Beforehand"/>
+        <system:hasTag>beforehand</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#besides -->
+
+    <owl:Thing rdf:about="#besides">
+        <rdf:type rdf:resource="#Besides"/>
+        <system:hasTag>besides</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#but -->
+
+    <owl:Thing rdf:about="#but">
+        <rdf:type rdf:resource="#But"/>
+        <system:hasTag>but</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#by_the_way -->
+
+    <owl:Thing rdf:about="#by_the_way">
+        <rdf:type rdf:resource="#Incidentially"/>
+        <system:hasTag>by the way</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#clearly -->
+
+    <Clearly rdf:about="#clearly">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>clearly</system:hasTag>
+    </Clearly>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#consequently -->
+
+    <Therefore rdf:about="#consequently">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>consequently</system:hasTag>
+    </Therefore>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#considering_that -->
+
+    <ConsideringThat rdf:about="#considering_that">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag
+            >considering that</system:hasTag>
+    </ConsideringThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#despite_this -->
+
+    <DespiteThis rdf:about="#despite_this">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>despite this</system:hasTag>
+    </DespiteThis>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#e.g. -->
+
+    <owl:Thing rdf:about="#e.g.">
+        <rdf:type rdf:resource="#ForExample"/>
+        <system:hasTag>e.g.</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#either1 -->
+
+    <Either1 rdf:about="#either1">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>either</system:hasTag>
+    </Either1>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#either2 -->
+
+    <owl:Thing rdf:about="#either2">
+        <rdf:type rdf:resource="#Either2"/>
+        <system:hasTag>either</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#even -->
+
+    <owl:Thing rdf:about="#even">
+        <rdf:type rdf:resource="#Even"/>
+        <system:hasTag>even</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#even_so -->
+
+    <AllTheSame rdf:about="#even_so">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>even so</system:hasTag>
+    </AllTheSame>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#even_though -->
+
+    <owl:Thing rdf:about="#even_though">
+        <rdf:type rdf:resource="#Though"/>
+        <system:hasTag>even though</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#eventually -->
+
+    <Eventually rdf:about="#eventually">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>eventually</system:hasTag>
+    </Eventually>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#ever_since -->
+
+    <owl:Thing rdf:about="#ever_since">
+        <rdf:type rdf:resource="#EverSince"/>
+        <system:hasTag>ever since</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#finally -->
+
+    <owl:Thing rdf:about="#finally">
+        <rdf:type rdf:resource="#Finally"/>
+        <system:hasTag>finally</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#first -->
+
+    <First rdf:about="#first">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>first</system:hasTag>
+    </First>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#first_of_all -->
+
+    <owl:Thing rdf:about="#first_of_all">
+        <rdf:type rdf:resource="#Firstly"/>
+        <system:hasTag>first of all</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#firstly -->
+
+    <owl:Thing rdf:about="#firstly">
+        <rdf:type rdf:resource="#Firstly"/>
+        <system:hasTag>firstly</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#following_this -->
+
+    <AfterThis rdf:about="#following_this">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>following this</system:hasTag>
+    </AfterThis>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#for -->
+
+    <For rdf:about="#for">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>for</system:hasTag>
+    </For>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#for_a_start -->
+
+    <owl:Thing rdf:about="#for_a_start">
+        <rdf:type rdf:resource="#ForOneThing"/>
+        <system:hasTag>for a start</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#for_another_thing -->
+
+    <owl:Thing rdf:about="#for_another_thing">
+        <rdf:type rdf:resource="#Furthermore"/>
+        <system:hasTag
+            >for another thing</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#for_example -->
+
+    <ForExample rdf:about="#for_example">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>for example</system:hasTag>
+    </ForExample>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#for_instance -->
+
+    <ForExample rdf:about="#for_instance">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>for instance</system:hasTag>
+    </ForExample>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#for_one_thing -->
+
+    <owl:Thing rdf:about="#for_one_thing">
+        <rdf:type rdf:resource="#ForOneThing"/>
+        <system:hasTag>for one thing</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#from_then_on -->
+
+    <FromThenOn rdf:about="#from_then_on">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>from then on</system:hasTag>
+    </FromThenOn>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#furthermore -->
+
+    <Furthermore rdf:about="#furthermore">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>furthermore</system:hasTag>
+    </Furthermore>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#given_that -->
+
+    <ConsideringThat rdf:about="#given_that">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>given that</system:hasTag>
+    </ConsideringThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#having_said_that -->
+
+    <owl:Thing rdf:about="#having_said_that">
+        <rdf:type rdf:resource="#HavingSaidThat"/>
+        <system:hasTag
+            >having said that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#hence -->
+
+    <owl:Thing rdf:about="#hence">
+        <rdf:type rdf:resource="#ItFollowsThat"/>
+        <system:hasTag>hence</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#however -->
+
+    <But rdf:about="#however">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>however</system:hasTag>
+    </But>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#if -->
+
+    <owl:Thing rdf:about="#if">
+        <rdf:type rdf:resource="#If"/>
+        <system:hasTag>if</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#if_ever -->
+
+    <IfEver rdf:about="#if_ever">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>if ever</system:hasTag>
+    </IfEver>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#if_not -->
+
+    <owl:Thing rdf:about="#if_not">
+        <rdf:type rdf:resource="#Otherwise"/>
+        <system:hasTag>if not</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#if_only -->
+
+    <IfOnly rdf:about="#if_only">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>if only</system:hasTag>
+    </IfOnly>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#if_so -->
+
+    <IfSo rdf:about="#if_so">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>if so</system:hasTag>
+    </IfSo>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#immediately -->
+
+    <owl:Thing rdf:about="#immediately">
+        <rdf:type rdf:resource="#Instantly"/>
+        <system:hasTag>immediately</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_actual_fact -->
+
+    <owl:Thing rdf:about="#in_actual_fact">
+        <rdf:type rdf:resource="#InFact"/>
+        <system:hasTag>in actual fact</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_addition -->
+
+    <owl:Thing rdf:about="#in_addition">
+        <rdf:type rdf:resource="#InAddition"/>
+        <system:hasTag>in addition</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_case -->
+
+    <owl:Thing rdf:about="#in_case">
+        <rdf:type rdf:resource="#InCase"/>
+        <system:hasTag>in case</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_conclusion -->
+
+    <owl:Thing rdf:about="#in_conclusion">
+        <rdf:type rdf:resource="#InConclusion"/>
+        <system:hasTag>in conclusion</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_doing_so -->
+
+    <Thereby rdf:about="#in_doing_so">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>in doing so</system:hasTag>
+    </Thereby>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_doing_this -->
+
+    <Thereby rdf:about="#in_doing_this">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>in doing this</system:hasTag>
+    </Thereby>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_fact -->
+
+    <InFact rdf:about="#in_fact">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>in fact</system:hasTag>
+    </InFact>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_order_that -->
+
+    <InOrderThat rdf:about="#in_order_that">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>in order that</system:hasTag>
+    </InOrderThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_other_words -->
+
+    <InShort rdf:about="#in_other_words">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>in other words</system:hasTag>
+    </InShort>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_point_of_fact -->
+
+    <InTruth rdf:about="#in_point_of_fact">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag
+            >in point of fact</system:hasTag>
+    </InTruth>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_short -->
+
+    <InShort rdf:about="#in_short">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>in short</system:hasTag>
+    </InShort>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_spite_of_this -->
+
+    <DespiteThis rdf:about="#in_spite_of_this">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag
+            >in spite of this</system:hasTag>
+    </DespiteThis>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_that -->
+
+    <owl:Thing rdf:about="#in_that">
+        <rdf:type rdf:resource="#InThat"/>
+        <system:hasTag>in that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_that_case -->
+
+    <IfSo rdf:about="#in_that_case">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>in that case</system:hasTag>
+    </IfSo>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#in_truth -->
+
+    <owl:Thing rdf:about="#in_truth">
+        <rdf:type rdf:resource="#InTruth"/>
+        <system:hasTag>in truth</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#incidentially -->
+
+    <Incidentially rdf:about="#incidentially">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>incidentially</system:hasTag>
+    </Incidentially>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#indeed -->
+
+    <owl:Thing rdf:about="#indeed">
+        <rdf:type rdf:resource="#Indeed"/>
+        <system:hasTag>indeed</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#insofar_as -->
+
+    <InsofarAs rdf:about="#insofar_as">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>insofar as</system:hasTag>
+    </InsofarAs>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#instantly -->
+
+    <owl:Thing rdf:about="#instantly">
+        <rdf:type rdf:resource="#Instantly"/>
+        <system:hasTag>instantly</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#instead -->
+
+    <Instead rdf:about="#instead">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>instead</system:hasTag>
+    </Instead>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#it_follows_that -->
+
+    <ItFollowsThat rdf:about="#it_follows_that">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>it follows that</system:hasTag>
+    </ItFollowsThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#just_as -->
+
+    <owl:Thing rdf:about="#just_as">
+        <rdf:type rdf:resource="#JustAs"/>
+        <system:hasTag>just as</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#lastly -->
+
+    <Lastly rdf:about="#lastly">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>lastly</system:hasTag>
+    </Lastly>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#later -->
+
+    <Later rdf:about="#later">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>later</system:hasTag>
+    </Later>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#later_on -->
+
+    <Later rdf:about="#later_on">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>later on</system:hasTag>
+    </Later>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#meanwhile -->
+
+    <owl:Thing rdf:about="#meanwhile">
+        <rdf:type rdf:resource="#Meanwhile"/>
+        <system:hasTag>meanwhile</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#moreover -->
+
+    <owl:Thing rdf:about="#moreover">
+        <rdf:type rdf:resource="#Furthermore"/>
+        <system:hasTag>moreover</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#nevertheless -->
+
+    <AllTheSame rdf:about="#nevertheless">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>nevertheless</system:hasTag>
+    </AllTheSame>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#next -->
+
+    <owl:Thing rdf:about="#next">
+        <rdf:type rdf:resource="#Next"/>
+        <system:hasTag>next</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#nonetheless -->
+
+    <AllTheSame rdf:about="#nonetheless">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>nonetheless</system:hasTag>
+    </AllTheSame>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#now -->
+
+    <NowThat rdf:about="#now">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>now</system:hasTag>
+    </NowThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#now_that -->
+
+    <owl:Thing rdf:about="#now_that">
+        <rdf:type rdf:resource="#NowThat"/>
+        <system:hasTag>now that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#nthly -->
+
+    <Nthly rdf:about="#nthly">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>nthly</system:hasTag>
+    </Nthly>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#obviously -->
+
+    <Clearly rdf:about="#obviously">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>obviously</system:hasTag>
+    </Clearly>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#on_condition_that -->
+
+    <owl:Thing rdf:about="#on_condition_that">
+        <rdf:type rdf:resource="#OnConditionThat"/>
+        <system:hasTag
+            >on condition that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#on_one_hand -->
+
+    <owl:Thing rdf:about="#on_one_hand">
+        <rdf:type rdf:resource="#OnOneHand"/>
+        <system:hasTag>on one hand</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#on_the_assumption_that -->
+
+    <owl:Thing rdf:about="#on_the_assumption_that">
+        <rdf:type rdf:resource="#OnTheAssumptionThat"/>
+        <system:hasTag
+            >on the assumption that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#on_the_contrary -->
+
+    <OnTheContrary rdf:about="#on_the_contrary">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>on the contrary</system:hasTag>
+    </OnTheContrary>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#on_the_grounds_that -->
+
+    <OnTheGroundsThat rdf:about="#on_the_grounds_that">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag
+            >on the grounds that</system:hasTag>
+    </OnTheGroundsThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#on_the_one_hand -->
+
+    <owl:Thing rdf:about="#on_the_one_hand">
+        <rdf:type rdf:resource="#OnOneHand"/>
+        <system:hasTag>on the one hand</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#on_the_other_hand -->
+
+    <OnTheOtherHand rdf:about="#on_the_other_hand">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag
+            >on the other hand</system:hasTag>
+    </OnTheOtherHand>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#on_top_of_this -->
+
+    <Furthermore rdf:about="#on_top_of_this">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>on top of this</system:hasTag>
+    </Furthermore>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#once -->
+
+    <owl:Thing rdf:about="#once">
+        <rdf:type rdf:resource="#Once"/>
+        <system:hasTag>once</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#or -->
+
+    <owl:Thing rdf:about="#or">
+        <rdf:type rdf:resource="#Or"/>
+        <system:hasTag>or</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#or_else -->
+
+    <Or rdf:about="#or_else">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>or else</system:hasTag>
+    </Or>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#or_rather -->
+
+    <owl:Thing rdf:about="#or_rather">
+        <rdf:type rdf:resource="#OrRather"/>
+        <system:hasTag>or rather</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#otherwise -->
+
+    <owl:Thing rdf:about="#otherwise">
+        <rdf:type rdf:resource="#Otherwise"/>
+        <system:hasTag>otherwise</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#plainly -->
+
+    <Clearly rdf:about="#plainly">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>plainly</system:hasTag>
+    </Clearly>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#previously -->
+
+    <Beforehand rdf:about="#previously">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>previously</system:hasTag>
+    </Beforehand>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#rather -->
+
+    <Rather rdf:about="#rather">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>rather</system:hasTag>
+    </Rather>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#secondly -->
+
+    <owl:Thing rdf:about="#secondly">
+        <rdf:type rdf:resource="#Secondly"/>
+        <system:hasTag>secondly</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#seeing_as -->
+
+    <owl:Thing rdf:about="#seeing_as">
+        <rdf:type rdf:resource="#ConsideringThat"/>
+        <system:hasTag>seeing as</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#since -->
+
+    <owl:Thing rdf:about="#since">
+        <rdf:type rdf:resource="#Since"/>
+        <system:hasTag>since</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#so -->
+
+    <owl:Thing rdf:about="#so">
+        <rdf:type rdf:resource="#So"/>
+        <system:hasTag>so</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#so_that -->
+
+    <owl:Thing rdf:about="#so_that">
+        <rdf:type rdf:resource="#SoThat"/>
+        <system:hasTag>so that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#still -->
+
+    <AllTheSame rdf:about="#still">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>still</system:hasTag>
+    </AllTheSame>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#summing_up -->
+
+    <ToSummarize rdf:about="#summing_up">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>summing up</system:hasTag>
+    </ToSummarize>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#suppose_that -->
+
+    <SupposingThat rdf:about="#suppose_that">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>suppose that</system:hasTag>
+    </SupposingThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#supposing_that -->
+
+    <owl:Thing rdf:about="#supposing_that">
+        <rdf:type rdf:resource="#SupposingThat"/>
+        <system:hasTag>supposing that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#that_is -->
+
+    <owl:Thing rdf:about="#that_is">
+        <rdf:type rdf:resource="#ThatIs"/>
+        <system:hasTag>that is</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#that_is_to_say -->
+
+    <ThatIs rdf:about="#that_is_to_say">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>that is to say</system:hasTag>
+    </ThatIs>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#the_instant -->
+
+    <owl:Thing rdf:about="#the_instant">
+        <rdf:type rdf:resource="#TheInstant"/>
+        <system:hasTag>the instant</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#the_moment -->
+
+    <owl:Thing rdf:about="#the_moment">
+        <rdf:type rdf:resource="#TheInstant"/>
+        <system:hasTag>the moment</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#the_way -->
+
+    <owl:Thing rdf:about="#the_way">
+        <rdf:type rdf:resource="#JustAs"/>
+        <system:hasTag>the way</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#then1 -->
+
+    <owl:Thing rdf:about="#then1">
+        <rdf:type rdf:resource="#Then1"/>
+        <system:hasTag>then</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#then2 -->
+
+    <Then2 rdf:about="#then2">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>then</system:hasTag>
+    </Then2>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#thereafter -->
+
+    <owl:Thing rdf:about="#thereafter">
+        <rdf:type rdf:resource="#FromThenOn"/>
+        <system:hasTag>thereafter</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#thereby -->
+
+    <owl:Thing rdf:about="#thereby">
+        <rdf:type rdf:resource="#Thereby"/>
+        <system:hasTag>thereby</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#therefore -->
+
+    <Therefore rdf:about="#therefore">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>therefore</system:hasTag>
+    </Therefore>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#thirdly -->
+
+    <owl:Thing rdf:about="#thirdly">
+        <rdf:type rdf:resource="#Thirdly"/>
+        <system:hasTag>thirdly</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#this_implies_that -->
+
+    <owl:Thing rdf:about="#this_implies_that">
+        <rdf:type rdf:resource="#ItFollowsThat"/>
+        <system:hasTag
+            >this implies that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#this_way -->
+
+    <owl:Thing rdf:about="#this_way">
+        <rdf:type rdf:resource="#ThisWay"/>
+        <system:hasTag>this way</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#though -->
+
+    <owl:Thing rdf:about="#though">
+        <rdf:type rdf:resource="#Though"/>
+        <system:hasTag>though</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#thus -->
+
+    <ItFollowsThat rdf:about="#thus">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>thus</system:hasTag>
+    </ItFollowsThat>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#to_begin_with -->
+
+    <owl:Thing rdf:about="#to_begin_with">
+        <rdf:type rdf:resource="#Firstly"/>
+        <system:hasTag>to begin with</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#to_conclude -->
+
+    <InConclusion rdf:about="#to_conclude">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>to conclude</system:hasTag>
+    </InConclusion>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#to_recap -->
+
+    <ToSummarize rdf:about="#to_recap">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>to recap</system:hasTag>
+    </ToSummarize>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#to_start_with -->
+
+    <Firstly rdf:about="#to_start_with">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>to start with</system:hasTag>
+    </Firstly>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#to_sum_up -->
+
+    <owl:Thing rdf:about="#to_sum_up">
+        <rdf:type rdf:resource="#ToSummarize"/>
+        <system:hasTag>to sum up</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#to_summarize -->
+
+    <owl:Thing rdf:about="#to_summarize">
+        <rdf:type rdf:resource="#ToSummarize"/>
+        <system:hasTag>to summarize</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#to_the_extent_that -->
+
+    <owl:Thing rdf:about="#to_the_extent_that">
+        <rdf:type rdf:resource="#ToTheExtentThat"/>
+        <system:hasTag
+            >to the extent that</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#to_this_end -->
+
+    <owl:Thing rdf:about="#to_this_end">
+        <rdf:type rdf:resource="#ToThisEnd"/>
+        <system:hasTag>to this end</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#too -->
+
+    <Too rdf:about="#too">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>too</system:hasTag>
+    </Too>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#unless -->
+
+    <Unless rdf:about="#unless">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>unless</system:hasTag>
+    </Unless>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#until -->
+
+    <owl:Thing rdf:about="#until">
+        <rdf:type rdf:resource="#Until"/>
+        <system:hasTag>until</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#what_is_more -->
+
+    <Furthermore rdf:about="#what_is_more">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>what is more</system:hasTag>
+    </Furthermore>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#when -->
+
+    <owl:Thing rdf:about="#when">
+        <rdf:type rdf:resource="#When"/>
+        <system:hasTag>when</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#whereas -->
+
+    <Whereas rdf:about="#whereas">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>whereas</system:hasTag>
+    </Whereas>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#while1 -->
+
+    <While1 rdf:about="#while1">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>while</system:hasTag>
+    </While1>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#while2 -->
+
+    <owl:Thing rdf:about="#while2">
+        <rdf:type rdf:resource="#While2"/>
+        <system:hasTag>while</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2016/8/3/knott.owl#yet -->
+
+    <But rdf:about="#yet">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <system:hasTag>yet</system:hasTag>
+    </But>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

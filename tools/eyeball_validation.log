@@ -1,0 +1,1818 @@
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: ""
+    on prefix: "olia_system"
+
+On statement:  :Human owl:comment "For Slavic languages, animacy, and in particular, Humanness, defines so-called "sub-genders" that manifest themselves in the accusative ending of masculine and neuter singular nouns. Humans are by definition animate. 
+			(http://purl.org/olia/mte/multext-east.owl#Human)"
+    predicate not declared in any schema: owl:comment
+
+On statement:  http://purl.org/olia/olia.owl owl:versionInfo "
+	Oct. 2005 created by Christian Chiarcos 
+	2006-2008 maintained by Christian Chiarcos and Angelika Adam 
+	since 2008 maintained by Christian Chiarcos
+	10/01/08 updated by Christian Chiarcos 
+	10/01/25 added SyntacticUnit categorization 
+		(from GOLD [http://www.linguistics-ontology.org/gold/2008] and EAGLES recommendations 
+		[http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000]) 
+    	10/01/28 removed all owl:disjointWith and owl:complementOf, these are language-specific
+		and have to be represented in a separate language model.
+    	10/02/17 extended SyntacticUnit categorization in accordance with the TDS ontologies 
+		(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl) Christian 
+    	10/02/18 adopted TIGER edge labels as syntactic role and semantic role
+    	10/03/11 manual restructuring of OWL file begun
+	10/03/23 morphosyntactic classes revised
+	10/03/24 CaseFeature extended by TDS grammaticalCase, GOLD CaseValue and DCR case features
+			DefinitenessFeature checked against TDS definitenessProperty and DCR (missing in GOLD)
+			DegreeFeature checked against DCR (missing in GOLD and TDS)
+			TenseFeature extended in accordance with TDS tenseProperty and GOLD TenseValue (DCR not yet)
+			GenderFeature checked against TDS case and GOLD GenderValue (DCR not yet)
+			SemanticRole extended in accordance with TDS semanticRoleProperty (missing in GOLD, 
+					merged with grammatical case there)
+			PersonFeature checked and extended against GOLD and TDS
+			MoodFeature extended in accordance with TDS modalityProperty and GOLD MoodValue
+			AspectFeature extended in accordance with TDS aspectProperty and GOLD AspectValue
+				Habitual remodelled as Aspect
+	10/03/25 SyntacticRole checked and extended against GOLD syntacticRole (properties) 
+				and DCR syntacticCategory, modifyingRelation
+			VoiceFeature extended against GOLD VoiceValue and TDS grammaticalVoice
+				hierarchically structured
+			restructuring concluded
+	10/04/06 extended InflectionType, added Countability and Valency as features and properties (in accordance with
+			Sampson (1995), see susa.owl
+	10/04/08 extensions with respect to constituent types, syntactic relations and semantic roles 
+			in accordance with Dipper et al. (2007), see sfb632.owl
+	10/04/13 extension wrt. the morphosyntactic profile of the DCR
+	10/04/14 validation, PossessiveFeature removed
+	10/04/15-18 additions in accordance to the PTB Bracketing Guidelines (Santorini 1991, Bies et al. 1995)
+	10/11/26 introduced NounHeadedPhrase for improved compatibility with dependency parsing schemes (e.g., Connexor)
+	10/11/29 added categories for topological fields in German (as used in TüBa-D/Z)
+	10/12/02 added DeterminerPhrase, ForeignPhrase, subclasses of ExpletivePronoun (TüBa-D/Z)
+	11/07/29 replaced url http://purl.org/olia with purl http://purl.olcl.org/olia
+	11/07/31-11/08/04 linking with MULTEXT-East (http://nl.ijs.si/ME/owl/multext-east.owl = http://purl.org/olia/mte/multext-east.owl)
+		Clitic deprecated (replaced by CliticElement because of the ambiguity of the category in MULTEXT-East and ISOcat)
+		additions: hasProximity, Distal, Proximal, CliticElement, CliticDefiniteArticle, SpecificArticle, CliticSpecificArticle,
+		hasSpecificity, Specific, Nonspecific, Cliticization, ElementWithClitic, ElementWithoutClitic, ElementDemandingClitic, 
+		DistributiveCase, FactiveCase, DirectCase, FormalCase, MultiplicativeCase, TemporalisCase, ElativeDegree, CountNumber, 
+		AspectParticle, SubjunctiveParticle, VerbalParticle, LightVerb, VerbalAdverb, NegativeAdverb, ModifierAdverb, AdjectivalAdverb, 
+		NonspecificPronoun, DeterminalPronoun, AttributivePronoun, EmphaticDeterminer, NegativeDeterminer, UniquitiveDeterminer, PossessiveArticle,
+		hasConjunct, hasWordConjunct, hasSentenceConjunct, RepetitiveCoordinatingConjunction, SubordinatingConjunctionWithNegation,
+		SubordinatingConjunctionWithoutNegation, RelationalAdjective, PossessiveAdjective, NonreducedInflection, ReducedInflection, CollectiveNumeral,
+		hasNumeralAgreement, DualQuantifier, PaucalQuantifier, SingularQuantifier, PluralQuantifier, Fraction, ApproximateNumeral, MultipleNumeral,
+		ProQuantifier, InterrogativeQuantifier, IndefiniteQuantifier, DemonstrativeQuantifier, RelativeQuantifier, QuotativeVerb, QuotativeMood,
+		NonNegated, Diminuitive, Human, AbbreviatedPronoun, FixedExpression, Adjectival, Typo, Verbal, hasObjectNumber, hasNumeralForm, ExistentialParticle
+	11/08/04 eliminated redundancy of olia-top:SyntacticRelation and olia:SyntacticRelation
+		SubordType, CoordType deprecated, remodelled as subconcepts of Sub/CoordinatingConjunction
+	11/08/05 validation
+	11/08/11 VoiceParticle (from Portuguese EAGLES)
+	11/08/12 linking with T-CODEX (Old High German)
+			 VocativeExpression, Fronting, ConditionRole, HangingTopic (for Old High German, T-CODEX)
+			 CausalAdverb deprecated (= Adverb and hasSemanticRole some CauseRole)
+			 DeclarativeSentence = Sentence and hasMood some DeclarativeMood
+			 PresentParticiple (= Sentence and hasTense some Present)
+			 PastParticiple (= Sentence and hasTense some Past)
+	11/08/12-15 linking with ILPOSTS (for Indian languages)
+			added PurposiveCase, PurposiveAspect, DistributivePronoun, ConditionalParticiple, ConditionalRealisMood, ConditionalIrrealisMood, PresumptiveMood, Sequel, AbilitativeMood, SecondHonorific, SecondNonHonorific, hasEmphasisFeature, Emphatic, NonEmphatic, SimpleAspect
+			EmphaticDeterminer, EmphaticPronoun deprecated
+			CausalMood (from Nowak 1996, for Inuktitut)
+			MannerAdverb (= Adverb and hasSemanticRole some MannerRole) {introduced as deprecated}
+			LocationAdverb (= Adverb and hasSemanticRole some LocationRole) {introduced as deprecated}
+			HabitualMood (= HabitualAspect)
+	11/08/15 olia_top:PhonologicalProcess introduced (reorganization of MorphologicalProcess)
+	11/08/15 linking with Ancorra and IIIT tagset (for Indian languages)
+			GerundVerbPhrase, SpatiotemporalNoun, InfinitiveVerbPhrase, EchoWord, Composition
+			Intensifier
+	11/08/15 linking with Urdu tagset (Sajjad 2007)
+		TitleNoun, UnitNoun, AspectMarkingAuxiliary, TenseMarkingAuxiliary, Date added
+	11/08/16 linking with EMILLE Urdu tagset (Hardie 2003)
+		AdjectivalParticle, ModalityMarkingAdverb, OpenQuote, CloseQuote, ContrastiveParticle, EmphaticParticle, MultiplicativeMarker, ExclusiveEmphaticParticle, InclusiveEmphaticParticle, ReflexivePossessiveDeterminer, Izafat, RelativeAdjective added
+		ContrastiveEmphaticParticle (= ContrastiveParticle and EmphaticParticle)
+	11/08/16 linking with Dzongkha tagset (Chungku et al. 2010)
+		added AspirationalVerb, AgentiveVerb, TenseMarkingParticle, NonAgentiveVerb, LocativePronoun, NominalNumber, CaseMarker, PeriodicAdjective, CharacteristicAdjective, DifferentialPronoun, NominalQuantifier
+		HonorificVerb, HonorificCommonNoun added (=> Honorificity to be remodelled)
+
+Christian Chiarcos chiarcos@uni-potsdam.de
+	"
+    not from schema: "http://purl.org/olia/"
+    on resource: http://purl.org/olia/olia.owl
+
+On statement:  _:b1001 rdfs:resource "#CliticElement"
+    predicate not declared in any schema: rdfs:resource
+
+On statement:  :Human owl:comment "For Slavic languages, animacy, and in particular, Humanness, defines so-called "sub-genders" that manifest themselves in the accusative ending of masculine and neuter singular nouns. Humans are by definition animate. 
+			(http://purl.org/olia/mte/multext-east.owl#Human)"
+    not from schema: "http://www.w3.org/2002/07/owl#"
+    on resource: owl:comment
+
+On statement:  http://purl.org/olia/hasSemanticRole rdfs:range olia_top:SemanticRole
+    not from schema: "http://purl.org/olia/"
+    on resource: http://purl.org/olia/hasSemanticRole
+
+On statement:  :Simple owl:deprecated "reimplemented as subhierarchy of CoordinatingConjunction"
+    predicate not declared in any schema: owl:deprecated
+
+On statement:  _:b1001 rdfs:resource "#CliticElement"
+    not from schema: "http://www.w3.org/2000/01/rdf-schema#"
+    on resource: rdfs:resource
+
+On statement:  http://purl.org/olia/olia-top.owl owl:imports http://purl.org/olia/system.owl
+    not from schema: "http://purl.org/olia/"
+    on resource: http://purl.org/olia/olia-top.owl
+
+On statement:  :SubordTypeFeature owl:deprecated "reimplemented within SubordinatingConjunction taxonomy"
+    not from schema: "http://www.w3.org/2002/07/owl#"
+    on resource: owl:deprecated
+
+On statement:  :SubordTypeFeature owl:deprecated "reimplemented within SubordinatingConjunction taxonomy"
+    predicate not declared in any schema: owl:deprecated
+**********************
+* ../../owl/stable/iiit.owl 
+**********************
+
+On statement:  _:b1001 owl:members _:b1002
+    predicate not declared in any schema: owl:members
+
+On statement:  :VNN rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+On statement:  _:b1001 rdf:type owl:AllDisjointClasses
+    class not declared in any schema: owl:AllDisjointClasses
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/iiit.owl#"
+    on prefix: ""
+    on prefix: "iiit"
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/russ.owl 
+**********************
+**********************
+* ../../owl/stable/genia.owl 
+**********************
+**********************
+* ../../owl/stable/arabic_khoja.owl 
+**********************
+
+On statement:  :V.M rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/arabic_khoja.owl#"
+    on prefix: ""
+    on prefix: "arabic_khoja"
+**********************
+* ../../owl/stable/stts.owl 
+**********************
+**********************
+* ../../owl/stable/penn.owl 
+**********************
+
+On statement:  :MD rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+**********************
+* ../../owl/stable/eagles.owl 
+**********************
+
+On statement:  :C.4 rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/brown.owl 
+**********************
+**********************
+* ../../owl/stable/pctb.owl 
+**********************
+
+On statement:  :AD rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/ancorra.owl 
+**********************
+
+On statement:  :QO rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+On statement:  _:b1001 rdf:type owl:AllDisjointClasses
+    class not declared in any schema: owl:AllDisjointClasses
+
+On statement:  _:b1001 owl:members _:b1002
+    predicate not declared in any schema: owl:members
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/ancorra.owl#"
+    on prefix: ""
+    on prefix: "ancorra"
+**********************
+* ../../owl/stable/qtag.owl 
+**********************
+**********************
+* ../../owl/stable/french.owl 
+**********************
+
+On statement:  :A-indef-mp rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/parole_es_cat.owl 
+**********************
+
+On statement:  :F rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/turkish.owl 
+**********************
+
+On statement:  :dup rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/turkish.owl#"
+    on prefix: ""
+    on prefix: "turkish"
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/sfb632.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1657 column 26): {W105} Redefinition of ID: LOC
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1229 column 31): {W105} Previous definition of 'LOC'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1717 column 28): {W105} Redefinition of ID: COM
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1241 column 33): {W105} Previous definition of 'COM'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1779 column 28): {W105} Redefinition of ID: POSS
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1199 column 34): {W105} Previous definition of 'POSS'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1657 column 26): {W105} Redefinition of ID: LOC
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1229 column 31): {W105} Previous definition of 'LOC'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1717 column 28): {W105} Redefinition of ID: COM
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1241 column 33): {W105} Previous definition of 'COM'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1779 column 28): {W105} Redefinition of ID: POSS
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/sfb632.owl(line 1199 column 34): {W105} Previous definition of 'POSS'.
+**********************
+* ../../owl/stable/tueba.owl 
+**********************
+
+On statement:  :PREDK rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/stanford.owl 
+**********************
+
+On statement:  :xsubj rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+**********************
+* ../../owl/stable/emille.owl 
+**********************
+
+On statement:  :hasGender rdf:type owl:ReflexiveProperty
+    class not declared in any schema: owl:ReflexiveProperty
+
+On statement:  :VV rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/tiger.owl 
+**********************
+**********************
+* ../../owl/stable/treetagger-german.owl 
+**********************
+**********************
+* ../../owl/stable/multext-east.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext-east.owl(line 1778 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext-east.owl(line 1813 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext-east.owl(line 5049 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext-east.owl(line 1778 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext-east.owl(line 1813 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext-east.owl(line 5049 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+**********************
+* ../../owl/stable/connexor.owl 
+**********************
+
+On statement:  :PREP rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+**********************
+* ../../owl/stable/tcodex.owl 
+**********************
+
+On statement:  :subordinate rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+On statement:  :SubjectSubordinateClause owl:deprecated "Removed from T-CODEX 2.1"
+    predicate not declared in any schema: owl:deprecated
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/dzongkha.owl 
+**********************
+
+On statement:  :PUN rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/french-tt.owl 
+**********************
+
+On statement:  :PUN rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/french-tt.owl#"
+    on prefix: ""
+    on prefix: "french-tt"
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/tiger-syntax.owl 
+**********************
+**********************
+* ../../owl/stable/penn-syntax.owl 
+**********************
+**********************
+* ../../owl/stable/multext_east/msd-uk.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-sk.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-ro.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-et.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-cs.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-hu.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/msd-hu.owl(line 293100 column 46): {W137} Input is large. Switching off checking for illegal reuse of rdf:ID's.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/msd-hu.owl(line 293100 column 46): {W137} Input is large. Switching off checking for illegal reuse of rdf:ID's.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/system.owl 
+**********************
+**********************
+* ../../owl/stable/multext_east/msd-sl.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/multext-east.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/multext-east.owl(line 1776 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/multext-east.owl(line 1811 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/multext-east.owl(line 4994 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/multext-east.owl(line 1776 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/multext-east.owl(line 1811 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/multext-east.owl(line 4994 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+**********************
+* ../../owl/stable/multext_east/msd-sr.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-mk.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-en.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-ru.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-sl-rozaj.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-bg.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/all.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 91 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 92 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 119 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 131 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 158 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 166 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 173 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 192 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 222 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 245 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 574 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 578 column 58): {W116} ISO-639 does not define langauge: 'bar'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 596 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 628 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 642 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 671 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 679 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 689 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 696 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 709 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 742 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 743 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 768 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1084 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1133 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1177 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1185 column 58): {W116} ISO-639 does not define langauge: 'trv'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1191 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1192 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1199 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1565 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1566 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1606 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1643 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1658 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1863 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1903 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1938 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1950 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1954 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2178 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2218 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2245 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2261 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2269 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2281 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2313 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2314 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2334 column 58): {W116} ISO-639 does not define langauge: 'vro'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2340 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2676 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2677 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2713 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2739 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2746 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2798 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2799 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2817 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3112 column 58): {W116} ISO-639 does not define langauge: 'aii'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3118 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3140 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3141 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3173 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3186 column 58): {W116} ISO-639 does not define langauge: 'hak'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3188 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3216 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3224 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3235 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3290 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3291 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3310 column 58): {W116} ISO-639 does not define langauge: 'vec'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3316 column 58): {W116} ISO-639 does not define langauge: 'zea'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3318 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3668 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3672 column 58): {W116} ISO-639 does not define langauge: 'bcl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3688 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3689 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3720 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3734 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3760 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3768 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3775 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3783 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3828 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3845 column 58): {W116} ISO-639 does not define langauge: 'vec'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3853 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4181 column 58): {W116} ISO-639 does not define langauge: 'aii'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4187 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4194 column 58): {W116} ISO-639 does not define langauge: 'bcl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4207 column 58): {W116} ISO-639 does not define langauge: 'bxr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4216 column 58): {W116} ISO-639 does not define langauge: 'ckb'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4217 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4227 column 58): {W116} ISO-639 does not define langauge: 'diq'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4249 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4252 column 58): {W116} ISO-639 does not define langauge: 'gan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4263 column 58): {W116} ISO-639 does not define langauge: 'hak'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4266 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4268 column 58): {W116} ISO-639 does not define langauge: 'hif'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4302 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4312 column 58): {W116} ISO-639 does not define langauge: 'lbe'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4313 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4319 column 58): {W116} ISO-639 does not define langauge: 'lmo'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4321 column 58): {W116} ISO-639 does not define langauge: 'lzh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4327 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4337 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4355 column 58): {W116} ISO-639 does not define langauge: 'pcd'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4356 column 58): {W116} ISO-639 does not define langauge: 'pih'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4357 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4358 column 58): {W116} ISO-639 does not define langauge: 'pnb'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4394 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4395 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4409 column 58): {W116} ISO-639 does not define langauge: 'trv'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4420 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4421 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4423 column 58): {W116} ISO-639 does not define langauge: 'vro'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4426 column 58): {W116} ISO-639 does not define langauge: 'wuu'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4432 column 58): {W116} ISO-639 does not define langauge: 'yue'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4434 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4889 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4917 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4930 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4957 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4965 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4973 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4992 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5021 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5022 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5044 column 58): {W116} ISO-639 does not define langauge: 'zea'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5046 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5360 column 58): {W116} ISO-639 does not define langauge: 'bar'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5377 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5378 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5405 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5419 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5445 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5452 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5459 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5476 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5506 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5519 column 58): {W116} ISO-639 does not define langauge: 'vec'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5526 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5829 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5830 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5858 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5881 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5888 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5908 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5935 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5941 column 58): {W116} ISO-639 does not define langauge: 'trv'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5948 column 58): {W116} ISO-639 does not define langauge: 'vec'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5953 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6217 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6231 column 58): {W116} ISO-639 does not define langauge: 'bxr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6240 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6241 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6281 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6308 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6316 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6325 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6334 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6347 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6377 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6378 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6402 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 91 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 92 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 119 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 131 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 158 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 166 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 173 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 192 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 222 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 245 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 574 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 578 column 58): {W116} ISO-639 does not define langauge: 'bar'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 596 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 628 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 642 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 671 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 679 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 689 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 696 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 709 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 742 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 743 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 768 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1084 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1133 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1177 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1185 column 58): {W116} ISO-639 does not define langauge: 'trv'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1191 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1192 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1199 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1565 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1566 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1606 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1643 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1658 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1863 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1903 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1938 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1950 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 1954 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2178 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2218 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2245 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2261 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2269 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2281 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2313 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2314 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2334 column 58): {W116} ISO-639 does not define langauge: 'vro'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2340 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2676 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2677 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2713 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2739 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2746 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2798 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2799 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 2817 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3112 column 58): {W116} ISO-639 does not define langauge: 'aii'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3118 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3140 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3141 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3173 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3186 column 58): {W116} ISO-639 does not define langauge: 'hak'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3188 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3216 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3224 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3235 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3290 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3291 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3310 column 58): {W116} ISO-639 does not define langauge: 'vec'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3316 column 58): {W116} ISO-639 does not define langauge: 'zea'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3318 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3668 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3672 column 58): {W116} ISO-639 does not define langauge: 'bcl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3688 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3689 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3720 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3734 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3760 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3768 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3775 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3783 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3828 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3845 column 58): {W116} ISO-639 does not define langauge: 'vec'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 3853 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4181 column 58): {W116} ISO-639 does not define langauge: 'aii'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4187 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4194 column 58): {W116} ISO-639 does not define langauge: 'bcl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4207 column 58): {W116} ISO-639 does not define langauge: 'bxr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4216 column 58): {W116} ISO-639 does not define langauge: 'ckb'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4217 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4227 column 58): {W116} ISO-639 does not define langauge: 'diq'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4249 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4252 column 58): {W116} ISO-639 does not define langauge: 'gan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4263 column 58): {W116} ISO-639 does not define langauge: 'hak'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4266 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4268 column 58): {W116} ISO-639 does not define langauge: 'hif'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4302 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4312 column 58): {W116} ISO-639 does not define langauge: 'lbe'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4313 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4319 column 58): {W116} ISO-639 does not define langauge: 'lmo'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4321 column 58): {W116} ISO-639 does not define langauge: 'lzh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4327 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4337 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4355 column 58): {W116} ISO-639 does not define langauge: 'pcd'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4356 column 58): {W116} ISO-639 does not define langauge: 'pih'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4357 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4358 column 58): {W116} ISO-639 does not define langauge: 'pnb'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4394 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4395 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4409 column 58): {W116} ISO-639 does not define langauge: 'trv'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4420 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4421 column 58): {W116} ISO-639 does not define langauge: 'uzn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4423 column 58): {W116} ISO-639 does not define langauge: 'vro'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4426 column 58): {W116} ISO-639 does not define langauge: 'wuu'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4432 column 58): {W116} ISO-639 does not define langauge: 'yue'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4434 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4889 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4917 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4930 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4957 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4965 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4973 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 4992 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5021 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5022 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5044 column 58): {W116} ISO-639 does not define langauge: 'zea'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5046 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5360 column 58): {W116} ISO-639 does not define langauge: 'bar'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5377 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5378 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5405 column 58): {W116} ISO-639 does not define langauge: 'frp'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5419 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5445 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5452 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5459 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5476 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5506 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5519 column 58): {W116} ISO-639 does not define langauge: 'vec'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5526 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5829 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5830 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5858 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5881 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5888 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5908 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5935 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5941 column 58): {W116} ISO-639 does not define langauge: 'trv'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5948 column 58): {W116} ISO-639 does not define langauge: 'vec'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 5953 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6217 column 58): {W116} ISO-639 does not define langauge: 'arz'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6231 column 58): {W116} ISO-639 does not define langauge: 'bxr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6240 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6241 column 58): {W116} ISO-639 does not define langauge: 'cmn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6281 column 57): {W116} ISO-639 does not define langauge: 'sh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6308 column 58): {W116} ISO-639 does not define langauge: 'knn'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6316 column 58): {W116} ISO-639 does not define langauge: 'lij'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6325 column 58): {W116} ISO-639 does not define langauge: 'mhr'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6334 column 58): {W116} ISO-639 does not define langauge: 'nan'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6347 column 58): {W116} ISO-639 does not define langauge: 'pms'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6377 column 58): {W116} ISO-639 does not define langauge: 'swh'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6378 column 58): {W116} ISO-639 does not define langauge: 'szl'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/all.owl(line 6402 column 58): {W116} ISO-639 does not define langauge: 'zsm'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/msd-fa.owl(line 12678 column 61): {W131} String not in Unicode Normal Form C: "e.g., طيِّ/طيّ ضمناً بلکه"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/msd-hu.owl(line 293056 column 42): {W137} Input is large. Switching off checking for illegal reuse of rdf:ID's.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+On statement:  lexvo:iso639-3/slv lvont:iso639P3PCode "slv"^^xsd:string
+    predicate not declared in any schema: lvont:iso639P3PCode
+
+On statement:  lexvo:iso639-3/slv lvont:iso6392TCode "slv"^^xsd:string
+    predicate not declared in any schema: lvont:iso6392TCode
+
+On statement:  lexvo:iso639-3/slv rdfs:label "slovenagiella"^^xsd:string
+    bad datatype URI: "xsd:string"
+    on literal: "slovenagiella"
+
+On statement:  lexvo:iso639-3/slv lvont:iso6392BCode "slv"^^xsd:string
+    predicate not declared in any schema: lvont:iso6392BCode
+
+On statement:  lexvo:iso639-3/slv lvont:iso639P1Code "sl"^^xsd:string
+    predicate not declared in any schema: lvont:iso639P1Code
+
+On statement:  lexvo:iso639-3/slv lvont:marcCode "slv"^^xsd:string
+    predicate not declared in any schema: lvont:marcCode
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/multext_east/msd-pl.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/multext_east/msd-fa.owl 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/msd-fa.owl(line 12722 column 61): {W131} String not in Unicode Normal Form C: "e.g., طيِّ/طيّ ضمناً بلکه"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/multext_east/msd-fa.owl(line 12722 column 61): {W131} String not in Unicode Normal Form C: "e.g., طيِّ/طيّ ضمناً بلکه"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+bad namespace URI: "http://purl.org/dc/terms/"
+    on prefix: "dc"
+    for reason: "non-standard namespace for prefix"
+    eye:expected: "http://purl.org/dc/elements/1.1/"
+**********************
+* ../../owl/stable/susa.owl 
+**********************
+**********************
+* ../../owl/stable/indian.owl 
+**********************
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/morphisto.owl 
+**********************
+**********************
+* ../../owl/stable/urdu.owl 
+**********************
+
+On statement:  :AP rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/urdu.owl#"
+    on prefix: ""
+    on prefix: "urdu"
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/basque.owl 
+**********************
+
+On statement:  :AMM rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/tibet_old.owl 
+**********************
+**********************
+* ../../owl/stable/ilposts.owl 
+**********************
+
+On statement:  _:b1001 owl:members _:b1002
+    predicate not declared in any schema: owl:members
+
+On statement:  _:b1003 owl:onClass :Numeral
+    predicate not declared in any schema: owl:onClass
+
+On statement:  _:b1003 owl:maxQualifiedCardinality "1"^^http://www.w3.org/2001/XMLSchema#nonNegativeInteger
+    predicate not declared in any schema: owl:maxQualifiedCardinality
+
+On statement:  _:b1001 rdf:type owl:AllDisjointClasses
+    class not declared in any schema: owl:AllDisjointClasses
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/tibet.owl 
+**********************
+
+On statement:  :emb.attr rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/russleeds.owl 
+**********************
+**********************
+* ../../owl/stable/treetagger-link.rdf 
+**********************
+**********************
+* ../../owl/stable/genia-link.rdf 
+**********************
+**********************
+* ../../owl/stable/msd-mk-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/msd-et-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/msd-sr-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/ancorra-link.rdf 
+**********************
+
+On statement:  file:../../owl/stable/ancorra-link.rdf rdfs:comment "
+      2011/08/15 provisional semiautomated linking for morphosyntax, manually revised
+      (no properties linked, yet)
+      
+      Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/ancorra-link.rdf"
+    for reason: "<file:../../owl/stable/ancorra-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/sfb632-link.rdf 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/sfb632.owl(line 1657 column 26): {W105} Redefinition of ID: LOC
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/sfb632.owl(line 1229 column 31): {W105} Previous definition of 'LOC'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/sfb632.owl(line 1717 column 28): {W105} Redefinition of ID: COM
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/sfb632.owl(line 1241 column 33): {W105} Previous definition of 'COM'.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/sfb632.owl(line 1779 column 28): {W105} Redefinition of ID: POSS
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/sfb632.owl(line 1199 column 34): {W105} Previous definition of 'POSS'.
+**********************
+* ../../owl/stable/msd-hu-link.rdf 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/msd-hu.owl(line 293056 column 42): {W137} Input is large. Switching off checking for illegal reuse of rdf:ID's.
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/msd-cs-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/stts-link.rdf 
+**********************
+**********************
+* ../../owl/stable/iiit-link.rdf 
+**********************
+
+On statement:  file:../../owl/stable/iiit-link.rdf rdfs:comment "
+      2011/08/15 provisional semiautomated linking for morphosyntax, manually revised
+      
+      Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/iiit-link.rdf"
+    for reason: "<file:../../owl/stable/iiit-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/msd-uk-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/msd-ro-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/msd-sl-rozaj-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/dzongkha-link.rdf 
+**********************
+
+On statement:  file:../../owl/stable/dzongkha-link.rdf rdfs:comment "
+      2011/08/16 provisional semiautomated linking for morphosyntax, manually revised 
+      
+      Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/dzongkha-link.rdf"
+    for reason: "<file:../../owl/stable/dzongkha-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/emille-link.rdf 
+**********************
+
+On statement:  file:../../owl/stable/emille-link.rdf rdfs:comment "
+                2011/08/15 provisional semiautomated linking for morphosyntax 
+                2011/08/16 manually revised
+                
+                Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/emille-link.rdf"
+    for reason: "<file:../../owl/stable/emille-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/tcodex-link.rdf 
+**********************
+
+On statement:  file:../../owl/stable/tcodex-link.rdf rdfs:comment "
+      2011/08/11 provisional semiautomated linking for morphosyntax, manual revision and extension 
+      
+      Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/tcodex-link.rdf"
+    for reason: "<file:../../owl/stable/tcodex-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/mte-link.rdf 
+**********************
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 823 column 22): {W113} rdf:comment is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 829 column 22): {W113} rdf:comment is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 838 column 22): {W113} rdf:comment is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 961 column 90): {W103} rdf:select is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 976 column 11): {W113} rdf:subClassOf is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 982 column 87): {W113} rdf:subClassOf is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 823 column 22): {W113} rdf:comment is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 829 column 22): {W113} rdf:comment is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 838 column 22): {W113} rdf:comment is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 961 column 90): {W103} rdf:select is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 976 column 11): {W113} rdf:subClassOf is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - file:../../owl/stable/mte-link.rdf(line 982 column 87): {W113} rdf:subClassOf is not a recognized RDF property or type.
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+On statement:  _:b1001 rdf:select "http://purl.org/olia/olia.owl#ExistentialParticle"
+    predicate not declared in any schema: rdf:select
+
+On statement:  http://purl.org/olia/mte/multext-east.owl#WithCourtesy rdf:subClassOf olia:PoliteSecondPersonPronoun
+    predicate not declared in any schema: rdf:subClassOf
+
+On statement:  http://purl.org/olia/mte/multext-east.owl#AdpositionFormation rdf:comment "unlinked, surface properties"
+    predicate not declared in any schema: rdf:comment
+
+On statement:  http://purl.org/olia/mte/multext-east.owl#MorphosyntacticCategory owl:subClassOf http://purl.org/olia/olia-top.owl#MorphosyntacticCategory
+    predicate not declared in any schema: owl:subClassOf
+
+On statement:  file:../../owl/stable/mte-link.rdf rdfs:comment "
+            2011/07/29 provisional semiautomated linking (link if same name, propose if partial name, unlink otherwise,
+            optional comment), afterwards manual correction based on the manual and automatic
+            comments 
+            2011/07/31 removed deprecated concepts (IndefiniteAdjective), ambiguity
+            concepts (subclasses of AmbiguousAdjective, AmbiguousDefinitenessFeature,
+            AmbiguousCliticness), language-specific concepts (WithCliticS, WithoutCliticS) and
+            inconsistent concepts (NumeralForm, CliticDeterminerType [conflactes ProximityFeature
+            and DefinitenessFeature], Cliticness) from linking 
+            2011/07/31-2011/08/05 manual revision 
+            
+            Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/mte-link.rdf"
+    for reason: "<file:../../owl/stable/mte-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+**********************
+* ../../owl/stable/qtag-link.rdf 
+**********************
+**********************
+* ../../owl/stable/russ-link.rdf 
+**********************
+**********************
+* ../../owl/stable/eagles-link.rdf 
+**********************
+
+On statement:  http://purl.org/olia/eagles.owl#hasCase owl:subPropertyOf http://purl.org/olia/olia.owl#hasCase
+    predicate not declared in any schema: owl:subPropertyOf
+
+On statement:  file:../../owl/stable/eagles-link.rdf rdfs:comment "
+         2011/08/10 provisional semiautomated linking
+         2011/08/11 manual revision and extension 
+         
+         Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/eagles-link.rdf"
+    for reason: "<file:../../owl/stable/eagles-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/msd-fa-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/msd-fa.owl(line 12678 column 61): {W131} String not in Unicode Normal Form C: "e.g., طيِّ/طيّ ضمناً بلکه"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+**********************
+* ../../owl/stable/stanford-link.rdf 
+**********************
+**********************
+* ../../owl/stable/msd-sl-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/msd-ru-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/connexor-link.rdf 
+**********************
+**********************
+* ../../owl/stable/morphisto-link.rdf 
+**********************
+**********************
+* ../../owl/stable/msd-bg-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/tueba-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/tueba.owl. Msg was 'http://purl.org/olia/tueba.owl'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/tueba.owl
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/olia-top.owl#"
+    on prefix: "olia_top"
+    on prefix: "olia-top"
+**********************
+* ../../owl/stable/penn-syntax-link.rdf 
+**********************
+**********************
+* ../../owl/stable/msd-en-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/penn-link.rdf 
+**********************
+**********************
+* ../../owl/stable/msd-pl-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/brown-link.rdf 
+**********************
+**********************
+* ../../owl/stable/russleeds-link.rdf 
+**********************
+**********************
+* ../../owl/stable/tibet-link.rdf 
+**********************
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/ilposts-link.rdf 
+**********************
+
+On statement:  file:../../owl/stable/ilposts-link.rdf rdfs:comment "
+      2011/08/12 provisional semiautomated linking for morphosyntax, manual revision and extension 
+                 (no properties linked, yet)
+      2011/08/15 OWL/DL validation (FACT++)
+      
+      Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/ilposts-link.rdf"
+    for reason: "<file:../../owl/stable/ilposts-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/tiger-link.rdf 
+**********************
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/olia-top.owl#"
+    on prefix: "olia_top"
+    on prefix: "olia-top"
+**********************
+* ../../owl/stable/msd-sk-link.rdf 
+**********************
+ WARN [main] (OntDocumentManager.java:1078) - An error occurred while attempting to read from http://purl.org/olia/mte/mte-link.rdf. Msg was 'http://purl.org/olia/mte/mte-link.rdf'.
+com.hp.hpl.jena.shared.DoesNotExistException: http://purl.org/olia/mte/mte-link.rdf
+	at com.hp.hpl.jena.rdf.arp.JenaReader.read(JenaReader.java:89)
+	at com.hp.hpl.jena.rdf.model.impl.ModelCom.read(ModelCom.java:187)
+	at com.hp.hpl.jena.util.FileManager.readModelWorker(FileManager.java:366)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:334)
+	at com.hp.hpl.jena.util.FileManager.readModel(FileManager.java:318)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.read(OntDocumentManager.java:1064)
+	at com.hp.hpl.jena.ontology.OntDocumentManager$1.readModel(OntDocumentManager.java:1034)
+	at com.hp.hpl.jena.rdf.model.impl.ModelMakerImpl.getModel(ModelMakerImpl.java:78)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchLoadedImportModel(OntDocumentManager.java:1031)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.fetchPossiblyCachedImportModel(OntDocumentManager.java:1004)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImport(OntDocumentManager.java:977)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:771)
+	at com.hp.hpl.jena.ontology.OntDocumentManager.loadImports(OntDocumentManager.java:709)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.loadImports(OntModelImpl.java:1887)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:148)
+	at com.hp.hpl.jena.ontology.impl.OntModelImpl.<init>(OntModelImpl.java:120)
+	at com.hp.hpl.jena.rdf.model.ModelFactory.createOntologyModel(ModelFactory.java:402)
+	at com.hp.hpl.jena.eyeball.loaders.OntLoader.ontLoad(OntLoader.java:56)
+	at jena.eyeball.checkOneModel(eyeball.java:304)
+	at jena.eyeball.run(eyeball.java:103)
+	at jena.eyeball.main(eyeball.java:43)
+	at jena.eyeball.main(eyeball.java:34)
+	at jena.eyeball.main(eyeball.java:31)
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://purl.org/olia/mte/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1780 column 689): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, به‌اين‌دليل‌که ازبس‌که ازآنجاکه, حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 1815 column 393): {W131} String not in Unicode Normal Form C: "e.g., برخلافِ/برخلاف برايِ‌همين آن‌چنانکه, طيِّ/طيّ ضمناً بلکه (fa)"
+ WARN [main] (RDFDefaultErrorHandler.java:36) - http://nl.ijs.si/ME/owl/multext-east.owl(line 5124 column 253): {W131} String not in Unicode Normal Form C: "e.g., حتي اگه/اگر اگر, طيِّ/طيّ ضمناً بلکه (fa)"
+
+eye:multiplePrefixesForNamespace: "http://nl.ijs.si/ME/owl/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"
+**********************
+* ../../owl/stable/connexor-phrase-link.rdf 
+**********************
+
+On statement:  connexor:CC_syntax rdf:type owl:NamedIndividual
+    class not declared in any schema: owl:NamedIndividual
+**********************
+* ../../owl/stable/susa-link.rdf 
+**********************
+**********************
+* ../../owl/stable/urdu-link.rdf 
+**********************
+
+On statement:  file:../../owl/stable/urdu-link.rdf rdfs:comment "
+      2011/08/15 provisional semiautomated linking for morphosyntax, manually revised
+      
+      Christian Chiarcos, chiarcos@uni-potsdam.de"^^http://www.w3.org/2001/XMLSchema#string
+    eye:badURI: "file:../../owl/stable/urdu-link.rdf"
+    for reason: "<file:../../owl/stable/urdu-link.rdf> Code: 58/REQUIRED_COMPONENT_MISSING in AUTHORITY: A component that is required by the scheme is missing."
+
+On statement:  http://purl.org/olia/urdu.owl#TenseAuxiliary rdfs:subclassOf http://purl.org/olia/olia.owl#TenseMarkingAuxiliary
+    predicate not declared in any schema: rdfs:subclassOf
+
+On statement:  http://purl.org/olia/urdu.owl#AdverbialKafPronoun owl:subClassOf http://purl.org/olia/olia.owl#PronominalAdverb
+    predicate not declared in any schema: owl:subClassOf
+
+eye:multiplePrefixesForNamespace: "http://purl.org/olia/system.owl#"
+    on prefix: "olia_system"
+    on prefix: "system"

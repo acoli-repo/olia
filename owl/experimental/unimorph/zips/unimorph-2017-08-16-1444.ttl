@@ -1,0 +1,1351 @@
+@prefix : <http://purl.org/olia/unimorph.owl#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix unimorph: <http://purl.org/olia/unimorph.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@base <http://purl.org/olia/unimorph.owl> .
+
+<http://purl.org/olia/unimorph.owl> rdf:type owl:Ontology ;
+                                    rdfs:isDefinedBy <http://unimorph.org>;
+                                    rdfs:comment """Annotation Model for the Universal Morphology (UniMorph) project
+
+The Universal Morphology (UniMorph) project is a collaborative effort to improve how NLP handles complex morphology in the world's languages. The goal of UniMorph is to annotate morphological data in a universal schema that allows an inflected word from any language to be defined by its lexical meaning, typically carried by the lemma, and by a rendering of its inflectional form in terms of a bundle of morphological features from our schema. The specification of the schema is described here and in Sylak-Glassman (2016). (http://unimorph.org)
+
+Unless marked otherwise, all comments are drawn from Sylak-Glassman (2016). At present, the UniMorph Schema accounts for inflectional morphology only, not derivational morphology.
+
+The UniMorph Schema is intended to capture the full range of meaning that can be expressed by inflectional morphology across the world's languages. As instantiated in this document, the schema contains 23 dimensions of meaning and over 240 features. The UniMorph Schema provides a way to annotate very rich, fine-grained representations of the meaning encoded in fully inflected word forms, thereby allowing HLT applications to extract meaning from inflectional morphology across languages with strong confidence that the inflectional categories are semantically equivalent. ... The UniMorph Schema is designed to achieve extremely broad cross-linguistic coverage, and has proven useful in universalizing inflected forms in over 350 languages on Wiktionary (Sylak-Glassman et al. 2015b,a). However, it is a work-in-progress, and would benefit from user input, especially in case any other dimensions or features should be included. (Sylak-Glassman 2016, p.58f.)
+
+References:
+John Sylak-Glassman (2016), The Composition and Use of the Universal Morphological Feature Schema (UniMorph Schema). Working Draft v. 2, Center for Language and Speech Processing, Johns Hopkins University, jcsg@jhu.edu. June 2, 2016, https://unimorph.github.io/doc/unimorph-schema.pdf
+
+History:
+2017-08-12 Aktionsart [CC]
+2017-08-13 Animacy, Aspect [CC]
+2017-08-14 Case, Comparison, Definiteness, Deixis, Evidentiality, Finiteness, Gender, Information Structure, Interrogativity, Mood, Number, Part of Speech, Person, Polarity [CC]
+2017-08-16 Politeness, Possession, Switch-Reference, Tense, Valency, Voice, Argument Marking [CC]
+2017-08-16 Turtle validation using http://ttl.summerofcode.be/ [CC]
+
+Contributors:
+CC - Christian Chiarcos, christian.chiarcos@web.de"""@en;
+owl:versionInfo """Note that descriptions are not necessarily literal quotes from Sylak-Glasman, but have been partially simplified and abbreviated. In particular, argumentative sections have been removed, as well as many examples and diagrams. The latter, however, are partially encoded in the structure of the ontology. Due to limitations of UTF-8 export from PDF documents, examples with non-ASCII characters had to be removed. For cyrillic, the original (cyrillic) spelling has been partially restored. 
+
+Also note that I followed Sylak-Glassman in modeling features as individuals (primitive values) rather than classes wherever possible. However, where he describes a hierarchical organization (e.g., animacy, aktionsart) or mentions that one feature is a specialization of another (e.g., aspect), classes were created to capture these definitions.
+
+Wrt. naming conventions for classes, the original names have been adopted wherever possible. If a concept name X cannot be easily used in a phrase like "x is a X" without causing confusion, it has been adjusted to XFeature. For example, "Deixis" and "Reference Point" have been renamed to "DeixisFeature" and "ReferencePointFeature", because "proximate is a Deixis" or "phoric is a Reference" would be unnatural.
+
+Note that bibliographic references have been preserved, but not the bibliography that must be retrieved from Sylak-Glassman (2016).
+
+CC"""@en.
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/olia/unimorph.owl#hasLabel
+
+:hasLabel rdf:type owl:DatatypeProperty .
+
+:hasLabelStartingWith rdfs:subPropertyOf :hasLabel;
+	rdfs:comment "Introduced to account for extensible tags, in particular LGSPEC1..x".
+:hasLabelMatching rdf:type owl:DatatypeProperty;
+	rdfs:comment "Introduced for matching against regular expressions".
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+:ArgumentFeature rdfs:subClassOf :MorphFeature; rdfs:label "argument marking";
+	rdfs:comment """Nichols (1986) discusses a fundamental distinction between head-marking languages, which mark relations between a head and dependent on the head, and dependent-marking languages, which mark such relations on the dependent. Familiar European languages are dependent-marking in that nominal case is marked on the noun itself. However, languages such as Abkhaz (Chirikba 2003) and Choctaw (Davies 1986) are head-marking, and can mark four or five distinct nominal arguments, respectively, on a verb. For example, Abkhaz can mark a subject (ergative), object (absolutive), indirect dative object, and indirect beneficiary object simultaneously on a single verb ...
+	
+	Following Kibrik (2012), the arguments marked by a verb are labeled here using case terminology, rather than, for example, grammatical terminology such as "subject, direct object, indirect object." This is especially appropriate given that head-marking languages can also show patterns similar to so-called `quirky case' in which verbs, especially psych verbs, trigger agreement patterns in which the subject is not marked in the same way as subjects for other verbs. This shows that purely formal considerations also shape the pattern, rather than just grammatical or even semantic relations, even though these also play a role. ...
+	
+	To capture arguments marked on the verb in head-marking languages, the UniMorph Schema employs templatic features which all begin with arg-, to signify that a verb is marking an argument, and continue with shorthand features for case, person, number, and gender. (Sylak-Glassman 2016, p.12f.)"""@en.
+
+:ArgumentCase rdfs:subClassOf :ArgumentFeature;
+	rdfs:comment """Case marks the type of relation that the argument bears to the head, and can take the values NO, AC, AB, ER, DA, BE to mark the nominative, accusative, absolutive, ergative, dative, or benefactive cases, respectively. (Sylak-Glassman 2016, p.13)"""@en.
+:ARGNO a :ArgumentCase; :hasLabelStartingWith "ARGNO"; rdfs:label "nominative case".
+:ARGAC a :ArgumentCase; :hasLabelStartingWith "ARGAC"; rdfs:label "accusative case".
+:ARGAB a :ArgumentCase; :hasLabelStartingWith "ARGAB"; rdfs:label "absolutive case".
+:ARGER a :ArgumentCase; :hasLabelStartingWith "ARGER"; rdfs:label "ergative case".
+:ARGDA a :ArgumentCase; :hasLabelStartingWith "ARGDA"; rdfs:label "dative case".
+:ARGBE a :ArgumentCase; :hasLabelStartingWith "ARGBE"; rdfs:label "benefactive case".
+
+:ArgumentPerson rdfs:subClasOf :ArgumentFeature;
+	rdfs:comment """[Argument] Person takes the usual values 1, 2, and 3 (Sylak-Glassman 2016, p.13)"""@en.
+:ARG1 a :ArgumentPerson; :hasLabelMatching "ARG.*1.*"; rdfs:label "first person".
+:ARG2 a :ArgumentPerson; :hasLabelMatching "ARG.*2.*"; rdfs:label "second person".
+:ARG3 a :ArgumentPerson; :hasLabelMatching "ARG.*3.*"; rdfs:label "third person".
+
+:ArgumentNumber rdfs:subClassOf :ArgumentFeature;
+	rdfs:comment """[Argument] number takes the values S, P for singular and plural. (Sylak-Glassman 2016, p.13)"""@en.
+:ARGS a :ArgumentNumber; :hasLabelMatching "ARG.*[1-3]S"; rdfs:label "singular".
+:ARGP a :ArgumentNumber; :hasLabelMatching "ARG.*[1-3]P"; rdfs:label "plural".
+
+:ArgumentGender rdfs:subClassOf :ArgumentFeature;
+	rdfs:comment """Gender takes the values M, F, NH for masculine, feminine, and non-human, respectively. `Non-human' forms part of the gender/noun class system in Abkhaz (Chirikba 2003:39), but is better thought of as an animacy feature (Sylak-Glassman 2016, p.13)"""@en;
+	owl:versionInfo "TODO: Sylak-Glassman mentions gender features but does not introduce them into the template, therefore, we cannot introduce individuals without clarifying how these tags should look like -- CC".
+	
+:Voice rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Voice is the dimension of meaning that "expresses relations between a predicate [i.e. a verb] and a set of nominal positions - or their referents - in a clause or other structure" (Klaiman 1991: front matter). In the view of Fillmore (1968), "the function of voice marking, or overt verbally encoded manifestations of voice, is to signal the intactness or disruption of the basic relation(s) of a verb to its core nominal(s)" (Klaiman 1991:6). For example, the alternation between an active sentence he broke the window versus its passive equivalent the window was broken changes the subject of the sentence, a core nominal, from he to the window and omits the semantic agent he in the passive variant.
+	
+	Klaiman (1991:2) defines three types of grammatical voice: 1. Derived voice, ... 2. Basic voice, ... and 3. Pragmatic voice ... Within pragmatic voice, the two main types are direct-inverse systems and so-called `Austronesian voice.'
+	
+	(Sylak-Glassman 2016, p.56)"""@en.
+
+:DirectVoice rdfs:subClassOf :Voice;
+	rdfs:comment """[In] Derived voice ... changes in the assignment of semantic roles to nouns or changes in their structural positions are used to signal a non-default, or marked, relationship between the predicate and each of the nominals (e.g. active/passive alternations) ... Derived voice includes two voice categories familiar from Indo-European languages, active and passive. (Sylak-Glassman 2016, p.56)"""@en.
+
+:ACT a :DirectVoice; :hasLabel "ACT"; rdfs:label "active";
+	rdfs:comment """For propositions marked with active voice, "the action notionally devolves from the standpoint of the most dynamic, or active, party involved in the situation, typically the Agent" (Klaiman 1991:3) (Sylak-Glassman 2016, p.56)"""@en.
+:PASS a :DirectVoice; :hasLabel "PASS"; rdfs:label "passive";
+	rdfs:comment """Passive voice is used to mark "action which notionally devolves from the standpoint of a nondynamic, typically static participant in the situation, such as the Patient of a transitive verb" (Klaiman 1991:3). In the example alternation of he broke the window (active), he is the agent while in the passive variant, the window was broken, the action appears to originate from the grammatical subject, the window, even though it is semantically the patient. (Sylak-Glassman 2016, p.57)"""@en.
+:ANTIP a :DirectVoice; :hasLabel "ANTIP"; rdfs:label "antipassive";
+	rdfs:comment """In ergative-absolutive languages, an ergative subject is demoted to an absolutive subject in what is termed an antipassive construction (Klaiman 1991:230). (Sylak-Glassman 2016, p.57)"""@en.
+
+:BasicVoice rdfs:subClassOf :Voice;
+	rdfs:comment """Basic voice ... represents "a particular pattern of organization of a language's verbal lexicon" (e.g. in the lexicon of Fulani) ...
+
+	In Klaiman's terms, systems, rather than individual verbs, are considered to represent basic voice if the choice between active and middle voice does not reflect a rearrangement or change in structural or semantic roles, but rather a choice of lexical items (which may have still have overt voice-marking morphology). Modern Fula (Fulani) "has three voices [active, middle, passive], each associated with a distinct inflectional paradigm of the verb" and "about a fifth of the lexical verbs [...] can inflect in all three" (Klaiman 1991:26). For many others, however, verbal lexical items have an inherent voice associated with them.
+
+	(Sylak-Glassman 2016, p.57)"""@en.
+
+:MID a :DirectVoice, :BasicVoice; :hasLabel "MID"; rdfs:label "middle voice";
+	rdfs:comment """The middle voice is used when "the viewpoint [of the predicate; JCS] is active in that the action notionally devolves from the standpoint of the most dynamic (or Agent-like) participant in the depicted situation. But the same participant has Patient-like characteristics as well, in that it sustains the action's principal effects" (Klaiman 1991:3). 	
+	
+	Derived voice can also include middle voice in languages like Sanskrit, in which verbs can alternate in being marked for active, middle, or passive voice. However, middle voice is more often part of basic voice systems. (Sylak-Glassman 2016, p.57)"""@en.
+	
+:PragmaticVoice rdfs:subClassOf :Voice;
+	rdfs:comment """[In] Pragmatic voice ... "alternations in verbal marking signal the variable assignment to sentential arguments of some special pragmatic status or salience" (Klaiman 1991:31-32). ...
+	
+	Pragmatic voice systems include what have been called direct-inverse systems, which are common in North American languages, as well as complex voicing systems in Austronesian languages (so-called `Austronesian voice'). In languages that possess direct-inverse systems, a salience hierarchy exists such that, as a hypothetical example, first person is higher (more "salient") than second person, which is higher than third person, and all these human pronouns are higher than any non-human animate nouns (or pronouns referring to them), and all these in turn are higher than inanimate nouns or pronouns, yielding the hierarchy: 1 > 2 > 3 > non-human animate > inanimate. When the argument of the verb that is the most `salient' in the sentence functions as the subject, the verb is either morphologically unmarked or is marked with a morpheme indicating direct voice (e.g. -a: in Plains Cree; Klaiman 1992:230). When the argument of the verb that is lower in the hierarchy functions as the subject, it is marked with a morpheme indicating inverse voice (e.g. -iko in Plains Cree; ibid.).
+	
+	In general, pragmatic voice marking affects the prominence of nominals associated with specific semantic roles or with positions on a salience hierarchy. One striking example of this is the alignment system commonly found in Austronesian languages, particularly those of the Philippines, such as Tagalog, Cebuano, and Ilocano. In the pragmatic voice system of Cebuano, a different voice is used to focus nouns occupying four semantic roles, agent (A), goal (G), directional (D), and instrumental (I) (Klaiman 1991:247). ...
+	
+	Here, a voice marker that is tied to the semantic role of the focused noun is used on the verb and the overt marker of the semantic role on the focused noun is replaced by a marker that indicates both its semantic role and its status as focused. The Austronesian language that makes the most distinctions in semantic role marking in its voice system is Iloko (Ilocano). The semantic roles it marks are given dedicated features in the UniMorph Schema since they are used by other Austronesian languages. Those roles are: Agent (AGFOC), patient (PFOC), location (LFOC), beneficiary (BFOC), accompanier (ACFOC), instrument (IFOC), and conveyed (CFOC; either by actual motion or in a linguistic sense, as by a speech act) (Rubino 2005:336-338).
+	
+	(Sylak-Glassman 2016, p.56.58)"""@en.
+:DIR a :PragmaticVoice; :hasLabel "DIR"; rdfs:label "direct voice".
+:INV a :PragmaticVoice; :hasLabel "INV"; rdfs:label "inverse voice".
+:AGFOC a :PragmaticVoice; :hasLabel "AGFOC"; rdfs:label "agent focus".
+:PFOC a :PragmaticVoice; :hasLabel "PFOC"; rdfs:label "patient focus".
+:LFOC a :PragmaticVoice; :hasLabel "LFOC"; rdfs:label "location focus".
+:BFOC a :PragmaticVoice; :hasLabel "BFOC"; rdfs:label "beneficiary focus".
+:ACFOC a :PragmaticVoice; :hasLabel "ACFOC"; rdfs:label "accompanier focus".
+:IFOC a :PragmaticVoice; :hasLabel "IFOC"; rdfs:label "instrument focus".
+:CFOC a :PragmaticVoice; :hasLabel "CFOC"; rdfs:label "conveyed focus"; rdfs:comment """conveyed focus (CFOC; either by actual motion or in a linguistic sense, as by a speech act) (Rubino 2005:336-338, via Sylak-Glassman 2016, p.58)"""@en.
+	
+:Valency rdfs:subClassOf :MorphFeature; rdfs:label "valency", "arity";
+	rdfs:comment """Valency (or arity) refers to the number of arguments a verb can govern (i.e. select for). For example, a typical transitive verb takes two arguments, a subject and direct object, and therefore has a valency of 2, i.e. it is bivalent. ... 
+	The valency of a verb is often a lexical property, but both the valency and the relationship between arguments that are already present can be changed by specific morphology in many languages. Some altered valency configurations that can result are reflexive, reciprocal, causative, and applicative.
+	
+	(Sylak-Glassman 2016, p.55)"""@en.
+	
+:IMPRS a :Valency; :hasLabel "IMPRS"; rdfs:label "impersonal";
+	rdfs:comment """Verbs that occur without any arguments, which in many languages include words for weather activity such as `rain,' are often called impersonal verbs and have a valency of 0. (Sylak-Glassman 2016, p.55)"""@en.
+:INTR a :Valency; :hasLabel "INTR"; rdfs:label "intransitive";
+	rdfs:comment """Verbs that take a single argument, such as intransitive verbs, have a valency of 1. (Sylak-Glassman 2016, p.55)"""@en.
+:TR a :Valency; :hasLabel "TR"; rdfs:label "transitive";
+	rdfs:comment """[A] typical transitive verb takes two arguments, a subject and direct object, and therefore has a valency of 2, i.e. it is bivalent. (Sylak-Glassman 2016, p.55)"""@en.
+:DITR a :Valency; :hasLabel "DITR"; rdfs:label "ditransitive";
+	rdfs:comment """Ditransitive verbs, such as `give,' take a subject, direct object, and indirect object, and therefore have a valency of 3. (Sylak-Glassman 2016, p.55)"""@en.
+:REFL a :Valency; :hasLabel "REFL"; rdfs:label "reflexive";
+	rdfs:comment """Reflexive morphemes indicate that the action performed by the subject is performed on itself (to a greater degree than might be expected from middle voice marking). (Sylak-Glassman 2016, p.55)"""@en.
+:RECP a :Valency; :hasLabel "RECP"; rdfs:label "reciprocal";
+	rdfs:comment """[R]eciprocal morphemes indicate that with a plural subject, non-identical participants perform the action of the verb mutually on each other (Sylak-Glassman 2016, p.55)"""@en.
+:CAUS a :Valency; :hasLabel "CAUS"; rdfs:label "causative";
+	rdfs:comment """Causative morphemes add an additional participant (and therefore syntactic argument) and indicate that the additional participant was somehow forced to perform the action of the verb. (Sylak-Glassman 2016, p.55)"""@en.
+:APPL a :Valency; :hasLabel "APPL"; rdfs:label "applicative";
+	rdfs:comment """Applicative morphemes increase the number of oblique arguments (that is, arguments other than the subject or object) that are selected by the predicate (Polinsky 2013). (Sylak-Glassman 2016, p.55)"""@en.
+
+:Tense rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Tense and aspect are defined according to the framework in Klein (1994, 1995), which builds on Reichenbach (1947) ...
+	
+	Tense is the relationship of the time of utterance (TU) to the topic time (TT). For example, in the sentence, "The book was lying on the table," the speaker is making a claim about a time period (TT) that occurred prior to the time of utterance (TU). Past tense indicates that the time for which the claim is meant to be true, TT, occurred before TU. Present tense indicates that the situation holds true during the time of utterance. Future tense indicates that at some point after the time of utterance, a situation will hold true. ...
+	
+	Although past, present, and future are the core tense relationships that can be establishing by the relative positioning of TU and TT, languages use morphological marking to indicate the temporal distance between TU and TT, leading to distinctions like recent vs. remote past. A survey of such systems in Comrie (1985) reveals that while the most common split is a two-way split in the past tense between events that happened on the same day (hodiernal, from Latin hodie `today'; 87) from those that did not, languages can make up to six such temporal distinctions. ... Because the levels of temporal distance can be symmetrical, terms for these levels are meant to apply to both past and future, such that a hodiernal past would be indicated as PST+HOD and a future hodiernal would be FUT+HOD. These are preliminary categories since it may be better to encode some of the temporal distinctions using a feature-like analysis. For example, it may be possible to encode some of the finer distinctions in Upper Chinookan with combinations of temporal distance features. Preliminarily, I propose that Upper Chinookan's `last week' distinction could be PST+1DAY+RCT while `from a week to a year ago' would be simply PST+RCT and similarly the `from 1-10 years ago' level may be PST+RCT+RMT while the truly remote past would be simply PST+RMT.
+	(Sylak-Glassman 2016, p.53-55)"""@en.
+	
+:PRS a :Tense; :hasLabel "PRS"; rdfs:label "present";
+	rdfs:comment """Present tense indicates that the situation holds true during the time of utterance. (Sylak-Glassman 2016, p.53)"""@en.
+:PST a :Tense; :hasLabel "PST"; rdfs:label "past";
+	rdfs:comment """Past tense indicates that the time for which the claim is meant to be true, TT, occurred before TU. (Sylak-Glassman 2016, p.53)"""@en.
+:FUT a :Tense; :hasLabel "FUT"; rdfs:label "future";
+	rdfs:comment """Future tense indicates that at some point after the time of utterance, a situation will hold true. (Sylak-Glassman 2016, p.53)"""@en.
+:IMMED a :Tense; :hasLabel "IMMED"; rdfs:label "immediate"; rdfs:comment "immediate past or future".
+:HOD a :Tense; :hasLabel "HOD"; rdfs:label "hodiernal", "today"; rdfs:comment "today (past or future)".
+:oneDAY a :Tense; :hasLabel "1DAY"; rdfs:label "within 1 day"; rdfs:comment "within one day (past or future)".
+:RCT a :Tense; :hasLabel "RCT"; rdfs:label "recent"; rdfs:comment "recent past or near future".
+:RMT a :Tense; :hasLabel "RMT"; rdfs:label "remote"; rdfs:comment "remote past or future".
+
+:SwitchReferenceFeature rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Switch-reference is a type of anaphoric linkage that disambiguates the reference of subjects and other NPs across clauses (Stirling 1993:1). Although switch-reference has a functional basis, disambiguating the reference of subjects and other NPs, it is a fully grammaticalized phenomenon and is used in the languages in which it occurs even when the reference of subjects or other NPs is already fully disambiguated by other means. ... 
+	
+	Switch-reference (SR) marking is concentrated in languages of North America (notably in the Southwest, Great Basin, and coastal Northern California), Australia, Papua New Guinea, and the Bantu languages of Africa (Stirling 1993:5). It also occurs in languages of South America, and switch-reference-like phenomena have been identified in the Northeast Caucasus (Nichols 1983). 
+	
+	A typical and basic distinction in SR systems is between same subject, SS, and different subject, DS. This type of system occurs in Usan (Papuan; Stirling 1993:4,  citing Haiman and Munro 1983:xi(3,4)), Imbabura Quichua (Cohen 2013:55-56), and Mojave (Yuman; Munro 1980), to name a few. ... (Sylak-Glassman 2016, p.49)"""@en.
+
+:SS a :SwitchReferenceFeature; :hasLabel "SS"; rdfs:label "same subject";
+	rdfs:comment """A typical and basic distinction in SR systems is between same subject, SS, and different subject, DS. This type of system occurs in Usan (Papuan; Stirling 1993:4,  citing Haiman and Munro 1983:xi(3,4)), Imbabura Quichua (Cohen 2013:55-56), and Mojave (Yuman; Munro 1980), to name a few. ... (Sylak-Glassman 2016, p.49)"""@en.
+:SSADV a :SwitchReferenceFeature; :hasLabel "SSADV"; rdfs:label "same subject adverbial", "SS adverbial";
+	rdfs:comment """While the basic distinction between SS and DS is common, larger systems exist. Some switch-reference systems, such as those in Imbabura Quichua (Cohen 2013:55-56), Chickasaw, Choctaw, and Hopi have separate sets of switch-reference markers for separate grammatical contexts (Stirling 1993:16). In these languages, no more than two sets of SR markers exist, given the description in Stirling (1993:16), and all use one set for adverbials (as well as complement and relative clause constructions in Choctaw and Chickasaw) and one set for another function, such as paratactic clause combinations (Choctaw and Chickasaw), relative clauses (Hopi), and subjunctive contexts (Imbabura Quichua). (Sylak-Glassman 2016, p.50)"""@en.
+:DS a :SwitchReferenceFeature; :hasLabel "DS"; rdfs:label "different subject";
+	rdfs:comment """A typical and basic distinction in SR systems is between same subject, SS, and different subject, DS. This type of system occurs in Usan (Papuan; Stirling 1993:4,  citing Haiman and Munro 1983:xi(3,4)), Imbabura Quichua (Cohen 2013:55-56), and Mojave (Yuman; Munro 1980), to name a few. ... (Sylak-Glassman 2016, p.49)"""@en.
+:DSADV a :SwitchReferenceFeature; :hasLabel "DSADV"; rdfs:label "different subject adverbial", "DS adverbial";
+	rdfs:comment """While the basic distinction between SS and DS is common, larger systems exist. Some switch-reference systems, such as those in Imbabura Quichua (Cohen 2013:55-56), Chickasaw, Choctaw, and Hopi have separate sets of switch-reference markers for separate grammatical contexts (Stirling 1993:16). In these languages, no more than two sets of SR markers exist, given the description in Stirling (1993:16), and all use one set for adverbials (as well as complement and relative clause constructions in Choctaw and Chickasaw) and one set for another function, such as paratactic clause combinations (Choctaw and Chickasaw), relative clauses (Hopi), and subjunctive contexts (Imbabura Quichua). (Sylak-Glassman 2016, p.50)"""@en.
+
+:OR a :SwitchReferenceFeature; :hasLabel "OR"; rdfs:label "open reference";
+	rdfs:comment """This basic [SS-DS] distinction can be enriched by adding a third underspecified value, an `open reference' SR marker. "Nichols (1983:247 etc.) says that in a number of languages of the Northeast Caucasus, such as Chechen and Ingush, DS marking verbs have what she calls `Open Reference', signalling indifference as to the referential relation between the two pivots rather than specified non-identity" (Stirling 1993:34). While for Chechen and Ingush, the DS marker is the marker that is actually open reference, in Lak and Dargwa (also Nakh-Daghestanian), the SS marker is the one that is open reference and the DS marker calls for strict non-identity. (Sylak-Glassman 2016, p.49f.)"""@en.
+	
+:CN_R_MN a :SwitchReferenceFeature; :hasLabel "CN_R_MN"; rdfs:label "switch reference among NPs in any argument position";
+	rdfs:comment """Other systems are larger by virtue of allowing coreference between subjects and NPs in other grammatical roles, such as direct and indirect object. For example, in Capanahua (Panoan), there are "six DS suffixes, two of which imply the identity of the subject of the [morphologically] marked clause with the object of the controlling clause, and one of which implies the identity of the object of the marked clause with the subject of the controlling clause" (Stirling 1993:25-26 citing Jacobsen 1967:257). Another system that has expanded switch-reference due to indexing subjects with non-subject NPs is attested in Warlpiri (Pama-Nyungan). Warlpiri has 4 overt SR markers that relate subjects to subjects, subjects to direct objects, and subjects to indirect objects (Stirling 1993:25). ...
+	
+	To capture systems like those in Warlpiri and Capanahua, it is necessary to have a schematic morpheme that relates the role of the NP in the controlling clause to that of the NP in the marked clause. This takes the form ControllingClauseNP_Relation_MarkedClauseNP (abbreviated CN_R_MN), where the roles of the NPs would be marked using case relations, such that same subject in a nominative-accusative language would be CNOM_S_MNOM, where S in the R slot stands for `same.' Different subject marking might be CNOM_D_MNOM. (Sylak-Glassman 2016, p.50,52)"""@en.
+	
+:SIMMA a :SwitchReferenceFeature; :hasLabel "SIMMA"; rdfs:label "simultaneous multiclausal aspect";
+	rdfs:comment """[O]ther SR marking systems combine subject (or other NP) disambiguation with other dimensions of meaning, such as simultaneity of actions, as in Kâte (Papuan), and aspect, as in Kashaya (Pomoan). In Kâte, SS and DS SR morphemes also mark simultaneous or sequential actions. There are four total morphemes, with the DS sequential morpheme being phonologically null (an unpronounced zero morph; Stirling 1993:31, 40). ...
+	
+	There is a tendency for languages to associate SS with sequentiality and DS with simultaneity by default (Stirling 1993:44). This is explicitly the case in Tunebo (Chibchan), but in that language, Wsimultaneity and sequentiality [are] more basic than the SS/DS distinction" (ibid.). Examples in Stirling (1993:44) demonstrate that the SS and DS markers can be used with different and identical subjects, respectively, as long as the correct temporal relationship is maintained (simultaneous and sequential, respectively; ibid.).
+	
+	In Kashaya, six pairs of suffixes mark SS-DS switch-reference (Stirling 1993:41 citing Oswalt 1983:269). Of these, "one pair indicates simultaneous or alternating action, one indicates that the eventuality of the marked clause sequentially precedes the eventuality of the controlling clause in the present or past, and a third indicates that the marked clause eventuality sequentially precedes the controlling clause eventuality in the future or conditional. The other three suffixes are normally taken to be past tense, but may be specified as future by co-occurring with the future tense suffix already mentioned" (ibid.).
+	
+	This system can be interpreted using the system from Klein (1994) ... This particular kind of aspect could be termed `multiclausal aspect' to differentiate it from conventional verbal aspect ... 
+	
+	The pair indicating "simultaneous or alternating action" ... is most similar to imperfective. ... To indicate its relationship with simultaneous marking in SR systems in languages like Kâte, it will be termed `simultaneous multiclausal aspect.'
+	
+	(Sylak-Glassman 2016, p.50f)"""@en.
+	
+:SEGMA a :SwitchReferenceFeature; :hasLabel "SEGMA"; rdfs:label "sequential multiclausal aspect";
+	rdfs:comment """[O]ther SR marking systems combine subject (or other NP) disambiguation with other dimensions of meaning, such as simultaneity of actions, as in Kâte (Papuan), and aspect, as in Kashaya (Pomoan). In Kâte, SS and DS SR morphemes also mark simultaneous or sequential actions. There are four total morphemes, with the DS sequential morpheme being phonologically null (an unpronounced zero morph; Stirling 1993:31, 40). ...
+	
+	There is a tendency for languages to associate SS with sequentiality and DS with simultaneity by default (Stirling 1993:44). This is explicitly the case in Tunebo (Chibchan), but in that language, Wsimultaneity and sequentiality [are] more basic than the SS/DS distinction" (ibid.). Examples in Stirling (1993:44) demonstrate that the SS and DS markers can be used with different and identical subjects, respectively, as long as the correct temporal relationship is maintained (simultaneous and sequential, respectively; ibid.).
+	
+	In Kashaya, six pairs of suffixes mark SS-DS switch-reference (Stirling 1993:41 citing Oswalt 1983:269). Of these, "one pair indicates simultaneous or alternating action, one indicates that the eventuality of the marked clause sequentially precedes the eventuality of the controlling clause in the present or past, and a third indicates that the marked clause eventuality sequentially precedes the controlling clause eventuality in the future or conditional. The other three suffixes are normally taken to be past tense, but may be specified as future by co-occurring with the future tense suffix already mentioned" (ibid.).
+	
+	This system can be interpreted using the system from Klein (1994) ... This particular kind of aspect could be termed `multiclausal aspect' to differentiate it from conventional verbal aspect ... 
+	
+	Where "the marked clause sequentially precedes the eventuality of the controlling clause in the present or past," the relationships ... are similar to the perfect aspect ... This will be termed `sequential multiclausal aspect,' again to indicate its connection with sequential marking in systems like that of Kâte. 
+
+	(Sylak-Glassman 2016, p.50-52)"""@en.
+:LOG a :SwitchReferenceFeature; :hasLabel "LOG"; rdfs:label "logophoric";
+	rdfs:comment """[S]ome West African languages have what have been called "logophoric" systems in which pronouns are explicitly coreferential with a pronoun in a previous clause. Here, the marking occurs on a noun rather than a verb, which is part of the reason these systems have not traditionally been considered switch-reference. This may be a trivial distinction, but other considerations favor treating logophoricity and switch-reference as separate phenomena. Languages that are logophoric often have syntactic and semantic restrictions on where logophoricity must be marked, e.g. in subordinate clauses which represent reported speech or are governed by the verb "say" (Stirling 1993:52-53). The obligatoriness of marking logophoricity also depends on person (53). In addition, there are unexpected co-reference patterns (ibid.). These can be seen in Gokana, which marks logophoricity on the verb and has thus been interpreted as a switch-reference language. ... Because these interpretations (especially 2.) are not expected in the case of standard same subject SR marking, logophoricity should be marked separately from standard same subject SR marking. (Sylak-Glassman 2016, p.52)"""@en.
+
+:PossessionFeature rdfs:subClassOf :MorphFeature;
+	rdfs:comment """While languages often use separate possessive adjectives (such as my, your, his, her, our, and their in English) to mark possession, some languages, such as Turkish and certain Quechua languages, use overt affixal morphology to mark the possessor directly on the possessed noun. ...
+	
+	Huallaga Quechua marks possession through overt affixal morphology that distinguishes the possessor's person and clusivity, yielding distinctions between morphemes with the meaning my, your, his/her/its, our (inclusive) and our (exclusive) (Weber 1989:54-55). ... Turkish marks possession in a similar way, distinguishing the possessor's person, number (for first and second person), and politeness, but not clusivity as in Quechua. ... Like Turkish and Huallaga Quechua, Arabic distinguishes possessive suffixes by the person and number of the possessor, but adds dual to the number distinctions made among possessors. Arabic possessive suffixes are also distinguished by the gender of the possessor (Ryding 2005:301). ...
+	
+	Features that mark characteristics of the possessor are composed according to a template, which begins with pss- to mark `possessed,' followed by a single number to mark the person of the possessor, a single letter to mark the number of the possessor, and an indication of gender, clusivity, or politeness. If a language were to mark possession by, for example, another kind of gender other than masculine or feminine (e.g. neuter), features could easily be created using this template (e.g. in this case, PSS3SN for a third person singular neuter possessive with the meaning of English its).
+	
+	In addition to features marking characteristics of the possessor, features indicating the type of possession itself are necessary. Some languages distinguish between alienable and inalienable possession. An example of this contrast is the difference in the type of possession involved in `my house' vs. `my back,' in which the first type of possession is possession of property whose ownership can change while the second indicates inherent ownership.
+	(Sylak-Glassman 2016, p.46-47)"""@en.
+
+:ALN a :PossessionFeature; :hasLabel "ALN"; rdfs:label "alienable possession".
+:NALN a :PossessionFeature; :hasLabel "NALN"; rdfs:label "inalienable possession".
+:PSSD a :PossessionFeature; :hasLabel "PSSD"; rdfs:label "possessed";
+	rdfs:comment """The simplest type of marking on the possessed noun marks no characteristics of the possessor, just the fact that the noun is possessed. The morphemes that mark possessed nouns in this way have been termed `anti-genitives' (Andersen 1991) or `pertensives' (Dixon 2010:268). They occur in Nêlêmwa, Martuthunira, Wandala, Northeast Ambae (Aikhenvald and Dixon 2012:7), some Nilotic languages, Hausa, Wolof, and in Semitic languages as part of the `construct state' (Creissels 2009).
+	
+	We follow Creissels (2009) in not classifying possessed marking as a noun case. However, departing from Creissels (2009), the label PSSD is adopted because it is specifically the quality of marking a noun as possessed that must be incorporated into the schema, not the formal property of being part of a construct-state-like construction for which Creissel's label, CSTR, would be better suited.
+	
+	(Sylak-Glassman 2016, p.46f.)"""@en.
+:PSS1S a :PossessionFeature; :hasLabel "PSS1S"; rdfs:label "Possession by 1.sg".
+:PSS2S a :PossessionFeature; :hasLabel "PSS2S"; rdfs:label "Possession by 2.sg".
+:PSS2SM a :PossessionFeature; :hasLabel "PSS2SM"; rdfs:label "Possession by 2.sg.masc".
+:PSS2SF a :PossessionFeature; :hasLabel "PSS2SF"; rdfs:label "Possession by 2.sg.fem".
+:PSS2SINFM a :PossessionFeature; :hasLabel "PSS2SINFM"; rdfs:label "Possession by 2.sg.infm".
+:PSS2SFORM a :PossessionFeature; :hasLabel "PSS2SFORM"; rdfs:label "Possession by 2.sg.form".
+:PSS3S a :PossessionFeature; :hasLabel "PSS3S"; rdfs:label "Possession by 3.sg".
+:PSS3SM a :PossessionFeature; :hasLabel "PSS3SM"; rdfs:label "Possession by 3.sg.masc".
+:PSS3SF a :PossessionFeature; :hasLabel "PSS3SF"; rdfs:label "Possession by 3.sg.fem".
+:PSS1D a :PossessionFeature; :hasLabel "PSS1D"; rdfs:label "Possession by 1.du".
+:PSS1DI a :PossessionFeature; :hasLabel "PSS1DI"; rdfs:label "Possession by 1.du.incl".
+:PSS1DE a :PossessionFeature; :hasLabel "PSS1DE"; rdfs:label "Possession by 1.du.excl".
+:PSS2D a :PossessionFeature; :hasLabel "PSS2D"; rdfs:label "Possession by 2.du".
+:PSS2DM a :PossessionFeature; :hasLabel "PSS2DM"; rdfs:label "Possession by 2.du.masc".
+:PSS2DF a :PossessionFeature; :hasLabel "PSS2DF"; rdfs:label "Possession by 2.du.fem".
+:PSS3D a :PossessionFeature; :hasLabel "PSS3D"; rdfs:label "Possession by 3.du".
+:PSS3DM a :PossessionFeature; :hasLabel "PSS3DM"; rdfs:label "Possession by 3.du.masc".
+:PSS3DF a :PossessionFeature; :hasLabel "PSS3DF"; rdfs:label "Possession by 3.du.fem".
+:PSS1P a :PossessionFeature; :hasLabel "PSS1P"; rdfs:label "Possession by 1.pl".
+:PSS1PI a :PossessionFeature; :hasLabel "PSS1PI"; rdfs:label "Possession by 1.pl.incl".
+:PSS1PE a :PossessionFeature; :hasLabel "PSS1PE"; rdfs:label "Possession by 1.pl.excl".
+:PSS2P a :PossessionFeature; :hasLabel "PSS2P"; rdfs:label "Possession by 2.pl".
+:PSS2PM a :PossessionFeature; :hasLabel "PSS2PM"; rdfs:label "Possession by 2.pl.masc".
+:PSS2PF a :PossessionFeature; :hasLabel "PSS2PF"; rdfs:label "Possession by 2.pl.fem".
+:PSS3P a :PossessionFeature; :hasLabel "PSS3P"; rdfs:label "Possession by 3.pl".
+:PSS3PM a :PossessionFeature; :hasLabel "PSS3PM"; rdfs:label "Possession by 3.pl.masc".
+:PSS3PF a :PossessionFeature; :hasLabel "PSS3PF"; rdfs:label "Possession by 3.pl.fem".
+
+:PolitenessFeature rdfs:subClassOf :MorphFeature;
+	rdfs:label "politeness", "respect";
+	rdfs:comment """Politeness is defined here as a dimension of meaning that grammatically encodes social status relationships between the speaker, addressee, third parties, and the setting in which a given speech act occurs. Corbett and the Surrey Morphology Group discuss at least what is here called `politeness' as `respect' (Kibort 2010; Corbett 2012).
+	
+	Based on the idea that honorifics are part of a language's deictic system and encode social deixis (rather than, for example, spatial deixis; Fillmore 1975), Comrie (1976b) proposes three axes to which honorific deixis is oriented. These axes relate the speaker to: 
+	1) the referent of the linguistic expression to which the honorific is attached, 
+	2) the addressee, and 
+	3) bystanders to the speech act (Brown and Levinson 1987:180-181). 
+	
+	Brown and Levinson (1987:181) add a fourth axis, relating the speaker to the setting in which the speech act occurs. (Sylak-Glassman 2016, p.42)"""@en.
+
+:ReferentHonorific rdfs:subClassOf :PolitenessFeature; rdfs:label "referent honorific", "speaker-referent honorific";
+	rdfs:comment """Levinson (1983:90) writes that with referent honorifics, "respect can only be conveyed by referring to the `target' of the respect" and that "the familiar tu/vous type of distinction in singular pronouns of address ... is really a referent honorific system, where the referent happens to be the addressee." ...
+	
+	The best known example of speaker-referent honorific morphology is the Indo-European T/V pronoun distinction, manifesting as tu/vous in French, tu/voi in Italian, ty/vy in Russian, and so on. Another example of this kind of system appears to be Yemsa (Omotic; Corbett 2012), which has distinct second and third person honorific pronominal forms with corresponding marking of these distinctions on verbs via agreement.
+	(Sylak-Glassman 2016, p.43)"""@en.
+	
+:INFM a :ReferentHonorific; :hasLabel "INFM"; rdfs:label "informal"; 
+	rdfs:comment """The T/V distinction in Indo-European gives evidence for two levels, informal and formal. (Sylak-Glassman 2016, p.43)"""@en.
+:Formal rdfs:subClassOf :ReferentHonorific; 
+	rdfs:comment """The T/V distinction in Indo-European gives evidence for two levels, informal and formal. ... Data from Japanese motivate positing two sublevels of the formal level. Japanese uses one set of referent honorific forms ... to elevate the referent and a distinct set of referent honorific forms ... to lower the speaker's status, thereby raising the referent's status by comparison (Wenger 1982:41-43).
+	
+	While the features for elevating (elev) and humbling (humb) are formally independent, they should be used only in conjunction with the form feature in the combinations form+elev and form+humb, respectively. (Sylak-Glassman 2016, p.43)"""@en.
+
+:FORM a :Formal; :hasLabel "FORM"; rdfs:label "formal";
+	rdfs:comment """The T/V distinction in Indo-European gives evidence for two levels, informal and formal. (Sylak-Glassman 2016, p.43)"""@en.
+
+:FORM.ELEV a :Formal; :hasLabel "FORM+ELEV"; rdfs:label "formal, referent elevating";
+	rdfs:comment """Japanese uses one set of referent honorific forms ... to elevate the referent ... While the features for elevating (ELEV) and humbling (HUMB) are formally independent, they should be used only in conjunction with the form feature in the combinations FORM+ELEV and FORM+HUMB, respectively. (Sylak-Glassman 2016, p.43)"""@en.
+
+:FORM.HUMB a :Formal; :hasLabel "FORM+HUMB"; rdfs:label "formal, speaker humbling";
+	rdfs:comment """Japanese uses one ... distinct set of referent honorific forms ... to lower the speaker's status, thereby raising the referent's status by comparison (Wenger 1982:41-43). While the features for elevating (ELEV) and humbling (HUMB) are formally independent, they should be used only in conjunction with the form feature in the combinations form+elev and form+humb, respectively.
+	(Sylak-Glassman 2016, p.43)"""@en.
+
+:AddresseeHonorific rdfs:subClassOf :PolitenessFeature; rdfs:label "addressee honorific", "speaker-addressee honorific";
+	rdfs:comment """
+	[S]peaker-addressee honorifics (...) confer respect without ever referring to the addressee (Comrie 1976a via Brown and Levinson 1987:180).
+	
+	Brown and Levinson (1987:276) define the speaker-addressee axis as the "direct encoding[...] of the speaker-addressee relationship, independent of the referential content of the utterance" (emphasis JCS). Levinson (1983:90) describes a speaker-addressee honorific system by saying that "... in many languages (notably the S. E. Asian languages, including Korean, Japanese and Javanese) it is possible to say some sentence glossing as `The soup is hot' and by the choice of a linguistic alternate (e.g. for `soup') encode respect to the addressee without referring to him, in which case we have an addressee honorific system." Japanese teineigo is an example of an addressee honorific system. Javanese (Austronesian) has an addressee honorific system containing a high-level form called krama and a form between that and common speech that contains fewer lexical items and is called madya (Wenger 1982:71). Addressee honorific systems are less common than referent honorific systems (Wenger 1982) ...
+	(Sylak-Glassman 2016, p.43f.)"""@en.
+:POL a :AddreseeHonorific; :hasLabel "POL"; rdfs:label "polite".
+:MPOL a :AddresseeHonorific; :hasLabel "MPOL"; rdfs:label "medium polite".
+
+:BystanderHonorific rdfs:subClassOf :PolitenessFeature; rdfs:label "bystander honorific", "speaker-bystander honorific";
+	rdfs:comment """Levinson (1983:90) describes [speaker-bystander] systems as those in which special language is used to show respect to bystanders, i.e. "participants in audience role and [...] non-participating overhearers." Examples of these kinds of systems include "Dyirbal alternative vocabulary ... used in the presence of taboo relatives" (90) and "certain features of Pacific languages, like aspects of the `royal honorifics' in Ponapean [Pohnpeian]" (91). These systems are typically termed "taboo speech, avoidance language," or "court language." ...
+	
+	The maximal attested number of levels within a bystander honorific system is five in Pohnpeian (Keating and Duranti 2006:151-152). These five levels include: 
+	1) a low level, which the speaker uses in the presence of only those having a low status; 
+	2) a common level which is unmarked for status; 
+	3) a general high status that can be used specifically in the presence of the secondary chief and secondary chieftess; 
+	4) a high status form for use in the presence of the (primary) chieftess; and finally, 
+	5) a high status form specifically for use in the presence of the (primary) chief.
+	
+	... A single feature is used to indicate avoidance style, while three core levels are used for court language systems, with the highest level elaborated as needed for systems like Pohnpeian and Samoan and with the neutral level unspecified.
+
+	(Sylak-Glassman 2016, p.44)"""@en.
+:AVOID a :BystanderHonorific; :hasLabel "AVOID"; rdfs:label "avoidance style";
+	rdfs:comment """Avoidance language is common among Australian languages. Although avoidance language is commonly called "mother-in-law" or "brother-in-law" language, it does not differ within a single language depending on who is addressed. That is, within a language, there is a single set of avoidance lexemes that are used with anyone to whom the avoidance relationship applies (e.g. mother-in-law, brother-in-law, cross cousins, etc.) (Dixon 1980:58-65). Like "court language," as in Pohnpeian, the phonology and grammar of avoidance language does not generally differ from that of the everyday language, only the lexicon differs (59).	
+	(Sylak-Glassman 2016, p.44)"""@en.
+:LOW a :BystanderHonorific; :hasLabel "LOW"; rdfs:label "low status".
+:HIGH a :BystanderHonorific; :hasLabel "HIGH"; rdfs:label "high status".
+:STELEV a :BystanderHonorific; :hasLabel "STELEV"; rdfs:label "high status, elevated".
+:STSUPR a :BystanderHonorific; :hasLabel "STSUPR"; rdfs:label "high status, supreme".
+
+:Register rdfs:subClassOf :PolitenessFeature; rdfs:label "register", "speaker-setting politeness";
+	rdfs:comment """Levinson (1983:91) notes "that while the first three kinds of [politeness axes described here; JCS] are relative strictly to the deictic centre, here specifically the social standing of the speaker, formality is perhaps best seen as involving a relation between all participant roles and the situation [or setting; JCS]." This is a way of characterizing what is referred to as `register' in sociolinguistics. Because speech can take place in such a wide variety of settings, the best approach to defining register features is an empirical one in which only registers that are associated with distinctive morphology should be defined here.
+	
+	Examples of grammaticalized "register" distinctions include Japanese's "so-called mas-style, and in Tamil ... a high diglossic variant" (Levinson 1983:91). To these can be added the distinctive literary uses of the following tenses in French: passé simple, passé antérieur, imparfait du subjonctif, plus-que-parfait du subjonctif, and seconde forme du conditionnel passé. (Sylak-Glassman 2016, p.45)"""@en.
+:LIT a :Register; :hasLabel "LIT"; rdfs:label "literary register".
+:FOREG a :Register; :hasLabel "FOREG"; rdfs:label "formal register".
+:COL a :Register; :hasLabel "COL"; rdfs:label "colloquial".
+
+:Polarity a :MorphFeature;
+	rdfs:comment """Polarity encodes whether a statement is meant to be negative (NEG) or positive (POS; also called affirmative). Like declarativity, positive polarity is rarely overtly marked, but negativity may be, again as in Turkish, where it is a feature of the verbal paradigm alongside interrogativity. Although negation phenomena in many languages can involve subtle, complex distinctions, this complexity arises from multiword constructions at the phrase or sentence level. Morphemes and words are specified as being either negative or positive without any finer distinctions in polarity. (Sylak-Glassman 2016, p.42)"""@en.
+	
+:POS a :Polarity; :hasLabel "POS"; rdfs:label "positive", "affirmative".
+:NEG a :Polarity; :hasLabel "NEG"; rdfs:label "negative".
+
+:Person a :MorphFeature;
+	rdfs:comment """The conventional person categories that are encoded on verbs in most languages include first person (1), second person (2), and third person (3). Apart from these common distinctions, some languages also distinguish another category of person, zero person (0), and each conventional person category is sometimes subdivided further. (Sylak-Glassman 2016, p.40)"""@en.
+
+:zeroPerson a :Person; :hasLabel "0"; rdfs:label "zero person";
+	rdfs:comment """Finnish has a "zero person" construction, which lacks an overt subject and is used to make "generic statements concerning human beings" (Laitinen 2006:209) ... [I]n Santa Ana Pueblo Keres, such a zero person is morphologically distinct from other persons (Davis 1964:75) and is marked with a special pronominal affix, demonstrating the necessity for a zero person feature (0). (Sylak-Glassman 2016, p.40)"""@en.
+
+:firstPerson a :Person; :hasLabel "1"; rdfs:label "first person".
+:secondPerson a :Person; :hasLabel "2"; rdfs:label "second person".
+:thirdPerson a :Person; :hasLabel "3"; rdfs:label "third person".
+:fourthPerson a :Person; :hasLabel "4"; rdfs:label "fourth person";
+	rdfs:comment """In some languages, a fourth person category is used to describe an otherwise third-person referent that is differentiated from other third-person referents by a switch-reference-like distinction (e.g. fourth person for a same-subject [SS] verb form in Central Yup'ik [Woodbury 1982] or for "disjoint reference across clauses" in Navajo [Willie 1991:108]) or, more commonly, by a distinction in obviation status (Chelliah and de Reuse 2011:306-307), as in Keres (isolate; New Mexico, USA), in which "[f]ourth person is used [...] when the subject of the action is inferior to the object, as when an animal is the subject and a human being the object" (Davis 1964:76). For the purposes of morphological distinctions, these fourth person categories may call for dedicated verbal morphology. While in some cases their meaning can be captured by third person (3) plus switch-reference features or features marking pragmatic voice distinctions (such as the proximate (PRX) and obviative (OBV)), we include a fourth person category with the feature 4 to allow for identification of a fourth person category when the semantic distinctions are complicated or not strictly inflectional in nature. (Sylak-Glassman 2016, p.41f.)"""@en;
+	owl:versionInfo "I have difficulties to understand the difference of 3 vs. 4 in relation to PRX vs. OBV. Leaving different terminological traditions and a considerable degree of grammaticalization aside, this seems to be the same phenomenon. In particular, I wonder whether a language exists that shows independent reflexes of OBV and 4th person. -- CC".
+
+:INCL a :Person; :hasLabel "INCL"; rdfs:label "inclusive"; 
+	rdfs:comment """[F]irst person plural (`we,' 1;pl) can be divided into inclusive (INCL), i.e. including the addressee, or exclusive (EXCL), i.e. excluding the addressee. This distinction is made in Ingush, which uses vai for first person inclusive and txo for first person exclusive (Nichols 2011:173-176). ... Although the inclusive/exclusive distinction is typically viewed as a feature of the first person plural, independent features are used for inclusive (INCL) and exclusive (EXCL). Note that Daniel (2005) argues vigorously that inclusive and exclusive should not be viewed as subcategories of first person. (Sylak-Glassman 2016, p.41)"""@en.
+		
+:EXCL a :Person; :hasLabel "EXCL"; rdfs:label "exclusive";
+	rdfs:comment """[F]irst person plural (`we,' 1;pl) can be divided into inclusive (INCL), i.e. including the addressee, or exclusive (EXCL), i.e. excluding the addressee. This distinction is made in Ingush, which uses vai for first person inclusive and txo for first person exclusive (Nichols 2011:173-176). ... Although the inclusive/exclusive distinction is typically viewed as a feature of the first person plural, independent features are used for inclusive (INCL) and exclusive (EXCL). Note that Daniel (2005) argues vigorously that inclusive and exclusive should not be viewed as subcategories of first person. (Sylak-Glassman 2016, p.41)"""@en.
+
+:PRX a :Person; :hasLabel "PRX"; rdfs:label "proximate";
+	rdfs:comment """Third person can be divided ... by hierarchical status (based on information structure, animacy, or a combination) in languages with a pragmatic voice system, in the terms of Klaiman (1991). For example, in direct-inverse systems, when the subject and argument are at the same level of the salience hierarchy, one argument is usually overtly marked as proximate and the other as obviative. The focused or otherwise more highly-ranked argument is marked as proximate and all others as obviative. This system is common in Algonquian languages, such as Plains Cree (Aissen 1997:706-709). 
+	
+	Note that "proximate" is a term used both in the sense here and for indicating spatial closeness in demonstrative pronouns. These senses are differentiated in the labeling, where PRX indicates the sense of "proximate" under discussion here while PROX is reserved for proximal/proximate in the spatial sense used in pronominal deixis. (Sylak-Glassman 2016, p.41)"""@en.
+
+:OBV a :Person; :hasLabel "OBV"; rdfs:label "obviative";
+	rdfs:comment """Third person can be divided ... by hierarchical status (based on information structure, animacy, or a combination) in languages with a pragmatic voice system, in the terms of Klaiman (1991). For example, in direct-inverse systems, when the subject and argument are at the same level of the salience hierarchy, one argument is usually overtly marked as proximate and the other as obviative. The focused or otherwise more highly-ranked argument is marked as proximate and all others as obviative. This system is common in Algonquian languages, such as Plains Cree (Aissen 1997:706-709). (Sylak-Glassman 2016, p.41)"""@en.
+
+:GrammFunction a owl:Class;
+	owl:versionInfo "When discussing parts-of-speech as features of inflected words, Sylak-Glassman (2016, p.36) follows Croft (2000:89) in introducing grammatical functions as an orthogonal dimension to PartOfSpeech concepts. This is rendered here by GrammFunction and hasGrammFunction. -- CC".
+
+:reference a :GrammFunction.
+:modification a :GrammFunction.
+:predication a :GrammFunction.
+		
+:hasGrammFunction a owl:ObjectProperty;
+	owl:versionInfo "When discussing parts-of-speech as features of inflected words, Sylak-Glassman (2016, p.36) follows Croft (2000:89) in introducing grammatical functions as an orthogonal dimension to PartOfSpeech concepts. This is rendered here by GrammFunction and hasGrammFunction. -- CC";
+	rdfs:domain :GrammFunction.
+
+:PartOfSpeech rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Croft (2000:89) defines [a] functionally-motivated conceptual space ... for parts of speech. 
+	It is the cross-product of the concepts of object, property, and action with the functions of reference, modification, and predication. This conceptual space provides definitions for the following crosslinguistically common parts of speech, which are all captured by features in the UniMorph Schema: Nouns (N), adpositions (ADP), adjectives (ADJ), verbs (V), masdars (V.MSDR), participles (V.PTCP), converbs (V.CVB), and adverbs (ADV).
+	
+	Following the practice of the Universal Dependencies Project (Choi et al. 2015), numerals, particles, and interjections are also treated as separate parts of speech. Numerals include cardinal numerals. Where appropriate, ordinal numerals (first, second, etc.) often behave as adjectives and should be classified as such. Particles include isolated, generally mono- or bisyllabic, words with varying grammatical and discursive meanings. Japanese is well-known for having a large number of particles, which include, among other kinds, question particles such as ne and kasira as well as particles emphasizing assertion, such as yo, zo, and ze (Tsujimura 2007:435-436). Interjections include words such as English ouch, oof, etc., which are expressive, but have neither grammatical nor lexical meaning.
+	
+	(Sylak-Glassman 2016, p.36,40)"""@en.
+
+:ObjectConcept rdfs:subClassOf :PartOfSpeech.
+:PropertyConcept rdfs:subClassOf :PartOfSpeech.
+:ActionConcept rdfs:subClassOf :PartOfSpeech.
+
+:Noun rdfs:subClassOf :ObjectConcept, 
+ [ owl:unionOf ( [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasGrammFunction ;
+                               owl:hasValue :reference
+                             ]
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasGrammFunction ;
+                               owl:hasValue :predication
+                             ]
+                           )
+             ];
+	rdfs:comment """Nouns are a basic part of speech in the sense that they need not co-occur with any other part of speech and are not logically a subclass of any other part of speech. They typically control features such as number and gender and can bear case features, among other dimensions. Nouns, along with verbs, have been claimed to be universally instantiated across languages (Baker 2003). (Sylak-Glassman 2016, p.36)
+	
+	Croft (2000:89) defines nouns by object reference and predicate nouns by object predication, both seem to be conflated under the POS category N."""@en.
+
+:N a :Noun; :hasLabel "N"; rdfs:label "noun"; 
+	rdfs:comment """Nouns are a basic part of speech in the sense that they need not co-occur with any other part of speech and are not logically a subclass of any other part of speech. They typically control features such as number and gender and can bear case features, among other dimensions. Nouns, along with verbs, have been claimed to be universally instantiated across languages (Baker 2003). (Sylak-Glassman 2016, p.36)"""@en.
+
+:PROPN a :Noun;  :hasLabel "PROPN"; rdfs:label "proper name";
+	rdfs:comment """A subset of nouns are the proper names, which have syntactic properties that differ from nouns as a whole (Van Langendonck 2007; Anderson 2004). For example, names in English are typically definite by default, and can only take an article if they are coerced into the role of a common noun. ... A special construction such as apposition or name-giving is required to coerce a common noun into the role of a proper name (more precisely, an appellative, e.g. the metal, gold, commonly used by jewelers or this metal is called `gold' ; Van Langendonck 2007:95, 171). While distinguishing proper names is motivated by linguistic properties, it is also very useful for named entity recognition tasks. 
+	(Sylak-Glassman 2016, p.36)"""@en.
+
+:ADJ a :PropertyConcept; :hasLabel "ADJ"; rdfs:label "adjective";
+	owl:versionInfo "specifying grammatical functions is not necessary, as adjectives can occur in all functions according to Croft (2000:89). The function as property modifier is prototypical, though. -- CC";
+	rdfs:comment """Adjectives are the prototypical modifiers of nouns. Used attributively, they must co-occur with a noun, and they often agree with features controlled by that noun. Even when used predicatively, adjectives can still be subject to the features that their head noun controls (e.g. across a copula). For example, adjectives in Russian must agree in number, gender, and case with their head noun. The phenomenon of substantivization represents a cross-linguistic exception to the generalization that adjectives must co-occur with nouns. In cases of substantivization, an adjective functions like a noun. For example, the adjective poor is substantivized in the English sentence `the poor face significant disadvantages'. The adjective is allowed to directly take a definite article and to control number features (here, plural). (Sylak-Glassman 2016, p.37)"""@en.
+
+:PRO a :Noun; :hasLabel "PRO"; rdfs:label "pronoun";
+	rdfs:comment """Pronouns can be considered a subclass of nouns because, like nouns, they can function as the syntactic arguments of verbs. However, pronouns are distinct from nouns by virtue of being inherently deictic (...) and by their syntactic and morphosyntactic properties. Pronouns refer to other nouns in the sentence (or in previous discourse), and unlike nouns, this reference is regulated by a variety of syntactic principles, including island constraints, crossover, and others. Pronouns may also exhibit different morphosyntactic properties from nouns. For example, pronouns are the only words in English which have morphologically marked case, e.g. she (nominative) from her (accusative/oblique) and who (nominative) from whom (accusative/oblique).
+	
+	(Sylak-Glassman 2016, p.37)"""@en.
+
+:CLF a :PartOfSpeech; :hasLabel "CLF"; rdfs:label "classifier";
+	rdfs:comment """Classifiers are morphemes or words that "denote some salient perceived or imputed characteristic of the entity to which the associated noun refers (or may refer)" (Allan 1977:285). Classifiers can occur as isolated words, for example in so-called "numeral classifier" languages of East and Southeast Asia (Allan 1977:286), or as affixes, for example as with noun class markers in Bantu languages (286-287). ... Classifiers have been argued to capture a limited range of semantic contrasts (Allan 1977). (Sylak-Glassman 2016, p.37f)"""@en;
+	owl:versionInfo "Classifiers are not explicitly linked with Croft (2000:89), but should be property modifiers -- CC".
+
+:Determiner rdfs:subClassOf :PartOfSpeech;
+	rdfs:comment """Articles are a subset of the larger class of determiners, which can include demonstrative adjectives and numerals as well. (Sylak-Glassman 2016, p.38)"""@en;
+	owl:versionInfo "Determiner (subcategories) are not explicitly linked with Croft (2000:89), but should be property modifiers -- CC".
+	
+:ART a :Determiner; :hasLabel "ART"; rdfs:label "article";
+	rdfs:comment """Articles modify nouns and explicitly indicate whether the noun is definite or indefinite. For example, the English articles the and a(n) designate a following NP as definite and indefinite, respectively. Languages differ in whether definiteness is marked at all, and then in whether both definite and indefinite are overtly marked. For example, Russian does not mark definiteness at all, and Hebrew overtly marks only definite nouns (with the article ha). Articles are a subset of the larger class of determiners, which can include demonstrative adjectives and numerals as well. (Sylak-Glassman 2016, p.38)"""@en;
+	owl:versionInfo "Articles are not explicitly linked with Croft (2000:89), but should be property modifiers -- CC".
+
+:DET a :Determiner; :hasLabel "DET"; rdfs:label "determiner";
+	owl:versionInfo """Determiners are listed by Sylak-Glassman (2016, p.40), but not defined. According to the definition for articles, these may refer to demonstrative adjectives and other non-article, non-numeral determiners.""".
+
+:Verb rdfs:subClassOf :PartOfSpeech,
+	[ owl:unionOf ( :ActionConcept
+					[ owl:intersectionOf ( :PropertyConcept
+										[ rdf:type owl:Restriction ;
+												   owl:onProperty :hasGrammFunction ;
+												   owl:hasValue :modification
+										] ) ] ) ];
+	rdfs:comment """Verbs, like nouns, are a basic part of speech in that they need not co-occur with any other part of speech and are not a subclass of any other part of speech. Like nouns, it has been claimed that verbs are present in every human language (Baker 2003). Their typical function is as predicates which describe an action.
+
+	Verbs can also form the basis for productively deriving three parts of speech, namely participles, masdars, and converbs, that each behave similarly to adjectives, nouns, and adverbs, respectively. While these three parts of speech could be subsumed within the part of speech that they behave as (i.e. adjectives, nominals, and adverbs), the fact that they are derived from verbs typically entails other syntactic properties or restrictions that do not apply to non-derived exemplars of the part of speech they behave as. For example, these derived forms are often still able to govern nouns as direct objects (...), and these properties motivate treating them as a class distinct from both the part of speech from which they are derived (verbs) and those which they resemble most strongly from a functional perspective.
+	(Sylak-Glassman 2016,p.38)"""@en;
+	owl:versionInfo "The class was introduced as a generalization over V and its derivatives -- CC".
+	
+:V a :Verb, :ActionConcept; :hasGrammFunction :predication; :hasLabel "V"; rdfs:label "verb";
+	rdfs:comment """Verbs, like nouns, are a basic part of speech in that they need not co-occur with any other part of speech and are not a subclass of any other part of speech. Like nouns, it has been claimed that verbs are present in every human language (Baker 2003). Their typical function is as predicates which describe an action.
+	(Sylak-Glassman 2016,p.38)"""@en.
+:V.PTCP a :Verb, :PropertyConcept; :hasGrammFunction :modification; :hasLabel "V.PTCP"; rdfs:label "participle", "verbal adjective";
+	rdfs:comment """[T]he participle, or verbal adjective ... is a form derived from a verb that modifies nouns similar to an adjective. In Russian, for example, the present active participle has adjectival inflection and agrees in number, gender, and case with the noun that it modifies. For example, the participial form читающий "reading" is derived from the verb читат́ь "to read (IMPERFECTIVE)" and can be seen to agree in number, gender, and case in the following example.
+	
+	(32) Девушк-а, читающая доклад, не ответи-л-а
+	     girl-F.NOM.SG readingV.PTCP-NOM.F.SG report.M NEG answer-PST-F.SG
+	     `The girl, reading the report, did non answer.'
+		 
+	The participle in this example retains verbal characteristics since it governs a noun (доклад `report') as a direct object. However, the participle behaves like an adjective in that it bears agreement features from the subject, девушка `the girl.'
+	
+	(Sylak-Glassman 2016, p.38)"""@en.
+
+:V.MSDR a :Verb, :ActionConcept; :hasGrammFunction :reference; :hasLabel "V.MSDR"; rdfs:label "masdar", "verbal noun", "gerund", "action nominal";
+	rdfs:comment """[T]he masdar ... is also called a verbal noun, gerund, and in some cases, an action nominal (Koptjevskaja-Tamm 1993). The term `masdar' is from Arabic grammar (/masQdar/) and is preferred by Haspelmath (1995:4,48) because, like the word `participle,' it "consists only of a single root" (48).
+	
+	In English, examples of masdars include some `gerundive' forms ending in -ing, such as running in the running of the race happened quickly. These are also action nominals, which are taken to be the default interpretation of a masdar. (Sylak-Glassman 2016, p.38f.)"""@en.
+
+:V.CVB a :Verb, :ActionConcept; :hasGrammFunction :modification; :hasLabel "V.CVB"; rdfs:label "converb", "verbal adverb", "gerund", "adverbial participle";
+	rdfs:comment """[T]he converb ... can be viewed as a verbal adverb, and is also commonly called a gerund or adverbial participle. Haspelmath (1995:3) defines a converb as "a nonfinite verb form whose main function is to mark adverbial subordination." Examples of converbs come from Modern Greek, Portuguese, and Huallaga Quechua ... (Sylak-Glassman 2016, p.39)"""@en.
+
+:ADV a :ActionConcept; :hasGrammFunction :modification; :hasLabel "ADV"; rdfs:label "adverb";
+	rdfs:comment """Adverbs modify verbs similarly to how adjectives modify nouns. Unlike converbs, they are often derived from adjectives or are non-derived lexemes. In some languages, such as English and Russian, adverbs can be productively derived from most adjectives, e.g. with the suffix -ly as in quickly in English (Sylak-Glassman 2016, p.39)"""@en.
+	
+:AUX a :Verb; :hasLabel "AUX"; :rdfs:label "auxiliary";
+	rdfs:comment """Similar to how pronouns are a subclass of nouns, auxiliaries are a subclass of verbs that are used for grammatical functions rather than to convey the type of lexical meaning associated with standard verbs. Examples of auxiliary verbs in English include the modals could, would, and should, as well as forms of have used to construct periphrastic perfect verb forms (e.g. he has run) and forms of be used to construct periphrastic passive verb forms (e.g. he was hit or he has been hit). (Sylak-Glassman 2016, p.39)"""@en;
+	owl:versionInfo "Auxiliaries are not explicitly linked with Croft (2000:89), but should be action modifiers -- CC".
+
+:ADP a :ObjectConcept; :hasGrammFunction :modification; :hasLabel "ADP"; rdfs:label "adposition";
+	rdfs:comment """Adpositions include prepositions, postpositions, circumfixes, and infixes, which are all distinguished by where the adposition is placed in relation to its head. Prepositions, such as "in," occur before their head while postpositions, such as "ago," occur after. Note that spatial adpositions are often absent in the native vocabulary of languages with local case systems. (Sylak-Glassman 2016, p.39)"""@en.
+	
+:COMP a :PartOfSpeech; :hasLabel "COMP"; rdfs:label "complementizer";
+	rdfs:comment """Complementizers, such as English that, Spanish que, and Russian что, are used to embed clauses, as in I understand that complementizers are important or That complementizers are important is clear. (Sylak-Glassman 2016, p. 39)"""@en;
+	owl:versionInfo "Complementizers are not explicitly linked with Croft (2000:89), but should be action modifiers -- CC".
+
+:CONJ a :PartOfSpeech; :hasLabel "CONJ"; rdfs:label "conjunction";
+	rdfs:comment """Conjunctions include both coordinating conjunctions and subordinating conjunctions. Coordinating conjunctions, such as English and, link two clauses (or two arguments) in such a way that they occupy an equal syntactic position. Subordinating conjunctions link two clauses such that one clause is dependent on the other in some respect. (Sylak-Glassman 2016, p.39f.)"""@en;
+	owl:versionInfo "Conjunctions are not explicitly linked with Croft (2000:89), but should be modifiers (for all concepts) -- CC".
+
+:NUM a :Determiner; :hasLabel "NUM"; rdfs:label "numeral";
+	rdfs:comment """The larger class of determiners ... can include demonstrative adjectives and numerals as well. (Sylak-Glassman 2016, p.38)
+	
+	Following the practice of the Universal Dependencies Project (Choi et al. 2015), numerals ... are also treated as separate parts of speech. Numerals include cardinal numerals. Where appropriate, ordinal numerals (first, second, etc.) often behave as adjectives and should be classified as such. (Sylak-Glassman 2016, p.40)	"""@en.
+
+:PART a :PartOfSpeech; :hasLabel "PART"; rdfs:label "particle";
+	rdfs:comment """Following the practice of the Universal Dependencies Project (Choi et al. 2015), ... particles ... are also treated as separate parts of speech. ... Particles include isolated, generally mono- or bisyllabic, words with varying grammatical and discursive meanings. Japanese is well-known for having a large number of particles, which include, among other kinds, question particles such as ne and kasira as well as particles emphasizing assertion, such as yo, zo, and ze (Tsujimura 2007:435-436). (Sylak-Glassman 2016, p.40)"""@en.
+
+:INTJ a :PartOfSpeech; :hasLabel "INTJ"; rdfs:label "interjection";
+	rdfs:comment """Following the practice of the Universal Dependencies Project (Choi et al. 2015), ... interjections are also treated as separate parts of speech. ... Interjections include words such as English ouch, oof, etc., which are expressive, but have neither grammatical nor lexical meaning. (Sylak-Glassman 2016, p.40)"""@en.
+
+:Number rdfs:subClassOf :MorphFeature;
+	rdfs:comment """The dimension of number is relevant for multiple parts of speech and is a common agreement feature. Its range of distinctions on nouns is most extensive, with less common categories like "greater paucal" being expressed in a small number of cases on nouns, but never on verbs.
+
+	The number categories found on nouns include singular, plural, dual, trial, paucal, greater paucal, greater plural, and inverse marking (Corbett 2000). ...
+	On verbs, Amele (Papuan) encodes singular, dual, and plural, and Kiowa (Kiowan-Tanoan) (Corbett 2000:136-137, 159-161) encodes singular, dual, and inverse. Meriam (Meriam Mir; Trans-Fly; Torres Strait Islands) and Sursurunga add another number by marking singular, dual, paucal, and plural on verbs (Corbett 2000; Piper 1989:26-30). Kiwai also encodes four categories of number on verbs, but marks the singular, dual, trial, and plural (255). Thus, the only number category that seems not to be expressed on verbs is greater paucal and the greater plural.
+	
+	(Sylak-Glassman 2016, p.34f)"""@en.
+	
+:SG a :Number; :hasLabel "SG"; rdfs:label "singular"; rdfs:comment """Singular always indicates one (Sylak-Glassman 2016, p.34)"""@en.
+:Plural rdfs:subClassOf :Number;
+	rdfs:comment """[P]lural signals "many" when the number is larger than the largest more highly specified distinction, e.g. >2 when plural is opposed to singular, but >3 when opposed to dual, and so on. ... Some languages make further distinctions within the plural category that are based on additional meaning beyond countable number. For example, Arabic contains a "greater plural" or "plural of abundance" that indicates "various, many" (Corbett 2000:32). Banyun marks an "unlimited" plural (31) and both Hamer (Omotic) and Kaytetye (Australia) have a plural form that indicates "all possible" entities (33). A greater plural is also claimed to be present in Zulu, Setswana, Miya, and Breton (ibid.). While the precise semantics of a greater plural vary across languages, no language appears to morphologically distinguish more than one variety of greater plural with the plain plural.
+	
+	(Sylak-Glassman 2016, p.34)"""@en;
+	owl:versionInfo "introduced as a generalization over plural and greater plural, as the latter is considered an example for `distinctions within the plural category' [CC]".
+:PL a :Plural; :hasLabel "PL"; rdfs:label "plural", "plain plural".
+:GRPL a :Plural; :hasLabel "GRPL"; rdfs:label "greater plural".
+
+:DU a :Number; :hasLabel "DU"; rdfs:label "dual";
+	rdfs:comment """Dual (DU) and trial (TRI) indicate precisely two or three entities, respectively, and these are robustly distinguished for nouns in Larike (Corbett 2000:21, 40, 45). (Sylak-Glassman 2016, p.34)"""@en.
+:TRI a :Number; :hasLabel "TRI"; rdfs:label "trial";
+	rdfs:comment """Dual (DU) and trial (TRI) indicate precisely two or three entities, respectively, and these are robustly distinguished for nouns in Larike (Corbett 2000:21, 40, 45). (Sylak-Glassman 2016, p.34)"""@en.
+:PAUC a :Number; :hasLabel "PAUC"; rdfs:label "paucal";
+	rdfs:comment """[L]anguages can distinguish [singular, plural, dual and trial] from "a few, several," which is indicated using the the paucal number (PAUC). (Sylak-Glassman 2016, p.34)"""@en.
+:GPAUC a :Number; :hasLabel "GPAUC"; rdfs:label "greater paucal";
+	rdfs:comment """[G]reater paucal (gpauc), for more than several, but not many, is used in Sursurunga (Austronesian), which has the most extensive nominal number distinction known to exist, distinguishing singular, dual, paucal (>=3), greater paucal (>=4), and plural (26-27). (Sylak-Glassman 2016, p.34)"""@en;
+	owl:versionInfo "Unlike greater plural, the text does not indicate that greater paucal is a subcategory of a more general paucal concept, hence no class introduced -- CC".
+	
+:INVN a :Number; :hasLabel "INVN"; rdfs:label "inverse number";
+	rdfs:comment """In inverse number systems, nouns have a default number that indicates the number with which they are "expected" to occur, based on a language-internal understanding of their occurrence in the speakers' surroundings. Variation exists across languages with inverse marking in this respect, but, for example, `child' is by default singular while `tree' is by default plural. Inverse number marking makes `child' plural and `tree' singular, effectively inverting the number value of noun. (Sylak-Glassman 2016, p.34f.)
+	
+	Sylak-Glassman (2016, p.35) mentions Kiowa (Corbett 2000:161) and Dagaare (Grimm 2012) as examples for inverse number systems."""@en.	
+
+:Mood rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Grammatical mood is the morphological marking of modality on a verb. "Modality is concerned with the status [from the speaker's point of view; JCS] of the proposition that describes the event" (Palmer 2001:1), and can be expressed either by affixal morphology or through periphrastic/phrasal constructions. ...
+	Most commonly, languages split mood into two superordinate categories, either indicative vs. subjunctive or realis vs. irrealis (Palmer 2001:3-5). While there is some distinction in the modalities that fall under the categories within these two types of oppositions, these two sets of superordinate categories can be reduced to an underlying opposition between Realis and Irrealis. ...
+
+	Similar to the subjunctive/irrealis is the category found in Australian languages called the purposive. The purposive primarily "expresses obligation (and epistemic necessity) in main clauses," and can also be used in that context in Dyirbal "to suggest a result from an unknown cause" (Palmer 2001:83). ... Palmer (ibid.) notes that "these functions of the `purposive' are very like those of the subjunctive in Latin, which can also be used for purpose, result and for indirect commands." Given this information, the non-purposive (AUNPRP) vs. purposive (AUPRP) opposition can be viewed as on par with the realis vs. irrealis and indicative vs. subjunctive oppositions.
+	
+	These superordinate categories of modality are not only frequently encountered in language descriptions, their uses often overlap substantially across languages to the point that equating the categories across languages can be useful.
+	
+	(Sylak-Glassman 2016, p.30-32)"""@en;
+	owl:versionInfo "following Palmer, and as suggested by Sylak-Glassman, I introduce classes Realis and Irrealis (in opposition to realis and irrealis) as a generalization over subjunctive/irrealis/purposive in opposition to the default mood [CC]".
+	
+:Irrealis rdfs:subClassOf :Mood; rdfs:comment "Following Palmer (2001), and as suggested by Sylak-Glassman (2016, p.30-32), I introduce the class Irrealis (in opposition to the feature irrealis) as a generalization over subjunctive/irrealis/purposive in opposition to the unmarked mood [CC]"@en.
+
+:Realis rdfs:subClassOf :Mood; rdfs:comment "Unmarked mood in opposition to Irrealis (i.e., subjunctive/irrealis/purposive), cf. Sylak-Glassman 2016, p.30-32";
+	 owl:equivalentClass [ rdf:type owl:Class ;
+                           owl:intersectionOf ( :Mood
+                                                [ rdf:type owl:Class ;
+                                                  owl:complementOf :Irrealis
+                                                ]
+                                              )
+                         ].
+
+:IND a :Realis; :hasLabel "IND"; rdfs:label "indicative".
+:SBJV a :Irrealis; :hasLabel "SBJV"; rdfs:label "subjunctive".
+:REAL a :Realis; :hasLabel "REAL"; rdfs:label "realis".
+:IRR a :Irrealis; :hasLabel "IRR"; rdfs:label "irrealis".
+:AUPRP a :Irrealis; :hasLabel "AUPRP"; rdfs:label "Australian purposive".
+:AUNPRP a :Realis; :hasLabel "AUNPRP"; rdfs:label "Australian non-purposive".
+
+:IMP a :Mood; :hasLabel "IMP"; rdfs:label "imperative-jussive", "imperative", "hortative", "jussive";
+	rdfs:comment """Apart from the superordinate categories indicative vs. subjunctive, realis vs. irrealis, and nonpurposive vs. purposive, the most common modal marking includes the marking of imperatives, hortatives, and jussives. Imperatives are direct commands or orders for the addressee to do some action while hortatives and jussives include more suggestive forms, such as "let them X" or "let us X" (where X is some action). These can all be understood as part of the same modal category, called here imperative-jussive, since imperatives are used with second person and jussives are complementarily used with first and third person (Palmer 2001:81, citing Lyons 1977).
+	
+	Related to imperative-jussives are prohibitives. While these are often morphologically distinct from positive imperative-jussives, they can be analyzed underlyingly either as negative imperative-jussives ("Do not do X!"), negative potentials ("You cannot do X"), or negative permissives ("You may not do X").
+	
+	(Sylak-Glassman 2016, p.32)"""@en;
+	owl:versionInfo "TODO: clarify whether prohibitives constitute a separate category. According to the text, they seem to, but they are missing in the table.".
+
+:SpeculativeMood rdfs:subClassOf :Mood; :hasLabel "speculative"; 
+	rdfs:comment """Other common modal categories can be seen as expressing degrees of certainty about the factual truth of a proposition, further refining the epistemic category of modality called speculative. A small number of languages explicitly morphologically mark verbs for likelihood status, ... many languages exhibit a potential mood, ... translated in the sense of "may or may not, depending on circumstances." Another modal category, the admirative, is used to express surprise, irony, or doubt, and occurs in Bulgarian, Macedonian, and other Balkan languages, as well as in Caddo ... The admirative can be seen as a mood that expresses surprise or skepticism toward a fact that is acknowledged by the speaker to be true for the addressee (Palmer 2010:11).
+	
+	(Sylak-Glassman 2016, p.32)"""@en;
+	owl:versionInfo "TODO: clarify the relation between Speculative and Evidentiality".
+	
+:LKLY a :SpeculativeMood; :hasLabel "LKLY"; rdfs:label "likely";
+	rdfs:comment """A small number of languages explicitly morphologically mark verbs for likelihood status, such as "real, likely, and potential" in Dani (Papuan; Palmer 2001:162). ... [M]arking verbs as "likely" using morphology is extremely rare 
+	
+	(Sylak-Glassman 2016, p.32)"""@en.
+
+:POS a :SpeculativeMood; :hasLabel "POT"; rdfs:label "potential mood";
+	rdfs:comment """[M]any languages exhibit a potential mood, including Finnish. The potential mood is translated "may" in the sense of "may or may not, depending on circumstances." (Sylak-Glassman 2016, p.32)"""@en.
+
+:ADM a :SpeculativeMood; :hasLabel "ADM"; rdfs:label "admirative mood";
+	rdfs:comment """[T]he admirative, is used to express surprise, irony, or doubt, and occurs in Bulgarian, Macedonian, and other Balkan languages, as well as in Caddo (a Native American language of Oklahoma), where it marks only surprise (Palmer 2001:11). The admirative can be seen as a mood that expresses surprise or skepticism toward a fact that is acknowledged by the speaker to be true for the addressee (ibid.). (Sylak-Glassman 2016, p.32)"""@en.
+
+:ConditionalMood rdfs:subClassOf :Mood;
+	owl:versionInfo """From Sylak-Glassman's (2016, p.32f) paragraph on conditionals, interrupted by a description of simulative, we infer that these, together constititute a group with common characteristics""".
+	
+:COND a :ConditionalMood; :hasLabel "COND"; rdfs:label "conditional mood";
+	rdfs:comment """The conditional mood, familiar from Spanish, is used to express that a verb's action will occur given some condition and can generally be translated "would do X." (Sylak-Glassman 2016, p.32)"""@en.
+:SIM a :ConditionalMood; :hasLabel "SIM"; rdfs:label "simulative mood";
+	rdfs:comment """The simulative, which occurs in Caddo (Palmer 2001:178), also expresses hypothetical action, but in the sense of "as if X." (Sylak-Glassman 2016, p.32f)"""@en.
+:COND.PROT a :ConditionalMood; :hasLabel "COND.PROT"; rdfs:label "conditional marking the protasis";
+	rdfs:comment """When grammatical descriptions cite the existence of a conditional mood, for example in if ..., then ... statements, it may be used for, 1) the protasis, or condition itself (if -clause), 2) the apodosis, or the result of a condition applying (then-clause), or 3) both. If necessary, features for marking these distinctions might take the form COND.PROT and COND.APO for conditional marking the protasis and the conditional marking the apodosis, respectively. (Sylak-Glassman 2016, p.33)"""@en.
+:COND.APO a :ConditionalMood; :hasLabel "COND.APO"; rdfs:label "conditional marking the apodosis";
+	rdfs:comment """When grammatical descriptions cite the existence of a conditional mood, for example in if ..., then ... statements, it may be used for, 1) the protasis, or condition itself (if -clause), 2) the apodosis, or the result of a condition applying (then-clause), or 3) both. If necessary, features for marking these distinctions might take the form COND.PROT and COND.APO for conditional marking the protasis and the conditional marking the apodosis, respectively. (Sylak-Glassman 2016, p.33)"""@en.
+	
+:PURP a :Mood; :hasLabel "PURP"; rdfs:label "purposive modality", "general purposive";
+	rdfs:comment """General Purposive (`in order to')
+	
+	Distinct from the Australian purposive mood, a superordinate category, is the basic purposive modality, signaling "in order to, for the purpose of." This purposive has the label PURP, while the Australian purposive is labeled AUPRP ... (Sylak-Glassman 2016, p.32)."""@en.
+
+:INTEN a :Mood; :hasLabel "INTEN"; rdfs:label "intentive";
+	rdfs:comment """Languages such as Tonkawa (isolate; Palmer 2001:82) also mark verbs as intentive, indicating that the speaker strongly intends for the action of the verb to be realized. This can be translated as "going to" or "will," although this renders it ambiguous with the prospective aspect or future tense, respectively, in English. Few languages mark the intentive explicitly, but as a feature of modality, it is common, lending the phrases "going to" and "will" the connotation of certainty in addition to prospective aspect and future tense, respectively. (Sylak-Glassman 2016, p.33)"""@en.
+
+:OBLIG a :Mood; :hasLabel "OBLIG"; rdfs:label "obligative";
+	rdfs:comment """Languages can ... morphologically mark obligation, translated by "have to" or "must." Tiwi, an Australian language, has "a marker [i.e. a morpheme -u; JCS] that is labelled `compulsional"' and is translated as "have to" or "must" (Palmer 2001:75). This meaning is captured by the obligative mood (OBLIG).
+	(Sylak-Glassman 2016, p.33)"""@en.
+
+:DEB a :Mood; :hasLabel "DEB"; rdfs:label "debitive", "debitive/obligative";
+	owl:versionInfo "Sylak-Glassman (2016, p.33) mentions the opposition permissive vs. debitive/obligative for Tamil, but provides no definition".
+:PERM a :Mood; :hasLabel "PERM"; rdfs:label "permissive";
+	owl:versionInfo "Sylak-Glassman (2016, p.33) mentions the opposition  permissive vs. debitive/obligative for Tamil, but provides no definition".
+:DED a :Mood; :hasLabel "DED"; rdfs:label "deductive", "deductive/inferential";
+	owl:versionInfo "Sylak-Glassman (2016, p.33) mentions the opposition speculative vs. deductive/inferential for Tamil, but provides no definition".
+:OPT a :Mood; :hasLabel "OPT"; rdfs:label "optative", "desiderative", "optative-desiderative";
+	rdfs:comment """[The] optative or desiderative modality ... can be used to express wishes or other notions related to desire (Palmer 2001:22, 131). For example, the suffix -naya in Imbabura Quechua is called the "desiderative" and is translated as "want(s) to" (Cole 1982:181). In other languages, such as Limbu, a dedicated morpheme, e.g. -lo, is used to express wishes such as "May it turn out well!" (van Driem 1987:133). This modality is traditionally called optative. It is unclear whether the desiderative morpheme in Imbabura Quechua can be used this way and whether the optative in Limbu can be used in the first person singular (it can be used in all other persons and numbers, though; van Driem 1987:133-135). No language has been found thus far to overtly contrast the desiderative and optative with distinct affixal morphology.
+	(Sylak-Glassman 2016, p.33)"""@en.
+
+:LanguageSpecificFeature rdfs:subClassOf :MorphFeature;
+	rdfs:comment """While most inflectional variation can be tied to regular semantic differences, some inflectional variation is free or subject to not-strictly-semantic conditioning factors. For example, the imperfect tense of the subjunctive mood in Spanish can be realized with an inflection that includes either -ra- or -se-. Although the choice of forms is not entirely free, the factors that condition the choice are not tied to meaning captured by inflection. That is, the forms cannot be differentiated by a meaning captured by a feature of this schema. ...
+
+	To capture these distinctions in features within the schema, templatic features with the base LGSPEC followed by an integer (e.g. LGSPEC1) are used. These features have different interpretations in each language, and no mapping should be assumed between the LGSPEC features and any other features across languages. This approach avoids the problem of feature proliferation and possible conflict that results if the form of the feature is closely tied to the realization in a particular language.
+	
+	(Sylak-Glassman 2016, p.29f)"""@en.
+	
+:LGSPEC a :LanguageSpecificFeature; :hasLabelStartingWith "LGSPEC".
+
+:Interrogativity rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Interrogativity is the dimension of meaning indicating whether a verb is used to express a statement (declarative; DECL) or a question (interrogative; INT). Interrogativity is sometimes marked by overt affixal morphology while declarativity is almost never marked. ... Interrogativity, on the other hand, is more commonly overtly marked, as in Turkish where interrogativity is a feature that partly defines the verbal paradigm. (Sylak-Glassman 2016, p.29)"""@en.
+:DECL a :Interrogativity; :hasLabel "DECL"; rdfs:label "declarative".
+:INT a :Interrogativity; :hasLabel "INT"; rdfs:label "interrogative".
+
+:InformationStructureFeature rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Information structure is a component of grammar that formally expresses "the pragmatic structuring of a proposition in a discourse" (Lambrecht 1994:5). More concretely, information structure directly encodes which parts of a proposition are presented as new information for the addressee and which are not (5-6). (Lambrecht (1994:5) formally defines information structure as the "component of sentence grammar in which propositions as conceptual representations of states of affairs are paired with lexicogrammatical structures in accordance with the mental states of interlocutors who use and interpret these structures as units of information in given discourse contexts.")
+	
+	Languages may distinguish the topic (TOP) and the focus (FOC) of a sentence through overt morphology. The topic can broadly be seen as signaling what the sentence is about. Lambrecht (1994:131) defines the topic more specifically as "expressing information which is relevant to [a referent in the proposition] and which increases the addressee's knowledge of this referent." The focus can broadly be understood as signaling information that is not presupposed by the addressee (213). This information forms the core of the proposition's assertion, and typically includes the part of the proposition that is unpredictable or new to the listener (ibid.). Lambrecht (1994:213) formally defines focus as "[t]he semantic component of a pragmatically structured proposition whereby the assertion differs from the presupposition."
+	
+	While most studies on information structure distinguish multiple types of topic and focus (including Lambrecht 1994) that can be distinguished via prosody or syntax, no language appears to make distinctions via overt affixal morphology to a finer degree than topic vs. focus vs. unmarked. Lambrecht (1994:119) explains the lack of any formal topic marking in many languages, or of more fine-grained topic marking in languages which do formally mark it, as a result of the difficulty of strictly limiting the topic to any particular element in a proposition.
+	
+	(Sylak-Glassman 2016, p.28f.)"""@en.
+	
+:TOP a :InformationStructureFeature; :hasLabel "TOP"; rdfs:label "topic";
+	rdfs:comment """The topic can broadly be seen as signaling what the sentence is about. Lambrecht (1994:131) defines the topic more specifically as "expressing information which is relevant to [a referent in the proposition] and which increases the addressee's knowledge of this referent." (Sylak-Glassman 2016, p.28)"""@en.
+:FOC a :InformationStructureFeature; :hasLabel "FOC"; rdfs:label "focus";
+	rdfs:comment """The focus can broadly be understood as signaling information that is not presupposed by the addressee (Lambrecht 1994:213). This information forms the core of the proposition's assertion, and typically includes the part of the proposition that is unpredictable or new to the listener (ibid.). Lambrecht (1994:213) formally defines focus as "[t]he semantic component of a pragmatically structured proposition whereby the assertion differs from the presupposition." (Sylak-Glassman 2016, p.28)"""@en.
+
+:Gender rdfs:subClassOf :MorphFeature;
+	rdfs:label "gender and noun class";
+	rdfs:comment """Gender is a grammatical category that includes both gender, as conventionally known from European languages like Spanish, French, German, and Russian, as well as systems with more than three categories that are typically described as noun class systems. These include systems like that of the Nakh-Daghestanian languages of the Northeast Caucasus with two to eight gender categories, as well as more extensive systems, such as those of the Bantu languages, which can include up to around twenty distinct categories (Corbett 1991:24, 43-44).
+
+	Gender systems can be organized according to either natural gender (biological sex), formal gender, or a mix (Corbett 1991:1). Natural gender systems classify nouns according to transparent semantic criteria. In formal gender systems, however, there need not be any correlation between the gender category of a noun and any of the properties of the entity to which the noun refers. Gender in these systems may either be based on phonological properties or else is an unpredictable lexical property that must be memorized.
+	
+	Within language families, gender categories and their assignment to nouns can overlap among languages enough to render the equation of gender categories appropriate. The gender features of this schema are therefore often tied to particular language families. This ensures that gender features have some generality, and do not proliferate as language-specific features. For example, the eight possible genders (or noun classes) of the Nakh-Daghestanian languages are labeled as NAKH1, NAKH2, NAKH3, NAKH4, and so on for languages like Tsova-Tush (Corbett 1991:24). Similarly, the Bantu noun classes are symbolized as BANTU1-23, which encompasses the whole range of noun classes that could have been inherited in any given Bantu language from proto-Bantu (Demuth 2000:270-272).
+	
+	Other gender systems from other language families can be incorporated on this same model, with features of a similar format, namely a short abbreviation for the language family followed by the term used for the specific gender. The schema includes features for the masculine, feminine, and neuter distinction common in Indo-European languages.
+
+	(Sylak-Glassman 2016, p.27f)"""@en.
+	
+:MASC a :Gender; rdfs:label "masculine"; :hasLabel "MASC".
+:FEM a :Gender; rdfs:label "feminine"; :hasLabel "FEM".
+:NEUT a :Gender; rdfs:label "neuter"; :hasLabel "NEUT".
+:BANTU1 a :Gender; rdfs:label "Bantu Noun Class 1"; :hasLabel "BANTU1".
+:BANTU2 a :Gender; rdfs:label "Bantu Noun Class 2"; :hasLabel "BANTU2".
+:BANTU3 a :Gender; rdfs:label "Bantu Noun Class 3"; :hasLabel "BANTU3".
+:BANTU4 a :Gender; rdfs:label "Bantu Noun Class 4"; :hasLabel "BANTU4".
+:BANTU5 a :Gender; rdfs:label "Bantu Noun Class 5"; :hasLabel "BANTU5".
+:BANTU6 a :Gender; rdfs:label "Bantu Noun Class 6"; :hasLabel "BANTU6".
+:BANTU7 a :Gender; rdfs:label "Bantu Noun Class 7"; :hasLabel "BANTU7".
+:BANTU8 a :Gender; rdfs:label "Bantu Noun Class 8"; :hasLabel "BANTU8".
+:BANTU9 a :Gender; rdfs:label "Bantu Noun Class 9"; :hasLabel "BANTU9".
+:BANTU10 a :Gender; rdfs:label "Bantu Noun Class 10"; :hasLabel "BANTU10".
+:BANTU11 a :Gender; rdfs:label "Bantu Noun Class 11"; :hasLabel "BANTU11".
+:BANTU12 a :Gender; rdfs:label "Bantu Noun Class 12"; :hasLabel "BANTU12".
+:BANTU13 a :Gender; rdfs:label "Bantu Noun Class 13"; :hasLabel "BANTU13".
+:BANTU14 a :Gender; rdfs:label "Bantu Noun Class 14"; :hasLabel "BANTU14".
+:BANTU15 a :Gender; rdfs:label "Bantu Noun Class 15"; :hasLabel "BANTU15".
+:BANTU16 a :Gender; rdfs:label "Bantu Noun Class 16"; :hasLabel "BANTU16".
+:BANTU17 a :Gender; rdfs:label "Bantu Noun Class 17"; :hasLabel "BANTU17".
+:BANTU18 a :Gender; rdfs:label "Bantu Noun Class 18"; :hasLabel "BANTU18".
+:BANTU19 a :Gender; rdfs:label "Bantu Noun Class 19"; :hasLabel "BANTU19".
+:BANTU20 a :Gender; rdfs:label "Bantu Noun Class 20"; :hasLabel "BANTU20".
+:BANTU21 a :Gender; rdfs:label "Bantu Noun Class 21"; :hasLabel "BANTU21".
+:BANTU22 a :Gender; rdfs:label "Bantu Noun Class 22"; :hasLabel "BANTU22".
+:BANTU23 a :Gender; rdfs:label "Bantu Noun Class 23"; :hasLabel "BANTU23".
+:NAKH1 a :Gender; rdfs:label "Nakh-Daghestanian Noun Class 1"; :hasLabel "NAKH1".
+:NAKH2 a :Gender; rdfs:label "Nakh-Daghestanian Noun Class 2"; :hasLabel "NAKH2".
+:NAKH3 a :Gender; rdfs:label "Nakh-Daghestanian Noun Class 3"; :hasLabel "NAKH3".
+:NAKH4 a :Gender; rdfs:label "Nakh-Daghestanian Noun Class 4"; :hasLabel "NAKH4".
+:NAKH5 a :Gender; rdfs:label "Nakh-Daghestanian Noun Class 5"; :hasLabel "NAKH5".
+:NAKH6 a :Gender; rdfs:label "Nakh-Daghestanian Noun Class 6"; :hasLabel "NAKH6".
+:NAKH7 a :Gender; rdfs:label "Nakh-Daghestanian Noun Class 7"; :hasLabel "NAKH7".
+:NAKH8 a :Gender; rdfs:label "Nakh-Daghestanian Noun Class 8"; :hasLabel "NAKH8".
+
+:Finiteness rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Despite the diffculty of defining finiteness in a universal way along semantic or syntactic lines, the notion of finiteness remains cross-linguistically useful and is crucial for differentiating infinitives from other verb forms. For the purpose of this schema, verb forms that take the full extent of tense, aspect, and mood (TAM) marking in a language that can be used as predicates can be considered finite, while verbally-derived parts of speech such as masdars (verbal nouns), participles (verbal adjectives), and converbs (verbal adverbs) are considered nonfinite (Haspelmath 1995:4-7). The finiteness feature in the schema presented here is therefore partially redundant with the part of speech features: Masdars, participles, and converbs are always nonfinite while plain verbs may be finite or nonfinite. An example of a plain verb with the feature nonfinite (NFIN) is the infinitive in languages such as Spanish, Russian, and English.
+	
+	Although Koptjevskaja-Tamm (1993:29) echoes the opinion of Haspelmath (1995:5) and other linguists in writing that "[t]he notion of finiteness is far from being well-defined," it is nevertheless a valuable means of distinguishing a small set of cross-linguistically common verb forms with recurring characteristics. One view is that a verbal form is finite if it takes a subject in nominative, ergative, or absolutive case and if it can take on inflectional features, such as number and gender, based on another syntactic argument (subject or object; Cowper 2002). Another view is that finite verb forms are those which can function as the predicate of independent clauses while nonfinite verb forms are always (morpho-)syntactically dependent (Koptjevskaja-Tamm 1993:29). The notion of finiteness appears to be best viewed as a language-specific constellation of syntactic properties.
+	
+	(Sylak-Glassman 2016, p.26)"""@en.
+	
+:FIN a :Finiteness; :hasLabel "FIN"; rdfs:label "finite".
+:NFIN a :Finiteness; :hasLabel "NFIN"; rdfs:label "nonfinite".
+
+:Evidenticality rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Evidentiality is the morphological marking of a speaker's source of information (Aikhenvald 2004). ... The UniMorph Schema follows Aikhenvald (2004) in viewing evidentiality as a separate category from modality. Although categories of evidentiality may entail certain modal categories ..., evidentiality is a distinct morphological category that encodes only the source of the information that a speaker is conveying in a proposition. ... The unique evidential categories, in approximate order of directness of evidence, are: Firsthand, direct, sensory, visual, non-visual sensory, auditory, non-firsthand, quotative, reported, hearsay, inferred, assumed.
+	(Sylak-Glassman 2016, p.24-26)"""@en.
+
+:FH a :Evidentiality; :hasLabel "FH"; rdfs:label "firsthand".
+:DRCT a :Evidentiality; :hasLabel "DRCT"; rdfs:label "direct".
+:SEN a :Evidentiality; :hasLabel "SEN"; rdfs:label "sensory".
+:VISU a :Evidentiality; :hasLabel "VISU"; rdfs:label "visual".
+:NVSEN a :Evidentiality; :hasLabel "NVSEN"; rdfs:label "non-visual sensory".
+:AUD a :Evidentiality; :hasLabel "AUD"; rdfs:label "auditory".
+:NFH a :Evidentiality; :hasLabel "NFH"; rdfs:label "non-firsthand".
+:QUOT a :Evidentiality; :hasLabel "QUOT"; rdfs:label "quotative".
+:RPRT a :Evidentiality; :hasLabel "RPRT"; rdfs:label "reported".
+:HRSY a :Evidentiality; :hasLabel "HRSY"; rdfs:label "hearsay".
+:INFER a :Evidentiality; :hasLabel "INFER"; rdfs:label "inferred".
+:ASSUM a :Evidentiality; :hasLabel "ASSUM"; rdfs:label "assumed".	
+
+:DeixisFeature rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Features relevant to third-person and demonstrative pronouns (Sylak-Glassman 2016, p.24)
+	
+	The referent of pronouns is dependent on the context of the utterance, as is the referent of words like here, this, that, these, those. This quality of context-dependency is called deixis, and words are sometimes systematically contrasted in terms of their deictic properties.
+
+	Demonstrative pronouns are deictic words which encode a variety of distinctions in meaning that specify the relationship between the speaker or addressee and the person or thing referred to by the pronoun, and these distinctions are relevant for determining the referent of the demonstrative.
+	For example, the difference between `this' and `that' in English can be understood as a distinction in distance. ("Distance" here should be understood in a very broad sense, since the English demonstratives `this' and `that' can be used to express spatial, temporal, or even psychological/social distance.) 
+	`This' is used to describe something closer to the speaker and `that' is used for something farther away. ... [R]eference point, visibility, and verticality are also relevant deictic properties.
+
+	(Sylak-Glassman 2016, p.22)"""@en.
+
+:DistanceFeature rdfs:subClassOf :DeixisFeature;
+	rdfs:comment """[D]istance is a relevant feature in distinguishing third-person pronouns ... The maximal distinction appears to be a three-way contrast between proximate, medial, and remote, roughly translating to English `this', `that', and `that (over there, yonder)'. Basque is a two-person language that uses demonstrative pronouns for third person pronouns, and these demonstratives make a three-way distinction in distance (Hualde and Ortiz de Urbina 2003:123, 150).
+	
+	(Sylak-Glassman 2016, p.22)"""@en.
+
+:PROX a :DistanceFeature; :hasLabel "PROX"; rdfs:label "proximate".
+:MED a :DistanceFeature; :hasLabel "MED"; rdfs:label "medial".
+:REMT a :DistanceFeature; :hasLabel "REMT"; rdfs:label "remote"; 
+	rdfs:comment """The term `remote' is used here for the greatest extent of distance while the term `distal' is reserved for a specific reference point distinction. (Sylak-Glassman 2016, p.22)"""@en.
+
+:ReferencePointFeature rdfs:subClassOf :DeixisFeature;
+	rdfs:comment """[T]he reference point for determining the relationship of the speaker, addressee, and referent of the pronoun (...) often overlaps with distance distinctions, but is sometimes explicitly separated. 
+	The three primary features for the reference point feature are speaker as reference point (REF1), addressee as reference point (REF2), and a reference point not related to either speaker or addressee (distal; DIST). 
+	
+	Another essential feature is what has been called the "anaphoric" feature, which designates a pronoun as obligatorily referring to a referent that occurs in the discourse. Strictly speaking, anaphoric pronouns must refer to something that has previously occurred in discourse while a cataphoric pronoun would obligatorily refer to something that comes after it in the discourse. Because the pronouns of Lak (Nakh-Daghestanian; Bhat 2004:132-133, Friedman 2006:304) and Sinhalese (Indo-European; Gair 2003:782-783) appear not to contrast specific anaphoric and cataphoric pronouns, the feature that is used to indicate obligatory anaphoric or cataphoric reference is simply called phoric (PHOR).
+	
+	(Sylak-Glassman 2016, p.22f.)"""@en.
+:REF1 a :ReferencePointFeature; :hasLabel "REF1"; rdfs:label "first person reference point"; rdfs:comment "speaker as reference point (Sylak-Glassman 2016, p.22)"@en.
+:REF2 a :ReferencePointFeature; :hasLabel "REF2"; rdfs:label "second person reference point"; rdfs:comment "addressee as reference point (Sylak-Glassman 2016, p.22)"@en.
+:NOREF a :ReferencePointFeature; :hasLabel "NOREF"; rdfs:label "no reference point", "distal"; rdfs:comment "reference point not related to either speaker or addressee (distal) (Sylak-Glassman 2016, p.22)"@en.
+:PHOR a :ReferencePointFeature; :hasLabel "PHOR"; rdfs:label "phoric", "situated in discourse"; 
+	rdfs:comment "[The phoric] feature ... designates a pronoun as obligatorily referring to a referent that occurs in the discourse. Strictly speaking, anaphoric pronouns must refer to something that has previously occurred in discourse while a cataphoric pronoun would obligatorily refer to something that comes after it in the discourse. (Sylak-Glassman 2016, p.22f.)"@en.
+
+:Visibility rdfs:subClassOf :DeixisFeature;
+	rdfs:comment """[T]hird-person pronouns and demonstratives can also be distinguished on the basis of whether their referent is visible (VIS) or not (NVIS), as in Kwak'wala (Wakashan; Beck 2000:193), Yupik (Eskimo-Aleut; Bliss and Ritter 2001), and Khasi (Austroasiatic; Bhat 2004:133). (Sylak-Glassman 2016, p.23)"""@en.
+:VIS a :Visibility; :hasLabel "VIS"; rdfs:label "visible".
+:NVIS a :Visibility; :hasLabel "NVIS"; rdfs:label "invisible".
+
+:Verticality rdfs:subClassOf :DeixisFeature;
+	rdfs:comment """[T]hird person and demonstrative pronouns can also encode the vertical spatial relationship between the speaker and referent. Extending on a level plane from the speaker's view, a referent can either be above that plane (ABV), below it (BEL), or at the same level (EVEN) (Schulze 2003:297-300). In addition to Khasi, many of the Nakh-Daghestanian (Northeast Caucasian) languages make verticality distinctions in their demonstrative pronouns. 
+	
+	However, not all Nakh-Daghestanian languages possess this distinction, and in some, the original system has been subjected to restructuring. For example, in Lak, the former remote, "below" demonstrative pronoun ga has become an unmarked remote while the former unmarked demonstrative pronoun ta has come to designate something at the same level (Friedman 2006:304).
+	
+	(Sylak-Glassman 2016, p.23f.)"""@en.
+	
+:ABV a :Verticality; :hasLabel "ABV"; rdfs:label "above".
+:EVEN a :Verticality; :hasLabel "EVEN"; rdfs:label "even".
+:BEL a :Verticality; :hasLabel "BEL"; rdfs:label "below".
+
+:Definiteness rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Lyons (1999:278) defines definiteness as "the grammaticalization of identifiability" ... Identifiability is a pragmatic concept by which the hearer is able to be directed to uniquely identify some entity in the discourse (Lyons 1999:5-6). Definiteness as a grammatical category can be divided into three distinct levels: Definite, specific indefinite, and non-specific indefinite. Lakhota (Siouan) contrasts these three categories, ... [and f]or the purposes of the UniMorph Schema, it is sufficient to distinguish the categories distinguished in Lakhota, which appear to be the most elaborate definite distinctions made using overt, affixal morphology. Because many languages do not distinguish beyond the level of definite and indefinite, features for these two categories are established, with two additional features for specific and non-specific.
+	
+	(Sylak-Glassman 2016, p.21)"""@en;
+	owl:versionInfo "TODO: figure out how the specifictiy markers are combined: These can be combined with the indefinite feature in the same way that the features for inclusive and exclusive can be combined with first person".
+
+:DEF a :Definiteness; :hasLabel "DEF"; rdfs:label "definite".
+:Indefinite rdfs:subClassOf :Definiteness; rdfs:label "indefinite".
+:INDF a :Indefinite; :hasLabel "INDF"; rdfs:label "indefinite".
+:SPEC a :Indefinite; :hasLabel "SPEC"; rdfs:label "specific", "specific indefinite".
+:NSPEC a :Indefinite; :hasLabel "NSPEC"; rdfs:label "non-specific", "non-specific indefinite".
+	
+:Comparison rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Cuzzolin and Lehmann (2004) write that "[a]ll the languages of the world have at their disposal different means to express comparison and gradation," and these notions may be expressed through overt affixal morphology. Comparative constructions have "the semantic function of assigning a graded (i.e. non-identical) position on a predicative scale to two (possibly complex) objects" (Stassen 1984:145). Both comparison and gradation can be expressed via overt affixal morphology. (Sylak-Glassman 2016, p.20)"""@en.
+
+:CMPR a :Comparison; :hasLabel "CMPR"; rdfs:label "comparative";
+	rdfs:comment """The comparative, such as English -er, Russian -ee, or the Georgian circumfix u-...-es (Cuzzolin and Lehmann 2004), relates two objects such that one exceeds the other in degree of exhibiting some quality. Note that this is distinct from the comparative case, which marks the standard of comparison, e.g. than X. In principle, this and the equative feature for adjectives and for nouns could be collapsed to only one feature and used for both these parts of speech.(Sylak-Glassman 2016, p.20)"""@en.
+
+:EQTV a :Comparison; :hasLabel "EQTV"; rdfs:label "equative";
+	rdfs:comment """[E]quative constructions can ... be viewed as comparative constructions in which two entities are compared, but in which they exhibit a quality to an equal extent. The standard of comparison (as much as X) can be marked with a special equative case morpheme (eqtv) just as the adjective itself can be marked as conveying equality (eqt), as in Estonian and in Indonesian.
+	
+	Note that this is distinct from the equative case, which marks the standard of comparison, e.g. as much as X.
+	(Sylak-Glassman 2016, p.20f.)"""@en.
+	
+:Superlative rdfs:subClassOf :Comparison;
+	rdfs:comment """The superlative relates any number of objects such that one exceeds all the others. This is specifically the relative superlative, such as that expressed by English -est. Another type of superlative, the absolute superlative, expresses a meaning like "very" or "to a great extent," and is used in Latin (among other languages). (Sylak-Glassman 2016, p.20)"""@en.
+
+:SPRL a :Superlative; :hasLabel "SPRL"; rdfs:label "superlative";
+	rdfs:comment """The superlative relates any number of objects such that one exceeds all the others. This is specifically the relative superlative, such as that expressed by English -est. Another type of superlative, the absolute superlative, expresses a meaning like "very" or "to a great extent," and is used in Latin (among other languages). (Sylak-Glassman 2016, p.20)"""@en.
+:AB a :Superlative; :hasLabel "AB"; rdfs:label "absolute (for superlative)";
+	rdfs:comment """The superlative relates any number of objects such that one exceeds all the others. This is specifically the relative superlative, such as that expressed by English -est. Another type of superlative, the absolute superlative, expresses a meaning like "very" or "to a great extent," and is used in Latin (among other languages). (Sylak-Glassman 2016, p.20)"""@en.
+:RL a :Superlative; :hasLabel "RL"; rdfs:label "relative (for superlative)";
+	rdfs:comment """The superlative relates any number of objects such that one exceeds all the others. This is specifically the relative superlative, such as that expressed by English -est. Another type of superlative, the absolute superlative, expresses a meaning like "very" or "to a great extent," and is used in Latin (among other languages). (Sylak-Glassman 2016, p.20)"""@en;
+	owl:versionInfo "TODO: check whether AB and RL are individual tags or somehow concatenated with SPRL".
+
+:Case rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Nominal case marks the grammatical relationship that nouns have to the verb, among other functions.
+	
+	More technically, "case is a system of marking dependent nouns for the type of relationship they bear to their heads" (Blake 2001:1). 
+	This encompasses two uses of the term `case': 
+	1) the marking of argument structure by the syntax at a deep level (such as logical form, LF), and 
+	2) the overt morphological marking of argument structure, spatial relations, and psychological attitudes at the surface level. 
+	
+	For our purposes, only this second type of `case' is relevant. 
+	
+	The types of overt case that are encountered in the world's languages can be divided into three types: 
+	1) core case*, 
+	2) non-core non-local cases, and 
+	3) local case** (following the classification of Blake 2001).
+	
+	* Core cases indicate the roles of NPs with respect to syntactic alignment,
+	** Local cases have been shown to have an internal organization that is consistent across languages (Radkevich 2010).
+	
+	(Sylak-Glasman 2016, p.15)"""@en.
+	
+:CoreCase rdfs:subClassOf :Case;
+	rdfs:comment """Core case is also known as `non-local,' `nuclear,' or `grammatical' case (Blake 2001:119; Comrie and Polinsky 1998:97) and includes a limited set of cases that are used to indicate the role of a syntactic argument as subject, object, or indirect object. The types of core cases vary according to the syntactic alignment that a given language uses and can be defined in terms of three "metaarguments," S, A, and P.
+	
+	S is the subject of an intransitive (1-argument) verb. 
+	A is the subject of a transitive (2-argument) or ditransitive (3-argument) verb. 
+	P is the direct object of a transitive or ditransitive verb.
+	
+	S, A, and P are all abbreviations from the first letters of the terms `subject,' `agent,' and `patient,' respectively. Indirect objects are commonly marked with the dative case and are typically not considered core arguments.
+	
+	The ways in which languages map morphological cases to the meta-arguments S, A, and P are collectively called syntactic alignment systems. 
+	
+	In a language with nominative-accusative alignment, the nominative case is used for nouns that function as S or A and accusative is used for nouns that function as P (Blake 2001:119-121). 
+	
+	In an ergative-absolutive language, the ergative case is used for nouns that function as A only while absolutive case is used to mark nouns that function as S or P (122-125). 
+	
+	A few languages have been claimed to possess a full, tripartite distinction between S, A, and P. These languages include Wangkumara (Breen 1976 via Blake 2001:126; Pama-Nyungan) and Yazgulyam (Edel'man 1966:37, 167, 185, Payne 1981:176 via Bickel and Nichols 2009; Pamir, Indo-Iranian).
+
+	Another kind of syntactic alignment, which cannot be described solely in terms of S, A, and P, is the direct-inverse system, which is described under the section on grammatical voice systems in Sylak-Glasman 2016, p. 56. These kinds of systems, which occur for example in Plains Cree, can overtly mark direct and inverse "case" on a noun. Nouns are also sometimes marked as `antipassive' (ANTIP). This term and concept are discussed in the section on voice.
+	
+	(Sylak-Glasman 2016, p.16)"""@en.
+
+:NOM a :CoreCase; :hasLabel "NOM"; rdfs:label "nominative";
+	rdfs:comment "Nominative (NOM), applies to S and A in Nominative-Accusative systems (Sylak-Glasman 2016, p.16)"@en.
+:ACC a :CoreCase; :hasLabel "ACC"; rdfs:label "accusative";
+	rdfs:comment "Accusative (ACC), applies to P in Nominative-Accusative systems (Sylak-Glasman 2016, p.16)"@en.
+:ERG a :CoreCase; :hasLabel "ERG"; rdfs:label "ergative";
+	rdfs:comment "Ergative (ERG), applies to A in Ergative-Absolutive systems (Sylak-Glasman 2016, p.16)"@en.
+:ABS a :CoreCase; :hasLabel "ABS"; rdfs:label "absolutive";
+	rdfs:comment "Absolutive (ABS), applies to S and P in Ergative-Absolutive systems (Sylak-Glasman 2016, p.16)"@en.
+:NOMS a :CoreCase; :hasLabel "NOMS"; rdfs:label "nominative, S-only";
+	rdfs:comment "Nominative, S-only (NOMS), applies to S in Tripartite systems (Sylak-Glasman 2016, p.16)"@en.
+
+:NonCoreCase rdfs:subClassOf :Case;
+	owl:disjointWith :CoreCase, :LocalCase;
+	rdfs:comment """Non-Core, Non-Local Case
+	
+	The other non-local cases include both cross-linguistically common cases, such as the dative, genitive, instrumental, comitative, and vocative, which are sometimes considered `core,' as well as rarer cases, such as the benefactive, purposive, equative, and privative.
+	(Sylak-Glasman 2016, p.16)"""@en.
+
+:VOC a :NonCoreCase; :hasLabel "VOC"; rdfs:label "vocative case";
+	rdfs:comment """The vocative case (VOC) indicates that a noun is being used as a direct form of address. For example, "master!" is rendered with the vocative in Latin as domin-e `master-voc'. (Sylak-Glasman 2016, p.17)"""@en.
+:COMPV a :NonCoreCase; :hasLabel "COMPV"; rdfs:label "comparative case";
+	rdfs:comment """The comparative case (COMPV) marks the standard of comparison, i.e. "than X," and occurs in "Dravidian and some Northeast Caucasian languages". ... Note that this use of comparative is to mark the standard of adjectival comparison, not the comparative degree of the adjective, which is expressed with the feature CMPR. (Sylak-Glasman 2016, p.17)"""@en.
+:EQTV a :NonCoreCase; :hasLabel "EQTV"; rdfs:label "equative case";
+	rdfs:comment """Equative case marks equality or similarity, glossed as `(as much) as s.o./sth, like s.o./sth'. (Sylak-Glasman 2016, p.18)
+	
+	[I]n Tsez and other languages ... the equative (EQTV) ... indicates the standard of comparison in statements of equality and can be translated "(e.g. as much) as X" (Comrie and Polinsky 1998:101-102). The equative case is used in this form in Ancash Quechua, where it is expressed with the suffix -naw (Cuzzolin and Lehmann 2004). Equative case is also used in some languages to capture a similative meaning "like, resembling," and will be used as such here. (Sylak-Glasman 2016, p.17)
+	
+	Note that the equative case (EQTV) marks the standard of comparison in a comparative construction expressing equality while the equative marking (eqt) of an adjective indicates that the degree of the adjective itself expresses equality (Sylak-Glasman 2016, p.18)"""@en.
+:PRIV a :NonCoreCase; :hasLabel "PRIV"; rdfs:label "privative case", "abessive case";
+	rdfs:comment """The privative case indicates lack of something, glossed as `without, lacking sth' (Sylak-Glasman 2016, p.18)
+	
+	[R]arer cases, which occur primarily in Australian languages, include the privative case (PRIV; called the abessive case in Uralic languages), which indicates "lacking, not having, without" ... (Blake 2001:156). (Sylak-Glasman 2016, p.17)"""@en.
+:PROPR a :NonCoreCase; :hasLabel "PROPR"; rdfs:label "proprietive case";
+	rdfs:comment """Proprietive case indicates quality of possessing something, glossed as `having sth' (Sylak-Glasman 2016, p.18).
+	
+	[R]arer cases, which occur primarily in Australian languages, include the ... positive counterpart (of the privative -- CC), the proprietive (PROPR), which indicates "having" (Blake 2001:156). (Sylak-Glasman 2016, p.17)"""@en.
+:AVR a :NonCoreCase; :hasLabel "AVR"; rdfs:label "aversive case";
+	rdfs:comment """Australian languages ... commonly contain an aversive case (AVR), which "indicates what is to be feared or avoided" (Blake 2001:156), glossed as `(afraid) of (ghosts, e.g.), (dying) from (poison, e.g.)' (Sylak-Glasman 2016, p.17f.)"""@en.
+:FRML a :NonCoreCase; :hasLabel "FRML"; rdfs:label "formal case", "essive-formal case";
+	rdfs:comment """Formal case indicates that sth is function as sth else, glossed as `as sth, in the capacity of sth' (Sylak-Glasman 2016, p.18)
+	
+	[T]he formal case (FRML) ... occurs as the `essive-formal' case in Hungarian (Spencer 2008:39). (Sylak-Glasman 2016, p.17)"""@en.
+:TRANS a :NonCoreCase; :hasLabel "TRANS"; rdfs:label "translative case";
+	rdfs:comment """The translative case indicates that an entity is the result of a transformation (Sylak-Glasman 2016, p.18)
+	
+	Hungarian ... explicitly marks an entity as being the result of a transformation. The `translative' case is used, for example, in contexts like `turn into X' where X would be marked with the translative case (TRANS).(Sylak-Glasman 2016, p.17)"""@en.
+:BYWAY a :NonCoreCase; :hasLabel "BYWAY"; rdfs:label "essive-modal case";
+	rdfs:comment """The Hungarian ... essive-modal case (BYWAY) ... marks the notion of `by way of' a location. (Sylak-Glasman 2016, p.17)"""@en.
+	
+:InstrumentalCase rdfs:subClassOf :NonCoreCase;
+	rdfs:comment """Another cross-linguistically common non-local case is the instrumental case (INS), which marks a noun as "the instrument with which an action is carried out" (Blake 2001:156). The comitative (or sociative) case (COM) expresses accompaniment ("with"; ibid.) and its function is often subsumed within the instrumental case (e.g. Russian s Ivan-om `with John-ins'). (Sylak-Glasmann 2016, p.17)"""@en.
+:INS a :InstrumentalCase; :hasLabel "INS"; rdfs:label "instrumental case";
+	rdfs:comment """The instrumental case (INS) marks a noun as "the instrument with which an action is carried out" (Blake 2001:156). [It] marks means by which an action occurred, glossed as `by (means of) sth, with sth, using sth' (Sylak-Glasmann 2016, p.17)"""@en.
+:COM a :InstrumentalCase; :hasLabel "COM"; rdfs:label "comitative case", "sociative case";	
+	rdfs:comment """The comitative (or sociative) case (COM) expresses accompaniment ("with"; Blake 2001:156) and its function is often subsumed within the instrumental case (e.g. Russian s Ivan-om `with John-ins'). (Sylak-Glasmann 2016, p.17)"""@en.
+
+	
+:GenitivalCase rdfs:subClassOf :NonCoreCase;
+	rdfs:comment """[A] common non-local case is the genitive (GEN), which prototypically marks the possessor (e.g. John's/John in John's cat, in the cat of John, and in that cat of John's). Related to the genitive is the relative case (REL), which combines the "A function and possessor function" and occurs in "a number of Caucasian languages and the Eskimo languages". The genitive case is also used in some languages to cover the uses of the partitive case (PRT), which marks the patient (P) of a verb as being only partly affected by the verb's action (e.g. some milk [but not all] in he drank some milk). The partitive case occurs as an independent case in Estonian, Finnish, and Hungarian, where it "is used for the patient if it represents part of a whole or an indefinite quantity, if the action is incomplete, or if the polarity of the clause is negative". These uses of the partitive are captured by the genitive case in both Russian and French. Russian's "genitive of negation" (e.g. Russian njet molok-a `no milk-GEN') can also be thought of as connected to the senses of meanings conveyed using the partitive.
+	
+	(Sylak-Glasman 2016, p.16f)"""@en.
+	
+:GEN a :GenitivalCase; :hasLabel "GEN"; rdfs:label "genitive";
+	rdfs:comment """The genitive case marks a possessor, glossed as `of s.o., s.o.'s' (Sylak-Glasman 2016, p.17)"""@en.
+:REL a :GenitivalCase; :hasLabel "REL"; rdfs:label "relative case";
+	rdfs:comment """[T]he relative case (REL) combines the A function and possessor function and occurs in a number of Caucasian languages and the Eskimo languages. Note that this case is not strictly basic, and one could resolve it in context to either ERG or GEN. (Sylak-Glasman 2016, p.16)
+	
+	The relative case marks possessor and A role, glossed as `of s.o., s.o.'s' (Sylak-Glasman 2016, p.17)"""@en.
+:PRT a :GenitivalCase; :hasLabel "PRT"; rdfs:label "partitive case";
+	rdfs:comment """The partitive case marks a patient as partially affected, glossed as `some of'. (Sylak-Glasman 2016, p.17)
+
+	[T]he partitive case (PRT) ... marks the patient (P) of a verb as being only partly affected by the verb's action (e.g. some milk [but not all] in he drank some milk). (Sylak-Glasman 2016, p.16)
+	
+	The genitive case is ... used in some languages to cover the uses of the partitive case ... The partitive case occurs as an independent case in Estonian, Finnish, and Hungarian, where it "is used for the patient if it represents part of a whole or an indefinite quantity, if the action is incomplete, or if the polarity of the clause is negative". These uses of the partitive are captured by the genitive case in both Russian and French. Russian's "genitive of negation" (e.g. Russian njet molok-a `no milk-GEN') can also be thought of as connected to the senses of meanings conveyed using the partitive. (Sylak-Glasman 2016, p.16f)"""@en.
+	
+:DativalCase rdfs:subClassOf :NonCoreCase;
+	rdfs:comment """The dative (DAT) consistently marks indirect objects, and is often also used to mark experiencers, beneficiaries, and purposes (as well as other much less common functions; Blake 2001:144-145). The beneficiary (BEN) and purposive (PRP) functions of the dative case are split into distinct cases in a few languages such as Basque (Blake 2001:145).
+	(Sylak-Glasman 2016, p.16)"""@en.
+:DAT a :DativalCase; :hasLabel "DAT"; rdfs:label "dative case"; rdfs:comment """The dative case marks the indirect object, glossed as `to (indirect object)'. (Sylak-Glasman 2016, p.17)"""@en.
+:BEN a :DativalCase; :hasLabel "BEN"; rdfs:label "beneficiary case", "benefactive case"; 
+	rdfs:comment """The benefactive case marks a beneficiary of an action, glossed as `(a gift, e.g.) to, for (s.o.)'. (Sylak-Glasman 2016, p.17)"""@en.
+:PRP a :DativalCase; :hasLabel "PRP"; rdfs:label "purposive case"; 
+	rdfs:comment """The purposive case marks purpose of or reason for an action, glossed as `for (profit, e.g.)'. Note that this use of purposive is distinctive from general purposive modality (PURP) and the superordinate modality category purposive used in some Australian languages (AUPRP). (Sylak-Glasman 2016, p.17)"""@en.
+
+:LocalCase rdfs:subClassOf :Case;
+	owl:disjointWith :CoreCase, :NonCoreCase;
+	rdfs:comment """Local cases express spatial relationships typically expressed by prepositions in English (and by adpositions in general in the majority of the world's languages; Radkevich 2010:24). ... The features for encoding local cases are compositional and reflect the structure and distinctions found in the complex local case systems of the world. Based on a survey of 111 languages with local case systems, Radkevich (2010:20-107) shows that local case morphology can be divided into four types of local case morphemes that are consistently arranged following the schema (...) 
+	
+	Noun.Lemma-Stem.Extender-Place-Distal-Motion-Aspect
+	
+	The stem extender may itself be a case form such as ergative in Nakh-Daghestanian languages or genitive in Estonian (Radkevich 2010:3, 21). The types of local case morphemes include Place, Distal, Motion, and Aspect morphemes.
+	
+	(Sylak-Glasman 2016, p.18)"""@en.
+	
+:PlaceMorpheme rdfs:subClassOf :LocalCase;
+	rdfs:comment """The place morphemes "roughly correspond to what [are] usually called adpositions in languages without local cases" and indicate orientation to a very precise degree (Radkevich 2010:29). Consequently, of all the types of local case morphemes, Place morphemes are the most numerous. The Nakh-Daghestanian languages Tabassaran and Tsez appear to be the languages that contain the largest number of Place morphemes, which include separate morphemes for "among, at, behind, in, near, near/in front of, next to, on, on (horizontal), on (vertical)," and "under" (ibid.; Comrie and Polinsky 1998).
+	
+	(Sylak-Glasman 2016, p.18)"""@en.
+
+:INTER a :PlaceMorpheme; :hasLabel "INTER"; rdfs:label "among".
+:AT a :PlaceMorpheme; :hasLabel "AT"; rdfs:label "at".
+:POST a :PlaceMorpheme; :hasLabel "POST"; rdfs:label "behind".
+:IN a :PlaceMorpheme; :hasLabel "IN"; rdfs:label "in".
+:CIRC a :PlaceMorpheme; :hasLabel "CIRC"; rdfs:label "near".
+:ANTE a :PlaceMorpheme; :hasLabel "ANTE"; rdfs:label "near, in front of".
+:APUD a :PlaceMorpheme; :hasLabel "APUD"; rdfs:label "next".
+:ON a :PlaceMorpheme; :hasLabel "ON"; rdfs:label "on".
+:ONHR a :PlaceMorpheme; :hasLabel "ONHR"; rdfs:label "on (horizontal)".
+:ONVR a :PlaceMorpheme; :hasLabel "ONVR"; rdfs:label "on (vertical)".
+:SUB a :PlaceMorpheme; :hasLabel "SUB"; rdfs:label "under".
+	
+:DistalMorpheme rdfs:subClassOf :PlaceMorpheme;
+	rdfs:comment """The Distal category can be seen as an elaboration of the Place category of morphemes. Only three languages in the survey of 111 languages have a distal morpheme within their local case system: Tsez (Nakh-Daghestanian), Savosavo (isolate; Solomon Islands), and Central Dizin (Omotic) (Radkevich 2010:33). Central Dizin overtly marks both distal and its opposing counterpart, proximate, but Tsez overtly marks only distal.
+	
+	(Sylak-Glasman 2016, p.19)"""@en.
+:REM a :DistalMorpheme; :hasLabel "REM"; rdfs:label "distal"; 
+	rdfs:comment """Note that the Distal and Proximate morphemes, REM and PROXM here, are identical to the Remote and Proximate morphemes specified for making distinctions among demonstratives (...) This is not accidental. Radkevich (2010:40-42) notes that `orientation morphemes' with meanings much like those of demonstrative pronouns are directly affixed to nouns bearing local case morphology in Tabassaran, suggesting that in some languages, these domains of morphology may overlap. Moreover, the semantics of the distal/remote and proximate morphemes are the same for local cases and for demonstratives. Distal local case and remoteness on pronouns both indicate that the thing involved is distant from the speaker while proximate morphemes in both categories indicate the opposite. (Sylak-Glassman 2016, p.19)"""@en.
+:PROXM a :DistalMorpheme; :hasLabel "PROXM"; rdfs:label "proximate";
+	rdfs:comment """Note that the Distal and Proximate morphemes, REM and PROXM here, are identical to the Remote and Proximate morphemes specified for making distinctions among demonstratives (...) This is not accidental. Radkevich (2010:40-42) notes that `orientation morphemes' with meanings much like those of demonstrative pronouns are directly affixed to nouns bearing local case morphology in Tabassaran, suggesting that in some languages, these domains of morphology may overlap. Moreover, the semantics of the distal/remote and proximate morphemes are the same for local cases and for demonstratives. Distal local case and remoteness on pronouns both indicate that the thing involved is distant from the speaker while proximate morphemes in both categories indicate the opposite. (Sylak-Glassman 2016, p.19)"""@en.
+	
+:MotionMorpheme rdfs:subClassOf :LocalCase;
+	rdfs:comment """The motion category is composed of only three possible parameters, namely essive (ESS), allative (ALL), and ablative (ABL; Radkevich 2010:34-36). Essive indicates static location with no motion (52). Ablative indicates motion away from a source (ibid.). Allative indicates motion toward a source (ibid.).
+	
+	(Sylak-Glasman 2016, p.19)"""@en.
+:ESS a :MotionMorpheme; :hasLabel "ESS"; rdfs:label "essive"; rdfs:comment """Essive indicates static location with no motion (Sylak-Glassman 2016, p.19)"""@en.
+:ALL a :MotionMorpheme; :hasLabel "ALL"; rdfs:label "allative"; rdfs:comment """Allative indicates motion toward a source (Sylak-Glassman 2016, p.19)"""@en.
+:ABL a :MotionMorpheme; :hasLabel "ABL"; rdfs:label "ablative"; rdfs:comment """Ablative indicates motion away from a source (Sylak-Glassman 2016, p.19)"""@en.
+
+:AspectMorpheme rdfs:subClassOf :MotionMorpheme;
+	rdfs:comment """The aspect category within case can be seen as an elaboration of the motion category. It includes four parameters, namely approximative, terminative, prolative/translative, and versative (Radkevich 2010:37, 53-55). "Approximative case denotes a movement that is directed towards something but does not reach its goal (i.e. incompletive aspect). Grammatical descriptions ... point out that this case is used to emphasize that movement does not reach its goal." In contrast, terminative indicates that a goal has just been reached, and has a basic meaning of "as far as, up to." The versative morpheme indicates motion in the direction of a goal and has a meaning similar to "towards, in the direction of." Its counterpart is the prolative/translative case, which indicates motion "along" or "across" a referent point.
+	
+	(Sylak-Glassman 2016, p.19)"""@en.
+
+:APPRX a :AspectMorpheme; :hasLabel "APPRX"; rdfs:label "approximative"; 
+	rdfs:comment """Approximative case denotes a movement that is directed towards something but does not reach its goal (i.e. incompletive aspect). Grammatical descriptions ... point out that this case is used to emphasize that movement does not reach its goal. (Sylak-Glassman 2016, p.19)"""@en.
+:TERM a :AspectMorpheme; :hasLabel "TERM"; rdfs:label "terminative";
+	rdfs:comment """[T]erminative indicates that a goal has just been reached, and has a basic meaning of "as far as, up to." (Sylak-Glassman 2016, p.19)"""@en.
+:PROL a :AspectMorpheme; :hasLabel "PROL"; rdfs:label "prolative", "translative"; 
+	rdfs:comment """[T]he prolative/translative case ... indicates motion "along" or "across" a referent point. (Sylak-Glassman 2016, p.19)"""@en.
+:VERS a :AspectMorpheme; :hasLabel "VERS"; rdfs:label "versative";
+	rdfs:comment """The versative morpheme indicates motion in the direction of a goal and has a meaning similar to "towards, inthe direction of." (Sylak-Glassman 2016, p.19)"""@en.
+	
+:Aspect rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Aspect ... relates the concepts of 
+	
+	Time of Utterance (TU), 
+	Topic Time (TT), and 
+	Situation Time (TSit) 
+	
+	to define tense and aspect categories. 
+	Topic Time (TT) and Situation Time (TSit) are conceived as spans while Time of Utterance (TU) is a single point. 
+	By defining tense and aspect categories solely in terms of the ordering of these spans and TU, tense and aspect categories can be defined independent of the language under analysis in a way that facilitates cross-linguistic comparison. 
+	
+	TU is the time at which a speaker makes an utterance, and topic time (TT) is the time about which the speaker is making a claim about the action of the verb. Situation time (TSit) is the time in which the state of affairs described by the verb held true.
+
+	Aspect indicates the relationship between the time for which a claim is made (TT) and the time for which a situation actually held true (TSit). 
+	
+	The core aspects that can be defined by relating TSit and TT are: imperfective, perfective, perfect, progressive, and prospective. The habitual and iterative aspects are also defined this way, but require more than one TSit.
+	
+	(Sylak-Glassman 2016, p.13f.)"""@en.
+
+:ImperfectiveAspect rdfs:subClassOf :Aspect;
+	rdfs:comment """With the imperfective aspect (IPVF), TT is included fully within TSit (Klein 1994:102) ... The realization of the imperfective aspect overlaps with that of the progressive aspect in English due to the fact that English lacks a distinct imperfective aspectual form.
+	
+	(Sylak-Glassman 2016, p.14)"""@en.
+
+:IPFV a :ImperfectiveAspect; :hasLabel "IPFV"; rdfs:label "imperfective aspect".
+:PROG a :ImperfectiveAspect; :hasLabel "PROG"; rdfs:label "progressive aspect";
+	rdfs:comment """TT is located exclusively within the source state of TSit
+	
+	Klein (1994:9) writes that "[w]ith the progressive form, the TT is properly contained in the first state of the situation (which is the only one for 1-state situations and which has no TT-contrast for 0-state situations)." This can be regarded as a subcase of the imperfective aspect.
+	(Sylak-Glassman 2016, p.14)"""@en.
+
+:PROSP a :Aspect; :hasLabel "PROSP"; rdfs:label "prospective aspect";
+	rdfs:comment """Prospective aspect: TT is located before TSit
+	
+	The prospective aspect (PROSP) is used when the topic time (TT) precedes the situation time (TSit). The prospective aspect is often confused with future tense since it refers to an action in the future. However, separating prospective aspect and future tense leads to a natural explanation for so-called `future perfect' (which may actually be FUT;PRF) and so-called `future-in-the-past' temporal categories. While the going to / gonna and be about to constructions are useful translations for the prospective aspect, they contain additional, separate connotations of intention for the going to construction and immediacy in the be about to construction.
+	
+	(Sylak-Glassman 2016, p.14)"""@en.
+
+:IterativeAspect rdfs:subClassOf :Aspect;
+	rdfs:comment """The iterative aspect describes the occurrence of multiple events within a single time frame. This can be represented as multiple TSit spans within a  given TT. This TT and the number of TSit spans must be bounded, since if it is infinite or unbounded, it gives rise to a habitual interpretation. The habitual aspect is essentially the iterative aspect, but with infinitely many multiple situation times within an unbounded topic time.
+	
+	(Sylak-Glassman 2016, p.15)"""@en.
+
+:ITER a :IterativeAspect; :hasLabel "ITER"; rdfs:label "iterative aspect";
+	rdfs:comment """Iterative aspect: Multiple instances of the same TSit occur fully within a bounded TT
+	(Sylak-Glassman 2016, p.15)"""@en.
+	
+:HAB a :IterativeAspect; :hasLabel "habitual aspect";
+	rdfs:comment """Habitual aspect: Infinite instances of the same TSit occur fully within an unbounded TT
+	(Sylak-Glassman 2016, p.15)"""@en.
+	
+:PFV a :Aspect; :hasLabel "PFV"; rdfs:label "perfective aspect";
+	rdfs:comment """The perfective aspect (PFV) indicates that the TT is only partially included within TSit, and with 2-state verbs, it partially overlaps with TSit on its right boundary and is within the target state (TS). This leads to an interpretation of completion of the action.
+	
+	(Sylak-Glassman 2016, p.14)"""@en.
+	
+:PRF a :Aspect; :hasLabel "PRF"; rdfs:label "perfect aspect";
+	rdfs:comment """The perfect aspect (PRF), which is distinct from the perfective aspect, locates the TT in the post-state [TS] of the corresponding situation" (Klein 1994:9). In the perfect aspect, the TT is to the right of the TSit, and may be distantly so (Klein 1994:110) ... TT is located at a distance from TSit, yet still within its target state.
+	
+	(Sylak-Glassman 2016, p.14)"""@en.
+	
+:Animacy rdf:type owl:Class;
+	rdfs:subClassOf :MorphFeature;
+	rdfs:comment """Yamamoto (1999:1) writes that animacy "can be regarded as some kind of assumed cognitive scale extending from human through animal to inanimate. ...
+
+	Animacy as a general organizing principle of language is typically modeled as a scale or hierarchy, such as that from Foley and Valin (1985:288, cited in Yamamoto 1999:27):
+	
+	(2) speaker/addressee [1st & 2nd persons; JCS] > 3rd person pronouns > human proper nouns > human common nouns > other animate nouns > inanimate nouns
+
+	To the extent that animacy is a conceptually separate property from person, individuation, and agency, it encompasses only three principal categories: Human, animate, and inanimate (Comrie 1989:185).
+
+	(Sylak-Glassman 2016, p.10f.)"""@en;
+	owl:versionInfo "modeled as a hierarchy, following Foley and van Valin, as quoted by Sylak-Glassman".
+
+:Inanimate rdfs:subClassOf :Animacy;
+		rdfs:comment """inanimate nouns (in opposition to human and other animate nouns)
+		
+		In Russian, "living things who/which both breathe and move" are considered to be animate (Yamamoto 1999:48 citing Corbett 1981:59). Inanimate masculine nouns have identical nominative and accusative forms which are opposed to a distinct genitive form (among other cases), but animate masculine nouns have identical genitive and accusative forms, opposed to a distinct nominative (ibid.).
+		
+		(Sylak-Glassman 2016, p.11)"""@en.
+:INAN a :Inanimate; :hasLabel "INAN".
+
+:Animate rdfs:subClassOf :Animacy;
+	owl:disjointWith :Inanimate;
+	rdfs:comment """human and other animate nouns
+	
+	In Russian, "living things who/which both breathe and move" are considered to be animate (Yamamoto 1999:48 citing Corbett 1981:59). Inanimate masculine nouns have identical nominative and accusative forms which are opposed to a distinct genitive form (among other cases), but animate masculine nouns have identical genitive and accusative forms, opposed to a distinct nominative (ibid.). ... Russian treats animals (in the colloquial sense, i.e. not including humans or microorganisms) as animate.
+		
+	(Sylak-Glassman 2016, p.11)"""@en.
+:ANIM a :Animate; :hasLabel "ANIM".
+
+:Human rdfs:subClassOf :Animate;
+	rdfs:comment """speaker/addressee [1st & 2nd persons; JCS], 3rd person pronouns, human proper nouns, human common nouns
+	
+	While Russian treats animals (in the colloquial sense, i.e. not including humans or microorganisms) as animate, other languages distinguish between humans and non-humans. For example, the Ryukyuan language Yuwan has two allomorphs for the nominative case, -ga and -nu (Niinaga 2010:58-59). The -ga allomorph is used for human pronouns, demonstratives, and elder kinship terms, while the -nu allomorph is used for everything else.
+	
+	(Sylak-Glassman 2016, p.11)"""@en;
+	owl:versionInfo "It is not clear whether 3rd person pronouns are restricted to human referents, there is no clear indication in Sylak-Glassman, but it is entailed by the hierarchy he gives. In Russian, 3rd person pronouns are treated as animate even if referring to non-animate referents."@en.
+:HUM a :Human; :hasLabel "HUM".
+
+:NonHuman rdfs:subClassOf :Animate;
+	rdfs:comment "other animate nouns (in opposition to speaker/addressee [1st & 2nd persons; JCS], 3rd person pronouns, human proper nouns, human common nouns)
+	
+	While Russian treats animals (in the colloquial sense, i.e. not including humans or microorganisms) as animate, other languages distinguish between humans and non-humans. For example, the Ryukyuan language Yuwan has two allomorphs for the nominative case, -ga and -nu (Niinaga 2010:58-59). The -ga allomorph is used for human pronouns, demonstratives, and elder kinship terms, while the -nu allomorph is used for everything else.
+
+	(Sylak-Glassman 2016, p.11)"@en;
+	owl:disjointWith :Human.
+:NHUM a :NonHuman; :hasLabel "NHUM".
+
+###  http://purl.org/olia/unimorph.owl#Aktionsart
+
+:Aktionsart rdf:type owl:Class ;
+            
+            rdfs:subClassOf :MorphFeature ;
+            
+            rdfs:comment """Aktionsart refers to the "inherent temporal features" of a verb (Klein 1994:29-31), which can be seen as the linguistic correlates to how the action described by a verb unfolds in real life. The term aktionsart (plural aktionsarten; capitalization adapted to English) was originally used by Agrell (1908) to refer to "secondary modifications of basic verb meanings by means of affixes," as in German erblühen `to start flowering' from blühen `to flower' (Klein 1994:17). Aktionsart is now used to refer to the kind of semantic distinctions that underlie the morphological distinctions that Agrell (1908) noticed. (Sylak-Glassman 2016, p. 8f.)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Atelic
+
+:Atelic rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Dynamic ;
+        
+        owl:disjointWith :Telic ;
+        
+        rdfs:comment """Atelic (`no culmination') `to sneeze, run'
+
+Telic verbs have a well-defined terminal point at which an action naturally terminates with a result Comrie (1976a:44-45). A test for telicity introduced by Klein (1974:106-107) is whether an action, when interrupted, can be felicitously described as having occurred. For example, if someone is drowning and they are interrupted, one cannot say "someone drowned." In contrast, if someone is playing and is interrupted, one can felicitously say "someone played." These examples, quoted in Comrie (1976a:45), illustrate the telicity of "drown" and the atelicity of "play." The action of drowning naturally terminates and yields a result whereas the action of playing need not ever necessarily terminate.
+(Sylak-Glassman 2016, p.9-10)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Durative
+
+:Durative rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Dynamic ;
+          
+          owl:disjointWith :Punctual ;
+          
+          rdfs:comment """Both telic and atelic (atel) situations can be divided into punctual (pct) and durative (dur) events (Comrie 1976a:41-44). To illustrate the distinction, compare two atelic verbs, "sneeze" and "run." One can run for an hour, and for that whole time the running is uninterrupted. There
+are not small points in time where the action of running has ceased. However, if one says that someone sneezed for an hour, the interpretation is that multiple events necessarily had to occur, and that there were small breaks between those events in which the event was not occurring. "Run" is therefore durative because its action can extend over a time span. "Sneeze" is punctual because, lexically, it has no duration: It is a single event that takes place for an instant and the action cannot be understood as extending over a time span. Forcibly extending a punctual action over a time span, for example by specifically stating a duration, forces a repetitive interpretation. 
+
+Sylak-Glassman 2016, p.10
+"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Dynamic
+
+:Dynamic rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Aktionsart ;
+         
+         owl:disjointWith :Stative ;
+         
+         rdfs:comment """The first distinction is between stative (stat) and dynamic (dyn) verbs.
+
+Eventives / Dynamics (`true only over a span of time' requires effort to maintain) `to die, build sth, sneeze, run' (Sylak-Glassman 2016, p. 9)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Feature
+
+:MorphFeature rdf:type owl:Class ;
+         
+         rdfs:comment """"The first step in constructing the Universal Morphological Feature Schema was to identify the dimensions of meaning (i.e. morphological categories) that are expressed by overt inflectional morphology in the world's languages. These were identified by surveying the linguistic typology literature for common agreement features, and then by identifying the kinds of inflectional morphology that are typically associated with each part of speech." (Sylak-Glassman 2016, p. 6)
+
+Note that feature values are modeled as instances, not as classes, because "[t]he UniMorph Schema features represent semantic "atoms" that are never decomposed into more fine-grained meanings in any natural language." (Sylak-Glassman 2016, p. 5)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Punctual
+
+:Punctual rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Dynamic ;
+          
+          rdfs:comment """Both telic and atelic (atel) situations can be divided into punctual (pct) and durative (dur) events (Comrie 1976a:41-44). To illustrate the distinction, compare two atelic verbs, "sneeze" and "run." One can run for an hour, and for that whole time the running is uninterrupted. There
+are not small points in time where the action of running has ceased. However, if one says that someone sneezed for an hour, the interpretation is that multiple events necessarily had to occur, and that there were small breaks between those events in which the event was not occurring. "Run" is therefore durative because its action can extend over a time span. "Sneeze" is punctual because, lexically, it has no duration: It is a single event that takes place for an instant and the action cannot be understood as extending over a time span. Forcibly extending a punctual action over a time span, for example by specifically stating a duration, forces a repetitive interpretation. 
+
+Sylak-Glassman 2016, p.10
+"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Stative
+
+:Stative rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Aktionsart ;
+         
+         rdfs:comment """(true at any instant, requires no effort to remain true) `to know, love'
+
+Comrie (1976a:48-50) defines stative verbs as those whose action will continue (or continue to hold true) without any additional effort being applied. Moreover, a stative action usually continues without any internal change in the type of action that is occurring. For example, in "John knows Chris," no effort is required on John's part to continue to know someone and there is no internal dynamic to the action of knowing. However, in "John is building a shed," continued effort is required on John's part to continue building and the action of building involves different phases that progress to an endpoint.
+(Sylak-Glassman 2016, p. 9)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#Telic
+
+:Telic rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Dynamic ;
+       
+       rdfs:comment """Telic (`builds to a culmination') `to drown, build sth'
+
+Telic verbs have a well-defined terminal point at which an action naturally terminates with a result Comrie (1976a:44-45). A test for telicity introduced by Klein (1974:106-107) is whether an action, when interrupted, can be felicitously described as having occurred. For example, if someone is drowning and they are interrupted, one cannot say "someone drowned." In contrast, if someone is playing and is interrupted, one can felicitously say "someone played." These examples, quoted in Comrie (1976a:45), illustrate the telicity of "drown" and the atelicity of "play." The action of drowning naturally terminates and yields a result whereas the action of playing need not ever necessarily terminate.
+(Sylak-Glassman 2016, p.9-10)"""@en .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://purl.org/olia/unimorph.owl#ACCMP
+
+:ACCMP rdf:type :Durative ,
+                :Telic ,
+                owl:Thing ;
+       
+       rdfs:label "accomplishment"@en ;
+       
+       :hasLabel "ACCMP" ;
+       
+       rdfs:comment """The distinction between punctual and durative telic verbs is (...) diffcult to describe. The actions of both verbs terminate in a result, but achievements (ach; punctual telic verbs) occur quickly and tend to mark a rapid state transition. For example, "die" represents an achievement because it marks a result that comes about instantly. A durative telic verb, such as "build," marks a result that takes place only after a span of time, and this is called, somewhat confusingly, an accomplishment (accmp).
+(Sylak-Glassman 2016, p. 10)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#ACH
+
+:ACH rdf:type :Punctual ,
+              :Telic ,
+              owl:Thing ;
+     
+     rdfs:label "achievement"@en ;
+     
+     :hasLabel "ACH" ;
+     
+     rdfs:comment """The distinction between punctual and durative telic verbs is (...) diffcult to describe. The actions of both verbs terminate in a result, but achievements (ach; punctual telic verbs) occur quickly and tend to mark a rapid state transition. For example, "die" represents an achievement because it marks a result that comes about instantly. A durative telic verb, such as "build," marks a result that takes place only after a span of time, and this is called, somewhat confusingly, an accomplishment (accmp).
+(Sylak-Glassman 2016, p. 10)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#ACTY
+
+:ACTY rdf:type :Atelic ,
+               :Durative ,
+               owl:Thing ;
+      
+      rdfs:label "activity"@en ;
+      
+      :hasLabel "ACTY" ;
+      
+      rdfs:comment """Atelic punctual verbs like "sneeze" are termed semelfactive (semel; Comrie 1976a:42) and atelic durative verbs are termed activities (acty; Vendler 1957:146). 
+(Sylak-Glassman 2016, p. 19)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#ATEL
+
+:ATEL rdf:type :Atelic ,
+               owl:Thing ;
+      
+      :hasLabel "ATEL" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#DUR
+
+:DUR rdf:type :Durative ,
+              owl:Thing ;
+     
+     :hasLabel "DUR" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#DYN
+
+:DYN rdf:type :Dynamic ,
+              owl:Thing ;
+     
+     :hasLabel "DYN" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#PCT
+
+:PCT rdf:type :Punctual ,
+              owl:Thing ;
+     
+     :hasLabel "PCT" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#SEMEL
+
+:SEMEL rdf:type :Atelic ,
+                :Punctual ,
+                owl:Thing ;
+       
+       rdfs:label "semelfactive"@en ;
+       
+       :hasLabel "SEMEL" ;
+       
+       rdfs:comment """Atelic punctual verbs like "sneeze" are termed semelfactive (semel; Comrie 1976a:42) and atelic durative verbs are termed activities (acty; Vendler 1957:146). 
+(Sylak-Glassman 2016, p. 19)"""@en .
+
+
+
+###  http://purl.org/olia/unimorph.owl#STAT
+
+:STAT rdf:type :Stative ,
+               owl:Thing ;
+      
+      :hasLabel "STAT" .
+
+
+
+###  http://purl.org/olia/unimorph.owl#TEL
+
+:TEL rdf:type :Telic ,
+              owl:Thing ;
+     
+     :hasLabel "TEL" .
+
+
+
+

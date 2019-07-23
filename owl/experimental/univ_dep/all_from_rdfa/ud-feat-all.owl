@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:olia_system="http://purl.org/olia/system.owl#"
+>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumTypeOrd">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumType">
+        <rdfs:comment xml:lang="en-gb">Some languages (especially Slavic) have a complex system ofnumerals. For example, in the school grammar of Czech, the main part of speech is “numeral”, it includes almost everything where counting is involved and there are various subtypes. It also includes interrogative, relative, indefinite and demonstrative words referring to numbers (words like kolik / how many, tolik / so many, několik / some, a few), so at the same time we may have a non-empty value of PronType. (In English, these words are called quantifiers and they are considered a subgroup of determiners.) From the syntactic point of view, some numtypes behave like adjectives and some behave like adverbs. We tag them u-pos/ADJ and u-pos/ADV respectively. Thus the NumType feature applies to several different parts of speech: u-pos/NUM: cardinal numerals u-pos/DET: quantifiers u-pos/ADJ: definite adjectival, e.g. ordinal numerals u-pos/ADV: adverbial (e.g. ordinal and multiplicative) numerals, both definite and pronominal Card: cardinal number or corresponding interrogative / relative / indefinite / demonstrative word Note that in some Indo-European languages there is a fuzzy borderline between numerals and nouns for thousand, million and billion. Examples [en] one, two, three [cs] jeden, dva, tři “one, two, three”; kolik “how many”; několik “some”; tolik “so many”; mnoho “many”; málo “few” Ord: ordinal number or corresponding interrogative / relative / indefinite / demonstrative word This is a subtype of adjective or (in some languages) of adverb. Examples [en] first, second, third; [cs] adjectival: první “first”; druhý “second”, třetí “third”; kolikátý lit. how manieth “which rank”; několikátý “some rank”; tolikátý “this/that rank” [cs] adverbial: poprvé “for the first time”; podruhé “for the second time”; potřetí “for the third time”; pokolikáté “for which time”, poněkolikáté “for x-th time”, potolikáté Mult: multiplicative numeral or corresponding interrogative / relative / indefinite / demonstrative word This is subtype of adverb. Examples [cs] jednou “once”; dvakrát “twice”; třikrát “three times”; kolikrát “how many times”, několikrát “several times”; tolikrát “so many times” Frac: fraction This is a subtype of cardinal numbers, occasionally distinguished in corpora. It may denote a fraction or just the denominator of the fraction. In various languages these words may behave morphologically and syntactically as nouns or ordinal numerals. Examples [en] three-quarters [cs] půl / polovina “half”; třetina “one third”; čtvrt / čtvrtina “quarter” Sets: number of sets of things Morphologically distinct class of numerals used to count sets of things, or nouns that are pluralia tantum. Examples [cs] dvoje / troje boty “two / three [pairs of] shoes”; as opposed to normal cardinal numbers: dvě / tři boty “two / three shoes” Dist: distributive numeral Used to express that the same quantity is distributed to each member in a set of targets. Examples [hu] három-három in gyermekenként három-három ezer forinttal “three thousand forint per child” Range: range of values This could be considered a subtype of cardinal numbers, occasionally distinguished in corpora. Examples [en] two-five “two to five” (provided tokenization leaves it as one token.) Gen: generic numeral, i.e. a numeral that is neither of the above Czech school grammar distinguishes this subclass, which is why it appears in Czech tagsets. Other Slavic languages may have similar words but their traditional classification may differ. (Note that “generic numerals” in Czech grammar also include the Sets subclass mentioned above.) Examples [cs] čtvero, patero, desatero (specific forms of four, five, ten; they are morphologically, syntactically and stylistically distinct from the default forms čtyři, pět, deset); dvojí, trojí, čtverý (twofold, threefold, fourfold; these are morphologically and syntactically adjectives).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">numeral type</rdfs:label>
+        <rdfs:label>NumType</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Ord</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#AnimacyNhum">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Animacy">
+        <rdfs:comment xml:lang="en-gb">Similarly toGender (and to the African noun classes), animacy is usually a lexical feature of nouns and inflectional feature of other parts of speech (pronouns, adjectives, determiners, numerals, verbs) that mark agreement with nouns. It is independent of gender, therefore it is encoded separately in some tagsets (e.g. all the Multext-East tagsets). On the other hand, in Czech the (almost) only grammatical implications occur within the masculine gender, which is why the PDT tagset does not have animateness as separate feature and instead defines four genders: masculine animate, masculine inanimate, feminine and neuter. We follow the two-feature approach used in Multext-East (many languages) because it is safer. Polish is special in that it also distinguishes grammatically human vs. non-human animates. It can be demonstrated by inflection of the example word który “which” (boldface forms differ from the middle row): gender sg-nom sg-gen sg-dat sg-acc sg-ins sg-loc pl-nom pl-gen pl-dat pl-acc pl-ins pl-loc animate human który którego któremu którego którym którym którzy których którym których którymi których animate non-human który którego któremu którego którym którym które których którym które którymi których in-animate który którego któremu który którym którym które których którym które którymi których Anim: animate Human beings, animals, fictional characters, names of professions etc. are all animate. Even nouns that are normally inanimate can be inflected as animate if they are personified. For instance, consider a children’s story about cars where cars live and talk as people; then the cars may become and be inflected as animates. Nhum: animate but non-human Attested in Polish. In languages where Nhum is used, Anim is restricted to human beings (complement of Nhum). Inan: inanimate Nouns that are not animate are inanimate. (If Nhum is used, nouns that are neither Anim nor Nhum are Inan.)</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">animacy</rdfs:label>
+        <rdfs:label>Animacy</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasAnimacy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Nhum</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VerbFormPart">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVerbForm"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VerbForm">
+        <rdfs:comment xml:lang="en-gb">Even though the name of the feature seems to suggest that it is used exclusively withverbs, it is not the case. Some verb forms in some languages actually form a gray zone between verbs and other parts of speech (nouns, adjectives and adverbs). For instance, participles may be either classified as verbs or as adjectives, depending on language and context. In both cases VerbForm=Part may be used to separate them from other verb forms or other types of adjectives. Fin: finite verb Rule of thumb: if it has non-empty Mood, it is finite. But beware that some tagsets conflate verb forms and moods into one feature. Examples [en] I do, he does Inf: infinitive Infinitive is the citation form of verbs in many languages. Unlike in English, it often has morphological form that is distinct from the finite forms. Infinitives may be used together with auxiliaries to form periphrastic tenses (e.g. future tense [cs] budu sedět v letadle “I will sit in a plane”), they appear as arguments of modal verbs etc. In some languages they behave similarly to nouns and are used as such (similar to the gerund in English). Examples [de] ich muss gehen “I must go” Sup: supine Supine is a rare verb form. It survives in some Slavic languages (Slovenian) and is used instead of infinitive as the argument of motion verbs (old [cs] jdu spat lit. I-go sleep). A form called “supine” also exists in Swedish where it is a special form of the participle, used to form the composite past form of a verb. It is used after the auxiliary verb ha (to have) but not after vara (to be): Simple past: I ate (the) dinner = Jag åt maten (using preterite) Composite past: I have eaten (the) dinner = Jag har ätit maten (using supine) Past participle common: (The) dinner is eaten = Maten är äten (using past participle) Past participle neuter: (The) apple is eaten = Äpplet är ätet Past participle plural: (The) apples are eaten = Äpplena är ätna Part: participle Participle is a non-finite verb form that shares properties of verbs and adjectives. Its usage varies across languages. It may be used to form various periphrastic verb forms such as complex tenses and passives; it may be also used purely adjectively. Other features may help to distinguish past/present participles (English), active/passive participles (Czech), imperfect/perfect participles (Hindi) etc. Examples [en] he could have been prepared if he had forseen it; I will be driving home. Trans: transgressive The transgressive, also called adverbial participle, is a non-finite verb form that shares properties of verbs and adverbs. It appears e.g. in Slavic and Indo-Aryan languages. Examples [cs] zírali na mne, pevně svírajíce své zbraně “they stared at me while gripping their guns firmly”; udělavši večeři, zavolala rodinu ke stolu “having prepared the dinner, she called her family to the table” Ger: gerund Gerund is a non-finite verb form that shares properties of verbs and nouns. In English it shares the morphological form with present participle, which may mean that the tagset will not distinguish it from the participle. Examples [en] I look forward to seeing you; he turns a blind eye to my being late</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">form of verb or deverbative</rdfs:label>
+        <rdfs:label>VerbForm</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Part</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseAdd">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Case">
+        <rdfs:comment xml:lang="en-gb">Case is usually an inflectional feature ofnouns and, depending on language, other parts of speech (pronouns, adjectives, determiners, numerals, verbs) that mark agreement with nouns. In some tagsets it is also valency feature of adpositions (saying that the adposition requires its argument to be in that case). Case helps specify the role of the noun phrase in the sentence, especially in free-word-order languages. For example, the nominative and accusative cases often distinguish subject and object of the verb, while in fixed-word-order languages these functions would be distinguished merely by the positions of the nouns in the sentence. Here on the level of morphosyntactic features we are dealing with case expressed morphologically, i.e. by bound morphemes (affixes). Note that on a higher level case can be understood more broadly as the role, and it can be also expressed by adding an adposition to the noun. What is expressed by affixes in one language can be expressed using adpositions in another language. Cf. the u-dep/case dependency label. Examples [cs] nominative matka “mother”, genitive matky, dative matce, accusative matku, vocative matko, locative matce, instrumental matkou [de] nominative der Mann “the man”, genitive des Mannes, dative dem Mann, accusative den Mann [en] nominative/direct case he, she, accusative/oblique case him, her. The descriptions of the individual case values below include semantic hints about the prototypical meaning of the case. Bear in mind that quite often a case will be used for a meaning that is totally unrelated to the meaning mentioned here. Valency of verbs, adpositions and other words will determine that the noun phrase must be in a particular grammatical case to fill a particular valency slot (semantic role). It is much the same as trying to explain the meaning of prepositions: most people would agree that the central meaning of English in is location in space or time but there are phrases where the meaning is less locational: In God we trust. Say it in English. Note that Indian corpora based on the so-called Paninian model use a related feature called vibhakti. It is a merger of the Case feature described here and of various postpositions. Values of the feature are language-dependent because they are copies of the relevant morphemes (either bound morphemes or postpositions). Vibhakti can be mapped on the Case values described here if we know 1. which source values are bound morphemes (postpositions are separate nodes for us) and 2. what is their meaning. For instance, the genitive case (Gen) in Bengali is marked using the suffix -ra (-র), i.e. vib=era. In Hindi, the suffix has been split off the noun and it is now written as a separate word – the postposition kā/kī/ke (का/की/के). Even if the postpositional phrase can be understood as a genitive noun phrase, the noun is not in genitive. Instead, the postposition requires that it takes one of three case forms that are marked directly on the noun: the oblique case (Acc). Nom: nominative / direct The base form of the noun, typically used as citation form (lemma). In many languages this is the word form used for subjects of clauses. If the language has only two cases, which are called “direct” and “oblique”, the direct case will be marked Nom. Acc: accusative / oblique Perhaps the second most widely spread morphological case. In many languages this is the word form used for direct objects of verbs. If the language has only two cases, which are called “direct” and “oblique”, the oblique case will be marked Acc. Abs: absolutive Some languages (e.g. Basque) do not use nominative-accusative to distinguish subjects and objects. Instead, they use the contrast of absolutive-ergative. The absolutive case marks subject of intransitive verb and direct object of transitive verb. Erg: ergative Some languages (e.g. Basque) do not use nominative-accusative to distinguish subjects and objects. Instead, they use the contrast of absolutive-ergative. The ergative case marks subject of transitive verb. Dat: dative In many languages this is the word form used for indirect objects of verbs. Examples [de] Ich gebe meinem Bruder ein Geschenk. “I give my brother a present.” (meinem Bruder “my brother” is dative and ein Geschenk “a present” is accusative.) Gen: genitive Prototypical meaning of genitive is that the noun phrase somehow belongs to its governor; it would often be translated by the English preposition of. English has the “saxon genitive” formed by the suffix ‘s; but we will normally not need the feature in English because the suffix gets separated from the noun during tokenization. Note that despite considerable semantic overlap, the genitive case is not the same as the feature of possessivity (Poss). Possessivity is a lexical feature, i.e. it applies to lemma and its whole paradigm. Genitive is a feature of just a subset of word forms of the lemma. Semantics of possessivity is much more clearly defined while the genitive (as many other cases) may be required in situations that have nothing to do with possessing. For example, [cs] bez prezidentovy dcery “without the president’s daughter” is a prepositional phrase containing the preposition bez “without”, the possessive adjective prezidentovy “president’s” and the noun dcery “daughter”. The possessive adjective is derived from the noun prezident but it is really an adjective (with separate lemma and paradigm), not just a form of the noun. In addition, both the adjective and the noun are in their genitive forms (the nominative would be prezidentova dcera). There is nothing possessive about this particular occurrence of the genitive. It is there because the preposition bez always requires its argument to be in genitive. Examples [cs] Praha je hlavní město České republiky. “Prague is the capital of the Czech Republic.” Note that in Basque, Gen should be used for possessive genitive (as opposed to locative genitive): diktadorearen erregimena “dictator’s regime”; diktadore “dictator”. Voc: vocative The vocative case is a special form of noun used to address someone. Thus it predominantly appears with animate nouns (see the feature of Animacy). Nevertheless this is not a grammatical restriction and inanimate things can be addressed as well. Examples [cs] Co myslíš, Filipe? “What do you think, Filip?” Loc: locative The locative case often expresses location in space or time, which gave it its name. As elsewhere, non-locational meanings also exist and they are not rare. Uralic languages have a complex set of fine-grained locational and directional cases (see below) instead of the locative. Even in languages that have locative, some location roles may be expressed using other cases (e.g. because those cases are required by a preposition). In Slavic languages this is the only case that is used exclusively in combination with prepositions (but such a restriction may not hold in other languages that have locative). Examples [cs] V červenci jsem byl ve Švédsku. “In July I was in Sweden.” [cs] Mluvili jsme tam o morfologii. “We talked there about morphology.” (Non-locational non-temporal example) Ins: instrumental / instructive The role from which the name of the instrumental case is derived is that the noun is used as instrument to do something (as in [cs] psát perem “to write using a pen”). Many other meanings are possible, e.g. in Czech the instrumental is required by the preposition s “with” and thus it includes the meaning expressed in other languages by the comitative case. In Czech the instrumental is also used for the agent-object in passive constructions (cf. the English preposition by). Examples [cs] Tento zákon byl schválen vládou. “This bill has been approved by the government.” (Passive example) A semantically similar case called instructive is used rarely in Finnish to express “with (the aid of)”. It can be applied to infinitives that behave much like nouns in Finnish. We propose one label for both instrumental and instructive (instrumental is not defined in Finnish). Examples [fi] lähteä “to leave”; 2003 lähtien “since 2003” (second infinitive in the instructive case) [fi] yllättää “to surprise”; sekaantui yllättäen valtataisteluun lit. was-involved-in by-surprise.Ins power-struggle.Ill. Par: partitive In Finnish the partitive case expresses indefinite identity and unfinished actions without result. Examples [fi] kolme taloa “three houses”; (the -a suffix of talo) [fi] rakastan tätä taloa “I love this house” [fi] saanko lainata kirjaa? “can I borrow the book?” (the -a suffix of kirja) [fi]lasissa on maitoa “there is (some) milk in the glass” Examples comparing partitive with accusative: ammuin karhun “I shot a bear.Acc” (and I know that it is dead); ammuin karhua “I shot at a bear.Par” (but I may have missed). Using accusative instead of partitive may also substitute the missing future tense: luen kirjan “I will read the book.Acc”; luen kirjaa “I am reading the book.Par”. Dis: distributive The distributive case conveys that something happened to every member of a set, one in a time. Or it may express frequency. Examples [hu] fejenként “per capita” [hu] esetenként “in some cases” [hu] hetenként “once per week, weekly” [hu] tízpercenként “every ten minutes” Ess: essive / prolative The essive case expresses a temporary state, often it corresponds to English “as a …” A similar case in Basque is called prolative and it should be tagged Ess too. Examples [fi] lapsi “child”; lapsena “as a child / when he/she was child” [et] laps “child”; lapsena “as a child” [eu] erreformista “reformer”; erreformistatzat “as a reformer” Tra: translative / factive The translative case expresses a change of state (“it becomes X”, “it changes to X”). Also used for the phrase “in language X”. In the Szeged Treebank, this case is called factive. Examples [fi] pitkä “long”; kasvoi pitkäksi “grew long” [fi] englanti “English language”; englanniksi “in/into English” [fi] kello kuusi “six o’clock”; kello kuudeksi “by six o’clock” [et] kell kuus “six o’clock”; kella kuueks “by six o’clock” [hu] Oroszlány halott várossá válhat. lit. Oroszlány dead city.Tra could-become. “Oroszlány could become a dead city.” Com: comitative / associative The comitative (also called associative) case corresponds to English “together with …” Examples [et] koer “dog”; koeraga “with dog” Abe: abessive The abessive case corresponds to the English preposition without. Examples [fi] raha “money”; rahatta “without money” Ine: inessive The inessive case expresses location inside of something. Examples [hu] ház “house”; házban “in the house” [fi] talo “house”; talossa “in the house” [et] maja “house”; majas “in the house” Ill: illative The illative case expresses direction into something. Examples [hu]ház “house”; házba “into the house” [fi] talo “house”; taloon “into the house” [et] maja “house”; majasse / majja “into the house” Ela: elative The elative case expresses direction out of something. Examples [hu]ház “house”; házból “from the house” [fi] talo “house”; talosta “from the house” [et] maja “house”; majast “from the house” Add: additive Distinguished by some scholars in Estonian, not recognized by traditional grammar, exists in the Multext-East Estonian tagset and in the Eesti keele puudepank. Reportedly same or similar meaning as illative. Forms of this case exist only in singular and not for all nouns. Ade: adessive The adessive case expresses location at or on something. The corresponding directional cases are allative (towards something) and ablative (from something). Examples [hu] pénztár “cash desk”; pénztárnál “at the cash desk” [fi] pöytä “table”; pöydällä “on the table” [et] laud “table”;laual “on the table” Note that adessive is used to express location on the surface of something in Finnish and Estonian, but does not carry this meaning in Hungarian. All: allative The allative case expresses direction to something (destination is adessive, i.e. at or on that something). Examples [hu] pénztár “cash desk”; pénztárhoz “to the cash desk” [fi] pöytä “table”; pöydälle “onto the table” Abl: ablative Prototypical meaning: direction from some point. Examples [hu] a barátomtól jövök “I’m coming from my friend” [fi] pöydältä “from the table”; katolta “from the roof”; rannalta “from the beach” Sup: superessive Used, chiefly in Hungarian, to indicate location on top of something or on the surface of something. Examples [hu] asztal “table”; asztalon “on the table” [hu] könyvek “books”; könyveken “on books” Sub: sublative The sublative case is used in Finno-Ugric languages to express the destination of movement, originally to the surface of something (e.g. “to climb a tree”), and, by extension, in other figurative meanings as well (e.g. “to university”). Examples [hu] Belgrádtól 150 kilométerre délnyugatra lit. Belgrade.Abl 150 kilometer.Sub southwest.Sub “150 kilometers southwest of Belgrade” [hu] hajó “ship”; hajóra “onto the ship” [hu] bokorra “on the shrub” Del: delative Used, chiefly in Hungarian, to express the movement from the surface of something (like “moved off the table”). Other meanings are possible as well, e.g. “about something”. Examples [hu] asztal “table”; az asztalról “off the table” [hu]Budapestről jövök “I am coming from Budapest” Lat: lative / directional allative The lative case denotes movement towards/to/into/onto something. Similar case in Basque is called directional allative (Spanish adlativo direccional). However, lative is typically thought of as a union of allative, illative and sublative, while in Basque it is derived from allative, which also exists independently. Examples [eu] behe “low”; beherantz “down” Tem: temporal The temporal case is used to indicate time. Examples [hu] hétkor “at seven (o’clock)”; éjfélkor “at midnight”; karácsonykor “at Christmas” Ter: terminative / terminal allative The terminative case specifies where something ends in space or time. Similar case in Basque is called terminal allative (Spanish adlativo terminal). Examples [et] jõeni “down to the river”; kella kuueni “till six o’clock” [hu] a házig “up to the house”; hat óráig “till six o’clock” [eu] erdi “half”; erdiraino “up to the half” Cau: causative / motivative Noun in this case is the cause of something. In Hungarian it also seems to be used frequently with currency (“to buy something for the money”) and it also can mean the goal of something. Examples [hu] Egy világcég benzinkútjánál 7183 forintért tankoltam. lit. a world-wide.company petrol.station.Ade 7183 forint.Cau refueled “I refueled my car at the petrol station of a world-wide company for 7183 forints.” [hu] Elmentem a boltba tejért. lit. went the shop.Ill milk.Cau “I went to the shop to buy milk.” [eu] jokaera “behavior”; jokaeragatik “because of behavior” Ben: benefactive / destinative The benefactive case corresponds to the English preposition for. Examples [eu] mutil “boy”; mutilarentzat “for boys”</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">case</rdfs:label>
+        <rdfs:label>Case</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Add</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseDis">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Dis</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodImp">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Mood">
+        <rdfs:comment xml:lang="en-gb">Mood is a feature that expresses modality and subclassifies finite verb forms. Ind: indicative The indicative can be considered the default mood. A verb in indicative merely states that something happens, has happened or will happen, without adding any attitude of the speaker. Examples [cs] Studuješ na univerzitě. “You study at the university.” [de] Du studierst an der Universität. “You study at the university.” Imp: imperative The speaker uses imperative to order or ask the addressee to do the action of the verb. Examples [cs] Studuj na univerzitě! “Study at the university!” [de] Studiere an der Universität! “Study at the university!” Cnd: conditional The conditional mood is used to express actions that would have taken place under some circumstances but they actually did not / do not happen. Grammars of some languages may classify conditional as tense (rather than mood) but e.g. in Czech it combines with two different tenses (past and present). Examples [cs] Kdybych byl chytrý, studoval bych na univerzitě. “If I were smart I would study at the university” (note that only the auxiliary bych is specific to conditional; the active participle byl is also needed to analytically form the conditional mood, however, it will only be tagged as participle because it can also be used to form past tense indicative.) Pot: potential The action of the verb is likely but not certain. Used e.g. in Finnish. Sub: subjunctive / conjunctive The subjunctive mood is used under certain circumstances in subordinate clauses, typically for actions that are subjective or otherwise uncertain. In German, it may be also used to convey the conditional meaning. Examples [fr] Je veux que tu le fasses “I want you to do it” lit. I want that you it do.Sub Jus: jussive The jussive mood expresses the desire that the action happens. Used e.g. in Arabic. Qot: quotative The quotative mood is used e.g. in Estonian to denote direct speech. Opt: optative Used e.g. in Turkish in exclamations like “May you have a long life!” or “If only I were rich!” Des: desiderative The desiderative mood corresponds to the modal verb “want to”: “He wants to come.” Used e.g. in Turkish. Nec: necessitative The necessitative mood corresponds to the modal verbs “must, should, have to”: “He mustcome.” Used e.g. in Turkish.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">mood</rdfs:label>
+        <rdfs:label>Mood</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Imp</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseTem">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Tem</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseTer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Ter</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypeDem">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronType">
+        <rdfs:comment xml:lang="en-gb">This feature typically applies topronouns, determiners, pronominal numerals (quantifiers) and pronominal adverbs. Prs: personal or possessive personal pronoun or determiner See also the Poss feature that distinguishes normal personal pronouns from possessives. Note that Prs also includes reflexive personal/possessive pronouns (e.g. [cs] se / svůj; see the Reflex feature). Examples [en] I, you, he, she, it, we, they, my, your, his, her, its, our, their, mine, yours, hers, ours, theirs Rcp: reciprocal pronoun Examples [de] einander, “each other” [da] hinanden “each other” Art: article Article is a special case of determiner that bears the feature of definiteness (in other languages, the feature may be marked directly on nouns). Examples [en] a, an, the [de] ein, eine, der, die, das [es] un, una, el, la Int: interrogative pronoun, determiner, numeral or adverb Note that possessive interrogative determiners (whose) can be distinguished by the Poss feature. Examples: [cs/en] kdo / who, co / what, který / which, čí / whose, kolik / how many, how much, kolikátý / how-maniest (ordinal number), kolikrát / how many times, kde / where, kam / where to, kdy / when, jak / how, proč / why Rel: relative pronoun, determiner, numeral or adverb Note that in many languages this class heavily overlaps with interrogatives, yet there are pronouns that are only relative, and in some languages (Bulgarian, Hindi) the two classes seem to be distinct. Examples: [cs] jenž, což “which”, “that” (relative but not interrogative pronouns); jehož “whose” (possessive relative pronoun) Dem: demonstrative pronoun, determiner, numeral or adverb These are often parallel to interrogatives. Some tagsets might also distinguish a separate feature of distance (here / there; [es] aquí / ahí / allí). Examples [cs/en] tento / this, tamten / that, takový / such, týž / same, tolik / so much, tolikátý / so-maniest (ordinal number), tolikrát / so many times, tady / here, tam / there, teď / now, tehdy / then, tak / so Tot: total (collective) pronoun, determiner or adverb Examples [cs/en] každý / every, everybody, everyone, each, všechno / everything, all, všude / everywhere, vždy / always Neg: negative pronoun, determiner or adverb Examples: [cs/en] nikdo / nobody, nic / nothing, nijaký / no, ničí / no one’s (possessive negative pronoun), žádný / no, none, nikde / nowhere, nikdy / never, nijak / no way (lit. “no-how”) Ind: indefinite pronoun, determiner, numeral or adverb Note that some tagsets might further subclassify this category to distinguish “some” from “any” etc. Such distinctions are not part of universal features but may be added in language-specific extensions. Examples [cs/en] někdo / somebody, něco / something, některý / some, něčí / someone’s (possessive indefinite pronoun), několik / a few, several (indefinite numeral/quantifier), několikátý / “a fewth”, “severalth” (indefinite ordinal numeral), několikrát / a few times, several times, někde / somewhere, někdy / sometimes, nějak / somehow [cs/en] kdokoli / anybody, cokoli / anything, kterýkoli / any, číkoli / anyone’s (possessive indefinite pronoun), kdekoli / anywhere, kdykoli / any time, jakkoli / anyhow [cs/en] málokdo / few people, leckdo / quite a few people, kdosi / somebody…</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label>PronType</rdfs:label>
+        <rdfs:label xml:lang="en-gb">pronominal type</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Dem</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseIne">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Ine</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#DefiniteRed">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Definite">
+        <rdfs:comment xml:lang="en-gb">Definiteness is typically a feature of nouns, adjectives and articles. Its value distinguishes whether we are talking about something known and concrete, or something general or unknown. It can be marked on definite and indefinitearticles, or directly on nouns, adjectives etc. In Arabic, definiteness is also called the “state”. Ind: indefinite Examples [en] a dog Def: definite Examples [en] the dog Red: reduced Used in construct state in Arabic. If two nouns are in genitive relation, the first one (the “nomen regens”) has “reduced definiteness,” the second is the genitive and can be either definite or indefinite. Reduced form has neither the definite morpheme (article), nor the indefinite morpheme (nunation). Examples [ar] indefinite state: حلوَةٌ_ḥulwatun_ “a sweet”; definite state: الحلوَةُ al-ḥulwatu “the sweet”; حلوَةُḥulwatu “sweet of”. Com: complex Used in improper annexation in Arabic. The genitive construction described above normally consists of two nouns (first reduced, second genitive). That is called proper annexation or iḍāfa. If the first member is an adjective or adjectivally used participle and the second member is a definite noun, the construction is called improper annexation or false iḍāfa. The result is a compound adjective that is usually used as an attributive adjunct and thus must agree in definiteness with the noun it modifies. Its first part (the adjective or participle) may get again the definite article. Although it may look the same as the form for the definite state, it is assigned a special value of complex state to reflect the different origin. See also Hajič et al. page 3. Examples: [ar] مُخْتَلِفٌ muxtalifun “different/various” (active participle, Form VIII); نَوْعٌ ج أنْوَاعٌ nawˀun ja anwāˀun “kind”; مُخْتَلِفُ الأنْوَاعِ muxtalifu al-anwāˀi “of various kinds” (false iḍāfa); مَشَاكِلُ مُخْتَلِفَةُ الأنْوَاعِ mašākilu muxtalifatu al-anwāˀi “problems of various kinds”; اَلْمَشَاكِلُ الْمُخْتَلِفَةُ الأنْوَاعِ al-mašākilu al-muxtalifatu al-anwāˀi “the problems of various kinds”.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">definiteness or state</rdfs:label>
+        <rdfs:label>Definite</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasDefinite"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Red</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Person2">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Person">
+        <rdfs:comment xml:lang="en-gb">Person is typically feature of personal and possessivepronouns / determiners, and of verbs. On verbs it is in fact an agreement feature that marks the person of the verb’s subject (some languages, e.g. Basque, can also mark person of objects). Person marked on verbs makes it unnecessary to always add a personal pronoun as subject and thus subjects are sometimes dropped (pro-drop languages). 1: first person In singular, the first person refers just to the speaker / author. In plural, it must include the speaker and one or more additional persons. Some languages (e.g. Taiwanese) distinguish inclusive and exclusive 1st person plural pronouns: the former include the addressee of the utterance (i.e. I + you), the latter exclude them (i.e. I + they). Examples [en] I, we [cs] dělám “I do” 2: second person In singular, the second person refers to the addressee of the utterance / text. In plural, it may mean several addressees and optionally some third persons too. Examples [en] you [cs] děláš “you do” 3: third person The third person refers to one or more persons that are neither speakers nor addressees. Examples [en] he, she, it, they [cs] dělá “he/she/it does”</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">person</rdfs:label>
+        <rdfs:label>Person</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPerson"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">2</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseCau">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Cau</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseSub">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Sub</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#GenderCom">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasGender"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Gender">
+        <rdfs:comment xml:lang="en-gb">Gender is usually a lexical feature ofnouns and inflectional feature of other parts of speech (pronouns, adjectives, determiners, numerals, verbs) that mark agreement with nouns. In English gender affects only the choice of the personal pronoun (he / she / it) and the feature is usually not encoded in English tagsets. See also the related feature of Animacy. African languages have an analogous feature of noun classes: there might be separate grammatical categories for flat objects, long thin objects etc. African noun classes are not covered in the current proposal because none of the tagsets on which the proposal is based are for a language with noun classes. They might be added in future. Masc: masculine gender Nouns denoting male persons are masculine. Other nouns may be also grammatically masculine, without any relation to sex. Examples [cs] hrad “castle” Fem: feminine gender Nouns denoting female persons are feminine. Other nouns may be also grammatically feminine, without any relation to sex. Examples [de] Burg “castle” Neut: neuter gender Some languages have only the masculine/feminine distinction while others also have this third gender for nouns that are neither masculine nor feminine (grammatically). Examples [cs] dítě “child” Com: common gender Some languages do not distinguish masculine/feminine most of the time but they do distinguish neuter vs. non-neuter (Swedish neutrum / utrum). The non-neuter is called common gender. Note that it could also be expressed as a combined value Gender=Fem,Masc. Nevertheless we keep Com also as a separate value. Combined feature values should only be used in exceptional, undecided cases, not for something that occurs systematically in the grammar. Language-specific extensions to these guidelines should determine whether the Com value is appropriate for a particular language. Note further that the Com value is not intended for cases where we just cannot derive the gender from the word itself (without seeing the context), while the language actually distinguishes Masc and Fem. For example, in Spanish, nouns distinguish two genders, masculine and feminine, and every noun can be classified as either Masc or Fem. Adjectives are supposed to agree with nouns in gender (and number), which they typically achieve by alternating -o / -a. But then there are adjectives such as grande or feliz that have only one form for both genders. So we cannot tell whether they are masculine or feminine unless we see the context. Yet they are either masculine or feminine (feminine in una ciudad grande, masculine in un puerto grande). Therefore in Spanish we should not tag grande with Gender=Com. Instead, we should either drop the gender feature entirely (suggesting that this word does not inflect for gender) or tag individual instances of grande as either masculine or feminine, depending on context.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label>Gender</rdfs:label>
+        <rdfs:label xml:lang="en-gb">gender</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Com</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseIns">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Ins</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumTypeMult">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#NumType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Mult</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseAbe">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Abe</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Person1">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPerson"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Person"/>
+    <rdfs:label xml:lang="en-gb">1</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#DegreeCmp">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasDegree"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Degree">
+        <rdfs:comment xml:lang="en-gb">Degree of comparison is typically an inflectional feature of someadjectives and adverbs. Pos: positive, first degree This is the base form that merely states a quality of something, without comparing it to qualities of others. Note that although this degree is traditionally called “positive”, negative properties can be compared, too. Examples [en] young man [cs] mladý muž Cmp: comparative, second degree The quality of one object is compared to the same quality of another object. Examples [en] the man is younger than me [cs] ten muž je mladší než já Sup: superlative, third degree The quality of one object is compared to the same quality of all other objects within a set. Examples [en] this is the youngest man in our team [cs] toto je nejmladší muž v našem týmu Abs: absolute superlative Some languages can express morphologically that the studied quality of the given object is so strong that there is hardly any other object exceeding it. The quality is not actually compared to any particular set of objects. Examples [es] guapo “handsome”; guapísimo “indescribably handsome”</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label>Degree</rdfs:label>
+        <rdfs:label xml:lang="en-gb">degree of comparison</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Cmp</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypeNeg">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+    <rdfs:label xml:lang="en-gb">Neg</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#DegreeAbs">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasDegree"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Degree"/>
+    <rdfs:label xml:lang="en-gb">Abs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseLoc">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Loc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VoicePass">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Voice">
+        <rdfs:comment xml:lang="en-gb">Voice is typically a feature ofverbs. It may also occur with other parts of speech (nouns, adjectives, adverbs), depending on whether borderline word forms such as gerunds and participles are classified as verbs or as the other category. For Indo-European speakers, voice means mainly the active-passive distinction. In other languages, other shades of verb meaning are categorized as voice. Act: active voice The subject of the verb is the doer of the action (agent), the object is affected by the action (patient). Examples [cs] Napadli jsme nepřítele. “We attacked the enemy” (the active participle napadli can be used to form either past tense or conditional mood; here it forms the past tense.) Pass: passive voice The subject of the verb is affected by the action (patient). The doer (agent) is either unexpressed or it appears as an object of the verb. Examples [cs] Jsme napadeni nepřítelem. “We are attacked by the enemy” (the passive participle napadeni is used to form passive in all tenses; here it forms the present passive.) Rcp: reciprocal voice Examples [tr] karıştı, tutuştular Cau: causative voice Documentation of the METU Sabanci treebank classifies causative as voice (page 26). Note that this is a feature of verbs. There are languages that have also the causative case of nouns. Examples [tr] karıştırıyor “is confusing”</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">voice</rdfs:label>
+        <rdfs:label>Voice</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVoice"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Pass</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PossYes">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPoss"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Poss">
+        <rdfs:comment xml:lang="en-gb">Boolean feature of pronouns, determiners or adjectives. It tells whether the word is possessive.While many tagsets would have “possessive” as one of the various pronoun types, this feature is intentionally separate fromPronType, as it is orthogonal to pronominal types. Several of the pronominal types can be optionally possessive, and adjectives can too. Yes: it is possessive Note that there is no No value. If the word is not possessive, the Poss feature will just not be mentioned in the FEAT column. (Which means that empty value has the No meaning.) Examples [en] my, your, his, mine, yours, whose [cs] possessive adjectives: otcův “father’s”, matčin “mother’s”</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label>Poss</rdfs:label>
+        <rdfs:label xml:lang="en-gb">possessive</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Yes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VerbFormInf">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVerbForm"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#VerbForm"/>
+    <rdfs:label xml:lang="en-gb">Inf</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypeArt">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+    <rdfs:label xml:lang="en-gb">Art</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseIll">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Ill</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#GenderMasc">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Gender"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasGender"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Masc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumTypeCard">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#NumType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Card</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodJus">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:label xml:lang="en-gb">Jus</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VerbFormFin">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#VerbForm"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVerbForm"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Fin</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypeRel">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+    <rdfs:label xml:lang="en-gb">Rel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseAbl">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Abl</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VerbFormSup">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVerbForm"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#VerbForm"/>
+    <rdfs:label xml:lang="en-gb">Sup</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseGen">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Gen</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VerbFormTrans">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#VerbForm"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVerbForm"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Trans</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseBen">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Ben</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VoiceCau">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Voice"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVoice"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Cau</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#ReflexYes">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasReflex"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Reflex">
+        <rdfs:comment xml:lang="en-gb">Boolean feature, typically ofpronouns or determiners. It tells whether the word is reflexive, i.e. refers to the subject of its clause. While many tagsets would have “reflexive” as one of the various pronoun types, this feature is intentionally separate from PronType, as it is orthogonal to pronominal types. Note that while some languages also have reflexive verbs, these are in fact fused verbs with reflexive pronouns, as in Spanish despertarse or Russian проснуться (both meaning “to wake up”). Thus in these cases the fused token will be split to two syntactic words, one of them being a reflexive pronoun. Yes: it is reflexive Note that there is no No value. If the word is not reflexive, the Reflex feature will just not be mentioned in the FEAT column. (Which means that empty value has the No meaning.) Examples [cs] reflexive personal pronouns: se, si; reflexive possessive pronoun: svůj</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label>Reflex</rdfs:label>
+        <rdfs:label xml:lang="en-gb">reflexive</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Yes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseDel">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Del</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VoiceRcp">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Voice"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVoice"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Rcp</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodPot">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Pot</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumberDual">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Number">
+        <rdfs:comment xml:lang="en-gb">Number is usually an inflectional feature ofnouns and, depending on language, other parts of speech (pronouns, adjectives, determiners, numerals, verbs) that mark agreement with nouns. Sing: singular number A singular noun denotes one person, animal or thing. Examples [en] car Plur: plural number A plural noun denotes several persons, animals or things. Examples [en] cars Dual: dual number A dual noun denotes two persons, animals or things. Examples [sl] singular glas “voice”, dual glasova “voices”, plural glasovi “voices” [ar] singular سَنَةٌ sanatun “year”, dual سَنَتَانِ sanatāni “years”, plural سِنُونَ sinūna “years”. Ptan: plurale tantum Some nouns appear only in the plural form even though they denote one thing (semantic singular); some tagsets mark this distinction. Grammatically they behave like plurals, so Plur is obviously the back-off value here; however, if the language also marks gender, the non-existence of singular form sometimes means that the gender is unknown. In Czech, special type of numerals is used when counting nouns that are plurale tantum (NumType = Sets). Examples [en] scissors, pants [cs] nůžky, kalhoty Coll: collective / mass / singulare tantum Collective or mass or singulare tantum is a special case of singular. It applies to words that use grammatical singular to describe sets of objects, i.e. semantic plural. Although in theory they might be able to form plural, in practice it would be rarely semantically plausible. Sometimes, the plural form exists and means “several sorts of” or “several packages of”. Examples [cs] lidstvo “mankind”</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">number</rdfs:label>
+        <rdfs:label>Number</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumber"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Dual</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseAcc">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Acc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#AspectImp">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Aspect">
+        <rdfs:comment xml:lang="en-gb">Aspect is typically a feature ofverbs. It may also occur with other parts of speech (nouns, adjectives, adverbs), depending on whether borderline word forms such as gerunds and participles are classified as verbs or as the other category. Aspect is a feature that specifies duration of the action in time, whether the action has been completed etc. In some languages (e.g. English), some tenses are actually combinations of tense and aspect. In other languages (e.g. Czech), aspect and tense are separate, although not completely independent of each other. In Czech and other Slavic languages, aspect is a lexical feature. Pairs of imperfective and perfective verbs exist and are often morphologically related but the space is highly irregular and the verbs are considered to belong to separate lemmas. Since we proceed bottom-up, the current standard covers only a few aspect values found in corpora. See Wikipedia (http://en.wikipedia.org/wiki/Grammatical_aspect) for a long list of other possible aspects. Imp: imperfect aspect The action took / takes / will take some time span and there is no information whether and when it was / will be completed. Examples [cs] péci “to bake” (Imp); pekl chleba “he baked / was baking a bread” Perf: perfect aspect The action has been / will have been completed. Since there is emphasis on one point on the time scale (the point of completion), this aspect does not work well with the present tense. For example, Czech morphology can create present forms of perfective verbs but these actually have a future meaning. Examples [cs] upéci “to bake” (Perf); upekl chleba “he baked / has baked a bread” Pro: prospective aspect Used in Basque. A combination of tense and aspect that indicates the action is in preparation to take place. Prog: progressive aspect English progressive tenses (I am eating, I have been doing …) have this aspect. They are constructed analytically (auxiliary + present participle) but the -ing participle is so bound to progressive meaning that it seems a good idea to annotate it with this feature (we have to distinguish it from the past participle somehow; we may use both the “Tense” and the “Aspect” features). In languages other than English, the progressive meaning may be expressed by morphemes bound to the main verb, which makes this value even more justified. Example is Turkish.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">aspect</rdfs:label>
+        <rdfs:label>Aspect</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasAspect"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Imp</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#DegreePos">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Degree"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasDegree"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Pos</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#TenseNar">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Tense">
+        <rdfs:comment xml:lang="en-gb">Tense is typically a feature ofverbs. It may also occur with other parts of speech (nouns, adjectives, adverbs), depending on whether borderline word forms such as gerunds and participles are classified as verbs or as the other category. Tense is a feature that specifies the time when the action took / takes / will take place, in relation to the current moment or to another action in the utterance. In some languages (e.g. English), some tenses are actually combinations of tense and aspect. In other languages (e.g. Czech), aspect and tense are separate, although not completely independent of each other. Note that we are defining features that apply to a single word. If a tense is constructed periphrastically (two or more words, e.g. auxiliary verb indicative + participle of the main verb) and none of the participating words are specific to this tense, then the features will probably not directly reveal the tense. For instance, [en] I had been there is past perfect (pluperfect) tense, formed periphrastically by the simple past tense of the auxiliary to have and the past participle of the main verb to be. The auxiliary will be tagged VerbForm=Fin|Mood=Ind|Tense=Past and the participle will have VerbForm=Part|Tense=Past; none of the two will have Tense=Pqp. On the other hand, Portuguese can form the pluperfect morphologically as just one word, such as estivera, which will thus be tagged VerbForm=Fin|Mood=Ind|Tense=Pqp. Past: past tense / preterite / aorist The past tense denotes actions that happened before the current moment. In English, this is the simple past form. In German, this is the Präteritum. In Turkish, this is the non-narrative past. In Bulgarian, this is aorist, the aspect-neutral past tense that can be used freely with both imperfective and perfective verbs (see also imperfect). Examples [en] he went home Pres: present tense The present tense denotes actions that are happening right now or that usually happen. Examples [en] he goes home Fut: future tense The future tense denotes actions that will happen after the current moment. Examples [es] irá a la casa “he/she/it will go home” Imp: imperfect Used in e.g. Bulgarian and Croatian, imperfect is a special case of the past tense. Note that, unfortunately, imperfect tense is not always the same as past tense + imperfective aspect. For instance, in Bulgarian, there is lexical aspect, inherent in verb meaning, and grammatical aspect, which does not necessarily always match the lexical one. In main clauses, imperfective verbs can have imperfect tense and perfective verbs have perfect tense. However, both rules can be violated in embedded clauses. Nar: narrative Special case of the past tense, this is the Turkish miş-past. The difference is whether the speaker personally witnessed the action he is describing, or not. Pqp: pluperfect The pluperfect denotes action that happened before another action in past. This value does not apply to English where the pluperfect (past perfect) is constructed analytically. It applies e.g. to Portuguese.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label>Tense</rdfs:label>
+        <rdfs:label xml:lang="en-gb">tense</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Nar</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseAde">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Ade</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumTypeGen">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#NumType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Gen</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumberColl">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Number"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumber"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Coll</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#DefiniteDef">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Definite"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasDefinite"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Def</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseVoc">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Voc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VerbFormGer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVerbForm"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#VerbForm"/>
+    <rdfs:label xml:lang="en-gb">Ger</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#TenseFut">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Tense"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Fut</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseLat">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Lat</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumTypeDist">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#NumType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Dist</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#AnimacyAnim">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Animacy"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasAnimacy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Anim</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#VoiceAct">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasVoice"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Voice"/>
+    <rdfs:label xml:lang="en-gb">Act</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumberPtan">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Number"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumber"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Ptan</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumTypeSets">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#NumType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Sets</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodOpt">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:label xml:lang="en-gb">Opt</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypeInd">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Ind</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#TensePqp">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Tense"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Pqp</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#AspectPerf">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Aspect"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasAspect"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Perf</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseErg">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Erg</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseTra">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Tra</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#DegreeSup">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Degree"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasDegree"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Sup</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseCom">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Com</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#DefiniteInd">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Definite"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasDefinite"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Ind</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseDat">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Dat</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumberPlur">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Number"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumber"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Plur</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypePrs">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+    <rdfs:label xml:lang="en-gb">Prs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypeTot">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+    <rdfs:label xml:lang="en-gb">Tot</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#TensePast">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Tense"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Past</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#AspectProg">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasAspect"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Aspect"/>
+    <rdfs:label xml:lang="en-gb">Prog</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypeRcp">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Rcp</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseAbs">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Abs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#TenseImp">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Tense"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Imp</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodQot">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:label xml:lang="en-gb">Qot</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodCnd">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:label xml:lang="en-gb">Cnd</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#GenderNeut">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Gender"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasGender"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Neut</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#PronTypeInt">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPronType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Int</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CasePar">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Par</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodInd">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:label xml:lang="en-gb">Ind</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumTypeRange">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#NumType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Range</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseEla">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Ela</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#DefiniteCom">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Definite"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasDefinite"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Com</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseNom">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Nom</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Person3">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasPerson"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Person"/>
+    <rdfs:label xml:lang="en-gb">3</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#TensePres">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Tense"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Pres</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseSup">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Sup</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#AnimacyInan">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Animacy"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasAnimacy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Inan</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#GenderFem">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Gender"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasGender"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Fem</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodDes">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Des</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodSub">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Sub</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumTypeFrac">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#NumType"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Frac</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseEss">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">Ess</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#CaseAll">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasCase"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+    <rdfs:label xml:lang="en-gb">All</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#MoodNec">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasMood"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+    <rdfs:label xml:lang="en-gb">Nec</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NegativePos">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNegative"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#Negative">
+        <rdfs:comment xml:lang="en-gb">Negativeness is typically a feature ofverbs, adjectives, sometimes also adverbs and nouns in languages that negate using bound morphemes. For instance, all Czech verbs and adjectives can be negated using the prefix ne-. In English, verbs are negated using the particle not and adjectives are also negated using prefixes, although the process is less productive than in Czech (wise – unwise, probable – improbable). Note that Negative=Neg is not the same thing as PronType=Neg. For pronouns and other pronominal parts of speech there is no such binary opposition as for verbs and adjectives. (There is no such thing as “affirmative pronoun”.) The negativeness feature could be also used to distinguish response interjections yes and no. Pos: positive, affirmative Examples [cs] přišel “he came” Neg: negative Examples [cs] nepřišel “he did not come”</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#feat"/>
+        <rdfs:label xml:lang="en-gb">whether the word can be or is negated</rdfs:label>
+        <rdfs:label>Negative</rdfs:label>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Pos</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#AspectPro">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasAspect"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Aspect"/>
+    <rdfs:label xml:lang="en-gb">Pro</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#NumberSing">
+    <rdfs:subClassOf rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Number"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+        <owl:onProperty rdf:resource="http://fginter.github.io/docs/u/feat/all.html#hasNumber"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Sing</rdfs:label>
+  </rdf:Description>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasNegative">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Negative"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasPoss">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Poss"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasVerbForm">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#VerbForm"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasReflex">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Reflex"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasVoice">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Voice"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasMood">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Mood"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasNumType">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#NumType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasTense">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Tense"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasAnimacy">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Animacy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasNumber">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Number"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasAspect">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Aspect"/>
+  </owl:ObjectProperty>
+  <rdf:Description rdf:about="http://fginter.github.io/docs/u/feat/all.html#feat">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>FEATS</owl:hasValue>
+        <owl:onProperty rdf:resource="olia_system:hasTier"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en-gb">Universal features</rdfs:label>
+  </rdf:Description>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasDegree">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Degree"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasPerson">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Person"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasPronType">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#PronType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasCase">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Case"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasDefinite">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Definite"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://fginter.github.io/docs/u/feat/all.html#hasGender">
+    <rdfs:range rdf:resource="http://fginter.github.io/docs/u/feat/all.html#Gender"/>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
