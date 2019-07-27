@@ -138,6 +138,10 @@
 	16/08/29 added Frame, hasMovementFeature, Control and Raising for compliance with lexinfo
 	17/06/26 fixed occasional type errors at owl:deprecated
 	18/01/08 added Converb (for Eastern Armenian National Corpus)
+	19/07/27 lexinfo linking: added DeverbalAdjective as a generalization over (and superclass of) ParticipleAdjective, DenominalAdjective (for lexinfo:adjective-na), GenericNumeral (for lexinfo:genericNumeral), InflectionElement (for lexinfo:inflectionElement), Radical (for lexinfo:radical), Syllable (for lexinfo:syllable), ClippedTerm, Appellation, Idiom, Internationalism, SetPhrase, Boilerplate (for lexinfo:standardText), Deprecated (for lexinfo:deprecatedTerm), LegalRegister (for lexinfo:legalTerm), Deprecated (for lexinfo:deprecatedTerm), Preferred (for lexinfo:preferredTerm), Standardized (for lexinfo:standardizedTerm);
+	revised Contraction, Composition; 
+	introduced Identifier as generalization over Appellation, NamedEntity and lexinfo:partNumber;
+	introduced TextStructuralElement as generalization over Headline, Boilerplate, etc.
 	
 Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</owl:versionInfo>
@@ -156,6 +160,27 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
 </rdfs:subClassOf>
 	</owl:Class>
+	
+	<owl:Class rdf:ID="Radical">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-296</rdfs:isDefinedBy>
+      <rdfs:comment>A basic identifiable component of every CJKV character, often found on the left side of the character, that sometimes gives a rough indication of meaning and is used for collating lexical and terminological resources. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-296)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+		<rdfs:label>radical</rdfs:label>
+	</owl:Class>
+
+	<owl:Class rdf:ID="Syllable">
+	  <owl:versionInfo>TODO: consider creating an olia:PhonologicalCategory for syllables</owl:versionInfo>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-297</rdfs:isDefinedBy>
+      <rdfs:comment>A unit of spoken language that is next bigger than a speech sound and consists of one or more vowel sounds alone or of a syllabic consonant alone or of either with one or more consonant sounds preceding or following. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-297)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+		<rdfs:label>syllable</rdfs:label>
+	</owl:Class>
+
+	
 		 
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Character">
 		<rdfs:subClassOf>
@@ -318,7 +343,19 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
 </rdfs:subClassOf>
     </owl:Class>
-	
+
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InflectionElement">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-292"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-292</owl:versionInfo>
+      <rdfs:comment>
+                            An element of language used to change the form of a word (noun, adjective) by declension, and (verbs) by conjugation.
+                                (Sue Ellen Wright; http://www.isocat.org/datcat/DC-292)
+                            </rdfs:comment>
+      <rdfs:label>inflection element</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+		</rdfs:subClassOf>
+	</owl:Class>
 	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Affix">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1234"/-->
@@ -489,10 +526,14 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 </rdfs:subClassOf>
 	</owl:Class>
 	<owl:Class rdf:ID="Composition">
-		<owl:versionInfo>adopted from Ancorra, http://purl.org/olia/ancorra.owl#Compound</owl:versionInfo>
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-352</owl:versionInfo>
 		<rdfs:comment>In linguistics, a compound is a lexeme (less precisely, a word) that consists of more than one stem. Compounding or composition is the word formation that creates compound lexemes (the other word-formation process being derivation). Compounding or Word-compounding refers to the faculty and device of language to form new words by combining or putting together old words. In other words, compound, compounding or word-compounding occurs when a person attaches two or more words together to make them one word. The meanings of the words interrelate in such a way that a new meaning comes out which is very different from the meanings of the words in isolation.
-		(http://en.wikipedia.org/wiki/Compound_%28linguistics%29)</rdfs:comment>
+		(http://en.wikipedia.org/wiki/Compound_%28linguistics%29)
+		
+		Compound: A lexical unit that combines two or sometimes more different words, frequently such that the sense of the new lexical unit is not clearly derivable from the combination of its parts. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-352)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphologicalProcess"/>
+		<rdfs:label>compound</rdfs:label>
+		<rdfs:label>composition</rdfs:label>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Reduplication">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2346"/-->
@@ -654,10 +695,11 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
   </owl:Class>
   
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Contraction">
-	<owl:versionInfo>Uby POS, undocumented, http://purl.org/olia/ubyPos.owl</owl:versionInfo>
-	<rdfs:comment>no definition given</rdfs:comment>
+	<owl:versionInfo>http://www.isocat.org/datcat/DC-354</owl:versionInfo>
+	<rdfs:comment>A lexical unit formed by a shortening of a word, syllable, or word group by omission of a sound or letter. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-354)</rdfs:comment>
+	<rdfs:label>contraction</rdfs:label>
 	<rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Abbreviation"/>
 	</rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adposition">
@@ -807,6 +849,7 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	<rdfs:label xml:lang="en">adverb</rdfs:label>
 	<rdfs:label xml:lang="fr">adverbe</rdfs:label>
   </owl:Class>
+	
      <owl:Class rdf:ID="ParticleAdverb">
       <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1917</rdfs:isDefinedBy>
 	  <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
@@ -911,6 +954,18 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:versionInfo>adopted from ubyPos.owl</owl:versionInfo>
 		<rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-333</rdfs:isDefinedBy>
 	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ClippedTerm">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Abbreviation"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>An abbreviation formed by truncating a part of a simple term. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-335)</rdfs:comment>
+		<owl:versionInfo>from lexinfo</owl:versionInfo>
+		<rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-335</rdfs:isDefinedBy>
+		<rdfs:label>clipped term</rdfs:label>
+	</owl:Class>
+	
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Abbreviation">
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
@@ -3440,6 +3495,13 @@ Left square bracket
 			(Jurmey Rabgay, email Sep 20, 2010, http://purl.org/olia/dzongkha.owl#NominalNumber)</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="#Numeral"/>
 	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#GenericNumeral">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Numeral"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>A numeral used to indicate the number of sets/kinds of objects. (Dan Zeman, http://www.isocat.org/datcat/DC-3022)</rdfs:comment>
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-3022</owl:versionInfo>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CardinalNumber">
 		<rdfs:subClassOf>
 			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Numeral"/>
@@ -3570,7 +3632,7 @@ Left square bracket
 
 	<!-- Adjective -->
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective">
-		<owl:versionInfo>the subclassification of Adjective currently conflates syntactic (PredicativeAdjective), morphological (ParticipleAdjective) and semantic (QualifierAdjective, RelativeAdjective) criteria. to be resolved</owl:versionInfo>
+		<owl:versionInfo>the subclassification of Adjective currently conflates syntactic (PredicativeAdjective), morphological (DeverbalAdjective) and semantic (QualifierAdjective, RelativeAdjective) criteria. to be resolved</owl:versionInfo>
 		<rdfs:label xml:lang="fr">adjectif</rdfs:label>
 		<rdfs:label xml:lang="en">adjective</rdfs:label>
 	</owl:Class>
@@ -3627,6 +3689,12 @@ Left square bracket
 			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
 		</rdfs:subClassOf>
 	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DenominalAdjective">
+		<rdfs:comment>Denominal adjective, formed from a noun (Chiarcos, based on lexinfo:adjective-na)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubstantiveAdjective">
 		<!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1394"/-->
 		<owl:versionInfo>http://www.isocat.org/datcat/DC-1394</owl:versionInfo>
@@ -3641,6 +3709,14 @@ Left square bracket
 			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
 		</rdfs:subClassOf>
    </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DeverbalAdjective">
+		<rdfs:comment>Adjective based on a verb (http://www.isocat.org/datcat/DC-1598). Note that these are not necessarily grammaticalized as participles.
+		</rdfs:comment>
+		<owl:versionInfo>(Chiarcos, introduced to account for lexinfo:participleAdjective along with lexinfo:adjective-i)</owl:versionInfo>
+		<rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
+		</rdfs:subClassOf>
+	</owl:Class>
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#ParticipleAdjective">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1598"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1598</owl:versionInfo>
@@ -3650,7 +3726,7 @@ Left square bracket
                             </rdfs:comment>
       <rdfs:label>participle adjective</rdfs:label>
       <rdfs:subClassOf>
-         <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#DeverbalAdjective"/>
       </rdfs:subClassOf>
 	        <rdfs:subClassOf>
          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Participle"/>
@@ -6183,7 +6259,9 @@ The NP or S complement of a preposition is placed inside the PP.
 		</rdfs:subClassOf>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
 			>Prepositional object</rdfs:comment>
-		<owl:versionInfo>added in conformance with SFB632 annotation guidelines (Dipper et al. 2007, §4.3.4)</owl:versionInfo>
+		<owl:versionInfo>Added in conformance with SFB632 annotation guidelines (Dipper et al. 2007, §4.3.4).
+			Note that we include postpositional objects under this term, as well, so a more adequate term would be adpositional object.
+		</owl:versionInfo>
 	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FacultativePrepositionalObject">
 		<rdfs:subClassOf>
@@ -9838,7 +9916,7 @@ The NP or S complement of a preposition is placed inside the PP.
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjunction">
 		<owl:versionInfo>PTB Bracketing Guidelines, Santorini (1991)</owl:versionInfo>
 		<rdfs:comment>The term \adjunction structure" refers to structures which would be represented by tree diagrams of
-the general form in (@9). The de ning characteristic of adjunction structures is that a node X dominates
+the general form in (@9). The defining characteristic of adjunction structures is that a node X dominates
 another instance of X.
 (Santorini 1991)
 		</rdfs:comment>
@@ -11187,7 +11265,7 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 
 	<owl:Class rdf:ID="LexicalUnit">
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >introduced as a generalization over Lexeme and Phraseme (as opposed to phrase) with the extension to lexical-semantic resources like Uby</owl:versionInfo>
+    >introduced as a generalization over Lexeme, Phraseme (as opposed to phrase) and Proverb (as opposed to utterance) with the extension to lexical-semantic resources like Uby and lexinfo</owl:versionInfo>
 	<rdfs:comment>A LexicalUnit is a grammatical expression that is known to the speakers of that language as a conventional expression of a particular concept. It consists of a single lexeme or a conventional combination of lexemes with certain unchangeable characteristics (CC).
 	</rdfs:comment>
     <rdfs:subClassOf>
@@ -11212,8 +11290,13 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 	</owl:Class>
 	
   <owl:Class rdf:ID="Phraseme">
-	<owl:versionInfo>http://purl.org/olia/ubyPos.owl#phraseme, no definition there</owl:versionInfo>
-	<rdfs:comment>Conventional lexical unit consisting of a particular phrase (CC)</rdfs:comment>
+	<owl:versionInfo>http://purl.org/olia/ubyPos.owl#phraseme (phraseme, no definition), http://www.isocat.org/datcat/DC-339 (phraseologicalUnit)</owl:versionInfo>
+	<rdfs:comment>Conventional lexical unit consisting of a particular phrase (CC)
+	
+	Any group of two or more words that form a unit, the meaning of which frequently cannot be deduced based on the combined sense of the words making up the phrase. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-339)</rdfs:comment>
+	<rdfs:label>phraseological unit</rdfs:label>
+	<rdfs:label>phraseme</rdfs:label>
+	<rdfs:label>multi-word expression</rdfs:label>
 	<owl:equivalentClass>
 		<owl:Class>
 			<owl:intersectionOf rdf:parseType="Collection">
@@ -11239,6 +11322,17 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticUnit"/>
 		</rdfs:subClassOf>
 	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Idiom">
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-351</owl:versionInfo>
+		<rdfs:comment>A group of words in a fixed order that have a particular meaning that is different from the meanings of each word understood on its own. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-351)
+		</rdfs:comment>
+		<rdfs:label>idiom</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#Collocation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FixedExpression">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#PartOfFixedExpression</owl:versionInfo>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Collocation"/>
@@ -11247,7 +11341,22 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 		<owl:versionInfo>Corresponds to MTE Burkinostka (Adverb/Clitic=&quot;burkinostka&quot;; Polish)
 			&quot;Burkinostka was a local joke :). IsPartOfFixedExpression, to be more precise. Or somehow shorter.&quot;
 			(Natalia Kotsyba, email 2010/06/21, http://purl.org/olia/mte/multext-east.owl#PartOfFixedExpression)</owl:versionInfo>
-	</owl:Class>	
+			<rdfs:label>fixed expression</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SetPhrase">
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-341</owl:versionInfo>
+		<rdfs:comment>
+			A fixed, lexicalized phrase. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-341)
+			
+			A set phrase or fixed phrase is a phrase whose parts are fixed in a certain order, even if the phrase could be changed without harming the literal meaning. This is because a set phrase is a culturally accepted phrase. A set phrase does not necessarily have any literal meaning in and of itself. Set phrases may function as idioms (e.g. red herring) or as words with a unique referent (e.g. Red Sea). (https://en.wikipedia.org/wiki/Set_phrase, with reference to McArthur, TomsamDam. (1992) The Oxford Companion to the English Language. Oxford: Oxford University Press.)
+		</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#FixedExpression"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Phraseme"/>
+		<rdfs:label>set phrase</rdfs:label>
+		<rdfs:label>fixed phrase</rdfs:label>
+	</owl:Class>
+	
    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Lexeme">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1325"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1325</owl:versionInfo>
@@ -11760,16 +11869,37 @@ Words such as fully and completely are absolutes and do not receive -EXT.
      || DISCOURSE AND TEXT-STRUCTURAL ENTITIES ||
      ================================================================ -->
 
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Identifier">
+		<rdfs:comment>Designation of a unique entity or a singleton concept (CC)</rdfs:comment>
+		<owl:versionInfo>introduced as generalization over NamedEntity, Apellation and lexinfo:partNumber</owl:versionInfo>
+		<rdfs:label>identifier</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	 
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NamedEntity">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2275"/-->
-      <owl:versionInfo>http://www.isocat.org/datcat/DC-2275</owl:versionInfo>
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2275, note that the definition refers to the text that designates the entity, not the entity itself; consider renaming to NameOfEntity</owl:versionInfo>
       <rdfs:comment>
                             segment of text for which one or many rigid designators stands for the referent
                                 (Gil Francopoulo; http://www.isocat.org/datcat/DC-2275)
                             </rdfs:comment>
       <rdfs:label>named entity</rdfs:label>
 	  <rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#Identifier"/>
+</rdfs:subClassOf>
+   </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Apellation">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-347"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-347</owl:versionInfo>
+      <rdfs:comment>A designation that represents an individual concept. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-347)
+	  
+	  A verbal designation of an individual, unique concept, e. g. Mount Everest, Nobel Prize (https://en.wikipedia.org/wiki/Appellation_(disambiguation))
+                            </rdfs:comment>
+      <rdfs:label>apellation</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#Identifier"/>
 </rdfs:subClassOf>
    </owl:Class>
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#Utterance">
@@ -11784,6 +11914,18 @@ Words such as fully and completely are absolutes and do not receive -EXT.
 		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
 </rdfs:subClassOf>
     </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Proverb">
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-353</owl:versionInfo>
+		<rdfs:comment>A brief popular axiom or saying. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-353)</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Utterance"/>
+	  </rdfs:subClassOf>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#LexicalUnit"/>
+	  </rdfs:subClassOf>
+
+	</owl:Class>
+	
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#VocativeExpression">
 		<owl:versionInfo>http://purl.org/olia/tcodex.owl#VocativeForm</owl:versionInfo>
 		<rdfs:label>vocative expression</rdfs:label>
@@ -11794,7 +11936,7 @@ Words such as fully and completely are absolutes and do not receive -EXT.
 	</owl:Class>
     <owl:Class rdf:about="http://purl.org/olia/olia.owl#Headline">
 		<rdfs:subClassOf>
-			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#TextStructuralElement"/>
 		</rdfs:subClassOf>
 		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >-HLN (headline)
@@ -11802,14 +11944,42 @@ Words such as fully and completely are absolutes and do not receive -EXT.
 (Bies et al. 1995)</rdfs:comment>
 	<owl:versionInfo>PTB bracketing guidelines, Bies et al. 1995</owl:versionInfo>
   </owl:Class>
-	<owl:Class rdf:about="http://purl.org/olia/olia.owl#TitleInRunningText">
+
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#TextStructuralElement">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+		</rdfs:subClassOf>
+		<owl:versionInfo>introduced as generalization over Boilerplate, Headline etc.</owl:versionInfo>
+		<rdfs:comment>
+			Text structure relates to the physical features of text as it is laid out for reading. This includes the arrangement of sentences and paragraphs, and other aspects of the ordering of information in reading materials.
+			(https://psychology.wikia.org/wiki/Text_structure)
+		</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#Boilerplate">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#TextStructuralElement"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A fixed chunk of recurring text. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-343)
+	
+	Boilerplate text, or simply boilerplate, is any written text (copy) that can be reused in new contexts or applications without significant changes to the original. The term is used in reference to statements, contracts and computer code ... In contract law, the term "boilerplate language" or "boilerplate clause" describes the parts of a contract that are considered standard. (https://en.wikipedia.org/wiki/Boilerplate_text)
+	</rdfs:comment>
+	<rdfs:label xml:lang="en">standard text</rdfs:label>
+	<rdfs:label xml:lang="en">boilerplate text</rdfs:label>
+	<rdfs:label>boilerplate</rdfs:label>
+	<rdfs:label xml:lang="de">Textbaustein</rdfs:label>
+	<owl:versionInfo>http://www.isocat.org/datcat/DC-343</owl:versionInfo>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#TitleInRunningText">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >-TTL (title)
 — is attached to the top node of a title when this title appears inside running text.
 -TTL implies -NOM. The internal structure of the title is bracketed as usual. (See section 12 [Titles] for more information about the bracketing of titles.) 
 (Bies et al. 1995)</rdfs:comment>
 	<rdfs:subClassOf>
-		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#TextStructuralElement"/>
 	</rdfs:subClassOf>
 	<owl:versionInfo>PTB bracketing guidelines, Bies et al. 1995</owl:versionInfo>
   </owl:Class>
@@ -11926,11 +12096,10 @@ Words such as fully and completely are absolutes and do not receive -EXT.
       <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#BenchLevelRegister">
-      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1989"/-->
-      <owl:versionInfo>http://www.isocat.org/datcat/DC-1989</owl:versionInfo>
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1989, http://www.isocat.org/datcat/DC-427</owl:versionInfo>
       <rdfs:comment>
                             Register of terms used in applications-oriented as opposed to theoretical or academic levels of language.
-                                (ISO12620; http://www.isocat.org/datcat/DC-1989)
+                                (ISO12620; http://www.isocat.org/datcat/DC-1989, http://www.isocat.org/datcat/DC-427)
                             </rdfs:comment>
       <rdfs:label>bench-level register</rdfs:label>
       <rdfs:label>shop term</rdfs:label>
@@ -12031,6 +12200,16 @@ Words such as fully and completely are absolutes and do not receive -EXT.
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#LegalRegister">
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-380, but rendered as a feature of individual terms, there</owl:versionInfo>
+      <rdfs:comment>Used for terms that are legally defined and used in legally binding documents.
+                                (cf. http://www.isocat.org/datcat/DC-380)
+                            </rdfs:comment>
+      <rdfs:label>legal register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+   </owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#VulgarRegister">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1998"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1998</owl:versionInfo>
@@ -12043,6 +12222,14 @@ Words such as fully and completely are absolutes and do not receive -EXT.
          <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Internationalism">
+	  <rdfs:label>internationalism</rdfs:label>
+	  <rdfs:comment>A term that has the same or nearly identical orthographic or phonemic form in many languages. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-320)</rdfs:comment>
+	  <owl:versionInfo>http://www.isocat.org/datcat/DC-320, TODO: check treatment as register feature</owl:versionInfo>
+	  <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
    </owl:Class>
 
    <!-- Usage/Frequency -->
@@ -12086,6 +12273,29 @@ Words such as fully and completely are absolutes and do not receive -EXT.
       </rdfs:subClassOf>
       <owl:versionInfo>subClassOf frequency (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Preferred">
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-376</owl:versionInfo>
+      <rdfs:comment>
+                            Preferred Term: A term rated according to the scale of a term acceptability rating as the primary term for a given concept.
+                                (Sue Ellen Wright, http://www.isocat.org/datcat/DC-376)
+                            </rdfs:comment>
+      <rdfs:label>preferred</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#Possible"/>
+      </rdfs:subClassOf>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Standardized">
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-375</owl:versionInfo>
+      <rdfs:comment>
+                            Standardized Term: A term that has been standardized by a standardizing body.
+                                (Sue Ellen Wright, http://www.isocat.org/datcat/DC-375)
+                            </rdfs:comment>
+      <rdfs:label>standardized</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#Possible"/>
+      </rdfs:subClassOf>
+   </owl:Class>
+   
    <owl:Class rdf:about="http://purl.org/olia/olia.owl#InfrequentlyUsed">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1985"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1985</owl:versionInfo>
@@ -12116,6 +12326,26 @@ Words such as fully and completely are absolutes and do not receive -EXT.
          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Possible"/>
       </rdfs:subClassOf>
 	</owl:Class>
+	
+	<owl:Class rdf:ID="Deprecated">
+		<rdfs:label>deprecated term</rdfs:label>
+		<rdfs:label>deprecated</rdfs:label>
+		<rdfs:label>superseded term</rdfs:label>
+		<rdfs:label>superseded</rdfs:label>
+		<rdfs:label>obsolete form</rdfs:label>
+		<rdfs:label>obsolete</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-378, http://www.isocat.org/datcat/DC-379</rdfs:isDefinedBy>
+      <rdfs:comment>Deprecated Term: A term rated according to the scale of a term acceptability rating as undesired. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-378)
+	  
+	  Superseded Term: A term that is no longer preferred or admitted. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-379)
+	  
+	  Obsolete Form: A term or lexeme which is no longer in common use. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-506)
+	  </rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#TemporallyDefinedUsage"/>
+      </rdfs:subClassOf>
+	</owl:Class>
+	
    <owl:Class rdf:about="http://purl.org/olia/olia.owl#ModernUsage">
       <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1962"/-->
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1962 (modern)</owl:versionInfo>
@@ -12130,13 +12360,15 @@ Words such as fully and completely are absolutes and do not receive -EXT.
       <owl:versionInfo>subClassOf dating (dcif:conceptualDomain)</owl:versionInfo>
    </owl:Class>
    <owl:Class rdf:about="http://purl.org/olia/olia.owl#OldUsage">
-      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1961"/-->
-      <owl:versionInfo>http://www.isocat.org/datcat/DC-1961</owl:versionInfo>
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1961, http://www.isocat.org/datcat/DC-505</owl:versionInfo>
       <rdfs:comment>
-                            Used in the past.
+                            Old: Used in the past.
                                 (http://www.isocat.org/datcat/DC-1961)
+								
+							Outdated form: A term or lexeme that has fallen from fashion, but the meaning of which is readily recognizable.(Sue Ellen Wright, http://www.isocat.org/datcat/DC-505)
                             </rdfs:comment>
       <rdfs:label>old</rdfs:label>
+	  <rdfs:label>outdated</rdfs:label>
 	  <rdfs:subClassOf>
          <owl:Class rdf:about="#TemporallyDefinedUsage"/>
       </rdfs:subClassOf>
