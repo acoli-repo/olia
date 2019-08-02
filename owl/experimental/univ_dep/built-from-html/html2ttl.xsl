@@ -74,6 +74,7 @@
            <xsl:text>;&#10;  rdfs:comment """ </xsl:text>
            <xsl:for-each select="./following-sibling::*[count(preceding-sibling::h2[1]/preceding-sibling::h2)=$h2offset][name(./preceding-sibling::*[name()='h2' or name()='h3'][1])='h2' or count(./preceding-sibling::*[name()='h2' or name()='h3'][1]/code[1])=0][name()!='h3' or count(code[1])=0]">
                    <xsl:copy-of select="."/>
+				   <xsl:text> </xsl:text>
             </xsl:for-each>
                <xsl:text> """^^rdf:XMLLiteral</xsl:text>
            <xsl:text>.&#10;</xsl:text>
@@ -128,6 +129,7 @@
                    <xsl:text>;&#10;  rdfs:comment """ </xsl:text>
                    <xsl:for-each select="./following-sibling::*[name()!='h3' and name()!='h2'][count(./preceding-sibling::h3)=$h3offset+1][count(./preceding-sibling::h2[1]/preceding-sibling::h2)=$h2offset]">
                        <xsl:copy-of select="."/>
+					   <xsl:text> </xsl:text>
                    </xsl:for-each>
                    <xsl:text> """^^rdf:XMLLiteral</xsl:text>
                    <xsl:text>.&#10;</xsl:text>

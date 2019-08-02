@@ -1,0 +1,2936 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix system: <http://purl.org/olia/system.owl#> .
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:acl rdfs:label "clausal modifier of noun (adjectival clause)"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+acl stands for finite and non-finite clauses that modify a nominal. The acl
+relation contrasts with the advcl relation, which is used for adverbial clauses
+that modify a predicate. The head of the acl relation is the noun that is
+modified, and the dependent is the head of the clause that modifies the noun.
+
+the issues as he sees them acl(issues, sees)
+
+There are many online sites offering booking facilities . acl(sites, offering)
+
+I have a parakeet named cookie . acl(parakeet, named)
+
+I just want a simple way to get my discount . acl(way, get)
+
+Cette affaire à suivre \n This case to follow  acl(affaire, suivre)
+
+This relation is also used for optional depictives. The adjective is taken to
+modify the nominal of which it provides a secondary predication. See xcomp for
+further discussion of resultatives and depictives.
+
+She entered the room sad acl(She, sad)
+
+He painted the model naked acl(model, naked)
+
+A relative clause is an instance of acl, characterized by finiteness and
+usually omission of the modified noun in the embedded clause. Some languages
+use a language-particular subtype acl:relcl for the traditional class of
+relative clauses.
+
+I saw the man you love acl:relcl(man, love)
+
+Some languages allow finite clausal complements for nouns with a subset of
+nouns like fact or report. These look roughly like relative clauses, but do not
+have any omitted role in the dependent clause. This is the class of “content
+clauses” in Huddleston and Pullum 2002). These are also analyzed as acl.
+
+the fact that nobody cares acl(fact, cares)
+
+advcl: adverbial clause modifier
+
+""".
+
+[] a :acl; system:hasTag "acl";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:advcl rdfs:label "adverbial clause modifier"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+An adverbial clause modifier is a clause which modifies a verb or other
+predicate (adjective, etc.), as a modifier not as a core complement. This
+includes things such as a temporal clause, consequence, conditional clause,
+purpose clause, etc. The dependent must be clausal (or else it is an advmod)
+and the dependent is the main predicate of the clause.
+
+The accident happened as night was falling advcl(happened, falling)
+
+If you know who did it, you should tell the teacher advcl(tell, know)
+
+He talked to him in order to secure the account advcl(talked, secure)
+
+He was upset when I talked to him advcl(upset, talked)
+
+advmod: adverbial modifier
+
+""".
+
+[] a :advcl; system:hasTag "advcl";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:advmod rdfs:label "adverbial modifier"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+An adverbial modifier of a word is a (non-clausal) adverb or adverbial phrase
+that serves to modify a predicate or a modifier word.
+
+Note that in some grammatical traditions, the term adverbial modifier covers
+constituents that function like adverbs regardless whether they are realized by
+adverbs, adpositional phrases, or nouns in particular morphological cases. We
+differentiate adverbials realized as adverbs (advmod) and adverbials realized
+by noun phrases or adpositional phrases (obl). However, we do not differentiate
+between modifiers of predicates (adverbials in a narrow sense) and modifiers of
+other modifier words like adjectives or adverbs (sometime called qualifiers).
+These functions are all subsumed under advmod.
+
+Genetically modified food advmod(modified, Genetically)
+
+less often advmod(often, less)
+
+Where/ADV do/AUX you/PRON want/VERB to/ADP go/VERB later/ADV ?/PUNCT advmod(go, Where) advmod(go, later)
+
+About 200 people came to the party advmod(200, About)
+
+amod: adjectival modifier
+
+""".
+
+[] a :advmod; system:hasTag "advmod";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:amod rdfs:label "adjectival modifier"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+An adjectival modifier of a noun (or pronoun) is any adjectival phrase that
+serves to modify the meaning of the noun (or pronoun).
+
+Sam eats red meat amod(meat, red)
+
+Sam took out  a 3 million dollar loan amod(loan, dollar)
+
+Sam took out  a $ 3 million loan amod(loan, $)
+
+There is nothing wrong with it amod(nothing, wrong)
+
+appos: appositional modifier
+
+""".
+
+[] a :amod; system:hasTag "amod";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:appos rdfs:label "appositional modifier"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+An appositional modifier of a noun is a nominal immediately following the first
+noun that serves to define, modify, name, or describe that noun. It includes
+parenthesized examples, as well as defining abbreviations in one of these
+structures.
+
+Sam , my brother , arrived appos(Sam-1, brother-4)
+
+Bill ( John 's cousin ) appos(Bill-1, cousin-5)
+
+The Australian Broadcasting Corporation ( ABC ) appos(Corporation-4, ABC-6)
+
+appos is intended to be used between two nominals. In general, modulo
+punctuation, the two halves of an apposition can be switched. For example, you
+could also say My brother, Sam, arrived. There are somewhat similar
+constructions with titles where the title is less than a full nominal, such as
+state senator Paul Mnuchin, where reversal is impossible or would require
+insertion of a determiner to make a full nominal. Some grammatical traditions,
+descending from Latin, call state senator in such cases a “fixed (or close)
+apposition” and take the name as the head. However, we seem to have only one
+nominal not two here. For example:
+
+    President Obama
+
+    *Obama President
+
+    state senator Paul Mnuchin
+
+    *Paul Mnuchin state senator
+
+appos should not be used in such cases. However, the examples can usually be
+rendered in a fuller form, corresponding to “loose (or wide) apposition” in the
+Latin tradition, where there are two full phrases. Then the relation appos is
+appropriate, for example:
+
+Paul Mnuchin , the senior Oregon state senator appos(Mnuchin-2, senator-8)
+
+As is often the case, there are borderline cases. In formal writing,
+punctuation is usually a good signal of apposition, but there are certainly
+cases of apposition where no punctuation is used:
+
+the leader of the militant Lebanese Shiite group Hassan Nasrallah appos(group-8, Hassan-9) flat(Hassan-9, Nasrallah-10)
+
+Good tests include to ask whether the two halves are full nominals, whether the
+two halves can be swapped or not, and whether there is case or agreement
+concord (in a language with rich morphology). So we have:
+
+I met the French actor Gaspard Ulliel nsubj(met-2, I-1) det(actor-5, the-3) amod(actor-5, French-4) obj(met-2, actor-5) appos(actor-5, Gaspard-6) flat(Gaspard-6, Ulliel-7)
+
+I met Gaspard Ulliel the French actor  nsubj(met-2, I-1) obj(met-2, Gaspard-3) flat(Gaspard-3, Ulliel-4) det(actor-7, the-5) amod(actor-7, French-6) appos(Gaspard-3, actor-7)
+
+I met Gaspard Ulliel , the French actor  nsubj(met-2, I-1) obj(met-2, Gaspard-3) flat(Gaspard-3, Ulliel-4) punct(Gaspard-3, ,-5) det(actor-8, the-6) amod(actor-8, French-7) appos(Gaspard-3, actor-8)
+
+I met French actor Gaspard Ulliel nsubj(met-2, I-1) amod(actor-4, French-3) obj(met-2, actor-4) flat(actor-4, Gaspard-5) flat(actor-4, Ulliel-6)
+
+While items like abbreviations are generally reversable, the determiner test
+suggested above doesn’t quite work there, since the determiner seems to belong
+with the main item:
+
+The ABC ( Australian Broadcasting Corporation ) appos(ABC-2, Corporation-6)
+
+In the rare cases of more than one appositive nominal, all nouns should be
+marked as modifying the first noun, rather than being chained:
+
+Sam , my brother , John 's cousin , arrived appos(Sam-1, brother-4) appos(Sam-1, cousin-8)
+
+Note however that nested apposition cannot be completely excluded. It may occur
+in combination with coordination:
+
+You can choose between four subjects , language ( German or French ) , economy , technology and art . appos(subjects, language) conj(language, economy) conj(language, technology) conj(language, art) cc(art, and) appos(language, German) conj(German, French) cc(French, or)
+
+appos is also used to link key-value pairs in addresses, signature blocs, etc.
+(see also the list label):
+
+Steve Jones Phone: 555-9814 Email: jones@abc.edf flat:name(Steve-1, Jones-2) list(Steve-1, Phone:-3) list(Steve-1, Email:-5) appos(Phone:-3, 555-9814-4) appos(Email:-5, jones@abc.edf-6)
+
+aux: auxiliary
+
+""".
+
+[] a :appos; system:hasTag "appos";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:aux rdfs:label "auxiliary"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+An aux (auxiliary) of a clause is a function word associated with a verbal
+predicate that expresses categories such as tense, mood, aspect, voice or
+evidentiality. It is often a verb (which may have non-auxiliary uses as well)
+but many languages have nonverbal TAME markers and these are also treated as
+instances of aux.
+
+New from v2: Auxiliares used to construct the passive voice are now also
+labeled aux, although we strongly encourage the use of the subtype aux:pass in
+language that have a grammaticalized (periphrastic) passive.
+
+Reagan has died aux(died-3, has-2)
+
+He should leave aux(leave-3, should-2)
+
+Do you think that he will have left by the time we come ? aux(think, Do) aux(left, will) aux(left, have)
+
+case: case marking
+
+""".
+
+[] a :aux; system:hasTag "aux";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:case rdfs:label "case marking"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The case relation is used for any case-marking element which is treated as a
+separate syntactic word (including prepositions, postpositions, and clitic case
+markers). Case-marking elements are treated as dependents of the noun they
+attach to or introduce. (Thus, contrary to SD, UD abandons treating a
+preposition as a mediator between a modified word and its object.) The case
+relation aims at providing a more uniform analysis of nominal elements,
+prepositions and case in morphologically rich languages: a nominal in an
+oblique case will receive the same dependency structure as a nominal introduced
+by an adposition.
+
+the Chair 's office det(Chair-2, the-1) nmod(office-4, Chair-2) case(Chair-2, 's-3)
+
+the office of the Chair det(office-2, the-1) nmod(office-2, Chair-5) case(Chair-5, of-3) det(Chair-5, the-4)
+
+French:
+
+le bureau du président \n the office of the_Chair det(bureau, le) nmod(bureau, président) case(président, du)
+
+Hebrew:
+
+hwa/PRON rah/VERB at/PART[Case=Acc] h/DET klb/NOUN \n he saw ACC the dog   obj(rah-2, klb-5) case(klb-5, at-3)
+
+When case markers are morphemes, they are not divided off the noun as a
+separate case dependent, but the noun as a whole is analyzed as obl (if
+dependent on a predicate) or nmod (if dependent on noun). To overtly mark case,
+POS tags and features are included in the representation as shown below on a
+Russian example (put your mouse pointer over the words to see additional
+morphosyntactic features).
+
+# I wrote the letter with a quill. 1   Я         ja         PRON   _   Case=Nom|Number=Sing|Person=1|PronType=Prs        2   nsubj   _   I 2   написал   napisat'   VERB   _   Gender=Masc|Number=Sing|VerbForm=Part|Voice=Act   0   root    _   wrote 3   письмо    pis'mo     NOUN   _   Case=Acc|Gender=Neut|Number=Sing                  2   obj    _   the-letter 4   пером     pero       NOUN   _   Case=Ins|Gender=Neut|Number=Sing                  2   obl    _   with-a-quill
+
+This treatment provides parallelism between different constructions across and
+within languages. A good result is that we now have greater parallelism between
+prepositional phrases and subordinate clauses, which are often introduced by a
+preposition in some languages (but note that the relation should be mark in
+those cases):
+
+Sue left after the rehearsal nsubj(left-2, Sue-1) obl(left-2, rehearsal-5) det(rehearsal-5, the-4) case(rehearsal-5, after-3)
+
+Sue left after we did nsubj(left-2, Sue-1) advcl(left-2, did-5) mark(did-5, after-3) nsubj(did-5, we-4)
+
+We also obtain parallel constructions for
+
+  • the possessive alternation
+
+the Chair 's office det(Chair-2, the-1) nmod(office-4, Chair-2) case(Chair-2, 's-3)
+
+the office of the Chair det(office-2, the-1) nmod(office-2, Chair-5) case(Chair-5, of-3) det(Chair-5, the-4)
+
+  • variant forms with case, a preposition or a postposition in Finnish
+
+etsiä ilman johtolankaa \n to_search without clue.PARTITIVE obl(etsiä, johtolankaa) case(johtolankaa, ilman)
+
+etsiä taskulampun kanssa \n to_search torch.GENITIVE with obl(etsiä, taskulampun) case(taskulampun, kanssa)
+
+etsiä johtolangatta \n to_search clue.ABESSIVE obl(etsiä, johtolangatta)
+
+  • the dative alternation where the prepositional construction gets a similar
+    analysis to the double object construction
+
+give the children the toys obj(give, toys) iobj(give, children)
+
+give the toys to the children obj(give, toys) obl(give, children) case(children, to)
+
+# give the toys to the children 1     donner    donner   VERB   _   VerbForm=Inf               0   root   _   give 2     les       le       DET    _   Definite=Def|Number=Plur   3   det    _   the 3     jouets    jouet    NOUN   _   Gender=Masc|Number=Plur    1   obj   _   toys 4-5   aux       _        _      _   _                          _   _      _   _ 4     à         à        ADP    _   _                          6   case   _   to 5     les       le       DET    _   Definite=Def|Number=Plur   6   det    _   the 6     enfants   enfant   NOUN   _   Gender=Masc|Number=Plur    1   obl   _   children
+
+Another advantage of this new analysis is that it provides a treatment of
+prepositional phrases that are predicative complements of “be” that is
+consistent with the treatment of nominal predicative complements:
+
+Sue is in shape nsubj(shape-4, Sue-1) cop(shape-4, is-2) case(shape-4, in-3)
+
+When prepositions are stacked (that is, there is a sequence of prepositions),
+there are two possible analyses. If the sequence is a frozen combination with a
+specific meaning, then the best analysis is as fixed. An English example of
+this is out of:
+
+Out of all this , something good will come . case(this-4, Out-1) fixed(Out-1, of-2) det(this-4, all-3) obl(come, this-4)
+
+However, if various combinations of prepositions can be used to express
+different meaning combinations or nuances, then each preposition is
+independently analyzed as a case dependent. Examples of this in English include
+up beside (which can alternate with down beside or up near) or except during
+which can alternate with as during or except after:
+
+The cafe up beside the lookout det(cafe-2, The-1) case(lookout-6, up-3) case(lookout-6, beside-4) det(lookout-6, the-5) nmod(cafe-2, lookout-6)
+
+cc: coordinating conjunction
+
+""".
+
+[] a :case; system:hasTag "case";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:cc rdfs:label "coordinating conjunction"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """ <p>A <code class="highlighter-rouge">cc</code> is the relation between a conjunct and a preceding <a href="../pos/CCONJ">coordinating conjunction</a>. 
+</p> <pre><code class="language-sdparse">Bill is big and honest conj(big, honest) cc(honest, and) </code></pre> <p>A coordinating conjunction may also appear at the beginning of a sentence. This is also called a <code class="highlighter-rouge">cc</code>, even though there is no preceding conjunct (except implicitly or in a preceding sentence).</p> <pre><code class="language-sdparse">And then we left . cc(left, And) </code></pre> <div id="punct1" class="sd-parse"> We have apples , pears , oranges , and bananas . obj(have, apples) conj(apples, pears) conj(apples, oranges) conj(apples, bananas) cc(bananas, and) punct(pears, ,-4) punct(oranges, ,-6) punct(bananas, ,-8) </div> <p><a href="https://github.com/universaldependencies/docs/edit/pages-source/_u-dep/cc.md" target="#">edit cc</a></p> <p><a id="al-u-dep/ccomp" class="al-dest"/></p> <h2><code>ccomp</code>: clausal complement</h2>  """^^rdf:XMLLiteral.
+[] a :cc; system:hasTag "cc";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:ccomp rdfs:label "clausal complement"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A clausal complement of a verb or adjective is a dependent clause which is a
+core argument. That is, it functions like an object of the verb, or adjective.
+
+He says that you like to swim ccomp(says, like) mark(like, that)
+
+He says you like to swim ccomp(says, like)
+
+Such clausal complements may be finite or nonfinite. However, if the subject of
+the clausal complement is controlled (that is, must be the same as the higher
+subject or object, with no other possible interpretation) the appropriate
+relation is xcomp.
+
+The boss said to start digging ccomp(said, start) mark(start, to)
+
+We started digging xcomp(started, digging)
+
+The key difference here is that, while it is possible to interpret the first
+sentence to mean that the boss will not be doing any digging, in the second
+sentence it is clear that the subject of digging can only be we. This is what
+distinguishes ccomp and xcomp.
+
+Additionally, ccomp is used with copulas in equational constructions involving
+full clauses.
+
+The important thing is to keep calm. ccomp(is, keep) nsubj(is, thing)
+
+The problem is that this has never been tried . ccomp(is, tried) nsubj(is, problem)
+
+(In these cases, the copula is treated as a head to preserve the integrity of
+clause boundaries and prevent one predicate to be assigned two subjects. This
+is not an optimal solution given the analysis of equational constructions
+involving nominals, where one of the nominals is treated as the head, but it is
+the preferred solution for now.)
+
+Note: In earlier versions of SD/USD, complement clauses with nouns like fact or
+report were also analyzed as ccomp. However, we now analyze them as acl. Hence,
+ccomp does not appear in nominals. This makes sense, since nominals normally do
+not take core arguments.
+
+clf: classifier
+
+""".
+
+[] a :ccomp; system:hasTag "ccomp";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:clf rdfs:label "classifier"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A clf (classifier) is a word which accompanies a noun in certain grammatical
+contexts. The most canonical use is numeral classifiers, where the word is used
+with a number for counting objects. A classifier generally reflects some kind
+of conceptual classification of nouns, based principally on features of their
+referents. Etymologically, classifiers are normally historically nouns, and the
+words may still also be used as independent nouns, but in their classifier use
+they have scant semantics left. In most cases, the most appropriate UPOS to
+give classifiers will still be NOUN, though you may wish to give the words a
+feature indicating their special status as a classifier. (There is at present
+no Universal feature for classifiers, but NounType=Clf might be apt.) The clf
+function is intended for languages which have highly grammaticalized systems of
+classifiers. The greatest density of such languages is in Asia. As well as core
+classifiers, there are often also other words, sometimes called “massifiers”
+that are used in counting with similar behavior to classifiers. These typically
+include words for containers (“cup”, “box”) and units (“month”, “inch”), such
+as Chinese 袋 ‘bag’ in 一袋米 [one bag rice] ‘a bag of rice’. In a classifier
+language, it is usually most appropriate to also analyze these words as
+classifiers. Most other languages also count things with units, however, for
+these languages, such as English, clf is not used and rather standard noun
+phrase relations are still used (despite there also being incipient
+grammaticalization in many cases, including English). See the examples for
+English at the end.
+
+Here are some examples from Mandarin/Putonghua Chinese:
+
+  • 三个学生 (三個學生) sān gè xuéshēng = “three students”, literally “three
+    [human-classifier] student”
+  • 三棵树 (三棵樹) sān kē shù = “three trees”, literally “three
+    [tree-classifier] tree”
+  • 三只鸟 (三隻鳥) sān zhī niǎo = “three birds”, literally “three
+    [bird-classifier] bird”
+  • 三条河 (三條河) sān tiáo hé = “three rivers”, literally “three
+    [long-wavy-classifier] river”
+
+Syntactically, the classifier groups with the numeral rather than the noun and
+we therefore treat classifiers as functional dependents of numerals (or
+possessives) using the new clf relation. (This is one of Greenberg’s universals
+and is true in almost all cases. A couple of exceptions are noted in Aikhenvald
+(2000: 105) Classifiers, OUP, but it is noticeable that in those languages the
+putative head noun is in the genitive case.)
+
+sān gè xuéshēng \n three clf student nummod(xuéshēng, sān) clf(sān, gè)
+
+Sometimes a classifier is inserted between a demonstrative and a noun (instead
+of numeral and noun) :
+
+乘坐這輛巴士 \n Chéngzuò zhè liàng bāshì \n Take this CLF bus obj(乘坐, 巴士)
+det(巴士, 這) clf(這, 輛) obj(Chéngzuò, bāshì) det(bāshì, zhè) clf(zhè, liàng)
+obj(Take, bus) det(bus, this) clf(this, CLF)
+
+Classifier words also occur in various other constructions, and so it is
+important to distinguish the word in a particular language from the universal
+classifier function proposed in UD. We go through here some further examples
+with Chinese classifiers.
+
+No noun may appear with the number and classifier. In this case, the classifier
+takes the role of the missing noun, and we promote the classifier to be the
+head. So 我買兩本 “I am buying two” is regarded as “I am buying two [books-CLF]
+”.
+
+我買兩本 \n I buy two CLF obj(買, 本) nummod(本, 兩)
+
+In some languages, including Chinese, a classifier can also appear without a
+number, and frequently then has some sort of determinative function. We use the
+relation det for such uses of a classifier. For instance, in Cantonese ‘She
+bought a/the book’:
+
+佢買咗本書 \n keoi maai zo bun syu \n 3sg buy PERF CLF book obj(買, 書) det(書,
+本)
+
+For languages without highly grammaticalized classifier systems, standard
+nominal modification relationships are used even when things are being counted
+in groups (with “massifiers”). For example, in English:
+
+three cups of rolled oats nummod(cups, three) case(oats, of) amod(oats, rolled)
+nmod(cups, oats)
+three cups rolled oats nummod(cups, three) amod(oats, rolled) nmod(cups, oats)
+
+compound: compound
+
+""".
+
+[] a :clf; system:hasTag "clf";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:compound rdfs:label "compound"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The compound relation is one of three relations for multiword expressions
+(MWEs) (the other two being fixed and flat). It is used for
+
+  • any kind of X^0 compounding: noun compounds (e.g., phone book), but also
+    verb and adjective compounds that are more common in other languages (such
+    as Persian or Japanese light verb constructions).
+
+Phone book compound(book, Phone)
+
+  • for particle verbs (with the subtype compound:prt):
+
+put up compound:prt(put, up)
+
+  • for serial verbs (with the subtype compound:svc):
+
+Musa bé lá èbi \n Musa came took knife nsubj(bé, Musa) compound:svc(bé, lá) obj(bé, èbi)
+
+The compound relation (nor any subtype thereof) is not used to link an
+inherently reflexive verb with the reflexive morpheme, despite the similarity
+of this construction to particle verbs. The current UD guideline is to use an
+appropriate subtype of the expl relation.
+
+conj: conjunct
+
+""".
+
+[] a :compound; system:hasTag "compound";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:conj rdfs:label "conjunct"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A conjunct is the relation between two elements connected by a coordinating
+conjunction, such as and, or, etc. We treat conjunctions asymmetrically: The
+head of the relation is the first conjunct and all the other conjuncts depend
+on it via the conj relation.
+
+Bill is big and honest conj(big, honest)
+
+We have apples , pears , oranges , and bananas . obj(have, apples) conj(apples,
+pears) conj(apples, oranges) conj(apples, bananas) cc(bananas, and) punct
+(pears, ,-4) punct(oranges, ,-6) punct(bananas, ,-8)
+
+Coordinated clauses are treated the same way as coordination of other
+constituent types:
+
+He came home , took a shower and immediately went to bed . conj(came, took) conj(came, went) punct(took, ,-4) cc(went, and)
+
+Coordination may be asyndetic, which means that the coordinating conjunction is
+omitted. Commas or other punctuation symbols will delimit the conjuncts in the
+typical case. Asyndetic coordination may be more frequent in some languages,
+while in others, conjunction will appear between every two conjuncts (John and
+Mary and Bill).
+
+Veni , vidi , vici . conj(Veni, vidi) conj(Veni, vici) punct(vidi, ,-2) punct(vici, ,-4)
+
+Shared Dependents and Effective Parents in Coordination
+
+Note that the current basic annotation scheme cannot distinguish between a
+dependent of the first conjunct and a shared dependent of the whole
+coordination:
+
+He met her at the station and kissed her . conj(met, kissed) nsubj(met, He)
+
+vs.
+
+He met her at the station and she kissed him . conj(met, kissed) nsubj(met, He) nsubj(kissed, she)
+
+In contrast, the additional dependencies in the enhanced representation can be
+used to encode the fact that in the first case, he is also subject of kissed:
+
+He met her at the station and kissed her . conj(met, kissed) nsubj(met, He) nsubj(kissed, He)
+
+Furthermore, the enhanced representation can also capture the relation of each
+conjunct to the parent of the coordination. Nevertheless, the effective parents
+can be found algorithmically and showing them explicitly is for convenience
+only, while the information about shared dependents is otherwise not available.
+
+I saw that he met her at the station and kissed her . conj(met, kissed) nsubj(met, he) nsubj(kissed, he) ccomp(saw, met) ccomp(saw, kissed)
+
+If a dependent is shared among conjuncts, the basic representation always links
+it to the first conjunct (coordination head), while the enhanced representation
+shows all dependencies. In the following example, relations that are only part
+of the enhanced representation are shown in red.
+
+# visual-style 6 1 amod color:red # visual-style 4 3 amod color:red # visual-style 6 3 amod color:red 1 American   _ _ _ _ 4 amod 6:amod        _ 2 and        _ _ _ _ 3 cc   _             _ 3 British    _ _ _ _ 1 conj 4:amod|6:amod _ 4 professors _ _ _ _ 0 root _             _ 5 and        _ _ _ _ 6 cc   _             _ 6 students   _ _ _ _ 4 conj 0:root        _
+
+Nested Coordination
+
+Note further that the basic annotation scheme has only a limited capability to
+capture nested coordination such as apples and pears or oranges and lemons.
+Consider coordinations
+
+  • A, B, C
+  • (A, B), C
+  • A, (B, C)
+
+The first two cases, i.e. (A, B, C) and ((A, B), C), lead to the same tree:
+
+A B C conj(A, B) conj(A, C)
+
+Only the right-nesting case (A, (B, C)) can be distinguished because its tree
+is different:
+
+A B C conj(B, C) conj(A, B)
+
+cop: copula
+
+""".
+
+[] a :conj; system:hasTag "conj";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:cop rdfs:label "copula"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A cop (copula) is the relation of a function word used to link a subject to a
+nonverbal predicate. It is often a verb but nonverbal (pronominal) copulas are
+also frequent in the world’s languages. Verbal copulas are tagged AUX, not
+VERB. Pronominal copulas are tagged PRON or DET.
+
+The cop relation should only be used for pure copulas that add at most TAME
+categories to the meaning of the predicate, which means that most languages
+have at most one copula, and only when the nonverbal predicate is treated as
+the head of the clause.
+
+As a concrete example, in many European languages the equivalent of the English
+verb to be is the only word that can appear with the cop relation. In Spanish
+and related languages, both ser and estar can be copulas. In Czech and related
+languages, both být and bývat are copulas (because they are morphological
+variants of the same lexeme, and the reason they have two lemmas is that
+aspect-related morphology is treated as derivational in these languages). In
+contrast, the equivalents of to become are not copulas despite the fact that
+traditional grammar may label them as such. Existential to be can be copula
+only if it is the same verb as in equivalence clauses (John is a teacher). If a
+language uses two different verbs, then the existential one is not a copula.
+Some more discussion of the topic is archived here.
+
+Bill is honest nsubj(honest, Bill) cop(honest, is)
+
+Ivan is the best dancer nsubj(dancer-5, Ivan-1) cop(dancer-5, is-2) det(dancer-5, the-3) amod(dancer-5, best-4)
+
+The copula be is not treated as the head of a clause, but rather the nonverbal
+predicate, as exemplified above.
+
+Such an analysis is motivated by the fact that many languages often or always
+lack an overt copula in such constructions, as in the the following Russian
+example:
+
+Ivan lučšij tancor \n Ivan best dancer nsubj(tancor, Ivan) amod(tancor, lučšij)
+
+In informal English, this may also arise.
+
+Email usually free if you have Wifi. nsubj(free, Email)
+
+This analysis is adopted also when the predicate is a prepositional phrase,
+provided that the same copula (or absence thereof) is used here, in which case
+the nominal part of the prepositional phrase is the head of the clause.
+
+Sue is in shape nsubj(shape, Sue) cop(shape, is) case(shape, in)
+
+If the copula is accompanied by other verbal auxiliaries for tense, aspect,
+etc., then they are also given a flat structure, and taken as dependents of the
+lexical predicate:
+
+Sue has been helpful nsubj(helpful, Sue) cop(helpful, been) aux(helpful, has)
+
+The motivation for this choice is that this structure is parallel to the flat
+structure which we give to auxiliary verbs accompanying verbs. In particular,
+in languages such as English, it is often very difficult to decide whether to
+regard a participle as a verb or an adjective. Perhaps the following sentence
+is such a case:
+
+The presence of troops will be destabilizing . nsubj(destabilizing, presence) cop(destabilizing, be) aux(destabilizing, will)
+
+While a part of speech has to be decided in such cases, it would be unfortunate
+if the choice of part of speech also changed the dependency structure. Note,
+however, that the exact distribution of the copula construction is subject to
+language-specific variation.
+
+Finally, the cop relation is not used when the nonverbal predicate has the form
+of a clause, which typically occur in equational constructions like the
+following:
+
+The important thing is to keep calm . ccomp(is, keep) nsubj(is, thing)
+
+The problem is that this has never been tried . ccomp(is, tried) nsubj(is, problem)
+
+If we took the predicate of the clause as the head, instead of the copula verb,
+it would have two subjects, which would be unworkable. Examples like the above
+could be analyzed reversed with the initial noun phrase as the predicate, but
+in addition to this seeming undesirable, it would fail to be a solution if
+there were a clause on both sides of be, such as in: (For us) to not attempt to
+solve the problem is (for us) to acknowledge defeat. (Note: This solution is
+not perfect and refining it is a possible direction for the future.)
+
+csubj: clausal subject
+
+""".
+
+[] a :cop; system:hasTag "cop";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:csubj rdfs:label "clausal subject"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A clausal subject is a clausal syntactic subject of a clause, i.e., the subject
+is itself a clause. The governor of this relation might not always be a verb:
+when the verb is a copular verb, the root of the clause is the complement of
+the copular verb. The dependent is the main lexical verb or other predicate of
+the subject clause. In the following examples, what she said (that is, said) is
+the clausal subject of makes and interesting, respectively.
+
+New from v2: The csubj relation is also used for the clausal subject of a
+passive verb or verb group. For languages that have a grammaticalized passive
+transformation, it is strongly recommended to use the subtype csubj:pass in
+such cases.
+
+What she said makes sense csubj(makes, said)
+
+What she said is interesting csubj(interesting, said)
+
+What she said was well received csubj:pass(received, said)
+
+dep: unspecified dependency
+
+""".
+
+[] a :csubj; system:hasTag "csubj";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:dep rdfs:label "unspecified dependency"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A dependency can be labeled as dep when it is impossible to determine a more
+precise relation. This may be because of a weird grammatical construction, or a
+limitation in conversion or parsing software. The use of dep should be avoided
+as much as possible.
+
+det: determiner
+
+""".
+
+[] a :dep; system:hasTag "dep";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:det rdfs:label "determiner"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The relation determiner (det) holds between a nominal head and its determiner.
+Most commonly, a word of POS DET will have the relation det and vice versa. The
+known exceptions at present are:
+
+  • In some of the datasets, a possessive determiner like [en] my is currently
+    given the POS tag DET but the relation nmod, so that it is parallel with
+    other possessive constructions. This is not yet completely parallel across
+    languages; in some languages, it is much more clear than in English how
+    possessive determiners relate to adjectives, and the nmod relation is out
+    of question.
+
+The man is here det(man, The)
+
+Which book do you prefer ? det(book, Which)
+
+discourse: discourse element
+
+""".
+
+[] a :det; system:hasTag "det";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:discourse rdfs:label "discourse element"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+This is used for interjections and other discourse particles and elements
+(which are not clearly linked to the structure of the sentence, except in an
+expressive way). We generally follow the guidelines of what the Penn Treebanks
+count as an INTJ. They define this to include: interjections (oh, uh-huh,
+Welcome), fillers (um, ah), and discourse markers (well, like, actually, but
+not you know).
+
+These discourse elements are attached to the head of the most relevant nearby
+clause, which is why they are grouped with non-core clausal dependents even
+though they are normally not dependents of the predicates as such.
+
+Iguazu is in Argentina :) discourse(is-2, :)-5)
+
+dislocated: dislocated elements
+
+""".
+
+[] a :discourse; system:hasTag "discourse";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:dislocated rdfs:label "dislocated elements"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The dislocated relation is used for fronted or postposed elements that do not
+fulfill the usual core grammatical relations of a sentence. These elements
+often appear to be in the periphery of the sentence, and may be separated off
+with a comma intonation.
+
+It is used for fronted elements that introduce the topic of a sentence, as in
+the following Japanese and Greek examples. The dislocated element attaches to
+the head of the clause to which it belongs:
+
+象 は 鼻 が 長い \n zoo wa hana ga naga-i \n elephant TOPIC nose SUBJ long-PRES dislocated(長い-5, 象-1)
+
+to jani ton kserume poli kala \n the John-Acc him know-1pl very well  dislocated(kserume, jani)
+
+However, it would not be used for a topic-marked noun that is also the subject
+of the sentence; this would be an nsubj.
+
+It is also used for postposed elements. The dislocated elements attach to the
+same governor as the dependent that they double for. Right dislocated elements
+are frequent in spoken languages. French and Greek examples follow.
+
+Il faut pas la manger , la plasticine \n It must not it eat , the playdough obj(manger, la-4) dislocated(manger, plasticine) obj(eat, it-13) dislocated(eat, playdough)
+
+ton kserume oli mas edho poli kala, to jani  dislocated(kserume, jani)
+
+expl: expletive
+
+""".
+
+[] a :dislocated; system:hasTag "dislocated";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:expl rdfs:label "expletive"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+This relation captures expletive or pleonastic nominals. These are nominals
+that appear in an argument position of a predicate but which do not themselves
+satisfy any of the semantic roles of the predicate. The main predicate of the
+clause (the verb or predicate adjective or noun) is the governor. In English,
+this is the case for some uses of it and there: the existential there, and it
+when used in extraposition constructions. (Note that both it and there also
+have non-expletive uses.)
+
+There is a ghost in the room expl(is, There)
+
+It is clear that we should decline . expl(clear, It)
+
+Some languages do not have expletives of the English sort, including most
+languages with free pro-drop (the ability to use zero anaphora rather than
+overt pronouns). In languages with expletives of this sort, they can be
+positioned where normally a core argument appears: the subject and direct
+object (and even indirect object) slots, as in the examples below. Note that in
+the analysis of these examples, we treat the postposed subject or clausal
+argument as a regular core argument, and mark the expletive with expl.
+
+There is a ghost in the room expl(is, There) nsubj(is, ghost) obl(is, room)
+
+I believe there to be a ghost in the room nsubj(believe, I) expl(believe, there) xcomp(believe, be) nsubj(be, ghost) obl(be, room)
+
+It is clear that we should decline . expl(clear, It) csubj(clear, decline)
+
+That we should decline is clear . csubj(clear, decline)
+
+I mentioned it to Mary that Sue is leaving nsubj(mentioned, I) expl(mentioned, it) obl(mentioned, Mary) ccomp(mentioned, leaving)
+
+A second, related, use of the expl relation is for cases of true clitic
+doubling. For languages in which clitics and lexical nominals are ususally in
+complementary distribution – languages, such as French, which obey “Kayne’s
+generalization” – then whichever of a clitic or a lexical nominal occurs will
+get the appropriate role, such as obj or iobj. In such languages, when doubling
+does occur, such as in spoken French, the right analysis is to regard the
+lexical nominal as dislocated (see the examples there). As such, the analysis
+will be the same as when a noun phrase doubles another noun phrase or a regular
+pronoun that fills a nominal argument position. However, other languages, such
+as Greek and Bulgarian, standardly allow doubling of a lexical nominal and a
+pronominal clitic, with the former still appearing in its regular role as an
+argument of the predicate. In these cases, if only one of the lexical nominal
+and the clitic appear in a clause, then whichever appears will be given the
+grammatical role of obj, iobj, etc. – parallel to the treatment of lexical
+nominals and pronouns in other languages, modulo the clitic pronoun having a
+different position in the sentence. However, if both occur, the lexical nominal
+will be given the grammatical role of obj, iobj, etc., and the clitic will be
+treated as a pronominal copy, which does not receive its own semantic role, and
+hence will get the role expl. Modulo the different word order, this is fairly
+parallel to the treatment of it and there in English mentioned above, where
+another phrase satisfies the semantic role of the predicate. Examples from
+Greek and Bulgarian follow:
+
+Της τον έδωσε της Καίτης τον αναπτήρα \n PRON.Fem.Gen PRON.Masc.Acc gave ART.Fem.Gen Keti.Gen ART.Masc.Acc lighter.Acc expl(έδωσε, Της-1) iobj(έδωσε, Καίτης) det(Καίτης, της-4) expl(έδωσε, τον-2) obj(έδωσε, αναπτήρα) det(αναπτήρα, τον-6)
+
+Marija mu izprati pismo na rabotnika \n Maria 3.S.M.IO sent letter to the.worker expl(izprati, mu) obj(izprati, pismo) iobj(izprati, rabotnika) case(rabotnika, na)
+
+Reflexives
+
+""".
+
+[] a :expl; system:hasTag "expl";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:fixed rdfs:label "fixed multiword expression"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The fixed relation is one of the three relations for multiword expressions
+(MWEs) (the other two being flat and compound). It is used for certain fixed
+grammaticized expressions that behave like function words or short adverbials.
+
+New from v2: The fixed relation replaces the old mwe relation to prevent
+misunderstanding regarding its scope.
+
+The scope of fixed MWEs corresponds roughly to the fixed expressions category
+of Sag et al. and excludes any semi-fixed or flexible MWEs.
+
+Fixed MWEs are annotated in a flat structure, where all subsequent words in the
+expression are attached to the first one using the fixed label. The assumption
+is that these expressions do not have any internal syntactic structure (except
+from a historical perspective) and that the structural annotation is in
+principle arbitrary. In practice, however, it is highly desirable to use a
+consistent annotation of all fixed MWEs in all languages.
+
+I like dogs as well as cats fixed(as-4, well-5) fixed(as-4, as-6)
+
+He cried because of you fixed(because, of)
+
+Je préfère prendre un dessert plutôt qu' une entrée \n I prefer getting a dessert rather than an appetizer fixed(plutôt, qu')
+
+flat: flat multiword expression
+
+""".
+
+[] a :fixed; system:hasTag "fixed";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:flat rdfs:label "flat multiword expression"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The flat relation is one of three relations for multiword expressions multiword
+expressions (MWEs) in UD (the other two being fixed and compound). It is used
+for exocentric (headless) semi-fixed MWEs like names (Hillary Rodham Clinton)
+and dates (24 December). It contrasts with fixed, which applies to completely
+fixed grammaticized (function word-like) MWEs (like in spite of), and with
+compound, which applies to endocentric (headed) MWEs (like apple pie).
+
+Flat MWEs are annotated with a flat structure, where all subsequent words in
+the expression are attached to the first one using the flat label. The
+assumption is that these expressions do not have any internal syntactic
+structure and that the structural annotation is in principle arbitrary. In
+practice, however, it is highly desirable to use a consistent annotation of all
+flat MWEs in all languages.
+
+Below we describe some of the most common uses of flat across languages. Note
+that semantically equivalent expressions in different languages (or even in the
+same language) may require a different analysis if sometimes there is and
+sometimes there is not a regular compositional syntactic structure.
+
+Names
+
+""".
+
+[] a :flat; system:hasTag "flat";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:goeswith rdfs:label "goes with"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+This relation links two or more parts of a word that are separated in text that
+is not well edited. These parts should be written together as one word
+according to the orthographic rules of a given language. The head is always the
+first part, the other parts are attached to it with the goeswith relation (for
+consistency, similarly as in flat, fixed and conj). Note that only the last
+part may be annotated with SpaceAfter=No.
+
+They come here with out legal permission goeswith(with-4, out-5)
+
+never the less/[SpaceAfter=No] , goeswith(never, the) goeswith(never, less)
+
+iobj: indirect object
+
+""".
+
+[] a :goeswith; system:hasTag "goeswith";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:iobj rdfs:label "indirect object"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The indirect object of a verb is any nominal phrase that is a core argument of
+the verb but is not its subject or (direct) object. The prototypical example is
+the recipient of ditransitive verbs of exchange:
+
+She gave me a raise iobj(gave, me) nsubj(gave, She)
+
+However, many languages allow other semantic roles as additional objects. The
+most common case is allowing benefactives, but some languages allow other
+roles. Examples include instruments, such as in the Kinyarwanda example below,
+or comitatives. At the other extreme, some languages lack all indirect objects.
+
+Umukoóbwa a-ra-andik-iish-a íbárúwa íkárámu \n girl 1-PRS-write-APPL-ASP letter pen obj(a-ra-andik-iish-a, íbárúwa) iobj(a-ra-andik-iish-a, íkárámu)
+
+In languages distinguishing morphological cases, the indirect object will often
+be marked by the dative case. However, verb valency may occasionally dictate
+that the direct object is in dative, or that the indirect objects shall take
+various other forms.
+
+In the following Czech example, the verb takes two arguments, both are nouns in
+the accusative case. One of them is direct object (patient), the other is
+indirect (addressee). It is parallel to how the English translation would be
+annotated (where there is no morphological case marking) and also to verbs of
+giving (consider a similar sentence, he gave my daughter a class of maths).
+
+On učí mou dceru matematiku . \n He teaches my daughter.Acc maths.Acc . obj(učí, matematiku) iobj(učí, dceru) obj(teaches, maths.Acc) iobj(teaches, daughter.Acc)
+
+In general, if there is just one object, it should be labeled obj, regardless
+of the morphological case or semantic role. For example, in English, teach can
+take either the subject matter or the recipient as the only object, and in both
+cases it would be analyzed as the obj:
+
+She teaches introductory logic obj(teaches, logic)
+
+She teaches the first-year students obj(teaches, students)
+
+This is consistent with the analysis of Huddleston and Pullum (2002) “The
+Cambridge Grammar of the English Language”, chapter 4 section 4 (p. 251). As
+they note, it is no different to the same semantic role being sometimes the
+subject and sometimes the object in intransitive/transitive alternations.
+
+list: list
+
+""".
+
+[] a :iobj; system:hasTag "iobj";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:list rdfs:label "list"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The list relation is used for chains of comparable items. In lists with more
+than two items, all items of the list should modify the first one. Informal and
+web text often contains passages which are meant to be interpreted as lists but
+are parsed as single sentences. Email signatures often contain these
+structures, in the form of contact information: the different contact
+information items are labeled as list; the key-value pair relations are labeled
+as appos.
+
+Steve Jones Phone: 555-9814 Email: jones@abc.edf flat:name(Steve-1, Jones-2) list(Steve-1, Phone:-3) list(Steve-1, Email:-5) appos(Phone:-3, 555-9814-4) appos(Email:-5, jones@abc.edf-6)
+
+Another place where list has been used is for a sequence of attributes or
+descriptive terms used as the title line of a review (such as product or
+restaurant reviews, etc.:
+
+Long Lines , Silly Rules , Rude Staff , Ok Food list(Lines, Rules) list(Lines, Staff) list(Lines, Food)
+
+However, list should not be over-used. If a construction can be easily analyzed
+using the grammatical relations of standard sentences, such as when there is
+overt coordination, then it should be analyzed with these more standard
+relations, even if it is laid out as a list typographically.
+
+mark: marker
+
+""".
+
+[] a :list; system:hasTag "list";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:mark rdfs:label "marker"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A marker is the word marking a clause as subordinate to another clause. For a
+complement clause, this is words like [en] that or whether. For an adverbial
+clause, the marker is typically a subordinating conjunction like [en] while or
+although. The marker is a dependent of the subordinate clause head. In a
+relative clause, it is a normally uninflected word, which simply introduces a
+relative clause, such as [he] še. (In this last use, one needs to distinguish
+between relative clause markers, which are mark, from relative pronouns such as
+[en] who or that, which fill a regular verbal argument or modifier grammatical
+relation.)
+
+Forces engaged in fighting after insurgents attacked mark(attacked, after)
+
+He says that you like to swim mark(like, that)
+
+Infinitive markers (e.g. English to, German zu) in infinitival clauses are also
+attached as mark:
+
+Er kam wieder , um das Werk zu Ende zu bringen \n He came again , so-that the work to end to bring mark(bringen, um) mark(bringen, zu-10) mark(bring, so-that) mark(bring, to-22)
+
+nmod: nominal modifier
+
+""".
+
+[] a :mark; system:hasTag "mark";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:nmod rdfs:label "nominal modifier"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The nmod relation is used for nominal dependents of another noun or noun phrase
+and functionally corresponds to an attribute, or genitive complement.
+
+New from v2: The nmod relation was previously used also for nominal dependents
+of verbs, adjectives, and adverbs. The latter are now covered by the new obl
+relation.
+
+In conjunction with the case relation, nmod provides a uniform analysis for the
+possessive alternation (with the option of a subtype like nmod:poss to
+distinguish non-adpositional case):
+
+the office of the Chair det(office-2, the-1) nmod(office-2, Chair-5) case(Chair-5, of-3) det(Chair-5, the-4)
+
+the Chair 's office det(Chair-2, the-1) nmod:poss(office-4, Chair-2) case(Chair-2, 's-3)
+
+nsubj: nominal subject
+
+""".
+
+[] a :nmod; system:hasTag "nmod";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:nsubj rdfs:label "nominal subject"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A nominal subject (nsubj) is a nominal which is the syntactic subject and the
+proto-agent of a clause. That is, it is in the position that passes typical
+grammatical test for subjecthood, and this argument is the more agentive, the
+do-er, or the proto-agent of the clause. This nominal may be headed by a noun,
+or it may be a pronoun or relative pronoun or, in ellipsis contexts, other
+things such as an adjective.
+
+New from v2: The nsubj relation is also used for the nominal subject of a
+passive verb or verb group, even though the subject is then not typically the
+proto-agent argument due to valency changing operations. For languages that
+have a grammaticalized passive transformation, it is strongly recommended to
+use the subtype nsubj:pass in such cases.
+
+The governor of the nsubj relation might not always be a verb: when the verb is
+a copular verb, the root of the clause is the complement of the copular verb,
+which can be an adjective or noun, including a noun marked by a preposition, as
+in the examples below.
+
+The nsubj role is only applied to semantic arguments of a predicate. When there
+is an empty argument in a grammatical subject position (sometimes called a
+pleonastic or expletive), it is labeled as expl. If there is then a displaced
+subject in the clause, as in the English existential there construction, it
+will be labeled as nsubj.)
+
+Clinton defeated Dole nsubj(defeated, Clinton)
+
+Dole was defeated by Clinton nsubj:pass(defeated, Dole)
+
+The car is red . nsubj(red, car)
+
+Sue is a true patriot . nsubj(patriot, Sue)
+
+We are in the barn . nsubj(barn, We)
+
+Agatha is in trouble . nsubj(trouble, Agatha)
+
+There is a ghost in the room . expl(is, There) nsubj(is, ghost)
+
+These links present the many viewpoints that existed . acl(viewpoints, existed) nsubj(existed, that)
+
+nummod: numeric modifier
+
+""".
+
+[] a :nsubj; system:hasTag "nsubj";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:nummod rdfs:label "numeric modifier"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+A numeric modifier of a noun is any number phrase that serves to modify the
+meaning of the noun with a quantity.
+
+Sam ate 3 sheep nummod(sheep, 3)
+
+Sam spent forty dollars nummod(dollars, forty)
+
+Sam spent $ 40 nummod($, 40)
+
+Note that indefinite quantifiers such as few, many are tagged u-pos/DET rather
+than u-pos/NUM. Therefore their relation to the quantified noun is not nummod
+but det:
+
+Sam ate many sheep det(sheep, many)
+
+obj: object
+
+""".
+
+[] a :nummod; system:hasTag "nummod";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:obj rdfs:label "object"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The object of a verb is the second most core argument of a verb after the
+subject. Typically, it is the noun phrase that denotes the entity acted upon or
+which undergoes a change of state or motion (the proto-patient).
+
+She gave me a raise obj(gave, raise)
+
+In languages distinguishing morphological cases, the object will often be
+marked by the accusative case. However, verb valency may occasionally dictate a
+different form, such as the dative case in the following German example:
+
+jemandem begegnen \n someone.Dat to-meet obj(begegnen, jemandem)
+
+In general, if there is just one object, it should be labeled obj, regardless
+of the morphological case or semantic role that it bears. If there are two or
+more objects, one of them should be obj and the others should be iobj. In such
+cases it is necessary to decide what is the most directly affected object
+(patient).
+
+There is more discussion of constructions with multiple objects on the page for
+iobj. If possible, language-specific documentation should be available to help
+identify the primary (or direct) object.
+
+obl: oblique nominal
+
+""".
+
+[] a :obj; system:hasTag "obj";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:obl rdfs:label "oblique nominal"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The obl relation is used for a nominal (noun, pronoun, noun phrase) functioning
+as a non-core (oblique) argument or adjunct. This means that it functionally
+corresponds to an adverbial attaching to a verb, adjective or other adverb.
+
+The obl relation can be further specified by the case. In conjunction with the
+case relation, it provides a uniform analysis for:
+
+  • variant forms with case, a preposition or a postposition, as in Finnish for
+    example:
+
+etsiä ilman johtolankaa \n to_search without clue.PARTITIVE obl(etsiä, johtolankaa) case(johtolankaa, ilman)
+
+etsiä taskulampun kanssa \n to_search torch.GENITIVE with obl(etsiä, taskulampun) case(taskulampun, kanssa)
+
+etsiä johtolangatta \n to_search clue.ABESSIVE obl(etsiä, johtolangatta)
+
+  • the dative alternation where the prepositional construction gets a similar
+    analysis to the double object construction:
+
+give the children the toys obj(give, toys) iobj(give, children)
+
+give the toys to the children obj(give, toys) obl(give, children) case(children, to)
+
+# give the toys to the children 1     donner    donner   VERB   _   VerbForm=Inf               0   root   _   give 2     les       le       DET    _   Definite=Def|Number=Plur   3   det    _   the 3     jouets    jouet    NOUN   _   Gender=Masc|Number=Plur    1   obj   _   toys 4-5   aux       _        _      _   _                          _   _      _   _ 4     à         à        ADP    _   _                          6   case   _   to 5     les       le       DET    _   Definite=Def|Number=Plur   6   det    _   the 6     enfants   enfant   NOUN   _   Gender=Masc|Number=Plur    1   obl   _   children
+
+obl is also used for temporal and locational nominal modifiers:
+
+Last night , I swam in the pool obl(swam, night) obl(swam, pool)
+
+and for the agent of a passive verb (with the optional subtype obl:agent):
+
+the cat was chased by the dog nsubj:pass(chased, cat) obl:agent(chased, dog)
+
+orphan: orphan
+
+""".
+
+[] a :obl; system:hasTag "obl";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:orphan rdfs:label "orphan"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The ‘orphan’ relation is used in cases of head ellipsis where simple promotion
+would result in unnatural and misleading dependency relation. The typical case
+is predicate ellipsis where one of the core arguments have to be promoted to
+clausal head.
+
+Marie won gold and Peter bronze nsubj(won, Marie) obj(won, gold) conj(won, Peter) cc(Peter, and) orphan(Peter, bronze)
+
+In this example, the subject Peter is promoted to the head position in the
+second conjunct. Attaching the object bronze to the subject is necessary to
+preserve the integrity of the clause, but using the standard relation obj would
+be misleading because bronze is not the object of Peter. Therefore, the orphan
+relation is used to indicate that this is a non-standard attachment. By
+contrast, the coordinating conjunction and performs essentially the same
+function as in the non-elliptical case and therefore retains its normal
+relation cc.
+
+See further discussion of ellipsis.
+
+parataxis: parataxis
+
+""".
+
+[] a :orphan; system:hasTag "orphan";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:parataxis rdfs:label "parataxis"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The parataxis relation (from Greek for “place side by side”) is a relation
+between a word (often the main predicate of a sentence) and other elements,
+such as a sentential parenthetical or a clause after a “:” or a “;”, placed
+side by side without any explicit coordination, subordination, or argument
+relation with the head word. Parataxis is a discourse-like equivalent of
+coordination, and so usually obeys an iconic ordering. Hence it is normal for
+the first part of a sentence to be the head and the second part to be the
+parataxis dependent, regardless of the headedness properties of the language.
+But things do get more complicated, such as cases of parentheticals, which
+appear medially.
+
+Let 's face it we 're annoyed parataxis(Let, annoyed)
+
+The guy , John said , left early in the morning parataxis(left, said) punct(said, ,-3) punct(said, ,-6)
+
+An inventory of constructions to which parataxis has been applied
+
+""".
+
+[] a :parataxis; system:hasTag "parataxis";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:punct rdfs:label "punctuation"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+This is used for any piece of punctuation in a clause, if punctuation is being
+retained in the typed dependencies.
+
+Go home ! punct(Go, !)
+
+Tokens with the relation u-dep/punct always attach to content words (except in
+cases of ellipsis) and can never have dependents. Since punct is not a normal
+dependency relation, the usual criteria for determining the head word do not
+apply. Instead, we use the following principles:
+
+ 1. A punctuation mark separating coordinated units is attached to the
+    following conjunct.
+ 2. A punctuation mark preceding or following a dependent unit is attached to
+    that unit.
+ 3. Within the relevant unit, a punctuation mark is attached at the highest
+    possible node that preserves projectivity.
+ 4. Paired punctuation marks (e.g. quotes and brackets, sometimes also dashes,
+    commas and other) should be attached to the same word unless that would
+    create non-projectivity. This word is usually the head of the phrase
+    enclosed in the paired punctuation.
+
+We have apples , pears , oranges , and bananas . obj(have, apples) conj(apples,
+pears) conj(apples, oranges) conj(apples, bananas) cc(bananas, and) punct
+(pears, ,-4) punct(oranges, ,-6) punct(bananas, ,-8)
+Der Mann , den Sie gestern kennengelernt haben , kam wieder . punct
+(kennengelernt, ,-3) punct(kennengelernt, ,-9) punct(kam, .)
+A.K.A. , AKA , or a\/k\/a may refer to : “ Also known as ” , used to introduce
+pseudonyms , aliases , etc. ( Compare f.k.a. for “ formerly known as ” . )
+punct(AKA, ,-2) punct(a/k/a, ,-4) punct(refer, :) punct(known-13, “-11) punct
+(known-13, ”-15) punct(used, ,-16) punct(aliases, ,-21) punct(etc., ,-23) punct
+(Compare, (-25) punct(Compare, )-35) punct(known-31, “-29) punct(known-31,
+”-33) punct(Compare, .-34)
+
+See also examples at parataxis.
+
+reparandum: overridden disfluency
+
+""".
+
+[] a :punct; system:hasTag "punct";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:reparandum rdfs:label "overridden disfluency"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+We use reparandum to indicate disfluencies overridden in a speech repair. The
+disfluency is the dependent of the repair.
+
+Go to the righ- to the left . obl(Go-1, left-7) reparandum(left-7, righ-) case(righ-, to-2) det(righ-, the-3) case(left-7, to-5) det(left-7, the-6)
+
+root: root
+
+""".
+
+[] a :reparandum; system:hasTag "reparandum";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:root rdfs:label "root"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The root grammatical relation points to the root of the sentence. A fake node
+ROOT is used as the governor. The ROOT node is indexed with 0, since the
+indexing of real words in the sentence starts at 1. (The ROOT node is not
+represented explicitly in CoNLL-U.)
+
+ROOT I love French fries . root(ROOT, love)
+
+New from v2: There should be just one node with the root dependency relation in
+every tree. If the main predicate is not present (due to ellipsis) and there
+are multiple orphaned dependents, one of these is promoted to the head (root)
+position and the other orphans are attached to it. (This rule has in practice
+been followed since release v1.2 but was not explicitly stated in the original
+v1 guidelines.)
+
+ROOT And Robert the fourth place . root(ROOT, Robert) cc(Robert, And) orphan(Robert, place) punct(Robert, .) amod(place, fourth) det(place, the)
+
+vocative: vocative
+
+""".
+
+[] a :root; system:hasTag "root";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:vocative rdfs:label "vocative"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+The vocative relation is used to mark a dialogue participant addressed in a
+text (common in conversations, dialogue, emails, newsgroup postings, etc.). The
+relation links the addressee’s name to its host sentence. A vocative commonly
+co-occurs with a null subject, as in the first example below. If the nominal is
+clearly vocative in intent, the preference is to use the vocative relation.
+
+Guys , take it easy! vocative(take, Guys)
+
+Marie , comment vas - tu ? vocative(vas, Marie)
+
+xcomp: open clausal complement
+
+""".
+
+[] a :vocative; system:hasTag "vocative";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+@prefix : <https://universaldependencies.org/u/dep/> .
+@prefix u: <https://universaldependencies.org/u/dep/> . 
+:xcomp rdfs:label "open clausal complement"@en;  rdfs:subClassOf <https://universaldependencies.org/u/dep>;
+  rdfs:comment """
+An open clausal complement (xcomp) of a verb or an adjective is a predicative
+or clausal complement without its own subject. The reference of the subject is
+necessarily determined by an argument external to the xcomp (normally by the
+object of the next higher clause, if there is one, or else by the subject of
+the next higher clause). This is often referred to as obligatory control. These
+clauses tend to be non-finite in many languages, but they can be finite as
+well. The name xcomp is borrowed from Lexical-Functional Grammar.
+
+He says that you like to swim ccomp(says, like)
+
+Sue asked George to respond to her offer xcomp(asked, respond) obj(asked, George)
+
+You look great xcomp(look, great)
+
+I started to work there yesterday xcomp(started, work)
+
+I consider him a fool xcomp(consider, fool)
+
+I consider him honest xcomp(consider, honest)
+
+We expect them to change their minds xcomp(expect, change) obj(expect, them)
+
+Note that the above condition “without its own subject” does not mean that a
+clause is an xcomp just because its subject is not overt. The subject must be
+necessarily inherited from a fixed position in the higher clause. That is,
+there should be no available interpretation where the subject of the lower
+clause may be distinct from the specified role of the upper clause. In cases
+where the missing subject may or must be distinct from a fixed role in the
+higher clause, ccomp should be used instead, as below. This includes cases of
+arbitrary subjects and anaphoric control.
+
+The boss said to start digging ccomp(said, start)
+
+Pro-drop languages have clauses where the subject is not present as a separate
+word, yet it is inherently present (and often deducible from the form of the
+verb) and it does not depend on arguments from a higher clause. Thus in neither
+of the following two Czech examples is there any overt subject, yet only the
+second example contains an xcomp.
+
+Píšu , protože jsem to slíbil . \n I-write , because I-have it promised . advcl(Píšu, slíbil) advcl(I-write, promised)
+
+Slíbil jsem psát . \n Promised I-have to-write . xcomp(Slíbil, psát) xcomp(Promised, to-write)
+
+Secondary Predicates
+
+The xcomp relation is also used in constructions that are known as secondary
+predicates or predicatives. Examples:
+
+  • She declared the cake beautiful.
+  • She declared the cake a success.
+
+We could paraphrase the sentence using a subordinate clause: She declared that
+the cake was beautiful. There are two predicates mixed in one clause: 1. she
+declared something, and 2. the cake was beautiful (according to her opinion).
+The secondary predicate will be attached to the main predicate as an xcomp:
+
+She declared the cake beautiful . nsubj(declared, She) obj(declared, cake) xcomp(declared, beautiful)
+
+In the enhanced representation, there is an additional subject link showing the
+secondary predication:
+
+She declared the cake beautiful . nsubj(declared, She) obj(declared, cake) xcomp(declared, beautiful) nsubj(beautiful, cake)
+
+A Czech example:
+
+jmenovat někoho generálem \n to-appoint someone as-a-general obj(jmenovat, někoho) xcomp(jmenovat, generálem)
+
+Remember that xcomp is used for core arguments of clausal predicates so it will
+not be used for other instances of secondary predication. For instance, in She
+entered the room sad we also have a double predication (she entered the room;
+she was sad). But sad is not a core argument of enter: leaving it out will
+neither affect grammaticality nor significantly alter the meaning of the verb.
+On the other hand, leaving out beautiful in she declared the cake beautiful
+will either render the sentence ungrammatical or lead to a different
+interpretation of declared.
+
+The result is that in She entered the room sad, sad will depend on She and the
+relation will be acl instead of xcomp.
+
+""".
+
+[] a :xcomp; system:hasTag "xcomp";  system:hasTier "dep"; owl:versionInfo "generic tag instance, not language-specific".
+
+
+
+
+[] system:hasTag "acl:adv"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "acl:adv"; rdfs:subClassOf u:acl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "acl:appos"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "acl:appos"; rdfs:subClassOf u:acl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Latin"@en ] .
+
+[] system:hasTag "acl:cleft"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "acl:cleft"; rdfs:subClassOf u:acl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Faroese, Naija, Norwegian, Swedish"@en ] .
+
+[] system:hasTag "acl:focus"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "acl:focus"; rdfs:subClassOf u:acl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Breton"@en ] .
+
+[] system:hasTag "acl:inf"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "acl:inf"; rdfs:subClassOf u:acl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Portuguese"@en ] .
+
+[] system:hasTag "acl:part"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "acl:part"; rdfs:subClassOf u:acl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Portuguese"@en ] .
+
+[] system:hasTag "acl:poss"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "acl:poss"; rdfs:subClassOf u:acl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Kazakh"@en ] .
+
+[] system:hasTag "acl:relcl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "acl:relcl"; rdfs:subClassOf u:acl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, Armenian, Assyrian, Belarusian, Breton, Bulgarian, Chinese, Danish, Dutch, English, Erzya, Estonian, Faroese, Finnish, French, German, Greek, Hebrew, Hindi, Hindi English, Indonesian, Irish, Italian, Karelian, Kazakh, Korean, Latin, Lithuanian, Marathi, Naija, North Sami, Norwegian, Old French, Old Russian, Persian, Polish, Portuguese, Russian, Sanskrit, Spanish, Swedish, Swedish Sign Language, Telugu, Thai, Turkish, Ukrainian, Urdu, Welsh, Wolof"@en ] .
+
+[] system:hasTag "advcl:appos"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:appos"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Latin"@en ] .
+
+[] system:hasTag "advcl:arg"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:arg"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Latin"@en ] .
+
+[] system:hasTag "advcl:cleft"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:cleft"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French"@en ] .
+
+[] system:hasTag "advcl:cond"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:cond"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Telugu, Uyghur"@en ] .
+
+[] system:hasTag "advcl:coverb"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:coverb"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese"@en ] .
+
+[] system:hasTag "advcl:periph"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:periph"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Naija"@en ] .
+
+[] system:hasTag "advcl:relcl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:relcl"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "advcl:sp"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:sp"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "advcl:svc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:svc"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "advcl:tcl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advcl:tcl"; rdfs:subClassOf u:advcl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Romanian"@en ] .
+
+[] system:hasTag "advmod:appos"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:appos"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Latin"@en ] .
+
+[] system:hasTag "advmod:arg"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:arg"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "advmod:cc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:cc"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Latin"@en ] .
+
+[] system:hasTag "advmod:det"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:det"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "advmod:df"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:df"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "advmod:discourse"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:discourse"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Belarusian"@en ] .
+
+[] system:hasTag "advmod:emph"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:emph"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, Armenian, Catalan, Croatian, Czech, Latin, Lithuanian, Naija, Sanskrit, Slovak, Tamil, Turkish, Upper Sorbian, Uyghur"@en ] .
+
+[] system:hasTag "advmod:locy"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:locy"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "advmod:mode"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:mode"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "advmod:neg"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:neg"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Breton, Buryat, Kurmanji, Maltese, Polish"@en ] .
+
+[] system:hasTag "advmod:obl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:obl"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian, Old French"@en ] .
+
+[] system:hasTag "advmod:periph"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:periph"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French"@en ] .
+
+[] system:hasTag "advmod:que"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:que"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "advmod:sentcon"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:sentcon"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Mbya Guarani"@en ] .
+
+[] system:hasTag "advmod:tfrom"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:tfrom"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "advmod:tlocy"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:tlocy"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "advmod:tmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:tmod"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Erzya, Romanian, Uyghur"@en ] .
+
+[] system:hasTag "advmod:to"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:to"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "advmod:tto"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "advmod:tto"; rdfs:subClassOf u:advmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "amod:advmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "amod:advmod"; rdfs:subClassOf u:amod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Latin"@en ] .
+
+[] system:hasTag "amod:att"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "amod:att"; rdfs:subClassOf u:amod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "amod:attlvc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "amod:attlvc"; rdfs:subClassOf u:amod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "amod:flat"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "amod:flat"; rdfs:subClassOf u:amod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "amod:mode"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "amod:mode"; rdfs:subClassOf u:amod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "amod:obl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "amod:obl"; rdfs:subClassOf u:amod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "appos:conj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "appos:conj"; rdfs:subClassOf u:appos; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French"@en ] .
+
+[] system:hasTag "appos:nmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "appos:nmod"; rdfs:subClassOf u:appos; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French"@en ] .
+
+[] system:hasTag "aux:aglt"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:aglt"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "aux:caus"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:caus"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Armenian, Chinese, French"@en ] .
+
+[] system:hasTag "aux:clitic"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:clitic"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "aux:cnd"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:cnd"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "aux:imp"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:imp"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "aux:mood"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:mood"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "aux:neg"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:neg"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Erzya, Maltese, North Sami"@en ] .
+
+[] system:hasTag "aux:part"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:part"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Maltese"@en ] .
+
+[] system:hasTag "aux:pass"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:pass"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Afrikaans, Ancient Greek, Arabic, Belarusian, Breton, Bulgarian, Buryat, Chinese, Croatian, Czech, Dutch, English, Faroese, Finnish, French, Galician, German, Hindi, Italian, Karelian, Latin, Latvian, Lithuanian, Maltese, Marathi, Naija, Norwegian, Old Church Slavonic, Old French, Old Russian, Persian, Polish, Portuguese, Romanian, Russian, Slovak, Spanish, Swedish, Thai, Upper Sorbian, Vietnamese"@en ] .
+
+[] system:hasTag "aux:poss"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:poss"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Assyrian"@en ] .
+
+[] system:hasTag "aux:q"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "aux:q"; rdfs:subClassOf u:aux; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Erzya, Turkish, Uyghur"@en ] .
+
+[] system:hasTag "case:acc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:acc"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hebrew"@en ] .
+
+[] system:hasTag "case:aspect"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:aspect"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese"@en ] .
+
+[] system:hasTag "case:circ"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:circ"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Kurmanji"@en ] .
+
+[] system:hasTag "case:dec"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:dec"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese"@en ] .
+
+[] system:hasTag "case:det"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:det"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Maltese, Old French"@en ] .
+
+[] system:hasTag "case:gen"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:gen"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hebrew"@en ] .
+
+[] system:hasTag "case:loc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:loc"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Armenian, Cantonese, Chinese"@en ] .
+
+[] system:hasTag "case:pred"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:pred"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Welsh"@en ] .
+
+[] system:hasTag "case:pref"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:pref"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese"@en ] .
+
+[] system:hasTag "case:suff"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:suff"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese"@en ] .
+
+[] system:hasTag "case:voc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "case:voc"; rdfs:subClassOf u:case; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Irish"@en ] .
+
+[] system:hasTag "cc:nc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "cc:nc"; rdfs:subClassOf u:cc; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "cc:preconj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "cc:preconj"; rdfs:subClassOf u:cc; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, English, Erzya, Estonian, Faroese, Finnish, German, Indonesian, North Sami, Persian, Polish, Portuguese, Romanian, Slovenian, Spanish, Thai, Turkish"@en ] .
+
+[] system:hasTag "ccomp:cleft"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "ccomp:cleft"; rdfs:subClassOf u:ccomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Naija"@en ] .
+
+[] system:hasTag "ccomp:obj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "ccomp:obj"; rdfs:subClassOf u:ccomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian, Polish"@en ] .
+
+[] system:hasTag "ccomp:obl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "ccomp:obl"; rdfs:subClassOf u:ccomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "ccomp:pmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "ccomp:pmod"; rdfs:subClassOf u:ccomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Romanian"@en ] .
+
+[] system:hasTag "ccomp:pred"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "ccomp:pred"; rdfs:subClassOf u:ccomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "compound:a"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:a"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Indonesian"@en ] .
+
+[] system:hasTag "compound:affix"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:affix"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hebrew"@en ] .
+
+[] system:hasTag "compound:coll"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:coll"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Erzya"@en ] .
+
+[] system:hasTag "compound:conjv"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:conjv"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hindi"@en ] .
+
+[] system:hasTag "compound:dir"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:dir"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "compound:ext"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:ext"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "compound:lvc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:lvc"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Armenian, Kazakh, Korean, Kurmanji, Marathi, Persian, Telugu, Turkish, Uyghur"@en ] .
+
+[] system:hasTag "compound:n"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:n"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Indonesian"@en ] .
+
+[] system:hasTag "compound:nn"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:nn"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Finnish, Kurmanji, North Sami"@en ] .
+
+[] system:hasTag "compound:plur"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:plur"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Indonesian"@en ] .
+
+[] system:hasTag "compound:preverb"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:preverb"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "compound:prt"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:prt"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Afrikaans, Arabic, Danish, Dutch, English, Estonian, Finnish, German, Irish, Karelian, Naija, Norwegian, Persian, Portuguese, Spanish, Swedish, Swedish Sign Language, Tamil, Thai, Wolof, Yoruba"@en ] .
+
+[] system:hasTag "compound:quant"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:quant"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese"@en ] .
+
+[] system:hasTag "compound:redup"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:redup"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Armenian, Bambara, Classical Chinese, Erzya, Hindi, Kurmanji, Marathi, Tagalog, Telugu, Turkish, Uyghur"@en ] .
+
+[] system:hasTag "compound:smixut"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:smixut"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hebrew"@en ] .
+
+[] system:hasTag "compound:svc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:svc"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Amharic, Armenian, Erzya, Marathi, Mbya Guarani, Naija, Swedish Sign Language, Telugu, Ukrainian, Wolof, Yoruba"@en ] .
+
+[] system:hasTag "compound:v"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:v"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Indonesian"@en ] .
+
+[] system:hasTag "compound:vo"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:vo"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "compound:vv"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "compound:vv"; rdfs:subClassOf u:compound; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "conj:appos"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "conj:appos"; rdfs:subClassOf u:conj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Naija"@en ] .
+
+[] system:hasTag "conj:coord"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "conj:coord"; rdfs:subClassOf u:conj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Naija"@en ] .
+
+[] system:hasTag "conj:dicto"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "conj:dicto"; rdfs:subClassOf u:conj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Naija"@en ] .
+
+[] system:hasTag "conj:extend"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "conj:extend"; rdfs:subClassOf u:conj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Slovenian"@en ] .
+
+[] system:hasTag "conj:redup"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "conj:redup"; rdfs:subClassOf u:conj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Naija"@en ] .
+
+[] system:hasTag "conj:svc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "conj:svc"; rdfs:subClassOf u:conj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "cop:expl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "cop:expl"; rdfs:subClassOf u:cop; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Maltese"@en ] .
+
+[] system:hasTag "cop:locat"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "cop:locat"; rdfs:subClassOf u:cop; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "cop:own"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "cop:own"; rdfs:subClassOf u:cop; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Finnish, Karelian"@en ] .
+
+[] system:hasTag "csubj:cleft"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "csubj:cleft"; rdfs:subClassOf u:csubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Irish"@en ] .
+
+[] system:hasTag "csubj:cop"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "csubj:cop"; rdfs:subClassOf u:csubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Estonian, Finnish, Irish, Turkish"@en ] .
+
+[] system:hasTag "csubj:pass"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "csubj:pass"; rdfs:subClassOf u:csubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Amharic, Ancient Greek, Arabic, Armenian, Bulgarian, Catalan, Chinese, Croatian, Czech, English, French, German, Gothic, Greek, Indonesian, Italian, Korean, Latin, Latvian, Lithuanian, Norwegian, Old Church Slavonic, Old Russian, Portuguese, Romanian, Russian, Sanskrit, Slovak, Spanish, Swedish"@en ] .
+
+[] system:hasTag "csubj:quasi"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "csubj:quasi"; rdfs:subClassOf u:csubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Naija"@en ] .
+
+[] system:hasTag "dep:alt"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "dep:alt"; rdfs:subClassOf u:dep; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Upper Sorbian"@en ] .
+
+[] system:hasTag "dep:iobj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "dep:iobj"; rdfs:subClassOf u:dep; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French"@en ] .
+
+[] system:hasTag "dep:obj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "dep:obj"; rdfs:subClassOf u:dep; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French"@en ] .
+
+[] system:hasTag "dep:prt"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "dep:prt"; rdfs:subClassOf u:dep; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Indonesian, Korean"@en ] .
+
+[] system:hasTag "det:def"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "det:def"; rdfs:subClassOf u:det; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hebrew"@en ] .
+
+[] system:hasTag "det:numgov"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "det:numgov"; rdfs:subClassOf u:det; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Croatian, Czech, Lithuanian, Polish, Serbian, Slovak, Ukrainian, Upper Sorbian"@en ] .
+
+[] system:hasTag "det:nummod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "det:nummod"; rdfs:subClassOf u:det; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Czech, Polish, Ukrainian"@en ] .
+
+[] system:hasTag "det:poss"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "det:poss"; rdfs:subClassOf u:det; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Armenian, German, Italian, Korean, Polish, Portuguese"@en ] .
+
+[] system:hasTag "det:predet"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "det:predet"; rdfs:subClassOf u:det; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, English, French, German, Hindi, Italian, Naija, Persian, Portuguese, Spanish, Thai, Turkish"@en ] .
+
+[] system:hasTag "det:rel"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "det:rel"; rdfs:subClassOf u:det; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Bambara"@en ] .
+
+[] system:hasTag "discourse:emo"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "discourse:emo"; rdfs:subClassOf u:discourse; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Italian, Polish"@en ] .
+
+[] system:hasTag "discourse:filler"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "discourse:filler"; rdfs:subClassOf u:discourse; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Norwegian, Slovenian"@en ] .
+
+[] system:hasTag "discourse:intj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "discourse:intj"; rdfs:subClassOf u:discourse; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "discourse:q"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "discourse:q"; rdfs:subClassOf u:discourse; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Mbya Guarani"@en ] .
+
+[] system:hasTag "discourse:sp"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "discourse:sp"; rdfs:subClassOf u:discourse; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese, Classical Chinese"@en ] .
+
+[] system:hasTag "dislocated:cleft"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "dislocated:cleft"; rdfs:subClassOf u:dislocated; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Mbya Guarani"@en ] .
+
+[] system:hasTag "expl:impers"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "expl:impers"; rdfs:subClassOf u:expl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Italian, Polish, Romanian"@en ] .
+
+[] system:hasTag "expl:pass"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "expl:pass"; rdfs:subClassOf u:expl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Catalan, Czech, French, Italian, Latin, Romanian, Slovak, Spanish, Upper Sorbian"@en ] .
+
+[] system:hasTag "expl:poss"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "expl:poss"; rdfs:subClassOf u:expl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Romanian"@en ] .
+
+[] system:hasTag "expl:pv"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "expl:pv"; rdfs:subClassOf u:expl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Croatian, Czech, Dutch, German, Polish, Portuguese, Romanian, Slovak, Upper Sorbian"@en ] .
+
+[] system:hasTag "fixed:name"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "fixed:name"; rdfs:subClassOf u:fixed; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Breton"@en ] .
+
+[] system:hasTag "flat:abs"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "flat:abs"; rdfs:subClassOf u:flat; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "flat:foreign"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "flat:foreign"; rdfs:subClassOf u:flat; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, Belarusian, Buryat, Chinese, Croatian, Czech, English, Estonian, Finnish, French, Galician, Italian, Latin, Latvian, Lithuanian, Norwegian, Persian, Portuguese, Russian, Slovak, Slovenian, Ukrainian, Upper Sorbian"@en ] .
+
+[] system:hasTag "flat:name"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "flat:name"; rdfs:subClassOf u:flat; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ancient Greek, Belarusian, Breton, Chinese, Erzya, Finnish, French, Galician, German, Gothic, Hebrew, Hindi, Hungarian, Indonesian, Irish, Italian, Karelian, Kazakh, Komi Zyrian, Korean, Latin, Latvian, Maltese, Norwegian, Old Church Slavonic, Old Russian, Portuguese, Russian, Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Welsh"@en ] .
+
+[] system:hasTag "flat:range"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "flat:range"; rdfs:subClassOf u:flat; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "flat:repeat"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "flat:repeat"; rdfs:subClassOf u:flat; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "flat:sibl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "flat:sibl"; rdfs:subClassOf u:flat; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "flat:title"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "flat:title"; rdfs:subClassOf u:flat; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "flat:vv"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "flat:vv"; rdfs:subClassOf u:flat; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Classical Chinese"@en ] .
+
+[] system:hasTag "iobj:agent"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "iobj:agent"; rdfs:subClassOf u:iobj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Armenian, French"@en ] .
+
+[] system:hasTag "iobj:appl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "iobj:appl"; rdfs:subClassOf u:iobj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Wolof"@en ] .
+
+[] system:hasTag "iobj:caus"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "iobj:caus"; rdfs:subClassOf u:iobj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Kazakh"@en ] .
+
+[] system:hasTag "mark:adv"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:adv"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "mark:advb"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:advb"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese"@en ] .
+
+[] system:hasTag "mark:advmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:advmod"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "mark:comp"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:comp"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese"@en ] .
+
+[] system:hasTag "mark:obj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:obj"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "mark:obl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:obl"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "mark:prt"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:prt"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese, Irish"@en ] .
+
+[] system:hasTag "mark:q"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:q"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hebrew"@en ] .
+
+[] system:hasTag "mark:rel"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:rel"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "mark:relcl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "mark:relcl"; rdfs:subClassOf u:mark; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese"@en ] .
+
+[] system:hasTag "nmod:abl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:abl"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Uyghur"@en ] .
+
+[] system:hasTag "nmod:advmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:advmod"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Latin"@en ] .
+
+[] system:hasTag "nmod:agent"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:agent"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Romanian, Welsh"@en ] .
+
+[] system:hasTag "nmod:appos"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:appos"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Latin"@en ] .
+
+[] system:hasTag "nmod:arg"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:arg"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish, Turkish"@en ] .
+
+[] system:hasTag "nmod:att"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:att"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "nmod:attlvc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:attlvc"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "nmod:cau"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:cau"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Uyghur"@en ] .
+
+[] system:hasTag "nmod:clas"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:clas"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Uyghur"@en ] .
+
+[] system:hasTag "nmod:cmp"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:cmp"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Telugu"@en ] .
+
+[] system:hasTag "nmod:comp"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:comp"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Erzya, Turkish, Uyghur"@en ] .
+
+[] system:hasTag "nmod:dat"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:dat"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Kurmanji"@en ] .
+
+[] system:hasTag "nmod:flat"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:flat"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "nmod:gen"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:gen"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Breton"@en ] .
+
+[] system:hasTag "nmod:gmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:gmod"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, German"@en ] .
+
+[] system:hasTag "nmod:gobj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:gobj"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Erzya, Finnish"@en ] .
+
+[] system:hasTag "nmod:gsubj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:gsubj"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Erzya, Finnish, Karelian"@en ] .
+
+[] system:hasTag "nmod:ins"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:ins"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Uyghur"@en ] .
+
+[] system:hasTag "nmod:npmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:npmod"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Armenian, English, Naija"@en ] .
+
+[] system:hasTag "nmod:obl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:obl"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "nmod:obllvc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:obllvc"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "nmod:own"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:own"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Buryat"@en ] .
+
+[] system:hasTag "nmod:part"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:part"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Turkish, Uyghur"@en ] .
+
+[] system:hasTag "nmod:pmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:pmod"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Romanian"@en ] .
+
+[] system:hasTag "nmod:poss"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:poss"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, Armenian, Assyrian, Bambara, Breton, Danish, Dutch, English, Faroese, Finnish, French, German, Hebrew, Hindi, Indonesian, Irish, Karelian, Kazakh, Korean, Kurmanji, Maltese, Marathi, Naija, North Sami, Persian, Polish, Sanskrit, Swedish, Swedish Sign Language, Tagalog, Telugu, Thai, Turkish, Uyghur, Warlpiri, Welsh, Wolof"@en ] .
+
+[] system:hasTag "nmod:pred"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:pred"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "nmod:ref"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:ref"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Uyghur"@en ] .
+
+[] system:hasTag "nmod:tmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nmod:tmod"; rdfs:subClassOf u:nmod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Chinese, English, Romanian, Telugu, Turkish, Uyghur"@en ] .
+
+[] system:hasTag "nsubj:advmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:advmod"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "nsubj:appos"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:appos"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Breton"@en ] .
+
+[] system:hasTag "nsubj:caus"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:caus"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Armenian, French"@en ] .
+
+[] system:hasTag "nsubj:cop"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:cop"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Breton, Estonian, Finnish, Hebrew, Karelian, Sanskrit, Turkish"@en ] .
+
+[] system:hasTag "nsubj:expl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:expl"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Naija"@en ] .
+
+[] system:hasTag "nsubj:lvc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:lvc"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Hungarian"@en ] .
+
+[] system:hasTag "nsubj:nc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:nc"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Persian, Telugu"@en ] .
+
+[] system:hasTag "nsubj:obj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:obj"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "nsubj:own"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:own"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Marathi"@en ] .
+
+[] system:hasTag "nsubj:pass"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:pass"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Afrikaans, Amharic, Ancient Greek, Arabic, Armenian, Belarusian, Bulgarian, Buryat, Cantonese, Catalan, Chinese, Classical Chinese, Croatian, Czech, Dutch, English, Faroese, French, Galician, German, Gothic, Greek, Hindi, Indonesian, Italian, Korean, Latin, Latvian, Lithuanian, Maltese, Marathi, Naija, Norwegian, Old Church Slavonic, Old Russian, Persian, Polish, Portuguese, Romanian, Russian, Sanskrit, Slovak, Spanish, Swedish, Tamil, Thai, Upper Sorbian"@en ] .
+
+[] system:hasTag "nsubj:periph"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:periph"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese"@en ] .
+
+[] system:hasTag "nsubj:quasi"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nsubj:quasi"; rdfs:subClassOf u:nsubj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Naija"@en ] .
+
+[] system:hasTag "nummod:entity"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nummod:entity"; rdfs:subClassOf u:nummod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Belarusian, Russian"@en ] .
+
+[] system:hasTag "nummod:gov"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "nummod:gov"; rdfs:subClassOf u:nummod; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Belarusian, Croatian, Czech, Lithuanian, Old Russian, Polish, Russian, Sanskrit, Serbian, Ukrainian, Upper Sorbian"@en ] .
+
+[] system:hasTag "obj:advmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:advmod"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "obj:advneg"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:advneg"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "obj:agent"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:agent"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French"@en ] .
+
+[] system:hasTag "obj:appl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:appl"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Wolof"@en ] .
+
+[] system:hasTag "obj:cau"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:cau"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Uyghur"@en ] .
+
+[] system:hasTag "obj:caus"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:caus"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Wolof"@en ] .
+
+[] system:hasTag "obj:lvc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:lvc"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Hungarian"@en ] .
+
+[] system:hasTag "obj:obl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:obl"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "obj:periph"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obj:periph"; rdfs:subClassOf u:obj; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "obl:advmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:advmod"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Old French"@en ] .
+
+[] system:hasTag "obl:agent"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:agent"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ancient Greek, Armenian, Belarusian, Breton, Cantonese, Chinese, Czech, Dutch, Erzya, French, German, Gothic, Greek, Hindi, Italian, Latin, Lithuanian, Maltese, Old Church Slavonic, Old Russian, Polish, Portuguese, Russian, Sanskrit, Slovak, Swedish, Turkish, Welsh"@en ] .
+
+[] system:hasTag "obl:appl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:appl"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Wolof"@en ] .
+
+[] system:hasTag "obl:arg"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:arg"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, Czech, French, German, Latin, Lithuanian, Maltese, Naija, Polish, Sanskrit, Slovak, Tamil"@en ] .
+
+[] system:hasTag "obl:cau"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:cau"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Telugu"@en ] .
+
+[] system:hasTag "obl:cmpr"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:cmpr"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+[] system:hasTag "obl:comp"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:comp"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French"@en ] .
+
+[] system:hasTag "obl:lmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:lmod"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Classical Chinese"@en ] .
+
+[] system:hasTag "obl:loc"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:loc"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Danish"@en ] .
+
+[] system:hasTag "obl:mod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:mod"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Naija"@en ] .
+
+[] system:hasTag "obl:npmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:npmod"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Coptic, English"@en ] .
+
+[] system:hasTag "obl:own"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:own"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Kazakh"@en ] .
+
+[] system:hasTag "obl:patient"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:patient"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Cantonese, Chinese"@en ] .
+
+[] system:hasTag "obl:periph"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:periph"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Naija"@en ] .
+
+[] system:hasTag "obl:poss"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:poss"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Indonesian, Thai"@en ] .
+
+[] system:hasTag "obl:prep"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:prep"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Irish"@en ] .
+
+[] system:hasTag "obl:sentcon"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:sentcon"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Mbya Guarani"@en ] .
+
+[] system:hasTag "obl:tmod"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:tmod"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Arabic, Cantonese, Chinese, Classical Chinese, Danish, English, Erzya, French, German, Hindi, Indonesian, Irish, Italian, Korean, Portuguese, Spanish, Telugu, Thai, Turkish, Warlpiri"@en ] .
+
+[] system:hasTag "obl:x"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "obl:x"; rdfs:subClassOf u:obl; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Breton"@en ] .
+
+[] system:hasTag "parataxis:appos"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:appos"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Italian"@en ] .
+
+[] system:hasTag "parataxis:conj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:conj"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Naija"@en ] .
+
+[] system:hasTag "parataxis:deletion"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:deletion"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Norwegian"@en ] .
+
+[] system:hasTag "parataxis:discourse"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:discourse"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Italian, Naija, Slovenian, Ukrainian"@en ] .
+
+[] system:hasTag "parataxis:dislocated"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:dislocated"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Naija"@en ] .
+
+[] system:hasTag "parataxis:hashtag"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:hashtag"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Italian"@en ] .
+
+[] system:hasTag "parataxis:insert"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:insert"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Italian, Polish"@en ] .
+
+[] system:hasTag "parataxis:newsent"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:newsent"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "parataxis:nsubj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:nsubj"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Italian"@en ] .
+
+[] system:hasTag "parataxis:obj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:obj"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Bambara, French, Italian, Naija, Polish"@en ] .
+
+[] system:hasTag "parataxis:parenth"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:parenth"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "French, Naija"@en ] .
+
+[] system:hasTag "parataxis:rel"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:rel"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "parataxis:rep"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:rep"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Mbya Guarani"@en ] .
+
+[] system:hasTag "parataxis:restart"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "parataxis:restart"; rdfs:subClassOf u:parataxis; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Slovenian"@en ] .
+
+[] system:hasTag "vocative:cl"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "vocative:cl"; rdfs:subClassOf u:vocative; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "vocative:mention"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "vocative:mention"; rdfs:subClassOf u:vocative; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Italian"@en ] .
+
+[] system:hasTag "xcomp:adj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "xcomp:adj"; rdfs:subClassOf u:xcomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Portuguese"@en ] .
+
+[] system:hasTag "xcomp:ds"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "xcomp:ds"; rdfs:subClassOf u:xcomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Erzya, Finnish, Karelian"@en ] .
+
+[] system:hasTag "xcomp:obj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "xcomp:obj"; rdfs:subClassOf u:xcomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "North Sami, Polish"@en ] .
+
+[] system:hasTag "xcomp:pred"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "xcomp:pred"; rdfs:subClassOf u:xcomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Irish, North Sami, Polish"@en ] .
+
+[] system:hasTag "xcomp:sp"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "xcomp:sp"; rdfs:subClassOf u:xcomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Ukrainian"@en ] .
+
+[] system:hasTag "xcomp:subj"; 
+			system:hasTier "dep"; a [ 
+				rdfs:label "xcomp:subj"; rdfs:subClassOf u:xcomp; 
+				owl:versionInfo "https://universaldependencies.org/ext-dep-index.html"; 
+				rdfs:comment "Polish"@en ] .
+
+
