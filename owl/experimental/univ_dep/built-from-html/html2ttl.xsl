@@ -6,7 +6,22 @@
     <xsl:param name="baseuri">
         <xsl:text>https://universaldependencies.org/</xsl:text>
     </xsl:param>
+	
+	<xsl:param name="type">
+		<!-- UD v.1 extractor, provide explicit type for UD v.2 -->
+		<xsl:for-each select="//h2[1]/preceding-sibling::p[1]/a[1]/@id">
+			<xsl:value-of select="substring-after(substring-after(substring-before(.,'/'),'-'),'-')"/>
+		</xsl:for-each>
+	</xsl:param>
 
+	<xsl:param name="lang">
+		<!-- UD v.1 extractor, provide explicit type for UD v.2 -->
+		<xsl:for-each select="//h2[1]/preceding-sibling::p[1]/a[1]/@id">
+			<xsl:value-of select="substring-before(substring-after(substring-before(.,'/'),'-'),'-')"/>
+		</xsl:for-each>
+	</xsl:param>
+
+		
     <!-- for u/pos/all.html, en/pos/all.html, en/dep/all.html, u/dep/all.html, u/feat/all.html -->
 
    <xsl:template match="/">
@@ -22,9 +37,18 @@
        <xsl:for-each select="//h2">
            <xsl:variable name="label" select="translate(normalize-space(substring-after(text()[1],':')),'&quot;','')"/>
            <xsl:variable name="id" select="./preceding-sibling::p[1]/a[1]/@id"/>
-       <xsl:variable name="type" select=" substring-after(substring-after(substring-before($id,'/'),'-'),'-')"/>
-        <xsl:variable name="lang" select=" substring-before(substring-after(substring-before($id,'/'),'-'),'-')"/>
-           <xsl:variable name="tag" select="substring-after($id,'/')"/>
+       <!--xsl:variable name="type" select="substring-after(substring-after(substring-before($id,'/'),'-'),'-')"/-->
+        <!--xsl:variable name="lang" select=" substring-before(substring-after(substring-before($id,'/'),'-'),'-')"/-->
+           <xsl:variable name="tag">
+			<xsl:choose>
+				<xsl:when test="count(code[1])=1">
+					<xsl:value-of select="code[1]/text()[1]"/>
+				</xsl:when>
+				<xsl:otherwise> <!-- UD v.1 -->
+					<xsl:value-of select="substring-after($id,'/')"/>
+				</xsl:otherwise>
+			</xsl:choose>
+			</xsl:variable>
            
            <xsl:variable name="uri" select="concat($baseuri,$lang,'/',$type,'/',$tag)"/>
        

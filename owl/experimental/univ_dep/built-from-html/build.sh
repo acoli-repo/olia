@@ -119,18 +119,65 @@ src=https://universaldependencies.org/guidelines.html
 
 		# UD v.2 extension: language-specific relations
 		# language-specific relations (no definitions included)
+
+		DEPS=`
 		wget https://universaldependencies.org/ext-dep-index.html -O - | \
-		perl -pe 's/\s+/ /gs; s/<a /\n<a /g;' | \
-		egrep '<a.*href=' | \
-		sed s/'^<a[^>]*>'/''/ | \
-		egrep '^[^<>:=]*:[^<>:=]*</a>' | \
-		sed -e s/'<\/li.*'// -e s/'<\/a>:\s*'/'\t'/g | \
-		sed -e s/'^\([^\t:]*\):\([^\t]*\)\t\([^\t]*\)$'/'[] system:hasTag "\1:\2"; \
-			system:hasTier "dep"; a [ \
-				rdfs:label "\1:\2"; rdfs:subClassOf u:\1; \
-				owl:versionInfo "https:\/\/universaldependencies.org\/ext-dep-index.html"; \
-				rdfs:comment "\3"@en ] .\n'/ >> dep.ttl;
-		echo >> dep.ttl;
+			perl -pe 's/\s+/ /gs; s/<a /\n<a /g;' | \
+			egrep '<a.*href=' | \
+			sed s/'^<a[^>]*>'/''/ | \
+			egrep '^[^<>:=]*:[^<>:=]*</a>' | \
+			sed -e s/'<\/li.*'// -e s/'<\/a>:\s*'/'\t'/g | \
+			sed s/'\s\s*'/'_'/g`;
+
+		if [ ! -e ../langs.sed ]; then
+			sed \
+				-e s/',[a-z,]*$'//g \
+				-e s/'^\([^\t]*\)\t\([a-z,]*\)$'/'s\/^\1$\/\2\/g;'/ \
+				../langs.tsv > ../langs.sed
+		fi;
+			
+		(echo '@prefix udx: <https://universaldependencies.org/ext-dep-index#> .'
+			
+		for dep in $DEPS; do
+			langs=`echo $dep | sed -e s/'^[^_]*_'// -e s/',_'/' '/g;`
+			deplabel=`echo $dep | sed s/'_.*'//`;
+			depuri=`echo $deplabel | sed s/':'/'-'/g;`
+			URIS="";
+			#for lang in $LANGS; do
+			# #for lang in en; do
+			for lang in $langs; do
+				lang=`echo $lang | sed s/'_'/' '/g;`
+				langname=$lang;
+				# echo -n $lang' ';
+				lang=`echo $lang | sed -f ../langs.sed`;
+				if echo $lang | egrep '^[a-z][a-z][a-z]?$' >& /dev/null; then
+					echo '@prefix '$lang': <https://universaldependencies.org/'$lang'/dep/>.';
+					
+					echo $lang:$depuri system:hasTag '"'$deplabel'"; system:hasTier "dep"; a udx:'$depuri' .';
+				fi;
+				echo $lang:$depuri rdfs:label '"'$deplabel' ('$langname')"@en; system:hasTag "'$deplabel'"; system:hasTier "dep"; a udx:'$depuri'; dct:language "'$lang'" .';
+			done;
+				
+			echo '[] rdfs:label "'$deplabel' (cross-lingual)"@en; system:hasTag "'$deplabel'"; system:hasTier "dep"; a udx:'$depuri'; owl:versionInfo "placeholder for other languages, currently being used in '$langs'"@en .';
+			
+			short=`echo $deplabel | sed s/':.*'//`;
+			echo 'udx:'$depuri' rdfs:label "'$deplabel'"; rdfs:subClassOf u:'$short'; rdfs:isDefinedBy "https://universaldependencies.org/ext-dep-index.html"; rdfs:comment "'$langs'"@en .';
+			
+		done ) >> dep.ttl
+
+		
+		# wget https://universaldependencies.org/ext-dep-index.html -O - | \
+		# perl -pe 's/\s+/ /gs; s/<a /\n<a /g;' | \
+		# egrep '<a.*href=' | \
+		# sed s/'^<a[^>]*>'/''/ | \
+		# egrep '^[^<>:=]*:[^<>:=]*</a>' | \
+		# sed -e s/'<\/li.*'// -e s/'<\/a>:\s*'/'\t'/g | \
+		# sed -e s/'^\([^\t:]*\):\([^\t]*\)\t\([^\t]*\)$'/'[] system:hasTag "\1:\2"; \
+			# system:hasTier "dep"; a [ \
+				# rdfs:label "\1:\2"; rdfs:subClassOf u:\1; \
+				# owl:versionInfo "https:\/\/universaldependencies.org\/ext-dep-index.html"; \
+				# rdfs:comment "\3"@en ] .\n'/ >> dep.ttl;
+		# echo >> dep.ttl;
 
 		# UD v.2 full feature list (no definitions)
 		(echo "@prefix u: <https://universaldependencies.org/u/> ."
@@ -173,12 +220,17 @@ src=https://universaldependencies.org/guidelines.html
 		sed s/'^\([^=]*\)\s*$'/'uf:\1 owl:versionInfo "language-specific".'/;
 		) >> feat.ttl
 
-		# HTML to formatted text		
+		cd ..;
+	fi;
+	
+	# HTML to formatted text		
+	for dir in */; do
+		cd $dir;
 		for file in *.ttl; do
 			cp $file tmp.ttl;
 			cat tmp.ttl |  # fix encoding errors
 			perl -pe '
-				s/:([0-9])/:%3$1/g; 		# hex encoding of numbers
+				# s/:([0-9])/:%3$1/g; 		# hex encoding of numbers
 				while(m/^((.*\s)*u:[^\s\[]*)\[[^\s\]]*\].*/) {
 					s/^((.*\s)*u:[^\s\[]*)\[[^\s\]]*\]/$1/g; # drop parentheses of universal feats
 				}
@@ -218,7 +270,5 @@ src=https://universaldependencies.org/guidelines.html
 				' > $file;
 			rm tmp.ttl;
 		done;
-
-		
 		cd ..;
-	fi;
+	done;
