@@ -57,10 +57,8 @@ src=https://universaldependencies.org/guidelines.html
 		cd $dir;
 
 		# attempts to retrieve language-specific information 
-		# FAILED: this is not systematically provided in UD v.2, so far
 		
-		# # UD v2.4: 49 languages only!
-		# # not updated to UD v.2, yet
+		# # # UD v2.4: 49 languages only!
 		# langs=`
 		# (wget https://universaldependencies.org -O -;
 		 # wget https://github.com/UniversalDependencies/docs -O -;
@@ -75,10 +73,10 @@ src=https://universaldependencies.org/guidelines.html
 			# -e s/'^treebanks\/\([a-z][a-z][a-z]*\)-comparison.html'/'\1'/ \
 			# -e s/'^\/UniversalDependencies\/docs\/tree\/pages-source\/_\([a-z}[a-z]*]\)$'/'\1'/ \
 			# | \
-		# sort -u | wc -l
+		# sort -u
 		# `;
 		
-		# https://universaldependencies.org/en/dep/ etc., no all docs anymore
+		# https://universaldependencies.org/en/dep/ etc., no all.html docs anymore
 
 		# we only produce the universal tags with the same approach as above
 		
@@ -117,6 +115,31 @@ src=https://universaldependencies.org/guidelines.html
 		
 		echo >> dep.ttl
 
+		# UD v.2: language-specific POS tags (no definitions included)
+		echo '@prefix u: <https://universaldependencies.org/u/pos/> .'
+
+		# languages extrapolated from English language model
+		TAG=`
+			rapper -i turtle pos.ttl | \
+			sed s/'\s.*'// | \
+			uniq | \
+			sort -u | \
+			grep '/u/pos/' | \
+			sed -e s/'[<>]'//g -e s/'.*\/'//g;`
+		for tag in $TAG; do
+			langs=`\
+				wget https://universaldependencies.org/en/pos/$tag -O - 2>/dev/null | \
+				perl -pe 's/\s+/ /gs; s/<\//\n/g;' | \
+				egrep 'href=' | \
+				egrep '[a-z][a-z]/pos/'$tag'.html' | sed s/'.*>'//g;`
+			langs='en '$langs;
+			for lang in $langs; do
+				echo '@prefix '$lang': <https://universaldependencies.org/'$lang'/pos/> .'
+				echo $lang':'$tag' a u:'$tag '; rdfs:label "'$tag' ('$lang')"; owl:versionInfo "created from https://universaldependencies.org/en/pos/'$tag'"@en ; dct:language "'$lang'"; system:hasTag "'$tag'"; system:hasTier "pos".';
+				echo;
+			done;
+		done >> pos.ttl
+		
 		# UD v.2 extension: language-specific relations
 		# language-specific relations (no definitions included)
 
