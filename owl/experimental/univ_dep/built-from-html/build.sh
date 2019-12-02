@@ -15,8 +15,8 @@ src=https://universaldependencies.org/docsv1/
 		mkdir $dir >&/dev/null;
 		cd $dir;
 		docs=$(
-			wget -nc $base 2>/dev/null;
-			wget -nc $src 2>/dev/null;
+			wget -nc $base;
+			wget -nc $src;
 			cat *.html | \
 			sed -e s/'<'/'\n<'/g \
 				-e s/'>'/'>\n'/g \
@@ -81,8 +81,8 @@ src=https://universaldependencies.org/guidelines.html
 		# we only produce the universal tags with the same approach as above
 		
 		docs=$(
-			wget -nc $base 2>/dev/null;
-			wget -nc $src 2>/dev/null;
+			wget -nc $base ;
+			wget -nc $src ;
 			cat *.html | \
 			sed -e s/'<'/'\n<'/g \
 				-e s/'>'/'>\n'/g \
@@ -129,7 +129,7 @@ src=https://universaldependencies.org/guidelines.html
 				sed -e s/'[<>]'//g -e s/'.*\/'//g;`
 			for tag in $TAG; do
 				langs=`\
-					wget https://universaldependencies.org/en/$type/$tag -O - 2>/dev/null | \
+					wget https://universaldependencies.org/en/$type/$tag -O -  | \
 					perl -pe 's/\s+/ /gs; s/<\//\n/g;' | \
 					egrep 'href=' | \
 					egrep '[a-z][a-z]/'$type'/'$tag'.html' | sed s/'.*>'//g;`
@@ -230,6 +230,35 @@ src=https://universaldependencies.org/guidelines.html
 		egrep '^\s*1\s' | sed s/'^[ \t0-9]*'// | \
 		sed s/'^\([^=]*\)\s*$'/'uf:\1 owl:versionInfo "language-specific".'/;
 		) >> feat.ttl
+		
+		# add language-specific definitions
+		
+		for file in *.ttl; do
+			URIS=`
+				rapper -i turtle $file | sed -e s/'[# \t].*'//g -e s/'[<>]'//g | sort -u | egrep '/universaldependencies.org/[a-z][a-z]'
+			`;
+			for uri in $URIS; do
+			 #https://universaldependencies.org/en/pos/NOUN https://universaldependencies.org/en/feat/Case https://universaldependencies.org/en/dep/nsubj; do #`find ud-v2/*/*`; do
+				#if [ -f $uri ]; then 
+				if wget --spider $uri 2>/dev/null; then
+					echo $uri 1>&2;
+					lang=`echo $uri | sed s/'^https:\/\/[^\/]*\/\([^\/]*\)\/.*'/'\1'/;`
+					type=`echo $uri | sed s/'^https:\/\/[^\/]*\/[^\/]*\/\([^\/]*\)\/.*'/'\1'/;`
+					wget $uri -O - 2>/dev/null | \
+					xmllint -html -recover -xmlout - 2>/dev/null | \
+					xmllint -recover - 2>/dev/null | \
+					grep -v '^<!' | \
+					sed -e s/'xmlns=\"[^\"]*\"'//g \
+						-e s/'\(<[\/]*\)html'/'\1xml'/g \
+						-e s/'xml:lang="en-GB"'//g \
+						-e s/'\(<[\/]*\)[^"<> \t:]*:'/'\1'/g \
+						-e s/'\(\s\)[^ "\t<>:]*:'/'\1'/g \
+						| \
+					xsltproc --param lang '"'$lang'"' --param type '"'$type'"' ../html2ttl.xsl -
+				fi;
+			done;
+			echo >> $file;
+		done >> $file;
 		
 		cd ..;
 	fi;
