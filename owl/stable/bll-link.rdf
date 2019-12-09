@@ -18,7 +18,8 @@
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://www.purl.org/olia/bll-link.rdf">
-        <rdfs:comment xml:lang="en">2016/12/22 linking for morphology, morphosyntax and syntax created in a semiautomated manner; all links manually revised
+        <rdfs:comment xml:lang="en">2019/12/09 Some modeling decisions were reconsidered. Several links were deleted and a few added. 
+2016/12/22 linking for morphology, morphosyntax and syntax created in a semiautomated manner; all links manually revised
 Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
         <owl:imports rdf:resource="http://data.linguistik.de/bll/bll-ontology"/>
         <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
@@ -77,14 +78,6 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
         <owl:versionInfo>no upper model concept found!</owl:versionInfo>
     </owl:Class>
     
-
-
-    <!-- http://data.linguistik.de/bll/bll-ontology#Adjunct -->
-
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#Adjunct">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticAdjunct"/>
-        <owl:versionInfo>linking confirmed!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -334,14 +327,8 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#CausativeVoice -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#CausativeVoice">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Causative"/>
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#CausativeVoice"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Causative"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CausativeVoice"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -359,14 +346,8 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#CleftConstruction -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#CleftConstruction">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#ItCleft"/>
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#WHCleft"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ItCleft"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#WHCleft"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -1068,7 +1049,20 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#NounPhrase"/>
         <owl:versionInfo>linking confirmed!</owl:versionInfo>
     </owl:Class>
-    
+	
+    <!-- http://data.linguistik.de/bll/bll-ontology#AdjectivePhrase -->
+
+    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#AdjectivePhrase">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdjectivePhrase"/>
+        <owl:versionInfo>manually linked!</owl:versionInfo>
+    </owl:Class>
+	
+    <!-- http://data.linguistik.de/bll/bll-ontology#AdverbialPhrase -->
+
+    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#AdverbPhrase">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverbial"/>
+        <owl:versionInfo>manually linked!</owl:versionInfo>
+    </owl:Class>
 
 
     <!-- http://data.linguistik.de/bll/bll-ontology#NullElement -->
@@ -1907,14 +1901,8 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133073955 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133073955">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Ellipsis"/>
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Gapping"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Ellipsis"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Gapping"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -1958,8 +1946,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133074013 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133074013">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ImperativeMood"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Sentence"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ImperativeModality"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -2020,7 +2007,6 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133074099 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133074099">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdverbialSubordinateClause"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#TimeRole"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
@@ -2030,7 +2016,6 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133074102 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133074102">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdverbialSubordinateClause"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CauseRole"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
@@ -2040,7 +2025,6 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133074110 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133074110">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdverbialSubordinateClause"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PurposeRole"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
@@ -2066,14 +2050,8 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133074161 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133074161">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#CoordinateClause"/>
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Coordination"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+	    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CoordinateClause"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Coordination"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -2243,8 +2221,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133075532 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133075532">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#MannerRole"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#MannerAdverb"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -2283,9 +2260,9 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-133075818 -->
+    <!-- http://data.linguistik.de/bll/bll-ontology#Adjective -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133075818">
+    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#Adjective">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adjective"/>
         <owl:versionInfo>linking confirmed!</owl:versionInfo>
     </owl:Class>
@@ -2634,14 +2611,8 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133079678 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133079678">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Root"/>
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Stem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Root"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Stem"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -2994,13 +2965,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-133085759 -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133085759">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#TimeRole"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -3117,6 +3082,14 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
         <owl:versionInfo>linking confirmed!</owl:versionInfo>
     </owl:Class>
     
+
+    <!-- http://data.linguistik.de/bll/bll-ontology#bll-45479312X -->
+
+    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-45479312X">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#DebitiveMood"/>
+        <owl:versionInfo>manually linked!</owl:versionInfo>
+    </owl:Class>
+
 
 
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133087387 -->
@@ -3477,6 +3450,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133090213">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdverbialParticiple"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Converb"/>
         <owl:versionInfo>linking confirmed!</owl:versionInfo>
     </owl:Class>
     
@@ -3565,7 +3539,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-13309104X -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-13309104X">
-        <owl:versionInfo>eno upper model concept found!</owl:versionInfo>
+        <owl:versionInfo>no upper model concept found!</owl:versionInfo>
     </owl:Class>
     
 
@@ -3694,13 +3668,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-133092151 -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133092151">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adjective"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverbial"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -3805,14 +3773,8 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133093239 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133093239">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#EpistemicNecessityModality"/>
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#EpistemicPossibilityModality"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#EpistemicNecessityModality"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#EpistemicPossibilityModality"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -4036,13 +3998,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-133096637 -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133096637">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PurposeRole"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -4820,14 +4776,8 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133107191 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133107191">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#InceptiveAspect"/>
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#InchoativeAspect"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#InceptiveAspect"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#InchoativeAspect"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -4911,13 +4861,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-133107590 -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133107590">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#InstrumentRole"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -5113,8 +5057,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-13310978X -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-13310978X">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CauseRole"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CausalAdverb"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -5419,7 +5362,6 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133114147 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133114147">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdverbialSubordinateClause"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#LocationRole"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
@@ -5484,13 +5426,6 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-133115585 -->
-
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133115585">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#ModalityFeature"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Clause"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -5585,13 +5520,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-133116441 -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133116441">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Inflected"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProperNoun"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -5730,8 +5659,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133117499 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133117499">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#LocationRole"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#LocationAdverb"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -5866,14 +5794,8 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133118746 -->
 
     <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133118746">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#PastPerfectTense"/>
-                    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#PluperfectTense"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PastPerfectTense"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PluperfectTense"/>
         <owl:versionInfo>manually linked!</owl:versionInfo>
     </owl:Class>
     
@@ -6132,13 +6054,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-133120821 -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-133120821">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#DirectionRole"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -6305,14 +6221,6 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-13312472X -->
-
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-13312472X">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Clause"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticSubject"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
-    
 
 
     <!-- http://data.linguistik.de/bll/bll-ontology#bll-133124738 -->
@@ -7068,13 +6976,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-212165747 -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-212165747">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ConditionalClause"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#IndicativeMood"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
@@ -7570,13 +7472,7 @@ Vanya Dimitrova v.dimitrova@ub.uni-frankfurt.de</rdfs:comment>
     
 
 
-    <!-- http://data.linguistik.de/bll/bll-ontology#bll-363154507 -->
 
-    <owl:Class rdf:about="http://data.linguistik.de/bll/bll-ontology#bll-363154507">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Infinitive"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#InflectedWithOvertMarker"/>
-        <owl:versionInfo>manually linked!</owl:versionInfo>
-    </owl:Class>
     
 
 
