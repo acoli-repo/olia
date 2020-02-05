@@ -1,13 +1,15 @@
 #!/bin/bash
 # we cannot get a SKOS/RDF dump of CCR (although this does seem to exist), so we scrape their portal
 
+(
 # 0. TTL header
 (
 echo '
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX dct: <http://purl.org/dc/terms/>';
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#> ';
 
 
 # 1. retrieve (up to 1000 links for elements from morphosyntax and syntax profiles) [currently 484]
@@ -78,4 +80,7 @@ for ccr in $CCR; do
 	perl -pe 's/(.*"[^"]*(http:\/\/www.isocat.org\/datcat\/DC-[0-9]+)[^"]*"(@[a-z]+)?)'/'$1;\n   rdfs:seeAlso <$2> '/g;
 done 
 ) | tee ccr.ttl | \
-rapper -i turtle -o rdfxml > ccr.rdf
+echo "<http://hdl.handle.net/11459/> a owl:Ontology ." 
+) | \
+sed s/'skos:Concept'/'owl:Class'/g |\
+rapper -i turtle -o rdfxml - http://hdl.handle.net/11459/ > ccr.owl
