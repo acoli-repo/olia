@@ -68,6 +68,20 @@ public class LinkOntologies {
 				System.err.println("warning: upperModelClasses.put("+o.getLocalName()+", "+o+") failed");
 			}
 		}
+
+		// if no basename declared (=> class extraction fails)
+		if(upperModelClasses.size()==0) {
+			for(ExtendedIterator<OntClass> i = upperModel.listClasses(); i.hasNext();) {
+				OntClass o = i.next();
+				try {
+					upperModelClasses.put(o.getLocalName(),o);
+					upperModelClasses.put(o.getLocalName().toLowerCase(),o);
+					System.err.print(".");
+				} catch (NullPointerException e) {
+					System.err.println("warning: upperModelClasses.put("+o.getLocalName()+", "+o+") failed");
+				}
+			}
+		}
 		
 		Hashtable<String,Set<OntClass>> word2uclass = new Hashtable<String,Set<OntClass>>();
 		for(Map.Entry<String,OntClass> e : upperModelClasses.entrySet()) {
@@ -103,7 +117,7 @@ public class LinkOntologies {
 			}
 		}
 		System.err.println(".. ok");
-
+		
 		String lowerModelURI = lowerModel.getNsPrefixURI("");
 		
 		OntModel linking = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC);
@@ -188,7 +202,7 @@ public class LinkOntologies {
 				BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 				int match = -1;
 				while(match==-1) {
-					System.err.print("match (number or 0 for nomatch, c for comment) ? ");
+					System.err.print("match (number or 0 for nomatch, c for comment ) ? ");
 					String line = in.readLine().trim();
 					if(line.toLowerCase().equals("c")) {
 						System.err.println("write comment, finish with empty line:");
@@ -371,9 +385,11 @@ public class LinkOntologies {
 	public static void main(String[] args) throws Exception {
 		boolean indiv = false;
 		if(args.length<3) {
-			System.err.println( "establishes links between two ontologies, such that concepts from the \n" +
-								"lower model are subClassOf upper model concepts writes linking to file \n"+
-								"specified by third argument\n\n" +
+			System.err.println( 
+					"synopsis: LinkOntologies UPPER_MODEL LOWER_MODEL LINKING_MODEL [FLAGS]\n"+
+					"establishes links between two ontologies, such that concepts from the \n" +
+					"lower model are subClassOf upper model concepts writes linking to file \n"+
+					"specified by third argument\n\n" +
 					" @param args[0] upper model ontology\n" +
 					" @param args[1] lower model ontology\n" +
 					" @param args[2] linking model\n"+
