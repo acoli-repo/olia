@@ -32,6 +32,7 @@
 	2013/06/28 EvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), ModalityFeature (Modality and Mood distinction revised)
 	2016/04/18 fixed minor validity warnings
 	2016/08/29 added MovementFeature as cover term for Rising and Control (for compliance with lexinfo)
+	2020/02/06 fixed use of owl:deprecated
 
 
     Christian Chiarcos, chiarcos@uni-potsdam.de</rdfs:comment>
@@ -199,7 +200,8 @@
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="SubordTypeFeature">
-    <owl:deprecated>reimplemented within SubordinatingConjunction taxonomy</owl:deprecated>
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+	  <owl:versionInfo>Deprecated: reimplemented within SubordinatingConjunction taxonomy</owl:versionInfo>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The SubordType is in Eagles an additional language-specific attribute, applying to subordinating conjunctions only.  (http://www.ilc.cnr.it/EAGLES96/annotate/node19.html#oav2u  17.11.06)</rdfs:comment>
     <rdfs:subClassOf>
@@ -519,7 +521,8 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
     >InflectionType is in Eagles an optional attribute for adjectives. Weak and Strong are values for adjectival inflection in the Germanic languages German, Dutch and Danish. (http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1av  14.11.06)</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="CoordTypeFeature">
-    <owl:deprecated>reimplemented as subhierarchy of CoordinatingConjunction</owl:deprecated>
+    	  <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+	  <owl:versionInfo>Deprecated: reimplemented as subhierarchy of CoordinatingConjunction</owl:versionInfo>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The CoordType attribute subclassifies coordinating conjunctions. (http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1av  17.11.06)</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
