@@ -142,6 +142,7 @@
 		revised Contraction, Composition; 
 		introduced Identifier as generalization over Appellation, NamedEntity and lexinfo:partNumber;
 		introduced TextStructuralElement as generalization over Headline, Boilerplate, etc.
+	20/02/24 add Chunk (from Ancorra tagset), JussiveMood (from Arabic, Khoja et al. 2008)
 	
 Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</owl:versionInfo>
@@ -7143,6 +7144,18 @@ The NP or S complement of a preposition is placed inside the PP.
 		<rdfs:subClassOf rdf:resource="#ImperativeModality"/>
 		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
 	</owl:Class>
+	<owl:Class rdf:ID="JussiveMood">
+		<owl:versionInfo>postulated by Khoja, S, Garside, R, and Knowles, G (2001) A tagset for the morphosyntactic tagging of Arabic. Paper given at the Corpus Linguistics 2001 conference, Lancaster, http://zeus.cs.pacificu.edu/shereen/CL2001.pdf</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>The jussive is needed to express a command in the first and third person. This mood is realised in Arabic by rejecting the final vowel and is sometimes called the apocopated imperfect.
+
+The purpose of the jussive is to express a command in the first or third person as in ‘heena yahduru yalbas thiyaban nazyfatan’ which means “when he attends, let him (he must) wear clean clothes”, where the jussive is the word ‘yalbas’ “wear”. Also, there is no negative imperative in Arabic, so the negative particle followed by the jussive is used in its place, such as ‘la taktub’ “do not write”, where the jussive is the word ‘taktub’ “write”.
+
+	Khoja, S, Garside, R, and Knowles, G (2001) A tagset for the morphosyntactic tagging of Arabic. Paper given at the Corpus Linguistics 2001 conference, Lancaster, http://zeus.cs.pacificu.edu/shereen/CL2001.pdf
+		</rdfs:comment>
+	</owl:Class>
 	<owl:Class rdf:ID="QuotativeMood">
 		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Quotative, MTE VForm=&quot;quotative&quot; (Estonian)</owl:versionInfo>
 		<rdfs:subClassOf>
@@ -10685,7 +10698,24 @@ bracketed as a sister of the head noun.
 		</rdfs:comment>
 	</owl:Class>
 
-	<!-- Constituent/Phrase -->	
+	<!-- Constituent/Phrase -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Chunk">
+		<owl:versionInfo>Ancorra tagset</owl:versionInfo>
+		<rdfs:comment>“A minimal (non recursive) phrase(partial structure) consisting of correlated, inseparable words/entities, such that the intra-chunk dependencies are not distorted” ... A chunk would contain a &#39;head&#39; and its modifiers. 
+		
+		Akshar Bharati, Dipti Misra Sharma, Lakshmi Bai, Rajeev Sangal (2006), AnnCorra : Annotating Corpora. Guidelines For POS And Chunk Annotation For Indian Languages, Tech. Rep., L anguage Technologies Research Centre IIIT, Hyderabad, version of 15-12-2006, http://ltrc.iiit.ac.in/tr031/posguidelines.pdf
+		
+		Note that, often, it is not required that chunks are complete. Chunks can thus be phrases or fragments. In the sense of OLiA, they are, however, constituents (of an annotation).</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Constituent"/>
+		<rdfs:subClassOf>
+		  <owl:Class>
+			<owl:unionOf rdf:parseType="Collection">
+			  <owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+			  <owl:Class rdf:about="http://purl.org/olia/olia.owl#Fragment"/>
+			</owl:unionOf>
+		  </owl:Class>
+		</rdfs:subClassOf>
+	</owl:Class>
 	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ForeignPhrase">
 		<owl:versionInfo>TüBa-D/Z</owl:versionInfo>
 		<rdfs:comment>
