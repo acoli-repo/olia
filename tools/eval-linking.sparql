@@ -119,6 +119,130 @@ INSERT {
 	# MINUS { [a nif:Word ] conll:TGT ?p }
 # };
 
+########################
+# prune TGT candidates # more fitting OLiA concepts > less matching OLiA concepts
+########################
+
+# reify and rank TGT candidates: number of OLiA concepts from the word that they match to
+INSERT {
+	[ a rdf:Statement ] rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+} WHERE {
+	?w conll:TGT ?p,?q.    # only if more than one TGT
+	?w conll:OLIA ?o1,?o2. # only if more than one OLiA concept
+	{ SELECT ?w ?p (COUNT(distinct ?o) AS ?rank)
+	  WHERE { ?w conll:TGT ?p; conll:OLIA ?o.
+			  GRAPH <http://purl.org/olia/olia.owl> {
+				?o (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))* ?u .
+			  }
+			  GRAPH <http://purl.org/olia/src> {
+				?x system:hasTag ?p .
+				?x a/(rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?u .
+			  }
+		} GROUP BY ?w ?p 
+	}
+};
+
+# drop TGT candidates with non-maximal rank
+DELETE {
+	?w conll:TGT ?p
+} WHERE {
+	?w conll:TGT ?p, ?q.
+	[ rdf:predicate conll:TGT; rdf:subject ?w; rdf:object ?p ] conll:RANK ?rP.
+	[ rdf:predicate conll:TGT; rdf:subject ?w; rdf:object ?q ] conll:RANK ?rQ.
+	FILTER(?rP < ?rQ)
+};
+
+# un-reify conll:TGT
+DELETE {
+	?s a rdf:Statement; rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+} WHERE {
+	?s a rdf:Statement; rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+};
+
+########################
+# prune TGT candidates # prefer TGTs with fewer OLiA superclasses (e.g., the most general one)
+########################
+
+# reify and rank TGT candidates: number of OLiA concepts from the word that they match to
+INSERT {
+	[ a rdf:Statement ] rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+} WHERE {
+	?w conll:TGT ?p,?q.    # only if more than one TGT
+	{ SELECT ?w ?p (COUNT(distinct ?o) AS ?rank)
+	  WHERE { ?w conll:TGT ?p.
+			  GRAPH <http://purl.org/olia/olia.owl> {
+				?o ?prop []. # must be defined in olia
+				?o (rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))* ?u .
+				FILTER(!isblank(?o))
+			  }
+			  GRAPH <http://purl.org/olia/src> {
+				?x system:hasTag ?p .
+				?x a/(rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?u .
+			  }
+		} GROUP BY ?w ?p 
+	}
+};
+
+# drop TGT candidates with non-minimal rank (the most specific ones)
+DELETE {
+	?w conll:TGT ?p
+} WHERE {
+	?w conll:TGT ?p, ?q.
+	[ rdf:predicate conll:TGT; rdf:subject ?w; rdf:object ?p ] conll:RANK ?rP.
+	[ rdf:predicate conll:TGT; rdf:subject ?w; rdf:object ?q ] conll:RANK ?rQ.
+	FILTER(?rP > ?rQ)
+};
+
+# un-reify conll:TGT
+DELETE {
+	?s a rdf:Statement; rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+} WHERE {
+	?s a rdf:Statement; rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+};
+
+########################
+# prune TGT candidates # prefer TGTs with fewer anno model superclasses (e.g., the most general one)
+########################
+
+# reify and rank TGT candidates: number of OLiA concepts from the word that they match to
+INSERT {
+	[ a rdf:Statement ] rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+} WHERE {
+	?w conll:TGT ?p,?q.    # only if more than one TGT
+	{ SELECT ?w ?p (COUNT(distinct ?u) AS ?rank)
+	  WHERE { ?w conll:TGT ?p.
+			  GRAPH <http://purl.org/olia/src> {
+				?x system:hasTag ?p .
+				?x a/(rdfs:subClassOf|owl:equivalentClass|owl:sameAs|((owl:intersectionOf|owl:unionOf)/rdf:rest*/rdf:first))+ ?u .
+				FILTER(!isblank(?u))
+			  }
+		} GROUP BY ?w ?p 
+	}
+};
+
+# drop TGT candidates with non-minimal rank (the most specific ones)
+DELETE {
+	?w conll:TGT ?p
+} WHERE {
+	?w conll:TGT ?p, ?q.
+	[ rdf:predicate conll:TGT; rdf:subject ?w; rdf:object ?p ] conll:RANK ?rP.
+	[ rdf:predicate conll:TGT; rdf:subject ?w; rdf:object ?q ] conll:RANK ?rQ.
+	FILTER(?rP > ?rQ)
+};
+
+# un-reify conll:TGT
+DELETE {
+	?s a rdf:Statement; rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+} WHERE {
+	?s a rdf:Statement; rdf:subject ?w; rdf:predicate conll:TGT; rdf:object ?p; conll:RANK ?rank
+};
+
+
+
+#################
+# write results #
+#################
+
 # consolidate multiple entries for TGT in one |-separated string
 INSERT {
 	?w conll:TGT ?merged
@@ -126,6 +250,7 @@ INSERT {
 	{ SELECT ?w (GROUP_CONCAT(distinct ?p; separator=", ") as ?merged)
 	  WHERE {
 		?w conll:TGT ?p
+		FILTER(strlen(?p)>0)
 	  } GROUP BY ?w ORDER BY ?w ?p 
 	}
 };
@@ -156,4 +281,12 @@ DELETE {
 } WHERE {
 	?w conll:OLIA ?x,?y.
 	FILTER(strlen(str(?x))<strlen(str(?y)))
+};
+
+# remove non-string values of OLIA (because these are replicated as strings)
+DELETE {
+	?w conll:OLIA ?x
+} WHERE {
+	?w conll:OLIA ?x,?y.
+	FILTER(!isLiteral(?x))
 };

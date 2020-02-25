@@ -70,4 +70,5 @@ $RUN CoNLLRDFUpdater -custom \
 	-model $OLIA_TOP http://purl.org/olia/olia.owl \
 	-updates \
 		eval-linking.sparql | \
+#cat; echo | \
 $RUN CoNLLRDFFormatter -conll POS TGT OLIA
