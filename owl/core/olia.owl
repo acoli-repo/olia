@@ -15,6 +15,7 @@
     xmlns:olia_system="http://purl.org/olia/system.owl#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dct="http://purl.org/dc/terms/"
     xmlns:olia_top="http://purl.org/olia/olia-top.owl#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
   xml:base="http://purl.org/olia/olia.owl">
@@ -24,6 +25,18 @@
 	check gerundive vs. gerund
 	update GOLD linking
 	</owl:versionInfo>
+	<dct:title>Ontology of Linguistic Annotation (OLiA)</dct:title>
+	<dct:creator rdf:resource="https://orcid.org/0000-0002-4428-029X"/>
+	<dct:contributor>Angelika Adam</dct:contributor>
+	<dct:contributor>Maria Sukhareva</dct:contributor>
+	<dct:contributor rdf:resource="https://github.com/cfaeth"/>
+	<dct:contributor rdf:resource="https://github.com/kurzum"/>
+	<dct:contributor rdf:resource="https://github.com/v-dimitrova"/>
+	<dct:contributor rdf:resource="https://github.com/A027f3RC7ag8"/>
+	<dct:contributor rdf:resource="https://github.com/max-ionov"/>
+	<rdfs:label>OLiA</rdfs:label>
+	<foaf:homepage rdf:resource="http://purl.org/olia/"/>
+	<dct:publisher rdf:resource="https://github.com/acoli-repo/olia"/>
     <owl:imports>
 		<owl:Ontology rdf:about="http://purl.org/olia/olia-top.owl"/>
 	</owl:imports>
@@ -143,6 +156,7 @@
 		introduced Identifier as generalization over Appellation, NamedEntity and lexinfo:partNumber;
 		introduced TextStructuralElement as generalization over Headline, Boilerplate, etc.
 	20/02/24 add Chunk (from Ancorra tagset), JussiveMood (from Arabic, Khoja et al. 2008)
+	20/02/27 clarify definition of Unique
 	
 Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</owl:versionInfo>
@@ -913,12 +927,14 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		
 		The EAGLES definition emphasizes the invariability of particles.
 	</owl:versionInfo>
-	<owl:versionInfo>TODO: rename to Particle</owl:versionInfo>
     <rdfs:comment>
 		Unique approximates the linguistic concept "Particle".
 		It covers categories with unique or very small membership, 
 		such as negative particle, which are `unassigned' to any of the standard part-of-speech categories. 
-		(http://www.ilc.cnr.it/EAGLES96/annotate/node16.html#mp 19.09.06) 
+		(http://www.ilc.cnr.it/EAGLES96/annotate/node16.html#mp 19.09.06)
+		
+		Unique elements are uninflected (hence the name) and can be used to mark uninflectable function words in OLiA, even if they are not conventionally referred to as "particles" (e.g., the common [non-inflected] relative pronoun in opposition to the specific [inflectable] relative pronoun in Arabic).
+		OLiA particles are a sub-class of Unique.
 	</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Conjunction">
