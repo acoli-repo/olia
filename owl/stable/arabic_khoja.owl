@@ -17,9 +17,11 @@
      xmlns:system="http://purl.org/olia/system.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:dct="http://purl.org/dc/terms/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:arabic_khoja="http://purl.org/olia/arabic_khoja.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/arabic_khoja.owl">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
         <rdfs:comment>OLiA Annotation Model for morphosyntactic annotation of Arabic, following Khoja et al. (2001)
 
 Arabic grammar has been studied for centuries, and the principles of describing the language already exist. Since so much knowledge is readily available, it is logical to derive our tagset from this wealth of information. The alternative to this is to base the Arabic tagset on an Indo-European one, but by doing this we may lose a lot of the information that an Arabic tagset would give us. Also, by moulding Arabic to fit an Indo-European language, we might distort the way Arabic is perceived by its native speakers. (Khoja et al, 2001)
@@ -33,9 +35,11 @@ References:
 Khoja, S, Garside, R, and Knowles, G (2001) A tagset for the morphosyntactic tagging of Arabic. Paper given at the Corpus Linguistics 2001 conference, Lancaster, http://zeus.cs.pacificu.edu/shereen/CL2001.pdf
 
 Eric Atwell (2007), Development of tag sets for part-of-speech tagging, Corpus Linguistics Conference 2007, Birmingham, http://www.comp.leeds.ac.uk/eric/atwell07clih.pdf</rdfs:comment>
-        <owl:versionInfo>2011/08/17-18 created
+        <owl:versionInfo>
+2011/08/17-18 created
+2020/02/25 explanation of common relative pronoun added
 
-Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de</owl:versionInfo>
         <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
     </owl:Ontology>
     
@@ -775,6 +779,23 @@ almuslimaati</rdfs:comment>
     <!-- http://purl.org/olia/arabic_khoja.owl#CommonRelativePronoun -->
 
     <owl:Class rdf:about="&arabic_khoja;CommonRelativePronoun">
+		<rdfs:comment>
+		Relative pronouns in Arabic are two types: special and common. The special relative pronouns are the those that have singular, dual, plural. These are six: الَّذِي ، اللَّذَان ، الَّذِيْن ، الَّتِي ، اللَّتَان ، اللَّاتِي, as listed in the table above. اللَّذان and اللَّتَان become اللَّذَيْن and اللَّتَيْن in the accusative and genitive cases. The common relative pronouns that has the same form for the singular, dual, and plural. These are مَنْ and مَا. The first (مَنْ) is used for human, while مَا is used for non-human. ...
+		
+		مَنْ is used for human masculine and feminine singular, dual, and plural nouns. The kind of nouns it refers to is known from the relative clause that follows, as in these examples:
+		أَحْتَرِم مَنْ يَقُول الحَق.                     ‘I respect him who says the truth.’
+		أَحْتَرِم مَنْ يَقُولُون الحَق.                  ‘I respect them who say the truth.’
+		أَحْتَرِم مَنْ تَقُول الحَق.                     ‘I respect her who says the truth.’
+		أَحْتَرِم مَنْ قَالَتَا الحَق.                      ‘I respect the two ladies who said the truth.’
+
+		...
+
+		مَا is used for non-human masculine and feminine singular, dual and plural nouns. Like مَنْ, the noun it refers to is know from the context, as in these examples:
+		قَرَأتُ مَا كَتَبْتَ مِنْ مَقَالات.                ‘I read what you wrote (of the articles).’
+		هَل سَمِعْتُ مَا قَالُوا (مِنْ خَبَر)؟          ‘did you hear what they said? (of the news)’
+		
+		(https://blogs.transparent.com/arabic/relative-clauses-in-arabic/)
+		</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&arabic_khoja;RelativePronoun"/>
     </owl:Class>
     

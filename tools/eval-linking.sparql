@@ -10,6 +10,12 @@ prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>
 prefix system: <http://purl.org/olia/system.owl#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
 
+# todo: support for hasTagStartingWith, hasTagContaining, hasTagEndingWith, hasTagMatching
+
+#############
+# retrieval #
+#############
+
 # retrieve all OLiA superclasses for SRC
 INSERT {
 	?w conll:OLIA ?c
@@ -106,18 +112,18 @@ INSERT {
 	}
 };
 
-# # for every unanalyzed tag with an OLiA interpretation: attach all src tags that aren't used
-# INSERT {
-	# ?w conll:TGT ?p
-# } WHERE {
-	# ?w #a nif:Word. # 
-		# conll:OLIA ?o.
-	# FILTER(NOT EXISTS { ?w conll:TGT [] })
-	# GRAPH <http://purl.org/olia/src> {
-		# [] system:hasTag ?p
-	# } 
-	# MINUS { [a nif:Word ] conll:TGT ?p }
-# };
+# for every unanalyzed tag with an OLiA interpretation: attach all src tags that aren't used
+INSERT {
+	?w conll:TGT ?p
+} WHERE {
+	?w #a nif:Word. # 
+		conll:OLIA ?o.
+	FILTER(NOT EXISTS { ?w conll:TGT [] })
+	GRAPH <http://purl.org/olia/src> {
+		[] system:hasTag ?p
+	} 
+	MINUS { [a nif:Word ] conll:TGT ?p }
+};
 
 ########################
 # prune TGT candidates # more fitting OLiA concepts > less matching OLiA concepts
