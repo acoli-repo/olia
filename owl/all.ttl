@@ -1,0 +1,578 @@
+@base <http://purl.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <olia/all.owl#> .
+@prefix olia_system: <olia/system.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <dc/terms/> .
+
+<http://creativecommons.org/ns#license>
+    a owl:AnnotationProperty .
+
+<http://nl.ijs.si/ME/owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/all.owl>
+    dct:author "Christian Chiarcos, chiarcos@cs.uni-frankfurt.de" ;
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    a owl:Ontology ;
+    rdfs:comment """Meta ontology for OLiA, imports all core and stable ontologies and provides status metadata about them.
+	
+	Note that it is not recommended to work with this ontology directly, it rather serves as an index, e.g., for the bulk import into aggregator portals such as DBpedia Archivo http://archivo.dbpedia.org/
+	"""^^xsd:string ;
+    owl:imports <http://nl.ijs.si/ME/owl>, <olia/alpino-link.rdf>, <olia/alpino.owl>, <olia/ancorra.owl>, <olia/arabic_hkoja-link.rdf>, <olia/arabic_khoja.owl>, <olia/basque.owl>, <olia/brown-link.rdf>, <olia/brown.owl>, <olia/connexor-link.rdf>, <olia/connexor.owl>, <olia/dzongkha.owl>, <olia/eagles.owl>, <olia/emille.owl>, <olia/french-tt.owl>, <olia/french.owl>, <olia/genia-link.rdf>, <olia/genia.owl>, <olia/iiit.owl>, <olia/ilposts.owl>, <olia/indian.owl>, <olia/lassy-short-link.rdf>, <olia/lassy-short.owl>, <olia/lexinfo-link.rdf>, <olia/mamba-link.rdf>, <olia/mamba-syntax-link.rdf>, <olia/mamba-syntax.owl>, <olia/mamba.owl>, <olia/morphisto-link.rdf>, <olia/morphisto.owl>, <olia/mte/msd-bg-link.rdf>, <olia/mte/msd-cs-link.rdf>, <olia/mte/msd-en-link.rdf>, <olia/mte/msd-et-link.rdf>, <olia/mte/msd-fa-link.rdf>, <olia/mte/msd-hu-link.rdf>, <olia/mte/msd-mk-link.rdf>, <olia/mte/msd-pl-link.rdf>, <olia/mte/msd-ro-link.rdf>, <olia/mte/msd-ru-link.rdf>, <olia/mte/msd-sk-link.rdf>, <olia/mte/msd-sl-link.rdf>, <olia/mte/msd-sl-rozaj-link.rdf>, <olia/mte/msd-sr-link.rdf>, <olia/mte/msd-uk-link.rdf>, <olia/mte/multext-east.owl>, <olia/olia-top.owl>, <olia/olia.owl>, <olia/parole_es_cat.owl>, <olia/pctb.owl>, <olia/penn-link.rdf>, <olia/penn-syntax-link.rdf>, <olia/penn-syntax.owl>, <olia/penn.owl>, <olia/ppcme2-link.rdf>, <olia/ppcme2.owl>, <olia/proiel-linking.owl>, <olia/proiel.owl>, <olia/qtag-link.rdf>, <olia/russ-link.rdf>, <olia/russ.owl>, <olia/russleeds-link.rdf>, <olia/russleeds.owl>, <olia/sfb632-link.rdf>, <olia/sfb632.owl>, <olia/stanford-link.rdf>, <olia/stanford.owl>, <olia/stts-link.rdf>, <olia/stts.owl>, <olia/suc-link.rdf>, <olia/suc.owl>, <olia/susa-link.rdf>, <olia/susa.owl>, <olia/system.owl>, <olia/tcodex.owl>, <olia/tibet-link.rdf>, <olia/tibet.owl>, <olia/tiger-link.rdf>, <olia/tiger-syntax.owl>, <olia/tiger.owl>, <olia/treetagger-german.owl>, <olia/tueba-link.rdf>, <olia/tueba.owl>, <olia/turkish.owl>, <olia/ubyCat-link.rdf>, <olia/ubyCat.owl>, <olia/ubyPos-link.rdf>, <olia/ubyPos.owl>, <olia/ud-dep-link.rdf>, <olia/ud-pos-link.rdf>, <olia/up/ar-padt-link.rdf>, <olia/up/ar-padt.owl>, <olia/up/bg-btb-link.rdf>, <olia/up/bg-btb.owl>, <olia/up/ca-cat3lb-link.rdf>, <olia/up/ca-cat3lb.owl>, <olia/up/cs-pdt-link.rdf>, <olia/up/cs-pdt.owl>, <olia/up/da-ddt-link.rdf>, <olia/up/da-ddt.owl>, <olia/up/el-gdt-link.rdf>, <olia/up/el-gdt.owl>, <olia/up/en-claws-link.rdf>, <olia/up/en-claws.owl>, <olia/up/en-tweet-link.rdf>, <olia/up/en-tweet.owl>, <olia/up/es-cast3lb-link.rdf>, <olia/up/es-cast3lb.owl>, <olia/up/es-eagles-link.rdf>, <olia/up/es-eagles.owl>, <olia/up/es-iula-link.rdf>, <olia/up/es-iula.owl>, <olia/up/es-treetagger-link.rdf>, <olia/up/es-treetagger.owl>, <olia/up/eu-eus3lb-link.rdf>, <olia/up/eu-eus3lb.owl>, <olia/up/fi-tdt-link.rdf>, <olia/up/fi-tdt.owl>, <olia/up/fr-paris-link.rdf>, <olia/up/fr-paris.owl>, <olia/up/hu-szeged-link.rdf>, <olia/up/hu-szeged.owl>, <olia/up/it-isst-link.rdf>, <olia/up/it-isst.owl>, <olia/up/iw-mila-link.rdf>, <olia/up/iw-mila.owl>, <olia/up/ja-kyoto-link.rdf>, <olia/up/ja-kyoto.owl>, <olia/up/ja-verbmobil-link.rdf>, <olia/up/ja-verbmobil.owl>, <olia/up/ko-sejong-link.rdf>, <olia/up/ko-sejong.owl>, <olia/up/pl-ipipan-link.rdf>, <olia/up/pl-ipipan.owl>, <olia/up/pt-bosque-link.rdf>, <olia/up/pt-bosque.owl>, <olia/up/ru-rnc-link.rdf>, <olia/up/ru-rnc.owl>, <olia/up/sl-sdt-link.rdf>, <olia/up/sl-sdt.owl>, <olia/up/sv-talbanken-link.rdf>, <olia/up/sv-talbanken.owl>, <olia/up/tu-metusbanci-link.rdf>, <olia/up/tu-metusbanci.owl>, <olia/up/zh-ctb6-link.rdf>, <olia/up/zh-ctb6.owl>, <olia/up/zh-sinica-link.rdf>, <olia/up/zh-sinica.owl>, <olia/urdu.owl>, <olia/ycoe-link.rdf>, <olia/ycoe.owl>, <http://www.lexinfo.net/ontology/2.0/lexinfo>, <http://www.purl.org/olia/bll-link.rdf> ;
+    owl:versionInfo "2020-12-08 initial submission"@en, "2020-12-08 updated"@en .
+
+<olia/alpino-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/alpino.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ancorra.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/arabic_hkoja-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/arabic_khoja.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/basque.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/brown-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/brown.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/connexor-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/connexor.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/dzongkha.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/eagles.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/emille.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/french-tt.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/french.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/genia-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/genia.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/iiit.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ilposts.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/indian.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/lassy-short-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/lassy-short.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/lexinfo-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mamba-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mamba-syntax-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mamba-syntax.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mamba.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/morphisto-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/morphisto.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-bg-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-cs-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-en-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-et-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-fa-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-hu-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-mk-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-pl-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-ro-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-ru-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-sk-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-sl-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-sl-rozaj-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-sr-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/msd-uk-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/mte/multext-east.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/olia-top.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/olia.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-08 updated"@en .
+
+<olia/parole_es_cat.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/pctb.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/penn-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/penn-syntax-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/penn-syntax.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/penn.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ppcme2-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ppcme2.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/proiel-linking.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/proiel.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/qtag-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/russ-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/russ.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/russleeds-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/russleeds.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/sfb632-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/sfb632.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/stanford-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/stanford.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/stts-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/stts.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/suc-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/suc.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/susa-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/susa.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/system.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/tcodex.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/tibet-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/tibet.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/tiger-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/tiger-syntax.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/tiger.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/treetagger-german.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/tueba-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/tueba.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/turkish.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ubyCat-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ubyCat.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ubyPos-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ubyPos.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ud-dep-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ud-pos-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/up/ar-padt-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ar-padt.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/bg-btb-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/bg-btb.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ca-cat3lb-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ca-cat3lb.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/cs-pdt-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/cs-pdt.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/da-ddt-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/da-ddt.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/el-gdt-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/el-gdt.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/en-claws-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/en-claws.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/en-tweet-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/en-tweet.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/es-cast3lb-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/es-cast3lb.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/es-eagles-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/es-eagles.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/es-iula-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/es-iula.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/es-treetagger-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/es-treetagger.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/eu-eus3lb-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/eu-eus3lb.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/fi-tdt-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/fi-tdt.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/fr-paris-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/fr-paris.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/hu-szeged-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/hu-szeged.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/it-isst-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/it-isst.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/iw-mila-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/iw-mila.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ja-kyoto-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ja-kyoto.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ja-verbmobil-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ja-verbmobil.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ko-sejong-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ko-sejong.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/pl-ipipan-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/pl-ipipan.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/pt-bosque-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/pt-bosque.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ru-rnc-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/ru-rnc.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/sl-sdt-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/sl-sdt.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/sv-talbanken-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/sv-talbanken.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/tu-metusbanci-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/tu-metusbanci.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/zh-ctb6-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/zh-ctb6.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/zh-sinica-link.rdf>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/up/zh-sinica.owl>
+    owl:versionInfo "2019-12-02 updated"@en .
+
+<olia/urdu.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ycoe-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<olia/ycoe.owl>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
+<http://www.lexinfo.net/ontology/2.0/lexinfo>
+    <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by/4.0/> ;
+    owl:versionInfo "2016-01-05 updated"@en .
+
+<http://www.purl.org/olia/bll-link.rdf>
+    dct:license <https://creativecommons.org/licenses/by/3.0/> ;
+    owl:versionInfo "2020-12-07 updated"@en .
+
