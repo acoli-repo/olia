@@ -50,7 +50,7 @@
 					log=$tmp/`basename $file`.log
 					rapper $file > $nt 2>$log
 					
-					echo -n $file' ' 1>&2
+					echo -n $file' ... ' 1>&2
 					if [ ! -s $nt ]; then
 						echo failed: check validity of $file 1>&2;
 						cat $log | sed s/'^'/'\t'/g 1>&2 
@@ -64,11 +64,23 @@
 							echo "<http://purl.org/olia/all.owl> owl:imports "$url" ."
 
 							# note that the following may fail on older (pre-10.3) MacOS systems
-							echo $url owl:versionInfo '"'`date -r $file +"%Y-%m-%d"`' updated"@en .' 2>/dev/null				
+							echo $url owl:versionInfo '"'`date -r $file +"%Y-%m-%d"`' updated"@en .' 2>/dev/null
 							if egrep 'license>' $nt; then 
-								echo ok 1>&2; 
+								echo ok >/dev/null; 
 							else 
-								echo warning: missing license in $file 1>&2;
+								echo -n warning: missing license' ... ' 1>&2;
+							fi
+							if echo $file | egrep 'stable.*owl$' >&/dev/null; then
+								if egrep 'language>' $nt; then
+									echo ok >/dev/null
+								else
+									echo -n warning: missing language statement' ... ' 1>&2
+								fi
+							fi;
+							if [ -s $nt ]; then
+								echo ok 1>&2
+							else
+								echo failed 1>&2
 							fi
 						fi
 					fi
