@@ -71,7 +71,7 @@
 								echo -n warning: missing license' ... ' 1>&2;
 							fi
 							if echo $file | egrep 'stable.*owl$' >&/dev/null; then
-								if egrep 'language>' $nt; then
+								if grep 'meta-share/language>' $nt; then
 									echo ok >/dev/null
 								else
 									echo -n warning: missing language statement' ... ' 1>&2
