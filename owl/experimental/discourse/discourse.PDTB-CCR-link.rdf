@@ -1,0 +1,1045 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY ccr "http://purl.org/olia/discourse/discourse.CCR.owl#" >
+    <!ENTITY discourse "http://purl.org/olia/discourse/discourse.PDTB.owl#" >
+    <!ENTITY Ontology1612350185920 "http://www.semanticweb.org/chiarcos/ontologies/2021/1/3/Ontology1612350185920.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/chiarcos/ontologies/2021/1/3/Ontology1612350185920.owl#"
+     xml:base="http://www.semanticweb.org/chiarcos/ontologies/2021/1/3/Ontology1612350185920.owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:discourse="http://purl.org/olia/discourse/discourse.PDTB.owl#"
+     xmlns:Ontology1612350185920="http://www.semanticweb.org/chiarcos/ontologies/2021/1/3/Ontology1612350185920.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:ccr="http://purl.org/olia/discourse/discourse.CCR.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <owl:imports rdf:resource="http://purl.org/olia/discourse/discourse.CCR.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/discourse/discourse.PDTB.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Additive -->
+
+    <owl:Class rdf:about="&ccr;Additive"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Antichronological -->
+
+    <owl:Class rdf:about="&ccr;Antichronological">
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Causal -->
+
+    <owl:Class rdf:about="&ccr;Causal"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#CauseConsequence -->
+
+    <owl:Class rdf:about="&ccr;CauseConsequence"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Chronological -->
+
+    <owl:Class rdf:about="&ccr;Chronological">
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Conditional -->
+
+    <owl:Class rdf:about="&ccr;Conditional"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#ConsequenceCause -->
+
+    <owl:Class rdf:about="&ccr;ConsequenceCause"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Negative -->
+
+    <owl:Class rdf:about="&ccr;Negative"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#NonConditionalCause -->
+
+    <owl:Class rdf:about="&ccr;NonConditionalCause"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Objective -->
+
+    <owl:Class rdf:about="&ccr;Objective"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Positive -->
+
+    <owl:Class rdf:about="&ccr;Positive"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Subjective -->
+
+    <owl:Class rdf:about="&ccr;Subjective"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Synchronuous -->
+
+    <owl:Class rdf:about="&ccr;Synchronuous">
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Temporality -->
+
+    <owl:Class rdf:about="&ccr;Temporality"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Asynchronous -->
+
+    <owl:Class rdf:about="&discourse;Asynchronous">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Objective"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&ccr;Synchronuous"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#COMPARISON -->
+
+    <owl:Class rdf:about="&discourse;COMPARISON">
+        <rdfs:subClassOf rdf:resource="&ccr;Negative"/>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#CONTIGENCY -->
+
+    <owl:Class rdf:about="&discourse;CONTIGENCY">
+        <rdfs:subClassOf rdf:resource="&ccr;Causal"/>
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21
+
+&quot;In the other frameworks, relations that are causal are not considered
+to be TEMPORAL relations, but their segments can be ordered in time, and
+hence can also be assigned the value &#8220;temporal&#8221; along CCR&#8217;s dimension.&quot; (p.29)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Cause -->
+
+    <owl:Class rdf:about="&discourse;Cause">
+        <rdfs:subClassOf rdf:resource="&ccr;NonConditionalCause"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Objective"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.23,24,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Concession -->
+
+    <owl:Class rdf:about="&discourse;Concession">
+        <rdfs:subClassOf rdf:resource="&ccr;Causal"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Objective"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21,24,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Condition -->
+
+    <owl:Class rdf:about="&discourse;Condition">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Conditional"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Objective"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Antichronological"/>
+                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                            <rdf:Description rdf:about="&ccr;Chronological"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.23,24,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Conjunction -->
+
+    <owl:Class rdf:about="&discourse;Conjunction">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&ccr;Causal"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Objective"/>
+                            <rdf:Description rdf:about="&ccr;Subjective"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.20,21,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Contrast -->
+
+    <owl:Class rdf:about="&discourse;Contrast">
+        <rdfs:subClassOf rdf:resource="&ccr;Additive"/>
+        <rdfs:subClassOf rdf:resource="&ccr;Objective"/>
+        <rdfs:comment
+            >Sanders et al. 2018, p.22,24,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#EXPANSION -->
+
+    <owl:Class rdf:about="&discourse;EXPANSION">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >&quot;all relations in the PDTB classes EXPANSION are additive &#8211;
+apart from DISJUNCTIVE, which can also be causal-conditional&quot;
+
+Sanders et al. 2018, p.21</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Exception -->
+
+    <owl:Class rdf:about="&discourse;Exception">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Negative"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Objective"/>
+                            <rdf:Description rdf:about="&ccr;Subjective"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&ccr;Causal"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Instantiation -->
+
+    <owl:Class rdf:about="&discourse;Instantiation">
+        <rdfs:subClassOf rdf:resource="&ccr;Positive"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&ccr;Causal"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Objective"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#List -->
+
+    <owl:Class rdf:about="&discourse;List">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Objective"/>
+                            <rdf:Description rdf:about="&ccr;Subjective"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&ccr;Causal"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#PragmaticCause -->
+
+    <owl:Class rdf:about="&discourse;PragmaticCause">
+        <rdfs:subClassOf rdf:resource="&ccr;NonConditionalCause"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p,24,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#PragmaticCondition -->
+
+    <owl:Class rdf:about="&discourse;PragmaticCondition">
+        <rdfs:subClassOf rdf:resource="&ccr;Conditional"/>
+        <rdfs:subClassOf rdf:resource="&ccr;Subjective"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Conditional"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.23,24,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#PragmaticContrast -->
+
+    <owl:Class rdf:about="&discourse;PragmaticContrast">
+        <rdfs:subClassOf rdf:resource="&ccr;Subjective"/>
+        <rdfs:comment
+            >Sanders et al. 2018, p.24, 60
+
+As for the subjective/ojective mapping, note that this is an approxmate mapping, at best, cf. p.24f
+
+p.60: subjective, not objective</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Restatement -->
+
+    <owl:Class rdf:about="&discourse;Restatement">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Objective"/>
+                            <rdf:Description rdf:about="&ccr;Subjective"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&ccr;Causal"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#Synchronous -->
+
+    <owl:Class rdf:about="&discourse;Synchronous">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Objective"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <rdf:Description rdf:about="&ccr;Synchronuous"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#TEMPORAL -->
+
+    <owl:Class rdf:about="&discourse;TEMPORAL">
+        <rdfs:subClassOf rdf:resource="&ccr;Additive"/>
+        <rdfs:subClassOf rdf:resource="&ccr;Objective"/>
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+        <rdfs:comment
+            >Sanders et al. 2018, p.24: &quot;temporal (i.e., additive) relations&quot; (!)
+
+p. 29: &quot;TEMPORAL relations in other frameworks can
+be decomposed as additive relations with a temporal order using the dimensions.&quot;
+
+This directly contradicts
+
+p.26: &quot;All additive relations therefore remain underspecified for source of
+coherence, all relations in the class of TEMPORALS can be considered
+objective.&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#chosenAlternative -->
+
+    <owl:Class rdf:about="&discourse;chosenAlternative">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Negative"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&ccr;Causal"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#conjunctive -->
+
+    <owl:Class rdf:about="&discourse;conjunctive">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Objective"/>
+                            <rdf:Description rdf:about="&ccr;Subjective"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&ccr;Causal"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#contraExpectation -->
+
+    <owl:Class rdf:about="&discourse;contraExpectation">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                    <rdf:Description rdf:about="&ccr;Chronological"/>
+                    <rdf:Description rdf:about="&ccr;Negative"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.17,60
+
+features according to p.60. p.17 sloightly deviating</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#disjunctive -->
+
+    <owl:Class rdf:about="&discourse;disjunctive">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Negative"/>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Conditional"/>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ccr;Additive"/>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="&ccr;Causal"/>
+                                            <owl:Class>
+                                                <owl:unionOf rdf:parseType="Collection">
+                                                    <owl:Class>
+                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                            <rdf:Description rdf:about="&ccr;Antichronological"/>
+                                                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                                                        </owl:intersectionOf>
+                                                    </owl:Class>
+                                                    <owl:Class>
+                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                                                            <rdf:Description rdf:about="&ccr;Chronological"/>
+                                                        </owl:intersectionOf>
+                                                    </owl:Class>
+                                                </owl:unionOf>
+                                            </owl:Class>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Objective"/>
+                            <rdf:Description rdf:about="&ccr;Subjective"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.21,22,23,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#expectation -->
+
+    <owl:Class rdf:about="&discourse;expectation">
+        <rdfs:subClassOf rdf:resource="&ccr;Causal"/>
+        <rdfs:subClassOf rdf:resource="&ccr;Negative"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Antichronological"/>
+                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                            <rdf:Description rdf:about="&ccr;Chronological"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018 p.19,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#factualPast -->
+
+    <owl:Class rdf:about="&discourse;factualPast">
+        <rdfs:subClassOf rdf:resource="&ccr;Subjective"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Conditional"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#factualPresent -->
+
+    <owl:Class rdf:about="&discourse;factualPresent">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Conditional"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#general -->
+
+    <owl:Class rdf:about="&discourse;general">
+        <rdfs:subClassOf rdf:resource="&ccr;Conditional"/>
+        <rdfs:subClassOf rdf:resource="&ccr;Objective"/>
+        <rdfs:comment
+            >Sanders et al. 2018, p.23,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#hypothetical -->
+
+    <owl:Class rdf:about="&discourse;hypothetical">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;Antichronological"/>
+                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                            <rdf:Description rdf:about="&ccr;Chronological"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#implicitAssertion -->
+
+    <owl:Class rdf:about="&discourse;implicitAssertion">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Conditional"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#justification -->
+
+    <owl:Class rdf:about="&discourse;justification">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <rdf:Description rdf:about="&ccr;Subjective"/>
+                    <rdf:Description rdf:about="&discourse;Synchronous"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                            <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.16,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#opposition -->
+
+    <owl:Class rdf:about="&discourse;opposition">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Additive"/>
+                    <rdf:Description rdf:about="&ccr;Negative"/>
+                    <rdf:Description rdf:about="&ccr;Objective"/>
+                    <rdf:Description rdf:about="&ccr;Synchronuous"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et akl. 2018, .16</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#precedence -->
+
+    <owl:Class rdf:about="&discourse;precedence">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Antichronological"/>
+                    <rdf:Description rdf:about="&ccr;Chronological"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.29,35,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#reason -->
+
+    <owl:Class rdf:about="&discourse;reason">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Objective"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ccr;Antichronological"/>
+                                    <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                                    <rdf:Description rdf:about="&ccr;Chronological"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.15,60
+
+p.15 Antichronological and ConsequenceCause
+
+p.35 
+(Chronological and CauseConsequence)
+or (Antichronological and ConsequenceCause)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#relevance -->
+
+    <owl:Class rdf:about="&discourse;relevance">
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#result -->
+
+    <owl:Class rdf:about="&discourse;result">
+        <rdfs:subClassOf rdf:resource="&ccr;NonConditionalCause"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                    <rdf:Description rdf:about="&ccr;Chronological"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.23,35,60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#succession -->
+
+    <owl:Class rdf:about="&discourse;succession">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Antichronological"/>
+                    <rdf:Description rdf:about="&ccr;Chronological"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#unrealPast -->
+
+    <owl:Class rdf:about="&discourse;unrealPast">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Conditional"/>
+                    <rdf:Description rdf:about="&ccr;Positive"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                                    <rdf:Description rdf:about="&ccr;Chronological"/>
+                                    <rdf:Description rdf:about="&ccr;Objective"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&ccr;Chronological"/>
+                                    </owl:Class>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&ccr;Synchronuous"/>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDTB.owl#unrealPresent -->
+
+    <owl:Class rdf:about="&discourse;unrealPresent">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ccr;Causal"/>
+                    <rdf:Description rdf:about="&ccr;Conditional"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ccr;CauseConsequence"/>
+                                    <rdf:Description rdf:about="&ccr;Chronological"/>
+                                    <rdf:Description rdf:about="&ccr;Objective"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ccr;ConsequenceCause"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&ccr;Chronological"/>
+                                    </owl:Class>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&ccr;Synchronuous"/>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Sanders et al. 2018, p.60</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/chiarcos/ontologies/2021/1/3/Ontology1612350185920.owl#Temporal -->
+
+    <owl:Class rdf:about="#Temporal">
+        <rdfs:subClassOf rdf:resource="&ccr;Temporality"/>
+        <rdfs:comment
+            >The ontological status of non-non-temporal relations in CCR isn&#39;t very transparently described. But having such a class facilitates alignment with PDTB.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
