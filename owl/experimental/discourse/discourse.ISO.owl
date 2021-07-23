@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY iso "http://purl.org/olia/discourse/discourse.ISO.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/discourse/discourse.ISO.owl#"
+     xml:base="http://purl.org/olia/discourse/discourse.ISO.owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:iso="http://purl.org/olia/discourse/discourse.ISO.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment xml:lang="en"
+            >ISO DR-Core (ISO 24617-8): Core Concepts for the Annotation of Discourse Relations
+
+References:
+Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts for the Annotation of Discourse Relations, paper presented at ISA-12</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel -->
+
+    <owl:Class rdf:about="#AsymmetricDRel">
+        <rdfs:subClassOf rdf:resource="#DRel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Asynchrony -->
+
+    <owl:Class rdf:about="#Asynchrony">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 temporally precedes Arg2.
+Arguments: Before, After</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Cause -->
+
+    <owl:Class rdf:about="#Cause">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 is a reason for Arg2 to come about or occur.
+Arguments: Reason, Result</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Concession -->
+
+    <owl:Class rdf:about="#Concession">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >An expected causal relation, where Arg1 is expected to cause Arg2 not to occur or come about, is cancelled or denied by Arg2.
+Arguments: Expectation-raiser, Expectation-denier</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Condition -->
+
+    <owl:Class rdf:about="#Condition">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 is an unrealized situation which, when realized, would lead to Arg2.
+Arguments: Antecedent, Consequent</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Conjunction -->
+
+    <owl:Class rdf:about="#Conjunction">
+        <rdfs:subClassOf rdf:resource="#SymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 and Arg2 bear the same relation to some other situation evoked in the discourse. They both hold with respect to that situation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Contrast -->
+
+    <owl:Class rdf:about="#Contrast">
+        <rdfs:subClassOf rdf:resource="#SymmetricDRel"/>
+        <rdfs:comment
+            >One or more differences between Arg1 and Arg2 are highlighted with respect to what each predicates as a whole or to some entities they mention.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#DRel -->
+
+    <owl:Class rdf:about="#DRel">
+        <rdfs:comment
+            >A discourse relation is a relation expressed in discourse (written, spoken, or multimodal) between  abstract objects, such as events, states, conditions, and dialogue acts. 
+&#8226; Discourse relations can be expressed explicitly in text/speech or can be implicit. The annotation of  implicit relations may optionally include the specification of a connective that could express the inferred relation.  
+&#8226; A discourse relation takes two and only two arguments. Arguments can be shared by different  relations. 
+&#8226; The meaning of discourse relations is described in informational terms. 
+&#8226; Pragmatic aspects of meaning involving beliefs and dialogue acts as arguments are represented as a property of arguments, rather than of discourse relations. 
+&#8226; Discourse relations are categorized as a flat set of relations. 
+&#8226; Annotations are at a low level; ISO DR-Core is agnostic towards the nature of the global structure of a text or dialogue. 
+&#8226; Asymmetrical relations are represented with relation-specific argument role labels. 
+&#8226; The relative importance of a relation&#8217;s arguments  with respect to the text as a whole is not represented as such.  
+&#8226; No a priori assumptions are made concerning constraints on syntactic form, syntactic complexity, or  textual adjacency of expressions that may realize the arguments of a discourse relation.  
+
+In ISO DR-Core, annotations abstract over the linear ordering for argument realizations, since this is not a semantic distinction. Asymmetry is represented by specifying the argument roles in the definition of each relation, arguments bearing relation-specific semantic roles.   
+
+(Bunt &amp; Prasad, ISA-12)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Disjunction -->
+
+    <owl:Class rdf:about="#Disjunction">
+        <rdfs:subClassOf rdf:resource="#SymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 and Arg2 bear the same relation to some other situation evoked in the discourse. Either one of them or both hold with respect to that situation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Elaboration -->
+
+    <owl:Class rdf:about="#Elaboration">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 and Arg2 are the same situation, but Arg2 contains more detail.
+Arguments: Broad, Specific</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Exception -->
+
+    <owl:Class rdf:about="#Exception">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 indicates a set of circumstances in which the described situation holds, while Arg2 does not hold.
+Arguments: Regular, Exclusion</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Exemplification -->
+
+    <owl:Class rdf:about="#Exemplification">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 forms a set of situations; Arg2 is an element of that set.
+Arguments: Set, Instance</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Expansion -->
+
+    <owl:Class rdf:about="#Expansion">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg2 provides further description about some entity or entities in Arg1, expanding the narrative forward of which Arg1 is a part, or expanding on the setting relevant for interpreting Arg1. The Arg1 and Arg2 situations are distinct.
+Arguments: Foreground, Entity-description</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#FeedbackDependence -->
+
+    <owl:Class rdf:about="#FeedbackDependence">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg2 is a feedback act that provides or elicits information about the understanding or evaluation by one of the dialogue participants of Arg1, a communicative event that occurred earlier in the discourse.
+Arguments: Feedback-scope, Feedback-act</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#FunctionalDependence -->
+
+    <owl:Class rdf:about="#FunctionalDependence">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg2 is a dialogue act with a responsive communicative function; Arg1 is the dialogue act(s) that Arg2 responds to.
+Arguments: Antecedent-act, Dependent-act</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Manner -->
+
+    <owl:Class rdf:about="#Manner">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 is a way in which Arg2 comes about or occurs.
+Arguments: Means, Achievement</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#NegativeCondition -->
+
+    <owl:Class rdf:about="#NegativeCondition">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 is an unrealized situation which, when not realized, would lead to Arg2.
+Arguments: Negated-Antecedent, Consequent</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Purpose -->
+
+    <owl:Class rdf:about="#Purpose">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg2 is the goal or purpose of Arg1
+Purpose: Goal, Enablement</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Restatement -->
+
+    <owl:Class rdf:about="#Restatement">
+        <rdfs:subClassOf rdf:resource="#SymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 and Arg2 are the same situation, but described from different perspectives.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Similarity -->
+
+    <owl:Class rdf:about="#Similarity">
+        <rdfs:subClassOf rdf:resource="#SymmetricDRel"/>
+        <rdfs:comment
+            >One or more similarities between Arg1 and Arg2 are highlighted with respect to what each predicates as a whole or to some entities they mention.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Substitution -->
+
+    <owl:Class rdf:about="#Substitution">
+        <rdfs:subClassOf rdf:resource="#AsymmetricDRel"/>
+        <rdfs:comment
+            >Arg1 and Arg2 are alternatives, with Arg2 being the favored or chosen alternative.
+Arguments: Regular, Exclusion</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#SymmetricDRel -->
+
+    <owl:Class rdf:about="#SymmetricDRel">
+        <rdfs:subClassOf rdf:resource="#DRel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.ISO.owl#Synchrony -->
+
+    <owl:Class rdf:about="#Synchrony">
+        <rdfs:subClassOf rdf:resource="#SymmetricDRel"/>
+        <rdfs:comment
+            >Some degree of temporal overlap exists between Arg1 and Arg2. All forms of overlap are included.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
