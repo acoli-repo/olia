@@ -6,8 +6,8 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#">
     <owl:Ontology rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl">
         <rdfs:comment xml:lang="en">ISO DR-Core (ISO 24617-8): Core Concepts for the Annotation of Discourse Relations
@@ -32,6 +32,23 @@ Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts fo
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -45,7 +62,7 @@ Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts fo
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Achievement">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Manner"/>
-		<rdfs:label>Achievement</rdfs:label>
+        <rdfs:label>Achievement</rdfs:label>
     </owl:Class>
     
 
@@ -55,7 +72,7 @@ Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts fo
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#After">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Asynchrony"/>
-		<rdfs:label>After</rdfs:label>
+        <rdfs:label>After</rdfs:label>
     </owl:Class>
     
 
@@ -65,7 +82,7 @@ Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts fo
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#AntecedentAct">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#FunctionalDependence"/>
-		<rdfs:label>Antecedent-act</rdfs:label>
+        <rdfs:label>Antecedent-act</rdfs:label>
     </owl:Class>
     
 
@@ -75,7 +92,7 @@ Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts fo
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#AntecedentOfCondition">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Condition"/>
-		<rdfs:label>Antecedent</rdfs:label>
+        <rdfs:label>Antecedent</rdfs:label>
     </owl:Class>
     
 
@@ -84,7 +101,7 @@ Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts fo
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricArgumentRole"/>
-		<rdfs:label>Arg1</rdfs:label>
+        <rdfs:label>Arg1</rdfs:label>
     </owl:Class>
     
 
@@ -93,7 +110,7 @@ Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts fo
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricArgumentRole"/>
-		<rdfs:label>Arg2</rdfs:label>
+        <rdfs:label>Arg2</rdfs:label>
     </owl:Class>
     
 
@@ -108,9 +125,8 @@ However, in other schemas, these argument roles would be considered as discourse
 When annotating a particular *discourse marker*, say, &quot;because&quot;, the sense could thus be *either* the ISO Core DRel (Cause, especially if directionality is uncertain) or the specific role that the argument syntactically associated with the discourse marker serves within this discourse relation (Reason, entails Cause as discourse relation).
 
 Because we assume that this schema is primarily used for discourse marker annotation (rather than for discourse relation annotation), this entailment relation is formalized by rdfs:subClassOf.</rdfs:comment>
-		<skos:prefLabel>argument type</skos:prefLabel>
-		<rdfs:label>Role labels for arguments of ISO DR-core discourse relations</rdfs:label>
-
+        <rdfs:label>Role labels for arguments of ISO DR-core discourse relations</rdfs:label>
+        <skos:prefLabel>argument type</skos:prefLabel>
     </owl:Class>
     
 
@@ -119,7 +135,7 @@ Because we assume that this schema is primarily used for discourse marker annota
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#DRel"/>
-		<rdfs:label>Asymmetric</rdfs:label>
+        <rdfs:label>Asymmetric</rdfs:label>
     </owl:Class>
     
 
@@ -130,7 +146,7 @@ Because we assume that this schema is primarily used for discourse marker annota
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 temporally precedes Arg2.
 Arguments: Before, After</rdfs:comment>
-		<rdfs:label>Asynchrony</rdfs:label>
+        <rdfs:label>Asynchrony</rdfs:label>
     </owl:Class>
     
 
@@ -140,7 +156,7 @@ Arguments: Before, After</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Before">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Asynchrony"/>
-		<rdfs:label>Before</rdfs:label>
+        <rdfs:label>Before</rdfs:label>
     </owl:Class>
     
 
@@ -150,7 +166,7 @@ Arguments: Before, After</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#BroadPartOfElaboration">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Elaboration"/>
-		<rdfs:label>Broad</rdfs:label>
+        <rdfs:label>Broad</rdfs:label>
     </owl:Class>
     
 
@@ -161,7 +177,7 @@ Arguments: Before, After</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 is a reason for Arg2 to come about or occur.
 Arguments: Reason, Result</rdfs:comment>
-		<rdfs:label>Cause</rdfs:label>
+        <rdfs:label>Cause</rdfs:label>
     </owl:Class>
     
 
@@ -172,7 +188,7 @@ Arguments: Reason, Result</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>An expected causal relation, where Arg1 is expected to cause Arg2 not to occur or come about, is cancelled or denied by Arg2.
 Arguments: Expectation-raiser, Expectation-denier</rdfs:comment>
-		<rdfs:label>Concession</rdfs:label>
+        <rdfs:label>Concession</rdfs:label>
     </owl:Class>
     
 
@@ -183,7 +199,7 @@ Arguments: Expectation-raiser, Expectation-denier</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 is an unrealized situation which, when realized, would lead to Arg2.
 Arguments: Antecedent, Consequent</rdfs:comment>
-		<rdfs:label>Condition</rdfs:label>
+        <rdfs:label>Condition</rdfs:label>
     </owl:Class>
     
 
@@ -193,7 +209,7 @@ Arguments: Antecedent, Consequent</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Conjunction">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#SymmetricDRel"/>
         <rdfs:comment>Arg1 and Arg2 bear the same relation to some other situation evoked in the discourse. They both hold with respect to that situation.</rdfs:comment>
-		<rdfs:label>Conjunction</rdfs:label>
+        <rdfs:label>Conjunction</rdfs:label>
     </owl:Class>
     
 
@@ -201,8 +217,9 @@ Arguments: Antecedent, Consequent</rdfs:comment>
     <!-- http://purl.org/olia/discourse/discourse.ISO.owl#ConsequentOfCondition -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#ConsequentOfCondition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Condition"/>
-		<rdfs:label>Consequent</rdfs:label>
+        <rdfs:label>Consequent</rdfs:label>
     </owl:Class>
     
 
@@ -212,7 +229,7 @@ Arguments: Antecedent, Consequent</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#ConsequentOfNegativeCondition">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#NegativeCondition"/>
-		<rdfs:label>Consequent</rdfs:label>
+        <rdfs:label>Consequent</rdfs:label>
     </owl:Class>
     
 
@@ -222,7 +239,7 @@ Arguments: Antecedent, Consequent</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Contrast">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#SymmetricDRel"/>
         <rdfs:comment>One or more differences between Arg1 and Arg2 are highlighted with respect to what each predicates as a whole or to some entities they mention.</rdfs:comment>
-		<rdfs:label>Contrast</rdfs:label>
+        <rdfs:label>Contrast</rdfs:label>
     </owl:Class>
     
 
@@ -246,8 +263,8 @@ In ISO DR-Core, annotations abstract over the linear ordering for argument reali
 (Bunt &amp; Prasad, ISA-12)
 
 Note that ISO DR-Core DRels proper are only the grand children of DRel, grouped into symmetric and asymmetric discourse relations. Because of the entailment relation between argument roles and discourse relations, the argument roles have been modelled as their subclasses. In terms of ISO DR-Core, however, these are not in a hierarchical structure, but only in an entailment relation.</rdfs:comment>
-		<rdfs:label>DRel</rdfs:label>
-		<rdfs:label>discourse relation</rdfs:label>
+        <rdfs:label>DRel</rdfs:label>
+        <rdfs:label>discourse relation</rdfs:label>
     </owl:Class>
     
 
@@ -257,7 +274,7 @@ Note that ISO DR-Core DRels proper are only the grand children of DRel, grouped 
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#DependentAct">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#FunctionalDependence"/>
-		<rdfs:label>Dependent-act</rdfs:label>
+        <rdfs:label>Dependent-act</rdfs:label>
     </owl:Class>
     
 
@@ -267,7 +284,7 @@ Note that ISO DR-Core DRels proper are only the grand children of DRel, grouped 
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#DisfavouredAlternative">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Substitution"/>
-		<rdfs:label>Disfavoured-alternative</rdfs:label>
+        <rdfs:label>Disfavoured-alternative</rdfs:label>
     </owl:Class>
     
 
@@ -277,7 +294,7 @@ Note that ISO DR-Core DRels proper are only the grand children of DRel, grouped 
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Disjunction">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#SymmetricDRel"/>
         <rdfs:comment>Arg1 and Arg2 bear the same relation to some other situation evoked in the discourse. Either one of them or both hold with respect to that situation.</rdfs:comment>
-		<rdfs:label>Disjunction</rdfs:label>
+        <rdfs:label>Disjunction</rdfs:label>
     </owl:Class>
     
 
@@ -288,7 +305,7 @@ Note that ISO DR-Core DRels proper are only the grand children of DRel, grouped 
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 and Arg2 are the same situation, but Arg2 contains more detail.
 Arguments: Broad, Specific</rdfs:comment>
-		<rdfs:label>Elaboration</rdfs:label>
+        <rdfs:label>Elaboration</rdfs:label>
     </owl:Class>
     
 
@@ -298,7 +315,7 @@ Arguments: Broad, Specific</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Enablement">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Purpose"/>
-		<rdfs:label>Enablement</rdfs:label>
+        <rdfs:label>Enablement</rdfs:label>
     </owl:Class>
     
 
@@ -308,7 +325,7 @@ Arguments: Broad, Specific</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#EntityDescription">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Expansion"/>
-		<rdfs:label>Entity-description</rdfs:label>
+        <rdfs:label>Entity-description</rdfs:label>
     </owl:Class>
     
 
@@ -319,7 +336,7 @@ Arguments: Broad, Specific</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 indicates a set of circumstances in which the described situation holds, while Arg2 does not hold.
 Arguments: Regular, Exclusion</rdfs:comment>
-		<rdfs:label>Exception</rdfs:label>
+        <rdfs:label>Exception</rdfs:label>
     </owl:Class>
     
 
@@ -329,7 +346,7 @@ Arguments: Regular, Exclusion</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Exclusion">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Exception"/>
-		<rdfs:label>Exclusion</rdfs:label>
+        <rdfs:label>Exclusion</rdfs:label>
     </owl:Class>
     
 
@@ -340,7 +357,7 @@ Arguments: Regular, Exclusion</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 forms a set of situations; Arg2 is an element of that set.
 Arguments: Set, Instance</rdfs:comment>
-		<rdfs:label>Excemplification</rdfs:label>
+        <rdfs:label>Excemplification</rdfs:label>
     </owl:Class>
     
 
@@ -351,7 +368,7 @@ Arguments: Set, Instance</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg2 provides further description about some entity or entities in Arg1, expanding the narrative forward of which Arg1 is a part, or expanding on the setting relevant for interpreting Arg1. The Arg1 and Arg2 situations are distinct.
 Arguments: Foreground, Entity-description</rdfs:comment>
-		<rdfs:label>Expansion</rdfs:label>
+        <rdfs:label>Expansion</rdfs:label>
     </owl:Class>
     
 
@@ -361,7 +378,7 @@ Arguments: Foreground, Entity-description</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#ExpectationDenier">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Concession"/>
-		<rdfs:label>Expectation-denier</rdfs:label>
+        <rdfs:label>Expectation-denier</rdfs:label>
     </owl:Class>
     
 
@@ -371,7 +388,7 @@ Arguments: Foreground, Entity-description</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#ExpectationRaiser">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Concession"/>
-		<rdfs:label>Expectation-raiser</rdfs:label>
+        <rdfs:label>Expectation-raiser</rdfs:label>
     </owl:Class>
     
 
@@ -381,7 +398,7 @@ Arguments: Foreground, Entity-description</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#FavouredAlternative">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Substitution"/>
-		<rdfs:label>Favoured-alternative</rdfs:label>
+        <rdfs:label>Favoured-alternative</rdfs:label>
     </owl:Class>
     
 
@@ -391,7 +408,7 @@ Arguments: Foreground, Entity-description</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#FeedbackAct">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#FeedbackDependence"/>
-		<rdfs:label>Feedback-act</rdfs:label>
+        <rdfs:label>Feedback-act</rdfs:label>
     </owl:Class>
     
 
@@ -402,7 +419,7 @@ Arguments: Foreground, Entity-description</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg2 is a feedback act that provides or elicits information about the understanding or evaluation by one of the dialogue participants of Arg1, a communicative event that occurred earlier in the discourse.
 Arguments: Feedback-scope, Feedback-act</rdfs:comment>
-		<rdfs:label>Feedback dependence</rdfs:label>
+        <rdfs:label>Feedback dependence</rdfs:label>
     </owl:Class>
     
 
@@ -412,7 +429,7 @@ Arguments: Feedback-scope, Feedback-act</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#FeedbackScope">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#FeedbackDependence"/>
-		<rdfs:label>Feedback-scope</rdfs:label>
+        <rdfs:label>Feedback-scope</rdfs:label>
     </owl:Class>
     
 
@@ -422,7 +439,7 @@ Arguments: Feedback-scope, Feedback-act</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Foreground">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Expansion"/>
-		<rdfs:label>Foreground</rdfs:label>
+        <rdfs:label>Foreground</rdfs:label>
     </owl:Class>
     
 
@@ -433,7 +450,7 @@ Arguments: Feedback-scope, Feedback-act</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg2 is a dialogue act with a responsive communicative function; Arg1 is the dialogue act(s) that Arg2 responds to.
 Arguments: Antecedent-act, Dependent-act</rdfs:comment>
-		<rdfs:label>Functional dependence</rdfs:label>
+        <rdfs:label>Functional dependence</rdfs:label>
     </owl:Class>
     
 
@@ -443,7 +460,7 @@ Arguments: Antecedent-act, Dependent-act</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Goal">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Purpose"/>
-		<rdfs:label>Goal</rdfs:label>
+        <rdfs:label>Goal</rdfs:label>
     </owl:Class>
     
 
@@ -453,7 +470,7 @@ Arguments: Antecedent-act, Dependent-act</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Instance">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Exemplification"/>
-		<rdfs:label>Instance</rdfs:label>
+        <rdfs:label>Instance</rdfs:label>
     </owl:Class>
     
 
@@ -464,7 +481,7 @@ Arguments: Antecedent-act, Dependent-act</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 is a way in which Arg2 comes about or occurs.
 Arguments: Means, Achievement</rdfs:comment>
-		<rdfs:label>Manner</rdfs:label>
+        <rdfs:label>Manner</rdfs:label>
     </owl:Class>
     
 
@@ -474,7 +491,7 @@ Arguments: Means, Achievement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Means">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Manner"/>
-		<rdfs:label>Means</rdfs:label>
+        <rdfs:label>Means</rdfs:label>
     </owl:Class>
     
 
@@ -484,7 +501,7 @@ Arguments: Means, Achievement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#NegatedAntecedent">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#NegativeCondition"/>
-		<rdfs:label>Negated-Antecedent</rdfs:label>
+        <rdfs:label>Negated-Antecedent</rdfs:label>
     </owl:Class>
     
 
@@ -495,7 +512,7 @@ Arguments: Means, Achievement</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 is an unrealized situation which, when not realized, would lead to Arg2.
 Arguments: Negated-Antecedent, Consequent</rdfs:comment>
-		<rdfs:label>Consequent</rdfs:label>
+        <rdfs:label>Consequent</rdfs:label>
     </owl:Class>
     
 
@@ -506,7 +523,7 @@ Arguments: Negated-Antecedent, Consequent</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg2 is the goal or purpose of Arg1
 Purpose: Goal, Enablement</rdfs:comment>
-		<rdfs:label>Purpose</rdfs:label>
+        <rdfs:label>Purpose</rdfs:label>
     </owl:Class>
     
 
@@ -516,7 +533,7 @@ Purpose: Goal, Enablement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Reason">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Cause"/>
-		<rdfs:label>Reason</rdfs:label>
+        <rdfs:label>Reason</rdfs:label>
     </owl:Class>
     
 
@@ -526,7 +543,7 @@ Purpose: Goal, Enablement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#RegularSituation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Exception"/>
-		<rdfs:label>Regular</rdfs:label>
+        <rdfs:label>Regular</rdfs:label>
     </owl:Class>
     
 
@@ -536,7 +553,7 @@ Purpose: Goal, Enablement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Restatement">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#SymmetricDRel"/>
         <rdfs:comment>Arg1 and Arg2 are the same situation, but described from different perspectives.</rdfs:comment>
-		<rdfs:label>Restatement</rdfs:label>
+        <rdfs:label>Restatement</rdfs:label>
     </owl:Class>
     
 
@@ -546,7 +563,7 @@ Purpose: Goal, Enablement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Result">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Cause"/>
-		<rdfs:label>Result</rdfs:label>
+        <rdfs:label>Result</rdfs:label>
     </owl:Class>
     
 
@@ -556,7 +573,7 @@ Purpose: Goal, Enablement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Set">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg1"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Exemplification"/>
-		<rdfs:label>Set</rdfs:label>
+        <rdfs:label>Set</rdfs:label>
     </owl:Class>
     
 
@@ -566,7 +583,7 @@ Purpose: Goal, Enablement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Similarity">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#SymmetricDRel"/>
         <rdfs:comment>One or more similarities between Arg1 and Arg2 are highlighted with respect to what each predicates as a whole or to some entities they mention.</rdfs:comment>
-		<rdfs:label>Similarity</rdfs:label>
+        <rdfs:label>Similarity</rdfs:label>
     </owl:Class>
     
 
@@ -576,7 +593,7 @@ Purpose: Goal, Enablement</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#SpecificPartOfElaboration">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Arg2"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#Elaboration"/>
-		<rdfs:label>Specific</rdfs:label>
+        <rdfs:label>Specific</rdfs:label>
     </owl:Class>
     
 
@@ -587,7 +604,7 @@ Purpose: Goal, Enablement</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#AsymmetricDRel"/>
         <rdfs:comment>Arg1 and Arg2 are alternatives, with Arg2 being the favored or chosen alternative.
 Arguments: Regular, Exclusion</rdfs:comment>
-		<rdfs:label>Substitution</rdfs:label>
+        <rdfs:label>Substitution</rdfs:label>
     </owl:Class>
     
 
@@ -597,7 +614,7 @@ Arguments: Regular, Exclusion</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#SymmetricDRel">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#DRel"/>
         <rdfs:comment>ISO DR-Core distinguishes symmetric and asymmetric discourse relations, and this is formalized as inheritance hierarchy here (whereas ISO DRels are considered to be a flat list that differ in the symmetry feature).</rdfs:comment>
-		<rdfs:label>Symmetric</rdfs:label>
+        <rdfs:label>Symmetric</rdfs:label>
     </owl:Class>
     
 
@@ -607,8 +624,7 @@ Arguments: Regular, Exclusion</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.ISO.owl#Synchrony">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.ISO.owl#SymmetricDRel"/>
         <rdfs:comment>Some degree of temporal overlap exists between Arg1 and Arg2. All forms of overlap are included.</rdfs:comment>
-				<rdfs:label>Synchrony</rdfs:label>
-
+        <rdfs:label>Synchrony</rdfs:label>
     </owl:Class>
 </rdf:RDF>
 
