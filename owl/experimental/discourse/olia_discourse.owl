@@ -53,7 +53,9 @@
 	2014-03-20 merged with olia-is.owl
 	2014-03-20 *Category to *Unit, TextOrganizationalUnit to TextStructuralUnit
 	2014-03-21 DiscourseFunction, hasDiscourseFunction, PresentationalRelation, SubjectMatterRelation, EntityTypes, RelationCue
-	2021-07-27 ISO discourse relations (integration primarily based on their PDTB mapping), annotation property inverseOf. Some restructuring.</owl:versionInfo>
+	2021-07-27 ISO discourse relations (integration primarily based on their PDTB mapping), annotation property inverseOf. Some restructuring.
+	2021-10-11 minor adjustments for OWL validation
+	</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -829,7 +831,7 @@ We follow Bunt and Prasad (ISA-12) in assuming that (ISO) conjunction is a super
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Consequence">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Condition"/>
-        <inverseOf rdf:resource="SemanticCondition or PragmaticCondition"/>
+        <!--inverseOf rdf:resource="SemanticCondition or PragmaticCondition"/-->
         <rdfs:comment>ISO DR-Core: Condition or Negated Condition, argument Consequent
 
 This is an annotation that marks a condition at the consequent rather than the condition, itself. We expect such a relation to require both a consequent and a condition, and that the type of condition is marked at the condition rather at the consequent. Accordinly, Consequence does not have further subclasses, but should be coupled with Condition annotations.</rdfs:comment>
@@ -2897,7 +2899,7 @@ cf. Al-Saif and Markert (2010) &quot;Reformulation&quot; in the LADTB corpus</rd
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Result">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Cause"/>
-        <inverseOf rdf:resource="PragmaticCause or SemanticCause"/>
+        <!--inverseOf rdf:resource="PragmaticCause or SemanticCause"/-->
         <rdfs:comment>Result corresponds to ISO Cause with argument Result.
 Note that the other argument can be either a pragmatic cause (Justification) or a semantic cause (Reason), so we expect the difference between different kinds of causes to be expressed in the cause argument.
 
