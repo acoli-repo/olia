@@ -32,6 +32,7 @@ Prasad et al. (2007), The Penn Discourse Treebank 2.0 Annotation Manual, Decembe
 2012-02-10 Sourceforge commit
 2014-03-21 integrated in OLiA, linked with olia_discourse.owl
 2021-02-06 added rdf:label for PDTB 2.0 senses and skos:altLabel for PDTB 3.0 labels as used in http://connective-lex.info/ and https://github.com/acoli-repo/rdf4discourse; for concepts missing in PDTB2, these labels were directly attached to the parent concept
+2ß21-10-26 extensions for C-TED (PDTB 3.0 relations)
 
 Christian Chiarcos, christian.chiarcos@web.de
 </owl:versionInfo>
@@ -203,6 +204,16 @@ content (Horn, 1978).
             >The type &#226;&#8364;&#339;Alternative&#239;&#191;&#189;? applies when the connective indicates that its two arguments denote alter-
 native situations. It has three subtypes: &#226;&#8364;&#339;conjunctive&#239;&#191;&#189;?, &#226;&#8364;&#339;disjunctive&#239;&#191;&#189;? and &#226;&#8364;&#339;chosen alternative&#239;&#191;&#189;?.</rdfs:comment>
     </owl:Class>
+
+
+    <owl:Class rdf:about="#Progression">
+      <rdfs:label>progression</rdfs:label>
+      <skos:altLabel>Expansion.Progression.Arg2-as-progr</skos:altLabel>
+      <rdfs:subClassOf rdf:resource="#EXPANSION"/>
+      <rdfs:comment rdf:datatype="&xsd;string"
+      >introduced for C-TED. For Chinese, progression is discussed in terms of topic continuity and shift patterns. Probably, that's what's meant here. However, this doesn't seem to be within Expansion of PDTB 3.0 proper, but specific to Chinese.</rdfs:comment>
+</owl:Class>
+
 
 
 
@@ -1274,6 +1285,7 @@ that &#226;&#710;&#188;||Arg2|| (meaning ||Arg|| does not hold or is not expecte
             >EXPANSION:Substitution:Arg1-as-subst</skos:altLabel>
         <skos:altLabel
             >Expansion.Alternative.Chosen alternative</skos:altLabel>
+        <skos:altLabel>Expansion.Substitution.Arg1-as-subst</skos:altLabel>
     </owl:Thing>
 
 
@@ -1461,6 +1473,10 @@ that &#226;&#710;&#188;||Arg2|| (meaning ||Arg|| does not hold or is not expecte
             >CONTINGENCY:Negative-condition:Arg1-as-negcond</skos:altLabel>
         <skos:altLabel
             >negative-condition</skos:altLabel>
+        <skos:altLabel>Contingency.Negative-condition.Arg1-as-negCond</skos:altLabel>
+        <skos:altLabel>Contingency.Negative-condition.Arg2-as-negCond</skos:altLabel>
+        <skos:altLabel>Contingency.Negative-condition.Arg2-as-negcond</skos:altLabel>
+
     </owl:Thing>
 
 
@@ -1603,6 +1619,7 @@ that &#226;&#710;&#188;||Arg2|| (meaning ||Arg|| does not hold or is not expecte
             >Expansion:Instantiation</skos:altLabel>
         <skos:altLabel
             >EXPANSION:Instantiation</skos:altLabel>
+        <skos:altLabel>Expansion.Instantiation.Arg2-as-instance</skos:altLabel>
     </owl:Thing>
 
 
@@ -1627,6 +1644,7 @@ that &#226;&#710;&#188;||Arg2|| (meaning ||Arg|| does not hold or is not expecte
             >purpose-arg1-as-goal</skos:altLabel>
         <skos:altLabel
             >CONTINGENCY:Purpose</skos:altLabel>
+        <skos:altLabel>Contingency.Purpose.Arg1-as-goal</skos:altLabel>
     </owl:Thing>
 
 
@@ -1802,6 +1820,7 @@ that &#226;&#710;&#188;||Arg2|| (meaning ||Arg|| does not hold or is not expecte
             >CONTINGENCY:Cause:result</skos:altLabel>
         <skos:altLabel>cause-result</skos:altLabel>
         <skos:altLabel>result+belief</skos:altLabel>
+        <skos:altLabel>Contingency.Cause.NegResult</skos:altLabel> <!-- C-TED -->
     </owl:Thing>
 
 
