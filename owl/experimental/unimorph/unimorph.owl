@@ -8,6 +8,7 @@
     <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY olias "http://purl.org/olia/system.owl#" >
 ]>
 
 
@@ -18,6 +19,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:olias="http://purl.org/olia/system.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#">
     <owl:Ontology rdf:about="">
         <rdfs:isDefinedBy
@@ -93,7 +95,8 @@ CC</owl:versionInfo>
 
     <!-- http://purl.org/olia/unimorph/unimorph.owl#hasLabel -->
 
-    <owl:DatatypeProperty rdf:about="#hasLabel"/>
+    <owl:DatatypeProperty rdf:about="#hasLabel">
+    </owl:DatatypeProperty>
 
 
 
@@ -102,6 +105,7 @@ CC</owl:versionInfo>
     <owl:DatatypeProperty rdf:about="#hasLabelMatching">
         <rdfs:comment
             >Introduced for matching against regular expressions</rdfs:comment>
+            <rdfs:subPropertyOf rdf:resource="#hasLabel"/>
     </owl:DatatypeProperty>
 
 
@@ -866,6 +870,29 @@ Note that feature values are modeled as instances, not as classes, because &quot
 	(Sylak-Glassman 2016, p.34f)</rdfs:comment>
     </owl:Class>
 
+    <owl:Class rdf:about="#SingularNumber">
+      <rdfs:subClassOf rdf:resource="#Number"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#DualNumber">
+      <rdfs:subClassOf rdf:resource="#Number"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#TrialNumber">
+      <rdfs:subClassOf rdf:resource="#Number"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PaucalNumber">
+      <rdfs:subClassOf rdf:resource="#Number"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#GreaterPaucalNumber">
+      <rdfs:subClassOf rdf:resource="#Number"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PluralNumber">
+      <rdfs:subClassOf rdf:resource="#Number"/>
+    </owl:Class>
 
 
     <!-- http://purl.org/olia/unimorph/unimorph.owl#ObjectConcept -->
@@ -2373,13 +2400,13 @@ Telic verbs have a well-defined terminal point at which an action naturally term
 
     <!-- http://purl.org/olia/unimorph/unimorph.owl#DU -->
 
-    <Number rdf:about="#DU">
+    <DualNumber rdf:about="#DU">
         <rdf:type rdf:resource="&owl;Thing"/>
         <rdfs:label>dual</rdfs:label>
         <hasLabel>DU</hasLabel>
         <rdfs:comment xml:lang="en"
             >Dual (DU) and trial (TRI) indicate precisely two or three entities, respectively, and these are robustly distinguished for nouns in Larike (Corbett 2000:21, 40, 45). (Sylak-Glassman 2016, p.34)</rdfs:comment>
-    </Number>
+    </DualNumber>
 
 
 
@@ -2603,7 +2630,7 @@ Telic verbs have a well-defined terminal point at which an action naturally term
 
     <!-- http://purl.org/olia/unimorph/unimorph.owl#GPAUC -->
 
-    <Number rdf:about="#GPAUC">
+    <GreaterPaucalNumber rdf:about="#GPAUC">
         <rdf:type rdf:resource="&owl;Thing"/>
         <rdfs:label>greater paucal</rdfs:label>
         <hasLabel>GPAUC</hasLabel>
@@ -2611,7 +2638,7 @@ Telic verbs have a well-defined terminal point at which an action naturally term
             >Unlike greater plural, the text does not indicate that greater paucal is a subcategory of a more general paucal concept, hence no class introduced -- CC</owl:versionInfo>
         <rdfs:comment xml:lang="en"
             >[G]reater paucal (gpauc), for more than several, but not many, is used in Sursurunga (Austronesian), which has the most extensive nominal number distinction known to exist, distinguishing singular, dual, paucal (&gt;=3), greater paucal (&gt;=4), and plural (26-27). (Sylak-Glassman 2016, p.34)</rdfs:comment>
-    </Number>
+    </GreaterPaucalNumber>
 
 
 
@@ -3404,13 +3431,13 @@ Telic verbs have a well-defined terminal point at which an action naturally term
 
     <!-- http://purl.org/olia/unimorph/unimorph.owl#PAUC -->
 
-    <Number rdf:about="#PAUC">
+    <PaucalNumber rdf:about="#PAUC">
         <rdf:type rdf:resource="&owl;Thing"/>
         <rdfs:label>paucal</rdfs:label>
         <hasLabel>PAUC</hasLabel>
         <rdfs:comment xml:lang="en"
             >[L]anguages can distinguish [singular, plural, dual and trial] from &quot;a few, several,&quot; which is indicated using the the paucal number (PAUC). (Sylak-Glassman 2016, p.34)</rdfs:comment>
-    </Number>
+    </PaucalNumber>
 
 
 
@@ -3476,12 +3503,12 @@ Telic verbs have a well-defined terminal point at which an action naturally term
 
     <!-- http://purl.org/olia/unimorph/unimorph.owl#PL -->
 
-    <owl:Thing rdf:about="#PL">
+    <owl:PluralNumber rdf:about="#PL">
         <rdf:type rdf:resource="#Plural"/>
         <rdfs:label>plain plural</rdfs:label>
         <rdfs:label>plural</rdfs:label>
         <hasLabel>PL</hasLabel>
-    </owl:Thing>
+    </owl:PluralNumber>
 
 
 
@@ -4279,13 +4306,15 @@ Telic verbs have a well-defined terminal point at which an action naturally term
 
     <!-- http://purl.org/olia/unimorph/unimorph.owl#SG -->
 
-    <Number rdf:about="#SG">
+
+
+    <SingularNumber rdf:about="#SG">
         <rdf:type rdf:resource="&owl;Thing"/>
         <rdfs:label>singular</rdfs:label>
         <hasLabel>SG</hasLabel>
         <rdfs:comment xml:lang="en"
             >Singular always indicates one (Sylak-Glassman 2016, p.34)</rdfs:comment>
-    </Number>
+    </SingularNumber>
 
 
 
@@ -4477,13 +4506,13 @@ Telic verbs have a well-defined terminal point at which an action naturally term
 
     <!-- http://purl.org/olia/unimorph/unimorph.owl#TRI -->
 
-    <Number rdf:about="#TRI">
+    <TrialNumber rdf:about="#TRI">
         <rdf:type rdf:resource="&owl;Thing"/>
         <rdfs:label>trial</rdfs:label>
         <hasLabel>TRI</hasLabel>
         <rdfs:comment xml:lang="en"
             >Dual (DU) and trial (TRI) indicate precisely two or three entities, respectively, and these are robustly distinguished for nouns in Larike (Corbett 2000:21, 40, 45). (Sylak-Glassman 2016, p.34)</rdfs:comment>
-    </Number>
+    </TrialNumber>
 
 
 
