@@ -1,431 +1,2289 @@
 <?xml version="1.0"?>
-<rdf:RDF
-    xmlns="http://purl.org/olia/meno.owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:olia_system="http://purl.org/olia/system.owl#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-  xml:base="http://purl.org/olia/meno.owl">
-  <owl:Ontology rdf:about="http://purl.org/olia/meno.owl">
-	<rdfs:comment>
-		Experimental (and incomplete) OLiA Annotation Model for the
-		Old Norse MENOTA annotation guidelines as adopted by 
-		Ludger Zeevaert (Collaborative Research Center (SFB) 538, Hamburg, Germany, project H3). Parts of speech only.
-		Only tags actually used by Zeevaert in 2006 are represented.
+<rdf:RDF xmlns="http://purl.org/olia/meno.owl#"
+     xml:base="http://purl.org/olia/meno.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:olias="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/meno.owl">
+        <rdfs:comment>
+		OLiA Annotation Model for the Old Norse MENOTA model
 
-		The original MENOTA guidelines can be found under 
-		http://gandalf.aksis.uib.no/menota/guidelines/.
-		All section references here pertain to MENOTA v. 1.1; 
-		5 May 2004.
+    Sources:
+    - MENOTA v.1.1 (2004): 5 May 2004, 		http://gandalf.aksis.uib.no/menota/guidelines/, POS only.
+    - Zeevaert (2006): annotation guidelines as adopted by Ludger Zeevaert (Collaborative Research Center (SFB) 538, Hamburg, Germany, project H3). Parts of speech only. Only tags actually used by Zeevaert in 2006 are represented.
+    - MENOTA v.3.0 (2019), Chap.11: https://www.menota.org/HB3_ch11.xml
 	</rdfs:comment>
-	<owl:versionInfo>
-		2006 created from MENOTA v.1.1 (5 May 2004) for a data sample
-		     provided by Ludger Zeevaert (U Hamburg, Germany)
-		     by Christian Chiarcos
-		     Zeevaert's comments are directly integrated
-		2006-2007 maintained by Johannes Bubenzer
-		2010-04-08 updated by Christian Chiarcos
-		2010-04-14 validated
-		
-		Christian Chiarcos, chiarcos@uni-potsdam.de
-	</owl:versionInfo>
-	</owl:Ontology>
-          <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
-          <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#WordClassType">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
-        </owl:onProperty>
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        >pos</owl:hasValue>
-	</owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
+        <owl:versionInfo xml:lang="en">2006 created from MENOTA v.1.1 (5 May 2004) [CC,LZ]
+2006-2007 maintenance [JB]
+2010-04-08 updated [CC]]
+2010-04-14 validated [CC]
+2021-11-26 update to Menota 3.0, full revision [CC]
 
-		  <owl:Class rdf:about="http://purl.org/olia/meno.owl#CUType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#ConjunctionType"/>
-	</rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#VPresPartType">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#ParticipleType"/>
-	</rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >present participle</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#AdjectiveType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AJ
+Contributors:
+CC - Christian Chiarcos, christian.chiarcos@gmail.com, GU Frankfurt, Germany
+JB - Johannes Bubenzer, U Potsdam
+LZ - Ludger Zeevaert, U Hamburg</owl:versionInfo>
+    </owl:Ontology>
+    
 
-(no differentiation between attributive and predicative)</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#IndicativeVerbType">
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#SubjunctiveVerbType"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#ImperativeType"/>
-    </owl:disjointWith>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#FiniteVerbType"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V.Ind</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#NUCType">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#NumeralType"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Cardinal</rdfs:comment>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#NUOType"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#NonfiniteVerbType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ignored tense for infinitives</rdfs:comment>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#FiniteVerbType"/>
-    </owl:disjointWith>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#VerbType"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#ParticipleType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#NonfiniteVerbType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V.Part
 
-inflected like adjectives (8.5.8.2), thus could be related to Adjective, too</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#NUOType">
-    <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#NUCType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Ordinal</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#NumeralType"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#FiniteVerbType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >not an own tag, but classified in this way, cf. 8.5.8.1
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-tense ignored
+    
 
-person ignored
 
-actie and middle ignored
+    <!-- http://purl.org/olia/system.owl#hasTag -->
 
-morph class ignored
+    <owl:AnnotationProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
+    
 
-Enc should be considered further</rdfs:comment>
-    <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#NonfiniteVerbType"/>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#VerbType"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#ConjunctionType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >C
 
-besides the sub-categories, C# denotes this class (8.5.11)</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#InfinitiveMarkerType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >8.5.13 Infinitive marker (IM)
+    <!-- http://purl.org/olia/system.owl#hasTier -->
 
-The infinitive marker is undeclined and only marked as IM. In Old Norse it usually has the form at.
+    <owl:AnnotationProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
+    
 
-("particle")</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#InterjectionType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >IT</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#PronounOrDeterminerType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PD
 
-the only relevant sub-class as described in 8.5.5 is the person distinction which is applied to PersonalPronouns only. Accordingly, no further subclassification necessary</rdfs:comment>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/meno.owl#DeterminerType"/>
-          <owl:Class rdf:about="http://purl.org/olia/meno.owl#PronounType"/>
-        </owl:unionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#PPer1Type">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >1stPerson</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#PPerType"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#VPretPartType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#ParticipleType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >preterite participle
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#PPer2Type">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >2nd person</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#PPerType"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#PIntType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >inetrrogative pronouns</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#PronounType"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#ATType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Article, but cf. 8.5.7 where as an alternative, these postulate an independent group
+    
 
-</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#DeterminerType"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#DPosType">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#DeterminerType"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Possessive Determinatives</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#DeterminerType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >D</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#InfinitiveType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#NonfiniteVerbType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V...Inf
 
-can be tensed (8.5.8.2), but this is not represented here</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#NPType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Propria
+    <!-- http://purl.org/olia/system.owl#hasTag -->
 
-NP</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#NounType"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#PPer3Type">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#PPerType"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >3rd person</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#CCType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Conjunction</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#ConjunctionType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#AdverbType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AV
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
+    
 
-grade inflection ignored</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#PPerType">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#PronounType"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >personal pronoun</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#VerbType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#PronounType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >P - substitutive
 
-In recent grammars the traditional category pronoun is usually divided into pronouns in a strict sense (words replacing a noun) and determinatives (adjunct words), and that is our recommendation as well, cf. ch. 8.5.3 and 8.5.4 below. However, in some projects (i.e. the Old Norwegian lemmatised corpus) there is only a single category pronoun, and we have therefore added in ch. 8.5.5 a combined category, pronouns and determiners (cf. EAGLES, major categories).</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#NounType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Nouns can be divided into two categories, appellatives and propria. They are all marked with an N for noun. ... In marginal cases, it may be difficult to decide whether a noun is a common or a proper name; in that case this field may be marked with an @.
+    <!-- http://purl.org/olia/system.owl#hasTier -->
 
-N</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#RelativeParticleType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Relative particle (RP)
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
+    
 
-The relative particle is undeclined and only marked as RP. In Old Norse it usually has the form er or sem. Some grammarians would classify the relative particle as a subjunction, while others tend to look upon it as a pronoun.
 
-what kind of pronoun ? (relative pronoun ?)</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#ImperativeType">
-    <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#IndicativeVerbType"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://purl.org/olia/meno.owl#SubjunctiveVerbType"/>
-    </owl:disjointWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V.Imp</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#FiniteVerbType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#NumeralType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NU</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#PIndType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#PronounType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >indefinite pronouns</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#SubjunctiveVerbType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#FiniteVerbType"/>
-    <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#IndicativeVerbType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V.Sub</rdfs:comment>
-    <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#ImperativeType"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#UnassignedType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >U
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-against Eagles, this does not cover one-word categories, but non-POS Elements, thus Residual
+    
 
-Some words are corrupt, difficult to analyse, belonging to another language or indeterminate for other reason. These words are marked as unassigned, U.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#CSType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#ConjunctionType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >subjunction</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#NCType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#NounType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >apellatives
 
-common noun</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#AdpositionType">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClassType"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >always Prepositions, cf. 8.5.10</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/meno.owl#DDetType">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Demonstrative determinatives</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#DeterminerType"/>
-  </owl:Class>
-  <ImperativeType rdf:about="http://purl.org/olia/meno.owl#Imperative"/>
-  <CCType rdf:about="http://purl.org/olia/meno.owl#CC">
-    <olia_system:hasTag>CC</olia_system:hasTag>
-  </CCType>
-  <NPType rdf:about="http://purl.org/olia/meno.owl#NP">
-    <olia_system:hasTag>NP</olia_system:hasTag>
-  </NPType>
-  <DPosType rdf:about="http://purl.org/olia/meno.owl#DPos">
-    <olia_system:hasTag>DPos</olia_system:hasTag>
-  </DPosType>
-  <PronounOrDeterminerType rdf:about="http://purl.org/olia/meno.owl#PronounOrDeterminer"/>
-  <PIntType rdf:about="http://purl.org/olia/meno.owl#PInt">
-    <olia_system:hasTag>PInt</olia_system:hasTag>
-  </PIntType>
-  <NUCType rdf:about="http://purl.org/olia/meno.owl#NUC">
-    <olia_system:hasTag>NUC</olia_system:hasTag>
-  </NUCType>
-  <CUType rdf:about="http://purl.org/olia/meno.owl#xCU">
-    <olia_system:hasTag>xCU</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
-  </CUType>
-  <AdpositionType rdf:about="http://purl.org/olia/meno.owl#Adposition"/>
-  <InterjectionType rdf:about="http://purl.org/olia/meno.owl#Interjection"/>
-  <RelativeParticleType rdf:about="http://purl.org/olia/meno.owl#RelativeParticle"/>
-  <NUOType rdf:about="http://purl.org/olia/meno.owl#NUO">
-    <olia_system:hasTag>NUO</olia_system:hasTag>
-  </NUOType>
-  <VPretPartType rdf:about="http://purl.org/olia/meno.owl#_preterite_participle"/>
-  <PIndType rdf:about="http://purl.org/olia/meno.owl#PInd">
-    <olia_system:hasTag>PInd</olia_system:hasTag>
-  </PIndType>
-  <UnassignedType rdf:about="http://purl.org/olia/meno.owl#Unassigned"/>
-  <VPresPartType rdf:about="http://purl.org/olia/meno.owl#VPresPart">
-    <olia_system:hasTag>VPresPart</olia_system:hasTag>
-  </VPresPartType>
-  <InfinitiveMarkerType rdf:about="http://purl.org/olia/meno.owl#InfinitiveMarker"/>
-  <ATType rdf:about="http://purl.org/olia/meno.owl#AT">
-    <olia_system:hasTag>AT</olia_system:hasTag>
-  </ATType>
-  <AdverbType rdf:about="http://purl.org/olia/meno.owl#Adverb"/>
-  <CSType rdf:about="http://purl.org/olia/meno.owl#CS">
-    <olia_system:hasTag>CS</olia_system:hasTag>
-  </CSType>
-  <InfinitiveType rdf:about="http://purl.org/olia/meno.owl#Infinitive"/>
-  <NCType rdf:about="http://purl.org/olia/meno.owl#NC">
-    <olia_system:hasTag>NC</olia_system:hasTag>
-  </NCType>
-  <CSType rdf:about="http://purl.org/olia/meno.owl#xCS">
-    <olia_system:hasTag>xCS</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
-  </CSType>
-  <PPer3Type rdf:about="http://purl.org/olia/meno.owl#PPer3">
-    <olia_system:hasTag>PPer3</olia_system:hasTag>
-  </PPer3Type>
-  <PPer1Type rdf:about="http://purl.org/olia/meno.owl#PPer1">
-    <olia_system:hasTag>PPer1</olia_system:hasTag>
-  </PPer1Type>
-  <FiniteVerbType rdf:about="http://purl.org/olia/meno.owl#xVB_fF">
-    <olia_system:hasTag>xVB_fF</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >xVB fF = Finites Verb</rdfs:comment>
-  </FiniteVerbType>
-  <CCType rdf:about="http://purl.org/olia/meno.owl#xCC">
-    <olia_system:hasTag>xCC</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
-  </CCType>
-  <IndicativeVerbType rdf:about="http://purl.org/olia/meno.owl#IndicativeVerb"/>
-  <PPer2Type rdf:about="http://purl.org/olia/meno.owl#PPer2">
-    <olia_system:hasTag>PPer2</olia_system:hasTag>
-  </PPer2Type>
-  <DDetType rdf:about="http://purl.org/olia/meno.owl#DDet">
-    <olia_system:hasTag>DDet</olia_system:hasTag>
-  </DDetType>
-  <UnassignedType rdf:about="http://purl.org/olia/meno.owl#u">
-    <olia_system:hasTag>u</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
-  </UnassignedType>
-  <AdjectiveType rdf:about="http://purl.org/olia/meno.owl#Adjective"/>
-  <SubjunctiveVerbType rdf:about="http://purl.org/olia/meno.owl#SubjunctiveVerb"/>
+    <!-- http://purl.org/olia/meno.owl#Ablative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Ablative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Accusative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Accusative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Case"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Government"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#ActiveVoice -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#ActiveVoice">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Voice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xAJ
+
+    (no differentiation between attributive and predicative)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#AdpositionType -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#AdpositionType">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">always Prepositions, cf. 8.5.10</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xAV
+
+    grade inflection ignored</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Article -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Article">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Determiner"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Article, but cf. 8.5.7 where as an alternative, these postulate an independent group
+
+    </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#CardinalNumeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#CardinalNumeral">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Numeral"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cardinal</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Case">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies to nouns, adjectives, pronouns/determiners and numerals.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#CommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#CommonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Noun"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">apellatives
+
+    common noun</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#ComparativeDegree -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#ComparativeDegree">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Grade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Conjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Conjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C
+
+    besides the sub-categories, C# denotes this class (8.5.11)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Dative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Dative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Case"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Government"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Definite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Definite">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Species"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#DemonstrativeDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#DemonstrativeDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Determiner"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Demonstrative determinatives</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#DeponentVoice -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#DeponentVoice">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Voice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Determiner -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Determiner">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">D</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Dual -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Dual">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#EncliticPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#EncliticPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Enclitics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Enclitics -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Enclitics">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: In some cases, a word may be attached to the previous word resulting in a single, new word. This process of cliticisation occurs after finite verbs with personal pronouns and negative particles. Examples of the first type are “emk” for “em ek” ‘I am’ and “fórtu” for “fórt þú” ‘you went’, of the second type “erat” for “er at” ‘is not’ and “bárut” for “báru t” ‘did not carry’. From a morphological point of view, this process is similar to the suffixation in definite noun forms, e.g. “hestr + inn” = “hestrinn”, or reflexive verb forms, e.g. “kalla + s[i]k” = “kallask”. However, it may be argued that the enclitic words retain their characters as words to a larger extent than the suffixed determiner “inn” or the reflexive pronoun “s[i]k”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Feminine -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Feminine">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Finite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Finite">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Finiteness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#FiniteVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#FiniteVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Verb"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#NonfiniteVerb"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">not an own tag, but classified in this way, cf. 8.5.8.1</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Finiteness -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Finiteness">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies only to verbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#FirstPerson -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#FirstPerson">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Person"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1stPerson</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#FuturePerfect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#FuturePerfect">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#FutureSimple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#FutureSimple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Gender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Gender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies to nouns, adjectives, pronouns/determiners, numerals and verb participles.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Genitive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Genitive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Case"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Government"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Government -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Government">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: In the Old Norwegian lemmatised corpus, prepositions are encoded for the case which they govern. This is valuable syntactic information, but it is really not a morphological category. We therefore recommend that prepositions, which have no inflection in Old Norse (or possibly not in any other language), are only encoded for word class in the @me:msa attribute, “xAP”.
+In the Old Norwegian lemmatised corpus, also conjunctions (i.e. subjunctions) are encoded for the mood which they govern.</rdfs:comment>
+        <owl:versionInfo>TODO: Note that OLiA does not distinguish whether the case (etc.) is governed by an adposition or morphologically expressed at the token. In rare cases, this can lead to ambiguities, esp., if a nominal is grammaticalized as a preposition (cf. German &quot;wegen&quot; &apos;because[+GEN/DAT]&apos; &lt; &quot;(von den) Wegen&quot; &apos;from the ways[ACC] of&apos;). Not sure whether such a case exists in the Scandinavian languages, but it probably does not exist on a synchronic level.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Grade -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Grade">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies to adjectives and adverbs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Imperative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Imperative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#FiniteVerb"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Mood"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#IndicativeVerb"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">V.Imp</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Imperfect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Imperfect">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#IndefinePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#IndefinePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Pronoun"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">indefinite pronouns</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Indefinite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Indefinite">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Species"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#IndefinitePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#IndefinitePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Indicative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Indicative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#IndicativeVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#IndicativeVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#FiniteVerb"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">V.Ind</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Infinite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Infinite">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Finiteness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Infinitive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Infinitive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#NonfiniteVerb"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">V...Inf
+
+    can be tensed (8.5.8.2), but this is not represented here</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#InfinitiveMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#InfinitiveMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.5.13 Infinitive marker (IM)
+
+    The infinitive marker is undeclined and only marked as IM. In Old Norse it usually has the form at.
+
+    (&quot;particle&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#InflectionalClass -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#InflectionalClass">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#InvariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: Inflectional class is another invariable property and can usually be derived from a combination of the lemma and the word class. Thus, the lemma “fara” belonging to the word class “xVB” (verbs) will be classified as being a strong verb of the 6th class, according to most grammars of Old Norse. This is information which might be found in a dictionary or a lexicographical database of Old Norse.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Interjection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IT</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#InterrogativePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#InterrogativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Pronoun"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">inetrrogative pronouns</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#InvariableProperties -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#InvariableProperties">
+        <rdfs:comment>MENOTA v.3.0: Words in inflectional languages exhibit variable and invariable properties. Word class is the prime example of an invariable property, since a word can belong to one and only one word class – the noun “hestr” can not be inflected in adjectival and verbal forms. For nouns, gender is an invariable property – once again, “hestr” can not be inflected in feminine or neutral forms. Adjectives, on the other hand, are inflected in gender, so for this word class gender is a variable property. Other categories, such as case, number, grade etc., are all variable.
+
+Information on inflectional classes can be added to the @me:msa attribute, e.g. strong vs. weak verbs, stem classes of nouns etc. These are also invariable properties.
+
+The name tokens will, in any case, make it clear which tokens refer to invariable properties and which refer to invariable properties.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Masculine -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Masculine">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Mood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Mood">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies only to verbs. In some cases, the annotator will not be able to decide the mood of a verb. When this happens, we recommend using name tokens with more than one value, “mINSU”, “mINIM” and “mSUIM”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#NegativeEncliticParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#NegativeEncliticParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Enclitics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Neuter -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Neuter">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Nominative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Nominative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#NonfiniteVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#NonfiniteVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nouns can be divided into two categories, appellatives and propria. They are all marked with an N for noun. ... In marginal cases, it may be difficult to decide whether a noun is a common or a proper name; in that case this field may be marked with an @.
+
+    N</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Number -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Number">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies to nouns, adjectives, pronouns/determiners and verbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Numeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Numeral">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NU</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#OrdinalNumeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#OrdinalNumeral">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Numeral"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ordinal</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Participle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Participle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Finiteness"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#NonfiniteVerb"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">V.Part
+
+    inflected like adjectives (8.5.8.2), thus could be related to Adjective, too</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PassiveVoice -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#PassiveVoice">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Voice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Perfect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Perfect">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Person">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies to verbs and some of the pronouns.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Pronoun"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">personal pronoun</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Pluperfect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Pluperfect">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Plural -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Plural">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PositiveDegree -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#PositiveDegree">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Grade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PossessiveDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#PossessiveDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Determiner"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Possessive Determinatives</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Preposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Preposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Present -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Present">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PresentParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#PresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Participle"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">present participle</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Preterite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Preterite">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PreteriteParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#PreteriteParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Participle"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preterite participle
+
+    </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P - substitutive
+
+    In recent grammars the traditional category pronoun is usually divided into pronouns in a strict sense (words replacing a noun) and determinatives (adjunct words), and that is our recommendation as well, cf. ch. 8.5.3 and 8.5.4 below. However, in some projects (i.e. the Old Norwegian lemmatised corpus) there is only a single category pronoun, and we have therefore added in ch. 8.5.5 a combined category, pronouns and determiners (cf. EAGLES, major categories).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PronounOrDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#PronounOrDeterminer">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/meno.owl#Determiner"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/meno.owl#Pronoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PD
+
+    the only relevant sub-class as described in 8.5.5 is the person distinction which is applied to PersonalPronouns only. Accordingly, no further subclassification necessary</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#ProperNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#ProperNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Noun"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Propria
+
+    NP</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#QuantifierDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#QuantifierDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Determiner"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Reduplication -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Reduplication">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#InflectionalClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#ReflexiveVoice -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#ReflexiveVoice">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Voice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#RelativeParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#RelativeParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Relative particle (RP)
+
+    The relative particle is undeclined and only marked as RP. In Old Norse it usually has the form er or sem. Some grammarians would classify the relative particle as a subjunction, while others tend to look upon it as a pronoun.
+
+    what kind of pronoun ? (relative pronoun ?)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#SecondPerson -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#SecondPerson">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Person"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2nd person</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Singular -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Singular">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Species -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Species">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies to nouns and adjectives. Species (or definiteness) is denoted by a name token consisting of the lowercase character “s” + an uppercase abbreviation for each type of species. The character “U” indicates unspecified cases.
+
+In Old Norse, nouns and adjectives can have either indefinite or definite forms, e.g. “hestr” (indefinite noun) vs. “hestrinn” (definite noun) or “hvítr [hestr]” (indefinite adjective) vs. “[inn] hvíti [hestr]” (definite adjective).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#StrongInflection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#StrongInflection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#InflectionalClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Subjunctive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Subjunctive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#FiniteVerb"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Mood"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">V.Sub</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#SubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#SuperlativeDegree -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#SuperlativeDegree">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Grade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Tense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Tense">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies only to verbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#ThirdPerson -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#ThirdPerson">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Person"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3rd person</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Unassigned -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Unassigned">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">U
+
+    against Eagles, this does not cover one-word categories, but non-POS Elements, thus Residual
+
+    Some words are corrupt, difficult to analyse, belonging to another language or indeterminate for other reason. These words are marked as unassigned, U.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#VariableProperties -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#VariableProperties">
+        <rdfs:comment>MENOTA 3.0: The list of variable properties is rather long for an inflectional language such as Old Norse. Note that the very first category in this list, gender, is a borderline case, since it is an invariable (inherent) property for nouns. For other word classes, such as adjectives, pronouns/determiners, numerals, articles and verb participles, it is a variable property. The remaining categories are variable.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">V</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Vocative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Vocative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#Voice -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#Voice">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
+        <rdfs:comment>MENOTA 3.0: This category applies only to verbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#WeakInflection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#WeakInflection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#InflectionalClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#WordClass -->
+
+    <owl:Class rdf:about="http://purl.org/olia/meno.owl#WordClass">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#InvariableProperties"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">me.msa</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>MENOTA 3.0: Word class is denoted by a name token consisting of the character “x” + an uppercase two-letter abbreviation for each class, including commonly recognised subclasses (such as the division between common and proper nouns). Inevitably, there will be some conflict of categorisation, especially among the pronouns and determiners.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#AT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#AT">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Article"/>
+        <olias:hasTag>xAT</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#CC">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CoordinatingConjunction"/>
+        <olias:hasTag>xCC</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#CS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#CS">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#SubordinatingConjunction"/>
+        <olias:hasTag>xCS</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#CU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#CU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Conjunction"/>
+        <olias:hasTag>xCU</olias:hasTag>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#DDet -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#DDet">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#DemonstrativeDeterminer"/>
+        <olias:hasTag>DDet</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#DPos -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#DPos">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PossessiveDeterminer"/>
+        <olias:hasTag>DPos</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#NC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#NC">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CommonNoun"/>
+        <olias:hasTag>xNC</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#NP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#NP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ProperNoun"/>
+        <olias:hasTag>NP</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#NUC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#NUC">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CardinalNumeral"/>
+        <olias:hasTag>xNUC</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#NUO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#NUO">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#OrdinalNumeral"/>
+        <olias:hasTag>xNUO</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PInd -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#PInd">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#IndefinePronoun"/>
+        <olias:hasTag>xPInd</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PInt -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#PInt">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#InterrogativePronoun"/>
+        <olias:hasTag>xPInt</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PPer1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#PPer1">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#FirstPerson"/>
+        <olias:hasTag>PPer1</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PPer2 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#PPer2">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#SecondPerson"/>
+        <olias:hasTag>PPer2</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#PPer3 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#PPer3">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ThirdPerson"/>
+        <olias:hasTag>PPer3</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#VPresPart -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#VPresPart">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PresentParticiple"/>
+        <olias:hasTag>xVPresPart</olias:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#_preterite_participle -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#_preterite_participle">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PreteriteParticiple"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cA -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cA">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
+        <olias:hasTag>cA</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Accusative</rdfs:label>
+        <rdfs:label>accusative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cAD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cAD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
+        <olias:hasTag>cAD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Accusative or Dative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cAG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cAG">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
+        <olias:hasTag>cAG</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Accusative or Genitive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cAN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cAN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Nominative"/>
+        <olias:hasTag>cAN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Accusative or Nominative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cB">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Ablative"/>
+        <olias:hasTag>cB</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>ablative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
+        <olias:hasTag>cD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Dative</rdfs:label>
+        <rdfs:label>dative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cG">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
+        <olias:hasTag>cG</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Genitive</rdfs:label>
+        <rdfs:label>genitive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cGD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cGD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
+        <olias:hasTag>cGD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Genitive or Dative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Nominative"/>
+        <olias:hasTag>cN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Nominative</rdfs:label>
+        <rdfs:label>nominative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cO">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
+        <olias:hasTag>cO</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Oblique (i.e. Accusative, Dative or Genitive)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Case"/>
+        <olias:hasTag>cU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+        <rdfs:label>unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#cV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cV">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Vocative"/>
+        <olias:hasTag>cV</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>vocative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#eN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#eN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#NegativeEncliticParticle"/>
+        <olias:hasTag>eN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Enclitic negative particle</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#eP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#eP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#EncliticPronoun"/>
+        <olias:hasTag>eP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Enclitic pronoun</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#fF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#fF">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Finite"/>
+        <olias:hasTag>fF</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Finite</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#fI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#fI">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Infinite"/>
+        <olias:hasTag>fI</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Infinite (non-finite)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#fP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#fP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Participle"/>
+        <olias:hasTag>fP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Participle (non-finite)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#fU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#fU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Finiteness"/>
+        <olias:hasTag>fU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#gF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gF">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Feminine"/>
+        <olias:hasTag>gF</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Feminine</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#gFN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gFN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Feminine"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Neuter"/>
+        <olias:hasTag>gFN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Feminine or Neuter</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#gM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gM">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Masculine"/>
+        <olias:hasTag>gM</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Masculine</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#gMF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gMF">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Feminine"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Masculine"/>
+        <olias:hasTag>gMF</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Masculine or Feminine</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#gMFN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gMFN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Feminine"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Masculine"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Neuter"/>
+        <olias:hasTag>gMFN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Masculine, Feminine or Neuter</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#gMN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gMN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Masculine"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Neuter"/>
+        <olias:hasTag>gMN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Masculine or Neuter</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#gN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Neuter"/>
+        <olias:hasTag>gN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Neuter</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#gU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Gender"/>
+        <olias:hasTag>gU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#iPP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#iPP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Present"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Preterite"/>
+        <olias:hasTag>iPP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Preterite-Present</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#iRD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#iRD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Reduplication"/>
+        <olias:hasTag>iRD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Reduplicating</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#iST -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#iST">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#StrongInflection"/>
+        <olias:hasTag>iST</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Strong</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#iWK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#iWK">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#WeakInflection"/>
+        <olias:hasTag>iWK</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Weak</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#mIN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mIN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indicative"/>
+        <olias:hasTag>mIN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Indicative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#mINIM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mINIM">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Imperative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indicative"/>
+        <olias:hasTag>mINIM</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Indicative or Imperative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#mINSU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mINSU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indicative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
+        <olias:hasTag>mINSU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Indicative or Subjunctive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#mIP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mIP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Imperative"/>
+        <olias:hasTag>mIP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Imperative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#mSU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mSU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
+        <olias:hasTag>mSU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Subjunctive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#mSUIM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mSUIM">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Imperative"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
+        <olias:hasTag>mSUIM</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Subjunctive or Imperative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#mU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Mood"/>
+        <olias:hasTag>mU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#nD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#nD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dual"/>
+        <olias:hasTag>nD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Dual</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#nP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#nP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Plural"/>
+        <olias:hasTag>nP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Plural</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#nS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#nS">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Singular"/>
+        <olias:hasTag>nS</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Singular</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#nU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#nU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Number"/>
+        <olias:hasTag>nU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#p1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#p1">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#FirstPerson"/>
+        <olias:hasTag>p1</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>1. person</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#p2 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#p2">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#SecondPerson"/>
+        <olias:hasTag>p2</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>2. person</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#p3 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#p3">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ThirdPerson"/>
+        <olias:hasTag>p3</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>3. person</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#pU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#pU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Person"/>
+        <olias:hasTag>pU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#rC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#rC">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ComparativeDegree"/>
+        <olias:hasTag>rC</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Comparative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#rP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#rP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PositiveDegree"/>
+        <olias:hasTag>rP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Positive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#rS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#rS">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#SuperlativeDegree"/>
+        <olias:hasTag>rS</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Superlative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#rU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#rU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Grade"/>
+        <olias:hasTag>rU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#sD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#sD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Definite"/>
+        <olias:hasTag>sD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Definite</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#sI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#sI">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indefinite"/>
+        <olias:hasTag>sI</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Indefinite</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#sU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#sU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Species"/>
+        <olias:hasTag>sU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#tFP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tFP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#FuturePerfect"/>
+        <olias:hasTag>tFP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>future perfect</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#tFS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tFS">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#FutureSimple"/>
+        <olias:hasTag>tFS</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>future simple</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#tIP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tIP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Imperfect"/>
+        <olias:hasTag>tIP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>imperfect</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#tPF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tPF">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Perfect"/>
+        <olias:hasTag>tPF</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>perfect</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#tPP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tPP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Pluperfect"/>
+        <olias:hasTag>tPP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>pluperfect</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#tPS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tPS">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Present"/>
+        <olias:hasTag>tPS</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Present</rdfs:label>
+        <rdfs:label>present</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#tPT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tPT">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Preterite"/>
+        <olias:hasTag>tPT</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Preterite</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#tU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
+        <olias:hasTag>tU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+        <rdfs:label>unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#u -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#u">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Unassigned"/>
+        <olias:hasTag>xu</olias:hasTag>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#vA -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vA">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ActiveVoice"/>
+        <olias:hasTag>vA</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Active</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#vD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#DeponentVoice"/>
+        <olias:hasTag>vD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Deponent</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#vP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PassiveVoice"/>
+        <olias:hasTag>vP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Passive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#vR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vR">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ReflexiveVoice"/>
+        <olias:hasTag>vR</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Reflexive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#vU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Voice"/>
+        <olias:hasTag>vU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xAJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xAJ">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Adjective"/>
+        <olias:hasTag>xAJ</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Adjective</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xAP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xAP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Preposition"/>
+        <olias:hasTag>xAP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Preposition (apposition)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xAT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xAT">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Article"/>
+        <olias:hasTag>xAT</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Articles</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xAV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xAV">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Adverb"/>
+        <olias:hasTag>xAV</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Adverb</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xCC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xCC">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CoordinatingConjunction"/>
+        <olias:hasTag>xCC</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Conjunction, coordinating</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xCS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xCS">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#SubordinatingConjunction"/>
+        <olias:hasTag>xCS</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Conjunction, subordinating</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xCU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xCU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Conjunction"/>
+        <olias:hasTag>xCU</olias:hasTag>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xDD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xDD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#DemonstrativeDeterminer"/>
+        <olias:hasTag>xDD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Determiner, demonstrative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xDP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xDP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PossessiveDeterminer"/>
+        <olias:hasTag>xDP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Determiner, possessive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xDQ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xDQ">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#QuantifierDeterminer"/>
+        <olias:hasTag>xDQ</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Determiner, quantifier</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xIM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xIM">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#InfinitiveMarker"/>
+        <olias:hasTag>xIM</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Infinitive marker</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xIT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xIT">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Interjection"/>
+        <olias:hasTag>xIT</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Interjection</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xNA -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xNA">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CardinalNumeral"/>
+        <olias:hasTag>xNA</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Numeral, cardinal</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xNC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xNC">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CommonNoun"/>
+        <olias:hasTag>xNC</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Noun, common</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xNO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xNO">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#OrdinalNumeral"/>
+        <olias:hasTag>xNO</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Numeral, ordinal</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xNP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xNP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ProperNoun"/>
+        <olias:hasTag>xNP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Noun, proper</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xPD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xPD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Determiner"/>
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Pronoun"/>
+        <olias:hasTag>xPD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Pronoun/Determiner</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xPE -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xPE">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PersonalPronoun"/>
+        <olias:hasTag>xPE</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Pronoun, personal</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xPI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xPI">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#IndefinitePronoun"/>
+        <olias:hasTag>xPI</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Pronoun, indefinite</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xPQ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xPQ">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#InterrogativePronoun"/>
+        <olias:hasTag>xPQ</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Pronoun, interrogative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xRP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xRP">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#RelativeParticle"/>
+        <olias:hasTag>xRP</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Relative particle</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xUA -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xUA">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
+        <olias:hasTag>xUA</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unassigned</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xVB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xVB">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Verb"/>
+        <olias:hasTag>xVB</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Verb</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#xVB_fF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xVB_fF">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#FiniteVerb"/>
+        <olias:hasTag>xVB_fF</olias:hasTag>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xVB fF = Finites Verb</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#yA -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yA">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
+        <olias:hasTag>yA</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Governing Accusative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#yD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yD">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
+        <olias:hasTag>yD</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Governing Dative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#yG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yG">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
+        <olias:hasTag>yG</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Governing Genitive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#yIN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yIN">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indicative"/>
+        <olias:hasTag>yIN</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Governing Indicative</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#ySU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#ySU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
+        <olias:hasTag>ySU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Governing Subjunctive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/meno.owl#yU -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yU">
+        <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Government"/>
+        <olias:hasTag>yU</olias:hasTag>
+        <olias:hasTier>me:msa</olias:hasTier>
+        <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
+        <rdfs:label>Unspecified government</rdfs:label>
+    </owl:NamedIndividual>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
 
