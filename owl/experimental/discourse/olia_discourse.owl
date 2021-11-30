@@ -55,7 +55,8 @@
 	2014-03-21 DiscourseFunction, hasDiscourseFunction, PresentationalRelation, SubjectMatterRelation, EntityTypes, RelationCue
 	2021-07-27 ISO discourse relations (integration primarily based on their PDTB mapping), annotation property inverseOf. Some restructuring.
 	2021-10-11 minor adjustments for OWL validation
-	2021-10-26 TopicContinuityRelation redefined as subclass of Expansion. This is based on the treatment of Progression in C-TED (where a novel subclass EXPANSION.Progression has been introduced).</owl:versionInfo>
+	2021-10-26 TopicContinuityRelation redefined as subclass of Expansion. This is based on the treatment of Progression in C-TED (where a novel subclass EXPANSION.Progression has been introduced).
+                       2021-11-30 Extensions and refinement for the SemDok ontology. The ontology is part of a discourse parser. Although this is no longer available, it provides an insightful model of RST-based ontology modelling of discourse relations. For SemDoc, cf. Bärenfänger, M., Lüngen, H., Hilbert, M., &amp; Lobin, H. (2010). The role of logical and generic document structure in relational discourse analysis. Kühnlein, Peter/Benz, Anton/Sidner, Candace L.: Constraints in discourse, 2, 81-104.</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -448,9 +449,9 @@ Here, we are concerned with discourse annotation only. Syntactically or semantic
     
 
 
-    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Antithesis_RST -->
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Antithesis -->
 
-    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Antithesis_RST">
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Antithesis">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -459,10 +460,26 @@ Here, we are concerned with discourse annotation only. Syntactically or semantic
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The situation presented in the nucleus comes in contrast with the situation presented in the satellite. The contrast may happen in only one or few respects, while everything else can remain the same in other respects. An ANTITHESIS relation is
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Contrast"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RST: The situation presented in the nucleus comes in contrast with the situation presented in the satellite. The contrast may happen in only one or few respects, while everything else can remain the same in other respects. An ANTITHESIS relation is
 always mononuclear -- it is a contrastive relation that distinguishes clearly between the nuclearity of its arguments. It differs from the mononuclear CONCESSION relation, which is characterized by a violated expectation. (Carlson and Marcu 2001)
 
-Markers are &quot;although&quot;, &quot;however&quot;, and &quot;while&quot;.</rdfs:comment>
+Markers are &quot;although&quot;, &quot;however&quot;, and &quot;while&quot;.
+
+Axiomatization follows SemDok</rdfs:comment>
+        <rdfs:label>antithesis</rdfs:label>
+        <owl:versionInfo>Supersedes Antithesis_RST. Also used in SemDok.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Antithesis_RST -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Antithesis_RST">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Antithesis"/>
+        <rdfs:comment>superseded by Antithesis, maintained only for backward-compatibility.</rdfs:comment>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -473,6 +490,16 @@ Markers are &quot;although&quot;, &quot;however&quot;, and &quot;while&quot;.</r
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#NarrowFocus"/>
         <rdfs:comment>Narrow focus on one single non-verbal constituent in the focus.
 Corresponding to &quot;narrow focus&quot;  (van Valin &amp; Lapolla 1997), or &quot;argument focus&quot; (Lambrecht 1994). &quot;Term focus&quot; as suggested by Güldemann &amp; Fiedler would be more precise (adverbials also fall in this group, but no verbs).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ArticleTopLevelSchema -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ArticleTopLevelSchema">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganization_RST"/>
+        <rdfs:comment>cf. SemDok ArticleTopLevelSchema</rdfs:comment>
+        <rdfs:label>article top-level schema</rdfs:label>
     </owl:Class>
     
 
@@ -491,7 +518,11 @@ Corresponding to &quot;narrow focus&quot;  (van Valin &amp; Lapolla 1997), or &q
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Assessment">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Expansion"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Assessment is introduced here as a generalization over RST relations like COMMENT, EVALUATION, INTERPRETATION etc. where a subjective, objective or neutral assessment of the information represented in the nucleus is expressed in the satellite. (Ch. Chiarcos)</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Assessment is introduced here as a generalization over RST relations like COMMENT, EVALUATION, INTERPRETATION etc. where a subjective, objective or neutral assessment of the information represented in the nucleus is expressed in the satellite. (Ch. Chiarcos)
+
+It corresponds to SemDok InterpretativeEvaluation, except that assessment is underspecified with respect to nuclearity whereas .</rdfs:comment>
+        <rdfs:label>interpretative evaluation</rdfs:label>
+        <skos:prefLabel>assessment</skos:prefLabel>
     </owl:Class>
     
 
@@ -523,7 +554,11 @@ used with cognitive predicates, to include feelings, thoughts, hopes, etc.
 (Carlson and Marcu 2001)
 
 The Satellite attributes the Nucleus to a source.
-(Wolf et al. 2003)</rdfs:comment>
+(Wolf et al. 2003)
+
+Note that SemDok groups Attribution and Citation with Support and thus not a textual, but a presentational relation. However, we adopt the PDTB perspective in that attribution is to be modelled separately, and in accordance with its usage in text, consider it a textual device rather than a presentational relation.
+
+cf. SemDok Attribution</rdfs:comment>
     </owl:Class>
     
 
@@ -561,9 +596,12 @@ the end of the text. In such cases, the schema Author was used to link this with
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Background">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Expansion"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EXPANSION.Background applies when the argument that is syntactically associated with the connective describes prior eventualities which are background information of the other argument. (Al-Saif and Markert 2010)
 
-cf. RST Background: In a BACKGROUND relation, the satellite establishes the context or the grounds with respect to which the nucleus is to be interpreted. Understanding the satellite helps the reader understand the nucleus. (Carlson and Marcu 2001)</rdfs:comment>
+cf. RST Background: In a BACKGROUND relation, the satellite establishes the context or the grounds with respect to which the nucleus is to be interpreted. Understanding the satellite helps the reader understand the nucleus. (Carlson and Marcu 2001)
+
+We follow SemDok in assuming that Background is an interpersonal (presentational) relation.</rdfs:comment>
     </owl:Class>
     
 
@@ -579,7 +617,9 @@ sented in the nucleus. The reader/writer intentions are irrelevant in determinin
 relation holds. In contrast with the CIRCUMSTANCE relation, the information or the context of the
 BACKGROUND relation is not always specified clearly or delimited sharply. Hence, the CIRCUM-
 STANCE relation is stronger than BACKGROUND.
-(Carlson and Marcu 2001)</rdfs:comment>
+(Carlson and Marcu 2001)
+
+Equivalent to SemDok Background. The superclass Background is more generic than the SemDok class in that it also covers the SemDok class Preparation. However, SemDoc concepts are undefined, so details are hard to make out.</rdfs:comment>
     </owl:Class>
     
 
@@ -598,6 +638,8 @@ STANCE relation is stronger than BACKGROUND.
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#BridgingRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticRelation"/>
+        <rdfs:comment>cf. SemDok BridgingRelation</rdfs:comment>
+        <rdfs:label>bridging relation</rdfs:label>
     </owl:Class>
     
 
@@ -637,8 +679,11 @@ This generalization is in line with (and inspired by) the ISO Core DRels (Bunt a
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CauseResult_RST">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Cause"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SubjectMatterRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a causal relation in which two EDUs, one representing the cause and the other representing the result, are of equal importance or weight. The multinuclear relations CAUSE-RESULT and CONSEQUENCE are similar. The former should be selected when the causality is perceived as being more direct, while the latter is reserved for a more indirect causal connection.
-(Carlson and Marcu 2001)</rdfs:comment>
+(Carlson and Marcu 2001)
+
+Corresponds to SemDok CauseResult-multi</rdfs:comment>
     </owl:Class>
     
 
@@ -667,14 +712,70 @@ cause or result is more important, select the multinuclear relation CAUSE-RESULT
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Circumstance -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Circumstance">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Background"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SubjectMatterRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SynchronousRelation"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The situation presented in the satellite provides the context in which the situation presented in the nucleus should be interpreted. The satellite IS NOT the cause/reason/motivation of the situation presented in the nucleus. (Carlson and Marcu 2001)
+S is not unrealized; S sets a framework in the subject matter within which R is intended to interpret N (Mann and Taboada 2010)
+
+Note that this is not an RST-specific relation because of its use in SemDok. Axiomatization follows SemDok</rdfs:comment>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Defined as a SynchronousRelation because of its association with the discourse marker &quot;while&quot;, cf. Prasad et al. (2007)</owl:versionInfo>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Circumstance_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Circumstance_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Background"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SynchronousRelation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The situation presented in the satellite provides the context in which the situation presented in the nucleus should be interpreted. The satellite IS NOT the cause/reason/motivation of the situation presented in the nucleus. (Carlson and Marcu 2001)
-S is not unrealized; S sets a framework in the subject matter within which R is intended to interpret N (Mann and Taboada 2010)</rdfs:comment>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Defined as a SynchronousRelation because of its association with the discourse marker &quot;while&quot;, cf. Prasad et al. (2007)</owl:versionInfo>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Circumstance"/>
+        <rdfs:comment>superseded by Circumstance, maintained for backward compatibility</rdfs:comment>
+        <rdfs:label>circumstance (RST)</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Citation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Citation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextStructuralUnit"/>
+        <rdfs:comment>introduced for SemDok Citation. However, we consider Citation not as a rhetorical relation, but as a structural element in the text that can serve different purposes (discourse relations). These purposes correspond to the subclasses of Citation in SemDok, and these subclasses are thus in the intersection between OLiA Citation and the discourse relation that corresponds to their respective function,</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#CitationAttribution -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CitationAttribution">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Attribution"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Citation"/>
+        <rdfs:comment>cf. SemDok Citation-attribution</rdfs:comment>
+        <rdfs:label>citation/attribution</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#CitationEvidence -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CitationEvidence">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Citation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Evidence"/>
+        <rdfs:comment>cf. SemDok Citation-evidence</rdfs:comment>
+        <rdfs:label>citation/evidence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#CitationSelf -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CitationSelf">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Citation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Support"/>
+        <rdfs:comment>SemDok Citation-self, subclass of Support</rdfs:comment>
+        <rdfs:label>citation/self</rdfs:label>
     </owl:Class>
     
 
@@ -683,7 +784,10 @@ S is not unrealized; S sets a framework in the subject matter within which R is 
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CoherenceRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#EntityBasedRelation"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganizationalRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CoherenceRelation is used here as a synonym of PDTB &quot;coherence relation&quot;. RST &quot;discourse relation&quot;, however, is broader.</rdfs:comment>
+        <rdfs:label>coherence relation</rdfs:label>
     </owl:Class>
     
 
@@ -699,11 +803,20 @@ and should be used when the paper begins by presenting a TITLE, COLUMN-TITLE and
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#CommentTopic -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CommentTopic">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
+        <rdfs:comment>introduced in analogy with TopicComment as generalization over CommentTopic_RST</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#CommentTopic_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#CommentTopic_RST">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#CommentTopic"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A specific remark is made on a topic or statement, after which the topic itself is identified. This relation is always multinuclear, as both spans are necessary to understand the context. When the spans occur in the reverse order, with the topic preceding the comment, the relation TOPIC-COMMENT is selected. While COMMENT-TOPIC is not a frequently used device in English, it is seen in news reporting, for example, when someone makes a statement, after which a reference is given to help the reader interpret the context of the statement.
 (Carlson and Marcu 2001)</rdfs:comment>
     </owl:Class>
@@ -742,10 +855,31 @@ relation, the spans, entities, etc. are not in contrast. (Carlson and Marcu 2001
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ComplexDiscourseSegment -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ComplexDiscourseSegment">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseSegment"/>
+        <rdfs:comment>from SemDok
+
+SemDok also defines three sub-classes: CDS-block, CDS-div, CDS-doc. It seems these refer to the structure of XML documents, and without definitions, these have not been adopted here.</rdfs:comment>
+        <rdfs:label>complex discourse segment</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Concession -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Concession">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ContrastiveComparison"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ContrastiveComparison"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">One of the arguments describes a situation A which causes C, while the other asserts (or implies) the complement of C.
 (Prasad et al. 2007)
 
@@ -753,7 +887,10 @@ The situation indicated in the nucleus is contrary to expectation in the light o
 satellite and which is the nucleus do not depend on the semantics of the spans, but rather on the intention of the writer.
 (Carlson and Marcu 2001)
 
-A typical marker is &quot;although&quot; (in PTDB and RSTDTB).</rdfs:comment>
+A typical marker is &quot;although&quot; (in PTDB and RSTDTB).
+
+Axiomatization follows SemDok Concession (subclass of Contrast). We follow SemDok in assuming that Concession is always hypotactic (mononuclear), although this is not explicit in the PDTB definitions.</rdfs:comment>
+        <rdfs:label>concession</rdfs:label>
         <rdfs:label>violated expectation</rdfs:label>
     </owl:Class>
     
@@ -831,9 +968,12 @@ We follow Bunt and Prasad (ISA-12) in assuming that (ISO) conjunction is a super
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Consequence">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Condition"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SubjectMatterRelation"/>
         <rdfs:comment>ISO DR-Core: Condition or Negated Condition, argument Consequent
 
-This is an annotation that marks a condition at the consequent rather than the condition, itself. We expect such a relation to require both a consequent and a condition, and that the type of condition is marked at the condition rather at the consequent. Accordinly, Consequence does not have further subclasses, but should be coupled with Condition annotations.</rdfs:comment>
+This is an annotation that marks a condition at the consequent rather than the condition, itself. We expect such a relation to require both a consequent and a condition, and that the type of condition is marked at the condition rather at the consequent. Accordinly, Consequence does not have further subclasses, but should be coupled with Condition annotations.
+
+Axiomatization follows SemDok Consequence</rdfs:comment>
         <rdfs:label>consequence</rdfs:label>
         <rdfs:label>consequent</rdfs:label>
     </owl:Class>
@@ -844,7 +984,10 @@ This is an annotation that marks a condition at the consequent rather than the c
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Consequence_RST">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Consequence"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In a consequence relation, the situation presented in one span is a consequence of the situation presented in the other span. (Carlson and Marcu 2001)</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In a consequence relation, the situation presented in one span is a consequence of the situation presented in the other span. (Carlson and Marcu 2001)
+
+SemDok distinguishes three subtypes, which, however, only differ in nuclearity.</rdfs:comment>
+        <rdfs:label>consequence (RST)</rdfs:label>
     </owl:Class>
     
 
@@ -855,8 +998,11 @@ This is an annotation that marks a condition at the consequent rather than the c
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#CoherenceRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The situations are (assumed to be) related by an abstract notion of recurrence or habituality (Carlson and Marcu 2001), often, one of the situations described in Arg1 and Arg2 causally influences the other. (Prasad et al. 2007).
 
-cf. Wolf et al.&apos;s &quot;Cause-Effect&quot;: Cause-Effect relations establish a causal inference path between discourse segments.</rdfs:comment>
-        <rdfs:label>contingency</rdfs:label>
+cf. Wolf et al.&apos;s &quot;Cause-Effect&quot;: Cause-Effect relations establish a causal inference path between discourse segments.
+
+Roughly corresponding to SemDok CauseResult. However, this is limited to ideational relations (subject-matter relations), whereas here, we follow PDTB to also include presentaitonal (interpersonal) relations (PragmaticCause).</rdfs:comment>
+        <rdfs:label>cause-result</rdfs:label>
+        <skos:prefLabel>contingency</skos:prefLabel>
     </owl:Class>
     
 
@@ -894,6 +1040,7 @@ ISO DR-Core: Concession, argument expectation-denier (Bunt &amp; Prasad, ISA-12)
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The situations presented in the arguments come in contrast with each other along some dimension. The contrast may happen in only one or few respects, while everything else can remain the same in other respects. Typically, a CONTRAST relation includes a contrastive discourse cue, such as &quot;but&quot;, &quot;however&quot;, &quot;while&quot;. (Carlson and Marcu 2001)
 
 Distinguished from PDTB &quot;Contrast&quot; as a generalization over PDTB &quot;Contrast&quot; and &quot;Pragmatic Contrast&quot; (Ch. Chiarcos), This definition is in line with the ISO relation &quot;Contrast&quot; and corresponds to it notably in the exclusion of Concessions,</rdfs:comment>
+        <skos:prefLabel>contrast</skos:prefLabel>
     </owl:Class>
     
 
@@ -912,7 +1059,12 @@ Distinguished from PDTB &quot;Contrast&quot; as a generalization over PDTB &quot
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In a CONTRAST relation, two or more nuclei come in contrast with each other along some dimension. The contrast may happen in only one or few respects, while everything else can remain the same in other respects. Typically, a CONTRAST relation includes a contrastive discourse cue, such as but, however, while, whereas a COMPARISON does not.
 (Carlson and Marcu 2001)
 
-No more than two nuclei; the situations in these two nuclei are (a) comprehended as the same in many respects (b) comprehended as differing in a few respects and (c) compared with respect to one or more of these differences (Mann and Taboada 2010).</rdfs:comment>
+No more than two nuclei; the situations in these two nuclei are (a) comprehended as the same in many respects (b) comprehended as differing in a few respects and (c) compared with respect to one or more of these differences (Mann and Taboada 2010).
+
+Corresponds to SemDok Contrast-multi</rdfs:comment>
+        <rdfs:label>contrast</rdfs:label>
+        <rdfs:label>contrast (RST)</rdfs:label>
+        <skos:prefLabel>contrast (multi)</skos:prefLabel>
     </owl:Class>
     
 
@@ -927,7 +1079,11 @@ Cf. Contrast as defined by Wolf et al. (2003): Infer a set of entities from DS0,
 • Contrast-1 is a contrast between corresponding predicates in DS0 and DS1. The
 arguments of these contrasting predicates are identical.
 • Contrast-2 is a contrast between the arguments of corresponding predicates in DS0
-and DS1. The predicates over these contrasting arguments are identical.</rdfs:comment>
+and DS1. The predicates over these contrasting arguments are identical.
+
+Corresponds to SemDok Contrast (generalization over Concession, Antithesis and Contrast).</rdfs:comment>
+        <rdfs:label>contrast</rdfs:label>
+        <skos:prefLabel>contrastive comparison</skos:prefLabel>
     </owl:Class>
     
 
@@ -943,6 +1099,17 @@ Contrastive focus may also extend over different domains of an utterance. In alt
 WORDS: Is it raining or not ? CFocus: [ _cf It is raining] or [ _cf not]. WORDS: Yes , it is . NFocus: Yes, [ _nf it is]. CFocus: Yes, [ _cf it is]. (5.3)
 
 Also referred to as &quot;identificational focus&quot;, or &quot;alternative focus&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Coordination -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Coordination">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#List"/>
+        <rdfs:comment>cf. SemDok List-coordination. No definition provided, but this could be meant for cases of (otherwise uninterpreted) syntactic coordination between discourse units.</rdfs:comment>
+        <rdfs:label>coordination</rdfs:label>
+        <skos:prefLabel>list/coordination</skos:prefLabel>
     </owl:Class>
     
 
@@ -975,10 +1142,19 @@ document. It should be linked to a TEXT or SECTIONTEXT schema.  (Carlson and Mar
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Definition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Definition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Assessment"/>
+        <rdfs:comment>Introduced as generalization over Definition_RST and ElaborationDefinition (from SemDok). In fact, these may just be equivalent.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Definition_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Definition_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Assessment"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Definition"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In a DEFINITION relation, the satellite gives a definition of the nucleus.
 (Carlson and Marcu 2001)</rdfs:comment>
     </owl:Class>
@@ -1018,8 +1194,21 @@ Determinate contexts are simply marked by the default “Null”. (Prasad et al.
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DialogRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
         <rdfs:comment>added as generalization over ISO FunctionalDependence (response from one interlocutor) and FeedbackDependence (questions, answers and meta communication). Extended to quasi-dialoguous relations (rhetorical questions).
-Note that PDTB, CCR and RST don&apos;t cover dialogue acts.</rdfs:comment>
+Note that PDTB, CCR and RST don&apos;t cover dialogue acts.
+
+Likewise, SemDok doesn&apos;t address dialogs. However, dialog relations clearly have an interpersonal function. Because of the modelling of dialog relations as interpersonal, this entails that they are presentational.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#DiscourseAdverbial -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseAdverbial">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ExplicitConnective"/>
+        <rdfs:comment>adopted from SemDok</rdfs:comment>
+        <rdfs:label>discourse adverbial</rdfs:label>
     </owl:Class>
     
 
@@ -1065,9 +1254,21 @@ Note that PDTB, CCR and RST don&apos;t cover dialogue acts.</rdfs:comment>
 In order to distangle discourse-syntactic (paratactic/hypotactic) and functional-semantic aspects, DiscourseRelation is distinguished from DiscourseStructuralPattern: DiscourseRelations defined discourse relations in terms of their communicative function and underlying semantics. An RST antithesis, for example, is thus to be defined both as a ContrastRelation (subclass of DiscourseRelation) and as a HypotacticDiscourseRelation (subclass of DiscourseStructuralPattern).
 
 Note that Attribution is modelled here as a relation (as in RST), not as a feature (as in PDTB).</rdfs:comment>
+        <rdfs:comment>corresponds to SemDok RhetoricalRelation (but not DiscourseRelation)</rdfs:comment>
         <rdfs:label>discourse relation</rdfs:label>
         <rdfs:label>rhetorical relation</rdfs:label>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The taxonomy of DiscourseRelations follows roughly the Penn Discourse Treebank (Prasad et al. 2007), with additions in accordance to the Hindi Discourse Relation Bank (HDRB, Oza et al. 2009), the Italian LUNA corpus (Tonelli et al. 2010), the Leeds Arabic Discourse Treebank  (LADTB, Al-Saif and Markert  2010) and an alignment with Carlson and Marcu&apos;s (2001) RST relations and with Wolf et al.&apos;s (2003, PDGB) coherence relations. Unaligned relations are marked by suffixes RST (for classical RST and RDTDTB relations) on the one hand and PDTB, HDRB, LUNA and LADTB on the other hand. No indices are used are used if a relation can be confirmed for at least two families of annotation schemes (PDTB, RSTDTB, PDGB).</owl:versionInfo>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The taxonomy of DiscourseRelations follows roughly the Penn Discourse Treebank (Prasad et al. 2007), with additions in accordance to the Hindi Discourse Relation Bank (HDRB, Oza et al. 2009), the Italian LUNA corpus (Tonelli et al. 2010), the Leeds Arabic Discourse Treebank  (LADTB, Al-Saif and Markert  2010) and an alignment with Carlson and Marcu&apos;s (2001) RST relations and with Wolf et al.&apos;s (2003, PDGB) coherence relations. Unaligned relations are marked by suffixes RST (for classical RST and RDTDTB relations) on the one hand and PDTB, HDRB, LUNA and LADTB on the other hand. No indices are used are used if a relation can be confirmed for at least two families of annotation schemes (PDTB, RSTDTB, PDGB).
+
+We provide two, intersection subclassifications of discourse relations:
+- ideational, interpersonal and textual (following SemDoc, i.e., the RST tradition)
+- entity relations and (other) coherence relations (following PDTB)
+
+With the following overlaps:
+- entity relations are ideational relations
+- interpersonal relations are coherence relations
+- textual relations (not addressed in PDTB) are disjoint from both entity and coherence relations
+
+However, the RST-style classification is encoded via subclasses of discourse function, the PDTB-style classification (along with additional concepts for textual patterns and dialog relations) is encoded via subclasses of discourse relation.</owl:versionInfo>
     </owl:Class>
     
 
@@ -1079,6 +1280,7 @@ Note that Attribution is modelled here as a relation (as in RST), not as a featu
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cognitive representation representing a longer stretch of discourse (Grosz and Sidner 1986), defined by a particular &quot;discourse segment purpose&quot; (Grosz and Sidner 1986), a specific propositional content of the relation between dependent DiscourseSegments, or the propositional content of the text contained in a minimal discourse segment (Mann and Thompson 1988). DiscourseSegments are interconnected by DiscourseRelations in a hierarchical and sequential structure.</rdfs:comment>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Discourse segment (discourse unit) is a segment of discourse that represents either an elementary discourse unit (e.g., a clause, proposition) or a complex discourse unit (constituted by several discourse units). Depending on theory, discourse segments reflect the scope of quantifiers and discourse connectives (Kamp 1982, Asher and Lascarides 2003), turn- or paragraph-like structures (Grosz and Sidner 1986) or range and domain of discourse relations (cf. Mann and Thompson 1988, Carlson et al. 2003).</rdfs:comment>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Near-synonyms in RST literature are &quot;discourse unit&quot; (Carlsson et al. 2003) and &quot;text span&quot; (Mann and Thompson 1988).</rdfs:comment>
+        <rdfs:comment>cf. SemDok DiscourseSegment</rdfs:comment>
         <rdfs:comment>roughly corresponds to the notion of &quot;Arguments&quot; in PDTB:
 
 Argument of a Relation, e.g., a connective. Syntactically characterized as Simple clauses, certain VP coordinations (the conjunction in a coordinated verb phase is not annotated as a distinct discourse connective, but one or more verb phrases within the coordinated structure can be annotated as the argument of another connective), certain nominalizations, anaphoric expressions denoting abstract objects  (like &quot;this&quot;, or &quot;that&quot; or &quot;so&quot;), responses to questions
@@ -1128,6 +1330,16 @@ RST: An item presents a (not necessarily exclusive) alternative for the other(s)
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Document -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Document">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextStructuralUnit"/>
+        <rdfs:comment>introduced for SemDok CDS-doc</rdfs:comment>
+        <rdfs:label>document</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#EffectPrecedesCause_PDTB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#EffectPrecedesCause_PDTB">
@@ -1142,6 +1354,7 @@ RST: An item presents a (not necessarily exclusive) alternative for the other(s)
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#EntityBasedRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">R recognizes S as providing additional detail for N. R identifies the element of subject matter for which detail is provided. (Mann and Taboada 2010)
 Infer a set of coherent entities, E(DS0, DS1) from DS0 and DS1. The members of E(DS0, DS1) are centered around a common event or entity, e01. (Wolf et al. 2003)
 
@@ -1149,15 +1362,18 @@ A classical discourse relation that has been applied to different kinds of depen
 Since Knott et al. (2001), it seems generally accepted that elaboration is to be circumscribed by entity-based coherence, e.g., EntRel relationships as defined by Prasad et al. (2007): &quot;no discourse relation can be inferred and where the second sentence only serves to provide some further description of an entity in the first sentence&quot;.
 
 Although Elaboration is thus closely entangled with anaphora and textual inferences, both phenomena are to be modelled separately: Elaboration is a relationship between discourse segments, whereas anaphora and bridging are relationships between discourse referents.
-</rdfs:comment>
+
+The subclassification of Elaboration follows SemDok. Note that we do not express directionSatellite value &quot;left&quot; as we do not explicitly encode positioning. 
+
+Our modelling follows Webber and Knott (2001) in assuming that elaboration is *always* mediated by an entity relation. However, in some cases relations grouped under elaboration in one framework are grouped with other discourse relations in the PDTB tradition (e.g., ElaborationSpecification is Elaboration in RST and SemDok, but a special case of Specification/Expansion in PDTB). In these cases, we provide double classification.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAddtional_RST -->
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAdditional_RST -->
 
-    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAddtional_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAdditional_RST">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In an ELABORATION-ADDITIONAL relation, the satellite gives additional infor-
 mation or detail about the situation presented in the nucleus. This relation is extremely common at
 all levels of the discourse structure, and is especially popular to show relations across large spans of information. It is the default for the family of elaboration relations, and should be used when
@@ -1172,11 +1388,102 @@ ATTRIBUTE-E represents a restrictive relative clause
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAssign -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAssign">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
+        <rdfs:comment>SemDok Elaboration-assign.
+Note that we skipped the subclass Elaboration-assign-other, as its definition is unclear.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAssignAbbreviation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAssignAbbreviation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationAssign"/>
+        <rdfs:comment>SemDok ElaborationAssignAbbreviation</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationClassInstance -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationClassInstance">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDerivation"/>
+        <rdfs:comment>Elaboration-class-instance</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationClassSubclass -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationClassSubclass">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDerivation"/>
+        <rdfs:comment>SemDok Elaboration-class-subclass</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationContinuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationContinuation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationIdentity"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
+        <rdfs:comment>SemDok Elaboration-continuation. We omitted the subclass Elaboration-continuation-other because it is unclear how this is defined. Its subclasses are, however, preserved.
+
+SemDok treats all topic continuity relations as subclasses of elaboration, but this comes with the assumption of hypotactic relation, whereas other topic continuity relations in RST are paratactic or underdefined (see TopicContinuityRelation). We thus add these SemDok elaborations as subclasses of TopicContinuityRelation rather than merging them into a single concept.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDefinition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDefinition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Definition"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:comment>from SemDok Elaboration-definition, no definition given
+
+We assume that this is (near-) identical to RST Definition.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDerivation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDerivation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:comment>for SemDok Elaboration-derivation</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDrift -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDrift">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationContinuation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicDrift"/>
+        <rdfs:comment>SemDok Elaboration-drift</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationExample -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationExample">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Example"/>
+        <rdfs:comment>SemDok Elaboration-example
+
+We assume that this is a mononuclear subclass of Example.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationGenericSpecific_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationGenericSpecific_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Specification"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ELABORATION-GENERAL-SPECIFIC: The satellite provides specific information to help define a very general con-
 cept introduced in the nucleus.
 (Carlson et al. 2001)</rdfs:comment>
@@ -1184,10 +1491,33 @@ cept introduced in the nucleus.
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationIdentity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationIdentity">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:comment>SemDok Elaboration-identity</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationIntegration -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationIntegration">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Generalization"/>
+        <rdfs:comment>SemDok Elaboration-integration
+
+No definition is given. By analogy with ElaborationWholePart, we assume that this may stand for ElaborationPartWhole, but this is unconfirmed. Based on this interpretation, however, we define it as subclass of Generalization.
+
+As a SemDok Elaboration, this is a subject-matter relation. This seems to be the main difference to SemDok Summary, which is interpersonal.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationObjectAttribute_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationObjectAttribute_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ELABORATION-OBJECT-ATTRIBUTE is a relation involving a clause, usually a
 postmodifier of a noun phrase, that is required to give meaning to an animate or inanimate object.
 The modifying clause is the satellite, and the object it modifies is the nucleus. The satellite is
@@ -1209,7 +1539,7 @@ clause, whereas an ELABORATION-OBJECT-ATTRIBUTE-E represents a restrictive relat
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfDetail_PDGB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfDetail_PDGB">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TemporalRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Satellite gives details about an entity involved in the event described by the
 Nucleus. The details cannot be captured by any of the relations above.
@@ -1221,7 +1551,7 @@ Nucleus. The details cannot be captured by any of the relations above.
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfLocation_PDGB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfLocation_PDGB">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Satellite gives information about the location where the Nucleus took place
 (Wolf et al. 2003)</rdfs:comment>
     </owl:Class>
@@ -1231,7 +1561,7 @@ Nucleus. The details cannot be captured by any of the relations above.
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfNumber_PDGB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfNumber_PDGB">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TemporalRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Satellite gives information about the time at which the Nucleus took place (???)
 (Wolf et al. 2003)</rdfs:comment>
@@ -1242,7 +1572,7 @@ Nucleus. The details cannot be captured by any of the relations above.
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfOrganization_PDGB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfOrganization_PDGB">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Satellite gives information about an organization involved in the event
 described by the Nucleus
 (Wolf et al. 2003)</rdfs:comment>
@@ -1253,7 +1583,7 @@ described by the Nucleus
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfPerson_PDGB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfPerson_PDGB">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Satellite gives information about a person involved in the event described by the
 Nucleus
 (Wolf et al. 2003)</rdfs:comment>
@@ -1264,7 +1594,7 @@ Nucleus
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfTime_PDGB -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationOfTime_PDGB">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TemporalRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Satellite gives information about the time at which the Nucleus took place
 (Wolf et al. 2003)</rdfs:comment>
@@ -1275,7 +1605,7 @@ Nucleus
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationPartWhole_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationPartWhole_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationIntegration"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In an ELABORATION-PART-WHOLE relation, the satellite specifies or elaborates
 on a portion or part of the nucleus. Since this relation is most often appropriate for representing
 parts of objects, it is only occasionally found to hold between EDUs. Most typically, this would be
@@ -1286,15 +1616,53 @@ member is representative of the entire set in a similar way.
     
 
 
-    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationProcessStep_RST -->
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationProcessStep -->
 
-    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationProcessStep_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationProcessStep">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDerivation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ELABORATION-PROCESS-STEP: In this elaboration relation, the nucleus introduces an activity or event (a pro-
 cess). The satellite then enumerates the steps involved in carrying out the process, usually in chro-
 nological order. Thus, the steps are most often represented in a multinuclear SEQUENCE
 relationship.
-(Carlson and Marcu 2001)</rdfs:comment>
+(Carlson and Marcu 2001)
+
+SemDok Elaboration-process-step</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationProcessStep_RST -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationProcessStep_RST">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationProcessStep"/>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationRestatement -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationRestatement">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#EquivalentRestatement"/>
+        <rdfs:comment>SemDok Elaboration-Restatement
+
+Apparently, this is a mononuclear version of Restatement as found in other frameworks.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSetMember -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSetMember">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDerivation"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ELABORATION-SET-MEMBER: In this elaboration relation, the nucleus introduces a finite set (which may be
+generic or a named entity) or a list of information. The satellite then specifically elaborates on at
+least one member of the set. Typically, the members themselves are represented in a multinuclear
+LIST relationship.
+(Carlson and Marcu 2001)
+
+SemDok Elaboration-set-member</rdfs:comment>
     </owl:Class>
     
 
@@ -1302,12 +1670,50 @@ relationship.
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSetMember_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSetMember_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Elaboration"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ELABORATION-SET-MEMBER: In this elaboration relation, the nucleus introduces a finite set (which may be
-generic or a named entity) or a list of information. The satellite then specifically elaborates on at
-least one member of the set. Typically, the members themselves are represented in a multinuclear
-LIST relationship.
-(Carlson and Marcu 2001)</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSetMember"/>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationSpecification">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationIdentity"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Specification"/>
+        <rdfs:comment>SemDok Elaboration-specification
+
+Apparently, this is a mononuclear version of Specification.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationThemeRheme -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationThemeRheme">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationContinuation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicComment"/>
+        <rdfs:comment>SemDok Elaboration-theme-rheme</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationThemeTheme -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationThemeTheme">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationContinuation"/>
+        <rdfs:comment>SemDok Elaboration-theme-theme
+
+Unfortunately, SemDok doesn&apos;t provide definitions, so it is unclear whether this is meant to be comparable to TopicShift. At least, it would be surprising to see that modelled as an Elaboration.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ElaborationWholePart -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationWholePart">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ElaborationDerivation"/>
+        <rdfs:comment>SemDok Elaboration-whole-part</rdfs:comment>
     </owl:Class>
     
 
@@ -1329,8 +1735,10 @@ LIST relationship.
 (Note that here, the term &quot;discourse segment&quot; is used, as discourse unit is potentially ambiguous in comparison with &quot;discourse entity&quot;.)
 
 (cf. Carlson et al. 2003)</rdfs:comment>
+        <rdfs:comment>cf. SemDok ElementaryDiscourseSegment</rdfs:comment>
         <rdfs:comment xml:lang="en">edu</rdfs:comment>
-        <rdfs:comment xml:lang="en">elementary discourse unit</rdfs:comment>
+        <rdfs:label>elementary discourse segment</rdfs:label>
+        <rdfs:label xml:lang="en">elementary discourse unit</rdfs:label>
         <rdfs:label xml:lang="en">minimal discourse unit</rdfs:label>
     </owl:Class>
     
@@ -1363,7 +1771,12 @@ being realized.
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#EntityBasedRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No discourse relation can be inferred and where the second sentence only serves to provide some further description of an entity in the first sentence. (Prasad et al. 2007)</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SubjectMatterRelation"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No discourse relation can be inferred and where the second sentence only serves to provide some further description of an entity in the first sentence. (Prasad et al. 2007)
+
+Entity relations (which include Elaboration) are grouped with IdeationalRelations in SemDok, hence also a subclass of SubjectMatterRelation.
+
+Note that we follow Webber and Knott (2001) to assume that Elaboration is always an entity relation (even though this entity may be abstract or implicit), however, many types of elaboration (taxonomy following SemDok) are put under Expansion in the PDTB tradition. Entity relations proper are thus only elaborations which have no other discourse relation assigned. These are (only) the sublasses of ElaborationDerivation.</rdfs:comment>
     </owl:Class>
     
 
@@ -1473,15 +1886,26 @@ temic” (Sweetser 1990), “speech-act” (Sweetser
     
 
 
-    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Evaluation_RST -->
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Evaluation -->
 
-    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Evaluation_RST">
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Evaluation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Assessment"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In an evaluation relationship, one span assesses the situation presented in the other
 span of the relationship on a scale of good to bad. An evaluation can be an appraisal, estimation,
 rating, interpretation, or assessment of a situation. The evaluation can be the viewpoint of the
 writer or another agent in the text.
-(Carlson and Marcu 2001)</rdfs:comment>
+(Carlson and Marcu 2001)
+
+Cf. SemDok Evaluation</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Evaluation_RST -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Evaluation_RST">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Evaluation"/>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -1499,10 +1923,19 @@ to perform (or not perform) an action. The third kind is anchored by a verb of o
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Evidence -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Evidence">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Support"/>
+        <rdfs:comment>Generalization over RST Evidence, SemDok Citation-evidence and SemDok Evidence</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Evidence_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Evidence_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCause"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Evidence"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In an EVIDENCE relation, the situation presented in the satellite provides evi-
 dence or justification for the situation presented in the nucleus. Usually EVIDENCE relations per-
 tain to actions and situations that are independent of the will of an animate agent. Evidence is data
@@ -1609,6 +2042,16 @@ The pragmatic use of focus (or ‘management of CG’) does not
 involve any change in the truth-value of the sentence. Only the semantic use of focus (or ‘content of CG’) has such an effect. Pragmatic uses of focus include answers to wh-questions, corrections, confirmations, parallel expressions and delimitations.
 
 (Féry et al. 2007)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Extra -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Extra">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganizationalRelation"/>
+        <rdfs:comment>cf. SemDok Extra (undefined)</rdfs:comment>
+        <rdfs:label>extra</rdfs:label>
     </owl:Class>
     
 
@@ -1807,9 +2250,12 @@ For given referents, different hierarchies of cognitive states and corresponding
         <inverseOf rdf:resource="http://purl.org/olia/discourse/Enablement"/>
         <rdfs:comment>ISO Purpose: Asymmetric relation in which Arg2 is the goal or purpose of Arg1.
 
-Mononuclear relation that corresponds to ISO Purpose with argument goal (&quot;purpose&quot;). The goal is the satellite.</rdfs:comment>
+Mononuclear relation that corresponds to ISO Purpose with argument goal (&quot;purpose&quot;). The goal is the satellite.
+
+Cf. SemDok Purpose-n</rdfs:comment>
         <rdfs:label>goal</rdfs:label>
         <rdfs:label>purpose</rdfs:label>
+        <rdfs:label>purpose-n (SemDok)</rdfs:label>
     </owl:Class>
     
 
@@ -1846,6 +2292,7 @@ not used in tagging the corpus. (Carlson and Marcu 2001)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseStructuralPattern"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subordinating or Mononuclear Relations (RST):
 The most frequent structural pattern is that two spans of text (virtually always adjacent, but exceptions can be found) are related such that one of them has a specific role relative to the other. A paradigm case is a claim followed by evidence for the claim. RST posits an &quot;Evidence&quot; relation between the two spans. It also says that the claim is more essential to the text than the particular evidence, and this essentiality is represented by calling the claim span a nucleus and the evidence span a satellite.
 (Mann and Taboada 2010)</rdfs:comment>
@@ -1982,12 +2429,23 @@ ISO DR-Core Excemplification, argument Instance</rdfs:comment>
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Interpretation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Interpretation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Assessment"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In interpretation relations, one side of the relation gives a different perspective on the situation presented in the other side. It is subjective, presenting the personal opinion of the writer or of a third party. An interpretation can be: 1) an explanation of what is not immediately plain or explicit; 2) an explanation of actions, events, or statements by pointing out or suggesting inner relationships, motives, or by relating particulars to general principles; or 3) an understanding or appreciation of a situation in light of individual belief, judgment, interest, or circumstance.
+(Carlson and Marcu 2001)
+
+cf. SemDok Interpretation</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Interpretation_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Interpretation_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Assessment"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In interpretation relations, one side of the relation gives a different perspective on the situation presented in the other side. It is subjective, presenting the personal opinion of the writer or of a third party. An interpretation can be: 1) an explanation of what is not immediately plain or explicit; 2) an explanation of actions, events, or statements by pointing out or suggesting inner relationships, motives, or by relating particulars to general principles; or 3) an understanding or appreciation of a situation in light of individual belief, judgment, interest, or circumstance.
-(Carlson and Marcu 2001)</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Interpretation"/>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -1998,7 +2456,7 @@ ISO DR-Core Excemplification, argument Instance</rdfs:comment>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ListSequence"/>
                     <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#SuccessionRelation"/>
                 </owl:intersectionOf>
             </owl:Class>
@@ -2010,11 +2468,22 @@ chronological order.
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Joint -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Joint">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganizationalRelation"/>
+        <rdfs:comment>generalization over SemDok Joint and RST Joint. As SemDok does not provide definitions, it is unclear whether these are equivalent,</rdfs:comment>
+        <rdfs:label>joint</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Joint_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Joint_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganizationalRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Joint"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joint represents the lack of a rhetorical relation between the nuclei. (Mann and Taboada 2010)</rdfs:comment>
+        <rdfs:label>joint (RST)</rdfs:label>
     </owl:Class>
     
 
@@ -2022,9 +2491,13 @@ chronological order.
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Justification -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Justification">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCause"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Support"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Epistemic uses of the connective “because” are labelled as “Pragmatic cause:justification”. (Prasad et al. 2007)
-RST &quot;Justify&quot;: R&apos;s comprehending S increases R&apos;s readiness to accept W&apos;s right to present N (Mann and Taboada 2010)</rdfs:comment>
+RST &quot;Justify&quot;: R&apos;s comprehending S increases R&apos;s readiness to accept W&apos;s right to present N (Mann and Taboada 2010)
+
+Cf. SemDok Justify, subclass of Support.</rdfs:comment>
+        <rdfs:label>justification</rdfs:label>
+        <rdfs:label>justify</rdfs:label>
     </owl:Class>
     
 
@@ -2044,12 +2517,28 @@ but Mary paid $10.)
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#List">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Conjunction"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ListSequence"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An item comparable to others linked to it by the List relation. (Mann and Taboada 2010)
 
 Arg1 and Arg2 are members of a list, defined in the prior discourse. “List” does not require the situations specified in Arg1 and Arg2 to be directly related. (Prasad et al. 2007)
 
 A LIST is a multinuclear relation whose elements can be listed, but which are not in a comparison, contrast or other, stronger type of multinuclear relation. A LIST relation usually exhibits some sort of parallel structure between the units involved in the relation. At lower levels of the discourse structure, such as between clauses or sentences, a LIST relation is often selected when there is some sort of parallel syntactic or semantic structure between the units, such as in the examples below. At higher levels of the discourse structure, the relation may be found when there are paragraphs of items enumerated in a similar fashion.
-(Carlson and Marcu 2001)</rdfs:comment>
+(Carlson and Marcu 2001)
+
+Axiomatization follows SemDok. In particular, we assume that Lists do not follow any natural order, their order thus reflects an (implicit) purpose of the speaker. They are thus interpersonal (presentational) relations.
+
+Note that we skipped the SemDok subclass List-dm_other, as its definition is unclear.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ListSequence -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ListSequence">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation"/>
+        <rdfs:comment>Introduced as generalization over List and Sequence in analogy with SemDok. However, note that this is not a discourse relation proper, but a specific case of ParatacticDiscourseRelation for which no semantic relation except for paratactic organization can be provided.</rdfs:comment>
+        <rdfs:label>list/sequence</rdfs:label>
     </owl:Class>
     
 
@@ -2093,11 +2582,17 @@ The notion of Markable is somewhat problematic in its relation to DiscourseSegme
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Means -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Means">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCondition"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
         <inverseOf rdf:resource="http://purl.org/olia/discourse/Achievement"/>
         <rdfs:comment>ISO Manner is an asymmetric discourse relation in which the means (Arg1) is a way in which the achievement (Arg2) comes about or occurs.
 
-Corresponds to ISO Manner with argument means. Nucleus is the achievement.</rdfs:comment>
+Corresponds to ISO Manner with argument means. Nucleus is the achievement.
+
+cf. SemDok Means: mononuclear, interpersonal</rdfs:comment>
+        <rdfs:label>manner</rdfs:label>
+        <skos:prefLabel>means</skos:prefLabel>
     </owl:Class>
     
 
@@ -2459,6 +2954,7 @@ example: Yes, she DID kiss him.
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Cause"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arg1 expresses a claim and Arg2 provides justification for this claim. There is no causal influence between the two situations. (Prasad et al. 2007)</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speech-act Cause (LUNA)</rdfs:label>
     </owl:Class>
@@ -2551,6 +3047,7 @@ example: Yes, she DID kiss him.
 Here, these are represented by an individual that represents the relation, and two properties hasSource and hasTarget that link is with the individuals that actually are connected by this relationship.
 
 Note that &quot;pragmatics&quot; is used in a broad sense as opposed to semantics, hence discourse annotations are in its scope.</rdfs:comment>
+        <rdfs:comment>cf. SemDok DiscourseRelation, which comprises both BridgingRelation and RhetoricalRelation.</rdfs:comment>
     </owl:Class>
     
 
@@ -2621,10 +3118,45 @@ Not to be confused with &quot;predicate focus&quot;, as this is applied here to 
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Preparation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Preparation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Background"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
+        <rdfs:comment>introduced as generalization over Preparation in RST and SemDok. Axiomatization follows SemDok</rdfs:comment>
+        <rdfs:label>preparation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#PreparationQuestion -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#PreparationQuestion">
+        <owl:equivalentClass rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#RhetoricalQuestion_RST"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Preparation"/>
+        <rdfs:comment>for SemDok Preparation-question
+
+I assume that this is basically equivalent with RhetoricalQuestion_RST, but note that SemDok does not provide explicit definitions.</rdfs:comment>
+        <rdfs:label>preparation-question</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#PreparationTitle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#PreparationTitle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Preparation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Title"/>
+        <rdfs:comment>for SemDok Preparation-title</rdfs:comment>
+        <rdfs:label>preparation-title</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Preparation_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Preparation_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Background"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Preparation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S precedes N in the text; S tends to make R more ready, interested or oriented for reading N
 (Mann and Taboada 2010)</rdfs:comment>
     </owl:Class>
@@ -2635,8 +3167,31 @@ Not to be confused with &quot;predicate focus&quot;, as this is applied here to 
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseFunction"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SubjectMatterRelation"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganizationalRelation"/>
         <rdfs:comment>&quot;[In RST] a distinction is made between Subject-Matter relations and Presentational relations. Subject-Matter relations express parts of the subject matter of the text. The Presentational relations facilitate the presentation process.&quot;
 (http://www.sfu.ca/rst/01intro/intro.html)</rdfs:comment>
+        <rdfs:comment>cf. SemDok InterpersonalRelation, no definition given there, but the conventional definition alludes to RST &quot;presentational relations&quot;.
+
+Conventional definition (https://en.wikipedia.org/wiki/Metafunction#Ideational_function): The interpersonal function refers to the grammatical choices that enable speakers to enact their complex and diverse interpersonal relations. This tenet of systemic functional linguistics is based on the claim that a speaker not only talks about something, but is always talking to and with others.</rdfs:comment>
+        <rdfs:label>interpersonal relation</rdfs:label>
+        <rdfs:label>presentational relation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ProblemSolution -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ProblemSolution">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCondition"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Introduced as generalization over Problem-Solution in RST-DTB and SemDok.
+
+In a problem-solution relation, one textual span presents a problem, and the other text span presents a solution. The relation may be mononuclear or multinuclear, depending on the context. (Carlson and Marcu 2001)
+
+RST &quot;Solutionhood&quot;: R recognizes N as a solution to the problem presented in S. (Mann and Taboada 2010)</rdfs:comment>
+        <rdfs:label>solutionhood</rdfs:label>
+        <skos:prefLabel>problem-solution</skos:prefLabel>
     </owl:Class>
     
 
@@ -2644,10 +3199,8 @@ Not to be confused with &quot;predicate focus&quot;, as this is applied here to 
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#ProblemSolution_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ProblemSolution_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCondition"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In a problem-solution relation, one textual span presents a problem, and the other text span presents a solution. The relation may be mononuclear or multinuclear, depending on the context. (Carlson and Marcu 2001)
-
-RST &quot;Solutionhood&quot;: R recognizes N as a solution to the problem presented in S. (Mann and Taboada 2010)</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ProblemSolution"/>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -2758,12 +3311,28 @@ sitional content of one of the arguments.
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Purpose-s_SemDok -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Purpose-s_SemDok">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Reason"/>
+        <rdfs:comment>SemDok Purpose-s (Purpose Satellite?)</rdfs:comment>
+        <rdfs:label>purpose-s</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Purpose_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Purpose_RST">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Goal"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The situation presented in the satellite of a purpose relation is only putative, i.e., it is yet to be achieved. Most often it can be paraphrased as “in order to”. (Carlson and Marcu 2001)</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The situation presented in the satellite of a purpose relation is only putative, i.e., it is yet to be achieved. Most often it can be paraphrased as “in order to”. (Carlson and Marcu 2001)
+
+cf. SemDok Purpose-n</rdfs:comment>
+        <rdfs:label>purpose</rdfs:label>
+        <rdfs:label>purpose-n</rdfs:label>
+        <skos:prefLabel>purpose (RST)</skos:prefLabel>
     </owl:Class>
     
 
@@ -2784,6 +3353,7 @@ sitional content of one of the arguments.
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Reason">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SemanticCause"/>
         <rdfs:comment>PDTB Reason. This is introduced as a generalization over RST Reason because it does not come with assumptions about nuclearity.</rdfs:comment>
+        <skos:prefLabel>reason</skos:prefLabel>
     </owl:Class>
     
 
@@ -2835,9 +3405,10 @@ sitional content of one of the arguments.
         <rdfs:comment>In PDTB, Relations are organized according to their structural type (material manifestation). To avoid a terminological clash, these are referred to as RelationCue here.
 
 EntityRelations, however, do not represent a RelationCue as they are not physically materialized, but need to be inferred.</rdfs:comment>
-        <rdfs:comment>cue word</rdfs:comment>
-        <rdfs:comment>discourse marker</rdfs:comment>
         <rdfs:comment>relation (PDTB)</rdfs:comment>
+        <rdfs:label>cue word</rdfs:label>
+        <rdfs:label>discourse marker</rdfs:label>
+        <rdfs:seeAlso>semdoc:DiscourseMarker</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -2901,7 +3472,11 @@ cf. Al-Saif and Markert (2010) &quot;Reformulation&quot; in the LADTB corpus</rd
         <rdfs:comment>Result corresponds to ISO Cause with argument Result.
 Note that the other argument can be either a pragmatic cause (Justification) or a semantic cause (Reason), so we expect the difference between different kinds of causes to be expressed in the cause argument.
 
-PDTB Result, also generalizes over RST Result, but doesn&apos;t come with constraints on nuclearity.</rdfs:comment>
+PDTB Result, also generalizes over RST Result, but doesn&apos;t come with constraints on nuclearity.
+
+Corresponds to SemDoc ResultPurpose</rdfs:comment>
+        <rdfs:label>result/purpose</rdfs:label>
+        <skos:prefLabel>result</skos:prefLabel>
     </owl:Class>
     
 
@@ -2913,7 +3488,11 @@ PDTB Result, also generalizes over RST Result, but doesn&apos;t come with constr
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Result"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The situation presented in the satellite is the cause of the situation presented in the nucleus. The result, which is the nucleus, is the most important part. Without presenting the satellite, the reader may not know what caused the result in the nucleus. In contrast to a PURPOSE relation, the situation presented in the nucleus of a result relation is factual, i.e., it is achieved. The
 intention of the writer is to emphasize the result.
-(Carlson and Marcu 2001)</rdfs:comment>
+(Carlson and Marcu 2001)
+
+cf. SemDok Result.</rdfs:comment>
+        <rdfs:label>result</rdfs:label>
+        <skos:prefLabel>result (RST)</skos:prefLabel>
     </owl:Class>
     
 
@@ -2946,6 +3525,9 @@ intention of the writer is to emphasize the result.
 
 If a DS has intervening material; the “Same” relation is no coherence relation, but
 a “trick” that allows dealing with DSs nested in other DSs. (Wolf et al. 2003)</rdfs:comment>
+        <rdfs:comment>cf. SemDok SameSegment</rdfs:comment>
+        <rdfs:label>same segment</rdfs:label>
+        <rdfs:label>same unit</rdfs:label>
     </owl:Class>
     
 
@@ -2989,8 +3571,12 @@ SECTIONTITLE and SECTIONTEXT. Usually, the section title occurs on a separate li
 
 PDTB Reason. This is introduced as a generalization over RST Reason because it does not come with assumptions about nuclearity.
 
-The classification of causal relations in RST/RSTDTB and PDTB is hard to be aligneable, further, hence original definitions preserved with suffixed relations</rdfs:comment>
+The classification of causal relations in RST/RSTDTB and PDTB is hard to be aligneable, further, hence original definitions preserved with suffixed relations
+
+Cf. SemDok CausePurpose (but this is limited to HypotacticDiscourseRelations).</rdfs:comment>
+        <rdfs:label>cause/purpose</rdfs:label>
         <rdfs:label>reason</rdfs:label>
+        <skos:prefLabel>semantic cause</skos:prefLabel>
     </owl:Class>
     
 
@@ -3051,11 +3637,42 @@ In a CONDITION relation, the truth of the proposition associated with the nucleu
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Sentence -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Sentence">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextStructuralUnit"/>
+        <rdfs:comment>introduced to account for SemDok SententialDiscourseSegment</rdfs:comment>
+        <rdfs:label>sentence</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#SentenceFocus -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#SentenceFocus">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#WideFocus"/>
         <rdfs:comment>The entire sentence is in focus.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#SententialDiscourseSegment -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#SententialDiscourseSegment">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseSegment"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Sentence"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseSegment"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Sentence"/>
+        <rdfs:comment>from SemDok
+
+It seems, however, that this conflates aspects of discourse structure with surface syntax, so whether this is a valid segment different from discourse segment or complex discourse segment may be debated.</rdfs:comment>
+        <rdfs:label>sentential discourse segment</rdfs:label>
     </owl:Class>
     
 
@@ -3066,13 +3683,16 @@ In a CONDITION relation, the truth of the proposition associated with the nucleu
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#ListSequence"/>
                     <rdf:Description rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#PrecedenceRelation"/>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#SubjectMatterRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A SEQUENCE is a multinuclear list of events presented in chronological order. (Carlson and Marcu 2001)
-There is a succession relationship between the situations in the nuclei (Mann and Taboada 2010).</rdfs:comment>
+There is a succession relationship between the situations in the nuclei (Mann and Taboada 2010).
+
+cf. SemDok Sequence. We follow SemDok in assuming that the difference between Sequence and List is that a sequence has a natural (i.e., spatio-temporal) order and is thus an ideational (subject-matter) relation, whereas a list has no such order and is thus compiled and organized for a particular purpose, i.e., interpersonal (presentational) in nature. This is a design decision that may be reconsidered.</rdfs:comment>
     </owl:Class>
     
 
@@ -3291,6 +3911,16 @@ Example: She KISSED him.
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#StructuralConnective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#StructuralConnective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ExplicitConnective"/>
+        <rdfs:comment>adopted from SemDok</rdfs:comment>
+        <rdfs:label>structural connective</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#StructuralFocusType -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#StructuralFocusType">
@@ -3323,8 +3953,14 @@ The subclassification of StructuralFocusType assumed here follows a suggestion b
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#SubjectMatterRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseFunction"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganizationalRelation"/>
         <rdfs:comment>&quot;[In RST] a distinction is made between Subject-Matter relations and Presentational relations. Subject-Matter relations express parts of the subject matter of the text. The Presentational relations facilitate the presentation process.&quot;
 (http://www.sfu.ca/rst/01intro/intro.html)</rdfs:comment>
+        <rdfs:comment>cf. SemDok IdeationalRelation, except for disjointness axions there is no definition given there, but the conventional definition alludes to RST &quot;subject-matter relations&quot;.
+
+Conventional definition (https://en.wikipedia.org/wiki/Metafunction#Ideational_function): The ideational function is language concerned with building and maintaining a theory of experience. It includes the experiential function and the logical function. The experiential function refers to the grammatical choices that enable speakers to make meanings about the world around us and inside us ... Halliday describes the logical function as those systems &quot;which set up logical–semantic relationships between one clausal unit and another&quot;</rdfs:comment>
+        <rdfs:comment>ideational relation</rdfs:comment>
+        <rdfs:comment>subject-matter relation</rdfs:comment>
     </owl:Class>
     
 
@@ -3339,12 +3975,34 @@ The subclassification of StructuralFocusType assumed here follows a suggestion b
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Summary -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Summary">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Generalization"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
+        <rdfs:comment>introduced as generalization over RST Summary and SemDok Summary. Axiomatized according to the latter (mononuclear presentational relation).</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#Summary_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Summary_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Generalization"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#Summary"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">In a SUMMARY-S relation, the satellite summarizes the information presented in the nucleus. The emphasis is on the situation presented in the nucleus. The size of the summary (the satellite) is shorter than the size of the nucleus. In an SUMMARY-N relation, the nucleus summarizes the information presented in the satellite. The emphasis is on the summary. The size of the summary (the nucleus) is shorter than the size of the satellite.
 (Carlson and Marcu 2001)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Support -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#Support">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#HypotacticDiscourseRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PragmaticCause"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#PresentationalRelation"/>
+        <rdfs:comment>for SemDok Support, mononuclear interpersonal relation</rdfs:comment>
     </owl:Class>
     
 
@@ -3469,6 +4127,9 @@ Title). (Carlson and Marcu 2001)</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganizationalRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TEXTUAL-ORGANIZATION is a multinuclear relation used to link elements of the structure of the text, for example, to link a title with the body of the text, a section title with the text of a section, etc. The role of the relation is primarily that of enforcing a tree structure on the representation.
 (Carlson and Marcu 2001)</rdfs:comment>
+        <rdfs:comment>This seems to roughly correspond to SemDok Schema (with sub-class ArticleTopLevelSchema). However, note that a schema is an n-ary relation whereas text-organizational relations are binary.</rdfs:comment>
+        <rdfs:label>schema</rdfs:label>
+        <rdfs:label>textual organization</rdfs:label>
     </owl:Class>
     
 
@@ -3478,6 +4139,9 @@ Title). (Carlson and Marcu 2001)</rdfs:comment>
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#TextualOrganizationalRelation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#DiscourseRelation"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Pseudo-relations&quot; that represent conventional text-structural relationships between text spans, not strictly speaking discourse relations.</rdfs:comment>
+        <rdfs:comment>cf. SemDok TextualRelation</rdfs:comment>
+        <rdfs:label>textual organizational relation</rdfs:label>
+        <rdfs:label>textual relation</rdfs:label>
     </owl:Class>
     
 
@@ -3516,11 +4180,20 @@ The notion of topic is best understood as a kind of address or file card which s
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#TopicComment -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#TopicComment">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
+        <rdfs:comment>introduced as generalization over TopicComment_RST and ElaborationThemeRheme (from SemDok). These differ in nuclearity.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#TopicComment_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#TopicComment_RST">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#ParatacticDiscourseRelation"/>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicComment"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A general statement or topic of discussion is introduced, after which a specific
 remark is made on the statement or topic. This relation is always multinuclear, as both spans are
 necessary to understand the context. When the spans occur in the reverse order, with the comment
@@ -3544,10 +4217,19 @@ Note that C-TED introduced EXPANSION.Progression in an extension of the PDTB 3 s
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#TopicDrift -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#TopicDrift">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
+        <rdfs:comment>introduced as generalization over ElaborationDrift (from SemDok) and TopicDrift_RST</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#TopicDrift_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#TopicDrift_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicDrift"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The relation TOPIC-DRIFT is used to link large textual spans when the topic
 drifts smoothly from the information presented in the first span to the information presented in the
 second. The same elements are in focus in both textual units. While this relation may be either
@@ -3567,10 +4249,19 @@ size or importance of one of the spans is less significant than that of the othe
     
 
 
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#TopicShift -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#TopicShift">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
+        <rdfs:comment>introduced in analogy to TopicDrift as a generalization over TopicShift_RST.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/olia/discourse/olia_discourse.owl#TopicShift_RST -->
 
     <owl:Class rdf:about="http://purl.org/olia/discourse/olia_discourse.owl#TopicShift_RST">
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicContinuityRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl#TopicShift"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The relation TOPIC-SHIFT is used to link large textual spans when there is a
 sharp change in focus going from one segment to the other. The same elements are NOT in focus
 in the two spans. While this relation may be either mononuclear or multinuclear, it is usually
