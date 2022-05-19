@@ -156,6 +156,7 @@ the Reference Model in bold):
   <td><a>Annotation Model</a>, no Linking Model yet</td> </tr> 
 </table> 
 
+
 ## Anaphora, Information Status and Information Structure {#is}
 
 ### Background {#is.background}
@@ -237,3 +238,5 @@ formalized here together with a generalizing Reference Model fragment.
   <td>coreference</td>
   <td><a>Annotation Model</a></td> </tr>
 </table> 
+
+
