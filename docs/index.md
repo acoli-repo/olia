@@ -251,7 +251,8 @@ Annotation models for cross-linguistically applicable annotation schemes include
 <td><p>
 (for language-specific Annotation Model ABoxes see below)
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -356,7 +357,8 @@ Annotation models for **German** include
 <td >
 <p>morphosyntax, morphology</p></td>
 <td >
-<p>t.b.a</p></td></tr></table>
+<p>t.b.a</p></td></tr>
+</table>
 
 
 
@@ -577,7 +579,8 @@ Annotation models for **other Germanic languages**
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/got/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -632,7 +635,8 @@ Annotation models for **Russian** include
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/ru/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -742,7 +746,8 @@ Annotation models for **French** include
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/fr/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -944,7 +949,8 @@ Annotation models for **other Romance and Italic languages** include
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/tr/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -1073,7 +1079,8 @@ Annotation models for **other Romance and Italic languages** include
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/ga/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -1176,7 +1183,8 @@ Annotation models for **other Romance and Italic languages** include
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/fa/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -1227,7 +1235,8 @@ Annotation models for **other Romance and Italic languages** include
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/ta/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -1269,7 +1278,8 @@ Annotation models for **other Romance and Italic languages** include
 <td >
 <p><a href="http://purl.org/olia/tibet.owl">Annotation Model</a>
   <!--a href="http://purl.org/olia/tibet-link.rdf">Linking Model</a-->
-  <!-- to be updated --></p></td></tr></table>
+  <!-- to be updated --></p></td></tr>
+</table>
 
 
 
@@ -1395,7 +1405,8 @@ Annotation models for **other Romance and Italic languages** include
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/vi/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
@@ -1524,7 +1535,8 @@ Annotation models for **other Romance and Italic languages** include
 <td><p>Sumerian</p></td>
 <td><p>morphology</p></td>
 <td><p>
-	<a href="http://purl.org/olia/owl/experimental/sumerian/etscri.owl">Annotation Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/owl/experimental/sumerian/etscri.owl">Annotation Model</a></p></td></tr>
+</table>
 
 
 
@@ -1560,7 +1572,8 @@ Annotation models for **other Romance and Italic languages** include
 <td><p>Hausa Internet Corpus <br/><a href="http://www.springer.com/alert/urltracking.do?id=L1c0018M8210f2Sab2ea4f">Chiarcos et al. (2011)</a></p></td>
 <td><p>Hausa</p></td>
 <td><p>morphosyntax</p></td>
-<td><p>t.b.a</p></td></tr></table>
+<td><p>t.b.a</p></td></tr>
+</table>
 
 
 
@@ -1610,7 +1623,8 @@ Annotation Models for indigenous languages of the Americas, Australia and the Pa
 <td><p>
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/id/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">language-specific Annotation Model ABox</a>(*),
 	<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
-	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr></table>
+	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></p></td></tr>
+</table>
 
 
 
