@@ -158,7 +158,7 @@ deprecated.
 
 Annotation models for cross-linguistically applicable annotation schemes include:
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset / NLP tool</p>
@@ -286,10 +286,8 @@ Annotation models for cross-linguistically applicable annotation schemes include
 	<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a>
 </p></td>
 </tr>
-
-
-
 </table>
+
 ## Germanic (English, German, ...)
 
 Annotation models for **English** include
@@ -312,7 +310,7 @@ Annotation models for **English** include
 
 Annotation models for **German** include
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset / NLP tool</p>
@@ -439,7 +437,7 @@ Annotation models for **German** include
 
 Annotation models for **other Germanic languages**
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset/NLP tool</p>
@@ -755,7 +753,7 @@ Annotation models for **other Germanic languages**
 
 Annotation models for **Russian** include
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset / NLP tool</p>
@@ -877,7 +875,7 @@ Annotation models for **other Slavic and Baltic languages** include
 
 Annotation models for **French** include
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset / NLP tool</p>
@@ -1006,7 +1004,7 @@ Annotation models for **other Romance and Italic languages** include
 
 ## Uralic and Altaic
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset</p>
@@ -1270,7 +1268,7 @@ Annotation models for **other Romance and Italic languages** include
 
 ## Other European languages
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset</p>
@@ -1453,7 +1451,7 @@ Annotation models for **other Romance and Italic languages** include
 
 ## Indo-Iranian languages
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset</p>
@@ -1596,7 +1594,7 @@ Annotation models for **other Romance and Italic languages** include
 
 ## Dravidian
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset</p>
@@ -1665,7 +1663,7 @@ Annotation models for **other Romance and Italic languages** include
 
 ## Tibeto-Burman
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>tagset</p>
@@ -1725,7 +1723,7 @@ Annotation models for **other Romance and Italic languages** include
 
 ## East Asian languages
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>annotation scheme / corpus</p>
@@ -1907,7 +1905,7 @@ Annotation models for **other Romance and Italic languages** include
 
 ## Afroasiatic and Ancient Near Eastern languages
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>annotation scheme / corpus</p>
@@ -2084,7 +2082,7 @@ Annotation models for **other Romance and Italic languages** include
  </table>
 
 ## Subsaharic Africa
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>annotation scheme / corpus</p>
@@ -2135,7 +2133,7 @@ Annotation models for **other Romance and Italic languages** include
 
 Annotation Models for indigenous languages of the Americas, Australia and the Pacific
 
-<table border=1 cellpadding=0 >
+<table>
  <tr >
   <td >
   <p>annotation scheme / corpus</p>
