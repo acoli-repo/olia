@@ -87,8 +87,8 @@ illustrated for two alternative annotations of the same sentence in the
 figure below.
 
 ![](rst-pdtb.png)\
-Fig. 1. Comparing Discourse Structure Annotations (RST Discourse Treebank and
-Penn Discourse Treebank, file wsj_1365 (simplified)
+**Fig. 1. Comparing Discourse Structure Annotations (RST Discourse Treebank and
+Penn Discourse Treebank, file wsj_1365 (simplified)**
 
 
 With traditional annotation schemes, these annotations can hardly be put
@@ -99,11 +99,11 @@ relations on the basis of the utterances they spann across, pairs of
 relations can be formed:
 
 
-                  PDTB                                                     RST
-      (4)-(5)     CONTINGENCY.CONDITION.GENERAL              (4)-(5-7)     CONDITION
-      (2)-(4-7)   CONTINGENY.CAUSE.RESULT                    (1-2)-(3-7)   EXPLANATION
-      (4-5)-(6)   EXPANSION.ALTERNATIVE.CHOSEN ALTERNATIVE   (5)-(6-7)     CONTRAST
-
+| | PDTB | |  RST |
+| --- | -- | -- | -- |
+| (4)-(5) | CONTINGENCY.Condition.general               | (4)-(5-7) |    CONDITION |
+| (2)-(4-7) |  CONTINGENY.Cause.result                   | (1-2)-(3-7) |   EXPLANATION |
+| (4-5)-(6) |  EXPANSION.Alternative.chosen alternative |  (5)-(6-7)|     CONTRAST |
 
 Yet, within their annotation schemes, the relations cannot be directly
 compared, for, e.g., the PDTB CONDITION and the RST CONDITION have
@@ -113,7 +113,7 @@ aspects of information can be distangled (common properties in terms of
 the Reference Model in bold):
 
 ![](condition.png)\
-Fig 2. Comparing CONDITIONs
+**Fig 2. Comparing CONDITIONs**
 
 
 ### Ontologies {#discourse.ontologies}
