@@ -154,9 +154,9 @@ deprecated.
 |	OLiA Top-Level Ontology	|	top-level concepts of the OLiA Reference Model for morphosyntax, morphology and syntax	|	<http://purl.org/olia/olia-top.owl>	|
 
 
-# Morphosyntax, Morphology, Syntax
+# Annotation Models: Morphosyntax, Morphology, Syntax
 
-Cross-linguistically applicable schemes include:
+Annotation models for cross-linguistically applicable annotation schemes include:
 
 	+-----------------+-----------------+-----------------+-----------------+
 	| tagset / NLP    | phenomenon      | languages       | OWL/DL models   |
