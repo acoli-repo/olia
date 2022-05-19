@@ -38,7 +38,7 @@ This has the advantage that the resulting data can structured to provide a human
 
 - define classes and their instances, using only `olias:hasTag`, `rdfs:subClassOf`, `rdf:type`, `rdfs:comment`; mark line-breaks with <br/>, mark language
 - validate TTL, e.g., using http://ttl.summerofcode.be/
-- open and correct in Protege and proceed as in a.
+- open and correct in Protégé and proceed as in a.
 
 ## 1.c From a List of Tags
 
@@ -50,42 +50,42 @@ In principle, this follows the same procedure, but the initial creation process 
 
   | tag | category | label |
   | --- | -------- | ----- |
-  | `ACC` | `CASE`     | accusative |
-  | `NOUN` | `POS`     | noun  |
-  | `...` | `...` | ... |
+  | ACC | CASE     | accusative |
+  | NOUN | POS     | noun  |
+  | ... | ... | ... |
 
 - Open the table in a spreadsheet software (say, LibreOffice Calc, Google Spreadsheet, Excel, etc.), filter for unique rows, sort by category.
 - Add URI column, populate by `=CONCAT(":";$TAG)` (where `$TAG` refers to the corresponding cell of the tag column)
 
   | tag | category | label | URI |
   | --- | -------- | ----- | --- |
-  | `ACC` | `CASE`     | accusative | `:ACC` |
-  | `NOUN` | `POS`     | noun  | `:NOUN` |
-  | `...` | `...` | ... | `...` |
+  | ACC | CASE     | accusative | `:ACC` |
+  | NOUN | POS     | noun  | `:NOUN` |
+  | ... | ... | ... | ... |
 
 - add two columns, one with the string `olias:hasTag` (or variants), one populated with `=CONCAT("'";$TAG;"'; ")` (tag value)
 
 | tag | category | label | URI | property | value |
 | --- | -------- | ----- | --- | -------- | ----- |
-| `ACC` | `CASE`     | accusative | `:ACC` | `olias:hasTagContaining` | `'ACC';` |
-| `NOUN` | `POS`     | noun  | `:NOUN` | `olias:hasTagContaining` | `'NOUN';` |
-| `...` | `...` | ... | `...` | `...` | `...` |
+| ACC | CASE     | accusative | `:ACC` | `olias:hasTagContaining` | `'ACC';` |
+| NOUN | POS     | noun  | `:NOUN` | `olias:hasTagContaining` | `'NOUN';` |
+| ... | ... | ... | ... | ... | ... |
 
 - add classes from labels, generate class URI with `=CONCAT(":";$LABEL)`.
 
 | tag | category | label | URI | property | value | property | class |
 | --- | -------- | ----- | --- | -------- | ----- | -------- | ----- |
-| `ACC` | `CASE`     | accusative | `:ACC` | `olias:hasTagContaining` | `'ACC';` | `a` | `:accusative` |  
-| `NOUN` | `POS`     | noun  | `:NOUN` | `olias:hasTagContaining` | `'NOUN';` | `a` | `:noun` |
-| `...` | `...` | ... | `...` | `...` | `...` | `...` | `...` |
+| ACC | CASE     | accusative | `:ACC` | `olias:hasTagContaining` | `'ACC';` | `a` | `:accusative` |  
+| NOUN | POS     | noun  | `:NOUN` | `olias:hasTagContaining` | `'NOUN';` | `a` | `:noun` |
+| ... | ... | ... | ... | ... | ... | ... | ... |
 
 - conclude tag-level statements with `.`
 
 | tag | category | label | URI | property | value | property | class | . | 
 | --- | -------- | ----- | --- | -------- | ----- | -------- | ----- | --|
-| `ACC` | `CASE`     | accusative | `:ACC` | `olias:hasTagContaining` | `'ACC';` | `a` | `:accusative` |  `.` |
-| `NOUN` | `POS`     | noun  | `:NOUN` | `olias:hasTagContaining` | `'NOUN';` | `a` | `:noun` |  `.` |
-| `...` | `...` | ... | `...` | `...` | `...` | `...` | `...` |  `.` |
+| ACC | CASE     | accusative | `:ACC` | `olias:hasTagContaining` | `'ACC';` | `a` | `:accusative` |  `.` |
+| NOUN | POS     | noun  | `:NOUN` | `olias:hasTagContaining` | `'NOUN';` | `a` | `:noun` |  `.` |
+| ... | ... | ... | ... | ... | ... | ... | ... |  `.` |
 
 - continue with concept-level statements, copy class URI, generate category URI using `=CONCAT(":";$category)`. Conclude with `.`.
 
