@@ -1,4 +1,3 @@
-
 The **OLiA Discourse Extensions** extend the [Ontologies of Linguistic
 Annotation (OLiA)](http://purl.org/olia) with respect to **discourse
 features**. The OLiA ontologies provide a a terminology repository that
@@ -17,14 +16,12 @@ available to the community.
 3.  [Anaphora, Information Status and Information Structure](#is)
     \[[background](#is.background), [ontologies](#is.ontology)\]
 
- 
 
 # OLiA Discourse Extensions {#background}
 
- 
 
-This website provides the extension of the [Ontologies of Linguistic
-Annotation (OLiA)](http://purl.org/olia) with respect to **discourse
+We descrone the extension of the Ontologies of Linguistic
+Annotation (OLiA) with respect to **discourse
 features**. The OLiA ontologies provide a a terminology repository that
 can be employed to facilitate the conceptual (semantic) interoperability
 of annotations of discourse phenomena as found in important corpora
@@ -62,8 +59,6 @@ frequently annotated phenomena most often discussed in regard to this
 (hence, anaphora, information status and information structure). Further
 extensions are, however, envisioned.
 
- 
-
 At the moment, the OLiA ontologies cover 9 annotation schemes for the
 annotation of coreference, information status, information structure and
 discourse structure for a broad variety of languages. So far, 8 of these
@@ -91,7 +86,7 @@ and different models of annotation have been developed, accordingly, as
 illustrated for two alternative annotations of the same sentence in the
 figure below.
 
-![](rst-pdtb.jpg){width="50%"}\
+![](rst-pdtb.png){width="50%"}\
 Comparing Discourse Structure Annotations (RST Discourse Treebank and
 Penn Discourse Treebank, file wsj_1365 (simplified)\
 \
@@ -120,7 +115,7 @@ in PDTB, a hierarchical structure in RST). Using the ontologies, these
 aspects of information can be distangled (common properties in terms of
 the Reference Model in bold):
 
-![](condition.jpg){width="50%"}\
+![](condition.png){width="50%"}\
 Comparing CONDITIONs\
 \
 
