@@ -348,116 +348,27 @@ Cross-linguistically applicable schemes include:
 	+-----------------+-----------------+-----------------+-----------------+
 
 
-## English
+## Germanic (English, German, ...)
 
-tagset / NLP tool
-:::
+Annotation models for **English** include
 
-phenomenon
+| tagset / NLP tool | phenomenon | OWL/DL models |
+| -- | -- | -- |
+| Brown corpus | morphosyntax | [Annotation Model](http://purl.org/olia/brown.owl), [Linking Model](http://purl.org/olia/brown-link.rdf) |
+| Connexor | morphosyntax, morphology, dependencies | [Annotation Model](http://purl.org/olia/connexor.owl), [Linking Model](http://purl.org/olia/connexor-link.rdf) |
+| EAGLES (Leech and Wilson 1996) | morphosyntax | [Annotation Model](http://purl.org/olia/eagles.owl), [Linking Model](http://purl.org/olia/eagles-link.rdf) |
+| GENIA corpus | morphosyntax | [Annotation Model](http://purl.org/olia/genia.owl), [Linking Model](http://purl.org/olia/genia-link.rdf) |
+| MULTEXT-East | morphosyntax | [Annotation Model](http://nl.ijs.si/ME/owl/msd-en.owl)(\*), [Linking Model](http://nl.ijs.si/ME/owl/msd-en-link.rdf)(\*) | 
+| Penn Treebank | morphosyntax |  [Annotation Model](http://purl.org/olia/penn.owl), [Linking Model](http://purl.org/olia/penn-link.rdf) |
+| Penn Treebank | syntax | [Annotation Model](http://purl.org/olia/penn-syntax.owl), [Linking Model](http://purl.org/olia/penn-syntax-link.rdf) |
+| QTag | morphosyntax | [Annotation Model](http://purl.org/olia/qtag.owl), [Linking Model](http://purl.org/olia/qtag-link.rdf) |
+| Stanford | dependencies | [Annotation Model](http://purl.org/olia/stanford.owl), [Linking Model](http://purl.org/olia/stanford-link.rdf) |
+| Susanne corpus | morphosyntax | [Annotation Model](http://purl.org/olia/susa.owl), [Linking Model](http://purl.org/olia/susa-link.rdf) | 
+| English UD POS | parts of speech | [language-specific Annotation Model ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/en/pos/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Annotation Model TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/pos/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Linking Model](http://purl.org/olia/ud-pos-link.rdf) |
+| English UD features | morphosyntax | [language-specific Annotation Model ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/en/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Annotation Model TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*) | 
+| English UD dependencies | dependency syntax | [language-specific Annotation Model ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/en/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Annotation Model TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/am/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Linking Model](http://purl.org/olia/ud-pos-link.rdf) |
 
-OWL/DL models
-
-Brown corpus tagset
-
-morphosyntax
-
-[Annotation Model](http://purl.org/olia/brown.owl), [Linking
-Model](http://purl.org/olia/brown-link.rdf)
-
-Connexor dependency parser
-
-morphosyntax, morphology, dependency syntax
-
-[Annotation Model](http://purl.org/olia/connexor.owl), [Linking
-Model](http://purl.org/olia/connexor-link.rdf)
-
-EAGLES recommendations (English)\
-(Leech and Wilson 1996)
-
-morphosyntax
-
-[Annotation Model](http://purl.org/olia/eagles.owl), [Linking
-Model](http://purl.org/olia/eagles-link.rdf)
-
-GENIA corpus
-
-morphosyntax
-
-[Annotation Model](http://purl.org/olia/genia.owl), [Linking
-Model](http://purl.org/olia/genia-link.rdf)
-
-MULTEXT-East (English)
-
-morphosyntax
-
-[Annotation Model](http://nl.ijs.si/ME/owl/msd-en.owl)(\*), [Linking
-Model](http://nl.ijs.si/ME/owl/msd-en-link.rdf)(\*)
-
-Penn Treebank
-
-morphosyntax
-
-[Annotation Model](http://purl.org/olia/penn.owl), [Linking
-Model](http://purl.org/olia/penn-link.rdf)
-
- 
-
-syntax
-
-[Annotation Model](http://purl.org/olia/penn-syntax.owl), [Linking
-Model](http://purl.org/olia/penn-syntax-link.rdf)
-
-QTag
-
-morphosyntax
-
-[Annotation Model](http://purl.org/olia/qtag.owl), [Linking
-Model](http://purl.org/olia/qtag-link.rdf)
-
-Stanford dependency parser
-
-dependency syntac
-
-[Annotation Model](http://purl.org/olia/stanford.owl), [Linking
-Model](http://purl.org/olia/stanford-link.rdf)
-
-Susanne corpus
-
-morphosyntax
-
-[Annotation Model](http://purl.org/olia/susa.owl), [Linking
-Model](http://purl.org/olia/susa-link.rdf)
-
-English UD POS
-
-parts of speech
-
-[language-specific Annotation Model
-ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/en/pos/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*),
-[Annotation Model
-TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/pos/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*),
-[Linking Model](http://purl.org/olia/ud-pos-link.rdf)
-
-English UD features
-
-morphosyntax
-
-[language-specific Annotation Model
-ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/en/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*),
-[Annotation Model
-TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*)
-
-English UD dependencies
-
-dependency syntax
-
-[language-specific Annotation Model
-ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/en/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*),
-[Annotation Model
-TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/am/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*),
-[Linking Model](http://purl.org/olia/ud-pos-link.rdf)
-
-## German
+Annotation models for **German** include
 
 	+-----------------------+-----------------------+-----------------------+
 	| tagset / NLP tool     | phenomenon            | OWL/DL models         |
@@ -624,7 +535,7 @@ TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/a
 	+-----------------------+-----------------------+-----------------------+
 
 
-## Other Germanic languages
+Annotation models for **other Germanic languages**
 
 	+-----------------+-----------------+-----------------+-----------------+
 	| tagset/NLP tool | language        | phenomenon      | OWL/DL models   |
@@ -1469,7 +1380,9 @@ TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/a
 	|                 |                 |                 | d-pos-link.rdf) |
 	+-----------------+-----------------+-----------------+-----------------+
 
-## Russian
+## Slavic and Baltic
+
+Annotation models for **Russian** include
 
 	+-----------------------+-----------------------+-----------------------+
 	| tagset / NLP tool     | phenomenon            | OWL/DL models         |
@@ -1599,9 +1512,8 @@ TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/a
 	|                       |                       | olia/ud-pos-link.rdf) |
 	+-----------------------+-----------------------+-----------------------+
 
- 
 
-## Other Slavic and Baltic languages
+Annotation models for **other Slavic and Baltic languages** include
 
 
 |	tagset / NLP tool	|	language	|	phenomenon	|	OWL/DL models	|
@@ -1641,8 +1553,9 @@ TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/a
 |	Old Church Slavonic UD features	|	Old Church Slavonic	|	morphosyntax	|	[language-specific Annotation Model ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/cu/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Annotation Model TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*)	|
 |	Old Church Slavonic UD dependencies	|	Old Church Slavonic	|	dependency syntax	|	[language-specific Annotation Model ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/cu/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Annotation Model TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Linking Model](http://purl.org/olia/ud-pos-link.rdf)	|
 
+## Romance (French, ...) and Italic
 
-## French
+Annotation models for **French** include
 
 	+-----------------------+-----------------------+-----------------------+
 	| tagset / NLP tool     | phenomenon            | OWL/DL models         |
@@ -1789,7 +1702,7 @@ TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/a
 	+-----------------------+-----------------------+-----------------------+
 
 
-## Other Romance and Italic languages
+Annotation models for **other Romance and Italic languages** include
 
 | tagset |  language |  phenomenon | OWL/DL models |
 | ------ | ----------| ----------- | ------------- |
@@ -5217,6 +5130,8 @@ TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/a
 
  
 
+# Other Vocabularies
+
 ## External Reference Models
 
 |	terminological repository	|	original url	|	local url	|	Linking Model	|
@@ -5225,9 +5140,7 @@ TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/a
 |	GOLD	|	[http://linguistics-ontology.org](http://linguistics-ontology.org/)	|	t.b.a	|	t.b.a	|
 
 
-## Other applications
-
-### BLL - Bibliography of Linguistic Literature Thesaurus
+## BLL - Bibliography of Linguistic Literature Thesaurus
 
 OLiA also serves as a conceptual backbone for the ontological
 reconstruction, resp. LLOD edition, of legacy thesauri of linguistic
