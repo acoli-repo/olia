@@ -47,15 +47,15 @@ The linguistic resources dealt by the project are highly heterogeneous:
 
 -   the primary data itself is heterogeneous:
     -   size (e.g., single sentences vs. entire articles),
--   text types / data types (e.g. newspaper texts, diachronic texts,
+    -   text types / data types (e.g. newspaper texts, diachronic texts,
     dialogues, treebanks, \...)
--   modality (monologue vs. dialogue),
+    -   modality (monologue vs. dialogue),
+    -   language
 -   categories of information covered by the annotation / annotation levels (e.g. layout, textual structure, morpho-syntax, syntax, \...)
--   underlying linguistic theories
--   language
--   the annotations require data structures of various types (attribute-value pairs, trees, pointers, etc.)
--   data is annotated by means of different, task-specific annotation
-    tools
+    -   underlying linguistic theories
+    -   the annotations require data structures of various types (attribute-value pairs, trees, pointers, etc.)
+    - different formats
+    -   data is annotated by means of different, task-specific annotation tools
 
 See [here](http://www.sfb441.uni-tuebingen.de/c2/index-engl.html) for a
 general description of the project in Tübingen.
