@@ -329,3 +329,32 @@ the keywords used for indexing linguistic literature since the 1970s.
 |	BLL Thesaurus (SKOS)	|	[BLL Thesaurus (different formats available via content negotiation)](http://data.linguistik.de/bll/bll-thesaurus)	|	none	|
 |	BLL Ontology (OWL)	|	[BLL Ontology (different formats available via content negotiation)](http://data.linguistik.de/bll/bll-ontology)	|	[bll-link.rdf](http://purl.org/olia/bll-link.rdf)	|
 
+
+# Terms of Use, Questions, Issues
+
+OLiA is open source (see below) and we invite external contributors to join, to add or to provide feedback. If you have questions about OLiA, the recommended way is to join and reach out via the **[ACoLi mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
+Alternatively, and in particular for potential errors or feature requests regarding OLiA, please feel free to create a new issue via the [GitHub form](https://github.com/acoli-repo/olia/issues). However, please take a minute in this case to make sure your question or request is not already addressed by another issue.
+
+
+All **code** provided in this repository falls under the Apache v.2 license.
+
+All **original data** (i.e., all data in RDF, OWL or an RDF serialization) provided in this repository is published under the [Creative Commons Attribution 3.0 Unported (CC-BY 3.0)](https://creativecommons.org/licenses/by/3.0/) license -- unless marked otherwise *in the header* / at the beginning of ontologies and other data.
+
+This means, you are free to:
+
+    Share — copy and redistribute the material in any medium or format
+    Adapt — remix, transform, and build upon the material for any purpose, even commercially. 
+
+Under the following terms:
+
+    Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+	No additional restrictions: You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+For **attribution** in scientific papers, please refer to 
+
+> Christian Chiarcos, and Maria Sukhareva (2015). [OLiA - Ontologies of Linguistic Annotation](http://semantic-web-journal.net/content/olia-%E2%80%93-ontologies-linguistic-annotation), *SWJ (Semantic Web Journal)* 6(4): 379-386.
+
+In scientific publications that are based on OLiA, scripts or data provided in this repository, please use this publication as a reference.
+
+For attribution in downstream applications or derived data, please provide the source URL of the repository and include the above attribution note for scientific papers.

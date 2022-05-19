@@ -9,4 +9,4 @@ OLiA has been designed as an open source resource and has always been released a
 
 Brought to you by the Applied Computational Linguistics lab at Goethe University Frankfurt, Germany.
 
-Readme: http://purl.org/olia/Readme.md.
+> OLiA is open source (code: Apache v.2, data: CC-BY 3.0), for terms of use, attribution and detailed documentation, please see [the official website](https://acoli-repo.github.io/olia/).
