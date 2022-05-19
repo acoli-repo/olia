@@ -154,7 +154,7 @@ deprecated.
 |	OLiA Top-Level Ontology	|	top-level concepts of the OLiA Reference Model for morphosyntax, morphology and syntax	|	<http://purl.org/olia/olia-top.owl>	|
 
 
-# Annotation Models: Morphosyntax, Morphology, Syntax
+# OLiA Annotation Models: Morphosyntax, Morphology, Syntax
 
 Annotation models for cross-linguistically applicable annotation schemes include:
 
@@ -1282,9 +1282,21 @@ parts of speech, glosses, chunk labels, grammatical functions (phonology,
 
 
 
-# Other Vocabularies
+# Other OLiA Vocabularies
+
+## OLiA Discourse Extensions
+
+In addition to annotation schemes for morphosyntax, morphology and syntax, we also provide an extension of OLiA for discourse phenomena such as co-reference, information status, information structure, discourse structures and discourse relations. These are described in a [separate document](discourse.html).
+
+So far, the OLiA Discourse Extensions have not been integrated with the OLiA Reference Model because the taxonomy of discourse relations, resp., its axiomaticization, is considered controversial in the community so that no cross-theoretically applicable consensus exists. The OLiA Discourse Extensions provide a draft for such a consensus, in that they combine the taxonomy of the Penn Discourse Treebank with different variants of Rhetorical Structure Theory, however, this was done in a conservative way, and where definitions could not be easily compared with each other, theory-specific concepts remained. Once a consensus on these has been established, the discourse extensions should be integrated with the OLiA Reference Model.
 
 ## External Reference Models
+
+The OLiA Reference Model was never meant to provide prescriptive terminology, but only as a generalization over terminology relevant to annotation and/or as found in linguistically annotated corpora.
+For this reason, it is also not very deeply axiomatized. Instead, we assume that a full-fledged axiomaticization can be provided or inherited from community-maintained terminology repositories. The OLiA taxonomy has been developed as a compromise between these and individual annotations, so that OLiA concepts are linked (and can be interpreted) in terms of these *External Reference Models*. 
+
+A practical problem in the direct application of these external reference models is that 
+
 
 |	terminological repository	|	original url	|	local url	|	Linking Model	|
 |	 ---	|	 ---	|	 ---	|	 ---	|
