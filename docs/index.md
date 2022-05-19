@@ -28,7 +28,8 @@ of the universities of Tübingen, Hamburg, Potsdam, HU Berlin
 University Potsdam and the Humboldt-University Berlin (since 2007). The
 original goal was to document and to formalize linguistic categories for
 all language resources of the linguistic collaborative research centers
-existing at the time. Later on, different applications in corpus
+existing at the time. A document describing the [original motivation](motivation.html) is provided as part of the documentation. 
+Later on, different applications in corpus
 linguistics, natural language processing and the Semantic Web have been
 developed.
 
@@ -101,9 +102,7 @@ OLiA is used in a number of projects and resources, including
         (lexical resources for, e.g., Gothic, Old/Middle/Early Modern
         High German, Old/Middle English and Middle Dutch).
 
-This page enumerates the ontologies that are currently available. The
-ontologies are released under a Creative Commons Attribution licence
-CC-BY with reference to
+Unless marked otherwise, the ontologies are released under a Creative Commons Attribution licence CC-BY with reference to
 
 > Christian Chiarcos, and Maria Sukhareva (2015). [OLiA - Ontologies of Linguistic Annotation](http://semantic-web-journal.net/content/olia-%E2%80%93-ontologies-linguistic-annotation), *SWJ (Semantic Web Journal)* 6(4): 379-386.
 
@@ -144,6 +143,7 @@ deprecated.
 
 # OLiA Reference Model
 
+The OLiA Reference Model defines shared terminology as *either* used for linguistic annotation in the language resources for which annotation models are provided *or* defined in an [external reference model](#external-reference-models).
 
 |	Module	|	phenomenon	|	OWL/DL models	|
 |	 ---	|	 ---	|	 ---	|
@@ -285,9 +285,9 @@ Annotation models for cross-linguistically applicable annotation schemes include
 </tr>
 </table>
 
-## How to Build Your Own
+## Build and Link Your Own Annotation Models
 
-
+The creation and linking of novel annotation models is described in [a separate document](linking.html). When external annotation models are created, we ask to notify us by creating a [novel issue](https://github.com/acoli-repo/olia/issues/new) in the GitHub repository with the subject `add annomodel: ...` (and the name).
 
 # Other OLiA Vocabularies
 

@@ -1,6 +1,28 @@
+OLiA Annotation models provide a machine-readable formalization of annotation schemes and tagsets in OWL2/DL (resp., RDF). The majority of these models is provided via this repository and published under resolvable URIs via [http://purl.org/olia](http://purl.org/olia/olia.owl). Beyond that, additional OLiA
+annotation models externally hosted and/or provided include
+
+-   language-specific editions of the Universal Dependencies (version
+    1.3, in Filip Ginter\'s [fork of the UD
+    documentation](http://fginter.github.io/docs/)), covering 54
+    treebanks and 40 languages.
+-   [Resources for Korean
+    NLP2RDF](http://semanticweb.kaist.ac.kr/nlp2rdf/resource/) with
+    Annotation and Linking Models for the Korean Sejong Treebank by
+    Younggyun Hahm and Key-Sun Choi
+-   [MULTEXT-East morphosyntactic specifications for corpora and
+    lexicons](http://nl.ijs.si/ME/owl/) in 16 (mostly) Eastern European
+    languages, developed by Christian Chiarcos and Tomas Erjavec
+
+Below, links to external resources are marked with (\*).
+Unless marked otherwise, all ontologies provided via this repository are released under a Creative Commons Attribution licence CC-BY with reference to
+
+> Christian Chiarcos, and Maria Sukhareva (2015). [OLiA - Ontologies of Linguistic Annotation](http://semantic-web-journal.net/content/olia-%E2%80%93-ontologies-linguistic-annotation), *SWJ (Semantic Web Journal)* 6(4): 379-386.
+
 # OLiA Annotation Models: Morphosyntax, Morphology, Syntax
 
-Annotation models for cross-linguistically applicable annotation schemes include:
+Below, we provide annotation and linking models for cross-linguistically and language-specific annotation schemas for morphosyntax, morphology and syntax.
+
+## Cross-linguistically Applicable
 
 <table border=1 cellpadding=0 >
 <tr >
