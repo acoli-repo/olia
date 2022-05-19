@@ -154,7 +154,7 @@ deprecated.
 |	OLiA Top-Level Ontology	|	top-level concepts of the OLiA Reference Model for morphosyntax, morphology and syntax	|	<http://purl.org/olia/olia-top.owl>	|
 
 
-# OLiA Annotation Models for morphology, morphosyntax and syntax
+# Morphosyntax, Morphology, Syntax
 
 Cross-linguistically applicable schemes include:
 
