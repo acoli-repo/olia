@@ -1,9 +1,6 @@
+# Build a Novel Annotation Model
 
-# How to Build Novel Annotation Models
-
-
-## 1. Create an Annotation Model
-### 1.a Using a Graphical Editor 
+## 1.a Using a Graphical Editor 
 
 We assume you start with a document (say, a paper, or a whitepaper) 
 
@@ -25,7 +22,7 @@ We assume you start with a document (say, a paper, or a whitepaper)
 - add ontology-level metadata information
 - save as RDF/XML, use the naming pattern `xyz.owl` (with `xyz` being an identifier of your model
 
-## 1.b using a text editor and the Turtle format
+## 1.b Using a Text Editor and the Turtle Format
 
 In principle, this follows the same procedure, but use a text editor and Turtle format to write the ontology directly.
 This has the advantage that the resulting data can structured to provide a human-readable form.
@@ -43,9 +40,11 @@ This has the advantage that the resulting data can structured to provide a human
 - validate TTL, e.g., using http://ttl.summerofcode.be/
 - open and correct in Protege and proceed as in a.
 
-## 1.c from a list of tags (as extracted from a corpus)
+## 1.c From a List of Tags
 
-In principle, this follows the same procedure, but the initial creation process can be automatized.
+If no other documentation is available, a list of tags (along with examples) may be extracted from a corpus, if a language expert can interpret these while creating the annotation model.
+
+In principle, this follows the same procedure, but the initial creation process an be automatized.
 
 - Assume that the source data comes in, say, 3 columns (tag, category, label; there can be more columns, or the label column may be missing). If there is no category column, create one manually.
 
@@ -117,16 +116,18 @@ In principle, this follows the same procedure, but the initial creation process 
 - validate TTL, e.g., using http://ttl.summerofcode.be/. Note that there may be complications with non-ASCII characters or reserved symbols (e.g., spaces) in URIs, fix these manually.
 - open and correct in Protégé and proceed as in 1.a.
 
-## 2. create linking model
+# Linking an Annotation Model
 
-### 2.a create linking model (manually, GUI)
+To benefit from synergies with OLiA, annotation models should be *linked*, i.e., `rdfs:subClassOf`/`rdfs:subPropertyOf` links with `http://purl.org/olia/olia.owl` should be created. By convention, these are stored in separate files, using the naming schema `xyz-link.rdf` (with `xyz` being the acronym of your annotation model) and provided in RDF/XML format.
+
+## 2.a Create Linking Model (Manually, GUI)
 
 - create new ontology in Protégé, import annotation model and http://purl.org/olia/olia.owl
 - go through all annotation model concepts which are not bold (i.e., locally enriched) and add a olia superclass
 - in order to find the appropriate OLiA superclass, open the reference model in a text editor, search for relevant concepts
 - document possible gaps and submit for review
 
-### 2.b create linking model (manually, text editor)
+## 2.b Create Linking Model (Manually, Text Editor)
 
 - create a Turtle file with header as in 1.b
 - add import declarations
@@ -144,7 +145,7 @@ In principle, this follows the same procedure, but the initial creation process 
 - validate Turtle (as above)
 - open and refine in Protégé as above
 
-### 2.c create linking model (semi-automatically)
+## 2.c Create Linking Model (Semi-Automatically)
 
 We provide a script to facilitate semiautomated linking for (Unix-style) shell environments. This is the file `/tools/link.sh` in this repository.
 
