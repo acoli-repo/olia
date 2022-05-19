@@ -1,6 +1,6 @@
 # Motivations
 
-> Note: This is a historical document (from 2008!) that describes the *original* motivations for the development of OLiA in the context of the project "Sustainability of Linguistic Data" (funded by DFG, 2005-2008 at U Tübingen, U Hamburg, U Potsdam; Germany). Subsequently, novel fields of application have emerged.
+> Note: This is a historical document (from 2007!) that describes the *original* motivations for the development of OLiA in the context of the project "Sustainability of Linguistic Data" (funded by DFG, 2005-2008 at U Tübingen, U Hamburg, U Potsdam; Germany). Subsequently, novel fields of application have emerged.
 
 Concentrating on the more elementary levels of linguistic analysis such
 as parts of speech and morphology, a generalization over different
