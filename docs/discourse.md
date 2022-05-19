@@ -86,10 +86,10 @@ and different models of annotation have been developed, accordingly, as
 illustrated for two alternative annotations of the same sentence in the
 figure below.
 
-![](rst-pdtb.png){width="50%"}\
-Comparing Discourse Structure Annotations (RST Discourse Treebank and
-Penn Discourse Treebank, file wsj_1365 (simplified)\
-\
+![](rst-pdtb.png)\
+Fig. 1. Comparing Discourse Structure Annotations (RST Discourse Treebank and
+Penn Discourse Treebank, file wsj_1365 (simplified)
+
 
 With traditional annotation schemes, these annotations can hardly be put
 in any relation to each other, because different structures are
@@ -99,13 +99,10 @@ relations on the basis of the utterances they spann across, pairs of
 relations can be formed:
 
 
-  ----------- ------------------------------------------ ------------- -------------
-              PDTB                                                     RST
-  (4)-(5)     CONTINGENCY.CONDITION.GENERAL              (4)-(5-7)     CONDITION
-  (2)-(4-7)   CONTINGENY.CAUSE.RESULT                    (1-2)-(3-7)   EXPLANATION
-  (4-5)-(6)   EXPANSION.ALTERNATIVE.CHOSEN ALTERNATIVE   (5)-(6-7)     CONTRAST
-  ----------- ------------------------------------------ ------------- -------------
-
+                  PDTB                                                     RST
+      (4)-(5)     CONTINGENCY.CONDITION.GENERAL              (4)-(5-7)     CONDITION
+      (2)-(4-7)   CONTINGENY.CAUSE.RESULT                    (1-2)-(3-7)   EXPLANATION
+      (4-5)-(6)   EXPANSION.ALTERNATIVE.CHOSEN ALTERNATIVE   (5)-(6-7)     CONTRAST
 
 
 Yet, within their annotation schemes, the relations cannot be directly
@@ -115,60 +112,60 @@ in PDTB, a hierarchical structure in RST). Using the ontologies, these
 aspects of information can be distangled (common properties in terms of
 the Reference Model in bold):
 
-![](condition.png){width="50%"}\
-Comparing CONDITIONs\
-\
+![](condition.png)\
+Fig 2. Comparing CONDITIONs
+
 
 ### Ontologies {#discourse.ontologies}
 
 <table border=1 cellpadding=0 >
- <tr >
-  <th>Model</td>
-  <th>Description</th>
-  <th>Phenomenon</th>
-  <th>OWL/DL models</th>
- </tr>
- <tr>
-    <td>Reference Model</td>
-    <td>Reference Model fragment for discourse structure and discourse relations, to be integrated with <a href="http://purl.org/olia/olia.owl" target="new">the OLiA Reference Model</a></td>
-    <td>discourse structure, discourse relations, information structure, information status, coreference</td>
-    <td><a href="http://purl.org/olia/discourse/olia_discourse.owl" target="new">OLiA Discourse Extensions Model</a>, <a href="http://purl.org/olia/discourse/olia_discourse-link.rdf" target="new">Provisional Reference Model linking</a></td>
+<tr >
+<th>Model</td>
+<th>Description</th>
+<th>Phenomenon</th>
+<th>OWL/DL models</th>
 </tr>
 <tr>
-    <td>RST Annotation Modell</td>
-    <td>Annotation Model for RST (<a href="http://www.sfu.ca/rst/" target="new">http://www.sfu.ca/rst/, English, French, Portuguese, Spanish)</a></td>
-    <td>discourse structure, discourse relations</td>
-    <td><a href="http://purl.org/olia/discourse/discourse.RST.owl" target="new">Annotation Model</a>, 
-        <a href="http://purl.org/olia/discourse/discourse.RST-link.rdf" target="new">Linking Model</a>
-    </td>
+<td>Reference Model</td>
+<td>Reference Model fragment for discourse structure and discourse relations, to be integrated with <a href="http://purl.org/olia/olia.owl" target="new">the OLiA Reference Model</a></td>
+<td>discourse structure, discourse relations, information structure, information status, coreference</td>
+<td><a href="http://purl.org/olia/discourse/olia_discourse.owl" target="new">OLiA Discourse Extensions Model</a>, <a href="http://purl.org/olia/discourse/olia_discourse-link.rdf" target="new">Provisional Reference Model linking</a></td>
 </tr>
 <tr>
-    <td>RSTDTB Annotation Model</td>
-    <td>Annotation Model for the RST Discourse Treebank (English, Wallstreet Journal)</a></td>
-    <td>discourse structure, discourse relations</td>
-    <td><a href="http://purl.org/olia/discourse/discourse.RSTDTB.owl" target="new">Annotation Model</a>, 
-        <a href="http://purl.org/olia/discourse/discourse.RSTDTB-link.rdf" target="new">Linking Model</a>
-    </td>
+<td>RST Annotation Modell</td>
+<td>Annotation Model for RST (<a href="http://www.sfu.ca/rst/" target="new">http://www.sfu.ca/rst/, English, French, Portuguese, Spanish)</a></td>
+<td>discourse structure, discourse relations</td>
+<td><a href="http://purl.org/olia/discourse/discourse.RST.owl" target="new">Annotation Model</a>, 
+<a href="http://purl.org/olia/discourse/discourse.RST-link.rdf" target="new">Linking Model</a>
+</td>
 </tr>
 <tr>
-    <td>PDTB Annotation Model</td>
-    <td>Annotation Model for the Penn Discourse Treebank (English, Wallstreet Journal), also applicable to PDTB-derivatives for Turkish, Hindi, Italian and Chinese</a></td>
-    <td>discourse relations</td>
-    <td><a href="http://purl.org/olia/discourse/discourse.PDTB.owl" target="new">Annotation Model</a>,
-    <a href="http://purl.org/olia/discourse/discourse.PDTB-link.rdf" target="new">Linking Model</a></td>
+<td>RSTDTB Annotation Model</td>
+<td>Annotation Model for the RST Discourse Treebank (English, Wallstreet Journal)</a></td>
+<td>discourse structure, discourse relations</td>
+<td><a href="http://purl.org/olia/discourse/discourse.RSTDTB.owl" target="new">Annotation Model</a>, 
+<a href="http://purl.org/olia/discourse/discourse.RSTDTB-link.rdf" target="new">Linking Model</a>
+</td>
 </tr>
 <tr>
-    <td>PDGB Annotation Model</td>
-    <td>Annotation Model for the Penn Discourse Graphbank (English, incl. Wallstreet Journal)</a></td>
-    <td>discourse relations</td>
-    <td><a href="http://purl.org/olia/discourse/discourse.PDGB.owl" target="new">Annotation Model</a>,
-    <a href="http://purl.org/olia/discourse/discourse.PDGB-link.rdf" target="new">Linking Model</a></td>
+<td>PDTB Annotation Model</td>
+<td>Annotation Model for the Penn Discourse Treebank (English, Wallstreet Journal), also applicable to PDTB-derivatives for Turkish, Hindi, Italian and Chinese</a></td>
+<td>discourse relations</td>
+<td><a href="http://purl.org/olia/discourse/discourse.PDTB.owl" target="new">Annotation Model</a>,
+<a href="http://purl.org/olia/discourse/discourse.PDTB-link.rdf" target="new">Linking Model</a></td>
 </tr>
 <tr>
-    <td>Knott Annotation Model</td>
-    <td>Annotation Model for the Knott (1996) discourse cue taxonomy (not used for corpus annotation, but for cue word classification, such discourse cues have been annotated in PDTB, though)</a></td>
-    <td>discourse (relation) marker taxonomy</td>
-    <td><a href="http://purl.org/olia/discourse/discourse.knott.owl" target="new">Annotation Model</a>,
+<td>PDGB Annotation Model</td>
+<td>Annotation Model for the Penn Discourse Graphbank (English, incl. Wallstreet Journal)</a></td>
+<td>discourse relations</td>
+<td><a href="http://purl.org/olia/discourse/discourse.PDGB.owl" target="new">Annotation Model</a>,
+<a href="http://purl.org/olia/discourse/discourse.PDGB-link.rdf" target="new">Linking Model</a></td>
+</tr>
+<tr>
+<td>Knott Annotation Model</td>
+<td>Annotation Model for the Knott (1996) discourse cue taxonomy (not used for corpus annotation, but for cue word classification, such discourse cues have been annotated in PDTB, though)</a></td>
+<td>discourse (relation) marker taxonomy</td>
+<td><a href="http://purl.org/olia/discourse/discourse.knott.owl" target="new">Annotation Model</a>,
     no Linking Model yet</td>
 </tr>
 </table>
@@ -219,51 +216,51 @@ formalized here together with a generalizing Reference Model fragment.
 ### Ontologies {#is.ontology}
 
 <table border=1 cellpadding=0 >
- <tr >
-  <th>Model</td>
-  <th>Description</th>
-  <th>Phenomenon</th>
-  <th>OWL/DL models</th>
- </tr>
- <tr>
-    <td>Reference Model</td>
-    <td>Reference Model fragment, to be integrated with <a href="http://purl.org/olia/olia.owl" target="new">the OLiA Reference Model</a></td>
-    <td>discourse structure, discourse relations, information structure, information status, coreference</td>
-    <td><a href="http://purl.org/olia/discourse/olia_discourse.owl" target="new">OLiA Discourse Extensions model</a>, <a href="http://purl.org/olia/discourse/olia_discourse-link.rdf" target="new">Provisional Reference Model linking</a></td>
+<tr >
+<th>Model</td>
+<th>Description</th>
+<th>Phenomenon</th>
+<th>OWL/DL models</th>
 </tr>
 <tr>
-    <td>CRC632</td>
-    <td>Annotation Model for the corpora of the Collaborative Research Center (SFB) 632, "Information Structure" (Potsdam, Berlin, Germany), applied to various, typologically different languages</td>
-    <td>information structure, information status</td>
-    <td><a href="http://purl.org/olia/discourse/is.SFB632.owl" target="new">Annotation Model</a>, 
-    <a href="http://purl.org/olia/discourse/is.SFB632-link.rdf" target="new">Linking Model</a></td>
+<td>Reference Model</td>
+<td>Reference Model fragment, to be integrated with <a href="http://purl.org/olia/olia.owl" target="new">the OLiA Reference Model</a></td>
+<td>discourse structure, discourse relations, information structure, information status, coreference</td>
+<td><a href="http://purl.org/olia/discourse/olia_discourse.owl" target="new">OLiA Discourse Extensions model</a>, <a href="http://purl.org/olia/discourse/olia_discourse-link.rdf" target="new">Provisional Reference Model linking</a></td>
 </tr>
 <tr>
-    <td>DIRNDL</td>
-    <td>Annotation Model for the DIRNDL corpus (German, spoken language)</td>
-    <td>information status, coreference</td>
-    <td><a href="http://purl.org/olia/discourse/is.DIRNDL.owl" target="new">Annotation Model</a>,
-    <a href="http://purl.org/olia/discourse/is.DIRNDL-link.rdf" target="new">Linking Model</a>
-    </td>
+<td>CRC632</td>
+<td>Annotation Model for the corpora of the Collaborative Research Center (SFB) 632, "Information Structure" (Potsdam, Berlin, Germany), applied to various, typologically different languages</td>
+<td>information structure, information status</td>
+<td><a href="http://purl.org/olia/discourse/is.SFB632.owl" target="new">Annotation Model</a>, 
+<a href="http://purl.org/olia/discourse/is.SFB632-link.rdf" target="new">Linking Model</a></td>
 </tr>
 <tr>
-    <td>PoCoS</td>
-    <td>Annotation Model for the Potsdam Coreference Scheme, applied to English, German and Russian</td>
-    <td>coreference</td>
-    <td><a href="http://purl.org/olia/discourse/coref.POCOS.owl" target="new">Annotation Model</a>,
-    <a href="http://purl.org/olia/discourse/coref.POCOS-link.rdf" target="new">Linking Model</a></td>
+<td>DIRNDL</td>
+<td>Annotation Model for the DIRNDL corpus (German, spoken language)</td>
+<td>information status, coreference</td>
+<td><a href="http://purl.org/olia/discourse/is.DIRNDL.owl" target="new">Annotation Model</a>,
+<a href="http://purl.org/olia/discourse/is.DIRNDL-link.rdf" target="new">Linking Model</a>
+</td>
 </tr>
 <tr>
-    <td>ARRAU</td>
-    <td>Annotation Model for the ARRAU corpus (English)</td>
-    <td>coreference, bridging</td>
-    <td><a href="http://purl.org/olia/discourse/coref.ARRAU.owl" target="new">Annotation Model</a>,
-    <a href="http://purl.org/olia/discourse/coref.ARRAU-link.rdf" target="new">Linking Model</a></td>
+<td>PoCoS</td>
+<td>Annotation Model for the Potsdam Coreference Scheme, applied to English, German and Russian</td>
+<td>coreference</td>
+<td><a href="http://purl.org/olia/discourse/coref.POCOS.owl" target="new">Annotation Model</a>,
+<a href="http://purl.org/olia/discourse/coref.POCOS-link.rdf" target="new">Linking Model</a></td>
 </tr>
 <tr>
-    <td>TüBa-D/Z</td>
-    <td>Annotation Model for the TüBa-D/Z corpus (German)</td>
-    <td>coreference</td>
-    <td><a href="http://purl.org/olia/discourse/coref.TUEBA.owl" target="new">Annotation Model</a></td>
+<td>ARRAU</td>
+<td>Annotation Model for the ARRAU corpus (English)</td>
+<td>coreference, bridging</td>
+<td><a href="http://purl.org/olia/discourse/coref.ARRAU.owl" target="new">Annotation Model</a>,
+<a href="http://purl.org/olia/discourse/coref.ARRAU-link.rdf" target="new">Linking Model</a></td>
+</tr>
+<tr>
+<td>TüBa-D/Z</td>
+<td>Annotation Model for the TüBa-D/Z corpus (German)</td>
+<td>coreference</td>
+<td><a href="http://purl.org/olia/discourse/coref.TUEBA.owl" target="new">Annotation Model</a></td>
 </tr>
 </table>
