@@ -158,6 +158,128 @@ deprecated.
 
 Annotation models for cross-linguistically applicable annotation schemes include:
 
+<table border=1 cellpadding=0 >
+<tr >
+<td >
+    tagset / NLP tool  
+</td>
+<td >
+    phenomenon  
+</td>
+<td >
+    languages  
+</td>
+<td >
+    OWL/DL models  
+</td>
+</tr>
+<tr >
+<td >
+    SFB632 annotation standard (Dipper et al. 2008)  
+</td>
+<td >
+    parts of speech, glosses, chunk labels, grammatical functions (phonology,
+  information structure)  
+</td>
+<td >
+    &gt; 30 typologically different languages, including many African
+  languages   
+</td>
+<td >
+<a href="http://purl.org/olia/sfb632.owl">Annotation Model</a>, <a href="http://purl.org/olia/sfb632-link.rdf">Linking Model</a>  
+</td>
+</tr>
+<tr>
+<td>  EAGLES recommendations<br/>(Leech and Wilson 1996)  </td>
+<td>  morphosyntax  </td>
+<td>  11 EU languages, incl. Romance, Germanic, Greek and Irish  </td>
+<td>  <a href="http://purl.org/olia/eagles.owl">Annotation Model</a>, <a href="http://purl.org/olia/eagles-link.rdf">Linking Model</a>  </td>
+</tr>
+<tr >
+<td >
+    Connexor dependency parser  
+</td>
+<td >
+    morphosyntax, morphology, dependency syntax  
+</td>
+<td >
+    10 European languages, incl. Romance, Germanic and Uralic languages  
+</td>
+<td >
+<a href="http://purl.org/olia/connexor.owl">Annotation Model</a>, 
+<a href="http://purl.org/olia/connexor-link.rdf">Linking Model</a>  
+</td>
+</tr>
+<tr >
+<td >
+    MULTEXT-East   
+</td>
+<td >
+    morphosyntax, morphology  
+</td>
+<td >
+    15 mostly Eastern European languages, incl. Slavic, Romance, Uralic
+  languages and Persian  
+</td>
+<td >
+<a href="http://nl.ijs.si/ME/owl/multext-east.owl">Annotation Model (common specifications)</a>(*),
+<a href="http://nl.ijs.si/ME/owl/mte-link.rdf">Linking Model</a>(*); 
+<a href="http://nl.ijs.si/ME/owl/all.owl">Annotation Model (all languages)</a>(*), 
+  see <a href="http://nl.ijs.si/ME/owl">project page</a> and below for individual languages  
+</td>
+</tr>
+<tr>
+<td>  IL-POSTS tagset<br/>Baskaran et al. (2008)  </td>
+<td>  morphosyntax  </td>
+<td>  languages of the Indian subcontinent  </td>
+<td>  <a href="http://purl.org/olia/ilposts.owl">Annotation Model</a>, <a href="http://purl.org/olia/ilposts-link.rdf">Linking Model</a>  </td>
+</tr>
+<tr>
+<td>  AnnCorra <br/>Bharati et al. (2006)  </td>
+<td>  morphosyntax, chunks  </td>
+<td>  languages of the Indian subcontinent  </td>
+<td>  <a href="http://purl.org/olia/ancorra.owl">Annotation Model</a>, <a href="http://purl.org/olia/ancorra-link.rdf">Linking Model</a>  </td>
+</tr>
+<tr>
+<td>  IIIT tagset <br/>IIT (2007)  </td>
+<td>  morphosyntax  </td>
+<td>  languages of the Indian subcontinent  </td>
+<td>  <a href="http://purl.org/olia/iiit.owl">Annotation Model</a>, <a href="http://purl.org/olia/iiit-link.rdf">Linking Model</a>  </td>
+</tr>
+<tr>
+<td>  PROIEL  </td>
+<td>  morphosyntax, dependency syntax  </td>
+<td>  Older Indo-European languages (Greek, Latin, Gothic, Classical Armenian, Old Church Slavonic, others  </td>
+<td>  <a href="http://purl.org/olia/proiel.owl">Annotation Model</a>, <a href="http://purl.org/olia/proiel-link.rdf">Linking Model</a>  </td>
+</tr>
+<tr>
+<td>  Universal Dependencies (POS)  </td>
+<td>  parts of speech  </td>
+<td>  various languages  </td>
+<td>  
+(for language-specific Annotation Model ABoxes see below)
+<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/pos/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*), 
+<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a></td>
+</tr>
+<tr>
+<td>  Universal Dependencies (features)  </td>
+<td>  morphosyntax  </td>
+<td>  various languages  </td>
+<td>  
+(for language-specific Annotation Model ABoxes see below)
+<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*)  </td>
+</tr>
+<tr>
+<td>  Universal Dependencies (relations)  </td>
+<td>  dependency syntax  </td>
+<td>  various languages  </td>
+<td>  
+(for language-specific Annotation Model ABoxes see below)
+<a href="https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">Annotation Model TBox</a>(*),
+<a href="http://purl.org/olia/ud-pos-link.rdf">Linking Model</a>
+</td>
+</tr>
+</table>
 
 
 
@@ -1003,8 +1125,8 @@ Tibetan (Old Tibetan, Classical Tibetan, Balti, Ladakh)</td>
 <td >
 morphosyntax, morphology, syntax</td>
 <td > <a href="http://purl.org/olia/tibet.owl">Annotation Model</a>
-  <!--a href="http://purl.org/olia/tibet-link.rdf">Linking Model</a-->
-  <!-- to be updated --></td></tr>
+<!--a href="http://purl.org/olia/tibet-link.rdf">Linking Model</a-->
+<!-- to be updated --></td></tr>
 </table>
 
 
