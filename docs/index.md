@@ -161,9 +161,9 @@ Annotation models for cross-linguistically applicable annotation schemes include
 
 
 
-## Germanic (English, German, ...)
+## Germanic
 
-Annotation models for **English** include
+Annotation models for **English** include, annotation models for **German** and **other Germanic languages** below.
 
 | tagset / NLP tool | phenomenon | OWL/DL models |
 | -- | -- | -- |
@@ -516,9 +516,9 @@ Annotation models for **other Slavic and Baltic languages** include
 |	Old Church Slavonic UD features	|	Old Church Slavonic	|	morphosyntax	|	[language-specific Annotation Model ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/cu/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Annotation Model TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/feat/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*)	|
 |	Old Church Slavonic UD dependencies	|	Old Church Slavonic	|	dependency syntax	|	[language-specific Annotation Model ABox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/cu/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Annotation Model TBox](https://www.w3.org/2012/pyRdfa/extract?uri=http://fginter.github.io/docs/u/dep/all.html&format=xml&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=false&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false)(\*), [Linking Model](http://purl.org/olia/ud-pos-link.rdf)	|
 
-## Romance (French, ...) and Italic
+## Romance, Italic, Latin
 
-Annotation models for **French** include
+Annotation models for **French** include, annotation models for other Romance and Italic languages (Latin) below
 
 <table>
 <tr >
@@ -736,6 +736,8 @@ parts of speech, glosses, chunk labels, grammatical functions (phonology,
 
 
 ## Other European languages
+
+This includes Indo-European and non-Indo-European languages of Europe that are not included in any other group. 
 
 <table>
 <tr >
