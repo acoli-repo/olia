@@ -154,9 +154,11 @@ deprecated.
 |	OLiA Top-Level Ontology	|	top-level concepts of the OLiA Reference Model for morphosyntax, morphology and syntax	|	<http://purl.org/olia/olia-top.owl>	|
 
 
-# OLiA Annotation Models: Morphosyntax, Morphology, Syntax
+# OLiA Annotation Models for Morphosyntax, Morphology, Syntax
 
 Annotation models for individual languages are listed in a [separate document](models.html).
+
+## Cross-linguistic Models
 
 Annotation models for cross-linguistically applicable annotation schemes include:
 
@@ -282,6 +284,9 @@ Annotation models for cross-linguistically applicable annotation schemes include
 </td>
 </tr>
 </table>
+
+## How to Build Your Own
+
 
 
 # Other OLiA Vocabularies
