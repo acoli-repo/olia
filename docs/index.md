@@ -288,6 +288,8 @@ Annotation models for cross-linguistically applicable annotation schemes include
 </tr>
 </table>
 
+
+
 ## Germanic (English, German, ...)
 
 Annotation models for **English** include
@@ -433,6 +435,8 @@ Annotation models for **German** include
   </td>
  </tr>
 </table>
+
+
 
 
 Annotation models for **other Germanic languages**
@@ -749,6 +753,8 @@ Annotation models for **other Germanic languages**
 </tr>
 </table>
 
+
+
 ## Slavic and Baltic
 
 Annotation models for **Russian** include
@@ -829,6 +835,8 @@ Annotation models for **Russian** include
 
 
 </table>
+
+
 
 
 Annotation models for **other Slavic and Baltic languages** include
@@ -968,6 +976,8 @@ Annotation models for **French** include
 </p></td>
 </tr>
  </table>
+
+
 
 
 Annotation models for **other Romance and Italic languages** include
@@ -1266,6 +1276,8 @@ Annotation models for **other Romance and Italic languages** include
  
 </table>
 
+
+
 ## Other European languages
 
 <table>
@@ -1449,6 +1461,8 @@ Annotation models for **other Romance and Italic languages** include
 
  </table>
 
+
+
 ## Indo-Iranian languages
 
 <table>
@@ -1592,6 +1606,8 @@ Annotation models for **other Romance and Italic languages** include
 
 </table>
 
+
+
 ## Dravidian
 
 <table>
@@ -1661,6 +1677,8 @@ Annotation models for **other Romance and Italic languages** include
 
 </table>
 
+
+
 ## Tibeto-Burman
 
 <table>
@@ -1719,6 +1737,8 @@ Annotation models for **other Romance and Italic languages** include
   </td>
  </tr>
   </table>
+
+
 
 
 ## East Asian languages
@@ -1903,6 +1923,8 @@ Annotation models for **other Romance and Italic languages** include
  
  </table>
 
+
+
 ## Afroasiatic and Ancient Near Eastern languages
 
 <table>
@@ -2081,6 +2103,8 @@ Annotation models for **other Romance and Italic languages** include
  
  </table>
 
+
+
 ## Subsaharic Africa
 <table>
  <tr >
@@ -2128,6 +2152,8 @@ Annotation models for **other Romance and Italic languages** include
  <td><p>t.b.a</p></td>
  </tr>
  </table>
+
+
 
 ## The Americas, Australia and the Pacific
 
@@ -2198,6 +2224,8 @@ Annotation Models for indigenous languages of the Americas, Australia and the Pa
 
 
 </table>
+
+
 
 
 # Other Vocabularies
