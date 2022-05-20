@@ -30,7 +30,7 @@ of the universities of Tübingen, Hamburg, Potsdam, HU Berlin
 University Potsdam and the Humboldt-University Berlin (since 2007). The
 original goal was to document and to formalize linguistic categories for
 all language resources of the linguistic collaborative research centers
-existing at the time. A document describing the [original motivation](motivation.html) is provided as part of the documentation. 
+existing in Germany at the time. Documents describing the [original motivation (2007)](motivation.html) and the [original design (2007)](overview.html) are provided as part of the documentation. 
 Later on, different applications in corpus
 linguistics, natural language processing and the Semantic Web have been
 developed.
@@ -127,12 +127,11 @@ subClassOf relationships between them.
 
 For convenient viewing the ontologies, we provide a partial **[static
 HTML export](html)** of the [OLiA Reference Model](html), and the [OLiA
-Discourse Extensions](../discourse/html). Note that these do not include
-Annotation and Linking Models.
+Discourse Extensions](../discourse/html). Note that these do not necessarily represent the most up-to-date models.
 
 For **interactive browsing** the OLiA ontologies, we recommend
 [Protégé](http://protege.stanford.edu), an ontology browser and editor
-(available both as web and java edition, the latter requires local
+(available both as web and Java edition, the latter requires local
 installation). For browsing the ontologies copy and paste the URLs given
 below.
 
