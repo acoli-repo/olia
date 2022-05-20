@@ -427,7 +427,7 @@ Support for cuneiform languages has been added in the context of the NEH/DFG/SSH
 <img src="img/tor.png" height="50" />
 <img src="img/ucla.png" height="50" />
 
-## OLiA 1.0 
+## OLiA 1.0 and Versioning
 
 At the moment, OLiA development is strictly backward-compatible. Thus, we do not provide global version numbers, but as a general convention, we provide an edit log in the `owl:versionInfo` property of all OLiA ontologies. The current version number of the OLiA ontologies and the OLiA Reference Model is given as `0.x` (*without* specifying a number for `x`). 
 
@@ -435,7 +435,9 @@ We expect the future release of OLiA 1.0 to implement some major restructuring a
 
 For proposals to contribute towards the consolidation of OLiA and/or the development of OLiA 1.0, be it in the context of funded research or an informal collaboration, please reach out via the **[ACoLi mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
 
-The earliest drafts of the OLiA Reference Model were published in 2005 as the "E(xtended)-EAGLES" ontology.
+As for the current version OLiA 0.x, this includes all versions of OLiA published under `http://nachhalt.sfb632.uni-potsdam.de/owl/olia.owl#` or `http://purl.org/olia/` (i.e., all since 2008). The original URIs from the University of Potsdam still resolve, but have not been updated since 2011. As of 2011, only Purl URIs should be used, not any direct links (to University of Potsdam, University of Leipzig, University of Frankfurt, or to GitHub), as we occasionally move from one hosting solution to another.
+
+Prior to 2008, the predecessor of OLiA, developed since 2004 and first published in 2005, used a different namespace. This version is referred to as "E(xtended)-EAGLES" ontology with the namespace prefix `e-eagles:`.
 
 The first formal release of the OLiA ontologies occured in 2008:
 
@@ -449,7 +451,7 @@ The first formal release of the OLiA ontologies occured in 2008:
 	  year={2008},
 	}
 
-This article established the name "OLiA", the modular structure of Reference and Annotation Models and the URI schema via `http://purl.org/olia/olia.owl` (etc.). All modifications applied to the data since then have been *backward-compatible*. In particular, we *never* delete any concept or property in the Reference Model, but, instead, mark it as being deprecated.
+This article established the name "OLiA", the modular structure of Reference and Annotation Models and the current URI schema. All modifications applied to the data since then have been *backward-compatible*. In particular, we *never* delete any concept or property in the Reference Model, but, instead, mark it as being deprecated. All versions of OLiA published after this paper fall under OLiA 0.x.
 
 ## The Logo Explained ;)
 
