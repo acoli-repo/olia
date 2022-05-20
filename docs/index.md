@@ -373,32 +373,30 @@ The initial development of the Ontologies of Linguistic Annotation has been fund
 
 Subsequently, it has been further developed at the University of Potsdam, Germany, Humboldt University Berlin, Germany, and Free University Berlin, Germany, and since 2011 transformed into an open community project, primariy coordinated by Christian Chiarcos and the Applied Computational Linguistics (ACoLi) Lab at Goethe University Frankfurt, Germany. The original project website with full attribution for the initial stages of OLiA development can be found [at the project page of the University of Potsdam](http://nachhalt.sfb632.uni-potsdam.de).
 
-![](img/dfg.png|width=50)
-![](img/up.png|width=50)
-![](img/hu.png|width=50)
-![](img/fu.png|width=50)
-![](img/tueb.png|width=50)
-![](img/hb.gif|width=50)
+<img src="img/dfg.png" height="50" />`
+<img src="img/up.png" height="50" />`
+<img src="img/hu.png" height="50" />`
+<img src="img/fu.png" height="50" />`
+<img src="img/tueb.png" height="50" />`
+<img src="img/hb.gif" height="50" />`
 
 Later development was partially supported by DFG in the context of the development of the linguistic bibliography portal [Lin\|gu\|is\|tik. Portal für Sprachwissenschaft](http://linguistik.de) (DFG/LIS [2014-2017](https://gepris.dfg.de/gepris/projekt/214512695), [2017-2022](https://gepris.dfg.de/gepris/projekt/326024153)) at the Applied COmputational Linguistics (ACoLi) lab of Goethe University Frankfurt, Germany, in collaboration between the University Library Johann Christian Senckenberg at Goethe University Frankfurt (since 2011/2014)  IDS Mannheim (2014-2017), and University Duisburg-Essen (2014-2017). The primary outcome of this support is the integration of the Bibliography of Linguistic Literature Thesaurus (BLL).
 
-![](img/dfg.png|width=50)
-![](img/guf.png|width=50)
-
+<img src="img/dfg.png" height="50" />`
+<img src="img/guf.png" height="50" />`
 
 OLiA development at Goethe University Frankfurt received additional support in the context of the Horizon 2020 Research and Innovation Action [Prêt-à-LLOD. Ready-to-use Multilingual Linked Language Data for Knowledge Services across Sectors](https://cordis.europa.eu/project/id/825182) (2019-2022) and in the Research Group [Linked Open Dictionaries (LiODi)](https://acoli-repo.github.io/liodi/) funded by the German Federal Ministry for Education and Science (BMBF, 2015-2022). 
 
-![](img/h2020.png|width=50)
-![](img/bmbf.png|width=50)
-![](img/guf.png|width=50)
-
+<img src="img/h2020.png" height="50" />`
+<img src="img/bmbf.png" height="50" />`
+<img src="img/guf.png" height="50" />`
 
 Support for cuneiform languages has been added in the context of the NEH/DFG/SSHR project [MTAAC. Machine Translation and Automated Analysis of Cuneiform Languages](https://cdli-gh.github.io/mtaac/) (2017-2020) in collarobation with the Cuneiform Digital Library Initiative (CDLI) at the Goethe University Frankfurt, Germany, the University of Toronto, Canada, and the University of California, Los Angeles.
 
-![](img/dfg.png|width=50)
-![](img/sshrc.png|width=50)
-![](img/neh.png|width=50)
-![](img/guf.png|width=50)
-![](img/tor.png|width=50)
-![](img/ucla.png|width=50)
+<img src="img/dfg.png" height="50" />`
+<img src="img/sshrc.png" height="50" />`
+<img src="img/neh.png" height="50" />`
+<img src="img/guf.png" height="50" />`
+<img src="img/tor.png" height="50" />`
+<img src="img/ucla.png" height="50" />`
 
