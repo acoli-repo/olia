@@ -429,7 +429,7 @@ Over the years, a large number of collaborators contributed to the development o
 
 ## The Logo Explained ;)
 
-In case you have wondered about the "mascot" we use as logo: This is a graphical metaphor for linguistic ontologies based on [Maya art and writing](http://www.famsi.org/mayawriting/index.html): 
+In case you have wondered about the "mascot" we use as logo: This was created in 2007 as a graphical metaphor for linguistic ontologies based on [Maya art and writing](http://www.famsi.org/mayawriting/index.html): 
 
 <img src="img/logo-explained.png" width="80%"/>
 
