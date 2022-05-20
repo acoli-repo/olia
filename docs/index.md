@@ -16,7 +16,7 @@ application-independent **Reference Model** that then serves as a
 mediator to different community-maintained terminology repositories such
 as GOLD and ISOcat. In this function, they will serve as a central hub
 for linguistic data categories within the emerging [Linguistic Linked
-Open Data cloud](http://linguistics.okfn.org/resources/llod/). OLiA
+Open Data (LLOD) cloud](http://linguistic-lod.org). OLiA
 provides Annotation Models for linguistic annotations and NLP tools for
 **more than 85 languages** together with their linking to a common
 **Reference Model** that provides their respective terms and concepts.
