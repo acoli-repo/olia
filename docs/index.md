@@ -142,7 +142,7 @@ development is strictly *downward compatible*, i.e., new concepts may be
 added, but existing concepts are *never* deleted, but only marked as
 deprecated.
 
-# OLiA Reference Model
+## OLiA Reference Model
 
 The OLiA Reference Model defines shared terminology as *either* used for linguistic annotation in the language resources for which annotation models are provided *or* defined in an [external reference model](#external-reference-models).
 
@@ -155,13 +155,11 @@ The OLiA Reference Model defines shared terminology as *either* used for linguis
 |	OLiA Top-Level Ontology	|	top-level concepts of the OLiA Reference Model for morphosyntax, morphology and syntax	|	<http://purl.org/olia/olia-top.owl>	|
 
 
-# OLiA Annotation Models for Morphosyntax, Morphology, Syntax
+## OLiA Annotation Models for Morphosyntax, Morphology, Syntax
 
 Annotation models for individual languages are listed in a [separate document](models.html).
 
-## Cross-linguistic Models
-
-Annotation models for cross-linguistically applicable annotation schemes include:
+Annotation models for **cross-linguistically applicable** annotation schemes include:
 
 <table border=1 cellpadding=0 >
 <tr >
@@ -286,12 +284,6 @@ Annotation models for cross-linguistically applicable annotation schemes include
 </tr>
 </table>
 
-## Build and Link Your Own Annotation Models
-
-The creation and linking of novel annotation models is described in [a separate document](linking.html). When external annotation models are created, we ask to notify us by creating a [novel issue](https://github.com/acoli-repo/olia/issues/new) in the GitHub repository with the subject `add annomodel: ...` (and the name).
-
-# Other OLiA Vocabularies
-
 ## OLiA Discourse Extensions
 
 In addition to annotation schemes for morphosyntax, morphology and syntax, we also provide an extension of OLiA for discourse phenomena such as co-reference, information status, information structure, discourse structures and discourse relations. These are described in a [separate document](discourse.html).
@@ -327,6 +319,26 @@ the keywords used for indexing linguistic literature since the 1970s.
 |	 ---	|	 ---	|	 ---	|
 |	BLL Thesaurus (SKOS)	|	[BLL Thesaurus (different formats available via content negotiation)](http://data.linguistik.de/bll/bll-thesaurus)	|	none	|
 |	BLL Ontology (OWL)	|	[BLL Ontology (different formats available via content negotiation)](http://data.linguistik.de/bll/bll-ontology)	|	[bll-link.rdf](http://purl.org/olia/bll-link.rdf)	|
+
+# Documentation
+
+## Overview and Design
+
+The original (2007!) motivations for the OLiA architecture are described in [a separate document](motivation.html).
+
+Design, overview and application examples of the OLiA ontologies are described in [a separate document](overview.html). Note that this is a document that goes back until 2007, but that the general structure of OLiA ontologies did not change since that point in time, except for two aspects:
+
+- we cover many *many more* annotation models, linking models, phenomena and languages
+- the core vocabulary has been restructured:
+	- The [OLiA Reference Model](http://purl.org/olia/olia.owl) (namespace prefix `olia:`) provides annotations and grammatical feature values *as classes*, e.g., `olia:Noun` or `olia:Singular`.
+	- The [OLiA Top-Level Model](http://purl.org/olia/olia-top.owl) (namespace prefix `oliat:`) defines types of features (e.g., `oliat:CaseFeature`) and concepts (e.g., `oliat:MorphosyntacticCategory`).
+	- The [OLiA System Model](http://purl.org/olia/system.owl) (namespace prefix `olias:`) defines units of annotations and their properties (e.g., `olias:hasTag`)
+	- Originally, all this information was provided in a monolithic ontology.
+
+## Build and Link Your Own Annotations
+
+The creation and linking of novel annotation models is described in [a separate document](linking.html). When external annotation models are created, we ask to notify us by creating a [novel issue](https://github.com/acoli-repo/olia/issues/new) in the GitHub repository with the subject `add annomodel: ...` (and the name).
+
 
 
 # Terms of Use, Questions, Issues
