@@ -429,5 +429,5 @@ Over the years, a large number of collaborators contributed to the development o
 
 ## The Logo Explained ;)
 
-<img align="right" src="img/logo-explained.png" height="80%"/>
+<img align="center" src="img/logo-explained.png" height="80%"/>
 
