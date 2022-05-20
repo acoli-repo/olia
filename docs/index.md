@@ -1,5 +1,7 @@
 # Ontologies of Linguistic Annotation (OLiA)
 
+<img align="right" src="img/logo.png" height="100"/>
+
 The **Ontologies of Linguistic Annotation (OLiA)** are a repository of
 linguistic data categories used for
 
@@ -424,3 +426,8 @@ Over the years, a large number of collaborators contributed to the development o
 - Angelika Adam (2005-2008)
 - Maria Sukhareva (2014-2017)
 - Vanya Dimitrova (since 2014)
+
+## The Logo Explained ;)
+
+<img align="right" src="img/logo-explained.png" height="80%"/>
+
