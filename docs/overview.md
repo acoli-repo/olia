@@ -1,8 +1,247 @@
 # Ontology of Linguistic Annotation: Overview (2007)
 
-> **Note**: This document provides overview over and design decisions of the modular architecture of OLiA and the design of the OLiA Reference. However, it has been written in 2007 and partially updated only. The original is available from the [University of Potsdam, Germany](http://nachhalt.sfb632.uni-potsdam.de/index.html). Major difference partially addressed here only include the coverage of syntax and discourse annotations that have been added in 2008, and 2014, respectively.
+> **Note**: This document provides overview over and design decisions of the modular architecture of OLiA and the design of the OLiA Reference. However, it has been written in 2007 and partially updated only. The original is available from the [University of Potsdam, Germany](http://nachhalt.sfb632.uni-potsdam.de/index.html), with additions taken from [another 2007 overview](http://nachhalt.sfb632.uni-potsdam.de/olia.html). Major later additions partially  addressed here include the coverage of syntax and discourse annotations that have been added in 2008, and 2014, respectively.
 
-## A structured ontology
+## Background
+
+Concentrating on the more elementary levels of linguistic analysis such
+as parts of speech and morphology, a generalization over different
+terminologies applied for the annotation of the corpora hosted by three
+collaborative research centers SFB 441 (Tübingen), SFB 538 (Hamburg) and
+SFB 632 (Potsdam/Berlin) was developed, and later extended for NLP tools
+and corpora beyond these resources. As a result, an ontology was
+developed which specifies reference terminology, and the tags of the
+original annotated data are linked with this reference terminology.
+Besides its function in annotation documentation, the ontology can be
+applied for the formulation of tag-set neutral corpus queries. For this
+purpose, I developed the OntoClient, a JAVA-based query pre-processor
+which translates formal ontology-based specifications into disjunctions
+of concrete tags. The OntoClient serves as a pre-processor for corpus
+querying languages such as ANNIS-QL and CQP, furthermore, it was applied
+in the specification of tag-set independent corpus processing scripts.
+
+The OLiA ontologies were initially developed in the context of the
+project \"Sustainability of Linguistic Resources\", a collaborative
+project between three German Collaborative Research Centers (SFBs), The
+Collaborative Research Centres involved in the project are the SFB 538
+\'Multilingualism\' at the [University of
+Hamburg](https://www.uni-hamburg.de/), the [SFB 632 \'Information
+Structure\'](http://www.sfb632.uni-potsdam.de/) at the [University of
+Potsdam](https://www.uni-potsdam.de/) and the [Humboldt University
+Berlin](https://www.hu-berlin.de/de), and the SFB 441 \'Linguistic Data
+Structures\' at the [Eberhard Karls University
+Tübingen](https://uni-tuebingen.de/).
+
+The project aimed at preparing language resources to assure an
+accessible dissemination and sustainable storage of linguistic corpora.
+One of the main goals of the project was a practical one: resources
+acquired in long-term projects situated in the three Collaborative
+Research Centres have to be converted in either one or multiple formats
+to be sustainably usable by researchers and applications. Furthermore,
+the project developed unified methods of access for the heterogeneous
+data acquired in the projects.
+
+## Why do we need it?
+
+One of the tasks addressed by the sustainability project was the
+integration of heterogeneous terminology, especially those applied for
+the annotation of existing corpora. Examples for such differences range
+from minor variation in the choice of tag names (which often go
+unrealized and thus, affect the reliability of broad-scale corpus
+studies) to fundamental conceptual differences.
+
+Different abbreviations for the same annotations
+
+-   E.g. pronominal adverbs in the German de-facto standard tag set
+    STTS, annotated PROAV (Stuttgart variant of STTS), PAV (Tiger
+    variant of STTS), or PROP (Tübingen variant of STTS) without any
+    change in meaning.
+
+Same abbreviation for different annotations
+
+-   E.g. the indefinite article in STTS. In Tiger-STTS, PIAT is applied
+    to the indefinite article in attributive use throughout, in
+    Stuttgart-STTS, PIAT is restricted to \"proper\" indefinite
+    articles, i.e. those which appear as articles of indefinite
+    descriptions, while the indefinite article after a definite article
+    is tagged as PIDAT.
+
+Same annotation, but different interpretation
+
+-   E.g. the concept \"auxiliary verb\". In STTS, the tag VAFIN,
+    explained as \"auxiliary verb\", is used for German haben \"to have;
+    to own\" and sein \"to be; to be defined by; to exist\" in all uses.
+    In the SFB632 annotation standard, however, VAUX is restricted to
+    German haben and sein in auxiliary use only, while the copula sein
+    \"to be equal to\" and the lexical uses of haben \"to own\" and sein
+    \"to exist\" are tagged separately.
+
+Different granularity of tag sets
+
+-   The SFB538/E2 tag set assigns all nouns (proper nouns and common
+    nouns) the same tag, the SFB632 annotation standard designed for
+    typological research, differentiates 2 types of nouns (common nouns
+    and proper nouns), the Penn Treebank differentiates 4 types of nouns
+    (common and proper nouns in singular and plural), the SUSANNE tag
+    set for English differentiates approximately 63 types of nouns based
+    on semantic and morphosyntactic properties, and in the Russian
+    Uppsala corpus, we find 111 different tags for common and proper
+    nouns according to morphological features.
+
+Conceptual overlap
+
+-   In languages with grammaticalized determiners, attributive
+    possessive pronouns can be regarded as determiners, as they, like an
+    article, fulfil the function to mark a nominal as a noun phrase
+    (resp. determiner phrase). However, in the literal sense (and
+    traditional grammar), attributive possessive pronouns are
+    \"pro-nouns\", i.e. replacements of names, i.e. they are
+    characterized by their referentiality, and hence, pronouns. There is
+    free variation among tag sets whether attributive possessive
+    pronouns are regarded as determiners (ccording to their syntactic
+    function), or pronouns (according to their semantic
+    characterization).
+
+All these problems are taken from the seemingly most elementary domain,
+the domain of part of speech tags, however, more problems arise as soon
+as morphology, syntax, or discourse phenomena are addressed.
+
+In order to overcome such problems, terminological integration is
+necessary, i.e.
+
+-   documentation of terminological differences
+-   harmonization between different terminologies
+
+To provide an integrated access to terminologically heterogeneous
+resources, it is also necessary to provide an abstract model of
+linguistic reference terminology to which individual annotations refer,
+a so-called \"terminological backbone\".
+
+Classical solutions are the standardization approach and the interlingua
+approach:
+
+Standardization (cf. the
+[EAGLES](http://www.ilc.cnr.it/EAGLES96/annotate/annotate.html)
+recommendations on morphosyntactic annotation)
+
+-   Definition of a reference inventory of terms which must or may be
+    considered by a standard-conformant annotation scheme. Concrete
+    annotations are directly mapped onto reference terms or a
+    disjunction of reference terms. (Wilson and Leech 1996)
+
+Interlingua (cf. the [AMALGAM](https://eps.leeds.ac.uk/computing)
+project)
+
+-   From different annotation schemes, or tag sets, an abstracted
+    representation is derived which subsumes all possible differences
+    between the participating tag sets. Whenever no direct mapping of
+    annotations (e.g. X and Y) from different annotation schemes (e.g. A
+    and B) is possible, all possible combinations must be represented in
+    the interlingua, i.e. (A:X,B:X), (A:X,B:Y), (A:Y,B:X), (A:Y,B:Y).
+
+Both solutions are limited in flexibility and scalability, and hence,
+both approaches are applicable only within a limited domain. The
+standardization approach relies on the existence of common grammatical
+categories and features found in the languages for which
+standard-conformant tag sets are to be developed. Otherwise, it results
+in projection of complexity (e.g. the standard entails predictions for
+grammatical categories for a standard-conformant tagset which are absent
+in a language). However, even the sheer existence of universal
+morphosyntactic categories has been questioned in typologic research,
+and hence, the EAGLES-based standardization approach is unlikely to
+extend beyond \"Standard Average European\" languages.
+
+The interlingua approach, however, involves the process to construct an
+interlingua between existing schemes, and is less statically than the
+standardization process. However, the complexity of the interlingua
+grows monotonically with every new language/tag set considered, and,
+hence, the general applicability of the interlingua approach is
+restricted by its limited scalability.
+
+For this reason, the project "Sustainability of Linguistic Data" (2005-2008) has been developing an ontology of linguistic
+annotations as a more flexible representation of a \"terminological
+backbone\". Subsequently, this research has been transferred into an open community project by 2011, with major contributions especially provided by the Applied Computational Linguistics (ACoLi) lab of Goethe University Frankfurt, Germany.
+
+## Design
+
+So far, we have developed an ontology of linguistic annotations with
+special consideration of part of speech and morphological annotations
+existing the participating Collaborative Research Centers (Schmidt et
+al. 2006, Chiarcos 2006c, Chiarcos 2006d, Chiarcos 2007).
+
+The approach relies on the ontological reconstruction of annotation
+schemes based on guidelines and additional documentation in so-called
+\"annotation models\" (or \"domain models\").
+
+Every annotation model represents one tag set or annotation scheme, with
+nonterminal nodes (concepts) representing conceptual categories as
+mentioned in the documentation or indicated in the document structure of
+the annotation guidelines, and terminal nodes (instances) representing
+concrete annotation values, or tags.
+
+As an illustration, prototypes for the following annotation models are
+available in an HTML serialization:
+
+-   [STTS](http://nachhalt.sfb632.uni-potsdam.de/data/index.html) (POS
+    tags, German) \[[owl](http://purl.org/olia/stts.owl)\] (Stuttgart, Tübingen
+    and Tiger-Variant)
+-   Tiger-Morphology (Morphology, POS tags inherited from STTS, German)
+    \[[owl](http://purl.org/olia/tiger.owl)\]
+-   [SUSANNE](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
+    (POS tags with partial information about morphosyntax and lexical
+    semantics, English) \[[owl](http://purl.org/olia/susa.owl)\]
+-   [Uppsala](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
+    (POS tags and morphology, Russian) \[[owl](http://purl.org/olia/russ.owl)\]
+
+With respect to morphosyntactic annotations, the OLiA annotation models
+currently comprise 16 annotation schemes applied to 42 languages (5
+annotation models for English, 5 annotation models for German, 2
+annotation models for Russian, one annotation model for Tibetan, one for
+Old High German, the Connexor annotation model for 10 European
+languages, one annotation model for a typologically-oriented annotation
+scheme applied to 29 languages). Annotation models for syntax and
+information structure/anaphora are currently under construction.
+
+The concepts of these annotation models are linked to a common
+\"reference model\" which is based on the EAGLES recommendations for
+morphosyntax, and extended according to the needs of the participating
+annotation models, hence it is also referred to as \"E(xtended)-EAGLES\"
+ontology.
+
+-   [E-EAGLES](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
+    ontology \[[owl](./downloads/eagles.owl)\]
+
+The annotation models are then mapped onto the categories specified in
+the reference model by means of conceptual subsumption (rdfs:subClassOf,
+rdfs:subPropertyOf). This mapping is specified in separate \"linking
+files\", thus making both the reference model and the annotation models
+independent and self-contained ontologies.
+
+-   [STTS](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
+    E-EAGLES linking \[[owl](./downloads/stts-link.rdf)\]
+-   [SUSANNE](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
+    E-EAGLES linking \[[owl](./downloads/susa-link.rdf)\]
+-   [Uppsala](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
+    E-EAGLES linking \[[owl](./downloads/russ-link.rdf)\]
+
+The \"reference model\", however, does not specify authoritative
+definitions for existing terminology, but only a fairly traditional view
+on it. Hence, its primary function is not to provide prescriptive
+definitions of terms, but only to provide a reference point for the
+participating annotation models. Whenever a more reliable ontology of
+linguistic terminology will be developed (e.g. revised versions of the
+General Ontology of Linguistic Description (GOLD) or the grammis
+ontology), the reference model can be linked with it in the same way as
+the annotation models are linked with the reference model, and thus
+mediate between such an external reference model and the annotation
+models. In this sense, the reference model serves as an interface to the
+annotation model, and it could be better termed \"interface model\".
+
+-   an exemplary implementation of the linking of E-EAGLES with an an
+    extended version of GOLD, v.0.3 as an external reference model
+    \[[owl](./downloads/gold03-extended.exp.owl)\]
+
+## A Structured Ontology
 
 The OLiA ontology consists of three major components, i.e.:
 
