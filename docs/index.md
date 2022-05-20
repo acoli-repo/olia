@@ -339,7 +339,14 @@ Design, overview and application examples of the OLiA ontologies are described i
 
 The creation and linking of novel annotation models is described in [a separate document](linking.html). When external annotation models are created, we ask to notify us by creating a [novel issue](https://github.com/acoli-repo/olia/issues/new) in the GitHub repository with the subject `add annomodel: ...` (and the name).
 
+## Browse Online
 
+We provide a **static** HTML export of *selected* stable Annotation Models, Linking Models and the OLiA Reference Model:
+
+- [OLiA Annotation Models](html/stable/index.html) and linking models
+- [OLiA Reference Model](html/core/index.html) and other core modules
+
+Note that this is a *static* export that is updated irregularly only, so it does not necessarily reflect the most recent version.
 
 # Frequently Asked Questions
 
