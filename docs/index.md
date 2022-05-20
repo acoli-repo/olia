@@ -341,11 +341,14 @@ The creation and linking of novel annotation models is described in [a separate 
 
 
 
-# Terms of Use, Questions, Issues
+# Frequently Asked Questions
+
+## How to (Find) Help
 
 OLiA is open source (see below) and we invite external contributors to join, to add or to provide feedback. If you have questions about OLiA, the recommended way is to join and reach out via the **[ACoLi mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
 Alternatively, and in particular for potential errors or feature requests regarding OLiA, please feel free to create a new issue via the [GitHub form](https://github.com/acoli-repo/olia/issues). However, please take a minute in this case to make sure your question or request is not already addressed by another issue.
 
+## Terms of Use
 
 All **code** provided in this repository falls under the Apache v.2 license.
 
@@ -358,8 +361,10 @@ This means, you are free to:
 
 Under the following terms:
 
-- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. (See below for the requested form of attribution)
 - **No additional restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+## Attribution
 
 For **attribution** in scientific papers, please refer to 
 
@@ -368,6 +373,8 @@ For **attribution** in scientific papers, please refer to
 In scientific publications that are based on OLiA, scripts or data provided in this repository, please use this publication as a reference.
 
 For attribution in downstream applications or derived data, please provide the source URL of the repository and include the above attribution note for scientific papers.
+
+## Acknowledgments
 
 The initial development of the Ontologies of Linguistic Annotation has been funded by the German Research Foundation (DFG) in the project "Sustainability of Linguistic Data" at Colloborative Research Center (SFB) 441 "Linguistic Data Structures" at the University of Potsdam, Germany, in collaboration with University Tübingen, Germany, and University Hamburg, Germany.
 
@@ -402,3 +409,11 @@ Support for cuneiform languages has been added in the context of the NEH/DFG/SSH
 <img src="img/tor.png" height="50" />
 <img src="img/ucla.png" height="50" />
 
+## Contributors
+
+Over the years, a large number of collaborators contributed to the development of OLiA. Apologies for listing *some* of them, only (please add yourself ;):
+
+- Christian Chiarcos (since 2005)
+- Angelika Adam (2005-2008)
+- Maria Sukhareva (2014-2017)
+- Vanya Dimitrova (since 2014)
