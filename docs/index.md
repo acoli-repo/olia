@@ -374,6 +374,7 @@ The initial development of the Ontologies of Linguistic Annotation has been fund
 Subsequently, it has been further developed at the University of Potsdam, Germany, Humboldt University Berlin, Germany, and Free University Berlin, Germany, and since 2011 transformed into an open community project, primariy coordinated by Christian Chiarcos and the Applied Computational Linguistics (ACoLi) Lab at Goethe University Frankfurt, Germany. The original project website with full attribution for the initial stages of OLiA development can be found [at the project page of the University of Potsdam](http://nachhalt.sfb632.uni-potsdam.de).
 
 <img src="img/dfg.png" height="50" />
+
 <img src="img/up.png" height="50" />
 <img src="img/hu.png" height="50" />
 <img src="img/fu.png" height="50" />
@@ -396,6 +397,7 @@ Support for cuneiform languages has been added in the context of the NEH/DFG/SSH
 <img src="img/dfg.png" height="50" />
 <img src="img/sshrc.png" height="50" />
 <img src="img/neh.png" height="50" />
+
 <img src="img/guf.png" height="50" />
 <img src="img/tor.png" height="50" />
 <img src="img/ucla.png" height="50" />
