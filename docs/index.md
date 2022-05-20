@@ -380,7 +380,7 @@ Subsequently, it has been further developed at the University of Potsdam, German
 ![](img/tueb.png|width=50)
 ![](img/hb.gif|width=50)
 
-Later development was partially supported by DFG in the context of the development of the linguistic bibliography portal [Lin|gu|is|tik. Portal für Sprachwissenschaft](http://linguistik.de) (DFG/LIS [2014-2017](https://gepris.dfg.de/gepris/projekt/214512695), [2017-2022](https://gepris.dfg.de/gepris/projekt/326024153)) at the Applied COmputational Linguistics (ACoLi) lab of Goethe University Frankfurt, Germany, in collaboration between the University Library Johann Christian Senckenberg at Goethe University Frankfurt (since 2011/2014)  IDS Mannheim (2014-2017), and University Duisburg-Essen (2014-2017). The primary outcome of this support is the integration of the Bibliography of Linguistic Literature Thesaurus (BLL).
+Later development was partially supported by DFG in the context of the development of the linguistic bibliography portal [Lin\|gu\|is\|tik. Portal für Sprachwissenschaft](http://linguistik.de) (DFG/LIS [2014-2017](https://gepris.dfg.de/gepris/projekt/214512695), [2017-2022](https://gepris.dfg.de/gepris/projekt/326024153)) at the Applied COmputational Linguistics (ACoLi) lab of Goethe University Frankfurt, Germany, in collaboration between the University Library Johann Christian Senckenberg at Goethe University Frankfurt (since 2011/2014)  IDS Mannheim (2014-2017), and University Duisburg-Essen (2014-2017). The primary outcome of this support is the integration of the Bibliography of Linguistic Literature Thesaurus (BLL).
 
 ![](img/dfg.png|width=50)
 ![](img/guf.png|width=50)
