@@ -335,7 +335,7 @@ Design, overview and application examples of the OLiA ontologies are described i
 	- The [OLiA System Model](http://purl.org/olia/system.owl) (namespace prefix `olias:`) defines units of annotations and their properties (e.g., `olias:hasTag`)
 	- Originally, all this information was provided in a monolithic ontology.
 
-## Build and Link Your Own Annotations
+## Build Your Own!
 
 The creation and linking of novel annotation models is described in [a separate document](linking.html). When external annotation models are created, we ask to notify us by creating a [novel issue](https://github.com/acoli-repo/olia/issues/new) in the GitHub repository with the subject `add annomodel: ...` (and the name).
 
