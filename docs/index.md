@@ -427,6 +427,34 @@ Over the years, a large number of collaborators contributed to the development o
 - Maria Sukhareva (2013-2017)
 - Vanya Dimitrova (since 2014)
 
+## Versioning and Persistency
+
+The earliest drafts of the OLiA Reference Model were published in 2005 as the "E(xtended)-EAGLES" ontology.
+
+The first formal release of the OLiA ontologies occured in 2008:
+
+	@inproceedings{chiarcos2008ontology,
+	  title={An ontology of linguistic annotations.},
+	  author={Chiarcos, Christian},
+	  booktitle={LDV Forum},
+	  volume={23},
+	  number={1},
+	  pages={1--16},
+	  year={2008},
+	}
+
+This article established the name "OLiA", the modular structure of Reference and Annotation Models and the URI schema via `http://purl.org/olia/olia.owl` (etc.). All modifications applied to the data since then have been *backward-compatible*. In particular, we *never* delete any concept or property in the Reference Model, but, instead, mark it as being deprecated.
+
+We do not provide global version numbers, but as a general convention, we provide an edit log in the `owl:versionInfo` property of all OLiA ontologies. The current version number of the OLiA ontologies and the OLiA Reference Model is given as `0.x` (*without* specifying a number for `x`). 
+
+For the future OLiA 1.0 release, see below.
+
+## OLiA 1.0 
+
+The future release of OLiA 1.0 will implement some major restructuring and prune deprecated vocabulary which will break downward compatibility with OLiA 0.x. As of this point in time, we will adopt a numerical versioning schema. For feature requests regarding OLiA 1.0, please create GitHub issues and associate them with the milestone `1.0`. However, note that we don't have a specified date for that yet, and as it requires substantial updates *in all annotation models*, in *numerous* data sets and applications, and wide dissemination of these updates to the current OLiA user community, such an update is unlikely to occur unless we are able to acquire dedicated funding. 
+
+For proposals to contribute towards the consolidation of OLiA and/or the development of OLiA 1.0, be it in the context of funded research or an informal collaboration, please reach out via the **[ACoLi mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
+
 ## The Logo Explained ;)
 
 In case you have wondered about the "mascot" we use as logo: This was created in 2007 as a graphical metaphor for linguistic ontologies based on [Maya art and writing](http://www.famsi.org/mayawriting/index.html): 
