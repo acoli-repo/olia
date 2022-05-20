@@ -1,4 +1,4 @@
-<img align="right" src="img/logo.png" height="30%"/>
+<img align="right" src="img/logo.png" height="17%"/>
 
 # Ontologies of Linguistic Annotation (OLiA)
 
