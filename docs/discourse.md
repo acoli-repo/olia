@@ -86,7 +86,7 @@ and different models of annotation have been developed, accordingly, as
 illustrated for two alternative annotations of the same sentence in the
 figure below.
 
-![](rst-pdtb.png)\
+![](img/rst-pdtb.png)\
 **Fig. 1. Comparing Discourse Structure Annotations (RST Discourse Treebank and
 Penn Discourse Treebank, file wsj_1365 (simplified)**
 
@@ -112,7 +112,7 @@ in PDTB, a hierarchical structure in RST). Using the ontologies, these
 aspects of information can be distangled (common properties in terms of
 the Reference Model in bold):
 
-![](condition.png)\
+![](img/condition.png)\
 **Fig 2. Comparing CONDITIONs**
 
 
