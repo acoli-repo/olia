@@ -385,6 +385,15 @@ For attribution in downstream applications or derived data, please provide the s
 
 ## Acknowledgments
 
+
+Over the years, a large number of collaborators contributed to the development of OLiA. Apologies for listing *some* of them, only (please add yourself ;):
+
+- Christian Chiarcos (since 2005)
+- Angelika Adam (2005-2008)
+- Maria Sukhareva (2013-2017)
+- Vanya Dimitrova (since 2014)
+
+OLiA has received support from several third-party funded projects. 
 The initial development of the Ontologies of Linguistic Annotation has been funded by the German Research Foundation (DFG) in the project "Sustainability of Linguistic Data" at Colloborative Research Center (SFB) 441 "Linguistic Data Structures" at the University of Potsdam, Germany, in collaboration with University Tübingen, Germany, and University Hamburg, Germany.
 
 Subsequently, it has been further developed at the University of Potsdam, Germany, Humboldt University Berlin, Germany, and Free University Berlin, Germany, and since 2011 transformed into an open community project, primariy coordinated by Christian Chiarcos and the Applied Computational Linguistics (ACoLi) Lab at Goethe University Frankfurt, Germany. The original project website with full attribution for the initial stages of OLiA development can be found [at the project page of the University of Potsdam](http://nachhalt.sfb632.uni-potsdam.de).
@@ -417,15 +426,6 @@ Support for cuneiform languages has been added in the context of the NEH/DFG/SSH
 <img src="img/guf.png" height="50" />
 <img src="img/tor.png" height="50" />
 <img src="img/ucla.png" height="50" />
-
-## Contributors
-
-Over the years, a large number of collaborators contributed to the development of OLiA. Apologies for listing *some* of them, only (please add yourself ;):
-
-- Christian Chiarcos (since 2005)
-- Angelika Adam (2005-2008)
-- Maria Sukhareva (2013-2017)
-- Vanya Dimitrova (since 2014)
 
 ## OLiA 1.0 
 
