@@ -1,6 +1,6 @@
-<img align="right" src="img/logo.png" height="17%"/>
-
 # Ontologies of Linguistic Annotation (OLiA)
+
+<img align="right" src="img/logo.png" height="17%"/>
 
 The **Ontologies of Linguistic Annotation (OLiA)** are a repository of
 linguistic data categories used for
