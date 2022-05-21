@@ -58,93 +58,17 @@ annotation models externally hosted and/or provided include
 
 Below, links to external resources are marked with (\*).
 
-OLiA is used in a number of projects and resources, including
-
--   **W3C Ontology-Lexica Community Group** (OntoLex) who develops
-    models for the representation of lexica (and machine readable
-    dictionaries) relative to ontologies
-    \[[OntoLex](Ontology-Lexica%20Community%20Group), [OntoLex lemon
-    model
-    specifications](http://www.w3.org/community/ontolex/wiki/Final_Model_Specification)\]
--   **MULTEXT-East** morphosyntactic specifications for corpora and
-    lexicons in 16 (mostly) Eastern European languages \[[Ontology for
-    MULTEXT-East](http://nl.ijs.si/ME/owl/)\]
--   **lemonUby**, the Linked Open Data edition of UBY, a large-scale
-    lexical-semantic resource currently comprising 10 major NLP
-    resources for English and German (WordNet/GermaNet, Wiktionary,
-    Wikipedia, FrameNet, VerbNet, IMSLex-Subcat, OmegaWiki)
-    \[[lemonUby](http://www.lemon-model.net/lexica/uby/),
-    [UBY](https://www.ukp.tu-darmstadt.de/data/lexical-resources/uby)\]
--   **Apache Stanbol**, a project to develop reusable components for
-    semantic content management \[[Apache
-    Stanbol](https://stanbol.apache.org/), [NLP
-    specifications](https://stanbol.apache.org/docs/trunk/components/enhancer/nlp/nlpannotations)\]
--   **NLP Interchange Format (NIF)**, a community project developing
-    RDF-based specifications for NLP tools, webservices and pipelines in
-    the NLP2RDF system \[[NLP2RDF](http://site.nlp2rdf.org/), [NIF core
-    specifications](http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core/nif-core.html)\]
--   **POWLA**, a scheme for annotated corpora, an OWL2/DL representation
-    of PAULA, the Potsdamer Austauschformat Linguistischer Annotationen
-    (Potsdam Exchange Format of Linguistic Annotations), originally a
-    XML standoff data model underlying the development of the corpus
-    information system ANNIS
-    \[[POWLA](http://sourceforge.net/projects/powla/),
-    [PAULA](https://www.sfb632.uni-potsdam.de/en/paula.html),
-    [ANNIS](http://www.sfb632.uni-potsdam.de/annis/), [POWLA-based
-    Information Extraction](http://www.aclweb.org/anthology/W13-5208)\]
--   The **Lin\|gu\|is\|tik portal**
-    ([linguistik.de](http://linguistik.de)) is a library portal that
-    provides a near-exhaustive bibliography for the field of general
-    linguistics. Here, OLiA serves as conceptual reference for the
-    Bibliography of Linguistic Literature (BLL) ontology, see
-    [here](#bll) for details.
--   Other applications include the general use of the OLiA Reference
-    Model as a reference vocabulary for linguistic data categories in
-    the Linguistic Linked Open Data cloud, e.g.,
-    -   OLiA is used for **philological resources**, e.g., the [Linked
-        Old Germanic Dictionaries](http://datahub.io/de/dataset/germlex)
-        (lexical resources for, e.g., Gothic, Old/Middle/Early Modern
-        High German, Old/Middle English and Middle Dutch).
-
-Unless marked otherwise, the ontologies are released under a Creative Commons Attribution licence CC-BY with reference to
+Unless marked otherwise, the ontologies are released under a Creative Commons Attribution licence CC-BY 3.0 with reference to
 
 > Christian Chiarcos, and Maria Sukhareva (2015). [OLiA - Ontologies of Linguistic Annotation](http://semantic-web-journal.net/content/olia-%E2%80%93-ontologies-linguistic-annotation), *SWJ (Semantic Web Journal)* 6(4): 379-386.
 
-As further reference, see our [ontology-relevant
-publications](http://www.acoli.informatik.uni-frankfurt.de/papers.xml),
-and some remarks [on the background of the OLiA
-ontologies](ontologies-background.html). Besides the ontologies listed
-below, there are a number of experimental ontologies, including the
-[OLiA Discourse Extensions](http://purl.org/olia/discourse/), further
-annotation schemes, the linking with GOLD and the ISO TC37/SC4 Data
-Category Registry. For enquiries with respect to these lease contact
-[Christian
-Chiarcos](mailto://FIRSTNAME_IN_LOWERCASE%20%5BDOT%5D%20LASTNAME_IN_LOWERCASE%20%5BAT%5D%20web%20%5BDOT%5D%20de).
+## OLiA Reference Model
 
 The OLiA architecture is a set of modular OWL/DL ontologies with
 ontological models of annotation schemes (**Annotation Models**) on the
 one hand, an ontology of reference terms (**Reference Model**) on the
 other hand, and ontologies (**Linking Models**) that implement
 subClassOf relationships between them.
-
-For convenient viewing the ontologies, we provide a partial **[static
-HTML export](html)** of the [OLiA Reference Model](html), and the [OLiA
-Discourse Extensions](../discourse/html). Note that these do not necessarily represent the most up-to-date models.
-
-For **interactive browsing** the OLiA ontologies, we recommend
-[Protégé](http://protege.stanford.edu), an ontology browser and editor
-(available both as web and Java edition, the latter requires local
-installation). For browsing the ontologies copy and paste the URLs given
-below.
-
-For external references, we recommend to refer to the individual modules using 
-[the official Purl URL](http://purl.org/olia/). 
-Until a change in version number (we are still at 0.x), OLiA
-development is strictly *downward compatible*, i.e., new concepts may be
-added, but existing concepts are *never* deleted, but only marked as
-deprecated.
-
-## OLiA Reference Model
 
 The OLiA Reference Model defines shared terminology as *either* used for linguistic annotation in the language resources for which annotation models are provided *or* defined in an [external reference model](#external-reference-models).
 
@@ -343,19 +267,30 @@ The creation and linking of novel annotation models is described in [a separate 
 
 ## Browse Online
 
-We provide a **static** HTML export of *selected* stable Annotation Models, Linking Models and the OLiA Reference Model:
+For convenient viewing the ontologies, we provide a **static** HTML export of *selected* stable Annotation Models, Linking Models and the OLiA Reference Model:
 
 - [OLiA Annotation Models](html/stable/index.html) and linking models
 - [OLiA Reference Model](html/core/index.html) and other core modules
 
 Note that this is a *static* export that is updated irregularly only, so it does not necessarily reflect the most recent version.
 
+For **interactive browsing** the OLiA ontologies, we recommend
+[Protégé](http://protege.stanford.edu), an ontology browser and editor
+(available both as web and Java edition, the latter requires local
+installation). For browsing the ontologies copy and paste the URLs given
+below.
+
 # Frequently Asked Questions
 
 ## How to (Find) Help
 
 OLiA is open source (see below) and we invite external contributors to join, to add or to provide feedback. If you have questions about OLiA, the recommended way is to join and reach out via the **[ACoLi mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
+
 Alternatively, and in particular for potential errors or feature requests regarding OLiA, please feel free to create a new issue via the [GitHub form](https://github.com/acoli-repo/olia/issues). However, please take a minute in this case to make sure your question or request is not already addressed by another issue.
+
+General enquiries with respect to OLiA can also be directed to 
+[Christian
+Chiarcos](mailto://FIRSTNAME_IN_LOWERCASE%20%5BDOT%5D%20LASTNAME_IN_LOWERCASE%20%5BAT%5D%20web%20%5BDOT%5D%20de).
 
 ## Terms of Use
 
@@ -431,6 +366,27 @@ Support for cuneiform languages has been added in the context of the NEH/DFG/SSH
 <img src="img/tor.png" height="50" />
 <img src="img/ucla.png" height="50" />
 
+## URLs and Mirrors
+
+When using OLiA ontologies, please refer **only** to [the official Purl URLs](http://purl.org/olia/), not to the physical location of these files, because we occasionally change from one hosting solution to another.
+Until a change in version number (we are still at 0.x), OLiA
+development is strictly *downward compatible*, i.e., new concepts may be
+added, but existing concepts are *never* deleted, but only marked as
+deprecated.
+
+In addition to that, you can retrieve the OLiA ontologies from the following direct links:
+
+- [official GitHub repository](https://github.com/acoli-repo/olia/tree/master/owl): Up-to-date developer version. These are also the files that the official Purl URIs currently redirect to.
+- [Frankfurt mirror](http://www.acoli.informatik.uni-frankfurt.de/resources/olia): live synchronization of the GitHub developer version
+- [**DEPRECATED**] [Sourceforge developer version](https://sourceforge.net/p/olia/code/HEAD/tree/): developer version of 2019-11-19
+- [**DEPRECATED**] [static Sourceforge release](https://sourceforge.net/projects/olia/files/olia-2012-09-16-prerelease.zip/download): static dump of 2012-09-16
+- [**DEPRECATED**/**DEFUNCT**] [NLP2RDF mirror](http://olia.nlp2rdf.org/):  mirror of the static Sourceforge release
+- [**DEPRECATED**] [Potsdam mirror](http://nachhalt.sfb632.uni-potsdam.de/olia.html): static dump of a 2011 pre-release
+
+In general, older ("deprecated") versions of OLiA do not differ greatly with respect to the Reference Model (they may lack concepts or provide less concise or less detailed definitions), but they provide fewer Annotation Models. However, major (European) languages have been covered from the beginning.
+
+We strictly advise to operate only with Purl URLs and retrieve directly from there only. However, in case servers or services are unavailable (this happened for Purl for several months in 2015), developers can resort to the mirrors, in the order specified above.
+
 ## OLiA 1.0 and Versioning
 
 At the moment, OLiA development is strictly backward-compatible. Thus, we do not provide global version numbers, but as a general convention, we provide an edit log in the `owl:versionInfo` property of all OLiA ontologies. The current version number of the OLiA ontologies and the OLiA Reference Model is given as `0.x` (*without* specifying a number for `x`). 
@@ -456,6 +412,56 @@ The first formal release of the OLiA ontologies occured in 2008:
 	}
 
 This article established the name "OLiA", the modular structure of Reference and Annotation Models and the current URI schema. All modifications applied to the data since then have been *backward-compatible*. In particular, we *never* delete any concept or property in the Reference Model, but, instead, mark it as being deprecated. All versions of OLiA published after this paper fall under OLiA 0.x.
+
+## Who's Using it?
+
+OLiA is used in a number of projects and resources, including
+
+-   **W3C Ontology-Lexica Community Group** (OntoLex) who develops
+    models for the representation of lexica (and machine readable
+    dictionaries) relative to ontologies
+    \[[OntoLex](Ontology-Lexica%20Community%20Group), [OntoLex lemon
+    model
+    specifications](http://www.w3.org/community/ontolex/wiki/Final_Model_Specification)\]
+-   **MULTEXT-East** morphosyntactic specifications for corpora and
+    lexicons in 16 (mostly) Eastern European languages \[[Ontology for
+    MULTEXT-East](http://nl.ijs.si/ME/owl/)\]
+-   **lemonUby**, the Linked Open Data edition of UBY, a large-scale
+    lexical-semantic resource currently comprising 10 major NLP
+    resources for English and German (WordNet/GermaNet, Wiktionary,
+    Wikipedia, FrameNet, VerbNet, IMSLex-Subcat, OmegaWiki)
+    \[[lemonUby](http://www.lemon-model.net/lexica/uby/),
+    [UBY](https://www.ukp.tu-darmstadt.de/data/lexical-resources/uby)\]
+-   **Apache Stanbol**, a project to develop reusable components for
+    semantic content management \[[Apache
+    Stanbol](https://stanbol.apache.org/), [NLP
+    specifications](https://stanbol.apache.org/docs/trunk/components/enhancer/nlp/nlpannotations)\]
+-   **NLP Interchange Format (NIF)**, a community project developing
+    RDF-based specifications for NLP tools, webservices and pipelines in
+    the NLP2RDF system \[[NLP2RDF](http://site.nlp2rdf.org/), [NIF core
+    specifications](http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core/nif-core.html)\]
+-   **POWLA**, a scheme for annotated corpora, an OWL2/DL representation
+    of PAULA, the Potsdamer Austauschformat Linguistischer Annotationen
+    (Potsdam Exchange Format of Linguistic Annotations), originally a
+    XML standoff data model underlying the development of the corpus
+    information system ANNIS
+    \[[POWLA](http://sourceforge.net/projects/powla/),
+    [PAULA](https://www.sfb632.uni-potsdam.de/en/paula.html),
+    [ANNIS](http://www.sfb632.uni-potsdam.de/annis/), [POWLA-based
+    Information Extraction](http://www.aclweb.org/anthology/W13-5208)\]
+-   The **Lin\|gu\|is\|tik portal**
+    ([linguistik.de](http://linguistik.de)) is a library portal that
+    provides a near-exhaustive bibliography for the field of general
+    linguistics. Here, OLiA serves as conceptual reference for the
+    Bibliography of Linguistic Literature (BLL) ontology, see
+    [here](#bll) for details.
+-   Other applications include the general use of the OLiA Reference
+    Model as a reference vocabulary for linguistic data categories in
+    the Linguistic Linked Open Data cloud, e.g.,
+    -   OLiA is used for **philological resources**, e.g., the [Linked
+        Old Germanic Dictionaries](http://datahub.io/de/dataset/germlex)
+        (lexical resources for, e.g., Gothic, Old/Middle/Early Modern
+        High German, Old/Middle English and Middle Dutch).
 
 ## The Logo Explained ;)
 
