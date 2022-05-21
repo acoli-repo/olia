@@ -56,8 +56,6 @@ annotation models externally hosted and/or provided include
     lexicons](http://nl.ijs.si/ME/owl/) in 16 (mostly) Eastern European
     languages, developed by Christian Chiarcos and Tomas Erjavec
 
-Below, links to external resources are marked with (\*).
-
 Unless marked otherwise, the ontologies are released under a Creative Commons Attribution licence CC-BY 3.0 with reference to
 
 > Christian Chiarcos, and Maria Sukhareva (2015). [OLiA - Ontologies of Linguistic Annotation](http://semantic-web-journal.net/content/olia-%E2%80%93-ontologies-linguistic-annotation), *SWJ (Semantic Web Journal)* 6(4): 379-386.
@@ -81,11 +79,11 @@ The OLiA Reference Model defines shared terminology as *either* used for linguis
 |	OLiA Top-Level Ontology	|	top-level concepts of the OLiA Reference Model for morphosyntax, morphology and syntax	|	<http://purl.org/olia/olia-top.owl>	|
 
 
-## OLiA Annotation Models for Morphosyntax, Morphology, Syntax
+## OLiA Annotation Models
 
-Annotation models for individual languages are listed in a [separate document](models.html).
+Models for morphosyntax, morphology and syntax annotation for individual languages are listed in a [separate document](models.html). [Discourse extensions](#olia-discourse-extensions) and [linguistic thesaurus](#bll---bibliography-of-linguistic-literature-thesaurus) are described separately below.
 
-Annotation models for **cross-linguistically applicable** annotation schemes include:
+Annotation models for the **cross-linguistic annotation** of morphosyntax, morphology and syntax annotation include
 
 <table border=1 cellpadding=0 >
 <tr >
