@@ -60,7 +60,7 @@ Unless marked otherwise, the ontologies are released under a Creative Commons At
 
 > Christian Chiarcos, and Maria Sukhareva (2015). [OLiA - Ontologies of Linguistic Annotation](http://semantic-web-journal.net/content/olia-%E2%80%93-ontologies-linguistic-annotation), *SWJ (Semantic Web Journal)* 6(4): 379-386.
 
-## OLiA Reference Model
+## Reference Model
 
 The OLiA architecture is a set of modular OWL/DL ontologies with
 ontological models of annotation schemes (**Annotation Models**) on the
@@ -79,11 +79,11 @@ The OLiA Reference Model defines shared terminology as *either* used for linguis
 |	OLiA Top-Level Ontology	|	top-level concepts of the OLiA Reference Model for morphosyntax, morphology and syntax	|	<http://purl.org/olia/olia-top.owl>	|
 
 
-## OLiA Annotation Models
+## Annotation Models
 
-Models for morphosyntax, morphology and syntax annotation for individual languages are listed in a [separate document](models.html). [Discourse extensions](#olia-discourse-extensions) and [linguistic thesaurus](#bll---bibliography-of-linguistic-literature-thesaurus) are described separately below.
+OLiA Annotation Models for morphosyntax, morphology and syntax annotation for individual languages are listed in a [separate document](models.html). [Discourse extensions](#olia-discourse-extensions) and [linguistic thesaurus](#linguistic-thesaurus) are described separately below.
 
-Annotation models for the **cross-linguistic annotation** of morphosyntax, morphology and syntax annotation include
+OLiA Annotation Models for the **cross-linguistic annotation** of morphosyntax, morphology and syntax annotation include
 
 <table border=1 cellpadding=0 >
 <tr >
@@ -208,9 +208,9 @@ Annotation models for the **cross-linguistic annotation** of morphosyntax, morph
 </tr>
 </table>
 
-## OLiA Discourse Extensions
+## Discourse Extensions
 
-In addition to annotation schemes for morphosyntax, morphology and syntax, we also provide an extension of OLiA for discourse phenomena such as co-reference, information status, information structure, discourse structures and discourse relations. These are described in a [separate document](discourse.html).
+In addition to annotation schemes for morphosyntax, morphology and syntax, the **OLiA Discourse Extensions** provide a reference model and annotation models for discourse phenomena such as co-reference, information status, information structure, discourse structures and discourse relations. These are described in a [separate document](discourse.html).
 
 So far, the OLiA Discourse Extensions have not been integrated with the OLiA Reference Model because the taxonomy of discourse relations, resp., its axiomaticization, is considered controversial in the community so that no cross-theoretically applicable consensus exists. The OLiA Discourse Extensions provide a draft for such a consensus, in that they combine the taxonomy of the Penn Discourse Treebank with different variants of Rhetorical Structure Theory, however, this was done in a conservative way, and where definitions could not be easily compared with each other, theory-specific concepts remained. Once a consensus on these has been established, the discourse extensions should be integrated with the OLiA Reference Model.
 
@@ -228,12 +228,14 @@ A practical problem in the direct application of these external reference models
 |	GOLD	|	[http://linguistics-ontology.org](http://linguistics-ontology.org/)	|	t.b.a	|	t.b.a	|
 
 
-## BLL - Bibliography of Linguistic Literature Thesaurus
+## Linguistic Thesaurus
 
 OLiA also serves as a conceptual backbone for the ontological
 reconstruction, resp. LLOD edition, of legacy thesauri of linguistic
-terminology. This includes the Bibliography of Lingistic Literature
-(BLL) Thesaurus. The Bibliography of Linguistic Literature
+terminology.
+
+Within the OLiA architecture, we have been developing SKOS and OWL editions of the **Bibliography of Lingistic Literature (BLL) Thesaurus**, which has been integrated as a domain model, i.e., in the style of an OLiA Annotation Model.
+The Bibliography of Linguistic Literature
 ([BLL](http://www.blldb-online.de/)) is one of the most important
 sources of bibliographical information for general linguistics as well
 as English, German and Romance linguistics, and the thesaurus organizes
@@ -306,7 +308,7 @@ Under the following terms:
 - **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. (See below for the requested form of attribution)
 - **No additional restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
-## Attribution
+## Attribution and Acknowledgments
 
 For **attribution** in scientific papers, please refer to 
 
@@ -316,10 +318,7 @@ In scientific publications that are based on OLiA, scripts or data provided in t
 
 For attribution in downstream applications or derived data, please provide the source URL of the repository and include the above attribution note for scientific papers.
 
-## Acknowledgments
-
-
-Over the years, a large number of collaborators contributed to the development of OLiA. Apologies for listing *some* of them, only (please add yourself ;):
+Over the years, a large number of **collaborators** contributed to the development of OLiA. Apologies for listing *some* of them, only:
 
 - Christian Chiarcos (since 2005)
 - Angelika Adam (2005-2008)
@@ -330,7 +329,7 @@ Over the years, a large number of collaborators contributed to the development o
 - Maxim Ionov (2016)
 - Vanya Dimitrova (since 2016)
 
-OLiA has received support from several third-party funded projects. 
+OLiA development has been supported by several **third-party funded projects**. 
 The initial development of the Ontologies of Linguistic Annotation has been funded by the German Research Foundation (DFG) in the project "Sustainability of Linguistic Data" at Colloborative Research Center (SFB) 441 "Linguistic Data Structures" at the University of Potsdam, Germany, in collaboration with University Tübingen, Germany, and University Hamburg, Germany.
 
 Subsequently, it has been further developed at the University of Potsdam, Germany, Humboldt University Berlin, Germany, and Free University Berlin, Germany, and since 2011 transformed into an open community project, primariy coordinated by Christian Chiarcos and the Applied Computational Linguistics (ACoLi) Lab at Goethe University Frankfurt, Germany. The original project website with full attribution for the initial stages of OLiA development can be found [at the project page of the University of Potsdam](http://nachhalt.sfb632.uni-potsdam.de).
@@ -364,7 +363,7 @@ Support for cuneiform languages has been added in the context of the NEH/DFG/SSH
 <img src="img/tor.png" height="50" />
 <img src="img/ucla.png" height="50" />
 
-## URLs and Mirrors
+## URIs and Mirrors
 
 When using OLiA ontologies, please refer **only** to [the official Purl URLs](http://purl.org/olia/), not to the physical location of these files, because we occasionally change from one hosting solution to another.
 Until a change in version number (we are still at 0.x), OLiA
