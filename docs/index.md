@@ -390,8 +390,12 @@ Over the years, a large number of collaborators contributed to the development o
 
 - Christian Chiarcos (since 2005)
 - Angelika Adam (2005-2008)
+- Sebastian Hellmann (2008-2013)
 - Maria Sukhareva (2013-2017)
-- Vanya Dimitrova (since 2014)
+- Christian Fäth (2016-2020)
+- Frank Abromeit (2016-2020)
+- Maxim Ionov (2016)
+- Vanya Dimitrova (since 2016)
 
 OLiA has received support from several third-party funded projects. 
 The initial development of the Ontologies of Linguistic Annotation has been funded by the German Research Foundation (DFG) in the project "Sustainability of Linguistic Data" at Colloborative Research Center (SFB) 441 "Linguistic Data Structures" at the University of Potsdam, Germany, in collaboration with University Tübingen, Germany, and University Hamburg, Germany.
@@ -455,7 +459,9 @@ This article established the name "OLiA", the modular structure of Reference and
 
 ## The Logo Explained ;)
 
-In case you have wondered about the "mascot" we use as logo: This was created in 2007 as a graphical metaphor for linguistic ontologies based on [Maya art and writing](http://www.famsi.org/mayawriting/index.html): 
+You might have seen the logo at the top of this page. You can find a larger version of this from [here](img/logo-large.png).
+
+In case you have wondered about the logo "mascot": This was created in 2007 as a graphical metaphor for linguistic ontologies based on [Maya art and writing](http://www.famsi.org/mayawriting/index.html): 
 
 <img src="img/logo-explained.png" width="80%"/>
 
