@@ -1,0 +1,2599 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY arabic_khoja "http://purl.org/olia/arabic_khoja.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/arabic_khoja.owl#"
+     xml:base="http://purl.org/olia/arabic_khoja.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:arabic_khoja="http://purl.org/olia/arabic_khoja.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/arabic_khoja.owl">
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/ara"/>
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <rdfs:comment>OLiA Annotation Model for morphosyntactic annotation of Arabic, following Khoja et al. (2001)
+
+Arabic grammar has been studied for centuries, and the principles of describing the language already exist. Since so much knowledge is readily available, it is logical to derive our tagset from this wealth of information. The alternative to this is to base the Arabic tagset on an Indo-European one, but by doing this we may lose a lot of the information that an Arabic tagset would give us. Also, by moulding Arabic to fit an Indo-European language, we might distort the way Arabic is perceived by its native speakers. (Khoja et al, 2001)
+
+The prototype tagger reported in (Khoja 2003) was based on a lexicon of under 10,000 word-types, extracted from a corpus of about 50,000 word-tokens. The initial 50,000-word training corpus was extracted from the Saudi Al-Jazirah newspaper (date 03/03/1999); initial tagging experiments were done on other newspaper texts, and a social science paper. (Atwell 2007)
+
+Unless specified otherwise, all comments are quotes from Khoja et al. (2001).
+
+References:
+
+Khoja, S, Garside, R, and Knowles, G (2001) A tagset for the morphosyntactic tagging of Arabic. Paper given at the Corpus Linguistics 2001 conference, Lancaster, http://zeus.cs.pacificu.edu/shereen/CL2001.pdf
+
+Eric Atwell (2007), Development of tag sets for part-of-speech tagging, Corpus Linguistics Conference 2007, Birmingham, http://www.comp.leeds.ac.uk/eric/atwell07clih.pdf</rdfs:comment>
+        <owl:versionInfo>
+2011/08/17-18 created
+2020/02/25 explanation of common relative pronoun added
+
+Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#hasCase -->
+
+    <owl:ObjectProperty rdf:about="&arabic_khoja;hasCase">
+        <rdfs:range rdf:resource="&arabic_khoja;Case"/>
+        <rdfs:domain rdf:resource="&arabic_khoja;Noun"/>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#hasDefiniteness -->
+
+    <owl:ObjectProperty rdf:about="&arabic_khoja;hasDefiniteness">
+        <rdfs:range rdf:resource="&arabic_khoja;Definiteness"/>
+        <rdfs:domain rdf:resource="&arabic_khoja;Noun"/>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#hasGender -->
+
+    <owl:ObjectProperty rdf:about="&arabic_khoja;hasGender">
+        <rdfs:range rdf:resource="&arabic_khoja;Gender"/>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&arabic_khoja;Noun"/>
+                    <rdf:Description rdf:about="&arabic_khoja;Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#hasMood -->
+
+    <owl:ObjectProperty rdf:about="&arabic_khoja;hasMood">
+        <rdfs:range rdf:resource="&arabic_khoja;Mood"/>
+        <rdfs:domain rdf:resource="&arabic_khoja;Verb"/>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#hasNumber -->
+
+    <owl:ObjectProperty rdf:about="&arabic_khoja;hasNumber">
+        <rdfs:range rdf:resource="&arabic_khoja;Number"/>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&arabic_khoja;Noun"/>
+                    <rdf:Description rdf:about="&arabic_khoja;Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#hasPerson -->
+
+    <owl:ObjectProperty rdf:about="&arabic_khoja;hasPerson">
+        <rdfs:range rdf:resource="&arabic_khoja;Person"/>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&arabic_khoja;Noun"/>
+                    <rdf:Description rdf:about="&arabic_khoja;Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Abbreviation -->
+
+    <owl:Class rdf:about="&arabic_khoja;Abbreviation">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Residual"/>
+        <rdfs:comment>RA
+Residual, abbreviation
+ساو
+was
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#AccusativeCase -->
+
+    <owl:Class rdf:about="&arabic_khoja;AccusativeCase">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Adjective -->
+
+    <owl:Class rdf:about="&arabic_khoja;Adjective">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Noun"/>
+        <rdfs:comment>Adjectives are nouns that describe the aspects of an object. Adjectives inherit the properties of nouns, so they take “nunation” when in the indefinite and can take the definite article when definite. For example, alwld sghyr “The small boy” contains the adjective sghyr “small”. This adjective can take the definite article as in ‘darasa alwaladu alsaghyr’ “the small boy studied”, and it can also have “nunation” as in ‘hasanu saghyrun’ “Hassan is small”.</rdfs:comment>
+        <rdfs:comment>NACSgMNI
+Singular, masculine, nominative,
+indefinite adjective
+ﺪﻴﻌﺳ
+ٌ
+sa’ydun
+happy
+NACSgMAI
+Singular, masculine, accusative, indefinite
+adjective
+اﺪ ﻌﺳ
+َ ﻴ
+sa’ydan
+happy
+NACSgMGI
+Singular, masculine, genitive, indefinite
+adjective
+ﺪﻴﻌﺳ
+ٍ
+sa’ydin
+happy
+NACSgMND
+Singular, masculine, nominative, definite
+adjective
+ﺪﻴﻌﺴﻟا
+ُ
+alsa’ydu
+the happy
+NACSgMAD
+Singular, masculine, accusative, definite
+adjective
+ﺪَﻴﻌﺴﻟا
+alsa’yda
+the happy
+NACSgMGD
+Singular, masculine, genitive, definite
+adjective
+ﺪﻴﻌﺴﻟا
+ِ
+alsa’ydi
+the happy
+NACSgFNI
+Singular, feminine, nominative, indefinite
+adjective
+ةﺪﻴﻌﺳ
+ٌ
+sa’ydatun
+happy
+Page 10
+NACSgFAI
+Singular, feminine, accusative, indefinite
+adjective
+ﺎﺗﺪﻴﻌﺳ
+ً
+sa’ydatan
+happy
+NACSgFGI
+Singular, feminine, genitive, indefinite
+adjective
+ةﺪﻴﻌﺳ
+ٍ
+sa’ydatin
+happy
+NACSgFND
+Singular, feminine, nominative, definite
+adjective
+ةﺪﻴﻌﺴﻟا
+ُ
+alsa’ydatu
+the happy
+NACSgFAD
+Singular, feminine, accusative, definite
+adjective
+ةﺪﻴﻌﺴﻟا
+َ
+alsa’ydata
+the happy
+NACSgFGD
+Singular, feminine, genitive, definite
+adjective
+ةﺪﻴﻌﺴﻟا
+ِ
+alsa’ydati
+the happy
+NACDuMNI
+Dual, masculine, nominative, indefinite
+adjective
+ناﺪﻴﻌﺳ
+sa’ydan
+two happy
+NACDuMAI
+Dual, masculine, accusative, indefinite
+adjective
+ﻦﻱﺪﻴﻌﺳ
+sa’ydain
+two happy
+NACDuMGI
+Dual, masculine, genitive, indefinite
+adjective
+ﻦﻱﺪﻴﻌﺳ
+sa’ydain
+two happy
+NACDuMND
+Dual, masculine, nominative, definite
+adjective
+ناﺪﻴﻌﺴﻟا
+alkitaban
+the two happy
+NACDuMAD
+Dual, masculine, accusative, definite
+adjective
+ﻦﻱﺪﻴﻌﺴﻟا
+alsa’ydain
+the two happy
+NACDuMGD
+Dual, masculine, genitive, definite
+adjective
+ﻦﻱﺪﻴﻌﺴﻟا
+alsa’ydain
+the two happy
+NACDuFNI
+Dual, feminine, nominative, indefinite
+adjective
+نﺎﺗﺪﻴﻌﺳ
+sa’ydatan
+two happy
+NACDuFAI
+Dual, feminine, accusative, indefinite
+adjective
+ﻦﻴﺗﺪﻴﻌﺳ
+sa’ydatain
+two happy
+NACDuFGI
+Dual, feminine, genitive, indefinite
+adjective
+ﻦﻴﺗﺪﻴﻌﺳ
+sa’ydatain
+two happy
+NACDuFND
+Dual, feminine, nominative, definite
+adjective
+نﺎﺗﺪﻴﻌﺴﻟا
+alsa’ydatan
+the two happy
+NACDuFAD
+Dual, feminine, accusative, definite
+adjective
+ﻦﻴﺗﺪﻴﻌﺴﻟا
+alsa’ydatain
+the two happy
+NACDuFGD Dual, feminine, genitive, definite adjective
+ﻦﻴﺗﺪﻴﻌﺴﻟا
+alsa’ydatain
+the two happy
+NACPlMNI
+Plural, masculine, nominative, indefinite
+adjective
+نوﺪﻴﻌﺳ
+sa’ydoon
+happy
+NACPlMAI
+Plural, masculine, accusative, indefinite
+adjective
+ﻦﻱﺪﻴﻌﺳ
+sa’ydeen
+happy
+NACPlMGI
+Plural, masculine, genitive, indefinite
+adjective
+ﻦﻱﺪﻴﻌﺳ
+sa’ydeen
+happy
+NACPlMND
+Plural, masculine, nominative, definite
+adjective
+وﺪﻴﻌﺴﻟا
+ن
+alsa’ydoon
+the happy
+NACPlMAD
+Plural, masculine, accusative, definite
+adjective
+ﺪﻴﻌﺴﻟا
+ﻦﻱ
+alsa’ydeen
+the happy
+NACPlMGD
+Plural, masculine, genitive, definite
+adjective
+ﺪﻴﻌﺴﻟا
+ﻦﻱ
+alsa’ydeen
+the happy
+NACPlFNI
+Plural, feminine, nominative, indefinite
+adjective
+تاﺪﻴﻌﺳ
+ٌ
+sa’ydaatun
+happy
+NACPlFAI
+Plural, feminine, accusative, indefinite
+adjective
+ﺎﺗاﺪﻴﻌﺳ
+ً
+sa’ydaatan
+happy
+NACPlFGI
+Plural, feminine, genitive, indefinite,
+adjective
+تاﺪﻴﻌﺳ
+ٍ
+sa’ydaatin
+happy
+NACPlFND
+Plural, feminine, nominative, definite
+adjective
+تاﺪﻴﻌﺴﻟا
+ُ
+alsa’ydaatu
+the happy
+NACPlFAD
+Plural, feminine, accusative, definite
+adjective
+تاﺪﻴﻌﺴﻟا
+َ
+alsa’ydaata
+the happy
+NACPlFGD
+Plural, feminine, genitive, definite
+adjective
+تاﺪﻴﻌﺴﻟا
+ِ
+alsa’ydaati
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Adverbial -->
+
+    <owl:Class rdf:about="&arabic_khoja;Adverbial">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>PA
+Adverbial particles
+إاذ– ﻢﺛ – فﻮﺳ –ﻦﻟ
+idhaa – thumma –
+swf – ln
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Answer -->
+
+    <owl:Class rdf:about="&arabic_khoja;Answer">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>PW
+Answers
+ﻞﺟأ–ﻻ
+la – ajl
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#CardinalNumeral -->
+
+    <owl:Class rdf:about="&arabic_khoja;CardinalNumeral">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Numeral"/>
+        <rdfs:comment>NNuCaSgM Singular, masculine, cardinal number
+ﻊﺑرأ
+arba’
+Four
+NNuCaSgF Singular, feminine, cardinal number
+ﺔﻌﺑرأ
+arba’a
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Case -->
+
+    <owl:Class rdf:about="&arabic_khoja;Case">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#CommonNoun -->
+
+    <owl:Class rdf:about="&arabic_khoja;CommonNoun">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Noun"/>
+        <rdfs:comment>NCSgMNI
+Singular, masculine, nominative,
+indefinite common noun
+بﺎﺘآ
+ٌ
+kitabun
+book
+NCSgMAI
+Singular, masculine, accusative, indefinite
+common noun
+ﺎﺑﺎﺘآ
+َ
+kitaban
+book
+NCSgMGI
+Singular, masculine, genitive, indefinite
+common noun
+بﺎﺘآ
+ٍ
+kitabin
+book
+NCSgMND
+Singular, masculine, nominative, definite
+common noun
+بﺎﺘﻜﻟا
+ُ
+alkitabu
+the book
+NCSgMAD
+Singular, masculine, accusative, definite
+common noun
+بَ ﺎﺘﻜﻟا
+alkitaba
+the book
+NCSgMGD
+Singular, masculine, genitive, definite
+common noun
+بﺎﺘﻜﻟا
+ِ
+alkitabi
+the book
+NCSgFNI
+Singular, feminine, nominative, indefinite
+common noun
+ﺔﺳرﺪﻣ
+ٌ
+madrasatun
+school
+NCSgFAI
+Singular, feminine, accusative, indefinite
+common noun
+ﺎﺘﺳرﺪﻣ
+ً
+madrasatan
+school
+NCSgFGI
+Singular, feminine, genitive, indefinite
+common noun
+ﺔﺳرﺪﻣ
+ٍ
+madrasatin
+school
+NCSgFND
+Singular, feminine, nominative, definite
+common noun
+ﺔﺳرﺪﻤﻟا
+ُ
+almadrasatu
+NCSgFAD
+Singular, feminine, accusative, definite
+common noun
+ﺔﺳرﺪﻤﻟا
+َ
+almadrasata
+the school
+NCSgFGD
+Singular, feminine, genitive, definite
+common noun
+ﺔﺳرﺪﻤﻟا
+ِ
+aladrasati
+the school
+NCDuMNI
+Dual, masculine, nominative, indefinite
+common noun
+نﺎﺑﺎﺘآ
+kitaban
+two books
+NCDuMAI
+Dual, masculine, accusative, indefinite
+common noun
+ﻦﻴﺑﺎﺘآ
+kitabain
+two books
+NCDuMGI
+Dual, masculine, genitive, indefinite
+common noun
+ﻦﻴﺑﺎﺘآ
+kitabain
+two books
+NCDuMND
+Dual, masculine, nominative, definite
+common noun
+نﺎﺑﺎﺘﻜﻟا
+alkitaban
+the two books
+NCDuMAD
+Dual, masculine, accusative, definite
+common noun
+ﻦﻴﺑﺎﺘﻜﻟا
+alkitabain
+the two books
+NCDuMGD
+Dual, masculine, genitive, definite
+common noun
+ﻦﻴﺑﺎﺘﻜﻟا
+alkitabain
+the two books
+NCDuFNI
+Dual, feminine, nominative, indefinite
+common noun
+نﺎﺘﺳرﺪﻣ
+madrasatan
+two books
+NCDuFAI
+Dual, feminine, accusative, indefinite
+common noun
+ﻦﻴﺘﺳرﺪﻣ
+madrasatain
+two schools
+NCDuFGI
+Dual, feminine, genitive, indefinite
+common noun
+ﻦﻴﺘﺳرﺪﻣ
+madrasatain
+two schools
+NCDuFND
+Dual, feminine, nominative, definite
+common noun
+نﺎﺘﺳرﺪﻤﻟا
+almadrasatan
+the two
+schools
+NCDuFAD
+Dual, feminine, accusative, definite
+common noun
+ﻦﻴﺘﺳرﺪﻤﻟا
+almadrasatain
+the two
+schools
+NCDuFGD
+Dual, feminine, genitive, definite common
+noun
+ﻦﻴﺘﺳرﺪﻤﻟا
+almadrasatain
+the two
+schools
+NCPlMNI
+Plural, masculine, nominative, indefinite
+common noun
+ﺐﺘآ
+ٌ-
+نﻮﻤﻠﺴﻣ
+muslimoon –
+kutubun
+Muslims –
+books
+NCPlMAI
+Plural, masculine, accusative, indefinite
+common noun
+ﺎﺒﺘآ
+َ-
+ﻦﻴﻤﻠﺴﻣ
+muslimeen –
+kutuban
+Muslims –
+books
+NCPlMGI
+Plural, masculine, genitive, indefinite
+common noun
+ﺐﺘآ
+ٍ-
+ﻦﻴﻤﻠﺴﻣ
+muslimeen –
+kutubin
+Muslims –
+books
+NCPlMND
+Plural, masculine, nominative, definite
+common noun
+ﺐﺘﻜﻟا
+ُ-
+نﻮﻤﻠﺴﻤﻟا
+almuslimoon –
+alkutubu
+the Muslims –
+the books
+NCPlMAD
+Plural, masculine, accusative, definite
+common noun
+ﺐﺘﻜﻟا
+َ-
+ﻦﻴﻤﻠﺴﻤﻟا
+aluslimeen –
+alkutuba
+the Muslims –
+the books
+NCPlMGD
+Plural, masculine, genitive, definite
+common noun
+ﺐﺘﻜﻟا
+ِ-
+ﻦﻴﻤﻠﺴﻤﻟا
+almuslimeen –
+alkutubi
+the Muslims –
+the books
+NCPlFNI
+Plural, feminine, nominative, indefinite
+common noun
+سراﺪﻣ
+ٌ
+تﺎﻤﻠﺴﻣ
+ٌ–
+madarisun –
+muslimaatun
+schools –
+Muslims
+NCPlFAI
+Plural, feminine, accusative, indefinite
+common noun
+ﺎﺳراﺪﻣ
+ً
+ﺎﺗﺎﻤﻠﺴﻣ
+ً–
+madarisan –
+muslimaatan
+schools –
+Muslims
+NCPlFGI
+Plural, feminine, genitive, indefinite,
+common noun
+سراﺪﻣ
+ٍ
+تﺎﻤﻠﺴﻣ
+ٍ–
+madarisin –
+muslimaatin
+schools –
+Muslims
+NCPlFND
+Plural, feminine, nominative, definite
+common noun
+سراﺪﻤﻟا
+ُ
+تﺎﻤﻠﺴﻤﻟا
+ُ–
+almadarisu –
+almuslimaatu
+the schools –
+the Muslims
+NCPlFAD
+Plural, feminine, accusative, definite
+common noun
+سراﺪﻤﻟا
+َ
+تﺎﻤﻠﺴﻤﻟا
+َ–
+almadarisa –
+almuslimaata
+the schools –
+the Muslims
+NCPlFGD
+Plural, feminine, genitive, definite
+common noun
+سراﺪﻤﻟا
+ِ
+تﺎﻤﻠﺴﻤﻟا
+ِ–
+almadarisi –
+almuslimaati</rdfs:comment>
+        <rdfs:comment>The noun category can be subcategorised to include many of the subclasses described by Arabic grammarians that lend meaning to the word, for example, nouns of instrument and nouns of place and time.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#CommonRelativePronoun -->
+
+    <owl:Class rdf:about="&arabic_khoja;CommonRelativePronoun">
+		<rdfs:comment>
+		Relative pronouns in Arabic are two types: special and common. The special relative pronouns are the those that have singular, dual, plural. These are six: الَّذِي ، اللَّذَان ، الَّذِيْن ، الَّتِي ، اللَّتَان ، اللَّاتِي, as listed in the table above. اللَّذان and اللَّتَان become اللَّذَيْن and اللَّتَيْن in the accusative and genitive cases. The common relative pronouns that has the same form for the singular, dual, and plural. These are مَنْ and مَا. The first (مَنْ) is used for human, while مَا is used for non-human. ...
+		
+		مَنْ is used for human masculine and feminine singular, dual, and plural nouns. The kind of nouns it refers to is known from the relative clause that follows, as in these examples:
+		أَحْتَرِم مَنْ يَقُول الحَق.                     ‘I respect him who says the truth.’
+		أَحْتَرِم مَنْ يَقُولُون الحَق.                  ‘I respect them who say the truth.’
+		أَحْتَرِم مَنْ تَقُول الحَق.                     ‘I respect her who says the truth.’
+		أَحْتَرِم مَنْ قَالَتَا الحَق.                      ‘I respect the two ladies who said the truth.’
+
+		...
+
+		مَا is used for non-human masculine and feminine singular, dual and plural nouns. Like مَنْ, the noun it refers to is know from the context, as in these examples:
+		قَرَأتُ مَا كَتَبْتَ مِنْ مَقَالات.                ‘I read what you wrote (of the articles).’
+		هَل سَمِعْتُ مَا قَالُوا (مِنْ خَبَر)؟          ‘did you hear what they said? (of the news)’
+		
+		(https://blogs.transparent.com/arabic/relative-clauses-in-arabic/)
+		</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;RelativePronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Conjunction -->
+
+    <owl:Class rdf:about="&arabic_khoja;Conjunction">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>PC
+Conjunctions
+ف– ﻰﺘﺡ –و
+f – hta – w
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#DayOfTheWeek -->
+
+    <owl:Class rdf:about="&arabic_khoja;DayOfTheWeek">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Residual"/>
+        <rdfs:comment>RD
+Residual, day of the week
+ﻦﻴﻨﺛﻻا
+alithnyn
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Definite -->
+
+    <owl:Class rdf:about="&arabic_khoja;Definite">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Definiteness"/>
+        <rdfs:comment>In Arabic nouns are marked for definiteness by the prefix that is the definite article.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Definiteness -->
+
+    <owl:Class rdf:about="&arabic_khoja;Definiteness">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Feature"/>
+        <rdfs:comment>The article is not described in Arabic as a category at all, and definiteness is just a linguistic feature that is realised by the definite article.
+
+The way that definiteness is handled in Arabic is quite different to the way it is handled in EAGLES, and this difference is apparent when comparing the tagsets. In Arabic nouns are marked for definiteness by the prefix that is the definite article, unlike in English where the article itself can be definite or indefinite. In Arabic there is no indefinite article, and instead “nunation” is used.
+
+Nunation is the doubling of the vowels at the end of nouns and all subclasses of nouns when they are indefinite. This doubling has the effect of adding a final “n” to the pronunciation, so that, kitabu becomes kitabun “book”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#DemonstrativePronoun -->
+
+    <owl:Class rdf:about="&arabic_khoja;DemonstrativePronoun">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Pronoun"/>
+        <rdfs:comment>NPrDSgM
+Singular, masculine, demonstrative
+pronoun
+اﺬه– اذ – كاذ –ﻚﻟذ
+hadhaa – dhaa –
+dhaaka – dhaalika
+This – that
+NPrDSgF Singular, feminine, demonstrative pronoun
+ﻩﺬه– يﺬه – ﻩذ – يذ – ﻚﻠﺗ –
+كﺎﺗ–ﻚﻴﺗ
+haadhihi – haadhee
+– dhih – dhy – tilka
+– taaka – teeka
+This – that
+NprDDuM Dual, masculine, demonstrative pronoun
+ناﺬه– ناذ – ﻚﻥاذ – ﻦﻱﺬه –
+ﻦﻱذ–ﻚﻨﻱذ
+haadhani – dhaani
+– dhaanika –
+hadhaini –dhaini
+This – that
+NprDDuF Dual, feminine, demonstrative pronoun
+نﺎﺘه– نﺎﺗ – ﻚﻥﺎﺗ – ﻦﻴﺘه – ﻦﻴﺗ
+–ﻚﻨﻴﺗ
+haatani – taani-
+taanika – haataini
+This – that
+NPrDPl
+Plural, neutral, demonstrative pronoun
+ءﻻﺆه– ﻰﻟوأ – ءﻻوأ – ﻚﺉﻻوأ
+– ﻚﻟﻻوأ –كﻻوأ
+haaolaai – olaa-
+olaaika- olaalika –
+olaaka
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#DualNumber -->
+
+    <owl:Class rdf:about="&arabic_khoja;DualNumber">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Exception -->
+
+    <owl:Class rdf:about="&arabic_khoja;Exception">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>Arabic grammatical tradition already recognizes a subclass of Particle translated as Exceptions by Khoja, to cover some idiosyncratic words which do not fit other patterns: “ ... These include the Arabic words that are equivalent to the word except and the prefixes non-, un-, and im-.”
+(Atwell 2007)</rdfs:comment>
+        <rdfs:comment>PE
+Exceptions
+ﺮﻴﻏ–ىﻮﺳ
+ghyr – swa
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Explanation -->
+
+    <owl:Class rdf:about="&arabic_khoja;Explanation">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>PX
+Explanations
+يأ
+ay
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Feature -->
+
+    <owl:Class rdf:about="&arabic_khoja;Feature">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:comment>The current Arabic tagset can be extended to include many other features such as transitivity and voice for verbs, and derivation for nouns.
+
+Arabic has two voices, the active and the passive.
+Nouns in Arabic can be derived from other nouns or they can be derived from verbs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#FeminineGender -->
+
+    <owl:Class rdf:about="&arabic_khoja;FeminineGender">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#FirstPerson -->
+
+    <owl:Class rdf:about="&arabic_khoja;FirstPerson">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Foreign -->
+
+    <owl:Class rdf:about="&arabic_khoja;Foreign">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Residual"/>
+        <rdfs:comment>RF
+Residual, foreign
+رﻮﺟور
+rwjwr
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Gender -->
+
+    <owl:Class rdf:about="&arabic_khoja;Gender">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#GenitiveCase -->
+
+    <owl:Class rdf:about="&arabic_khoja;GenitiveCase">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#ImperativeVerb -->
+
+    <owl:Class rdf:about="&arabic_khoja;ImperativeVerb">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Verb"/>
+        <rdfs:comment>VIvSg2M
+Second person, singular, masculine,
+imperative verb
+ﺮﺴآأ
+ْ
+aksir
+Break!
+VIvSg2F
+Second person, singular, feminine,
+imperative verb
+يﺮﺴآأ
+aksiry
+Break!
+VIvDu2
+Second person, dual, neuter, imperative
+verb
+اﺮﺴآأ
+aksiraa
+Break!
+VIvPl2M
+Second person, plural, masculine,
+imperative verb
+اوﺮﺴآأ
+aksroo
+Break!
+VIvPl2F
+Second person, plural, feminine,
+imperative verb
+نﺮﺴآأ
+aksirna
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#ImperfectVerb -->
+
+    <owl:Class rdf:about="&arabic_khoja;ImperfectVerb">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Verb"/>
+        <rdfs:comment>VISg1I
+First person, singular, neuter, indicative,
+imperfect verb
+ﺮﺴآأ
+ُ
+aksiru
+I break
+VISg1S
+First person, singular, neuter, subjunctive,
+imperfect verb
+ﺮﺴآأ
+َ
+aksira
+I break
+VISg1J
+First person, singular, neuter, jussive,
+imperfect verb
+ﺮﺴآأ
+ْ
+aksir
+I break
+VISg2MI
+Second person, singular, masculine,
+indicative, imperfect verb
+ﺮﺴﻜﺗ
+ُ
+taksiru
+You break
+VISg2MS
+Second person, singular, masculine,
+subjunctive, imperfect verb
+ﺮﺴﻜﺗ
+َ
+taksira
+You break
+VISg2MJ
+Second person, singular, masculine,
+jussive, imperfect verb
+ﺮﺴﻜﺗ
+ْ
+taksir
+You break
+VISg2FI
+Second person, singular, feminine,
+indicative, imperfect verb
+ﻦﻱﺮﺴﻜﺗ
+taksiryna
+You break
+VISg2FS
+Second person, singular, feminine,
+subjunctive, imperfect verb
+يﺮﺴﻜﺗ
+taksiry
+You break
+VISg2FJ
+Second person, singular, feminine, jussive,
+imperfect verb
+يﺮﺴﻜﺗ
+taksiry
+You break
+VISg3MI
+Third person, singular, masculine,
+indicative, imperfect verb
+ﺮﺴﻜﻱ
+ُ
+yaksiru
+He breaks
+VISg3MS
+Third person, singular, masculine,
+subjunctive, imperfect verb
+ﺮﺴﻜﻱ
+َ
+yaksira
+He breaks
+VISg3MJ
+Third person, singular, masculine, jussive,
+imperfect verb
+ﺮﺴﻜﻱ
+ْ
+yaksir
+He breaks
+VISg3FI
+Third person, singular, feminine,
+indicative, imperfect verb
+ﺮﺴﻜﺗ
+ُ
+taksiru
+She breaks
+VISg3FS
+Third person, singular, feminine,
+subjunctive, imperfect verb
+ﺮﺴﻜﺗ
+َ
+taksira
+She breaks
+VISg3FJ
+Third person, singular, feminine, jussive,
+imperfect verb
+ﺮﺴﻜﺗ
+ْ
+taksir
+She breaks
+VIDu2I
+Second person, dual, neuter, indicative,
+imperfect verb
+ناﺮﺴﻜﺗ
+taksiraani
+You break
+VIDu2S
+Second person, dual, neuter, subjunctive,
+imperfect verb
+اﺮﺴﻜﺗ
+taksiraa
+You break
+VIDu2J
+Second person, dual, neuter, jussive,
+imperfect verb
+اﺮﺴﻜﺗ
+taksiraa
+You break
+VIDu3MI
+Third person, dual, masculine, indicative,
+imperfect verb
+ناﺮﺴﻜﻱ
+yaksiraani
+They break
+VIDu3MS
+Third person, dual, masculine,
+subjunctive, imperfect verb
+اﺮﺴﻜﻱ
+yaksiraa
+They break
+VIDu3MJ
+Third person, dual, masculine, jussive,
+imperfect verb
+اﺮﺴﻜﻱ
+yaksiraa
+They break
+VIDu3FI
+Third person, dual, feminine, indicative,
+imperfect verb
+ناﺮﺴﻜﻱ
+yaksiraan
+They break
+VIDu3FS
+Third person, dual, feminine, subjunctive,
+imperfect verb
+اﺮﺴﻜﻱ
+yaksiraa
+They break
+VIDu3FJ
+Third person, dual, feminine, jussive,
+imperfect verb
+اﺮﺴﻜﻱ
+yaksiraa
+They break
+VIPl1I
+First person, plural, neuter, indicative,
+imperfect verb
+ﺮﺴﻜﻥ
+ُ
+naksiru
+We break
+VIPl1S
+First person, plural, neuter, subjunctive,
+imperfect verb
+ﺮﺴﻜﻥ
+َ
+naksira
+We break
+VIPl1J
+First person, plural, neuter, jussive,
+imperfect verb
+ﺮﺴﻜﻥ
+ْ
+naksir
+We break
+VIPl2MI
+Second person, plural, masculine,
+indicative, imperfect verb
+نوﺮﺴﻜﺗ
+taksiroon
+You break
+Page 12
+VIPl2MS
+Second person, plural, masculine,
+subjunctive, imperfect verb
+اوﺮﺴﻜﺗ
+taksiroo
+You break
+VIPl2MJ
+Second person, plural, masculine, jussive,
+imperfect verb
+اوﺮﺴﻜﺗ
+taksiroo
+You break
+VIPl2FI
+Second person, plural, feminine,
+indicative, imperfect verb
+نﺮﺴﻜﺗ
+taksirna
+You break
+VIPl2FS
+Second person, plural, feminine,
+subjunctive, imperfect verb
+نﺮﺴﻜﺗ
+taksirna
+You break
+VIPl2FJ
+Second person, plural, feminine, jussive,
+imperfect verb
+نﺮﺴﻜﺗ
+taksirna
+You break
+VIPl3MI
+Third person, plural, masculine, indicative,
+imperfect verb
+نوﺮﺴﻜﻱ
+yaksiroon
+They break
+VIPl3MS
+Third person, plural, masculine,
+subjunctive, imperfect verb
+اوﺮﺴﻜﻱ
+yaksiroo
+They break
+VIPl3MJ
+Third person, plural, masculine, jussive,
+imperfect verb
+اوﺮﺴﻜﻱ
+yaksiroo
+They break
+VIPl3FI
+Third person, plural, feminine, indicative,
+imperfect verb
+نﺮﺴﻜﻱ
+yaksirna
+They break
+VIPl3FS
+Third person, plural, feminine,
+subjunctive, imperfect verb
+نﺮﺴﻜﻱ
+yaksirna
+They break
+VIPl3FJ
+Third person, plural, feminine, jussive,
+imperfect verb
+نﺮﺴﻜﻱ
+yaksirna
+</rdfs:comment>
+        <rdfs:comment>The imperfect does not in itself express any idea of time, it merely indicates a begun, incomplete, or enduring existence either in present, past or future time. While the imperative verbs order or ask for something to be done in the future.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Indefinite -->
+
+    <owl:Class rdf:about="&arabic_khoja;Indefinite">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Definiteness"/>
+        <rdfs:comment>In Arabic there is no indefinite article, and instead “nunation” is used. Nunation is the doubling of the vowels at the end of nouns and all subclasses of nouns when they are indefinite. This doubling has the effect of adding a final “n” to the pronunciation, so that, kitabu becomes kitabun “book”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#IndicativeMood -->
+
+    <owl:Class rdf:about="&arabic_khoja;IndicativeMood">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Interjection -->
+
+    <owl:Class rdf:about="&arabic_khoja;Interjection">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>PI
+Interjections
+ﺎﻱ–ﺎﻬﺘﻱأ
+ya – aytha
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#JussiveMood -->
+
+    <owl:Class rdf:about="&arabic_khoja;JussiveMood">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Mood"/>
+        <rdfs:comment>The jussive is needed to express a command in the first and third person. This mood is realised in Arabic by rejecting the final vowel and is sometimes called the apocopated imperfect.
+
+The purpose of the jussive is to express a command in the first or third person as in ‘heena yahduru yalbas thiyaban nazyfatan’ which means “when he attends, let him (he must) wear clean clothes”, where the jussive is the word ‘yalbas’ “wear”. Also, there is no negative imperative in Arabic, so the negative particle followed by the jussive is used in its place, such as ‘la taktub’ “do not write”, where the jussive is the word ‘taktub’ “write”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#MasculineGender -->
+
+    <owl:Class rdf:about="&arabic_khoja;MasculineGender">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Mathematical -->
+
+    <owl:Class rdf:about="&arabic_khoja;Mathematical">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Residual"/>
+        <rdfs:comment>RM
+Residual, mathematical
+÷
+/
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#MonthOfTheYear -->
+
+    <owl:Class rdf:about="&arabic_khoja;MonthOfTheYear">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Residual"/>
+        <rdfs:comment>Rmy
+Residual, month of the year
+مﺮﺤﻣ
+mhrm
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Mood -->
+
+    <owl:Class rdf:about="&arabic_khoja;Mood">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Negative -->
+
+    <owl:Class rdf:about="&arabic_khoja;Negative">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>PN
+Negatives
+ﻢﻟ-
+ﻻ
+la – lm
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NeuterGender -->
+
+    <owl:Class rdf:about="&arabic_khoja;NeuterGender">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NominativeCase -->
+
+    <owl:Class rdf:about="&arabic_khoja;NominativeCase">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Noun -->
+
+    <owl:Class rdf:about="&arabic_khoja;Noun">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Word"/>
+        <rdfs:comment>All subclasses of the noun inherit the tnwyn “nunation” when in the indefinite which is one of the main properties of the noun: Nunation is the doubling of the vowels at the end of nouns and all subclasses of nouns when they are indefinite. This doubling has the effect of adding a final “n” to the pronunciation, so that, kitabu becomes kitabun “book”.
+
+Examples of these subcategories include:
+• Singular, masculine, accusative, common noun such as ktab “book” in the sentence ‘akhadha alwaladu kitaban’ “the boy took a book”.
+• Singular, masculine, genitive, common noun such as ktab “book” in the sentence ‘darastu min kitabin’ “I studied from a book”.
+• Singular, feminine, nominative, common noun such as ktab “book” in the sentence ‘hadhihi madrasatun’ “this is a school”.
+
+The linguistic attributes of nouns that have been used in this tagset are:
+(i) Gender: M [masculine] F [feminine] N [neuter]
+(ii) Number: Sg [singular] Pl [plural] Du [dual]
+(iii) Person: 1 [first] 2 [second] 3 [third] 
+(iv) Case: N [nominative] A [accusative] G [genitive] 
+(v) Definiteness: D [definite] I [indefinite] </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Number -->
+
+    <owl:Class rdf:about="&arabic_khoja;Number">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Feature"/>
+        <rdfs:comment>Arabic marks words not just for singular and plural but also for dual.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Numeral -->
+
+    <owl:Class rdf:about="&arabic_khoja;Numeral">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Noun"/>
+        <rdfs:comment>Examples of numerals include:
+• Singular, masculine, nominative, indefinite cardinal number such as ‘arba’atun’ “four”.
+• Singular, masculine, nominative, indefinite ordinal number such as ‘rabi’un’ “fourth”.
+• Singular, masculine, numerical adjective such as ‘ruba’iyun’ “of four”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NumericalAdjective -->
+
+    <owl:Class rdf:about="&arabic_khoja;NumericalAdjective">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Numeral"/>
+        <rdfs:comment>Numerical adjectives describe the number of sides to a shape, for example thmany “octagonal”. They also indicate a pair or couple when describing two people as in thna`y. 
+
+NNuNaSgM Singular, masculine, numerical adjective
+ﻲﻋﺎﺑر
+rubaa’y
+Of four
+NNuNaSgF Singular, feminine, numerical adjective
+ﺔﻴﻋﺎﺑر
+rubaa’iya</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#OrdinalNumeral -->
+
+    <owl:Class rdf:about="&arabic_khoja;OrdinalNumeral">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Numeral"/>
+        <rdfs:comment>NNuOrSgM Singular, masculine, ordinal number
+ﻊﺑار
+raabi’
+Fourth
+NNuOrSgF Singular, feminine, ordinal number
+ﺔﻌﺑار
+raabia
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#OtherResidual -->
+
+    <owl:Class rdf:about="&arabic_khoja;OtherResidual">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Residual"/>
+        <rdfs:comment>RO
+Residual, other
+لﺁ
+Aal</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Particle -->
+
+    <owl:Class rdf:about="&arabic_khoja;Particle">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Word"/>
+        <rdfs:comment>Particles are sometimes affixes; for example the definite article ‘al’ is well-known as a prefix in Arabic loan-words in other languages, e.g. algebra, Algarve. These are handled by a compound tag, reminiscent of the Brown tagging scheme: “... For morphologically complex words a combination of tags is used. For example, the word walktab ‘and the book’ is given the tag PC+NCSgMND, where PC indicates a particle that is a conjunction, and NCSgMND indicates a singular, masculine, nominative, definite noun.” (Atwell 2007)</rdfs:comment>
+        <rdfs:comment>Examples of particles include:
+• Prepositions fy “in”
+• Adverbial particles swf “shall”
+• Conjunctions w “and”
+• Interjections ya “you”
+• Exceptions swa “Except”
+• Negatives lm “Not”
+• Answers ajl “yes”
+• Explanations ay “that is”
+• Subordinates lw “if”</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PerfectVerb -->
+
+    <owl:Class rdf:about="&arabic_khoja;PerfectVerb">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Verb"/>
+        <rdfs:comment>VPSg1
+First person, singular, neuter, perfect verb
+تﺮﺴآ
+ُ
+kasartu
+I broke
+VPSg2M
+Second person, singular, masculine,
+perfect verb
+تﺮﺴآ
+َ
+kasarta
+You broke
+VPSg2F
+Second person, singular, feminine, perfect
+verb
+تﺮﺴآ
+ِ
+kasarti
+You broke
+VPSg3M
+Third person, singular, masculine, perfect
+verb
+آ
+ﺮﺴ
+kasara
+He broke
+VPSg3F
+Third person, singular, feminine, perfect
+verb
+تﺮﺴآ
+ْ
+kasarat
+She broke
+VPDu2
+Second person, dual, neuter, perfect verb
+ﺎﻤﺗﺮﺴآ
+kasartumaa
+You (two)
+broke
+Page 11
+VPDu3M Third person, dual, masculine, perfect verb
+اﺮﺴآ
+kasaraa
+They (two)
+broke
+VPDu3F Third person, dual, feminine, perfect verb
+ﺎﺗﺮﺴآ
+kasarataa
+They (two)
+broke
+VPPl1
+First person, plural, neuter, perfect verb
+ﺎﻥﺮﺴآ
+kasarnaa
+We broke
+VPPl2M
+Second person, plural, masculine, perfect
+verb
+ﻢﺗﺮﺴآ
+kasartum
+You broke
+VPPl2F
+Second person, plural, feminine, perfect
+verb
+ﻦﺗﺮﺴآ
+kasartunna
+You broke
+VPPl3M
+Third person, plural, masculine, perfect
+verb
+اوﺮﺴآ
+kasaroo
+They broke
+VPPl3F
+Third person, plural, feminine, perfect
+verb
+نﺮﺴآ
+kasarna
+</rdfs:comment>
+        <rdfs:comment>The definition of perfect verbs not only includes (i) the equivalent of English past tense verbs (i.e. to describe acts completed in some past time) but also (ii) describes acts which at the moment of speaking have already been completed and remain in a state of completion, (iii) describes a past act that often took place or still takes place (i.e. commentators are agreed (have agreed and still agree)), (iv) describes an act which is just completed at the moment by the very act of speaking it (I sell thee this), and (v) describes acts which is certain to occur that it can be described as having already taken place (mostly used in promises, treaties and so on).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Person -->
+
+    <owl:Class rdf:about="&arabic_khoja;Person">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="&arabic_khoja;PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Pronoun"/>
+        <rdfs:comment>NPrPSg1
+First person, singular, neuter, personal
+pronoun
+ﺎﻥأ–
+ﻲﺑﺎﺘآ
+-
+ﻲﻨﺑﺮﺿ
+ana- kitaabee –
+darabanee
+Me – my book
+– he hit me
+NPrPSg2M
+Second person, singular, masculine,
+personal pronoun
+ﺖﻥأ
+َ
+ﻚﺑﺎﺘآ
+َ–
+anta – kitaabuka
+You – your
+book
+NPrPSg2F
+Second person, singular, feminine,
+personal pronoun
+ﺖﻥأ
+ِ
+ﻚﺑﺎﺘآ
+ِ–
+anti – kitaabuki
+You – your
+book
+NPrPSg3M
+Third person, singular, masculine,
+personal pronoun
+ﻮه
+-
+ﻪﺑﺎﺘآ
+kitaabahu – huwa
+His book –
+him
+NPrPSg3F Third person, singular, feminine, personal
+ﻲه
+-
+ﺎﻬﺑﺎﺘآ
+kitaabuhaa – hiya Her book –
+Page 9
+pronoun
+her
+NPrPDu2
+Second person, dual, neuter, personal
+pronoun
+ﺎﻤﺘﻥأ–ﺎﻤﻜﺑﺎﺘآ
+antumaa –
+kitaabakumaa
+You two –
+your book
+NPrPDu3
+Third person, dual, neuter, personal
+pronoun
+ﺎﻤه–ﺎﻤﻬﺑﺎﺘآ
+humaa –
+kitaabahumaa
+Those two –
+their book
+NPrPPl1
+First person, plural, neuter, personal
+pronoun
+ﻦﺤﻥ–ﺎﻨﺑﺎﺘآ
+nahnu – kitaabunaa Us – our book
+NPrPPl2M
+Second person, plural, masculine, personal
+pronoun
+ﻢﺘﻥأ–ﻢﻜﺑﺎﺘآ
+antum –
+kitaabakum
+You – your
+book
+NPrPPl2F
+Second person, plural, feminine, personal
+pronoun
+ﻦﺘﻥأ–ﻦﻜﺑﺎﺘآ
+antunna –
+kitaabakunna
+You – your
+book
+NPrPPl3M
+Third person, plural, masculine, personal
+pronoun
+ﻢه–ﻢﻬﺑﺎﺘآ
+hum – kitaabahum
+Them – their
+book
+NPrPPl3F
+Third person, plural, feminine, personal
+pronoun
+ﻦه
+-
+ﻦﻬﺑﺎﺘآ
+kitaabahunna –
+hunna</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PluralNumber -->
+
+    <owl:Class rdf:about="&arabic_khoja;PluralNumber">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Number"/>
+        <rdfs:comment>Since Arabic contains three different kinds of plurals, these could also be included in the tagset. The three types of plurals are: the masculine sound plural, the feminine sound plural, and the broken plural. The first two are recognised in Arabic morphologically by suffixes, while the last, is derived by the following of fixed patterns.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Preposition -->
+
+    <owl:Class rdf:about="&arabic_khoja;Preposition">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>PPr
+Prepositions
+ك– ل – ﻦﻣ – ﻊﻣ –ﻲﻓ
+ka – li – min –
+ma’a – fy
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Pronoun -->
+
+    <owl:Class rdf:about="&arabic_khoja;Pronoun">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Noun"/>
+        <rdfs:comment>The personal pronouns can be detached words such as hwa “he”, or attached to a word in the form of a clitic. The attached pronouns can be attached to nouns to indicate possession, to verbs as direct object, or attached to prepositions such as fyh “in it”.
+Some examples of pronouns include:
+• Third person, singular, masculine, personal pronoun such as hwa “him”.
+• Singular, feminine, demonstrative pronoun such as hdhh “this”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#ProperNoun -->
+
+    <owl:Class rdf:about="&arabic_khoja;ProperNoun">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Noun"/>
+        <rdfs:comment>NP
+Proper noun
+ﻩﺪﺟ–ﻦﻱﺮﻴﺵ
+Jiddah – Shyryn</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Punctuation -->
+
+    <owl:Class rdf:about="&arabic_khoja;Punctuation">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Word"/>
+        <rdfs:comment>The punctuation category contains all punctuation symbols, both Arabic and foreign.
+
+PU
+Punctuation
+؟
+?
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#RelativePronoun -->
+
+    <owl:Class rdf:about="&arabic_khoja;RelativePronoun">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Pronoun"/>
+        <rdfs:comment>Examples of relative pronouns include:
+• Dual, feminine, specific, relative pronoun such as alltan “who”.
+• Plural, masculine, specific, relative pronoun such as alldhyn “who”.
+• Common, relative pronoun such as ‘men’ “who”.</rdfs:comment>
+        <rdfs:comment>NPrRSSgM
+Singular, masculine, specific, relative
+pronoun
+يﺬﻟا
+allathi
+Who
+NPrRSSgF
+Singular, feminines, specific, relative
+pronoun
+ﻲﺘﻟا
+allati
+Who
+NPrRSDuM Dual, masculine, specific, relative pronoun
+ناﺬﻠﻟا–ﻦﻱﺬﻠﻟا
+alladhaani –
+alladhaini
+Who
+NPrRSDuF Dual, feminine, specific, relative pronoun
+ﻠﻟا
+نﺎﺘ –ﻦﻴﺘﻠﻟا
+allataani –
+allataini
+Who
+NPrRSPlM
+Plural, masculine, specific, relative
+pronoun
+ﻦﻱﺬﻠﻟا
+-
+ﻲﺉﻼﻟا
+allaiy – alladheena
+Who
+NPrRSPlf Plural, feminine, specific, relative pronoun
+ﻲﺗﻼﻟا
+-
+ﻲﺉﻼﻟا
+allaaiy - allatee
+Who
+NPrRC
+Common, relative pronoun
+ﻦﻣ– ﺎﻣ –ﺎﻤﻬﻣ
+men – maa –
+mahmaa</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Residual -->
+
+    <owl:Class rdf:about="&arabic_khoja;Residual">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Word"/>
+        <rdfs:comment>The residual category contains foreign words, mathematical formulae and numbers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#ResidualNumber -->
+
+    <owl:Class rdf:about="&arabic_khoja;ResidualNumber">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Residual"/>
+        <rdfs:comment>RN
+Residual, number
+3
+3
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#SecondPerson -->
+
+    <owl:Class rdf:about="&arabic_khoja;SecondPerson">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#SingularNumber -->
+
+    <owl:Class rdf:about="&arabic_khoja;SingularNumber">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#SpecificRelativePronoun -->
+
+    <owl:Class rdf:about="&arabic_khoja;SpecificRelativePronoun">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;RelativePronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#SubjunctiveMood -->
+
+    <owl:Class rdf:about="&arabic_khoja;SubjunctiveMood">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Subordinate -->
+
+    <owl:Class rdf:about="&arabic_khoja;Subordinate">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Particle"/>
+        <rdfs:comment>PS
+Subordinates
+ﺎﻣ–ﻮﻟ
+ma – lw
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#ThirdPerson -->
+
+    <owl:Class rdf:about="&arabic_khoja;ThirdPerson">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Verb -->
+
+    <owl:Class rdf:about="&arabic_khoja;Verb">
+        <rdfs:subClassOf rdf:resource="&arabic_khoja;Word"/>
+        <rdfs:comment>Verbs are defined in ancient Arabic grammar as being perfect, imperfect or imperative. This classification is an important part of Arabic, and trying to mould Arabic verbs to fit the traditional past, present and future tenses of Indo-European languages would be very unnatural.
+
+Examples of verbs include:
+• First person, singular, neuter, perfect verb ‘kasartu’ “I broke”.
+• First person, singular, neuter, indicative, imperfect verb ‘aksiru’ “I break”
+• Second person, singular, masculine, imperative verb ‘aksir’ “Break!
+
+The verbal attributes that have been used in our tagset are:
+(i) Gender: M [masculine] F [feminine] N [neuter] 
+(ii) Number: Sg [singular] Pl [plural] Du [dual]
+(iii) Person: 1 [first] 2 [second] 3 [third] 
+(iv) Mood: I [indicative] S [subjunctive] J [jussive]
+The two most notable verbal attributes that are fundamental to Arabic but do not normally appear in Indo-European tagsets are the dual number, and the jussive mood.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Word -->
+
+    <owl:Class rdf:about="&arabic_khoja;Word">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <owl:versionInfo>Word taxonomy follows Khoja et al. (2001), Appendix C.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#1 -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;1">
+        <rdf:type rdf:resource="&arabic_khoja;FirstPerson"/>
+        <system:hasTagContaining>1</system:hasTagContaining>
+        <hasCase rdf:resource="&arabic_khoja;1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#2 -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;2">
+        <rdf:type rdf:resource="&arabic_khoja;SecondPerson"/>
+        <system:hasTagContaining>2</system:hasTagContaining>
+        <hasCase rdf:resource="&arabic_khoja;2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#3 -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;3">
+        <rdf:type rdf:resource="&arabic_khoja;ThirdPerson"/>
+        <system:hasTagContaining>3</system:hasTagContaining>
+        <hasCase rdf:resource="&arabic_khoja;3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Du -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;Du">
+        <rdf:type rdf:resource="&arabic_khoja;DualNumber"/>
+        <system:hasTagContaining>Du</system:hasTagContaining>
+        <hasCase rdf:resource="&arabic_khoja;Du"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N">
+        <rdf:type rdf:resource="&arabic_khoja;Noun"/>
+        <system:hasTagStartingWith>N</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N......D -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N......D">
+        <rdf:type rdf:resource="&arabic_khoja;Definite"/>
+        <system:hasTagMatching>^N[CPA].....D$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;N......D"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N......I -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N......I">
+        <rdf:type rdf:resource="&arabic_khoja;Indefinite"/>
+        <system:hasTagMatching>^N[CPA].....I$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;N......I"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N.....A. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N.....A.">
+        <rdf:type rdf:resource="&arabic_khoja;AccusativeCase"/>
+        <system:hasTagMatching>^N[CPA]....A.$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;N.....A."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N.....G. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N.....G.">
+        <rdf:type rdf:resource="&arabic_khoja;GenitiveCase"/>
+        <system:hasTagMatching>^N[CPA]....G.$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;N.....G."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N.....N. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N.....N.">
+        <rdf:type rdf:resource="&arabic_khoja;NominativeCase"/>
+        <system:hasTagMatching>^N[CPA]....N.$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;N.....N."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N....F.. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N....F..">
+        <rdf:type rdf:resource="&arabic_khoja;FeminineGender"/>
+        <system:hasTagMatching>^N[CPA]...F..$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;N....F.."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N....M.. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N....M..">
+        <rdf:type rdf:resource="&arabic_khoja;MasculineGender"/>
+        <system:hasTagMatching>^N[CPA]...M..$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;N....M.."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#N....N.. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;N....N..">
+        <rdf:type rdf:resource="&arabic_khoja;NeuterGender"/>
+        <system:hasTagMatching>^N[CPA]...N..$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;N....N.."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NAC -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NAC">
+        <rdf:type rdf:resource="&arabic_khoja;Adjective"/>
+        <system:hasTagStartingWith>NAC</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NAC..F -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NAC..F">
+        <rdf:type rdf:resource="&arabic_khoja;FeminineGender"/>
+        <system:hasTagStartingWith>^NAC..F.*</system:hasTagStartingWith>
+        <hasCase rdf:resource="&arabic_khoja;NAC..F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NAC..M -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NAC..M">
+        <rdf:type rdf:resource="&arabic_khoja;MasculineGender"/>
+        <system:hasTagStartingWith>^NAC..M.*</system:hasTagStartingWith>
+        <hasCase rdf:resource="&arabic_khoja;NAC..M"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NAC..N -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NAC..N">
+        <rdf:type rdf:resource="&arabic_khoja;NeuterGender"/>
+        <system:hasTagStartingWith>^NAC..N.*</system:hasTagStartingWith>
+        <hasCase rdf:resource="&arabic_khoja;NAC..N"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NAC.A. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NAC.A.">
+        <rdf:type rdf:resource="&arabic_khoja;AccusativeCase"/>
+        <system:hasTagMatching>^NAC.*A[DI]$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NAC.A."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NAC.G. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NAC.G.">
+        <rdf:type rdf:resource="&arabic_khoja;GenitiveCase"/>
+        <system:hasTagMatching>^NAC.*G[DI]$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NAC.G."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NAC.N. -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NAC.N.">
+        <rdf:type rdf:resource="&arabic_khoja;NominativeCase"/>
+        <system:hasTagMatching>^NAC.*N[DI]$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NAC.N."/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NC -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NC">
+        <rdf:type rdf:resource="&arabic_khoja;CommonNoun"/>
+        <system:hasTagStartingWith>NC</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NNu -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NNu">
+        <rdf:type rdf:resource="&arabic_khoja;Numeral"/>
+        <system:hasTagStartingWith>NNu</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NNu.F -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NNu.F">
+        <rdf:type rdf:resource="&arabic_khoja;FeminineGender"/>
+        <system:hasTagMatching>^NNu.*F$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NNu.F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NNu.M -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NNu.M">
+        <rdf:type rdf:resource="&arabic_khoja;MasculineGender"/>
+        <system:hasTagMatching>^NNu.*M$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NNu.M"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NNu.N -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NNu.N">
+        <rdf:type rdf:resource="&arabic_khoja;NeuterGender"/>
+        <system:hasTagMatching>^NNu.*N$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NNu.N"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NNuCa -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NNuCa">
+        <rdf:type rdf:resource="&arabic_khoja;CardinalNumeral"/>
+        <system:hasTagStartingWith>NNuCa</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NNuNa -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NNuNa">
+        <rdf:type rdf:resource="&arabic_khoja;NumericalAdjective"/>
+        <system:hasTagStartingWith>NNuNa</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NNuOr -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NNuOr">
+        <rdf:type rdf:resource="&arabic_khoja;OrdinalNumeral"/>
+        <system:hasTagStartingWith>NNuOr</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NP -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NP">
+        <rdf:type rdf:resource="&arabic_khoja;ProperNoun"/>
+        <system:hasTag>NP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPr -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPr">
+        <rdf:type rdf:resource="&arabic_khoja;Pronoun"/>
+        <system:hasTagStartingWith>NPr</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPr.F -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPr.F">
+        <rdf:type rdf:resource="&arabic_khoja;FeminineGender"/>
+        <system:hasTagMatching>^NPr.*F$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NPr.F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPr.M -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPr.M">
+        <rdf:type rdf:resource="&arabic_khoja;MasculineGender"/>
+        <system:hasTagMatching>^NPr.*M$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NPr.M"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPr.N -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPr.N">
+        <rdf:type rdf:resource="&arabic_khoja;NeuterGender"/>
+        <system:hasTagMatching>^NPr.*N$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;NPr.N"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPrD -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPrD">
+        <rdf:type rdf:resource="&arabic_khoja;DemonstrativePronoun"/>
+        <system:hasTagStartingWith>NPrD</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPrP -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPrP">
+        <rdf:type rdf:resource="&arabic_khoja;PersonalPronoun"/>
+        <system:hasTagStartingWith>NPrP</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPrR -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPrR">
+        <rdf:type rdf:resource="&arabic_khoja;RelativePronoun"/>
+        <system:hasTagStartingWith>NPrR</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPrRC -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPrRC">
+        <rdf:type rdf:resource="&arabic_khoja;CommonRelativePronoun"/>
+        <system:hasTag>NPrRC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#NPrRS -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;NPrRS">
+        <rdf:type rdf:resource="&arabic_khoja;SpecificRelativePronoun"/>
+        <system:hasTagStartingWith>NPrRS</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#P -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;P">
+        <rdf:type rdf:resource="&arabic_khoja;Particle"/>
+        <system:hasTagStartingWith>P</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PA -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PA">
+        <rdf:type rdf:resource="&arabic_khoja;Adverbial"/>
+        <system:hasTag>PA</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PC -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PC">
+        <rdf:type rdf:resource="&arabic_khoja;Conjunction"/>
+        <system:hasTag>PC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PE -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PE">
+        <rdf:type rdf:resource="&arabic_khoja;Exception"/>
+        <system:hasTag>PE</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PI -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PI">
+        <rdf:type rdf:resource="&arabic_khoja;Interjection"/>
+        <system:hasTag>PI</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PN -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PN">
+        <rdf:type rdf:resource="&arabic_khoja;Negative"/>
+        <system:hasTag>PN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PPr -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PPr">
+        <rdf:type rdf:resource="&arabic_khoja;Preposition"/>
+        <system:hasTag>PPr</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PS -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PS">
+        <rdf:type rdf:resource="&arabic_khoja;Subordinate"/>
+        <system:hasTag>PS</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PU -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PU">
+        <rdf:type rdf:resource="&arabic_khoja;Punctuation"/>
+        <system:hasTag>PU</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PW -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PW">
+        <rdf:type rdf:resource="&arabic_khoja;Answer"/>
+        <system:hasTag>PW</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#PX -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;PX">
+        <rdf:type rdf:resource="&arabic_khoja;Explanation"/>
+        <system:hasTag>PX</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Pl -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;Pl">
+        <rdf:type rdf:resource="&arabic_khoja;PluralNumber"/>
+        <system:hasTagContaining>Pl</system:hasTagContaining>
+        <hasCase rdf:resource="&arabic_khoja;Pl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#R -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;R">
+        <rdf:type rdf:resource="&arabic_khoja;Residual"/>
+        <system:hasTagStartingWith>R</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#RA -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;RA">
+        <rdf:type rdf:resource="&arabic_khoja;Abbreviation"/>
+        <system:hasTag>RA</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#RD -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;RD">
+        <rdf:type rdf:resource="&arabic_khoja;DayOfTheWeek"/>
+        <system:hasTag>RD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#RF -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;RF">
+        <rdf:type rdf:resource="&arabic_khoja;Foreign"/>
+        <system:hasTag>RF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#RM -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;RM">
+        <rdf:type rdf:resource="&arabic_khoja;Mathematical"/>
+        <system:hasTag>RM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#RN -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;RN">
+        <rdf:type rdf:resource="&arabic_khoja;ResidualNumber"/>
+        <system:hasTag>RN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#RO -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;RO">
+        <rdf:type rdf:resource="&arabic_khoja;OtherResidual"/>
+        <system:hasTag>RO</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Rmy -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;Rmy">
+        <rdf:type rdf:resource="&arabic_khoja;MonthOfTheYear"/>
+        <system:hasTag>Rmy</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#Sg -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;Sg">
+        <rdf:type rdf:resource="&arabic_khoja;SingularNumber"/>
+        <system:hasTagContaining>Sg</system:hasTagContaining>
+        <hasCase rdf:resource="&arabic_khoja;Sg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#V -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;V">
+        <rdf:type rdf:resource="&arabic_khoja;Verb"/>
+        <system:hasTagStartingWith>V</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#V.F -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;V.F">
+        <rdf:type rdf:resource="&arabic_khoja;FeminineGender"/>
+        <system:hasTagMatching>^V.*[123]F.*</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;V.F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#V.I -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;V.I">
+        <rdf:type rdf:resource="&arabic_khoja;IndicativeMood"/>
+        <system:hasTagMatching>^V.*I$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;V.I"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#V.J -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;V.J">
+        <rdf:type rdf:resource="&arabic_khoja;JussiveMood"/>
+        <system:hasTagMatching>^V.*J$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;V.J"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#V.M -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;V.M">
+        <rdf:type rdf:resource="&arabic_khoja;MasculineGender"/>
+        <system:hasTagMatching>^V.*[123]M.*</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;V.M"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#V.N -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;V.N">
+        <rdf:type rdf:resource="&arabic_khoja;NeuterGender"/>
+        <system:hasTagMatching>^V.*[123]N.*</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;V.N"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#V.S -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;V.S">
+        <rdf:type rdf:resource="&arabic_khoja;SubjunctiveMood"/>
+        <system:hasTagMatching>^V.*S$</system:hasTagMatching>
+        <hasCase rdf:resource="&arabic_khoja;V.S"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#VI -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;VI">
+        <rdf:type rdf:resource="&arabic_khoja;ImperfectVerb"/>
+        <system:hasTagMatching>^VI[^v].*</system:hasTagMatching>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#VIv -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;VIv">
+        <rdf:type rdf:resource="&arabic_khoja;ImperativeVerb"/>
+        <system:hasTagStartingWith>VIv</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/arabic_khoja.owl#VP -->
+
+    <owl:NamedIndividual rdf:about="&arabic_khoja;VP">
+        <rdf:type rdf:resource="&arabic_khoja;PerfectVerb"/>
+        <system:hasTagStartingWith>VP</system:hasTagStartingWith>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

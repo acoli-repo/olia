@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY emille "http://purl.org/olia/emille.owl" >
+    <!ENTITY ilposts "http://purl.org/olia/ilposts.owl" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/indian.owl#"
+     xml:base="http://purl.org/olia/indian.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:ilposts="http://purl.org/olia/ilposts.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:emille="http://purl.org/olia/emille.owl">
+    <owl:Ontology rdf:about="http://purl.org/olia/indian.owl">
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/urd"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/hin"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/tel"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/mar"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/ben"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/tam"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/guj"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/kan"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/mal"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/ori"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/pan"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/asm"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/mai"/>
+<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <rdfs:comment>Annotation Model for Indian languages, generalization over tagsets for Urdu (Hardie 2003, 2004, Sajjad 2007), and three pan-Indian tagsets (Bharati et al. 2006, IIIT 2007, Baskaran et al. 2008) for the annotation of morphosyntax, and inflectional morphology of Indian and Dravidian languages.
+
+This generalization serves as an intermediate representation for the linking between these models and the OLiA Reference Model.
+
+Christian Chiarcos
+2011-07-29
+chiarcos@uni-potsdam.de</rdfs:comment>
+        <owl:versionInfo>2011-07-29 created
+
+Note that this model has not yet been confirmed by an expert in Indian languages.
+
+Christian Chiarcos
+chiarcos@uni-potsdam.de</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/emille.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/iiit.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/ilposts.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/urdu.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/ancorra.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+		<rdfs:seeAlso rdf:resource="http://purl.org/olia/ancorra.owl#Adjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+		<rdfs:seeAlso rdf:resource="http://purl.org/olia/ancorra.owl#Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#AuxiliaryVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+		<rdfs:seeAlso rdf:resource="http://purl.org/olia/ancorra.owl#AuxiliaryVerb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#CardinalNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#CardinalNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#QuantifierOrClassifier"/>
+		<rdfs:seeAlso rdf:resource="http://purl.org/olia/ancorra.owl#CardinalNumber"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Classifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Classifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#QuantifierOrClassifier"/>
+		<rdfs:seeAlso rdf:resource="http://purl.org/olia/ancorra.owl#Classifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#CommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#CommonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+		<rdfs:seeAlso rdf:resource="http://purl.org/olia/ancorra.owl#CommonNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Compound -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Compound">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#Construction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Conjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Conjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Construction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Construction">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Demonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Demonstrative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#PronounOrDemonstrative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#EchoWord -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#EchoWord">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Intensifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Intensifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Interjection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#MainVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#MainVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Negation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Negation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#OrdinalNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#OrdinalNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#QuantifierOrClassifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Particle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Particle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Postposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Postposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#PronounOrDemonstrative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#PronounOrDemonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#PronounOrDemonstrative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#ProperNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#ProperNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Quantifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Quantifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#QuantifierOrClassifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#QuantifierOrClassifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#QuantifierOrClassifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#QuestionWord -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#QuestionWord">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Quotative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Quotative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Reduplication -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Reduplication">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#Construction"/>
+        <rdfs:seeAlso rdf:resource="http://purl.org/olia/ancorra.owl#Reduplication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#SimpleNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#SimpleNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#CommonNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#SpatiotemporalNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#SpatiotemporalNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#CommonNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#Symbol -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#Symbol">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/indian.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/indian.owl#WordClass -->
+
+    <owl:Class rdf:about="http://purl.org/olia/indian.owl#WordClass">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

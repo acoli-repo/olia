@@ -1,0 +1,1324 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY ancorra "http://purl.org/olia/ancorra.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/ancorra.owl#"
+     xml:base="http://purl.org/olia/ancorra.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:ancorra="http://purl.org/olia/ancorra.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/ancorra.owl">
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/hin"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/ben"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/mar"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/tel"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/tam"/>
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <rdfs:comment>Annotation Model for AnnCorra : Guidelines For POS And Chunk Annotation For Indian Languages as described by Bharati et al. (2006). Unless marked otherwise, all comments here are quotes from this document.
+
+Bharati et al. (2006) claim to provide a tagset applicable to all Indian languages. They explicitly mention Hindi, Bangla, Marathi, Telugu, and Tamil, and the tagset can be assumed to be applicable to at least these languages. The document is, however, mostly working with examples from Hindi and Bangla.
+
+Akshar Bharati, Dipti Misra Sharma, Lakshmi Bai, Rajeev Sangal (2006), AnnCorra : Annotating Corpora. Guidelines For POS And Chunk Annotation For Indian Languages, Tech. Rep., L anguage Technologies Research Centre IIIT, Hyderabad, version of 15-12-2006, http://ltrc.iiit.ac.in/tr031/posguidelines.pdf</rdfs:comment>
+        <owl:versionInfo>2011-07-27 created
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <rdfs:isDefinedBy>http://ltrc.iiit.ac.in/tr031/posguidelines.pdf</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Adjective -->
+
+    <owl:Class rdf:about="&ancorra;Adjective">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>JJ Adjective
+This tag is also taken from Penn tags. Penn tag set also makes a distinction between comparative and superlative adjectives. This has not been considered here. Therefore, in the current scheme for Indian languages, the tag JJ includes the &#39;tara&#39; (comparative) and the &#39;tama&#39; (superlative) forms of adjectives as well.
+For example, Hindi adhikatara (more times), sarvottama (best), etc. will also be marked as JJ.</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.6</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#AdjectiveChunk -->
+
+    <owl:Class rdf:about="&ancorra;AdjectiveChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;Chunk"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.3</rdfs:isDefinedBy>
+        <rdfs:comment>e.g., Hindi: vaha laDaZkI hE((suMdara_JJ sI_RP))_JJP (Bharati et al. 2006, §13.2)</rdfs:comment>
+        <rdfs:comment>JJP Adjectival Chunk
+An adjectival chunk will be tagged as JJP. This chunk will consist of all adjectival chunks including the predicative adjectives. However, adjectives appearing before a noun will be grouped together with the noun chunk. A JJP will consist of phrases like
+h58. vaha laDaZkI hE((suMdara_JJ sI_RP))_JJP
+&#39;she&#39; &#39;girl&#39; &#39;is&#39; &#39;beautiful&#39; &#39;kind of&#39;
+h59. hAthI AyA ((moTA_*C tagadA_JJ))_JJP
+&#39;elephant&#39; &#39;came&#39; &#39;fat&#39; &#39;powerful&#39;
+h60. vaha laDakI ((bahuta_INTF sundara_JJ))_JJP hE
+&#39;she&#39; &#39;girl&#39; &#39;very&#39; &#39;beautiful&#39; &#39;is&#39;
+Cases such as (h61) below will not have a separate JJP chunk. In such cases, the adjectives will be grouped together with the noun they modify. Thus forming a NP chunk.
+h61. ((kAle_JJ ghane_JJ laMbe_JJ bAla_NN))_NP
+&#39;black&#39; &#39;thick&#39; &#39;long&#39; &#39;hair&#39;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Adverb -->
+
+    <owl:Class rdf:about="&ancorra;Adverb">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.7</rdfs:isDefinedBy>
+        <rdfs:comment>RB Adverb
+For the adverbs also, the tag RB has been borrowed from Penn tags. Similar to the adjectives, Penn tags make a distinction between comparative and superlative adverbs as well. This distinction is not made in this tagger. This is in accordance with our philosophy of coarseness in linguistic analysis.
+Another important decision for the use of RB for adverbs in the current scheme is that :-
+(a) The tag RB will be used ONLY for &#39;manner adverbs&#39; . Example,
+h21. vaha jaldI jaldI khA rahA thA
+&#39;he&#39; &#39;hurriedly&#39; &#39;eat&#39; &#39;PROG&#39; &#39;was&#39;
+(b) The tag RB will NOT be used for the time and manner expressions unlike English where time and place expressions are also marked as RB. In our scheme, the time and manner expressions such as &#39;yahAz – vahAz, aba – waba &#39; etc will be marked as PRP.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#AdverbChunk -->
+
+    <owl:Class rdf:about="&ancorra;AdverbChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;Chunk"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.4</rdfs:isDefinedBy>
+        <rdfs:comment>e.g., Hindi : vaha ((dhIre-dhIre_RB))_RBP cala rahA thA (Bharati et al. 2006, §13.2)</rdfs:comment>
+        <rdfs:comment>RBP Adverb Chunk
+This chunk name is again in accordance with the tags used for POS tagging. This chunk will include all pure adverbial phrases.
+h64. vaha ((dhIre-dhIre_RB))_RBP cala rahA thA.
+&#39;he&#39; &#39;slwoly&#39; &#39;walk&#39; &#39;PROG&#39; &#39;was&#39;
+“He was walking slowly”
+Now consider the following examples:
+h65. vaha dagamagAte hue cala rahA thA .
+&#39;he&#39; &#39; &#39;walk&#39; &#39;PROG&#39; &#39;was&#39;
+“He was walking
+h66. vaha khAnA khAkara ghara gayA .
+&#39;he&#39; &#39;meal&#39; &#39;after eating&#39; &#39;home&#39; &#39;went&#39;
+“He went home after eating his meal”
+In the above examples, &#39;dagamagAte hue&#39; and &#39;khAkara&#39; are non finite forms of verbs used as adverbs. Similar to adjectival participles these will also be chunked as VGNF and not as RBP. The reason for this is that we need to preserve the information that these are underlying verbs. This will be a crucial information at the level of dependency marking where the arguments of these verbs will also be marked.
+(( isa_PRP nayI_JJ kitAba_NN meM_PSP bhI_RP))_NP
+&#39;this&#39; &#39;new&#39; &#39;book&#39; &#39;in&#39; &#39;also&#39;
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="&ancorra;AuxiliaryVerb">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.5</rdfs:isDefinedBy>
+        <rdfs:comment>VAUX Verb Auxiliary
+All auxiliary verbs will be marked as VAUX. This tag has been adopted as such from the Penn tags. (For examples, see h14 – h16 above). [CC: see MainVerb for examples]</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#CardinalNumber -->
+
+    <owl:Class rdf:about="&ancorra;CardinalNumber">
+        <rdfs:subClassOf rdf:resource="&ancorra;QuantifierOrClassifier"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.12.2</rdfs:isDefinedBy>
+        <rdfs:comment>QC Cardinals
+Any word denoting a cardinal number will be tagged as QC. Penn tag set has a tag CD for cardinal numbers and they have not talked of ordinals. For example,
+h35. vahAz tIna_QC loga bEThe the
+&#39;there&#39; &#39;three&#39; &#39;people&#39; &#39;sitting&#39; &#39;were&#39;
+“Three people were sitting there”</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Chunk -->
+
+    <owl:Class rdf:about="&ancorra;Chunk">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&system;UnitOfAnnotation"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&system;hasTier"/>
+                        <owl:hasValue>chunk</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment>“A minimal (non recursive) phrase(partial structure) consisting of correlated, inseparable words/entities, such that the intra-chunk dependencies are not distorted” ... A chunk would contain a &#39;head&#39; and its modifiers.</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#ChunkFragment -->
+
+    <owl:Class rdf:about="&ancorra;ChunkFragment">
+        <rdfs:subClassOf rdf:resource="&ancorra;Chunk"/>
+        <rdfs:comment>e.g., Hindi; rAma (jo merA baDZA bhAI hE) ne kahA... (Bharati et al. 2006, §13.2)</rdfs:comment>
+        <rdfs:comment>FRAGP Chunk Fragments
+Some times certain fragments of chunks are separated from the chunks to which they belong. For example :
+h76. rAma (jo merA baDZA bhAI hE) ne kahA ...
+&#39;Ram&#39; &#39;who&#39; &#39;my&#39; &#39;elder&#39; &#39;brother&#39; &#39;is&#39; &#39;erg&#39; &#39;said&#39;
+In the above example, vibhakti &#39;ne&#39;, which is a case marker of the noun &#39;rAma&#39;, is separated from it by an intervening clause. Syntactically, &#39;ne&#39; is a part of the noun chunk &#39;rAma ne&#39;. However, at times it can be written separately. The following was decided for such fragments :
+(i) There will be a separate chunk for the vibhakti in constructions where it gets separated from the noun it would normally be grouped with. This chunk can have more than one entity within it.
+h77. ((rAma))_NP, mere dillI vAle bhAI, ((ne))_FRAGP kahA
+&#39;Ram&#39; &#39;my&#39; &#39;Delhi&#39; &#39;from&#39; &#39;brother&#39; &#39;erg&#39; &#39;said&#39;
+(ii) If the entities embedded between the noun and it&#39;s vibhakti are a series of nouns the entire group will be chunked as a single noun chunk.
+h78. ((isa &#39;upanyAsa samrATa&#39; Sabda kA))_NP
+&#39;this&#39; &#39;Novel&#39; &#39;King&#39; &#39;word&#39; &#39;of&#39;</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.7</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Classifier -->
+
+    <owl:Class rdf:about="&ancorra;Classifier">
+        <rdfs:subClassOf rdf:resource="&ancorra;QuantifierOrClassifier"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.12.4</rdfs:isDefinedBy>
+        <rdfs:comment>CL Classifiers
+The tag CL has been included to mark classifiers. Many Indian languages have a rich classifier system. “A classifier, in linguistics, is a word or morpheme used in some languages to classify a noun according to its meaning” (http://en.wikipedia.org/wiki/Classifier_%28linguistics%29).
+For example,
+Telugu : (t2) padi mandi pillalu
+&#39;ten&#39; &#39;persons&#39; &#39;children&#39;
+Tamil : (tm1) pattu pEr mANavarakaLa
+&#39;ten&#39; &#39;person&#39; &#39;students&#39;
+The words &#39;mandi&#39; (Telugu ) and &#39;per&#39; (Tamil) are classifiers which occur with numerals with human nouns. Such expressions when occurring separately (not suffixed with the noun) will be marked as CL. Therefore :
+Telugu : (t2) padi mandi_CL pillalu
+&#39;ten&#39; &#39;persons&#39; &#39;children&#39;
+Tamil : (tm1) pattu pEr_CL mANavarakaLa
+&#39;ten&#39; &#39;person&#39; &#39;students&#39;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#CommonNoun -->
+
+    <owl:Class rdf:about="&ancorra;CommonNoun">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.1</rdfs:isDefinedBy>
+        <owl:versionInfo>Bharati et al. (2006) skipped the headline of §5.1, but §5.1 is put in opposition to proper noun (§5.2), hence, we can infer that it corresponds to a generalization over common noun that comprises both spatiotemporal nouns and common nouns (&quot;nouns&quot;) in a narrow sense.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Compound -->
+
+    <owl:Class rdf:about="&ancorra;Compound">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>*C Compounds (Make it XC – where X is a variable of the type of the compound of which the current word is a member of)
+The issue of including a tag for marking compounds was discussed extensively. Results of algorithms using IIIT-H tag set which included NNC (part of compound nouns) and NNPC (part of proper nouns) showed that these two tags contributed substantially to the low accuracy of the tagger. Since most elements which occur as NNC or NNPC can also occur as NN and NNP, it affected the learning by the machine. So, the question was, why to include tags which contributed more to the errors ? The other aspect, however, was that while human annotators are annotating the data, they know from the context when a certain element is NNC or NN, NNPC or NNP and if marked, this information can be useful for certain applications. The argument is same as the one in favor of including a tag for proper nouns.
+Another point which was discussed was that any word class can have compound forms in Indian languages (including adjectives and adverbs).
+Therefore, if we decide to have a tag for showing compounds of each type, the number of tags will go very high. The final decision on this was to include a *C tag which will be realised as catC tag of the type of compound that the element is a part of. For example, if a certain word is part of a compound noun, it will be marked as NNC, if it is part of a compound adjective, it will be marked as JJC and so on and so forth.
+Some examples are given below :
+Hindi compound noun keMdra sarakAra (Central government) will be tagged as keMdra_NNC sarakAra_NN.
+In this example, &#39;keMdra&#39; and &#39;sarakAra&#39; are both nouns which are forming a compound noun. All words except the last one, of a compound words will be marked as NNC. Thus any NNC will be always followed by another NNC or an NN. This strategy helps identify these words as one unit although they are not conjoined by a hyphen. Similarly, a compound proper noun will be marked as NNPC excluding the last one. eg. aTala_NNPC bihArI_NNPC vAjapeyI_NNP
+The first two words, in the above example, will be tagged as NNPC and the last one will be tagged as NNP. Similar to the NNC tag for common nouns, NNPC tag helps in marking parts of a proper noun.
+h41. rAma, mohana aur shyAma ghara gaye.
+&#39;Ram&#39;, &#39;Mohan&#39; &#39;and&#39; &#39;Shyam&#39; &#39;home&#39; &#39;went&#39;
+“Ram, Mohan and Shama went home”.
+h42. bagIce meM ranga_JJC biraMge_JJ phUla khile the
+&#39;garden&#39; &#39;in&#39; &#39;colourful&#39; &#39;flowers&#39; &#39;flowered&#39; &#39;were&#39;
+“The garden had colorful flowers”
+Titles such as Dr., Col., Lt. etc. which may occur before a proper noun will be tagged as NNC. All such titles will always be followed by a Proper Noun. In order to indicate that these are parts of proper nouns but are nonetheless nouns themselves, they will be tagged as NNC, eg. Col._NNC Ranjit_NNPC Deshmukh_NNP</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), $5.18</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Conjunct -->
+
+    <owl:Class rdf:about="&ancorra;Conjunct">
+        <rdfs:subClassOf rdf:resource="&ancorra;Chunk"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.6</rdfs:isDefinedBy>
+        <rdfs:comment>e.g., Hindi: ((rAma))_NP ((Ora))_CCP ((SyAma))_NP (Bharati et al. 2006, §13.2)</rdfs:comment>
+        <rdfs:comment>CCP Conjuncts
+Conjuncts are functional units information about which is required to build the larger structures. Take the following examples of cunjunct usages :
+h70. (rAma kitAba paDha rahA thA) Ora (mohana Tennisa khela rahA thA).
+“Ram was reading a book and Mohan was playing tennis”
+h71. (rAma ne batAyA) ki (usakI kitAba acchI hE).
+“Ram said that his book is good”
+h72. (rAma) Ora (mohana) Tennisa khela rahe the.
+“Ram and Mohan were playing tennis”.
+h73. (merA bhAI rAma) Ora (usakA dosta mohana) Tennisa khela rahe the.
+“My brother Ram and his friend Mohan were playing tennis”.
+h74 . rAma (saphZeda kapade) Ora (nIle jute) pahane thA.
+“Ram was wearing white clothes and blue shoes”.
+h75. rAma eka (halkI) Ora (nIlI) bOla lAyA.
+“ram brought a light and blue ball”.
+The sentences above have various types of conjoined structures. To represent these conjoined structures, it is decided to form separate chunks for conjuncts and the elements a conjunct conjoins. Thus (h70) and (h71) above will be chunked as (h70a) and (h71a) given below,
+h70a. ((rAma))_NP ((kitAba))_NP ((paDha rahA thA))_VG ((Ora))CCP ((mohana))_NP ((Tennisa))_NP ((khela rahA thA))_VG.
+h71a. ((rAma ne))_NP ((batAyA))_NP ((ki))_CCP ((usakI))_NP ((kitAba))_NP ((acchI))_JJP ((hE))_VG.
+Expression &#39;rAma Ora mohana&#39; in example (h72) is a complex NP. Though complex, the expression can be annotated as a single NP chunk as functionally it is the subject of the verb &#39;play&#39;. However, example (h73) presents a case where it would be better to form three independent chunks for the complex subject NP. Though the conjunct &#39;Ora&#39; is conjoining &#39;rAma&#39; and &#39;mohana&#39;, both &#39;rAma&#39; and &#39;mohana&#39; have their respective modifiers. To make it explicit, it is better to treat them as two independent NP chunks conjoined by a CCP.
+h73a. ((merA bhAI rAma)) ((aura))_CCP ((usakA dosta mohana))_NP ((Tennisa))_NP ((khela rahe the))_VG.
+Following this, the subject NP of (h72) would also be annotated similarly. Therefore,
+h72a. ((rAma))_NP ((aura))_CCP ((mohana))_NP ((Tennisa))_NP ((khela rahe the))_VG.
+The annotation for cases such as (h74) and (h75) would be as follows :
+h74a. ((rAma))_NP ((safeda kapade))_NP ((aura))_CCP ((nIle jute))_NP ((pahane thA))_VG.
+h75a. ((rAma))_NP ((eka))_JJP ((halkI))_JJP ((aura))_CCP ((nIlI))_JJP ((bOla))_NP ((lAyA))_VG
+Thus the decision for conjuncts is - the conjoined entities will be broken into separate chunks. eg. ((rAma))_NP ((Ora))_CCP ((SyAma))_NP</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Conjunction -->
+
+    <owl:Class rdf:about="&ancorra;Conjunction">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>CC Conjuncts(co-ordinating and subordinating)
+The tag CC will be used for both, co-ordinating and subordinating conjuncts. The Penn tag set has used IN tag for prepositions and subordinating conjuncts. Their rationale behind this is that subordinating conjuncts and prepositions can be distinguished because subordinating conjuncts are followed by a clause and prepositions by a noun phrase.
+But in the current tagger all connectives, other than prepositions, will be marked as CC.
+h28. mohana bAzAra jA rahA hE Ora_CC ravi skUla jA rahA hE
+&#39;Mohan&#39; &#39;market&#39; &#39;go&#39; &#39;PROG&#39; &#39;is&#39; &#39;and&#39; &#39;Ravi&#39; &#39;school&#39; &#39;go&#39; &#39;PROG&#39; &#39;is&#39;
+“Mohan is going to the market and Ravi is going to the school”
+h29. mohana ne mujhe batAyA ki_CC Aja bAzAra banda hE
+&#39;Mohan&#39; &#39;erg&#39; &#39;to me&#39; &#39;told&#39; &#39;that&#39; &#39;today&#39; &#39;market&#39; &#39;close&#39; &#39;is&#39;
+“Mohan told me that the market is closed today.”</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.10</rdfs:isDefinedBy>
+        <rdfs:comment>e.g., bole (Bangla) (Bharati et al. 2006, §13.1)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Demonstrative -->
+
+    <owl:Class rdf:about="&ancorra;Demonstrative">
+        <rdfs:subClassOf rdf:resource="&ancorra;PronounOrDemonstrative"/>
+        <owl:disjointWith rdf:resource="&ancorra;Pronoun"/>
+        <rdfs:comment>DEM Demonstratives
+The tag &#39;DEM&#39; has been included to mark demonstratives. The necessity of including a tag for demonstratives was felt to cover the distinction between a pronoun and a demonstrative. For example,
+h12. vaha ladakA merA bhAI hE (demnostrative)
+&#39;that&#39; &#39;boy&#39; &#39;my&#39; &#39;brother&#39; &#39;is&#39;
+h13. vaha merA bhAI hE (pronoun)
+&#39;he&#39; &#39;my&#39; &#39;brother&#39; &#39;is&#39;
+Many Indian languages have different words for demonstrative adjectives and pronouns. A better evidence for including a separate tag for demonstratives is from the following Telugu examples,
+t1. A abbAyi nA tammudu
+&#39;that&#39; &#39;boy&#39; &#39;my&#39; &#39;brother&#39;
+t2. atanu nA tammudu
+&#39;he&#39; &#39;my&#39; &#39;brother&#39;
+(Telugu does not have a copula &#39;be&#39; in the present tense)
+</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.3.2</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#EchoWord -->
+
+    <owl:Class rdf:about="&ancorra;EchoWord">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.20</rdfs:isDefinedBy>
+        <rdfs:comment>ECH Echo words
+Indian languages have a highly productive usage of echo words such as Hindi &#39;cAya-vAya&#39; (&#39;tea&#39; &#39;echo&#39;), where &#39;cAya&#39; is a regular lexical item of Hindi vocabulary and &#39;vAya&#39; is an echo word indicating the sense “etc” . These words, on their own, are &#39;nonsense&#39; words and do not find a place in any dictionary.
+Thus, the gloss for &#39;cAya-vAya&#39; would be &#39;tea etc&#39;. It is proposed to add the tag ECH for such words.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#FiniteVerbChunk -->
+
+    <owl:Class rdf:about="&ancorra;FiniteVerbChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;VerbChunk"/>
+        <rdfs:comment>e.g., Hindi: mEMne ghara para khAnA ((khAyA_VM))_VGF (Bharati et al. 2006, §13.2)</rdfs:comment>
+        <rdfs:comment>VGF Finite Verb Chunk
+As mentioned in 5.4 above, a verb group sequence ( V VAUX VAUX . . ) contains a main verb and its auxiliaries. The group itself can be finite or non-finite. In case of it being finite, the main verb in such a sequence may not be finite. The finiteness is known by the auxiliaries. Therefore, it is decided to mark the finiteness of the verb at the chunk level. Thus, any verb group which is finite will be tagged as VGF. For example,
+h56. mEMne ghara para khAnA ((khAyA_VM))_VGF
+&#39;I erg&#39; &#39;home&#39; &#39;at&#39; &#39;meal&#39; &#39;ate&#39;
+h57. vaha cAvala ((khA_VM rahA_VAUX hE_VAUX))_VGF
+&#39;he&#39; &#39;rice&#39; &#39;eat&#39; &#39;PROG&#39; &#39;is&#39;</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.2.1</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#GerundChunk -->
+
+    <owl:Class rdf:about="&ancorra;GerundChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;VerbChunk"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.2.4</rdfs:isDefinedBy>
+        <rdfs:comment>VGNN Gerunds
+A verb chunk having a gerund will be annotated as VGNN. For example,
+h18a. sharAba ((pInA_VM))_VGNN sehata ke liye hAnikAraka hE.
+&#39;liquor&#39; &#39;drinking&#39; &#39;heath&#39; &#39;for&#39; &#39;harmful&#39; &#39;is&#39;
+“Drinking (liquor) is bad for health”
+h19a. mujhe rAta meM ((khAnA_VM))_VGNN acchA lagatA hai
+&#39;to me&#39; &#39;night&#39; &#39;in&#39; &#39;eating&#39; &#39;good&#39; &#39;appeals&#39;
+“I like eating at night”
+h20a. ((sunane_VM meM_PSP))_VGNN saba kuccha acchA lagatA hE
+&#39;listening&#39; &#39;in&#39; &#39;all&#39; &#39;things&#39; &#39;good&#39; &#39;appeal&#39; &#39;is&#39;</rdfs:comment>
+        <rdfs:comment>e.g., Hindi: mujhe rAta meM ((khAnA_VM))_VGNN acchA lagatA hai (Bharati et al. 2006, §13.2)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#InfiniteVerbChunk -->
+
+    <owl:Class rdf:about="&ancorra;InfiniteVerbChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;VerbChunk"/>
+        <rdfs:comment>VGINF Infinitival Verb Chunk
+This tag is to mark the infinitival verb form. In Hindi, both, gerunds and infinitive forms of the verb end with a -nA suffix. Since both behave functionally in a similar manner, the distinction is not very clear. However, languages such as Bangla etc have two different forms for the two types. Examples from Bangla are given below.
+b8. Borabela ((snAna karA))_VGNN SorIrera pokze BAlo
+&#39;Morning&#39; &#39;bath&#39; &#39;do-verbal noun&#39; &#39;health-gen&#39; &#39;for&#39; &#39;good&#39;
+‘Taking bath in the early morning is good for health”
+b9. bindu Borabela ((snAna karawe))_VGINF BAlobAse
+&#39;Bindu&#39; &#39;morning&#39; &#39;bath&#39; &#39;take-inf&#39; &#39;love-3pr&#39;
+“Bindu likes to take bath in the early morning”
+In Bangla, the gerund form takes the suffix –A / -Ano, while the infinitive marker is –we. The syntactic distribution of these two forms of verbs is different. For example, the gerund form is allowed in the context of the word darakAra “necessary” while the infinitive form is not, as exemplified below:
+b10 Borabela ((snAna karA))_VGNN darakAra
+&#39;Morning&#39; &#39;bath&#39; &#39;do-verbal noun&#39; &#39;necessary&#39;
+“It is necessary to take bath in the early morning”
+b11. *Borabela ((snAna karawe))_VGINF darakAra
+Based on the above evidence from Bangla, the tag VGINF has been included to mark a verb chunk.</rdfs:comment>
+        <rdfs:comment>e.g., Bangla : bindu Borabela ((snAna karawe))_VGINF BAlobAse (Bharati et al. 2006, §13.2)</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.2.3</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Intensifier -->
+
+    <owl:Class rdf:about="&ancorra;Intensifier">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.13</rdfs:isDefinedBy>
+        <rdfs:comment>INTF Intensifier
+This tag is not present in Penn tag set. Words like &#39;bahuta&#39;, &#39;kama&#39;, etc. when intensifying adjectives or adverbs will be annotated as INTF. Example,
+h37. hEdarAbAda meM aMgUra bahuta_INTF acche milate hEM
+&#39;HyderabAd&#39; &#39;in&#39; &#39;grapes&#39; &#39;very&#39; &#39;good&#39; &#39;available&#39; &#39;are&#39;
+“Very good grapes are available in Hyderabad”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Interjection -->
+
+    <owl:Class rdf:about="&ancorra;Interjection">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.14</rdfs:isDefinedBy>
+        <rdfs:comment>INJ Interjection
+The interjections will be marked as INJ. Apart from the interjections, the affirmatives such as Hindi &#39;HAz&#39;(&#39;yes&#39;) will also be tagged as INJ. Since, this is the only example of such a word, it has been clubbed under Interjections.
+h38. arre_INJ, tuma A gaye !
+&#39;oh&#39; &#39;you&#39; &#39;come&#39; &#39;have&#39;
+“Oh! you have come”
+h39. hAz_INJ, mEM A gayA
+&#39;yes&#39;, &#39;I&#39; &#39;come&#39; &#39;have&#39;
+“Yes, I have come”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#MainVerb -->
+
+    <owl:Class rdf:about="&ancorra;MainVerb">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>VM Verb Main
+Verbal constructions in languages may be composed of more than one word sequences. Typically, a verb group sequence contains a main verb and one more auxiliaries (V AUX AUX ... ... ). In the current tagging scheme the support verbs (such as dAlanA in kara dAlAtA hE, uThanA in cOMka uThA thA etc) are also tagged as VAUX. The group can be finite or non-finite. The main
+verb need not be marked for finiteness. Normally, one of the auxiliaries carries the finiteness feature.
+The necessity of marking the finiteness or non-finiteness in a verb was discussed extensively and everybody agreed that it was crucial to mark the distinction. However, languages such as Hindi, which have auxiliaries for marking tense, aspect and modalities pose a problem. The finiteness of a verbal expression is known only when we reach the last auxiliary of a verb group. Main verb of a finite verb group (leaving out the single word verbal expressions of the finite type – eg vaha dillI gayA) does not contain finiteness information. For example,
+h14. laDZakA seba khAtA raHA wA
+&#39;boy&#39; &#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;was&#39;
+The boy had kept eating.
+h15. seba khAtA huA laDZakA jA rahA thA
+&#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;boy&#39; &#39; go&#39; &#39;PROG&#39; &#39;was&#39;
+The boy eating the apple was going.
+The expression khAtA raHA in (h29) above is finite and khAtA huA in (h3) is non finite. However, the main verb &#39;khAtA&#39; is non-finite in both the cases.
+So, the issue is - whether to (1a) mark finiteness in “khAtA rahA thA ( had kept eating)” at the lexical level on the main verb (khA) or (1b) on the auxiliary containing finiteness (wA) or (2) not mark it at the lexical level at all. All the three possibilities were discussed;
+1) Mark the finiteness at the lexical level.
+If we mark it at the lexical level, following possibilities are available :
+1a) Mark the finiteness on the main verb, even though we know that the lexical item itself is not finite.
+In this case, the annotator interprets the finiteness from the context. (The POS tags VF, VNF and VNN were earlier decided based on this approach). The main verb, therefore, is marked as finite consciously with a view that the group contains a &#39;verb root&#39; and its auxiliaries (as TAM etc) is finite even though the main verb does not carry the finiteness at the lexical level. Although, this approach facilitates annotation of both the main verb and the finiteness (of the group) by a single tag, it allows tagging a lexical item (main verb) with the finiteness feature which it does not actually carry. So, this is not a neat solution.
+1b) The second possibility is, mark the finiteness on the last auxiliary of the sequence. Here again the decision has to be taken from the context. This possibility was not considered since this also involves marking the verb finiteness at the lexical level.
+2) Don&#39;t mark the finiteness at the lexical level. Instead mark it as indicated in (2a) or (2b) below.
+2a) Introduce a new layer which groups the verb group and mark the verb group as finite or non-finite. This approach proposes the following :
+(i) Annotate the main verb as VM (introduce a new tag). Thus,
+h14a. laDZakA seba khAtA_VM raHA thA
+&#39;boy&#39; &#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;was&#39;
+h15a. seba khAtA_VM huA laDZakA jA rahA thA
+&#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;boy&#39; &#39; go&#39; &#39;PROG&#39; &#39;was&#39;
+(ii) Annotate the auxiliaries as VAUX,
+h14a. laDZakA seba khAtA_VM raHA_VAUX thA_VAUX
+&#39;boy&#39; &#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;was&#39;
+h15a. seba khAtA_VM huA_VAUX laDZakA jA rahA thA
+&#39;apple&#39; &#39;eating&#39; &#39; PROG&#39; &#39;boy&#39; &#39; go&#39; &#39;PROG&#39; &#39;was&#39;
+(iii) Group the verb group (before chunking) and annotate it as finite or non-finite as the case may be,
+h14a. laDZakA seba [khAtA_VM raHA_VAUX wA_VAUX]_VF
+&#39;boy&#39; &#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;was&#39;
+h15a. seba [khAtA_VM huA_VAUX]_VNF laDZakA jA rahA thA
+&#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;boy&#39; &#39; go&#39; &#39;PROG&#39; &#39;was&#39;
+This approach is more faithful to the available linguistic information. However, it requires introducing another layer. So, this was not considered useful.
+2b) Mark the finiteness at the chunk level,
+In this approach, the lexical items are marked as in (2). No new layer is introduced. Instead, the decision is postponed to the chunk level. Since the finiteness is in the group, it is marked at the chunk level. This offers the best solution as it facilitates marking the linguistic information as it is without having to introduce a new layer.
+h14a. laDZakA seba ((khAtA_VM raHA_VAUX wA_VAUX))_VGF
+&#39;boy&#39; &#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;was&#39;
+h15a. seba ((khAtA_VM huA_VAUX))_VGNF laDZakA jA rahA thA
+&#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;boy&#39; &#39; go&#39; &#39;PROG&#39; &#39;was&#39;
+In this case also the decision is made by looking at the entire group. (2b) was most preferred as it facilitates marking the linguistic information correctly, at the same time no new layer needs to be introduced. Therefore, the current tagging scheme has adopted this approach. Thus, the main verbs in a given verb group will be marked as VM, irrespective of whether the total verb group is finite of non finite. Given underneath are some examples of other verb group types :
+1) Non finite verb groups - Non-finite verb groups can have two functions :
+a) Adverbial participial, for example : khAte-khAte in the following Hindi sentence,
+h16. mEMne khAte – khAte ghode ko dekhA
+&#39;I erg&#39; &#39;while eating&#39; &#39;horse&#39; &#39;acc&#39; &#39;saw&#39;
+“I saw a horse while eating”.
+The main verb in (h16) would be annotated as follows :
+h16a. mEMne khAte – khAte_VM ghode ko dekhA
+b) Adjectival participial, for example : &#39;khAte Hue&#39; in the following Hindi sentence ,
+h17. mEMne ghAsa khAte_VM hue ghoDe ko dekhA *
+&#39;I erg&#39; &#39;grass&#39; &#39;eating&#39; &#39;PROG&#39; &#39;horse&#39; &#39;acc&#39; &#39;saw&#39;
+I saw the horse eating grass.
+(* (h17) is ambiguous in Hindi. The other sense that it can have is, I saw the horse while (I was) eating grass. In such cases, the annotator would disambiguate the sentence depending on the context and mark accordingly.)
+2) Gerunds
+Functionally, gerunds are nominals. However, even though they function like nouns, they are capable of taking their own arguments,eg. pInA in the following Hindi sentence can occur on its own or take an argument (given in parenthesis):
+h18. (sharAba) pInA_VM sehata ke liye hAnikAraka hE.
+&#39;liquor&#39; &#39;drinking&#39; &#39;health&#39; &#39;for&#39; &#39;harmful&#39; &#39;is&#39;
+“Drinking (liquor) is bad for health”
+h19. mujhe khAnA_VM acchA lagatA hai
+&#39;to me&#39; &#39;eating&#39; &#39;good&#39; &#39;appeals&#39;
+“I like eating”
+h20. sunane meM saba kuccha acchA lagatA hE
+&#39;listening&#39; &#39;in&#39; &#39;all&#39; &#39;things&#39; &#39;good&#39; &#39;appeal&#39; &#39;is&#39;
+As mentioned above, noun &#39;sharAba&#39; in (h18) is an object of the verb &#39;pInA&#39; and has no relation to the main verb (hE). In order to be able to show the exact verb-argument structure in the sentence, it is essential that the crucial information of a noun derived from a verb is preserved. Therefore, even gerunds have to be marked as verbs. It is proposed that in keeping with the approach adopted for non-finite verbs, mark gerunds also as VM at the lexical level. For capturing the information that they are gerunds, such verbs will be marked as VGNN (see the section on Chunk tags for details) at the chunk level to capture their gerundial nature. The verbs having &#39;vAlA&#39; vibhakti will also be marked as VM. For example, &#39;khonevAlA&#39; (one who looses).</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.4</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Negative -->
+
+    <owl:Class rdf:about="&ancorra;Negative">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>NEG Negative
+Negatives like Hindi &#39;nahIM&#39; (not), &#39;nA&#39; (no, not), etc. will be marked as NEG.
+For example,
+h40. vaha Aja nahIM_NEG A pAyegA
+&#39;he&#39; &#39;today&#39; &#39;not&#39; &#39;come&#39; &#39;will be able&#39;
+Also, see examples (b2) and (h25) given above.
+Indian languages have reiteration of NEG in certain constructions. For example,
+b5. tumi chobitA dekhbe ?
+&#39;you&#39; &#39;picture-def&#39; &#39;will see&#39; ?
+“Will you see the picture ?”
+b6. nA_NEG, xekhabo nA_NEG
+&#39;no&#39; &#39;will see (I)&#39; &#39;not&#39;
+“No, I will not see (it)”
+The first occurrence of &#39;nA&#39; in such constructions will also be marked as NEG.</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.15</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NegativeChunk -->
+
+    <owl:Class rdf:about="&ancorra;NegativeChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;Chunk"/>
+        <rdfs:comment>e.g., Hindi: ((binA))_NEGP ((kucha))_NP((bole))_VG ((kAma))_NP ((nahIM calatA))_VG (Bharati et al. 2006, §13.2)</rdfs:comment>
+        <rdfs:comment>NEGP Negatives
+(i) In case a negative particle occurs around a verb, it is to be grouped within verb group. For example,
+h67. mEM kala dillI ((nahIM_NEG jA_VM rahI_VAUX))_VGF
+&quot;I&quot; &quot;tomorrow&quot; &quot;Delhi&quot; &quot;not&quot; &quot;go&quot; &quot;Cont&quot;
+h68. ((binA_NEG bole_VM))_VGNF kAma ((nahIM_NEG calatA_VM))_VGF
+&quot;without&quot; &quot;saying&quot; &quot;work&quot; &quot;not&quot; &quot;happen&quot;
+However ,
+h69. binA kucha bole kAma nahIM calatA
+&quot;without&quot; &quot;something&quot; &quot;saying&quot; &quot;work&quot; &quot;not&quot; &quot;happen&quot;
+In the above sentence, the noun &quot;kucha&quot; is coming between the negative &quot;binA&#39; and verb &quot;bole&quot;. Here, it is not possible to group the negative and the verb as one chunk. At the same time, &quot;binA&quot; cannot be grouped within an NP chunk, as functionally, it is negating the verb and not the noun. To handle such cases an additional NEGP chunk is introduced. If a negative occurs away from the verb chunk, the negative will be chunked by itself and chunk will be tagged as NEGP. Thus,
+h69a. ((binA))_NEGP ((kucha))_NP ((bole))_VG ((kAma))_NP ((nahIM calatA))_VG</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.5</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NonFiniteVerbChunk -->
+
+    <owl:Class rdf:about="&ancorra;NonFiniteVerbChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;VerbChunk"/>
+        <rdfs:comment>e.g., Hindi: mEMne ((khAte –khAte_VM))_VGNF ghode ko dekhA (Bharati et al. 2006, §13.2)</rdfs:comment>
+        <rdfs:comment>VGNF Non-finite Verb Chunk
+A non-finite verb chunk will be tagged as VGNF. For example,
+h15a) seba ((khAtA_VM huA_VAUX))_VGNF laDZakA jA rahA thA
+&#39;apple&#39; &#39;eating&#39; &#39;PROG&#39; &#39;boy&#39; &#39; go&#39; &#39;PROG&#39; &#39;was&#39;
+h16a) mEMne ((khAte – khAte_VM))_VGNF ghode ko dekhA
+&#39;I erg&#39; &#39;while eating&#39; &#39;horse&#39; acc &#39;saw&#39;
+h17a) mEMne ghAsa ((khAte_VM hue_VAUX))_VGNF ghoDe ko dekhA
+&#39;I erg&#39; &#39;grass&#39; &#39;eating&#39; &#39;PROG&#39; &#39;horse&#39; acc &#39;saw&#39;
+The IIIT-H tagset had initially included three tags for the non-finite verbal forms. Unlike Penn tagset, all non finite verbs, which are used as adjectives,
+were marked as VJJ at the POS level. Similarly, to mark adverbial non-finite verbs, the POS tagset had VRB tag. A tag VNN was included to mark the nominalized verbs.
+However, during the discussions IL standards, it was pointed out that inclusion of too many finer tags hampers machine learning. Moreover, the marking is based on syntactic information, which we should avoid at the POS level, unless it is contributing to further processing in a substantial way. On the other hand, it is important to mark finite non-finite distinction in a verbal expression as it is a crucial information and is also easy to learn. As discussed under 5.4 above, it was decided to mark this distinction at the chunk level, rather than at the POS level. Therefore, the tag VGNF has been included to mark non-finite adverbial and adjectival verb chunk.</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.2.2</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Noun -->
+
+    <owl:Class rdf:about="&ancorra;Noun">
+        <rdfs:subClassOf rdf:resource="&ancorra;CommonNoun"/>
+        <owl:disjointWith rdf:resource="&ancorra;SpatiotemporalNoun"/>
+        <rdfs:comment>The tag NN for nouns has been adopted from Penn tags as such. The Penn tag set makes a distinction between noun singular (NN) and noun plural (NNS). As mentioned earlier, distinct tags based on grammatical information are
+avoided in IL tagging scheme. Any information that can be obtained from any other source is not incorporated in the POS tag. Plurality, for example, can be obtained from a morph analyzer. Moreover, as mentioned earlier, if a particular information is considered crucial at the POS tagging level itself, it can be incorporated at a later date with the help of heuristics and linguistic rules. This approach brings the number of tags down, and helps achieve simplicity, consistency, better machine learning with a small corpora etc. Therefore, the current scheme has only one tag (NN) for common nouns without getting into any distinction based on the grammatical information contained in a given noun word. (Bharati et al. 2006, §5.1.1)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NounChunk -->
+
+    <owl:Class rdf:about="&ancorra;NounChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;Chunk"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.1</rdfs:isDefinedBy>
+        <rdfs:comment>NP Noun Chunk
+Noun Chunks will be given the tag NP and include non-recursive noun phrases and postpositional phrases. The head of a noun chunk would be a noun. Specifiers will form the left side boundary for a noun chunk and the vibhakti or head noun will mark the right hand boundary for it. Descriptive adjective/s modifying the noun will be part of the noun chunk. The particle which anchors to the head noun in a noun chunk will also be grouped within the chunk. If it occurs after the noun or vibhakti, it will make the right boundary of the chunk.
+Some example noun chunks are :
+((bacce_NN))_NP, ((kucha_QF bacce_NN))_NP,
+&#39;children&#39; &#39;some&#39; &#39;children&#39;
+((kucha_QF acche_JJ bacce_NN))_NP, ((Dibbe_NN meM_PSP))_NP,
+&#39;some&#39; &#39;good&#39; &#39;children&#39; &#39;box&#39; &#39;in&#39;
+(( eka_QC kAlA__JJ ghoDZA_NN))_NP ,
+&#39;one&#39; &#39;black&#39; &#39;horse&#39;
+((yaha_DEM nayI_JJ kitAba_NN))_NP,
+&#39;this&#39; &#39;new&#39; &#39;book&#39;
+(( isa_DEM nayI_JJ kitAba_NN meM_PREP))_NP,
+&#39;this&#39; &#39;new&#39; &#39;book&#39; &#39;in&#39;
+(( isa_DEM nayI_JJ kitAba_NN meM_PSP bhI_RP))_NP
+&#39;this&#39; &#39;new&#39; &#39;book&#39; &#39;in&#39; &#39;also&#39;
+The issue of genitive marker and its grouping with the nouns that it relates to was discussed in detail. For example, the noun phrase &#39;rAma kA beTA&#39; contains two nouns &#39;rAma&#39; and &#39;beTA&#39;. The two nouns are related to each other by the vibhakti &#39;kA&#39;. The issue is whether to chunk the two nouns separately or together? Linguistically, &#39;beTA&#39; is the head of the phrase “rAma kA beTA”.
+&#39;rAma&#39; is related to &#39;beTA&#39; by a genitive relation which is expressed through the vibhakti &#39;kA&#39;. Going by our definition of a &#39;chunk&#39; we should break &#39;rAma kA beTA&#39; into two chunks ( ((rAma kA))_NP, ((beTA))_NP ) by breaking &#39;rAma kA&#39; at &#39;kA&#39; vibhakti . Moreover, if we chunk &#39;rAma kA beTA&#39; as one chunk, linguistically, we will end up with a recursive noun phrase as a single chunk ((((rAma kA)) beTA)) which also is against our definition of a chunk.
+Therefore, it was decided that the genetive markers will be chunked along with the preceding noun. Thus, the noun group &#39;rAma kA beTA&#39; would be chunked into two chunks.
+h54. ((rAma kA))NP ((beTA))NP acchA hE “Ram&#39;s son is good”
+h55. ((kitAba))NP ((rAma kI))NP hE “The book belongs to Ram”
+For the noun groups such as “usakA beTA” it was decided that they should be chunked together.</rdfs:comment>
+        <rdfs:comment>e.g., Hindi: ((merA nayA ghara))_NP “my new house” (Bharati et al. 2006, §13.2)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#OrdinalNumber -->
+
+    <owl:Class rdf:about="&ancorra;OrdinalNumber">
+        <rdfs:subClassOf rdf:resource="&ancorra;QuantifierOrClassifier"/>
+        <rdfs:comment>QO Ordinals
+Expressions denoting ordinals will be marked as QO.
+h36. mEMne kitAba tIsare_QO laDake ko dI thI
+&#39;I&#39; &#39;book&#39; &#39;third&#39; &#39;boy&#39; &#39;to&#39; &#39;give&#39; &#39;was&#39;
+I gave the book to the third boy”</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.12.3</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#OtherEntity -->
+
+    <owl:Class rdf:about="&ancorra;OtherEntity">
+        <rdfs:subClassOf rdf:resource="&ancorra;Chunk"/>
+        <rdfs:comment>BLK Miscellaneous entities
+Entities such as interjections and discourse markers that cannot fall into any of the above mentioned chunks will be kept within a separate chunk.
+eg. ((oh_INJ))_BLK, ((arre_INJ))_BLK
+8.3 Some Special Cases
+Apart from the above, some special cases related to certain lexical types are discussed below.</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.8</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#POSTag -->
+
+    <owl:Class rdf:about="&ancorra;POSTag">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&system;UnitOfAnnotation"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&system;hasTier"/>
+                        <owl:hasValue>pos</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5</rdfs:isDefinedBy>
+        <rdfs:comment>&quot;The Penn tags are most commonly used tags for English. Many tag sets designed subsequently have been a variant of this tag set (eg. Lancaster tag set). So, while deciding the tags for this tagger, the Penn tags have been used as a benchmark. Since the Penn tag set is an established tag set for English, we have used the same tags as the Penn tags for common lexical types. However, new tags have been introduced wherever Penn tags have been found inadequate for Indian language descriptions. For example, for verbs none of the Penn tags have been used. Instead, AnnCorra has only two tags for annotating verbs, VM (main verb) and VAUX (auxiliary verb).&quot; (Bharati et al. 2006)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Particle -->
+
+    <owl:Class rdf:about="&ancorra;Particle">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>RP Particle
+Expressions such as bhI, to, jI, sA, hI, nA, etc in Hindi would be marked as RP.
+The nA in the above list is different from the negative nA. Hindi and some other Indian languages have an ambiguous &#39;nA&#39; which is used both for negation (NEG) and for reaffirmation (RP). Similarly, the particle wo is different from CC wo. For example in Bangla and Hindi:
+Bangla : (b1) tumi nA_RP khub dushtu
+&#39;you&#39; &#39;particle&#39; &#39;very&#39; &#39;naughty&#39;
+“You are very naughty” (comment)
+Hindi : (h24) tuma nA_RP, bahuta dushta ho
+&#39;you&#39; &#39;particle very naughty
+“You are very naughty” (comment)
+Bangla : (b2) cheleta dushtu nA_NEG
+&#39;the boy&#39; &#39;naughty&#39; &#39;not&#39;
+“The boy is not naughty”
+Hindi : (h25) mEM nA_NEG jA sakUMgA
+&#39;I&#39; &#39;not&#39; &#39;go&#39; &#39;will able&#39;
+“I will not be able to go”
+Bangla : (b3) binu yYoxi khAya to_CC Ami khAba
+&#39;Binu&#39; &#39;if&#39; &#39;eats&#39; &#39;then&#39; &#39;I&#39; &#39;will eat&#39;
+“If Binu eats then I will eat (too)”
+Hindi : (h26) yadi binu khAyegA wo_CC mEM khAUMgI
+&#39;if&#39; &#39;Binu&#39; &#39;eats&#39; &#39;then&#39; &#39;I&#39; &#39;will eat&#39;
+“Only if Binu eats, I will eat (too)”
+Bangla : (b4) Ami to_RP jAni nA
+&#39;I&#39; &#39;particile&#39; &#39;know&#39; &#39;not&#39;
+“I don’t know”
+Hindi : (h27) mujhako to_RP nahIM patA
+&#39;I&#39; &#39;particile&#39; &#39;not&#39; &#39;know&#39;
+“I don’t know”
+(Bharati et al. 2006, §5.9)
+
+Hindi (and some other Indian languages) has particles such as &#39;jI&#39; or &#39;sAHaba&#39; etc. after proper nouns or personal pronouns. These particles are added to denote respect to the referred person. Such honorific words will be treated like particles and will be tagged RP like other particles.
+h53. mantrI_NN jI_RP sabhA meM dera se pahuMce .
+&#39;minister&#39; &#39;hon&#39; &#39;meeting&#39; &#39;in&#39; &#39;late&#39; &#39;part&#39; &#39;reached&#39;
+“The minister reached late for the meeting”.
+(Bharati et al. 2006, §6.2)</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.9</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Postposition -->
+
+    <owl:Class rdf:about="&ancorra;Postposition">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>PSP Postposition
+All Indian languages have the phenomenon of postpositions. Postpositions express certain grammatical functions such as case etc. The postposition will be marked as PSP in the current tagging scheme. For example,
+h22. mohana kheta meM khAda dAla rahA thA
+&#39;Mohan&#39; &#39;field&#39; &#39;in&#39; &#39;fertilizer&#39; &#39;put &#39; &#39;PROG&#39; &#39;was&#39;
+meM in the above example is a postposition and will be tagged as PSP.
+A postposition will be annotated as PSP ONLY if it is written separately. In case it is conjoined with the preceding word it will not be marked separately. For example, in Hindi pronouns the postpositions are conjoined with the pronoun,
+h23. mEne usako bAzAra meM dekhA
+&#39;I&#39; &#39;him&#39; &#39;market&#39; &#39;in&#39; &#39;saw&#39;
+(h23) above has three instances of &#39;postposition&#39; (in bold) usage. The postpositions &#39;ne&#39; and &#39;ko&#39; are conjoined with the pronouns mEM and usa respectively. The third postposition &#39;meM&#39; is written separately. In the first two instances, the postposition will not be annotated. Such words will be annotated with the category of the head word. Therefore, the three instances mentioned above will be annotated as shown in (h23a) below :
+h23a. mEne_PRP usako_PRP bAzAra_NN meM_PSP dekhA</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.8</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Pronoun -->
+
+    <owl:Class rdf:about="&ancorra;Pronoun">
+        <rdfs:subClassOf rdf:resource="&ancorra;PronounOrDemonstrative"/>
+        <rdfs:comment>PRP Pronoun
+Penn tags make a distinction between personal pronouns and possessive pronouns. This distinction is avoided here. All pronouns are marked as PRP. In Indian languages all pronouns inflect for all cases (accusative, dative, possessive etc.). In case we have a separate tag for possessive pronouns, new tags will have to be designed for all the other cases as well. This will increase the number of tags which is unnecessary. So only one tag is used for all the pronouns. The necessity for keeping a separate tag for pronouns was also discussed, as linguistically, a pronoun is a variable and functionally it is a noun. However, it was decided that the tag for pronouns will be helpful for anaphora resolution tasks and should be retained.</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.3.1</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#PronounOrDemonstrative -->
+
+    <owl:Class rdf:about="&ancorra;PronounOrDemonstrative">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <owl:versionInfo>Bharati et al. (2006) do not provide a headline for §5.3, naming this category &quot;PronounOrDemonstrative&quot; follows the EAGLES conventions for a similar merge of categories &quot;Pronoun&quot; and &quot;Determiner&quot;.</owl:versionInfo>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.3</rdfs:isDefinedBy>
+        <owl:versionInfo>TODO: rename to PronounOrDemonstrative</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#ProperNoun -->
+
+    <owl:Class rdf:about="&ancorra;ProperNoun">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>NNP Proper Nouns
+The need for a separate tag for proper nouns and its usability was discussed. Following points were raised against the inclusion of a separate tag for proper nouns :
+a) Indian languages, unlike English, do not have any specific marker for proper nouns in orthographic conventions. English proper nouns begin with a capital letter which distinguishes them from common nouns.
+b) All the words which occur as proper nouns in Indian languages can also occur as common nouns denoting a lexical meaning. For example,
+English : John, Harry, Mary occur only as proper nouns whereas
+Hindi : aTala bihArI, saritA, aravinda etc are used as &#39;names&#39; and they also belong to grammatical categories of words with various senses . For example given below is a list of Hindi words with their grammatical class and sense.
+aTala adj immovable
+bihArI adj from Bihar
+saritA noun river
+aravinda noun lotus
+Any of the above words can occur in texts as common lexical items or as proper names. (h9) - (h11) below show their occurrences as proper nouns,
+h9. atala bihAri bAjapaI bhArata ke pradhAna mantrI the.
+&#39;Atal&#39; &#39;Bihari&#39; &#39;Vajpayee&#39; &#39;India&#39; &#39;of&#39; &#39;prime&#39; &#39;minister&#39; &#39;was&#39;
+“Atal Behari Vajpayee was the Prime Minister of India”.
+h10. merI mitra saritA tAIvAna jA rahI hE.
+&#39;my&#39; &#39;friend&#39; &#39;Sarita&#39; &#39;Taiwan&#39; &#39;go&#39; &#39;PROG&#39; &#39;is&#39;
+“My friend Sarita is going to Taiwan”
+h11. aravinda ne mohana ko kitAba dI.
+&#39;Aravind&#39; &#39;erg&#39; &#39;Mohan&#39; &#39;to&#39; &#39;book&#39; &#39;gave&#39;
+“Aravind gave the book to Mohan”.
+Therefore, in the Indian languages&#39; context, annotating proper nouns with a separate tag will not be very fruitful from machine learning point of view. In fact, the identification of proper nouns can be better achieved by named entity filters.
+Another point that was considered in this context was the effort involved in manual tagging of proper nouns in a given text. It is felt that not much extra effort is required in manual tagging of proper nouns. However, the data annotated with proper nouns can be useful for certain applications. Therefore, there is no harm in marking the information if it does not require much effort.
+Finally, it was decided to have a separate tag for proper nouns for manual annotation and ignore it for machine learning algorithms. Following this decision, the tag NNP is included in the tag set. This tag is the same as the
+Penn tag for proper nouns. However, in this case also AnnCorra has only one tag for both singular and plural proper nouns unlike Penn tags where a distinction is made between proper noun singular and proper noun plural by having two tags NNP and NNPS respectively.</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.2</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Quantifier -->
+
+    <owl:Class rdf:about="&ancorra;Quantifier">
+        <rdfs:subClassOf rdf:resource="&ancorra;QuantifierOrClassifier"/>
+        <rdfs:comment>QF Quantifiers
+All quantifiers like Hindi kama (less), jyAdA (more), bahuwa (lots), etc. will be marked as QF.
+h34. vahAz bahuta_QF loga Aye the
+&#39;there&#39; many&#39; &#39;people&#39; &#39;came&#39; &#39;was&#39;
+“Many people came there”.
+In case these words are used in constructions like &#39;baHutoM ne jAne se inkAra kiyA&#39; (&#39;many&#39; &#39;by&#39; &#39;to go&#39; &#39;refused&#39;; Many refues to go) where it is functioning like a noun, it will be marked as NN (noun). Quantifiers of number will be marked as below.</rdfs:comment>
+        <rdfs:comment>e.g., bahut, tho.DA, kam (Hindi) (Bharati et al. 2006, §13.1)</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.12.1</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#QuantifierOrClassifier -->
+
+    <owl:Class rdf:about="&ancorra;QuantifierOrClassifier">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <owl:versionInfo>Bharati et al. (2006) do not provide a headline for §5.12, so it is not clear what this category should be named. According to the examples, &quot;PrenominalModifier&quot; could be appropriate.</owl:versionInfo>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.12</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#QuestionWord -->
+
+    <owl:Class rdf:about="&ancorra;QuestionWord">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.11</rdfs:isDefinedBy>
+        <rdfs:comment>WQ Question Words
+The Penn tag set makes a distinction between various uses of &#39;wh-&#39; words and marks them accordingly (WDT, WRB, WP, WQ etc). The &#39;wh-&#39; words in English can act as questions, as relative pronouns and as determiners. However, for Indian languages we need not keep this distinction. Therefore, we tag the question words as WQ.
+h30. kOna AyA hE ?
+&#39;who&#39; &#39;come&#39; &#39;has&#39;
+“Who has come ?
+h31. tuma kala kyA kara rahe ho ?
+&#39;you&#39; &#39;tomorrow&#39; what&#39; &#39;doing&#39; &#39;are&#39;
+What are you doing tomorrow ?
+h32. tuma kala kahAz jA rahe ho ?
+&#39;you&#39; &#39;tomorrow&#39; &#39;where&#39; &#39;going&#39; &#39;are&#39;
+“Where are you going tomorrow ?
+h33. kyA tuma kala Aoge ?
+&#39;?&#39; &#39;you&#39; &#39;tomorrow&#39; &#39;will come&#39;
+“Will you come tomorrow ?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Quotative -->
+
+    <owl:Class rdf:about="&ancorra;Quotative">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>e.g., ani (Telugu), endru (Tamil), bole/mAne (Bangla), mhaNaje (Marathi), mAne (Hindi) (Bharati et al. 2006, §13.1)</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.16</rdfs:isDefinedBy>
+        <rdfs:comment>UT Quotative
+A quotative introduces a quote. Typically, it is a verb. Many Indian languages use quotatives. Given below is an example from Bengali,
+b7. she Ashbe bole bolechilo
+&#39;he&#39; &#39;will come&#39; &#39;quotative&#39; &#39;told&#39;
+“He told that he will come”.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Reduplication -->
+
+    <owl:Class rdf:about="&ancorra;Reduplication">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:comment>RDP Reduplication
+In this phenomenon of Indian languages, the same word is written twice for various purposes such as indicating emphasis, deriving a category from another category etc. eg. choTe choTe (&#39;small&#39; &#39;small&#39;; very small), lAla lAla (&#39;red&#39; &#39;red&#39;; red), jaldI jaldI (&#39;quickyl&#39; &#39;quickly&#39; ; very quickly)
+There are two ways in which such word sequences may be written. They can be written – (a) separated by a space or (b) separated by a hyphen.
+The question to be resolved is that in case, they are written as two words (separated by space)– how should they be tagged? Earlier decision was to use the same tag for both the words. However, in this approach, the morphological
+character of reduplication is missed out. That is, the reduplicated item will then be treated exactly like two independent words of the same category. For example,
+h43. vaha mahaMgI_JJ mahaMgI_JJ cIjZeM kharIda lAyA
+&#39;he&#39; &#39;expensive&#39; &#39;expensive&#39; &#39;things&#39; &#39;buy&#39; &#39;bring&#39;
+“He bought all expensive things”.
+h44. una catura_JJ buddhimAna_JJ baccoM ne samasyA sulajhA lI
+&#39;those&#39; &#39;smart&#39; &#39;intelligent&#39; &#39;children&#39; &#39;erg&#39; &#39;problem&#39; &#39;solved&#39;
+“Those smart and intelligent children solved the problem.
+Both (h43) and (h44) have a sequence of adjectives - mahaMgI_JJ mahaMgI_JJ and catura_JJ buddhimAna_JJ respectively. In the first case, the sequence of two adjectives is a case of reduplication (same adjective is repeated twice to indicate the intensity of &#39;expensive&#39;) whereas in the second case the two adjectives refer to two different properties attributed to the following noun. Since reduplication is a highly productive process in Indian languages, it is proposed to include a new tag RDP for annotating reduplicatives. The first word in a reduplicative construction will be tagged by its respective lexical category and the second word will be tagged as RDP to indicate that it is a case of reduplication distinguishing it from a normal sequence such as in (h44) above. Some more examples are given underneath to make it more explicit,
+h45. vaha dhIre_RB dhIre_RDP cala rahA thA.
+&#39;he&#39; &#39;slowly&#39; &#39;slowly&#39; &#39;walk&#39; &#39;PROG&#39; &#39;was&#39;
+“He was walking (very) slowly”.
+h46. usake bAla choTe_JJ choTe_RDP the.
+&#39;his&#39; &#39;hair&#39; &#39;short&#39; &#39;short&#39; &#39;were&#39;
+“He had (very) short hair”
+h47. yaha bAta galI_NN galI_RDP meM phEla gayI.
+&#39;this&#39; &#39;talk&#39; &#39;lane&#39; &#39;lane&#39; &#39;in&#39; &#39;spread&#39; &#39;went&#39;
+“The word was spread in every lane”.</rdfs:comment>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.19</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#SpatiotemporalNoun -->
+
+    <owl:Class rdf:about="&ancorra;SpatiotemporalNoun">
+        <rdfs:subClassOf rdf:resource="&ancorra;CommonNoun"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.1.2</rdfs:isDefinedBy>
+        <rdfs:comment>NST Noun denoting spatial and temporal expressions
+
+&quot;A tag NST has been included to cover an important phenomenon of Indian languages. Certain expressions such as &#39;Upara&#39; (above/up), &#39;nIce&#39; (below) &#39;pahale&#39; (before), &#39;Age&#39; (front) etc are content words denoting time and space. These expressions, however, are used in various ways. For example,
+5.1.2.1 These words often occur as temporal or spatial arguments of a verb in a given sentence taking the appropriate vibhakti (case marker):
+h3. vaha Upara so rahA thA .
+&#39;he&#39; &#39;upstairs&#39; &#39;sleep&#39; &#39;PROG&#39; &#39;was&#39;
+“He was sleepign upstairs”.
+h4. vaha pahale se kamare meM bEThA thA .
+&#39;he&#39; &#39;beforehand&#39; &#39;from&#39; &#39; room&#39; &#39;in&#39; &#39;sitting&#39; &#39;was&#39;
+“He was sitting in the room from beforehand”
+h5. tuma bAhara bETho
+&#39;you&#39; &#39;outside&#39; &#39;sit&#39;
+“You sit outside”.
+Apart from functioning like an argument of a verb, these elements also modify another noun taking postposition &#39;kA&#39;.
+h6. usakA baDZA bhAI Upara ke hisse meM rahatA hE
+&#39;his&#39; &#39;elder&#39; &#39;brother&#39; &#39;upstairs&#39; &#39;of&#39; &#39;portion&#39; &#39;in&#39; &#39;live&#39; &#39;PRES&#39;
+“His elder brother lives in the upper portion of the house”.
+5.1.2.2 Apart from occuring as a nominal expression, they also occur as a part of a postposition along with &#39;ke&#39;. For example,
+h7. ghaDZe ke Upara thAlI rakhI hE.
+&#39;pot&#39; &#39;of&#39; &#39;above&#39; &#39;plate&#39; &#39;kept&#39; &#39;is&#39;
+The plate is kept on the pot”.
+h8. tuma ghara ke bAhara bETho
+&#39;you&#39; &#39;home&#39; &#39;of&#39; &#39;outside&#39; &#39;sit&#39;
+“You sit outside the house”.
+&#39;Upara&#39; and &#39;bAhara&#39; are parts of complex postpositions &#39;ke Upara&#39; and &#39;ke bAhara&#39; in (h6) and (h7) respectively which can be translated into English prepositions &#39;on&#39; and &#39;outside&#39;.
+For tagging such words, one possible option is to tag them according to their syntactic function in the given context. For example in 5.2.2 (h7) above, the word &#39;Upara&#39; is occurring as part of a postposition or a relation marker. It can, therefore, be marked as a postposition. Similarly, in 5.2.1. (h3) and (h6) above, it is a noun, therefore, mark it as a noun and so on. Alternatively, since these words are more like nouns, as is evident from 5.2.1 above they can be tagged as nouns in all there occurrences. The same would apply to &#39;bAhAra&#39; (outside)
+in examples examples (h4), (h5) and (h8).
+However, if we follow any of the above approaches we miss out on the fact that this class of words is slightly different from other nouns. These are nouns which indicate &#39;location&#39; or &#39;time&#39;. At the same time, they also function as postpositions in certain contexts. Moreover, such words, if tagged according to their syntactic function, will hamper machine learning. Considering their special status, it was considered whether to introduce a new tag, NST, for such expressions. The following five possibilities were discussed :
+a) Tag both (h5) &amp; (h8) as NN
+b) Tag both (h5) &amp; (h8) as NST
+c) Tag (h5) as NN &amp; (h8) as NST
+d) Tag (h5) as NST &amp; (h8) as PSP
+e) Tag (h5) as NN &amp; (h8) as PSP
+After considering all the above, the decision was taken in favour of (b). The decision was primarily based on the following observations:
+(i) &#39;bAhara&#39; in both (h5) and (h8) denotes the same expression (place expression &#39;outside&#39;)
+(ii) In both (h5) and (h8), &#39;bAhara&#39; can take a vibhakti like a noun ( bAhara ko bETho, ghara ke bAhara ko bETho)
+(iii) If a single tag is kept for both the usages, the decision making for annotators would also be easier.
+Therefore, a new tag NST is introduced for such expressions. The tag NST will be used for a finite set of such words in any language. For example, Hindi has
+Age (front), pIche (behind), Upara (above/upstairs), nIce (below/down), bAda (after), pahale (before), andara (inside), bAhara (outside) etc.&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#Symbol -->
+
+    <owl:Class rdf:about="&ancorra;Symbol">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.17</rdfs:isDefinedBy>
+        <rdfs:comment>SYM Special Symbol
+All those words which cannot be classified in any of the other tags will be tagged as SYM. This tag is similar to the Penn &#39;SYM&#39;. Also special symbols like $, %, etc are treated as SYM. Since the frequency of occurrence of such symbols is very less in Indian languages, no separate tag is used for such symbols.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#UnknownWord -->
+
+    <owl:Class rdf:about="&ancorra;UnknownWord">
+        <rdfs:subClassOf rdf:resource="&ancorra;POSTag"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §5.20</rdfs:isDefinedBy>
+        <rdfs:comment>UNK Unknown
+A special tag to indicate unknown words is also included in the tag set. The annotators can use this tag to mark the words whose category they are not
+aware of. This tag has to be used very cautiously and sparsely, i.e., only if it is absolutely necessary.
+(Bharati et al. 2006, §5.20)
+
+Presence of loan words is a fairly common phenomenon in languages. Most Indian languages have a number of loan word from English. One may also come across words from other Indian languages or Sanskrit in a given text. Such foreign words will be tagged as per the syntactic function of the word in the given context. In special cases, such as when the annotator is not sure of the category of a word, it will be tagged as UNK.
+(Bharati et al. 2006, §6.3)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#VerbChunk -->
+
+    <owl:Class rdf:about="&ancorra;VerbChunk">
+        <rdfs:subClassOf rdf:resource="&ancorra;Chunk"/>
+        <rdfs:isDefinedBy>Bharati et al. (2006), §8.2.2</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy>The verb chunks would be of several types. A verb group will include the main verb and its auxiliaries, if any. Following are some examples of verb chunks from Hindi,
+((khAyA)), ((khA rahA hE)), (( khA sakawe hEM))
+&#39;ate&#39; &#39;eat&#39; &#39;PROG&#39; &#39;is&#39; &#39;eat&#39; &#39;can&#39; &#39;PRES&#39;</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;CC">
+        <rdf:type rdf:resource="&ancorra;Conjunction"/>
+        <system:hasTag>CC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#CL -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;CL">
+        <rdf:type rdf:resource="&ancorra;Classifier"/>
+        <system:hasTag>CL</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#DEM -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;DEM">
+        <rdf:type rdf:resource="&ancorra;Demonstrative"/>
+        <system:hasTag>DEM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#ECH -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;ECH">
+        <rdf:type rdf:resource="&ancorra;EchoWord"/>
+        <system:hasTag>ECH</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#INJ -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;INJ">
+        <rdf:type rdf:resource="&ancorra;Interjection"/>
+        <system:hasTag>INJ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#INTF -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;INTF">
+        <rdf:type rdf:resource="&ancorra;Intensifier"/>
+        <system:hasTag>INTF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#JJ -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;JJ">
+        <rdf:type rdf:resource="&ancorra;Adjective"/>
+        <system:hasTag>JJ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#JJC -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;JJC">
+        <rdf:type rdf:resource="&ancorra;Adjective"/>
+        <rdf:type rdf:resource="&ancorra;Compound"/>
+        <system:hasTag>JJC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NEG -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;NEG">
+        <rdf:type rdf:resource="&ancorra;Negative"/>
+        <system:hasTag>NEG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NN -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;NN">
+        <rdf:type rdf:resource="&ancorra;Noun"/>
+        <rdfs:comment>The tag NN for nouns has been adopted from Penn tags as such. The Penn tag set makes a distinction between noun singular (NN) and noun plural (NNS). As mentioned earlier, distinct tags based on grammatical information are
+avoided in IL tagging scheme. Any information that can be obtained from any other source is not incorporated in the POS tag. Plurality, for example, can be obtained from a morph analyzer. Moreover, as mentioned earlier, if a particular information is considered crucial at the POS tagging level itself, it can be incorporated at a later date with the help of heuristics and linguistic rules. This approach brings the number of tags down, and helps achieve simplicity, consistency, better machine learning with a small corpora etc. Therefore, the current scheme has only one tag (NN) for common nouns without getting into any distinction based on the grammatical information contained in a given noun word</rdfs:comment>
+        <system:hasTag>NN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NNC -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;NNC">
+        <rdf:type rdf:resource="&ancorra;Compound"/>
+        <rdf:type rdf:resource="&ancorra;Noun"/>
+        <system:hasTag>NNC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NNP -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;NNP">
+        <rdf:type rdf:resource="&ancorra;ProperNoun"/>
+        <system:hasTag>NNP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NNPC -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;NNPC">
+        <rdf:type rdf:resource="&ancorra;Compound"/>
+        <rdf:type rdf:resource="&ancorra;ProperNoun"/>
+        <system:hasTag>NNPC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#NST -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;NST">
+        <rdf:type rdf:resource="&ancorra;SpatiotemporalNoun"/>
+        <system:hasTag>NST</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#PRP -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;PRP">
+        <rdf:type rdf:resource="&ancorra;Pronoun"/>
+        <system:hasTag>PRP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#PSP -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;PSP">
+        <rdf:type rdf:resource="&ancorra;Postposition"/>
+        <system:hasTag>PSP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#QC -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;QC">
+        <rdf:type rdf:resource="&ancorra;CardinalNumber"/>
+        <system:hasTag>QC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#QF -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;QF">
+        <rdf:type rdf:resource="&ancorra;Quantifier"/>
+        <system:hasTag>QF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#QO -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;QO">
+        <rdf:type rdf:resource="&ancorra;OrdinalNumber"/>
+        <system:hasTag>QO</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#RB -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;RB">
+        <rdf:type rdf:resource="&ancorra;Adverb"/>
+        <system:hasTag>RB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#RDP -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;RDP">
+        <rdf:type rdf:resource="&ancorra;Reduplication"/>
+        <system:hasTag>RDP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#RP -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;RP">
+        <rdf:type rdf:resource="&ancorra;Particle"/>
+        <system:hasTag>RP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#SYM -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;SYM">
+        <rdf:type rdf:resource="&ancorra;Symbol"/>
+        <system:hasTag>SYM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#UNK -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;UNK">
+        <rdf:type rdf:resource="&ancorra;UnknownWord"/>
+        <system:hasTag>UNK</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#UT -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;UT">
+        <rdf:type rdf:resource="&ancorra;Quotative"/>
+        <system:hasTag>UT</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#VAUX -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;VAUX">
+        <rdf:type rdf:resource="&ancorra;AuxiliaryVerb"/>
+        <system:hasTag>VAUX</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#VM -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;VM">
+        <rdf:type rdf:resource="&ancorra;MainVerb"/>
+        <system:hasTag>VM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#WQ -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;WQ">
+        <rdf:type rdf:resource="&ancorra;QuestionWord"/>
+        <system:hasTag>WQ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/ancorra.owl#_C -->
+
+    <owl:NamedIndividual rdf:about="&ancorra;_C">
+        <rdf:type rdf:resource="&ancorra;Compound"/>
+        <system:hasTag>*C</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ancorra;CardinalNumber"/>
+            <rdf:Description rdf:about="&ancorra;Classifier"/>
+            <rdf:Description rdf:about="&ancorra;OrdinalNumber"/>
+            <rdf:Description rdf:about="&ancorra;Quantifier"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ancorra;FiniteVerbChunk"/>
+            <rdf:Description rdf:about="&ancorra;GerundChunk"/>
+            <rdf:Description rdf:about="&ancorra;InfiniteVerbChunk"/>
+            <rdf:Description rdf:about="&ancorra;NonFiniteVerbChunk"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ancorra;AdjectiveChunk"/>
+            <rdf:Description rdf:about="&ancorra;AdverbChunk"/>
+            <rdf:Description rdf:about="&ancorra;Conjunct"/>
+            <rdf:Description rdf:about="&ancorra;NegativeChunk"/>
+            <rdf:Description rdf:about="&ancorra;NounChunk"/>
+            <rdf:Description rdf:about="&ancorra;OtherEntity"/>
+            <rdf:Description rdf:about="&ancorra;VerbChunk"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ancorra;Adjective"/>
+            <rdf:Description rdf:about="&ancorra;Adverb"/>
+            <rdf:Description rdf:about="&ancorra;AuxiliaryVerb"/>
+            <rdf:Description rdf:about="&ancorra;CommonNoun"/>
+            <rdf:Description rdf:about="&ancorra;Conjunction"/>
+            <rdf:Description rdf:about="&ancorra;EchoWord"/>
+            <rdf:Description rdf:about="&ancorra;Intensifier"/>
+            <rdf:Description rdf:about="&ancorra;Interjection"/>
+            <rdf:Description rdf:about="&ancorra;MainVerb"/>
+            <rdf:Description rdf:about="&ancorra;Negative"/>
+            <rdf:Description rdf:about="&ancorra;Particle"/>
+            <rdf:Description rdf:about="&ancorra;Postposition"/>
+            <rdf:Description rdf:about="&ancorra;PronounOrDemonstrative"/>
+            <rdf:Description rdf:about="&ancorra;ProperNoun"/>
+            <rdf:Description rdf:about="&ancorra;QuantifierOrClassifier"/>
+            <rdf:Description rdf:about="&ancorra;QuestionWord"/>
+            <rdf:Description rdf:about="&ancorra;Quotative"/>
+            <rdf:Description rdf:about="&ancorra;Symbol"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

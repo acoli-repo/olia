@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:olia="http://purl.org/olia/olia.owl#"
+    xmlns:stts-link="http://purl.org/olia/stts-link.rdf#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:tueba="http://purl.org/olia/tueba.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://purl.org/olia/tiger-link.rdf#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:olia-top="http://purl.org/olia/olia-top.owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:dct="http://purl.org/dc/terms/"
+  xml:base="http://purl.org/olia/tueba-link.rdf">
+  <owl:Ontology rdf:about="http://purl.org/olia/tueba-link.rdf">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+    <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+    <owl:imports rdf:resource="http://purl.org/olia/tueba.owl"/>
+    <owl:imports rdf:resource="http://purl.org/olia/stts-link.rdf"/>
+    <owl:imports rdf:resource="http://purl.org/olia/stts.owl"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Represents the linking between the TueBa-D/Z syntax and morphology annotations and the OLiA reference model. Note that TueBa-D/Z uses the STTS tag set for part of speech annotation, and hence, the treatment of POS tags is imported from stts-link.rdf</rdfs:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2010/12/01 created 
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO:</owl:versionInfo>
+  </owl:Ontology>
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tueba.owl#hasCase">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasCase"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tueba.owl#hasGender">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasGender"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tueba.owl#hasMood">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasMood"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tueba.owl#hasNumber">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tueba.owl#hasPerson">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tueba.owl#hasTense">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+    </owl:ObjectProperty>
+
+
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Case">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#CaseFeature"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Gender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#GenderFeature"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Mood">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Number">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NumberFeature"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Person">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#PersonFeature"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Tense">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#TenseFeature"/>
+    </owl:Class>
+    
+
+
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Complement">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SyntacticComplement"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#HeadOrConjunct">
+        <rdfs:comment>unlinked</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Modifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#Phrase">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Phrase"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#SecondaryEdge">
+        <rdfs:comment>unlinked, this is a merely technical concept</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#SplitCoordination">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Conjunct"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#StructuralExpletive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#StructuralExpletive"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/tueba.owl#TopologicalField">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+    </owl:Class>
+    
+
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Accusative"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdjectivePhrase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdverbPhrase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Apposition"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Clause"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticComplement"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#ComplementizerField"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Conjunct"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Coordination"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#CoordinatorField"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#DativeCase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#DependencyRelation"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#DeterminerPhrase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectObject"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#DiscourseMarker"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#FacultativePrepositionalObject"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Feminine"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#FinalField"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#FiniteVerb"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#FiniteVerbPhrase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#First"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#ForeignPhrase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#GenitiveCase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Head"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#IndicativeMood"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#IndirectObject"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#InitialField"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#LeftDislocationField"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#LeftSentenceBracket"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Masculine"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#MiddleField"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Modifier"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#NamedEntity"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Neuter"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Nominative"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonfiniteVerbPhrase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#NounPhrase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Past"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Plural"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Predicate"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#PrepositionalObject"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#PrepositionalPhrase"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Present"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#RelativeClause"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Second"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#SeparablePrefix"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Singular"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#StructuralExpletive"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubjunctiveMood"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubordinatorField"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticObject"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Third"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
+<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbalComplex"/>
+
+    
+
+
+    <olia:AdjectivePhrase rdf:about="http://purl.org/olia/tueba.owl#ADJX"/>
+    <olia:AdverbPhrase rdf:about="http://purl.org/olia/tueba.owl#ADVX"/>
+    <olia:Apposition rdf:about="http://purl.org/olia/tueba.owl#APP"/>
+    <olia:ComplementizerField rdf:about="http://purl.org/olia/tueba.owl#C"/>
+    <olia:DiscourseMarker rdf:about="http://purl.org/olia/tueba.owl#DM"/>
+    <olia:DeterminerPhrase rdf:about="http://purl.org/olia/tueba.owl#DP"/>
+    <olia:NamedEntity rdf:about="http://purl.org/olia/tueba.owl#EN"/>
+    <olia:NamedEntity rdf:about="http://purl.org/olia/tueba.owl#EN-ADD"/>
+    <olia:StructuralExpletive rdf:about="http://purl.org/olia/tueba.owl#ES"/>
+    <olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#FKONJ"/>
+    <olia:Coordination rdf:about="http://purl.org/olia/tueba.owl#FKOORD"/>
+	<olia-top:TopologicalField rdf:about="http://purl.org/olia/tueba.owl#FKOORD"/>
+    <olia:FacultativePrepositionalObject rdf:about="http://purl.org/olia/tueba.owl#FOPP"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#FOPP-MOD"/>
+	<olia:FacultativePrepositionalObject rdf:about="http://purl.org/olia/tueba.owl#FOPPK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#FOPPK"/>
+    <olia:ForeignPhrase rdf:about="http://purl.org/olia/tueba.owl#FX"/>
+    <olia:Head rdf:about="http://purl.org/olia/tueba.owl#HD"/>
+    <olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#KONJ"/>
+    <olia:CoordinatorField rdf:about="http://purl.org/olia/tueba.owl#KOORD"/>
+    <olia:LeftSentenceBracket rdf:about="http://purl.org/olia/tueba.owl#LK"/>
+	<olia:LeftDislocationField rdf:about="http://purl.org/olia/tueba.owl#LV"/>
+    <olia:MiddleField rdf:about="http://purl.org/olia/tueba.owl#MF"/>
+    <olia:MiddleField rdf:about="http://purl.org/olia/tueba.owl#MFE"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#MOD"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#MOD-MOD"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#MODK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#MODK"/>
+    <olia:FinalField rdf:about="http://purl.org/olia/tueba.owl#NF"/>
+    <olia:NounPhrase rdf:about="http://purl.org/olia/tueba.owl#NX"/>
+    <olia:DirectObject rdf:about="http://purl.org/olia/tueba.owl#OA"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#OA-MOD"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#OA-MODK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#OA-MODK"/>
+    <olia:SyntacticObject rdf:about="http://purl.org/olia/tueba.owl#OADJP"/>
+	<olia:AdjectivePhrase rdf:about="http://purl.org/olia/tueba.owl#OADJP"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#OADJP-MOD"/>
+    <olia:AdverbPhrase rdf:about="http://purl.org/olia/tueba.owl#OADVP"/>
+	<olia:SyntacticObject rdf:about="http://purl.org/olia/tueba.owl#OADVP"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#OADVP-MOD"/>
+    <olia:AdverbPhrase rdf:about="http://purl.org/olia/tueba.owl#OADVPK"/>
+	<olia:SyntacticObject rdf:about="http://purl.org/olia/tueba.owl#OADVPK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#OADVPK"/>
+    <olia:DirectObject rdf:about="http://purl.org/olia/tueba.owl#OAK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#OAK"/>
+    <olia:IndirectObject rdf:about="http://purl.org/olia/tueba.owl#OD"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#OD-MOD"/>
+    <olia:IndirectObject rdf:about="http://purl.org/olia/tueba.owl#ODK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#ODK"/>
+    <olia:SyntacticObject rdf:about="http://purl.org/olia/tueba.owl#OG"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#OG-MOD"/>
+    <olia:SyntacticSubject rdf:about="http://purl.org/olia/tueba.owl#ON"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#ON-MOD"/>
+    <olia:SyntacticSubject rdf:about="http://purl.org/olia/tueba.owl#ONK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#ONK"/>
+    <olia:PrepositionalObject rdf:about="http://purl.org/olia/tueba.owl#OPP"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#OPP-MOD"/>
+    <olia:PrepositionalObject rdf:about="http://purl.org/olia/tueba.owl#OPPK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#OPPK"/>
+    <olia:SyntacticObject rdf:about="http://purl.org/olia/tueba.owl#OS"/>
+	<olia:Clause rdf:about="http://purl.org/olia/tueba.owl#OS"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#OS-MOD"/>
+    <olia:Clause rdf:about="http://purl.org/olia/tueba.owl#OSK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#OSK"/>
+	<olia:SyntacticObject rdf:about="http://purl.org/olia/tueba.owl#OSK"/>
+    <olia:Verb rdf:about="http://purl.org/olia/tueba.owl#OV"/>
+	<olia:SyntacticObject rdf:about="http://purl.org/olia/tueba.owl#OV"/>
+    <olia:Coordination rdf:about="http://purl.org/olia/tueba.owl#P-SIMPX"/>
+	<olia:Clause rdf:about="http://purl.org/olia/tueba.owl#P-SIMPX"/>
+    <olia:SubordinatorField rdf:about="http://purl.org/olia/tueba.owl#PARORD"/>
+	<olia:Predicate rdf:about="http://purl.org/olia/tueba.owl#PRED"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#PRED-MOD"/>
+    <olia:Predicate rdf:about="http://purl.org/olia/tueba.owl#PREDK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#PREDK"/>
+    <olia:PrepositionalPhrase rdf:about="http://purl.org/olia/tueba.owl#PX"/>
+    <olia:RelativeClause rdf:about="http://purl.org/olia/tueba.owl#R-SIMPX"/>
+    <olia:SyntacticComplement rdf:about="http://purl.org/olia/tueba.owl#REFCONTR"/>
+	<olia:DependencyRelation rdf:about="http://purl.org/olia/tueba.owl#REFCONTR"/>
+    <olia:DependencyRelation rdf:about="http://purl.org/olia/tueba.owl#REFINT"/>
+	<olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#REFINT"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#REFMOD"/>
+	<olia:DependencyRelation rdf:about="http://purl.org/olia/tueba.owl#REFMOD"/>
+    <olia:DependencyRelation rdf:about="http://purl.org/olia/tueba.owl#REFVC"/>
+	<olia:SyntacticObject rdf:about="http://purl.org/olia/tueba.owl#REFVC"/>
+	<olia:Verb rdf:about="http://purl.org/olia/tueba.owl#REFVC"/>
+    <olia:Clause rdf:about="http://purl.org/olia/tueba.owl#SIMPX"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#V-MOD"/>
+    <olia:Modifier rdf:about="http://purl.org/olia/tueba.owl#V-MODK"/>
+	<olia:Conjunct rdf:about="http://purl.org/olia/tueba.owl#V-MODK"/>
+    <olia:VerbalComplex rdf:about="http://purl.org/olia/tueba.owl#VC"/>
+	<olia:VerbalComplex rdf:about="http://purl.org/olia/tueba.owl#VCE"/>
+    <olia:InitialField rdf:about="http://purl.org/olia/tueba.owl#VF"/>
+    <olia:SeparablePrefix rdf:about="http://purl.org/olia/tueba.owl#VPT"/>
+    <olia:FiniteVerbPhrase rdf:about="http://purl.org/olia/tueba.owl#VXFIN"/>
+	<olia:NonfiniteVerbPhrase rdf:about="http://purl.org/olia/tueba.owl#VXINF"/>
+    <olia:Accusative rdf:about="http://purl.org/olia/tueba.owl#accusative"/>
+    <olia:DativeCase rdf:about="http://purl.org/olia/tueba.owl#dative"/>
+    <olia:Feminine rdf:about="http://purl.org/olia/tueba.owl#feminine"/>
+    <olia:First rdf:about="http://purl.org/olia/tueba.owl#first"/>
+	<olia:GenitiveCase rdf:about="http://purl.org/olia/tueba.owl#genitive"/>
+    <olia:IndicativeMood rdf:about="http://purl.org/olia/tueba.owl#indicative"/>
+    <olia:Masculine rdf:about="http://purl.org/olia/tueba.owl#masculine"/>
+    <olia:Neuter rdf:about="http://purl.org/olia/tueba.owl#neuter"/>
+    <olia:Nominative rdf:about="http://purl.org/olia/tueba.owl#nominative"/>
+    <!--owl:NamedIndividual rdf:about="http://purl.org/olia/tueba.owl#non-head">
+        <rdf:type>
+			<owl:Class>
+				<owl:intersection>
+					<owl:Class>
+						<owl:complementOf rdf:resource="http://purl.org/olia/tueba.owl#Head"/>
+					</owl:Class>
+					<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+				</owl:intersection>
+			</owl:Class>
+		</rdf:type>
+	</owl:NamedIndividual-->
+    <olia:Past rdf:about="http://purl.org/olia/tueba.owl#past"/>
+    <olia:Plural rdf:about="http://purl.org/olia/tueba.owl#plural"/>
+    <olia:Present rdf:about="http://purl.org/olia/tueba.owl#present"/> 
+	<olia:Second rdf:about="http://purl.org/olia/tueba.owl#second"/>
+    <olia:Singular rdf:about="http://purl.org/olia/tueba.owl#singular"/>
+	<olia:SubjunctiveMood rdf:about="http://purl.org/olia/tueba.owl#subjunctive"/>
+	<olia:Third rdf:about="http://purl.org/olia/tueba.owl#third"/>	
+	</rdf:RDF>
+

@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY olia_system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/penn.owl#"
+     xml:base="http://purl.org/olia/penn.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:olia_system="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/alpino.owl">
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/nld"/>
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <owl:versionInfo rdf:datatype="&xsd;string">TODO: add definitions
+		
+		2017-06-10 removed inappropriate comments inherited from penn.owl, moved to stable (CC)
+		2015-08-01 created as fork from penn.owl (MS)
+		
+		CC Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de
+		MS Maria Sukahreva sukhareva.maria1@gmail.com</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;string">OLiA Annotation Model for  LASSY alpino part-of-speech annotation (Dutch), http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html
+
+References
+http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html
+
+http://nederbooms.ccl.kuleuven.be/test/tags
+
+http://www.let.rug.nl/vannoord/Lassy/</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="&xsd;string">http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html</rdfs:isDefinedBy>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTag"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTier"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">These are adjectives, ordinal numerals, and ordinal numbers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#CardinalNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#CardinalNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">These are cardinal numbers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Complementizer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Complementizer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Determiner -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Determiner">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Fixed -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Fixed">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <rdfs:comment>(part of) a fixed expression</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#MWU -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#MWU">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <rdfs:comment>multiword units</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Name -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Name">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This is a class inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Particle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Particle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Prefix -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Prefix">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <rdfs:comment>the first conjunct in constructions like: 
+electronica-	en telecommunicatieconcern	
+voedsel- en landbouworganisatie</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Preposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Preposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#PronominalAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#PronominalAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This is a class inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Punctuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Punctuation">
+        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&olia_system;hasTier"/>
+                <owl:hasValue>pos</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:versionInfo>Not addressed by Santorini (1990), but produced by real-world taggers, also cf. http://www.cis.upenn.edu/~treebank/tokenization.html for the treatment of PTB punctuation tags in the parsed Penn Treebank.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Tag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Tag">
+        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
+
+    <owl:Class rdf:about="&olia_system;LinguisticAnnotation"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#adj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#adj">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Adjective"/>
+        <olia_system:hasTag>adj</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#adv -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#adv">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Adverb"/>
+        <olia_system:hasTag>adv</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#comp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#comp">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Complementizer"/>
+        <olia_system:hasTag>comp</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#det -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#det">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Determiner"/>
+        <olia_system:hasTag>det</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#fixed -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#fixed">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Fixed"/>
+        <olia_system:hasTag>fixed</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#mwu -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#mwu">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#MWU"/>
+        <olia_system:hasTag>mwu</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#name -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#name">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Name"/>
+        <olia_system:hasTag>name</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#noun -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#noun">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Noun"/>
+        <olia_system:hasTag>noun</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#num -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#num">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#CardinalNumber"/>
+        <olia_system:hasTag>num</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#part -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#part">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Particle"/>
+        <olia_system:hasTag>part</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#pp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#pp">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#PronominalAdverb"/>
+        <rdfs:comment>Pronominal adverb like English &quot;whereof&quot;, &quot;hereby&quot; etc. 
+Dutch: &quot;ertegen&quot; (thereagainst):
+Hij protesteert ertegen. 
+&quot;erin&quot; (therein): 
+We doken erin.</rdfs:comment>
+        <olia_system:hasTag>pp</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#prefix -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#prefix">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Prefix"/>
+        <olia_system:hasTag>prefix</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#prep -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#prep">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Preposition"/>
+        <olia_system:hasTag>prep</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#pron -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#pron">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Pronoun"/>
+        <olia_system:hasTag>pron</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#punct -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#punct">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Punctuation"/>
+        <olia_system:hasTag>punct</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#tag -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#tag">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
+        <olia_system:hasTag>tag</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#verb -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#verb">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#Verb"/>
+        <olia_system:hasTag>verb</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/alpino.owl#vg -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#vg">
+        <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#CoordinatingConjunction"/>
+        <olia_system:hasTag>vg</olia_system:hasTag>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

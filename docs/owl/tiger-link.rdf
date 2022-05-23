@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:olia="http://purl.org/olia/olia.owl#"
+    xmlns:stts-link="http://purl.org/olia/stts-link.rdf#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:tiger-syntax="http://purl.org/olia/tiger-syntax.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://purl.org/olia/tiger-link.rdf#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:olia-top="http://purl.org/olia/olia-top.owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:tiger="http://purl.org/olia/tiger.owl#"
+	xmlns:dct="http://purl.org/dc/terms/"
+  xml:base="http://purl.org/olia/tiger-link.rdf">
+  <owl:Ontology rdf:about="http://purl.org/olia/tiger-link.rdf">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+    <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+    <owl:imports rdf:resource="http://purl.org/olia/tiger.owl"/>
+    <owl:imports rdf:resource="http://purl.org/olia/stts-link.rdf"/>
+    <owl:imports rdf:resource="http://purl.org/olia/tiger-syntax.owl"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Represents the linking between the TIGER morphology annotation and the OLiA reference model. Note that TIGER uses the STTS tag set for part of speech annotation, and hence, the treatment of POS tags is imported from stts-link.rdf</rdfs:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2010/01/19 updated: linking Mood and InfinitenessFeature
+2010/01/25 added syntax linking (cat labels only, no edges yet)
+2010/02/18 edge label linking
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: tiger:discourseLevelConstituent not yet linked
+
+applied to direct speech Da f¨ur uns die syntaktische Struktur Vorrang hat vor der Diskursstruktur, wird die letztere nur annotiert, wenn keine klaren syntaktischen Beziehungen bestehen. So wird im folgenden Satz die angefu ¨ hrte A¨ ußerung als OC zu sagt annotiert. (65) “Nun”, sagt Peter, “m¨ussen wir nach Hause gehen”. Wenn hingegen keine syntaktische Beziehung (meistens OC) zwischen dem Angef¨uhrten und der es einbettenden Diskursstruktur besteht, verbinden sich die beiden Komponenten parataktisch zu einer Discourse Level Constituent (DL). Die Bestandteile einer DL sind: RS (reported speech) und DH (discourse-level head). (Bader et al. 2003, §5.5)</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://purl.org/olia/tiger.owl#InfinitenessFeature">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modelled as word classes rather than morphosyntactic features.</owl:versionInfo>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#NonFiniteVerb"/>
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#ImperativeVerb"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/olia/tiger.owl#MoodFeature">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The term &amp;#8222;mood&amp;#8220; is used by some authors in the same sense as &amp;#8222;modality&amp;#8220;, 
+    while others distinguish the two, as we do here, using &amp;#8222;mood&amp;#8220; to refer to 
+    the contrastive grammatical expressions of different modalities, and thus 
+    reserving &amp;#8222;modality&amp;#8220; to refer to the meanings so expressed. &amp;gt;A grammatical 
+    category is related to a variety of factors affecting the nature of a 
+    predication, such as factors include factivity, certainty (evidentials), 
+    attitudes, speaker&amp;#8217;s knowledge/beliefs/desires, agent&amp;#8217;s 
+    ability/volitionality, etc.; a set of distinctive forms used to express 
+    modality (as verbal inflections or a set of auxiliarys, each signaling a 
+    modality). 
+    (http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&amp;amp;file=lido/servlet/Lido_Servlet 
+    Modus 14.05.07)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MoodFeature"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#hasPPFunction"/>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#hasNumeralFunction"/>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger.owl#hasDegree">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasDegree"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger.owl#hasProperty">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#hasChunkFunction"/>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#hasProperNounFunction"/>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger.owl#hasInfiniteness">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Does not exist in OLiA, modelled there as a MorphosyntacticCategory</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#hasVPFunction"/>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#hasAPFunction"/>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#hasNPFunction"/>
+  <olia-top:Constituent rdf:about="http://purl.org/olia/tiger-syntax.owl#coordination"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#hasTense">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+  </rdf:Description>
+  <olia:Infinitive rdf:about="http://purl.org/olia/tiger.owl#infinitive"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#PersonFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#PersonFeature"/>
+  </rdf:Description>
+  <olia:Modifier rdf:about="http://purl.org/olia/tiger-syntax.owl#modifier"/>
+  <olia:ProperNoun rdf:about="http://purl.org/olia/tiger-syntax.owl#properNoun"/>
+  <olia:Singular rdf:about="http://purl.org/olia/tiger.owl#singular"/>
+  <olia:Adjective rdf:about="http://purl.org/olia/tiger-syntax.owl#adjectiveComponent"/>
+  <olia:AddresseeRole rdf:about="http://purl.org/olia/tiger-syntax.owl#vocative"/>
+  <olia:IndirectObject rdf:about="http://purl.org/olia/tiger-syntax.owl#dative"/>
+  <olia:Participle rdf:about="http://purl.org/olia/tiger.owl#past_participle"/>
+  <olia:Present rdf:about="http://purl.org/olia/tiger.owl#present"/>
+  <olia:Head rdf:about="http://purl.org/olia/tiger-syntax.owl#head"/>
+  <olia:Adposition rdf:about="http://purl.org/olia/tiger-syntax.owl#adpositionalCaseMarker"/>
+  <olia:DirectSpeech rdf:about="http://purl.org/olia/tiger-syntax.owl#reportedSpeech"/>
+  <olia:Third rdf:about="http://purl.org/olia/tiger.owl#third"/>
+  <olia-top:Constituent rdf:about="http://purl.org/olia/tiger-syntax.owl#chunk">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#Phrase"/>
+  </olia-top:Constituent>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#adverbialPhraseComponent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ignored in the linking.</rdfs:comment>
+  </rdf:Description>
+  <olia-top:Constituent rdf:about="http://purl.org/olia/tiger-syntax.owl#discourseLevelConstituent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >applied to direct speech Da f&amp;#168;ur uns die syntaktische Struktur Vorrang hat 
+    vor der Diskursstruktur, wird die letztere nur annotiert, wenn keine 
+    klaren syntaktischen Beziehungen bestehen. So wird im folgenden Satz die 
+    angefu &amp;#168; hrte A&amp;#168; u&amp;#223;erung als OC zu sagt annotiert. (65) &amp;#8220;Nun&amp;#8221;, sagt Peter, 
+    &amp;#8220;m&amp;#168;ussen wir nach Hause gehen&amp;#8221;. Wenn hingegen keine syntaktische Beziehung 
+    (meistens OC) zwischen dem Angef&amp;#168;uhrten und der es einbettenden 
+    Diskursstruktur besteht, verbinden sich die beiden Komponenten 
+    parataktisch zu einer Discourse Level Constituent (DL). Die Bestandteile 
+    einer DL sind: RS (reported speech) und DH (discourse-level head). (Bader 
+    et al. 2003, &amp;#167;5.5)</rdfs:comment>
+  </olia-top:Constituent>
+  <olia:Neuter rdf:about="http://purl.org/olia/tiger.owl#neut"/>
+  <olia:Adposition rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedAdposition"/>
+  <olia:DirectObject rdf:about="http://purl.org/olia/tiger-syntax.owl#accusativeObject"/>
+  <olia:Unique rdf:about="http://purl.org/olia/tiger-syntax.owl#discourseMarker">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </olia:Unique>
+  <olia:PersReflPronoun rdf:about="http://purl.org/olia/tiger-syntax.owl#placeholder"/>
+  <olia:EmbeddedInfinitive rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedZuMarkedInfinitive"/>
+  <olia:GenitiveAttribute rdf:about="http://purl.org/olia/tiger-syntax.owl#phrasalGenitive"/>
+  <olia:FiniteClause rdf:about="http://purl.org/olia/tiger-syntax.owl#S"/>
+  <olia:SubjunctiveMood rdf:about="http://purl.org/olia/tiger.owl#subjunctive">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The subjunctive is the mood that is minimally marked as opposed to the 
+    indicative and that marks a clause as not directly representing an 
+    assertion of the speaker&amp;#8217;s. 
+    (http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&amp;amp;file=lido/servlet/Lido_Servlet 
+    Subjunktiv 18.06.07)</rdfs:comment>
+  </olia:SubjunctiveMood>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#hasGender">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasGender"/>
+  </rdf:Description>
+  <olia:IndicativeMood rdf:about="http://purl.org/olia/tiger.owl#indicative">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The indicative is the unmarked mood. It is used when no special modal 
+    nuance in the clause or sentence is intended. It is the default mood of 
+    independent declarative and often also of interrogative sentences. 
+    (http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&amp;amp;file=lido/servlet/Lido_Servlet 
+    Indikativ 18.06.07)</rdfs:comment>
+  </olia:IndicativeMood>
+  <olia:SyntacticSubject rdf:about="http://purl.org/olia/tiger-syntax.owl#subject"/>
+  <olia:ExpletivePronoun rdf:about="http://purl.org/olia/tiger-syntax.owl#expletiveEs">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#PersReflPronoun"/>
+  </olia:ExpletivePronoun>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#AdjectivePhrase">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#AdjectivePhrase"/>
+  </rdf:Description>
+  <olia:VerbPhrase rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedVerbPhrase"/>
+  <olia:ComitativeRole rdf:about="http://purl.org/olia/tiger-syntax.owl#comitative">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#Modifier"/>
+  </olia:ComitativeRole>
+  <olia:DirectObject rdf:about="http://purl.org/olia/tiger-syntax.owl#genitiveObject"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#VerbalPhrase">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: a TIGER "verb phrase" is actually something completely different than a generative verb phrase, check/fix this!</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#VerbPhrase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#NumberFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NumberFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#TenseFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#TenseFeature"/>
+  </rdf:Description>
+  <olia:CoordinateClause rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedSentence"/>
+  <olia:Modifier rdf:about="http://purl.org/olia/tiger-syntax.owl#locative">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#LocationRole"/>
+  </olia:Modifier>
+  <olia:Infinitive rdf:about="http://purl.org/olia/tiger.owl#infinitive_zu"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#hasCase">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasCase"/>
+  </rdf:Description>
+  <olia:PostNominalModifier rdf:about="http://purl.org/olia/tiger-syntax.owl#postnominalModifier"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#hasMood">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasMood"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#Coordination">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Coordination"/>
+  </rdf:Description>
+  <olia-top:Constituent rdf:about="http://purl.org/olia/tiger-syntax.owl#idiosyncraticUnit"/>
+  <olia:AdjectivePhrase rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedAdjectivePhrase"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#hasNumber">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+  </rdf:Description>
+  <olia:RhetoricalModifier rdf:about="http://purl.org/olia/tiger-syntax.owl#rhetoricalModifier"/>
+  <olia:Conjunct rdf:about="http://purl.org/olia/tiger-syntax.owl#conjunct">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#Coordination"/>
+  </olia:Conjunct>
+  <olia:Modifier rdf:about="http://purl.org/olia/tiger-syntax.owl#passivisedSubject">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#ActorMacroRole"/>
+  </olia:Modifier>
+  <olia:Numeral rdf:about="http://purl.org/olia/tiger-syntax.owl#complexNumeral"/>
+  <olia:GenitiveAttribute rdf:about="http://purl.org/olia/tiger-syntax.owl#genitiveAttribute"/>
+  <olia:CoordinatingConjunction rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatingConjunction"/>
+  <olia:SyntacticAdjunct rdf:about="http://purl.org/olia/tiger-syntax.owl#prepositionalObject"/>
+  <olia:Nominative rdf:about="http://purl.org/olia/tiger.owl#nominative"/>
+  <olia:Head rdf:about="http://purl.org/olia/tiger-syntax.owl#discourseLevelHead"/>
+  <olia:VerbPhrase rdf:about="http://purl.org/olia/tiger-syntax.owl#predicate"/>
+  <olia:Masculine rdf:about="http://purl.org/olia/tiger.owl#masc"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#DegreeFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#DegreeFeature"/>
+  </rdf:Description>
+  <olia:CoordinatingConjunction rdf:about="http://purl.org/olia/tiger-syntax.owl#junctor"/>
+  <olia:GenitiveCase rdf:about="http://purl.org/olia/tiger.owl#genitive"/>
+  <olia:DirectObject rdf:about="http://purl.org/olia/tiger-syntax.owl#clausalObject">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#Clause"/>
+  </olia:DirectObject>
+  <olia:Plural rdf:about="http://purl.org/olia/tiger.owl#plural"/>
+  <olia:Past rdf:about="http://purl.org/olia/tiger.owl#past"/>
+  <olia:Feminine rdf:about="http://purl.org/olia/tiger.owl#fem"/>
+  <olia:SubordinatingConjunction rdf:about="http://purl.org/olia/tiger-syntax.owl#comparativeConjunction"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticNode">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Constituent"/>
+  </rdf:Description>
+  <olia:Numeral rdf:about="http://purl.org/olia/tiger-syntax.owl#numberComponent"/>
+  <olia:SyntacticSubject rdf:about="http://purl.org/olia/tiger-syntax.owl#subjectOrPredicate"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#MorphologicalFeature">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >tiger:Infiniteness feature is modelled as a tiger:MorphosyntacticCategory, because it is redundant with the word classes.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphosyntacticFeature"/>
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#NonFiniteVerb"/>
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#ImperativeVerb"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <olia:Modifier rdf:about="http://purl.org/olia/tiger-syntax.owl#directionalModifier">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#PathRole"/>
+  </olia:Modifier>
+  <olia:Accusative rdf:about="http://purl.org/olia/tiger.owl#accusative"/>
+  <olia:First rdf:about="http://purl.org/olia/tiger.owl#first"/>
+  <olia:MeasureArgument rdf:about="http://purl.org/olia/tiger-syntax.owl#MeasurementArgumentOfAdjective"/>
+  <olia:Positive rdf:about="http://purl.org/olia/tiger.owl#positive"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#PrepositionalPhrase">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PrepositionalPhrase"/>
+  </rdf:Description>
+  <olia:AdjectivePhrase rdf:about="http://purl.org/olia/tiger-syntax.owl#adjectivePhrase"/>
+  <olia:Superlative rdf:about="http://purl.org/olia/tiger.owl#superlative"/>
+  <olia:RelativeClause rdf:about="http://purl.org/olia/tiger-syntax.owl#relativeClause">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
+  </olia:RelativeClause>
+  <olia:NounPhrase rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedNounPhrase"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >syntactic edges are modelled here in parts as syntactic categories (if predictable from the dominated node alone) or syntactic features (if they describe a relation between a parent node and a child node)</rdfs:comment>
+  </rdf:Description>
+  <olia:DativeCase rdf:about="http://purl.org/olia/tiger.owl#dative"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#GenderFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#GenderFeature"/>
+  </rdf:Description>
+  <olia:Modifier rdf:about="http://purl.org/olia/tiger-syntax.owl#comparativeComplement"/>
+  <olia:Modifier rdf:about="http://purl.org/olia/tiger-syntax.owl#instrumental">
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#InstrumentRole"/>
+  </olia:Modifier>
+  <olia:AdverbPhrase rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedAdverbialPhrase"/>
+  <olia:MorphologicalParticle rdf:about="http://purl.org/olia/tiger-syntax.owl#morphologicalParticle"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#CaseFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#CaseFeature"/>
+  </rdf:Description>
+  <olia:AdverbPhrase rdf:about="http://purl.org/olia/tiger-syntax.owl#adverbialPhrase"/>
+  <olia:ImperativeVerb rdf:about="http://purl.org/olia/tiger.owl#imperative"/>
+  <olia:Conjunction rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedComplementizer"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#NounPhrase">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#NounPhrase"/>
+  </rdf:Description>
+  <olia:Comparative rdf:about="http://purl.org/olia/tiger.owl#comparative"/>
+  <olia:ProperNoun rdf:about="http://purl.org/olia/tiger-syntax.owl#properNounComponent"/>
+  <olia:Unique rdf:about="http://purl.org/olia/tiger-syntax.owl#separableVerbPrefix"/>
+  <olia:Apposition rdf:about="http://purl.org/olia/tiger-syntax.owl#apposition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdf:type rdf:resource="http://purl.org/olia/olia.owl#Phrase"/>
+  </olia:Apposition>
+  <olia:DirectObject rdf:about="http://purl.org/olia/tiger-syntax.owl#secondAccusativeObject"/>
+  <olia:Negation rdf:about="http://purl.org/olia/tiger-syntax.owl#negation"/>
+  <olia:Second rdf:about="http://purl.org/olia/tiger.owl#second"/>
+  <rdf:Description rdf:about="http://purl.org/olia/tiger.owl#hasPerson">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

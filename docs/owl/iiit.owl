@@ -1,0 +1,999 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY iiit "http://purl.org/olia/iiit.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/iiit.owl#"
+     xml:base="http://purl.org/olia/iiit.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:iiit="http://purl.org/olia/iiit.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/iiit.owl">
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/hin"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/mar"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/tel"/>
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <rdfs:isDefinedBy>http://shiva.iiit.ac.in/SPSAL2007/iiit_tagset_guidelines.pdf</rdfs:isDefinedBy>
+        <owl:versionInfo>2011-07-27 created
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <rdfs:comment>OLiA Annotation Model for a Part of Speech Tagger for Indian Languages (IIIT 2007). Languages mentioned in the document include Hindi, Marathi, and Telugu. To a certain extent, IIIT (2007) seems to be a revision of http://ltrc.iiit.ac.in/tr031/posguidelines.pdf that was developed at the same institute.
+
+Unless marked otherwise, all comments are quotes from IIIT (2007).
+
+IIIT (2007), A Part of Speech Tagger for Indian Languages (POS tagger), Tagset developed at IIIT - Hyderabad after consultations with several institutions through two workshops. available under http://shiva.iiit.ac.in/SPSAL2007/iiit_tagset_guidelines.pdf</rdfs:comment>
+        <owl:priorVersion>http://purl.org/olia/ancorra.owl</owl:priorVersion>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#AdjectivalNonFiniteVerb -->
+
+    <owl:Class rdf:about="&iiit;AdjectivalNonFiniteVerb">
+        <rdfs:subClassOf rdf:resource="&iiit;NonFiniteVerb"/>
+        <rdfs:comment>VJJ Verb Non-Finite Adjectival
+Unlike Penn tagset all non finite verbs which are used as adjectives
+will be marked as VJJ. The Penn tagger does not make a distinction
+between the gerunds and adjectival participles or simple &#39;ing&#39; type
+verb forms.
+For Hindi, constructions like &#39;khAte Hue&#39; will be tagged as follows:
+khAte/VJJ Hue/VAUX.
+(&quot;eating&quot;)
+As explained earlier in the paper, this distinction is made in order to
+preserve the information that this word is a form of a verb. Every verb
+is capable of taking its own arguments in a sentence, even if it is not
+the main verb. In order to be able to show the exact verb-argument
+structure in the sentence, it is essential that this crucial
+information is preserved. So this tagger marks all non-finite
+adjectival participles as VJJ i.e. an adjective which is formed out of
+a verb.
+
+e.g., (khAte/VJJ Hue/VAUX) (&quot;eating&quot;)
+
+negative VJJN :telugu</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Adjective -->
+
+    <owl:Class rdf:about="&iiit;Adjective">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>JJ Adjective
+This tag is again same as in Penn tagset. Penn tagset also makes a
+distinction between comparative and superlative adjectives. This has
+not been considered here.
+So this tag includes the &#39;tara&#39;(comparative) and the &#39;tama&#39;
+(superlative) forms of adjectives in Hindi.
+e.g. adhikatara, sarvottama, etc.
+(&quot;more times&quot;, &quot;best&quot;)
+
+(includes comparative and superlative forms also,
+adhikatara, sarvottama)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Adverb -->
+
+    <owl:Class rdf:about="&iiit;Adverb">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>RB Adverb
+This tag is the same RB tag of Penn tagset. Penn tagset also makes a
+difference between comparative and superlative adverbs, which is not
+adopted in this tagger. This is in accordance with our philosophy of
+coarseness in linguistic analysis.
+
+e.g., (dhIre/RB dhIre/RB, tejI/RB se/RP)
+(&quot;slowly slowly&quot;, &quot;fast&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#AdverbialNonFiniteVerb -->
+
+    <owl:Class rdf:about="&iiit;AdverbialNonFiniteVerb">
+        <rdfs:subClassOf rdf:resource="&iiit;NonFiniteVerb"/>
+        <rdfs:comment>VRB Verb Non-finite Adverbial
+Again unlike Penn tagset, non-finite forms of verbs which are used as
+adverbs will be tagged with a different tag VRB.
+In Hindi constructions like &#39;khAte khAte&#39;(&quot;while eating&quot;),
+&#39;khAkara&#39;(&quot;after eating&quot;), etc will be tagged as VRB.
+The reason for this distinction between non-finite verbs used as
+adverbs and other verbs is as explained in VJJ.
+
+e.g., khAkara, pIte/VRB Hue/VAUX) (&quot;after eating&quot;, &quot;drinking&quot;)
+
+negative VRBN :telugu
+
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="&iiit;AuxiliaryVerb">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>VAUX Verb Auxiliary
+All auxiliary verbs will be marked as VAUX. This tag has been adopted
+as such from the Penn tagset.
+
+e.g., (khA/VFM cukA/VAUX HE/VAUX)
+(&quot;eat en has&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#CompoundNoun -->
+
+    <owl:Class rdf:about="&iiit;CompoundNoun">
+        <rdfs:subClassOf rdf:resource="&iiit;LanguageSpecificPOSTag"/>
+        <rdfs:comment>NNC Compound Nouns
+There is no separate tag for Compound nouns in the Penn tagset. But in
+this tagger, the tag NNC is used for compound nouns. This tag has been
+introduced in order to indentify unhyphenated compound words as one
+unit.
+e.g. &#39;keMdra sarakAra&#39; will be tagged as keMdra/NNC sakakAra/NN.
+(&quot;center&quot; &quot;government&quot;)
+In this example, &#39;keMxra&#39; and &#39;sarakAra&#39; are both nouns which are
+forming a compound noun. All words except the last one, of compound
+words will be marked as NNC. Thus any NNC will be always followed by
+another NNC or an NN. This strategy helps indentify these words as one
+unit although they are not conjoined by a hyhen.
+
+NNC Compound Common Nouns (kendra/NNC sarakAra/NN (&quot;center
+government&quot;, rAma/NNC
+moHana/NN (&quot;Ram, Mohan&quot;),
+laDaZke/NNC laDaZkiyAz/NN (&quot;girls boys&quot;),
+laDaZke/NNC laDaZkiyoM/NN ne khAnA khAyA
+(girls boys food ate&quot;).)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#CompoundProperNoun -->
+
+    <owl:Class rdf:about="&iiit;CompoundProperNoun">
+        <rdfs:subClassOf rdf:resource="&iiit;LanguageSpecificPOSTag"/>
+        <rdfs:comment>NNPC Compound Proper Nouns
+This tag is also an addition. All words in a compound proper noun will
+be marked as NNPC excluding the last one.
+e.g. aTala/NNPC biHArI/NNPC vAjapeyI/NNP.
+Here the first two words are NNPC and the last one will be NNP. Just as
+the NNC tag this tag too helps identify a compound proper noun as one
+unit and not confuse it with a list of proper nouns.
+e.g. rAma, moHana aur shAma ghara gaye.
+(&quot;Ram&quot;, &quot;Mohan&quot; &quot;and&quot; &quot;Shyam&quot; &quot;home&quot; &quot;went&quot;)
+Any title like Dr., Col., Lt. etc. which occurs before a proper noun
+will be tagged as NNC. All such titles are nouns which will always be
+followed by a Proper Noun. To indicate that these are a part of the
+proper noun but are nouns they will be tagged as NNC.
+e.g. Col./NNC Ranjit/NNPC Deshmukh/NNP
+
+NNC Compound Common Nouns (kendra/NNC sarakAra/NN (&quot;center
+government&quot;, rAma/NNC
+moHana/NN (&quot;Ram, Mohan&quot;),
+laDaZke/NNC laDaZkiyAz/NN (&quot;girls boys&quot;),
+laDaZke/NNC laDaZkiyoM/NN ne khAnA khAyA
+(girls boys food ate&quot;).)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Conjunction -->
+
+    <owl:Class rdf:about="&iiit;Conjunction">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>CC Conjuncts (coordinating and subordinating)
+The tag CC will be used for coordinating and subordinating conjuncts
+both. The Penn tagset has used ‘IN’ tag for prepositions and
+subordinating conjuncts. Their rationale behind this is that
+subordinating conjuncts and prepositions can be distinguished because
+subordinating conjuncts are followed by a clause and a prepositions by
+a noun phrase.
+But in the current tagger all connectors other than prepositions will
+be marked as CC.
+
+e.g. (Ora, yA, ki)
+(&quot;and&quot;, &quot;or&quot;, &quot;that&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Intensifier -->
+
+    <owl:Class rdf:about="&iiit;Intensifier">
+        <rdfs:subClassOf rdf:resource="&iiit;LanguageSpecificPOSTag"/>
+        <rdfs:comment>INTF Intensifier
+This tag is not present in Penn tagset. Words like &#39;baHuta&#39;, &#39;kama&#39;,
+etc. will be covered under this.
+
+e.g., (&quot;baHuta&quot; jyAdA, &quot;Ora&quot; jyAdA) # But note that:
+[baHutoM/noun ne]
+(&quot;too much&quot;, &quot;much more&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Interjection -->
+
+    <owl:Class rdf:about="&iiit;Interjection">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>UH Interjection
+Just as in Penn tagset, interjections will be marked as UH. In addition
+the affirmative word &#39;HAz&#39;(&quot;yes&quot;) will also be tagged as UH. This is
+the only example of such a word so has been clubbed under Interjection.
+
+UH Interjection words (HAM and interjections)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#LanguageSpecificPOSTag -->
+
+    <owl:Class rdf:about="&iiit;LanguageSpecificPOSTag">
+        <rdfs:subClassOf rdf:resource="&iiit;POSTag"/>
+        <rdfs:comment>This set is of new tags designed to cater some phenomena which are
+specific to Indian languages.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#LightVerb -->
+
+    <owl:Class rdf:about="&iiit;LightVerb">
+        <rdfs:subClassOf rdf:resource="&iiit;LanguageSpecificPOSTag"/>
+        <rdfs:comment>NVB,JVB,RBVB Kriyamula (light verbs)
+This tag has been introduced to account for the concept of kriyamuls of
+Indian Languages. Kriyamuls are verbs formed by combining a noun or an
+adjective or an adverb with a (helping) verb. The kriyamuls formed by
+joining a noun will be NVB, those formed with an adjective will be JVB
+and those formed by joining adverbs will be RBVB.
+e.g. snAna/NVB karatA/VFM HE/VAUX
+(&quot;bath&quot; &quot;does&quot;)
+In the above example &#39;snAna&#39; is a noun which is joined to the verb
+&#39;karanA&#39; to express the sense of the verb &#39;to bathe&#39;. So here &#39;snAna&#39;
+is marked as NVB and the main verb is marked as VFM and &#39;HE&#39; is its
+auxilliary.
+e.g. lAla/JVB HotA/VFM HE/VAUX
+(&quot;red&quot; &quot;happens&quot;)
+In this example the adjective &#39;lAla&#39; is joined with &#39;HonA&#39; to express
+the sense of the verb &#39;to redden&#39;. So &#39;lAla&#39; is marked as JVB, &#39;HotA&#39;
+as VFM and &#39;HE&#39; as VAUX.
+e.g. yaHa to jarUra/RBVB HE/VFM........
+In this example the adverb &#39;jarUra&#39; is joined with &#39;HonA&#39; to express
+the sense &#39;to be sure&#39;. So &#39;jarUra&#39; is marked as RBVB and &#39;HE&#39; is the
+main verb marked as VFM.
+
+Kriyamula:
+NVB Noun in kriya mula
+(snAna/NVB karatA/VFM HE/VAUX)
+(snAna/NVB karate/VJJ Hue/VAUX)
+(snAna/NVB karake/VRB)
+(snAna/NVB karane/VNN para/PREP)
+
+JVB Adj in kriya mula
+(lAla/JVB HotA/VFM HE/VAUX)
+(pUrA/JVB HotA/VFM HE/VAUX)
+(pUrA/JVB Hote/VRB Hue/VAUX)
+(pUrA/JVB Hokara/VRB
+(pUrA/JVB Hone/VNM para/PREP
+
+RBVB Adv in kriya mula
+In case there is such a usage with xxxx
+(xxxx/RBVB HotA/VFM HE/VAUX)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#LocationNoun -->
+
+    <owl:Class rdf:about="&iiit;LocationNoun">
+        <rdfs:subClassOf rdf:resource="&iiit;LanguageSpecificPOSTag"/>
+        <rdfs:comment>NLOC Noun Location
+This is an entirely new tag introduced to cover an important phenomenon
+of Indian Languages. Words like &#39;Age&#39;, &#39;upara&#39;, &#39;pahele&#39;, &#39;bAda&#39;, etc.
+are used in various ways in Hindi.
+1. They act as a postposition along with &#39;ke&#39;
+e.g. ghade ke upara thAlI rakhI HE.
+(&quot;pot&quot; &quot;on&quot; &quot;plate&quot; &quot;kept&quot; &quot;is&quot;)
+Here &#39;ke upara&#39; is a post position which is the direct equivalent of
+the English preposition &#39;on&#39;.
+2. They also act as adverbs.
+e.g. tuma upara jAo.
+(&quot;You&quot; &quot;up&quot; &quot;go&quot;)
+Here &#39;upara&#39; is an adverbial of place.
+3. These words also take post positions themselves and so in some sense
+behave like nouns.
+e.g. vaHa upara se AyA.
+(&quot;He&quot; &quot;above&quot; &quot;from&quot; &quot;came&quot;)
+4. As pointed out in 3. above, these words take postpositions and act
+as arguments of the verb in the sentence. And they also take a post
+position to join with a another noun. So in that sense also they behave
+like nouns.
+e.g. upara kA HissA
+(&quot;above&quot; &quot;of&quot; &quot;portion&quot;)
+To tag such words one option is to tag them according to the category
+to which they belong in the given sentence. For example in 1. above,
+the word is occurring as a postposition so can be marked as a
+postposition. In example 2. above, it is an adverb so can be marked as
+an adverb and so on.
+But we feel that these words are more like nouns as is evident from 3.
+and 4. above, and also if we consider for examples, &#39;aage&#39;, &#39;upara&#39;,
+etc. as places which are in front, up, etc then we can tag them as
+nouns.
+But these are not pure nouns. They are nouns which indicate a location
+or time. These also function as adverbs or prepositions in a context.
+So a new tag NLOC is introduced for such words. This tag will cater to
+a finite set of such words.
+set: (Age, piche, upara, nIce, bAda, pahele)
+(&quot;front&quot;, &quot;behind&quot;, &quot;above&quot;, &quot;below&quot;, &quot;before&quot;)
+Such words if tagged according to their syntactic function, it will
+hamper machine learning. So a single tag, NLOC has been devised for
+such words which indicate location and time.
+
+e.g., (upara, Age, pahele, bAda)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#MainVerb -->
+
+    <owl:Class rdf:about="&iiit;MainVerb">
+        <rdfs:subClassOf rdf:resource="&iiit;ModifiedPTBPOSTag"/>
+        <rdfs:comment>VFM Verb Finite Main
+The entire verb category has been dealt with differently in this
+tagger. The following discussions explain how the verbal category has
+been dealt with.
+The VFM tag is a modification of the VB tag of Penn tagset. Main verb
+of a finite verb group of a sentence is considered as VFM. Whether the
+form of the particular word is finite or non-finite it will be tagged
+as VFM.
+E.g. laDZakA seba khA/VFM raHA thA.
+(&quot;boy&quot; &quot;apple&quot; &quot;eating&quot; &quot;was&quot;)
+
+e.g. (vaHa &quot;pItA&quot; HE, vaHa laDaZkA &quot;HE&quot;)
+(&quot;he drinks&quot;, &quot;he boy is&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#ModifiedPTBPOSTag -->
+
+    <owl:Class rdf:about="&iiit;ModifiedPTBPOSTag">
+        <rdfs:subClassOf rdf:resource="&iiit;POSTag"/>
+        <rdfs:comment>This group includes those tags which are a modification of some tags in
+the Penn tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Negative -->
+
+    <owl:Class rdf:about="&iiit;Negative">
+        <rdfs:subClassOf rdf:resource="&iiit;LanguageSpecificPOSTag"/>
+        <rdfs:comment>NEG Negative
+Negatives like &#39;nahI&#39;, &#39;na&#39;, etc. will be marked as NEG.
+
+e.g. (nA, naHIM)
+(&quot;no&quot;, &quot;not&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NominalNonFiniteVerb -->
+
+    <owl:Class rdf:about="&iiit;NominalNonFiniteVerb">
+        <rdfs:subClassOf rdf:resource="&iiit;NonFiniteVerb"/>
+        <rdfs:comment>VNN Verb Non-Finite Nominal
+In the Penn tagger, VBG is used for gerunds, participles and
+progressive verb forms. But this tagger will mark gerunds as VNN. This
+distinction is being made in order that consructions like &#39;pIna&#39;, etc
+can be accounted for.
+e.g. sharAba pInA/VNN seHata ke liye KAnikAraka HE.
+(&quot;liquor&quot; &quot;drinking&quot; &quot;heath&quot; &quot;for&quot; &quot;harmful&quot; &quot;is&quot;)
+
+e.g., (pInA) (&quot;drinking&quot;)
+
+negative VNNN :telugu</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NonFiniteVerb -->
+
+    <owl:Class rdf:about="&iiit;NonFiniteVerb">
+        <rdfs:subClassOf rdf:resource="&iiit;ModifiedPTBPOSTag"/>
+        <owl:versionInfo>groups together &quot;Verb Non-finite Adjectival&quot;, &quot;Verb Non-finite Adverbial&quot; and &quot;Verb Non-finite Nominal&quot;. The formation of category names indicate that the authors thought about a hierarchical organization here. (Chiarcos)</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Noun -->
+
+    <owl:Class rdf:about="&iiit;Noun">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>NN Noun
+Penn tagset makes a distinction between noun singular and noun plural.
+As mentioned earlier, this distinction is avoided here. This reduces
+the number of tags and thus enhances machine learning. Plurality is not
+crucial information with respect to dependancy level parsing or any
+other higher level analysis of the sentence. As said before if that
+information is needed at a later stage it can be incorporated with the
+help of heuristics and linguistic rules.
+
+e.g., (laDaZkA, nadI, vicAra, kaThoratA)
+(&quot;boy&quot;, &quot;river&quot;, &quot;thought&quot;, &quot;hardness&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Number -->
+
+    <owl:Class rdf:about="&iiit;Number">
+        <rdfs:subClassOf rdf:resource="&iiit;ModifiedPTBPOSTag"/>
+        <rdfs:comment>QFNUM Quantifiers Number
+No distinction will be made between cardinal and ordinal numbers. Any
+word denoting numbers will be tagged as QFNUM. Penn tagset has a tag CD
+for cardinal numbers and they have not talked of ordinals!
+
+e.g. (tIsarA, tInoM, tIna)
+(&quot;third&quot;, &quot;three&quot;(oblique), &quot;three&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#POSTag -->
+
+    <owl:Class rdf:about="&iiit;POSTag">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&system;UnitOfAnnotation"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&system;hasTier"/>
+                        <owl:hasValue>pos</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment>All the tags used in this tagger are broadly classified into three
+types. There are some tags which have been adopted with some minor
+changes in the Penn tagset. They are grouped into one group. The second
+category of tags is of those which are a modification over the Penn
+tagset. The last group is of all those tags which are not present in
+the Penn tagset. They have been designed to cater some phenomena which
+are specific to Indian languages.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#PTBInspiredPOSTag -->
+
+    <owl:Class rdf:about="&iiit;PTBInspiredPOSTag">
+        <rdfs:subClassOf rdf:resource="&iiit;POSTag"/>
+        <rdfs:comment>All tags in this group are similar to the Penn tagset. Penn tagset
+makes finer distinction between singular and plural or comparative and
+superlative forms, which is not considered in the current tagger. This
+is in accordance with our policy about fineness and coarseness.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Particle -->
+
+    <owl:Class rdf:about="&iiit;Particle">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>RP Particle
+In Indian languages words like bhI, sA, etc. (Hindi for example) will
+be marked as RP.
+
+e.g. (mIThA sA/RP, taka/RP, HI/RP, to/RP, bhI/RP)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Postposition -->
+
+    <owl:Class rdf:about="&iiit;Postposition">
+        <rdfs:subClassOf rdf:resource="&iiit;ModifiedPTBPOSTag"/>
+        <rdfs:comment>??PREP Postposition
+All Indian languages have the phenomenon of postpositions. Some
+languages separate the post positions from the noun e.g. Hindi. In such
+a case, a postposition will be marked as PREP.
+For example in Hindi, kheta/NN meM/PREP (&quot;the field&quot;/NN &quot;in&quot;/PREP),
+here meM is the postposition and is written separately from the noun.
+So it will be tagged as PREP.
+But in Marathi (another Indian language), mulAne/NN(&quot;boy by&quot;/NN), here
+the postposition is written along with the noun. So it will not be
+tagged separately.
+This tag is the same as the IN tag used for prepositions in Penn
+tagset. But it has been adopted for a parallel concept in this tagger.
+Postpositions of Indian languages have more or less the same functions
+as prepositions in English.
+The same tag is used by Penn tagset for subordinating conjuncts also.
+They feel that subordinating conjuncts and prepositions can be
+distinguished because subordinating conjuncts are followed by a clause
+and prepositions by a noun phrase. But as pointed out earlier, in this
+tagger all conjuncts have been clubbed under the tag CC.
+
+e.g. (ne, ke/PREP liye/PREP)
+(&quot;by&quot;, &quot;for&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Pronoun -->
+
+    <owl:Class rdf:about="&iiit;Pronoun">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>PRP Pronoun
+Penn tagset makes a distinction between personal pronouns and
+possessive pronouns. This distinction is avoided here. All pronouns are
+marked as PRP. In Indian languages all pronouns inflect for all cases
+(accusative, dative, possessive etc.) Incase we have a separate tag for
+possessive pronouns; new tags will have to be designed for all the
+cases. This will increase the number of tags which is unnecessary. So,
+only one tag is used for all pronouns.
+
+e.g. (jo, vo, vaHa,&quot;jisa&quot; laDaZke ne, jisane)
+(&quot;who&quot;, &quot;that&quot;, &quot;he&quot;, &quot;the boy who&quot;, &quot;by whom&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#ProperNoun -->
+
+    <owl:Class rdf:about="&iiit;ProperNoun">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>NNP Proper Nouns
+This tag is also similar to the Penn tagset. Here too we have not made
+a distinction between Proper Noun singular and Proper Noun plural as in
+the Penn tagset.
+
+e.g. (rAma, bhAjapA)
+(Ram, BJP)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Quantifier -->
+
+    <owl:Class rdf:about="&iiit;Quantifier">
+        <rdfs:subClassOf rdf:resource="&iiit;ModifiedPTBPOSTag"/>
+        <rdfs:comment>QF Quantifiers
+All quantifiers like kama, jyAdA, bahuwa, etc. will be marked as QF. In
+case these words are used in constructions like &#39;baHutoM/NN ne/PREP
+jAne se inkAra kiyA&#39;(&quot;many&quot; &quot;by&quot; &quot;to go&quot; &quot;refused&quot;) where it is a noun,
+it will be marked as noun. Quantifiers of number will be marked as
+below.
+
+e.g. (jyAdA/QF, thoDA/QF, saba/QF, kama/QF, baHuta/QF)
+(&quot;more&quot;, &quot;little&quot;, &quot;all&quot;, &quot;much&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#QuestionWord -->
+
+    <owl:Class rdf:about="&iiit;QuestionWord">
+        <rdfs:subClassOf rdf:resource="&iiit;ModifiedPTBPOSTag"/>
+        <rdfs:comment>QW Question Words
+The Penn tagset makes distinction between the wh words which act as
+questions, as relative pronouns and as determiners. But in this tagger
+all wh words (ka&#39;kAra&#39;s in Hindi) will be tagged as QW. The reason
+being, in Indian languages the category where &#39;wh&#39; words act as
+pronouns or determiners is not present. They all become pronouns like
+&#39;jo&#39;, &#39;jisne&#39;, etc. in Hindi
+e.g. The man who wrote a book ... (vaHa AdamI jisne kItAba likhI ... )
+(&quot;that&quot; &quot;man&quot; &quot;who&quot; &quot;book&quot; &quot;wrote&quot;)
+
+e.g. (kyA/QW, kEsA/QW)
+(&quot;what&quot;, &quot;how&quot;)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#Symbol -->
+
+    <owl:Class rdf:about="&iiit;Symbol">
+        <rdfs:subClassOf rdf:resource="&iiit;PTBInspiredPOSTag"/>
+        <rdfs:comment>SYM Special Symbol
+All those words which cannot be classified in any of the other tags
+will be tagged as SYM. This tag is similar to the Penn &#39;SYM&#39;. Also
+special symbols like $, %, etc are treated as SYM. Since the frequency
+of occurrence of such symbols is very less in Indian languages, no
+separate tag is used for such symbols.
+
+SYM Special: Not classified in any of the above</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="&iiit;CC">
+        <rdf:type rdf:resource="&iiit;Conjunction"/>
+        <system:hasTag>CC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#INTF -->
+
+    <owl:NamedIndividual rdf:about="&iiit;INTF">
+        <rdf:type rdf:resource="&iiit;Intensifier"/>
+        <system:hasTag>INTF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#JJ -->
+
+    <owl:NamedIndividual rdf:about="&iiit;JJ">
+        <rdf:type rdf:resource="&iiit;Adjective"/>
+        <system:hasTag>JJ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#JVB -->
+
+    <owl:NamedIndividual rdf:about="&iiit;JVB">
+        <rdf:type rdf:resource="&iiit;LightVerb"/>
+        <system:hasTag>JVB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NEG -->
+
+    <owl:NamedIndividual rdf:about="&iiit;NEG">
+        <rdf:type rdf:resource="&iiit;Negative"/>
+        <system:hasTag>NEG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NLOC -->
+
+    <owl:NamedIndividual rdf:about="&iiit;NLOC">
+        <rdf:type rdf:resource="&iiit;LocationNoun"/>
+        <system:hasTag>NLOC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NN -->
+
+    <owl:NamedIndividual rdf:about="&iiit;NN">
+        <rdf:type rdf:resource="&iiit;Noun"/>
+        <system:hasTag>NN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NNC -->
+
+    <owl:NamedIndividual rdf:about="&iiit;NNC">
+        <rdf:type rdf:resource="&iiit;CompoundNoun"/>
+        <system:hasTag>NNC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NNP -->
+
+    <owl:NamedIndividual rdf:about="&iiit;NNP">
+        <rdf:type rdf:resource="&iiit;ProperNoun"/>
+        <system:hasTag>NNP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NNPC -->
+
+    <owl:NamedIndividual rdf:about="&iiit;NNPC">
+        <rdf:type rdf:resource="&iiit;CompoundProperNoun"/>
+        <system:hasTag>NNPC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#NVB -->
+
+    <owl:NamedIndividual rdf:about="&iiit;NVB">
+        <rdf:type rdf:resource="&iiit;LightVerb"/>
+        <system:hasTag>NVB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#PREP -->
+
+    <owl:NamedIndividual rdf:about="&iiit;PREP">
+        <rdf:type rdf:resource="&iiit;Postposition"/>
+        <system:hasTag>PREP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#PRP -->
+
+    <owl:NamedIndividual rdf:about="&iiit;PRP">
+        <rdf:type rdf:resource="&iiit;Pronoun"/>
+        <system:hasTag>PRP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#QF -->
+
+    <owl:NamedIndividual rdf:about="&iiit;QF">
+        <rdf:type rdf:resource="&iiit;Quantifier"/>
+        <system:hasTag>QF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#QFNUM -->
+
+    <owl:NamedIndividual rdf:about="&iiit;QFNUM">
+        <rdf:type rdf:resource="&iiit;Number"/>
+        <system:hasTag>QFNUM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#QW -->
+
+    <owl:NamedIndividual rdf:about="&iiit;QW">
+        <rdf:type rdf:resource="&iiit;QuestionWord"/>
+        <system:hasTag>QW</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#RB -->
+
+    <owl:NamedIndividual rdf:about="&iiit;RB">
+        <rdf:type rdf:resource="&iiit;Adverb"/>
+        <system:hasTag>RB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#RBVB -->
+
+    <owl:NamedIndividual rdf:about="&iiit;RBVB">
+        <rdf:type rdf:resource="&iiit;LightVerb"/>
+        <system:hasTag>RBVB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#RP -->
+
+    <owl:NamedIndividual rdf:about="&iiit;RP">
+        <rdf:type rdf:resource="&iiit;Particle"/>
+        <system:hasTag>RB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#SYM -->
+
+    <owl:NamedIndividual rdf:about="&iiit;SYM">
+        <rdf:type rdf:resource="&iiit;Symbol"/>
+        <system:hasTag>SYM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#UH -->
+
+    <owl:NamedIndividual rdf:about="&iiit;UH">
+        <rdf:type rdf:resource="&iiit;Interjection"/>
+        <system:hasTag>UH</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#VAUX -->
+
+    <owl:NamedIndividual rdf:about="&iiit;VAUX">
+        <rdf:type rdf:resource="&iiit;AuxiliaryVerb"/>
+        <system:hasTag>VAUX</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#VFM -->
+
+    <owl:NamedIndividual rdf:about="&iiit;VFM">
+        <rdf:type rdf:resource="&iiit;MainVerb"/>
+        <system:hasTag>VFM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#VJJ -->
+
+    <owl:NamedIndividual rdf:about="&iiit;VJJ">
+        <rdf:type rdf:resource="&iiit;AdjectivalNonFiniteVerb"/>
+        <system:hasTag>VJJ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#VJJN -->
+
+    <owl:NamedIndividual rdf:about="&iiit;VJJN">
+        <rdf:type rdf:resource="&iiit;AdjectivalNonFiniteVerb"/>
+        <system:hasTag>VJJN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#VNN -->
+
+    <owl:NamedIndividual rdf:about="&iiit;VNN">
+        <rdf:type rdf:resource="&iiit;NominalNonFiniteVerb"/>
+        <system:hasTag>VNN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#VNNN -->
+
+    <owl:NamedIndividual rdf:about="&iiit;VNNN">
+        <rdf:type rdf:resource="&iiit;NominalNonFiniteVerb"/>
+        <system:hasTag>VNNN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#VRB -->
+
+    <owl:NamedIndividual rdf:about="&iiit;VRB">
+        <rdf:type rdf:resource="&iiit;AdverbialNonFiniteVerb"/>
+        <system:hasTag>VRB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/iiit.owl#VRBN -->
+
+    <owl:NamedIndividual rdf:about="&iiit;VRBN">
+        <rdf:type rdf:resource="&iiit;AdverbialNonFiniteVerb"/>
+        <system:hasTag>VRBN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&iiit;CompoundNoun"/>
+            <rdf:Description rdf:about="&iiit;CompoundProperNoun"/>
+            <rdf:Description rdf:about="&iiit;Intensifier"/>
+            <rdf:Description rdf:about="&iiit;LightVerb"/>
+            <rdf:Description rdf:about="&iiit;LocationNoun"/>
+            <rdf:Description rdf:about="&iiit;Negative"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&iiit;Adjective"/>
+            <rdf:Description rdf:about="&iiit;Adverb"/>
+            <rdf:Description rdf:about="&iiit;AuxiliaryVerb"/>
+            <rdf:Description rdf:about="&iiit;Conjunction"/>
+            <rdf:Description rdf:about="&iiit;Interjection"/>
+            <rdf:Description rdf:about="&iiit;Noun"/>
+            <rdf:Description rdf:about="&iiit;Particle"/>
+            <rdf:Description rdf:about="&iiit;Pronoun"/>
+            <rdf:Description rdf:about="&iiit;ProperNoun"/>
+            <rdf:Description rdf:about="&iiit;Symbol"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&iiit;AdjectivalNonFiniteVerb"/>
+            <rdf:Description rdf:about="&iiit;AdverbialNonFiniteVerb"/>
+            <rdf:Description rdf:about="&iiit;NominalNonFiniteVerb"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&iiit;MainVerb"/>
+            <rdf:Description rdf:about="&iiit;NonFiniteVerb"/>
+            <rdf:Description rdf:about="&iiit;Number"/>
+            <rdf:Description rdf:about="&iiit;Postposition"/>
+            <rdf:Description rdf:about="&iiit;Quantifier"/>
+            <rdf:Description rdf:about="&iiit;QuestionWord"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&iiit;LanguageSpecificPOSTag"/>
+            <rdf:Description rdf:about="&iiit;ModifiedPTBPOSTag"/>
+            <rdf:Description rdf:about="&iiit;PTBInspiredPOSTag"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

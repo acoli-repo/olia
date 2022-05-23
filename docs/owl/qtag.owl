@@ -1,0 +1,721 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.org/olia/qtag.owl#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:olia_system="http://purl.org/olia/system.owl#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+  xml:base="http://purl.org/olia/qtag.owl">
+  <owl:Ontology rdf:about="http://purl.org/olia/qtag.owl">
+	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+    <rdfs:comment> OLiA Annotation Model for the English QTag tagset by Oliver Mason </rdfs:comment>
+    <owl:versionInfo>
+        2008 created 
+        2010-04-06 updated 
+        Christian Chiarcos, chiarcos@uni-potsdam.de
+    </owl:versionInfo>
+  </owl:Ontology>
+  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
+  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
+  <owl:Class rdf:ID="WhDeterminer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Determiner"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are wh-determiner,
+      e.g. "what", "which", "whatever", "whichever".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Determiner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are general
+      determiner, e.g. "a"," the", "this", "that".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Particle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Be">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Have">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparativeAdjective">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are comparative
+      adjectives e.g. "nearer".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Adjective"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Numeral">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Has">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
+      present form "has".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Have"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HavePastParticiple">
+    <rdfs:subClassOf rdf:resource="#Have"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
+      participle form "had".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ForeignWord">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are foreign words,
+      e.g. "ante", "de".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PersonalPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are personal
+      pronouns, e.g. "I", "we", "they", "you".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Pronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HavePast">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
+      form "had".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Have"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HavePresentParticiple">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
+      present participle or gerund form "having".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Have"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BePresent">
+    <rdfs:subClassOf rdf:resource="#Be"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AdverbialParticle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are adverbial
+      particles, e.g. "back", "up".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Particle"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Was">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
+      "was".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BePast"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SuperlativeAdjective">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are superlative
+      adjectives e.g. "nearest".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adjective"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PossessivePronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are possessive
+      pronouns, e.g. "my", "his".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LexicalVerbThirdPerson">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LexicalVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
+      third person, e.g. "believes".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Do">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Adjective">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are general
+      adjectives e.g. "near".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="LexicalVerbPresentParticiple">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LexicalVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
+      present participle or gerund, e.g. "believing".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="LexicalVerbPastParticiple">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LexicalVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
+      past participle, e.g. "believied".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="BePresentParticiple">
+    <rdfs:subClassOf rdf:resource="#Be"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
+      present participle form "being".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparativeAdverb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Adverb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are comparative
+      adverbs, e.g. "sooner", "easier".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="CoordinatingConjunction">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are coordinating
+      conjunctions, e.g. "and", "or".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Conjunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PossessiveParticle">
+    <rdfs:subClassOf rdf:resource="#Particle"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are possessive
+      particles, e.g. "´", "-s" like in "John's house."</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Pronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IndefinitePronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are indefinite
+      pronouns, e.g. "anyone", "everybody", "nothing".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Noun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="HaveBaseForm">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
+      "have".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Have"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NegativeMarker">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are the negative
+      markers, e.g. "not", "n't".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LexicalVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Symbol">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are symbols or
+      formulas, e.g. "US$500", "R300".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BePastParticiple">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
+      participle form "been".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Be"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BePast">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Be"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Preposition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are prepositions,
+      e.g. "on", "of".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SuperlativeAdverb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Adverb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are superlative
+      adverbs, e.g. "easiest", "soonest".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DoPastParticiple">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
+      participle form "done".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Do"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DoPresentParticiple">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
+      participle form "doing".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Do"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CommonNoun">
+    <rdfs:subClassOf rdf:resource="#Noun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are singular or
+      plural common nouns, e.g. "action", "actions".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Interjection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are interjections and
+      exclamations.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OrdinalNumeral">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are ordinal numbers,
+      e.g. "first", "2nd".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Numeral"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WhPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are wh-pronouns, e.g.
+      "who", "that".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProperNoun">
+    <rdfs:subClassOf rdf:resource="#Noun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are singular or
+      plural proper nouns, e.g. "Thailand", "Thatcher", "Americas", "Atwells".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DoBaseForm">
+    <rdfs:subClassOf rdf:resource="#Do"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
+      "do".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Verb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Were">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
+      "were".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#BePast"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ModalAuxiliaryVerb">
+    <rdfs:subClassOf rdf:resource="#Verb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are modal
+      auxiliaries, e.g. "might", "will".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SubordinatingConjunction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Conjunction"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are subordinating
+      conjunctions, e.g."until".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Adverb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are general adverbs
+      e.g. "chronically", "deep".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Am">
+    <rdfs:subClassOf rdf:resource="#BePresent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
+      present form "am".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="WhAdverb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are wh-adverbs, e.g.
+      "how", "where", "when", "why".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Adverb"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Are">
+    <rdfs:subClassOf rdf:resource="#BePresent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
+      present form "are".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PossessiveWhPronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are possessive
+      wh-pronouns, e.g. "whose".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#WhPronoun"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Conjunction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PreDeterminer">
+    <rdfs:subClassOf rdf:resource="#Determiner"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are predeterminer,
+      e.g. "all", "both", "half".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Is">
+    <rdfs:subClassOf rdf:resource="#BePresent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
+      present form "is".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="LexicalVerbPastForm">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
+      past, e.g. "believed".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#LexicalVerb"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExistentialThere">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is the existential
+      "there".</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReflexivePronoun">
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are reflexive
+      pronouns, e.g. "myself", "himself".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DoPast">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
+      form "did".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Do"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BeBaseForm">
+    <rdfs:subClassOf rdf:resource="#Be"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
+      "be".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="CardinalNumeral">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are cardinal numbers,
+      e.g. "one", "two", "2", etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Numeral"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Punctuation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are punctuation
+      marks, e.g. !, ", ', (, ), -, ., ..., :, ;, ?.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tag"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LexicalVerbBaseForm">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
+      base form, e.g. "believe".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#LexicalVerb"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Tag">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >http://www.english.bham.ac.uk/staff/omason/software/qtag-tagset.html</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pos</owl:hasValue>
+        <owl:onProperty>
+          <owl:DatatypeProperty
+            rdf:about="http://purl.org/olia/system.owl#hasTier"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="InfinitiveMarker">
+    <rdfs:subClassOf rdf:resource="#Tag"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is the infinitive
+      marker "to".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Does">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
+      present form "does".</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Do"/>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag">
+    <rdfs:domain rdf:resource="#Tag"/>
+  </owl:DatatypeProperty>
+  <LexicalVerbPastParticiple rdf:ID="VBN">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >VBN</olia_system:hasTag>
+  </LexicalVerbPastParticiple>
+  <Are rdf:ID="BER">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >BER</olia_system:hasTag>
+  </Are>
+  <Symbol rdf:ID="SYM">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >SYM</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">symbol or
+      formula</rdfs:comment>
+  </Symbol>
+  <Punctuation rdf:ID="comma">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >,</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">,</rdfs:comment>
+  </Punctuation>
+  <DoPresentParticiple rdf:ID="DOG">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >DOG</olia_system:hasTag>
+  </DoPresentParticiple>
+  <Does rdf:ID="DOZ">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >DOZ</olia_system:hasTag>
+  </Does>
+  <CardinalNumeral rdf:ID="CD">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >CD</olia_system:hasTag>
+  </CardinalNumeral>
+  <CommonNoun rdf:ID="NN">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common noun
+      singular</rdfs:comment>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >NN</olia_system:hasTag>
+  </CommonNoun>
+  <OrdinalNumeral rdf:ID="OD">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >OD</olia_system:hasTag>
+  </OrdinalNumeral>
+  <Adverb rdf:ID="RB">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >RB</olia_system:hasTag>
+  </Adverb>
+  <Punctuation rdf:ID="openingParenthesis">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(</rdfs:comment>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >(</olia_system:hasTag>
+  </Punctuation>
+  <Interjection rdf:ID="UH">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >UH</olia_system:hasTag>
+  </Interjection>
+  <DoBaseForm rdf:ID="DO">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >DO</olia_system:hasTag>
+  </DoBaseForm>
+  <LexicalVerbBaseForm rdf:ID="VB">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >VB</olia_system:hasTag>
+  </LexicalVerbBaseForm>
+  <BePastParticiple rdf:ID="BEN">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >BEN</olia_system:hasTag>
+  </BePastParticiple>
+  <SuperlativeAdjective rdf:ID="JJS">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >JJS</olia_system:hasTag>
+  </SuperlativeAdjective>
+  <SubordinatingConjunction rdf:ID="CS">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >CS</olia_system:hasTag>
+  </SubordinatingConjunction>
+  <HavePast rdf:ID="HVD">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >HVD</olia_system:hasTag>
+  </HavePast>
+  <PossessiveParticle rdf:ID="POS">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >POS</olia_system:hasTag>
+  </PossessiveParticle>
+  <WhPronoun rdf:ID="WP">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </WhPronoun>
+  <Punctuation rdf:ID="quotationMark">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >"</olia_system:hasTag>
+  </Punctuation>
+  <Was rdf:ID="BEDZ">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >BEDZ</olia_system:hasTag>
+  </Was>
+  <ComparativeAdverb rdf:ID="RBR">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >RBR</olia_system:hasTag>
+  </ComparativeAdverb>
+  <ExistentialThere rdf:ID="EX">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >EX</olia_system:hasTag>
+  </ExistentialThere>
+  <Punctuation rdf:ID="dash">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >-</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-</rdfs:comment>
+  </Punctuation>
+  <Determiner rdf:ID="DT">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >DT</olia_system:hasTag>
+  </Determiner>
+  <HaveBaseForm rdf:ID="HV">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >HV</olia_system:hasTag>
+  </HaveBaseForm>
+  <ModalAuxiliaryVerb rdf:ID="MD">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >MD</olia_system:hasTag>
+  </ModalAuxiliaryVerb>
+  <IndefinitePronoun rdf:ID="PN">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >PN</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </IndefinitePronoun>
+  <HavePresentParticiple rdf:ID="HVG">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >HVG</olia_system:hasTag>
+  </HavePresentParticiple>
+  <PersonalPronoun rdf:ID="PP">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >PP</olia_system:hasTag>
+  </PersonalPronoun>
+  <LexicalVerbPresentParticiple rdf:ID="VBG">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >VBG</olia_system:hasTag>
+  </LexicalVerbPresentParticiple>
+  <Preposition rdf:ID="IN">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >IN</olia_system:hasTag>
+  </Preposition>
+  <CommonNoun rdf:ID="NNS">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >NNS</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common noun
+      plural</rdfs:comment>
+  </CommonNoun>
+  <ForeignWord rdf:ID="FW">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >FW</olia_system:hasTag>
+  </ForeignWord>
+  <ProperNoun rdf:ID="NP">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >NP</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">proper noun
+      singular</rdfs:comment>
+  </ProperNoun>
+  <Punctuation rdf:ID="closingParenthesis">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >)</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">)</rdfs:comment>
+  </Punctuation>
+  <AdverbialParticle rdf:ID="RP">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >RP</olia_system:hasTag>
+  </AdverbialParticle>
+  <DoPast rdf:ID="DOD">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >DOD</olia_system:hasTag>
+  </DoPast>
+  <ProperNoun rdf:ID="NPS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">proper noun
+      plural</rdfs:comment>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >NPS</olia_system:hasTag>
+  </ProperNoun>
+  <Has rdf:ID="HVZ">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >HVZ</olia_system:hasTag>
+  </Has>
+  <BePresentParticiple rdf:ID="BEG">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >BEG</olia_system:hasTag>
+  </BePresentParticiple>
+  <ComparativeAdjective rdf:ID="JJR">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >JJR</olia_system:hasTag>
+  </ComparativeAdjective>
+  <BeBaseForm rdf:ID="BE">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >BE</olia_system:hasTag>
+  </BeBaseForm>
+  <Punctuation rdf:ID="colon">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >:</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">:</rdfs:comment>
+  </Punctuation>
+  <Were rdf:ID="BEDR">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >BEDR</olia_system:hasTag>
+  </Were>
+  <WhAdverb rdf:ID="WRB">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >WRB</olia_system:hasTag>
+  </WhAdverb>
+  <SuperlativeAdverb rdf:ID="RBS">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >RBS</olia_system:hasTag>
+  </SuperlativeAdverb>
+  <Am rdf:ID="BEM">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >BEM</olia_system:hasTag>
+  </Am>
+  <Punctuation rdf:ID="sentenceCloser">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">. ; ?
+      !</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">. ; ? !</rdfs:comment>
+  </Punctuation>
+  <NegativeMarker rdf:ID="XNOT">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >XNOT</olia_system:hasTag>
+  </NegativeMarker>
+  <LexicalVerbThirdPerson rdf:ID="VBZ">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >VBZ</olia_system:hasTag>
+  </LexicalVerbThirdPerson>
+  <PossessivePronoun rdf:ID="PPpossessive">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >PP$</olia_system:hasTag>
+  </PossessivePronoun>
+  <Is rdf:ID="BEZ">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >BEZ</olia_system:hasTag>
+  </Is>
+  <HavePastParticiple rdf:ID="HVN">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >HVN</olia_system:hasTag>
+  </HavePastParticiple>
+  <LexicalVerbPastForm rdf:ID="VBD">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >VBD</olia_system:hasTag>
+  </LexicalVerbPastForm>
+  <CoordinatingConjunction rdf:ID="CC">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >CC</olia_system:hasTag>
+  </CoordinatingConjunction>
+  <PossessiveWhPronoun rdf:ID="WPpossessive">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >WP$</olia_system:hasTag>
+  </PossessiveWhPronoun>
+  <Adjective rdf:ID="JJ">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >JJ</olia_system:hasTag>
+  </Adjective>
+  <WhDeterminer rdf:ID="WDT">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >WDT</olia_system:hasTag>
+  </WhDeterminer>
+  <ReflexivePronoun rdf:ID="PPX">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >PPX</olia_system:hasTag>
+  </ReflexivePronoun>
+  <DoPastParticiple rdf:ID="DON">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >DON</olia_system:hasTag>
+  </DoPastParticiple>
+  <InfinitiveMarker rdf:ID="TO">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >TO</olia_system:hasTag>
+  </InfinitiveMarker>
+  <PreDeterminer rdf:ID="PDT">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">half, all,
+      both</rdfs:comment>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      >PDT</olia_system:hasTag>
+  </PreDeterminer>
+</rdf:RDF>

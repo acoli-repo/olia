@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/discourse/discourse.PDGB.owl#"
+     xml:base="http://purl.org/olia/discourse/discourse.PDGB.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl">
+        <rdfs:comment rdf:datatype="&xsd;string">OLiA Annotation Model of the Penn Discourse Graphbank (Wolf et al. 2003)
+
+Florian Wolf, Edward Gibson, Amy Fisher, Meredith Knight (2003), A procedure for collecting a database of texts annotated with
+coherence relations, version of December 1, 2003, http://www.ldc.upenn.edu/Catalog/docs/LDC2005T08/</rdfs:comment>
+        <owl:versionInfo>
+2010-05-27 created
+2012-02-10 committed to SourceForge
+2014-03-21 linked with olia_discourse.owl
+
+Christian Chiarcos, christian.chiarcos@web.de
+</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#AsymmetricalCoherenceRelation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#AsymmetricalCoherenceRelation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#CoherenceRelation"/>
+        <rdfs:comment rdf:datatype="&xsd;string">In asymmetrical coherence relations, one DS plays a more important role in the text than
+the other. For instance, in elaboration relations, the elaborating DS plays a less
+important role in the text than the general DS that is elaborated. In asymmetrical
+relations, the arcs go from the less important DS (the Satellite) to the more important DS
+(the Nucleus).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Attribution -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Attribution">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#AsymmetricalCoherenceRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#FunctionalRelationType"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The Satellite attributes the Nucleus to a source.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#CauseEffect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#CauseEffect">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#AsymmetricalCoherenceRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#FunctionalRelationType"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Cause-Effect relations establish a causal inference path between discourse segments. They are
+directed, i.e. there is a Satellite (Cause) and a Nucleus (Effect).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#CoherenceRelation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#CoherenceRelation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#ElementOfDiscourseGraph"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The data structure is a directed graph where nodes represent discourse segments and groups of
+discourse segments (henceforth DSs), and labeled directed arcs represent coherence relations
+holding between the DSs and groups of DSs.
+
+The coherence relations used are from Hobbs (1985) and Kehler (2002), with a few exceptions (noted).</rdfs:comment>
+        <owl:versionInfo>subclassification follows structural relation types, so that structure and functions (labels) are clearly separated</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Condition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Condition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#CauseEffect"/>
+        <rdfs:comment rdf:datatype="&xsd;string">the event described in the Nucleus can only take place if the event described in
+the Satellite also takes place (before or simultaneously with the event described in the
+Nucleus)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Contrast -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Contrast">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#SymmetricalCoherenceRelation"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Infer a set of entities from DS0, E(DS0), and a set of entities from DS1, E(DS1).
+Then infer contrasts between members of E(DS0) and E(DS1).
+• Contrast-1 is a contrast between corresponding predicates in DS0 and DS1. The
+arguments of these contrasting predicates are identical.
+• Contrast-2 is a contrast between the arguments of corresponding predicates in DS0
+and DS1. The predicates over these contrasting arguments are identical.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ContrastB -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ContrastB">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#SymmetricalCoherenceRelation"/>
+        <rdfs:comment rdf:datatype="&xsd;string">two groups of DSs are in a contrast relation (the “Contrast” relation described in
+Section 4.2.1.2 is a contrast relation between two single DSs).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#DiscourseSegment -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#DiscourseSegment">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Node"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The data structure is a directed graph where nodes represent discourse segments and groups of
+discourse segments (henceforth DSs), and labeled directed arcs represent coherence relations
+holding between the DSs and groups of DSs.
+
+DSs are non-overlapping units of text.
+
+As a basic rule, discourse segments (DSs) here will be assumed to be
+•
+clauses delimited by commas or full-stops, since commas and full-stops are assumed to be
+equivalents of phrase boundaries in speech (cf. Hirschberg &amp; Grosz (1992))
+•
+elements of text (especially modifiers) that are separated by commas. The idea here is that
+commas that are equivalent to intonational phrase boundaries in speech should denote DSs.
+•
+attributions, as in “John said that…”. This is empirically motivated. The texts used here are
+taken from news corpora, and there, attributions can be important carriers of coherence
+structures. For instance, consider a case where some Source A and some Source B both
+comment on some Event X. It should be possible to distinguish between a situation where
+Source A and Source B make basically the same statement about Event X, and a situation
+where Source A and Source B make contrasting comments about Event X.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Elaboration -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Elaboration">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#AsymmetricalCoherenceRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Infer a set of coherent entities, E(DS0, DS1) from DS0 and DS1. The members of
+E(DS0, DS1) are centered around a common event or entity, e01.
+For subclasses of Elaboration cf. Chinchor (1997)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfDetail -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfDetail">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Elaboration"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The Satellite gives details about an entity involved in the event described by the
+Nucleus. The details cannot be captured by any of the relations above.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfLocation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfLocation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Elaboration"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The Satellite gives information about the location where the Nucleus took place</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Elaboration"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The Satellite gives information about the time at which the Nucleus took place
+[sic!]</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfOrganization -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfOrganization">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Elaboration"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The Satellite gives information about an organization involved in the event
+described by the Nucleus</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfPerson -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfPerson">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Elaboration"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The Satellite gives information about a person involved in the event described by the
+Nucleus</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfTime -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ElaborationOfTime">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Elaboration"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The Satellite gives information about the time at which the Nucleus took place</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ElementOfDiscourseGraph -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ElementOfDiscourseGraph">
+        <rdfs:comment rdf:datatype="&xsd;string">The data structure is a directed graph where nodes represent discourse segments and groups of
+discourse segments (henceforth DSs), and labeled directed arcs represent coherence relations
+holding between the DSs and groups of DSs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Example -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Example">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#AsymmetricalCoherenceRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Infer a set of entities from DS0, E(DS0), and a set of entities from DS1, E(DS1). Then
+find some element in E(DS1) that is a member or subset of the corresponding
+element in E(DS0).
+• Infer a set of entities from DS0, E(DS0), and a set of entities from DS1, E(DS1). Then
+find some element in E(DS1) that is a new instantiation of an entity in E(DS0).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Explanation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Explanation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#CauseEffect"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Infer a causal relation between DS0 and DS1.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#FunctionalRelationType -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#FunctionalRelationType"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Generalization -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Generalization">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#AsymmetricalCoherenceRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Infer a set of entities from DS0, E(DS0), and a set of entities from DS1, E(DS1). Then
+find some element in E(DS0) that is a member or subset of the corresponding
+element in E(DS1).
+• Infer a set of entities from DS0, E(DS0), and a set of entities from DS1, E(DS1). Then
+find some element in E(DS0) that is a new instantiation of an entity in E(DS1).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#GroupOfDiscourseSegments -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#GroupOfDiscourseSegments">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Node"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The data structure is a directed graph where nodes represent discourse segments and groups of
+discourse segments (henceforth DSs), and labeled directed arcs represent coherence relations
+holding between the DSs and groups of DSs.
+
+Groups of DSs are connected subgraphs of a coherence graph. Groups of DSs should only be assumed if otherwise truth conditions are changed.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Node -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Node">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#ElementOfDiscourseGraph"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The data structure is a directed graph where nodes represent discourse segments and groups of
+discourse segments (henceforth DSs), and labeled directed arcs represent coherence relations
+holding between the DSs and groups of DSs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Parallel -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Parallel">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#SymmetricalCoherenceRelation"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Infer a set of entities from DS0, E(DS0), and a set of entities from DS1, E(DS1).
+Then infer commonalities between members of E(DS0) and E(DS1).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ParallelB -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ParallelB">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#SymmetricalCoherenceRelation"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Parallel-B: Two groups of DSs are in a parallel relation (the “Parallel” relation described in
+Section 4.2.1.1 is a parallel relation between two single DSs).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Resemblance">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#FunctionalRelationType"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Resemblance relations establish commonalities and contrasts between corresponding (sets of)
+discourse entities or properties (Kehler (2002)). Corresponding (sets of) discourse entities or
+properties are usually syntactically and / or semantically parallel.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#Same -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#Same">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#FunctionalRelationType"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#SymmetricalCoherenceRelation"/>
+        <rdfs:comment rdf:datatype="&xsd;string">a DS has intervening material; the “Same” relation is no coherence relation, but
+a “trick” that allows dealing with DSs nested in other DSs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#SymmetricalCoherenceRelation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#SymmetricalCoherenceRelation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#CoherenceRelation"/>
+        <rdfs:comment rdf:datatype="&xsd;string">In symmetrical coherence relations, the DSs involved in the coherence relation play
+equally important roles in the text. For example, similarity / contrast relations are
+symmetrical relations. Symmetrical relations are represented as cycles of identical,
+labeled, directed arcs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#TemporalSequence -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#TemporalSequence">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#AsymmetricalCoherenceRelation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#FunctionalRelationType"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Infer a temporal sequence of the events described by DS0 and DS1. There is no
+causal relation between DS0 and DS1. If there is a causal relation, the relation between DS0
+and DS1 should be described as a Cause-Effect relation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.PDGB.owl#ViolatedExpectation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/discourse/discourse.PDGB.owl#ViolatedExpectation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/discourse/discourse.PDGB.owl#CauseEffect"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Infer that normally there is a causal relation between DS0 and DS1 but that
+causal relation is absent between DS0 and DS1.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+
