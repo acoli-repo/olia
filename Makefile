@@ -76,13 +76,23 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 						if [ ! -e `dirname $$tgt` ]; then \
 							mkdir -p `dirname $$tgt`;\
 						fi;\
-						if cp $$file $$tgt; then \
-							echo ok 1>&2; \
-							echo "warning: content validation not integrated yet" 1>&2;\
+						\
+						# RDF/XML validation \
+						if rapper -i rdfxml --quiet $$file > /dev/null; then \
+							if cp $$file $$tgt; then \
+								echo ok 1>&2; \
+								echo "warning: content validation not integrated yet" 1>&2;\
+							else \
+								echo error: could not create $$tgt, exiting 1>&2; \
+								exit 1; \
+							fi; \
+						elif echo $$dir | grep experimental >/dev/null; then \
+							echo "error: "$$file" failed in RDF/XML validation, skipping" 1>&2; \
+							# tolerate (but log) errors for experimental files \
 						else \
-							echo error: could not create $$tgt, exiting 1>&2; \
-							exit; \
-						fi; \
+							echo "error: "$$file" failed in RDF/XML validation, exiting" 1>&2; \
+							exit 2;\
+						fi;\
 						echo 1>&2;\
 					fi; \
 				fi; \
