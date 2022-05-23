@@ -263,7 +263,11 @@ Design, overview and application examples of the OLiA ontologies are described i
 
 ## Build Your Own!
 
-The creation and linking of novel annotation models is described in [a separate document](linking.html). When external annotation models are created, we ask to notify us by creating a [novel issue](https://github.com/acoli-repo/olia/issues/new) in the GitHub repository with the subject `add annomodel: ...` (and the name).
+The creation and linking of novel annotation models is described in [a separate document](linking.html). When external annotation models are created, we ask to notify us by creating a [novel issue](https://github.com/acoli-repo/olia/issues/new) in the GitHub repository with the subject `add annomodel: ...` (and the name). If you want to host your ontologies with OLiA *and you are not familiar with the advanced operations described below*, you can also add your ontologies as an appendix to the issue and we do the integration.
+
+**ADVANCED (optional)**: After building your ontologies, if you want them to be(come) part of your fork of the official OLiA release, deposit them in `owl/stable` or in a separate folder in `owl/experimental` and run `make release` in the root directory of (your local clone of) this repository. This script will also perform basic validation. (Requires a Unix-based OS, tested with Ubuntu 20.04L). If you want to add them to the official OLiA repository afterwards, please create a pull request and refer to the issue that you just created. (If you are not familiar with GitHub, etc., we will do these things for you after you notify us with an issue.)
+
+After publishing a new annotation model, please feel free to advertise it via our **[public mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
 
 ## Browse Online
 
@@ -284,7 +288,7 @@ below.
 
 ## How to (Find) Help
 
-OLiA is open source (see below) and we invite external contributors to join, to add or to provide feedback. If you have questions about OLiA, the recommended way is to join and reach out via the **[ACoLi mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
+OLiA is open source (see below) and we invite external contributors to join, to add or to provide feedback. If you have questions about OLiA, the recommended way is to join and reach out via our **[public mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
 
 Alternatively, and in particular for potential errors or feature requests regarding OLiA, please feel free to create a new issue via the [GitHub form](https://github.com/acoli-repo/olia/issues). However, please take a minute in this case to make sure your question or request is not already addressed by another issue.
 
