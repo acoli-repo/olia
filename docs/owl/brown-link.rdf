@@ -1,0 +1,395 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:olia="http://purl.org/olia/olia.owl#"
+    xmlns="http://purl.org/olia/brown-link.rdf#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:brown="http://purl.org/olia/brown.owl#"
+  xml:base="http://purl.org/olia/brown-link.rdf">
+  <owl:Ontology rdf:about="">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2010/02/18 redesigned 
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</rdfs:comment>
+    <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+    <owl:imports rdf:resource="http://purl.org/olia/brown.owl"/>
+  </owl:Ontology>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#PossessivePronoun">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PossessivePronoun"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Negator">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Negation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Conjunction">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Conjunction"/>
+  </rdf:Description>
+  <olia:Singular rdf:ID="singular"/>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#NominativePersonalPronoun">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasCase"/>
+        <owl:hasValue>
+          <olia:Nominative rdf:ID="nominative"/>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PersonalPronoun"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#OrdinalNumeral">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#OrdinalNumber"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Adverb">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
+  </rdf:Description>
+  <olia:Past rdf:ID="past"/>
+  <olia:Present rdf:ID="present"/>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Qualifier">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >interpreted as a class of adverbs, here</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adverb"/>
+  </rdf:Description>
+  <olia:Third rdf:ID="third"/>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#CommonNoun">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CommonNoun"/>
+  </rdf:Description>
+  <olia:Plural rdf:ID="plural"/>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Has">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#IndicativeVerb"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#singular"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#present"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
+        <owl:hasValue rdf:resource="#third"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#CoordinatingConjunction">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CoordinatingConjunction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#BePresentParticiple">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Participle"/>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+            <owl:hasValue rdf:resource="#present"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#LexicalVerb">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="http://purl.org/olia/olia.owl#AuxiliaryVerb"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#LexicalVerbPastParticiple">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Participle"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#past"/>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#DoPast">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#FiniteVerb"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#past"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#ComparativeAdjective">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasDegree"/>
+        <owl:hasValue>
+          <olia:Comparative rdf:ID="comparative">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >an anonymous invidual for degree in Brown</rdfs:comment>
+          </olia:Comparative>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#LexicalVerbThirdPerson">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#IndicativeVerb"/>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+            <owl:hasValue rdf:resource="#present"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#third"/>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#singular"/>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#HavePastParticiple">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#past"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Participle"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#BePresent">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#IndicativeVerb"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#present"/>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#ComparativeAdverb">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#comparative"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasDegree"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <olia:Superlative rdf:ID="superlative">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >anonymous individual for degree in Brown</rdfs:comment>
+  </olia:Superlative>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#PersonalPronoun">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PersonalPronoun"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#HavePast">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#FiniteVerb"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#past"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Determiner">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Determiner"/>
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Quantifier"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#HavePresentParticiple">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Participle"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+        <owl:hasValue rdf:resource="#present"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#LexicalVerbPresentParticiple">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Participle"/>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+            <owl:hasValue rdf:resource="#present"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <olia:First rdf:ID="first"/>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#BePast">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#FiniteVerb"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#past"/>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#NominalPronoun">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#IndefinitePronoun"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Verb">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Adjective">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Adjective"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#WhAdverb">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#WHTypeAdverbs"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#BePastParticiple">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Participle"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#past"/>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Pronoun">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Numeral">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Numeral"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#SuperlativeAdjective">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#superlative"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasDegree"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#SuperlativeAdverb">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasDegree"/>
+        <owl:hasValue rdf:resource="#superlative"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#AdverbialNoun">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#CommonNoun"/>
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Adverb"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >e.g., today, home, west
+modeled here as being in the intersection between noun and adverb</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Noun">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Noun"/>
+  </rdf:Description>
+  <olia:Second rdf:ID="second"/>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Does">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#singular"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#third"/>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#IndicativeVerb"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+        <owl:hasValue rdf:resource="#present"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#InfinitiveMarker">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SubordinatingConjunction"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Interpreted as infinitive-subordinating conjunction, cf. van Valin and Lapolla 1997</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Punctuation">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Punctuation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#WhPronoun">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#WHPronoun"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#CardinalNumeral">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#CardinalNumber"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Interjection">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Interjection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#WhDeterminer">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#WHDeterminer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#LexicalVerbPastForm">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#past"/>
+            <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+          </owl:Restriction>
+          <rdf:Description rdf:about="http://purl.org/olia/olia.owl#FiniteVerb"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#ExistentialThere">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Unique"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#SubordinatingConjunction">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SubordinatingConjunction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Preposition">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Preposition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#ProperNoun">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProperNoun"/>
+  </rdf:Description>
+  <olia:Positive rdf:ID="positive">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >anonymous individual for degree in Brown</rdfs:comment>
+  </olia:Positive>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#ModalAuxiliaryVerb">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ModalVerb"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/brown.owl#Article">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Article"/>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

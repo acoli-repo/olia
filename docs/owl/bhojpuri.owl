@@ -1,0 +1,841 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="file:/home/chiarcos/Desktop/github/olia/owl/experimental/bhojpuri/bhojpuri.owl"
+     xml:base="file:/home/chiarcos/Desktop/github/olia/owl/experimental/bhojpuri/bhojpuri.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:bhojpuri="http://purl.org/olia/bhojpuri.owl#">
+    <owl:Ontology>
+        <rdfs:comment>OLiA Annotatin Model for the Bhojpuri Corpus developed at the Jawaharlal Nehru University New Delhi, India
+
+Singh and Banerjee (2014) &quot;[talk] about the application of the Bureau of Indian Standards (BIS) scheme for one of the most widely spoken Indian languages ‘Bhojpuri’. Bhojpuri has claimed for its inclusion in the Eighth Schedule of the Indian Constitution, where currently 22 major Indian languages are already enlisted. Recently through Indian government initiatives these scheduled languages have received the attention from Computational aspect, but unfortunately this non-scheduled language still lacks such attention for its development in the field of NLP. The present work is possibly the first of its kind.The BIS tagset is an Indian standard designed for tagging almost all the Indian languages. Annotated corpora in Bhojpuri and the simplified annotation guideline to this tagset will serve as an important tool for such well-known NLP tasks as POS- Tagger, Phrase Chunker, Parser, Structural Transfer, Word Sense Disambiguation (WSD), etc.&quot;
+
+Note that the authors extend the BIS scheme and provide language-specific definitions, hence an independent Annotation Model.
+
+Unless specified otherwise, all comments in the ontology are excerpts from Singh and Banerjee (2014)
+
+References
+Singh, S. and Banerjee, E. (2014). Annotating Bhojpuri Corpus using BIS Scheme. In Proceedings of 2nd Workshop on Indian Language Data: Resources and Evaluation (WILDRE-2), Ninth International Conference on Language Resources and Evaluation, LREC (2014), Reykjavik, Iceland, May 26-31, 2014.
+
+History
+2019-01-20 created (CC)
+
+Contributors (ontology)
+CC - Christian Chiarcos</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.lrec-conf.org/proceedings/lrec2014/workshops/LREC2014Workshop-WILDRE%20Proceedings.pdf, http://sanskrit.jnu.ac.in/student_projects/bhojpuri.html</rdfs:isDefinedBy>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>Adjective is a single whole category. There is one definition for an adjective which is self-explanatory. These are mostly attributive adjectives.&lt;br/&gt;
+bahut garIbJJ rahal&lt;br/&gt;
+He was very poor.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>Adverb also is mono-category part-of-speech. The standards document says that the category of adverb (RB) is only for manner adverbs. For example, words like chAhe jaise bhi, tabhiM, bArI, dhIre etc.&lt;br/&gt;
+bAbA ke saNge , jaiseRB tU log tAs khelalA waiseRB U pAsA kheleM&lt;br/&gt;
+The way you play cards, he used to pay â€˜pasaâ€™.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#AuxiliaryVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Verb"/>
+        <rdfs:comment>[T]he auxiliary verb is a closed set of verb</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#CardinalQuantifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#CardinalQuantifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Quantifier"/>
+        <rdfs:comment>The cardinal quantifiers are absolute numbers, either in digits or in words such as 1, 2, 3, ek, do, tIn etc.&lt;br/&gt;
+18) ekQT_QTC The dhobi ke ghar rahal&lt;br/&gt;
+There was a washermanâ€™s house.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Classifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Classifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Particle"/>
+        <rdfs:comment>A classifier sometimes called a measure word is a word or morpheme used in some languages to classify the referent of a countable noun according to its meaning.&lt;br/&gt;
+dUQT_QTC goRP_CL bhaI rahasan&lt;br/&gt;
+There were two brothers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#CommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#CommonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Noun"/>
+        <rdfs:comment>The nouns that simply function as noun and are content words should be marked as the common noun. This includes the general variety of all the nouns, e.g. darawAzA, samay, log, sAdhU etc. For example:&lt;br/&gt;
+Ab rAnIN_NN tiyAr hot hain&lt;br/&gt;
+Now the queen is getting ready.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Conjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Conjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>Conjunctions words act as joiners of phrases or clauses within a sentence. The category of conjunction has been divided into two sub-categories of coordinator and subordinator.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Conjunction"/>
+        <rdfs:comment>Coordinators are typically the words that join two phrases(noun or verb), of the same category or a clause.Some common conjunctions are aur, par, yA, balkI etc.&lt;br/&gt;
+Amrood khUb toD â€“toD ke khAe aurCC_CCD Apan sab bhaiyan ke delas&lt;br/&gt;
+Plucking the guavas he ate it and gave to all his brothers.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#DefaultParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#DefaultParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Particle"/>
+        <rdfs:comment>Default Particle is a category that includes all those element of the language which though do not have any lexical important but are auspecious functionally. Some of the Bhojpuri default particles are to hI bhI, nA, jI etc.&lt;br/&gt;
+to ganes jIRP_RPD ek The bAlak kA rUp rakh ke ayilan&lt;br/&gt;
+Then lord Ganesa appeared in the form of a boy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#DeicticDemonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#DeicticDemonstrative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Demonstrative"/>
+        <rdfs:comment>The deictic demonstratives are default demonstratives that demonstrate the noun it modifies. The deictic demonstratives in Hindi are typically I, U, ehar, ohar, je etc. They generally occur before a noun.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Demonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Demonstrative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>The category of demonstrative has been separated from the category of pronouns as the demonstratives mainly indicate about a noun and does not act as anaphora. The demonstratives have been sub-categorized into four divisions- deictic, relative, wh-words and indefinite.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#EchoWord -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#EchoWord">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Residual"/>
+        <rdfs:comment>The echo-words are the words that are formed by the morphological process known as echo-formation e.g. (chup-chaap), (sach-much), (kAT-kUT) etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#ForeignWord -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#ForeignWord">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Residual"/>
+        <rdfs:comment>The foreign words are all the words that are not written in the Devanagari script.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#GeneralQuantifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#GeneralQuantifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Quantifier"/>
+        <rdfs:comment>The general quantifiers do not indicate any precise quantity, e.g, purA, sab, ek etc.&lt;br/&gt;
+Rahat ta khUbQT_QTF seb khiyAwat&lt;br/&gt;
+If he would be there, must have brought us a lot of apples.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#IndefiniteDemonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#IndefiniteDemonstrative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Demonstrative"/>
+        <rdfs:comment>Like indefinite pronouns, the indefinite demonstratives refer to unspecified objects, places or things. These words are koi, kisi etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#IndefinitePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#IndefinitePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Pronoun"/>
+        <rdfs:comment>The indefinite pronouns refer to unspecified objects, places or things. These words are koi, kisietc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Intensifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Intensifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Particle"/>
+        <rdfs:comment>Intensifiers are words that intensify the adjectives or adverbs. The common intensifiers in Bhojpuri are arkhoob, itnA, bahut, mAre, ittI etc.&lt;br/&gt;
+aum bahutRP_INTF cHoTeJJ hokahAM jaoge&lt;br/&gt;
+You are too young to go with them.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Interjection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Particle"/>
+        <rdfs:comment>Interjections are particles which denote exclamation utterances. The common exclamatory marks in Bhojpuri are à¤…à¤°à¥‡, à¤¹à¥‡, à¤� , à¤¹à¥‹  etc.&lt;br/&gt;
+areRP_INJ ! sab tarapf se band hai&lt;br/&gt;
+It is closed from all sides</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#MainVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#MainVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Verb"/>
+        <rdfs:comment>While the auxiliary verb is a closed set of verb, the main verb can be anything from a root verb to any of its inflected forms. Each sentence or clause must have a main verb. A sentence can have one more auxiliary verbs.&lt;br/&gt;
+kaunoM biswAse nahiM kareMV_VM&lt;br/&gt;
+Nobody believed.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#NegationParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#NegationParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Particle"/>
+        <rdfs:comment>The negation particles are the words that indicate negation. These include nAhi, nA, mat, binA, bagair etc.&lt;br/&gt;
+ab matRP_NEG Aye, nAhiMRP_NEG ta bahut mArab&lt;br/&gt;
+Now donâ€™t follow or I will beat you.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>The first major category in the Tagset is â€˜nounsâ€™. Though the categorization is made keeping in view that it can broadly cover all the dialects and sub dialects of Bhojpuri, therefore it has three sub types in it.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Ordinal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Ordinal">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Quantifier"/>
+        <rdfs:comment>The ordinals denote the order part of the digits such as pahilA, dusar, tIsar etc.&lt;br/&gt;
+dunoQT_QTO log gayilan khet meM&lt;br/&gt;
+Both went to the fields.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Particle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Particle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>Particles are words that do not decline and also do not fall into any other categories described above and elsewhere. Bhojpuri particles includes five sub-categories</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Pronoun"/>
+        <rdfs:comment>Personal pronouns cover all the pronouns that denotes a person, place or thing. This includeS all their cases as well for example: okar, U, toke, tU, ham etc.&lt;br/&gt;
+ser kahalA - ab maiMPR_PRP tumko khAungA&lt;br/&gt;
+Lion said, now I will eat you.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Postposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Postposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>Postpositions are all the parts-of-speech that work as case marker. Words like meM, se, kA, ke, kar etc. are examples of postposition.&lt;br/&gt;
+hAr, bhagwAn jI kaPSP, herA gael&lt;br/&gt;
+The godâ€™s necklace was lost.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>The category of pronoun has been divided into six sub-categories. These include personal, reflexive, relative, reciprocal, wh-word and indefinite. These categories should be self-explanatory and follows the same definitions as posited in common linguistic literature.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#ProperNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#ProperNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Noun"/>
+        <rdfs:comment>Proper nouns are generally names that stands for some particular person or place. For example Bharbittan, GanesU, Chunamun etc.&lt;br/&gt;
+CunmunN_NNP DerAyal&lt;br/&gt;
+Cunmun got afraid.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Punctuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Punctuation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Residual"/>
+        <rdfs:comment>Punctuations include the characters that are considered as the regular punctuation marks in Hindi, e.g. (,),,,!,?,- etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Quantifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Quantifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>Quantifiers are the words that indicate quantity and modify nouns or adjectives. These have been sub-categorized into three parts- general, cardinals and ordinals.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#ReflexivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#ReflexivePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Pronoun"/>
+        <rdfs:comment>Reflexive pronouns are the ones that denote to ownership to its antecedent which can be either a noun or a pronoun. There are only a few words in this category, namely Apan, apan, khud etc.&lt;br/&gt;
+tab tU Apan/PR_PRF dHolak le ke bhAg jAe&lt;br/&gt;
+Then you run away with your Dholak.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RelativeDemonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#RelativeDemonstrative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Demonstrative"/>
+        <rdfs:comment>The relative demonstrative occur in the same form as the relative pronoun. The difference is only that these relatives are always followed by a noun that it modifies.For example jaun, je etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RelativePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#RelativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Pronoun"/>
+        <rdfs:comment>The relative pronouns are those pronouns whose antecedent can be either a noun or a pronoun. However, these pronouns do not make any difference in number or gender as in the case of personal pronouns. The relative pronoun in Bhojpuri are jaun, jeke, jahAM etc. 2.4 Recipocal Pronouns (PR_PRC) Reciprocal pronouns denote some reciprocity. This is commonly denoted by ek dusar, Apas, apne meM etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Residual -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Residual">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>The category of residuals has been demarcated for the words that are usually not intrinsic part of the language/speech. Divided into five parts, these include foreign words, symbols, punctuations, unknown words and echo-words.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#SpatioTemporalNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#SpatioTemporalNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Noun"/>
+        <rdfs:comment>There are a specific set of words that functions both as preposition and argument of a verb.Such words are marked as spatio- temporal irrespective of their function in a given context. Some of them are agaweM, pacHaweM, upaM, nichaweM etc.&lt;br/&gt;
+Phir AgeN_NST Gael&lt;br/&gt;
+Then he went forward</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#SubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Conjunction"/>
+        <rdfs:comment>Subordinator typically conjoins two clauses and the second clause is subordinated. Some of the subordinate conjunctions are magar, to ki etc&lt;br/&gt;
+ta dhobi kahe kiCC_CCD tU kAm bahut kaile hauA hamAr&lt;br/&gt;
+The washer man said that you have worked a lot for me.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Symbol -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Symbol">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Residual"/>
+        <rdfs:comment>The symbols are the characters that are not part of the regular Devanagari script such as *, @, #, $, % etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Tag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Tag"/>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#UnknownWord -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#UnknownWord">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Residual"/>
+        <rdfs:comment>Unknown words would the words for which a category cannot be decided by the annotator. These may include words from phrases or sentences from a foreign language written in Devanagari.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Tag"/>
+        <rdfs:comment>The verbs are subdivided into two only- Main (V_VM) and Auxiliary(V_VAUX) Verbs. While the auxiliary verb is a closed set of verb, the main verb can be anything from a root verb to any of its inflected forms. Each sentence or clause must have a main verb. A sentence can have one more auxiliary verbs.&lt;br/&gt;
+kaunoM biswAse nahiM kareMV_VM&lt;br/&gt;
+Nobody believed.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#WHDemonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#WHDemonstrative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Demonstrative"/>
+        <rdfs:comment>The wh-demonstratives are the same question words as wh-pronouns. The difference is that in their demonstrative function they do not ask question, rather only demonstrates. The wh-word demonstratives in Bhojpuri are kA, kaun etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#WHPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/bhojpuri.owl#WHPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/bhojpuri.owl#Pronoun"/>
+        <rdfs:comment>The wh-word pronouns are typically the pronouns that are used to ask questions. These words are kaun/ke, kab, kehar etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#CC">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Conjunction"/>
+        <system:hasTag>CC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#CC_CCD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#CC_CCD">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#CoordinatingConjunction"/>
+        <system:hasTag>CC_CCD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#CC_CCS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#CC_CCS">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#SubordinatingConjunction"/>
+        <system:hasTag>CC_CCS</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#DM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#DM">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Demonstrative"/>
+        <system:hasTag>DM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#DM_DMD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#DM_DMD">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#DeicticDemonstrative"/>
+        <system:hasTag>DM_DMD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#DM_DMI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#DM_DMI">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#IndefiniteDemonstrative"/>
+        <system:hasTag>DM_DMI</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#DM_DMQ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#DM_DMQ">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#WHDemonstrative"/>
+        <system:hasTag>DM_DMQ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#DM_DMR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#DM_DMR">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#RelativeDemonstrative"/>
+        <system:hasTag>DM_DMR</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#JJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#JJ">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Adjective"/>
+        <system:hasTag>JJ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#N -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#N">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Noun"/>
+        <system:hasTag>N</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#N_NN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#N_NN">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#CommonNoun"/>
+        <system:hasTag>N_NN</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#N_NNP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#N_NNP">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#ProperNoun"/>
+        <system:hasTag>N_NNP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#N_NST -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#N_NST">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#SpatioTemporalNoun"/>
+        <system:hasTag>N_NST</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#PR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#PR">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Pronoun"/>
+        <system:hasTag>PR</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#PR_PRF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#PR_PRF">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#ReflexivePronoun"/>
+        <system:hasTag>PR_PRF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#PR_PRI -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#PR_PRI">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#IndefinitePronoun"/>
+        <system:hasTag>PR_PRI</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#PR_PRL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#PR_PRL">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#RelativePronoun"/>
+        <system:hasTag>PR_PRL</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#PR_PRP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#PR_PRP">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#PersonalPronoun"/>
+        <system:hasTag>PR_PRP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#PR_PRQ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#PR_PRQ">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#WHPronoun"/>
+        <system:hasTag>PR_PRQ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#PSP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#PSP">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Postposition"/>
+        <system:hasTag>PSP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#QT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#QT">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Quantifier"/>
+        <system:hasTag>QT</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#QT_QTC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#QT_QTC">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#CardinalQuantifier"/>
+        <system:hasTag>QT_QTC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#QT_QTF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#QT_QTF">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#GeneralQuantifier"/>
+        <system:hasTag>QT_QTF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#QT_QTO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#QT_QTO">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Ordinal"/>
+        <system:hasTag>QT_QTO</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RB">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Adverb"/>
+        <system:hasTag>RB</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RD">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Residual"/>
+        <system:hasTag>RD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RD_ECH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RD_ECH">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#EchoWord"/>
+        <system:hasTag>RD_ECH</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RD_PUNC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RD_PUNC">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Punctuation"/>
+        <system:hasTag>RD_PUNC</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RD_RDF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RD_RDF">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#ForeignWord"/>
+        <system:hasTag>RD_RDF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RD_SYM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RD_SYM">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Symbol"/>
+        <system:hasTag>RD_SYM</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RD_UNK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RD_UNK">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#UnknownWord"/>
+        <system:hasTag>RD_UNK</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RP">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Particle"/>
+        <system:hasTag>RP</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RP_CL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RP_CL">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Classifier"/>
+        <system:hasTag>RP_CL</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RP_INJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RP_INJ">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Interjection"/>
+        <system:hasTag>RP_INJ</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RP_INTF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RP_INTF">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Intensifier"/>
+        <system:hasTag>RP_INTF</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RP_NEG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RP_NEG">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#NegationParticle"/>
+        <system:hasTag>RP_NEG</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#RP_RPD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#RP_RPD">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#DefaultParticle"/>
+        <system:hasTag>RP_RPD</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#V -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#V">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#Verb"/>
+        <system:hasTag>V</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#V_VAUX -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#V_VAUX">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#AuxiliaryVerb"/>
+        <system:hasTag>V_VAUX</system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/bhojpuri.owl#V_VM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/bhojpuri.owl#V_VM">
+        <rdf:type rdf:resource="http://purl.org/olia/bhojpuri.owl#MainVerb"/>
+        <system:hasTag>V_VM</system:hasTag>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

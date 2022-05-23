@@ -1,0 +1,417 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY sfb632 "http://purl.org/olia/discourse/is.SFB632.owl#" >
+    <!ENTITY discourse "http://purl.org/olia/discourse/olia_discourse.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/discourse/is.SFB632-link.rdf#"
+     xml:base="http://purl.org/olia/discourse/is.SFB632-link.rdf"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:sfb632="http://purl.org/olia/discourse/is.SFB632.owl#"
+     xmlns:discourse="http://purl.org/olia/discourse/olia_discourse.owl#">
+    <owl:Ontology>
+        <rdfs:comment rdf:datatype="&xsd;string">So far, only InformationStatus is linked.
+Only one problem has been encountered, i.e., the representation of Aggregation.</rdfs:comment>
+        <owl:versionInfo>
+	2008-05-23 created
+	2014-03-22 updated for olia_discourse.owl
+	
+	Christian Chiarcos, christian.chiarcos@web.de
+	</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/discourse/is.SFB632.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/discourse/olia_discourse.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#hasInformationStatus -->
+
+    <owl:ObjectProperty rdf:about="&discourse;hasInformationStatus"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#AboutnessTopic -->
+
+    <rdf:Description rdf:about="&sfb632;AboutnessTopic">
+        <rdfs:subClassOf rdf:resource="&discourse;AboutnessTopic"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#Accessible -->
+
+    <rdf:Description rdf:about="&sfb632;Accessible">
+        <rdfs:subClassOf rdf:resource="&discourse;Accessible"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;acc"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#Active -->
+
+    <rdf:Description rdf:about="&sfb632;Active">
+        <rdfs:subClassOf rdf:resource="&discourse;Active"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;giv-active"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#Aggregated -->
+
+    <rdf:Description rdf:about="&sfb632;Aggregated">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;acc-aggr"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#ContrastiveFocus -->
+
+    <rdf:Description rdf:about="&sfb632;ContrastiveFocus">
+        <rdfs:subClassOf rdf:resource="&discourse;ContrastiveFocus"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#Focus -->
+
+    <rdf:Description rdf:about="&sfb632;Focus">
+        <rdfs:subClassOf rdf:resource="&discourse;Focus"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#FrameSettingTopic -->
+
+    <rdf:Description rdf:about="&sfb632;FrameSettingTopic">
+        <rdfs:subClassOf rdf:resource="&discourse;FrameSettingTopic"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#GenerallyAccessible -->
+
+    <rdf:Description rdf:about="&sfb632;GenerallyAccessible">
+        <rdfs:subClassOf rdf:resource="&discourse;GenerallyAccessible"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;acc-gen"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#Given -->
+
+    <rdf:Description rdf:about="&sfb632;Given">
+        <rdfs:subClassOf rdf:resource="&discourse;Given"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;giv"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#Inactive -->
+
+    <rdf:Description rdf:about="&sfb632;Inactive">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&discourse;Given"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&discourse;Active"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;giv-inactive"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#Inferable -->
+
+    <rdf:Description rdf:about="&sfb632;Inferable">
+        <rdfs:subClassOf rdf:resource="&discourse;Inferrable"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;acc-inf"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#InformationStatus -->
+
+    <rdf:Description rdf:about="&sfb632;InformationStatus">
+        <rdfs:subClassOf rdf:resource="&discourse;InformationStatus"/>
+        <rdfs:subClassOf rdf:resource="&discourse;ReferringExpression"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#InformationStructure -->
+
+    <rdf:Description rdf:about="&sfb632;InformationStructure">
+        <rdfs:subClassOf rdf:resource="&discourse;Markable"/>
+        <rdfs:subClassOf rdf:resource="&discourse;PragmaticFeature"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Note that in Exmaralda annotation, markables and features are not distinguished, i.e. InformationStructure in the SFB is directly annotated, i.e. IS is annotated as markables, not as an attribute of an markable. Therefore, InformationStructure is both Markable and PragmaticFeature, and in the linking, every markable is attached as a property (hasInformationStatus, etc.) to itself.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#New -->
+
+    <rdf:Description rdf:about="&sfb632;New">
+        <rdfs:subClassOf rdf:resource="&discourse;New"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;new"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#NewInformationFocus -->
+
+    <rdf:Description rdf:about="&sfb632;NewInformationFocus">
+        <rdfs:subClassOf rdf:resource="&discourse;NewInformationFocus"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#SituationallyAccessible -->
+
+    <rdf:Description rdf:about="&sfb632;SituationallyAccessible">
+        <rdfs:subClassOf rdf:resource="&discourse;SituationallyAccessible"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&discourse;hasInformationStatus"/>
+                <owl:hasValue rdf:resource="&sfb632;acc-sit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#Topic -->
+
+    <rdf:Description rdf:about="&sfb632;Topic">
+        <rdfs:subClassOf rdf:resource="&discourse;Topic"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#AboutnessTopic -->
+
+    <owl:Class rdf:about="&discourse;AboutnessTopic"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Accessible -->
+
+    <owl:Class rdf:about="&discourse;Accessible"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Active -->
+
+    <owl:Class rdf:about="&discourse;Active"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ContrastiveFocus -->
+
+    <owl:Class rdf:about="&discourse;ContrastiveFocus"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Focus -->
+
+    <owl:Class rdf:about="&discourse;Focus"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#FrameSettingTopic -->
+
+    <owl:Class rdf:about="&discourse;FrameSettingTopic"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#GenerallyAccessible -->
+
+    <owl:Class rdf:about="&discourse;GenerallyAccessible"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Given -->
+
+    <owl:Class rdf:about="&discourse;Given"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Inferrable -->
+
+    <owl:Class rdf:about="&discourse;Inferrable"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#InformationStatus -->
+
+    <owl:Class rdf:about="&discourse;InformationStatus"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Markable -->
+
+    <owl:Class rdf:about="&discourse;Markable"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#New -->
+
+    <owl:Class rdf:about="&discourse;New"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#NewInformationFocus -->
+
+    <owl:Class rdf:about="&discourse;NewInformationFocus"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#PragmaticFeature -->
+
+    <owl:Class rdf:about="&discourse;PragmaticFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#ReferringExpression -->
+
+    <owl:Class rdf:about="&discourse;ReferringExpression"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#SituationallyAccessible -->
+
+    <owl:Class rdf:about="&discourse;SituationallyAccessible"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/olia_discourse.owl#Topic -->
+
+    <owl:Class rdf:about="&discourse;Topic"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/discourse/is.SFB632.owl#acc -->
+
+    <rdf:Description rdf:about="&sfb632;acc">
+        <discourse:hasInformationStatus rdf:resource="&sfb632;acc"/>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

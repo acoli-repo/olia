@@ -98,12 +98,12 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 							fi;\
 							\
 						# OWL validation \
-						elif ! tools/validate/pellet/pellet.sh consistency $$file >/dev/null;  then \
+						elif ! tools/pellet/pellet.sh consistency $$file >/dev/null;  then \
 							if echo $$dir | grep experimental >/dev/null; then \
 								echo "error: "$$file" failed in OWL validation, skipping" 1>&2; \
 								# tolerate (but log) errors for experimental files \
 							else \
-								tools/validate/pellet/pellet.sh consistency $$file 1>&2 ; \
+								tools/pellet/pellet.sh consistency $$file 1>&2 ; \
 								echo "error: "$$file" failed in OWL validation, exiting" 1>&2; \
 								exit 2;\
 							fi;\
@@ -133,8 +133,8 @@ validate:
 		if [ -e $$file ]; then \
 			echo validate $$file "(Pellet consistency)" 1>&2;\
 			echo '------------------------------------' 1>&2; \
-			if tools/validate/pellet/pellet.sh consistency $$file 1>&2; then \
-				tools/validate/pellet/pellet.sh lint $$file 1>&2; \
+			if tools/pellet/pellet.sh consistency $$file 1>&2; then \
+				tools/pellet/pellet.sh lint $$file 1>&2; \
 			fi;
 			echo 1>&2; \
 		fi;\
