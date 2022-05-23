@@ -1,6 +1,6 @@
 # Ontology of Linguistic Annotation: Overview (2007)
 
-> **Note**: This document provides overview over and design decisions of the modular architecture of OLiA and the design of the OLiA Reference. However, it has been written in 2007 and partially updated only. The original is available from the [University of Potsdam, Germany](http://nachhalt.sfb632.uni-potsdam.de/index.html), with additions taken from [another 2007 overview](http://nachhalt.sfb632.uni-potsdam.de/olia.html). Major later additions partially  addressed here include the coverage of syntax and discourse annotations that have been added in 2008, and 2014, respectively.
+> **Note**: This document provides overview over and design decisions of the modular architecture of OLiA and the design of the OLiA Reference. However, it has been written in May 2007 and partially updated only. The original is available from the [University of Potsdam, Germany](http://nachhalt.sfb632.uni-potsdam.de/index.html), with additions taken from [another 2007 overview](http://nachhalt.sfb632.uni-potsdam.de/olia.html). Major later additions partially  addressed here include the coverage of syntax and discourse annotations that have been added in 2008, and 2014, respectively.
 
 ## Background
 
