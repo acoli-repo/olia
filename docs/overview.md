@@ -505,7 +505,7 @@ set of languages cf. de Cea et al. 2004).
 
 An example can be downloaded [here](./img/ontologie.pdf)!
 
-## Deep and Shallow Interoperability
+## Deep and Shallow Interoperability (2022)
 
 **(Added 2022)**
 
