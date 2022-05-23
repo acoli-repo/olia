@@ -1,6 +1,6 @@
 # Ontologies of Linguistic Annotation (OLiA)
 
-<img align="right" src="img/logo.png" height="8%"/>
+<img align="right" src="img/logo.png" height="5%"/>
 
 The **Ontologies of Linguistic Annotation (OLiA)** are a repository of
 linguistic data categories used for
@@ -38,7 +38,7 @@ linguistics, natural language processing and the Semantic Web have been
 developed.
 
 Via its public repository, OLiA provides Annotation Models for
-**more than 75 different languages** or language stages covering
+**more than 100 different languages** or language stages covering
 **morphology, morphosyntax, phrase structure syntax, dependency syntax,
 aspects of semantics, as well as recent extensions to discourse,
 information structure and anaphora annotation**. Additional OLiA

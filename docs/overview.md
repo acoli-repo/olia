@@ -144,9 +144,9 @@ both approaches are applicable only within a limited domain. The
 standardization approach relies on the existence of common grammatical
 categories and features found in the languages for which
 standard-conformant tag sets are to be developed. Otherwise, it results
-in projection of complexity (e.g. the standard entails predictions for
-grammatical categories for a standard-conformant tagset which are absent
-in a language). However, even the sheer existence of universal
+in *both* 
+reductionism (there are languages for which necessary distinctions cannot be expressed) and
+complexity projection (there are languages for which a distinction postulated by the standard doesn't apply). However, even the sheer existence of universal
 morphosyntactic categories has been questioned in typologic research,
 and hence, the EAGLES-based standardization approach is unlikely to
 extend beyond \"Standard Average European\" languages.
@@ -203,13 +203,12 @@ scheme applied to 29 languages). Annotation models for syntax and
 information structure/anaphora are currently under construction.
 
 The concepts of these annotation models are linked to a common
-\"reference model\" which is based on the EAGLES recommendations for
+OLiA Reference Model which is based on the EAGLES recommendations for
 morphosyntax, and extended according to the needs of the participating
-annotation models, hence it is also referred to as \"E(xtended)-EAGLES\"
-ontology.
+annotation models. 
 
--   [E-EAGLES](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
-    ontology \[[owl](./downloads/eagles.owl)\]
+-   [OLiA Reference Model](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
+    ontology \[[owl](http://purl.org/olia/olia.owl)\]
 
 The annotation models are then mapped onto the categories specified in
 the reference model by means of conceptual subsumption (rdfs:subClassOf,
@@ -218,11 +217,11 @@ files\", thus making both the reference model and the annotation models
 independent and self-contained ontologies.
 
 -   [STTS](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
-    E-EAGLES linking \[[owl](./downloads/stts-link.rdf)\]
+    Linking \[[owl](http://purl.org/olia/stts-link.rdf)\]
 -   [SUSANNE](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
-    E-EAGLES linking \[[owl](./downloads/susa-link.rdf)\]
+    Linking \[[owl](http://purl.org/olia/susa-link.rdf)\]
 -   [Uppsala](http://nachhalt.sfb632.uni-potsdam.de/data/index.html)
-    E-EAGLES linking \[[owl](./downloads/russ-link.rdf)\]
+    Linking \[[owl](http://purl.org/olia/russ-link.rdf)\]
 
 The \"reference model\", however, does not specify authoritative
 definitions for existing terminology, but only a fairly traditional view
@@ -237,11 +236,7 @@ mediate between such an external reference model and the annotation
 models. In this sense, the reference model serves as an interface to the
 annotation model, and it could be better termed \"interface model\".
 
--   an exemplary implementation of the linking of E-EAGLES with an an
-    extended version of GOLD, v.0.3 as an external reference model
-    \[[owl](./downloads/gold03-extended.exp.owl)\]
-
-## A Structured Ontology
+# A Structured Ontology
 
 The OLiA ontology consists of three major components, i.e.:
 
@@ -314,7 +309,6 @@ hasSeparability, hasReflexivity and hasGender.
 ![Figure 1: Fragment of upper model: Sub-classification of verbal
 categories in E-Eagles](./img/image001.jpg)
 
-------------------------------------------------------------------------
 
 ## An Annotation Model: Uppsala
 
@@ -510,6 +504,39 @@ set of languages cf. de Cea et al. 2004).
 ## Example ontology
 
 An example can be downloaded [here](./img/ontologie.pdf)!
+
+## Deep and Shallow Interoperability
+
+**(Added 2022)**
+
+Almost a decade after the section above on [*OLiA - Why do we need it*](#why-do-we-need-it) was drafted for the first time (in 2004, during the conceptional phase of OLiA), the [Universal Dependencies (UD) initiative](https://universaldependencies.org/) was created (in May 2014, as a GitHub organization) in an attempt to provide a "universal" (cross-linguistically applicable) **standard for dependency annotations and morphosyntax**. 
+
+UD clearly stands out from earlier standardization/interlingua approaches in its popularity and its wide, cross-linguistic application. UD provides a middle ground between standardization and interlingua by having core vocabularies which can be extended for non-universal aspects. The UD parts of speech are a (highly reductionist) standard, but non-standardized features of morphosyntax can be preserved in the UD FEATS annotation. UD FEATS implement an interlingua approach for morphosyntactic features that is originally rooted (via MULTEXT-East) in EAGLES, and which provides a standardized core inventory ("universal standard") that can be extended with language-specific features on demand. UD dependencies are a (reductionist and theory-specific) standard, but they provide `:`-separated subtypes that are non-standardized and created on demand. 
+
+The UD community has been (and continues to be) going through several iterations in the attempt to develop more consistent guidelines and cross-linguistically valid generalizations, e.g., with the recently introduced [amendments mechanism](https://universaldependencies.org/changes.html), and it provides a standard core vocabulary, but at the moment, neither resource-specific features nor dependency subtypes are properly harmonized with each other nor could be reduced to standard features. Likewise, the "universal" definition of categories sometimes just delegates to language-specific definitions, e.g., [VERB](https://universaldependencies.org/u/pos/VERB.html): "Modal verbs may be considered VERB or AUX, depending on their behavior in the given language. *Language-specific documentation should specify which verbs are tagged AUX in which contexts.* ...
+*Depending on language and context*, [participles] may be classified as either VERB or ADJ. ... *Depending on language and context*, [some verb forms such as gerunds and infinitives] may be classified as either VERB or NOUN." (emphasis mine). However, the community is working hard on elimiting such cases and as soon as a consistent axiomatization emerges that is proven to be applicable across languages and theories, OLiA should inherit these axioms by means of equivalence links with UD as an External Reference Model. We provide UD ontologies, and these can be [dynamically generated from the UD guidelines](http://fginter.github.io/docs/), but at the moment, these are not axiomatized and linked as Annotation Models only, i.e., UD concepts are subclasses of OLiA concepts, disjunctions or intersections of OLiA concepts. 
+
+Both OLiA and Universal Dependencies (resp., their subsequent sibling projects on [morphology](https://github.com/unimorph), [frame semantics](https://github.com/System-T/UniversalPropositions), etc.) provide solutions to the interoperability problem of linguistically annotated corpora, but there is a difference in effort and coverage in UD- and OLiA-based interoperability: 
+
+* UD achieves interoperability by **changing** the original annotation: This can be error-prone, laborsome and irreversible. UD guarantees that every *standard* distinction is enforced on the original data (and says little about distinctions not covered by the standard).
+* OLiA achieves interoperability by **formalizing and linking** the original annotation: This can also be error-prone, but it is easy to achieve, lossless and fully reversible (the original annotation is preserved). OLiA provides only (and all) distinctions that have been originally annotated. 
+
+In other words, UD and OLiA provide different levels of interoperability that can be described as "shallow" and "deep":
+
+- UD provides *deep* interoperability: same annotations across different languages. Establishing UD interoperability requires a validation of all annotated data if not a full reannotation.
+- OLiA provides *shallow* interoperability: different annotations with the same definition across different languages. Establishing OLiA interoperability requires an understanding (and representation) of (equivalences) between the annotation and OLiA terminology.
+
+As UD is an OLiA Annotation Model, all *UD-compliant annotations are OLiA-interoperable*, but not all OLiA-interoperable annotations are UD-compliant. But even for annotations that do not share the specific theoretical standpoint of UD, these can be compared with (and mapped to or grouped with) those from other corpora if they formalize the same distinction.
+
+Deep (UD) interoperability entails shallow (OLiA) interoperability, or: OLiA extends the (deep) interoperability established between UD resources with a level of interoperability that these have with non-UD resources.
+
+The situation is similar with respect to **lexical resources**, where [LexInfo](https://github.com/ontolex/lexinfo/) serves a function for machine-readable dictionaries (published as [OntoLex data](https://www.w3.org/2016/05/ontolex/)). LexInfo is a standard for grammatical (and other) features in lexical resources, so that it corresponds to the function of UD for dependency corpora. Like UD, LexInfo is integrated as an annotation model (domain model) into the OLiA architecture. The situation is somewhat different in that
+
+- LexInfo is a native RDF vocabulary that does not require conversion, 
+- it is potentially lossless (as an RDF vocabulary, it does not come with the requirement to delete the original linguistic analysis), and 
+- in that the overlap is partial (aside from features of grammar and morphology, LexInfo also provides vocabulary that is specific to lexical resources and that is not covered by OLiA, e.g., metadata about or categories of lexical entries).
+
+In comparison to UD and LexInfo, a unique contribution of OLiA is that it establishes (shallow) **interoperability between annotations and dictionaries**, so that a dictionary can be used to produce or verify corpus annotations, or that a corpus can be used to bootstrap a dictionary or quantify the distribution of certain phenomena. In parts, this is inherited from the 1998 [Expert Advisory Group on Language Engineering Standards (EAGLES)](http://www.ilc.cnr.it/EAGLES96/intro.html), as these are also (indirectly) underlying UD (FEATS annotations; partially modelled after MULTEXT-East specifications from EAGLES) and LexInfo (from ISOcat/LMF via Parole-Simple from EAGLES), but these hidden ties between UD and LexInfo are neither documented nor even widely known in either of these communities.
 
 ## Papers and Publications (2007)
 
