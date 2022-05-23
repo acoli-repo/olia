@@ -12,6 +12,9 @@ help:
 	@echo "           run 'make clean release' to remove legacy files" 1>&2
 	@echo "  update   update docs/owl " 1>&2;
 	@echo "  validate Pellet OWL2/DL validation" 1>&2;
+	@echo "  checks   check whether all OLiA URIs resolve" 1>&2;
+	@echo "           note that this should be called a while after the publication,"1>&2
+	@echo "           because publication involves server-side processing that just takes a while" 1>&2
 	@echo "Note: to publish docs/owl updates via GitHub pages, *you* need" 1>&2
 	@echo "      to run the following commands after running this Makefile" 1>&2
 	@echo "         $> git add docs/owl" 1>&2
@@ -139,3 +142,25 @@ validate:
 			echo 1>&2; \
 		fi;\
 	done;
+
+
+checks:
+	@echo Check whether OLiA URLs resolve 1>&2
+	@echo Note that you should give the server some time to process the publication 1>&2
+	@models=$$(\
+		for file in `find docs/owl/ | egrep 'rdf$$|owl$$'`; do \
+			rapper -i rdfxml $$file 2>/dev/null| \
+			perl -pe 's/\s/\n/g;' | \
+			grep 'purl.org/olia' | \
+			grep '^<' | \
+			sed -e s/'#.*'// -e s/'[<>]'//g | \
+			sort -u;\
+		done | sort -u);\
+	for model in $$models; do \
+		echo -n $$model' ' 1>&2; \
+		if wget --spider $$model >/dev/null 2>/dev/null; then \
+			echo ok 1>&2; \
+		else \
+			echo failed 1>&2; \
+		fi;\
+	done

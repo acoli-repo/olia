@@ -269,6 +269,11 @@ The creation and linking of novel annotation models is described in [a separate 
 
 After publishing a new annotation model, please feel free to advertise it via our **[public mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
 
+Before doing a public announcement, you might want to check the validity and consistency of your data with `make`:
+- `make release` (or just `make`): as part of the publication process, we perform automatic checks for XML compliancy, RDF compliancy and OWL2/DL consistency
+- `make validate`: in addition to OWL2/DL compliancy (for all *published* OLiA ontologies in [docs/owl/](docs/owl)), this checks a number of ontology design patterns
+- `make checks`: after publication (e.g., via GitHub pages), this checks whether all OLiA URIs referenced in the published OLiA ontologies (in [docs/owl/](docs/owl)) resolve. Note that this should *be given some time* after `make release`, `git commit` and `git push` because the server-side publication takes a while.
+
 ## Browse Online
 
 For convenient viewing the ontologies, we provide a **static** HTML export of *selected* stable Annotation Models, Linking Models and the OLiA Reference Model:
