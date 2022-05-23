@@ -6,11 +6,12 @@ all: help
 
 help:
 	@echo "validate, update and publish ontologies and ontology metadata" 1>&2;
-	@echo "synopsis: make [help] [ [clean] release]" 1>&2;
-	@echo "  help    this dialog" 1>&2;
-	@echo "  release update docs/owl with novel content from owl/." 1>&2
-	@echo "          run 'make clean release' to remove legacy files" 1>&2
-	@echo "  update  update docs/owl " 1>&2;
+	@echo "synopsis: make [help] [ [clean] release] [validate]" 1>&2;
+	@echo "  help     this dialog" 1>&2;
+	@echo "  release  update docs/owl with novel content from owl/." 1>&2
+	@echo "           run 'make clean release' to remove legacy files" 1>&2
+	@echo "  update   update docs/owl " 1>&2;
+	@echo "  validate Pellet OWL2/DL validation" 1>&2;
 	@echo "Note: to publish docs/owl updates via GitHub pages, *you* need" 1>&2
 	@echo "      to run the following commands after running this Makefile" 1>&2
 	@echo "         $> git add docs/owl" 1>&2
@@ -53,7 +54,7 @@ docs/owl/LICENSE: LICENSE.data
 	@cp LICENSE.data docs/owl/LICENSE
 
 release: docs/owl/Readme.md docs/owl/LICENSE
-	@echo validate and publish ontologies via GitHub pages '(this may take a while)' 1>&2
+	@echo validate and publish ontologies via GitHub pages 1>&2
 	@DIRS="owl/core owl/stable owl/experimental";\
 	for dir in $$DIRS; do \
 		echo 1>&2; \
@@ -69,6 +70,15 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 				elif egrep -L 'http://purl.org/olia.*/'`basename $$file | sed s/'\(\-link\)*\(\.rdf|\.owl\)*'//` $$file >/dev/null; then \
 					echo warning: $$file skipped '(files must use http://purl.org/olia/ namespace)' 1>&2; \
 					echo 1>&2; \
+				elif ! xmllint $$file >/dev/null; then \
+					if [ $$dir = 'owl/experimental' ]; then \
+						echo warning: $$file skipped '(not XML valid)' 1>&2; \
+						echo 1>&2; \
+					else \
+						echo error: $$file 'not XML valid, exiting' 1>&2; \
+						echo 1>&2; \
+						exit 3;\
+					fi; \
 				else \
 					tgt=docs/owl/`echo $$file | sed s/'^'$$(echo $$dir | sed s/'\/'/'.'/g)'\/*'//`; \
 					if [ ! -e $$tgt -o $$tgt -ot $$file ]; then \
@@ -78,21 +88,35 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 						fi;\
 						\
 						# RDF/XML validation \
-						if rapper -i rdfxml --quiet $$file > /dev/null; then \
+						if ! rapper -i rdfxml --quiet $$file > /dev/null; then \
+							if echo $$dir | grep experimental >/dev/null; then \
+								echo "error: "$$file" failed in RDF/XML validation, skipping" 1>&2; \
+								# tolerate (but log) errors for experimental files \
+							else \
+								echo "error: "$$file" failed in RDF/XML validation, exiting" 1>&2; \
+								exit 2;\
+							fi;\
+							\
+						# OWL validation \
+						elif ! tools/validate/pellet/pellet.sh consistency $$file >/dev/null;  then \
+							if echo $$dir | grep experimental >/dev/null; then \
+								echo "error: "$$file" failed in OWL validation, skipping" 1>&2; \
+								# tolerate (but log) errors for experimental files \
+							else \
+								tools/validate/pellet/pellet.sh consistency $$file 1>&2 ; \
+								echo "error: "$$file" failed in OWL validation, exiting" 1>&2; \
+								exit 2;\
+							fi;\
+							\
+						# valid ! \
+						else \
 							if cp $$file $$tgt; then \
 								echo ok 1>&2; \
-								echo "warning: content validation not integrated yet" 1>&2;\
 							else \
 								echo error: could not create $$tgt, exiting 1>&2; \
 								exit 1; \
 							fi; \
-						elif echo $$dir | grep experimental >/dev/null; then \
-							echo "error: "$$file" failed in RDF/XML validation, skipping" 1>&2; \
-							# tolerate (but log) errors for experimental files \
-						else \
-							echo "error: "$$file" failed in RDF/XML validation, exiting" 1>&2; \
-							exit 2;\
-						fi;\
+						fi; \
 						echo 1>&2;\
 					fi; \
 				fi; \
@@ -100,3 +124,18 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 		done;\
 	done;\
 	echo "done"
+
+validate:
+	@echo Pellet validation 1>&2
+	@echo "==================" 1>&2
+	@echo 1>&2
+	@for file in `find docs/owl/ | egrep 'rdf$$|owl$$'`; do \
+		if [ -e $$file ]; then \
+			echo validate $$file "(Pellet consistency)" 1>&2;\
+			echo '------------------------------------' 1>&2; \
+			if tools/validate/pellet/pellet.sh consistency $$file 1>&2; then \
+				tools/validate/pellet/pellet.sh lint $$file 1>&2; \
+			fi;
+			echo 1>&2; \
+		fi;\
+	done;

@@ -1,3 +1,4 @@
 #!/bin/bash
-java -Xmx5120m    -jar lib/pellet-cli.jar "$@"
+MYHOME=`dirname $0`
+java -Xmx5120m    -jar $MYHOME/lib/pellet-cli.jar "$@"
 
