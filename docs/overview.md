@@ -1,6 +1,6 @@
 # Ontology of Linguistic Annotation: Overview (2007)
 
-> **Note**: This document provides overview over and design decisions of the modular architecture of OLiA and the design of the OLiA Reference. However, it has been written in May 2007 and partially updated only. The original is available from the [University of Potsdam, Germany](http://nachhalt.sfb632.uni-potsdam.de/index.html), with additions taken from [another 2007 overview](http://nachhalt.sfb632.uni-potsdam.de/olia.html). Major later additions partially  addressed here include the coverage of syntax and discourse annotations that have been added in 2008, and 2014, respectively.
+> **Note**: This document provides overview over and design decisions of the modular architecture of OLiA and the design of the OLiA Reference. However, it has been written in May 2007 and (unless marked as such) it has been marginally updated only. The original is available from the [University of Potsdam, Germany](http://nachhalt.sfb632.uni-potsdam.de/index.html), with additions taken from [another 2007 overview](http://nachhalt.sfb632.uni-potsdam.de/olia.html). Major later additions only partially  addressed here include the coverage of syntax and discourse annotations that have been added in 2007, and 2014, respectively.
 
 ## Background
 
@@ -508,8 +508,6 @@ An example can be downloaded [here](./img/ontologie.pdf)!
 # Addenda
 
 ## Deep and Shallow Interoperability (2022)
-
-**(Added 2022)**
 
 Almost a decade after the section above on [*OLiA - Why do we need it*](#why-do-we-need-it) was drafted for the first time (in 2004, during the conceptional phase of OLiA), the [Universal Dependencies (UD) initiative](https://universaldependencies.org/) was created (in May 2014, as a GitHub organization) in an attempt to provide a "universal" (cross-linguistically applicable) **standard for dependency annotations and morphosyntax**. 
 
