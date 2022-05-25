@@ -115,37 +115,43 @@ the Reference Model in bold):
   <th>Model</td>
   <th>Description</th>
   <th>Phenomenon</th>
-  <th>OWL/DL models</th> </tr>
+  <th>OWL/DL models</th>
 <tr>
   <td>Reference Model</td>
   <td>Reference Model fragment for discourse structure and discourse relations, to be integrated with the OLiA Reference Model</td>
   <td>discourse structure, discourse relations, information structure, information status, coreference</td>
-  <td>OLiA Discourse Extensions Model, Provisional Reference Model linking</td> </tr>
+  <td>OLiA Discourse Extensions Model, Provisional Reference Model linking</td>
+</tr>
 <tr>
   <td>RST Annotation Modell</td>
   <td>Annotation Model for RST (http://www.sfu.ca/rst/, English, French, Portuguese, Spanish)</td>
   <td>discourse structure, discourse relations</td>
-  <td>Annotation Model, Linking Model </td> </tr>
+  <td>Annotation Model, Linking Model </td>
+</tr>
 <tr>
   <td>RSTDTB Annotation Model</td>
   <td>Annotation Model for the RST Discourse Treebank (English, Wallstreet Journal)</td>
   <td>discourse structure, discourse relations</td>
-  <td>Annotation Model, Linking Model </td> </tr>
+  <td>Annotation Model, Linking Model </td>
+</tr>
 <tr>
   <td>PDTB Annotation Model</td>
   <td>Annotation Model for the Penn Discourse Treebank (English, Wallstreet Journal), also applicable to PDTB-derivatives for Turkish, Hindi, Italian and Chinese</td>
   <td>discourse relations</td>
-  <td>Annotation Model, Linking Model</td> </tr>
+  <td>Annotation Model, Linking Model</td>
+</tr>
 <tr>
   <td>PDGB Annotation Model</td>
   <td>Annotation Model for the Penn Discourse Graphbank (English, incl. Wallstreet Journal)</td>
   <td>discourse relations</td>
-  <td>Annotation Model, Linking Model</td> </tr>
+  <td>Annotation Model, Linking Model</td>
+</tr>
 <tr>
   <td>Knott Annotation Model</td>
   <td>Annotation Model for the Knott (1996) discourse cue taxonomy (not used for corpus annotation, but for cue word classification, such discourse cues have been annotated in PDTB, though)</td>
   <td>discourse (relation) marker taxonomy</td>
-  <td>Annotation Model, no Linking Model yet</td> </tr> 
+  <td>Annotation Model, no Linking Model yet</td>
+</tr> 
 </table> 
 
 
@@ -196,37 +202,44 @@ formalized here together with a generalizing Reference Model fragment.
   <th>Model</td>
   <th>Description</th>
   <th>Phenomenon</th>
-  <th>OWL/DL models</th> </tr>
+  <th>OWL/DL models</th>
+</tr>
 <tr>
   <td>Reference Model</td>
   <td>Reference Model fragment, to be integrated with the OLiA Reference Model</td>
   <td>discourse structure, discourse relations, information structure, information status, coreference</td>
-  <td>OLiA Discourse Extensions model, Provisional Reference Model linking</td> </tr>
+  <td>OLiA Discourse Extensions model, Provisional Reference Model linking</td>
+</tr>
 <tr>
   <td>CRC632</td>
   <td>Annotation Model for the corpora of the Collaborative Research Center (SFB) 632, "Information Structure" (Potsdam, Berlin, Germany), applied to various, typologically different languages</td>
   <td>information structure, information status</td>
-  <td>Annotation Model, Linking Model</td> </tr>
+  <td>Annotation Model, Linking Model</td>
+</tr>
 <tr>
   <td>DIRNDL</td>
   <td>Annotation Model for the DIRNDL corpus (German, spoken language)</td>
   <td>information status, coreference</td>
-  <td>Annotation Model, Linking Model </td> </tr>
+  <td>Annotation Model, Linking Model </td>
+</tr>
 <tr>
   <td>PoCoS</td>
   <td>Annotation Model for the Potsdam Coreference Scheme, applied to English, German and Russian</td>
   <td>coreference</td>
-  <td>Annotation Model, Linking Model</td> </tr>
+  <td>Annotation Model, Linking Model</td>
+</tr>
 <tr>
   <td>ARRAU</td>
   <td>Annotation Model for the ARRAU corpus (English)</td>
   <td>coreference, bridging</td>
-  <td>Annotation Model, Linking Model</td> </tr>
+  <td>Annotation Model, Linking Model</td>
+</tr>
 <tr>
   <td>TüBa-D/Z</td>
   <td>Annotation Model for the TüBa-D/Z corpus (German)</td>
   <td>coreference</td>
-  <td>Annotation Model</td> </tr>
+  <td>Annotation Model</td>
+</tr>
 </table> 
 
 
