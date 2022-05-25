@@ -8,14 +8,7 @@ can be employed to facilitate the conceptual (semantic) interoperability
 of annotations of discourse phenomena as found in important corpora
 available to the community.
 
-1.  [OLiA Discourse Extensions](#background)
-    - [Reference Model fragment](http://purl.org/olia/discourse/olia_discourse.owl) (OWL2/DL)
-    - [provisional Linking with OLiA Reference Model](http://purl.org/olia/discourse/olia_discourse-link.rdf) (OWL2/DL)
-2.  [Discourse Structure Annotation](#discourse)
-    - [ontologies](#discourse.ontologies)
-3.  [Anaphora, Information Status and Information Structure](#is)
-    - [background](#is.background)
-    - [ontologies](#is.ontology)
+The OWL2/DL Reference Model of the OLiA Discourse Extensions can be found under [http://purl.org/olia/discourse/olia_discourse.owl](olia/discourse/olia_discourse.owl)
 
 ## Background
 
@@ -114,7 +107,7 @@ the Reference Model in bold):
 **Fig 2. Comparing CONDITIONs**
 
 
-### Discourse Ontologies {#discourse.ontologies}
+### Discourse Ontologies
 
 
 <table>
