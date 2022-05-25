@@ -401,9 +401,9 @@ We expect the future release of OLiA 1.0 to implement some major restructuring a
 
 For proposals to contribute towards the consolidation of OLiA and/or the development of OLiA 1.0, be it in the context of funded research or an informal collaboration, please reach out via the **[ACoLi mailing list](https://groups.google.com/g/acoli)** with the subject line `OLiA: ...`.
 
-As for the current version OLiA 0.x, this includes all versions of OLiA published under `http://nachhalt.sfb632.uni-potsdam.de/owl/olia.owl#` or `http://purl.org/olia/` (i.e., all since 2008). The original URIs from the University of Potsdam still resolve, but have not been updated since 2011. As of 2011, only Purl URIs should be used, not any direct links (to University of Potsdam, University of Leipzig, University of Frankfurt, or to GitHub), as we occasionally move from one hosting solution to another.
+As for the current version OLiA 0.x, this includes all versions of OLiA published under `http://purl.org/olia/` (i.e., all since 2011) and `http://nachhalt.sfb632.uni-potsdam.de/owl/` (2008-2011; still resolving, but no longer updated). 
 
-Prior to 2008, the predecessor of OLiA, developed since 2004 and first published in 2005, used a different namespace. This version is referred to as "E(xtended)-EAGLES" ontology with the namespace prefix `e-eagles:`.
+The first prototype of OLiA, developed since 2004 and first published in 2005, used a different namespace. This version is referred to as "E(xtended)-EAGLES" ontology with the namespace prefix `e-eagles:`, and it is partially compatible with OLiA only in that several classes had been renamed or removed until 2008.
 
 The first formal release of the OLiA ontologies occured in 2008:
 
@@ -418,6 +418,8 @@ The first formal release of the OLiA ontologies occured in 2008:
 	}
 
 This article established the name "OLiA", the modular structure of Reference and Annotation Models and the current URI schema. All modifications applied to the data since then have been *backward-compatible*. In particular, we *never* delete any concept or property in the Reference Model, but, instead, mark it as being deprecated. All versions of OLiA published after this paper fall under OLiA 0.x.
+
+The only major change in OLiA 0.x development occurred in 2011, when we replaced the physical paths in the original URI schema (`http://nachhalt.sfb632.uni-potsdam.de/owl/`) with Purl redirects. Until 2012, the Purl URLs were redirected to these addresses (and you can still access the 2012 version via that URL), but since then to different hosts. The Potsdam OLiA version will continue to work for the foreseeable future, but as an archival version only: it has not been updated since 2012. As of 2011, only Purl URIs should be used, not any direct links (to University of Potsdam, University of Leipzig, University of Frankfurt, or to GitHub), as we occasionally move from one hosting solution to another.
 
 ## Who's Using it?
 
