@@ -1,9 +1,10 @@
-
 # OLiA Discourse Extensions
 
 The **OLiA Discourse Extensions** extend the [Ontologies of Linguistic Annotation (OLiA)](http://purl.org/olia) with respect to **discourse features**. The OLiA ontologies provide a a terminology repository that can be employed to facilitate the conceptual (semantic) interoperability of annotations of discourse phenomena as found in important corpora available to the community, including the [RST Discourse
 Treebank](http://catalog.ldc.upenn.edu/LDC2002T07) and the [Penn
 Discourse Treebank](http://catalog.ldc.upenn.edu/LDC2008T05) as well as standards such as ISO SemAF and community standards such as CCR.
+
+For full documentation, please see our [website](https://acoli-repo.github.io/olia/discourse.html).
 
 ## Coverage
 

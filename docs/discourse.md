@@ -1,3 +1,6 @@
+# OLiA Discourse Extensions {#background}
+
+
 The **OLiA Discourse Extensions** extend the [Ontologies of Linguistic
 Annotation (OLiA)](http://purl.org/olia) with respect to **discourse
 features**. The OLiA ontologies provide a a terminology repository that
@@ -5,22 +8,19 @@ can be employed to facilitate the conceptual (semantic) interoperability
 of annotations of discourse phenomena as found in important corpora
 available to the community.
 
-1.  [OLiA Discourse Extensions](#background) \[[Reference Model
-    fragment](http://purl.org/olia/discourse/olia_discourse.owl)
-    (OWL2/DL), [provisional Linking with OLiA Reference
-    Model](http://purl.org/olia/discourse/olia_discourse-link.rdf)
-    (OWL2/DL)\]
+1.  [OLiA Discourse Extensions](#background)
+    - [Reference Model fragment](http://purl.org/olia/discourse/olia_discourse.owl) (OWL2/DL)
+    - [provisional Linking with OLiA Reference Model](http://purl.org/olia/discourse/olia_discourse-link.rdf) (OWL2/DL)
 2.  [Discourse Structure Annotation](#discourse)
-    \[[background](#discourse.background),
-    [ontologies](#discourse.ontologies)\]
+    - [ontologies](#discourse.ontologies)
 3.  [Anaphora, Information Status and Information Structure](#is)
-    \[[background](#is.background), [ontologies](#is.ontology)\]
+    - [background](#is.background)
+    - [ontologies](#is.ontology)
+
+## Background
 
 
-# OLiA Discourse Extensions {#background}
-
-
-We descrone the extension of the Ontologies of Linguistic
+The OLiA Discourse Extensions extend the Ontologies of Linguistic
 Annotation (OLiA) with respect to **discourse
 features**. The OLiA ontologies provide a a terminology repository that
 can be employed to facilitate the conceptual (semantic) interoperability
@@ -79,8 +79,6 @@ preparation.
 
 ## Discourse Structure Annotation {#discourse}
 
-### Background {#discourse.background}
-
 Different theories of discourse structure emerged in the past decades,
 and different models of annotation have been developed, accordingly, as
 illustrated for two alternative annotations of the same sentence in the
@@ -116,7 +114,7 @@ the Reference Model in bold):
 **Fig 2. Comparing CONDITIONs**
 
 
-### Ontologies {#discourse.ontologies}
+### Discourse Ontologies {#discourse.ontologies}
 
 <table>
 <tr>
@@ -126,40 +124,38 @@ the Reference Model in bold):
   <th>OWL/DL models</th> </tr>
 <tr>
   <td>Reference Model</td>
-  <td>Reference Model fragment for discourse structure and discourse relations, to be integrated with <a>the OLiA Reference Model</a></td>
+  <td>Reference Model fragment for discourse structure and discourse relations, to be integrated with the OLiA Reference Model</td>
   <td>discourse structure, discourse relations, information structure, information status, coreference</td>
-  <td><a>OLiA Discourse Extensions Model</a>, <a>Provisional Reference Model linking</a></td> </tr>
+  <td>OLiA Discourse Extensions Model, Provisional Reference Model linking</td> </tr>
 <tr>
   <td>RST Annotation Modell</td>
-  <td>Annotation Model for RST (<a>http://www.sfu.ca/rst/, English, French, Portuguese, Spanish)</a></td>
+  <td>Annotation Model for RST (http://www.sfu.ca/rst/, English, French, Portuguese, Spanish)</td>
   <td>discourse structure, discourse relations</td>
-  <td><a>Annotation Model</a>, <a>Linking Model</a> </td> </tr>
+  <td>Annotation Model, Linking Model </td> </tr>
 <tr>
   <td>RSTDTB Annotation Model</td>
-  <td>Annotation Model for the RST Discourse Treebank (English, Wallstreet Journal)</a></td>
+  <td>Annotation Model for the RST Discourse Treebank (English, Wallstreet Journal)</td>
   <td>discourse structure, discourse relations</td>
-  <td><a>Annotation Model</a>, <a>Linking Model</a> </td> </tr>
+  <td>Annotation Model, Linking Model </td> </tr>
 <tr>
   <td>PDTB Annotation Model</td>
-  <td>Annotation Model for the Penn Discourse Treebank (English, Wallstreet Journal), also applicable to PDTB-derivatives for Turkish, Hindi, Italian and Chinese</a></td>
+  <td>Annotation Model for the Penn Discourse Treebank (English, Wallstreet Journal), also applicable to PDTB-derivatives for Turkish, Hindi, Italian and Chinese</td>
   <td>discourse relations</td>
-  <td><a>Annotation Model</a>, <a>Linking Model</a></td> </tr>
+  <td>Annotation Model, Linking Model</td> </tr>
 <tr>
   <td>PDGB Annotation Model</td>
-  <td>Annotation Model for the Penn Discourse Graphbank (English, incl. Wallstreet Journal)</a></td>
+  <td>Annotation Model for the Penn Discourse Graphbank (English, incl. Wallstreet Journal)</td>
   <td>discourse relations</td>
-  <td><a>Annotation Model</a>, <a>Linking Model</a></td> </tr>
+  <td>Annotation Model, Linking Model</td> </tr>
 <tr>
   <td>Knott Annotation Model</td>
-  <td>Annotation Model for the Knott (1996) discourse cue taxonomy (not used for corpus annotation, but for cue word classification, such discourse cues have been annotated in PDTB, though)</a></td>
+  <td>Annotation Model for the Knott (1996) discourse cue taxonomy (not used for corpus annotation, but for cue word classification, such discourse cues have been annotated in PDTB, though)</td>
   <td>discourse (relation) marker taxonomy</td>
-  <td><a>Annotation Model</a>, no Linking Model yet</td> </tr> 
+  <td>Annotation Model, no Linking Model yet</td> </tr> 
 </table> 
 
 
 ## Anaphora, Information Status and Information Structure {#is}
-
-### Background {#is.background}
 
 Whereas discourse structure and discourse relations are particularly
 relevant with respect to the global structure of a discourse, the
@@ -199,7 +195,7 @@ For both anaphora annotation and information structure/status
 annotation, different schemes have been developed, some of which are
 formalized here together with a generalizing Reference Model fragment.
 
-### Ontologies {#is.ontology}
+### IS Ontologies {#is.ontology}
 
 <table>
 <tr>
@@ -209,34 +205,34 @@ formalized here together with a generalizing Reference Model fragment.
   <th>OWL/DL models</th> </tr>
 <tr>
   <td>Reference Model</td>
-  <td>Reference Model fragment, to be integrated with <a>the OLiA Reference Model</a></td>
+  <td>Reference Model fragment, to be integrated with the OLiA Reference Model</td>
   <td>discourse structure, discourse relations, information structure, information status, coreference</td>
-  <td><a>OLiA Discourse Extensions model</a>, <a>Provisional Reference Model linking</a></td> </tr>
+  <td>OLiA Discourse Extensions model, Provisional Reference Model linking</td> </tr>
 <tr>
   <td>CRC632</td>
   <td>Annotation Model for the corpora of the Collaborative Research Center (SFB) 632, "Information Structure" (Potsdam, Berlin, Germany), applied to various, typologically different languages</td>
   <td>information structure, information status</td>
-  <td><a>Annotation Model</a>, <a>Linking Model</a></td> </tr>
+  <td>Annotation Model, Linking Model</td> </tr>
 <tr>
   <td>DIRNDL</td>
   <td>Annotation Model for the DIRNDL corpus (German, spoken language)</td>
   <td>information status, coreference</td>
-  <td><a>Annotation Model</a>, <a>Linking Model</a> </td> </tr>
+  <td>Annotation Model, Linking Model </td> </tr>
 <tr>
   <td>PoCoS</td>
   <td>Annotation Model for the Potsdam Coreference Scheme, applied to English, German and Russian</td>
   <td>coreference</td>
-  <td><a>Annotation Model</a>, <a>Linking Model</a></td> </tr>
+  <td>Annotation Model, Linking Model</td> </tr>
 <tr>
   <td>ARRAU</td>
   <td>Annotation Model for the ARRAU corpus (English)</td>
   <td>coreference, bridging</td>
-  <td><a>Annotation Model</a>, <a>Linking Model</a></td> </tr>
+  <td>Annotation Model, Linking Model</td> </tr>
 <tr>
   <td>TüBa-D/Z</td>
   <td>Annotation Model for the TüBa-D/Z corpus (German)</td>
   <td>coreference</td>
-  <td><a>Annotation Model</a></td> </tr>
+  <td>Annotation Model</td> </tr>
 </table> 
 
 

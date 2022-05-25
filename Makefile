@@ -115,6 +115,15 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 						else \
 							if cp $$file $$tgt; then \
 								echo ok 1>&2; \
+								if [ ! -e `dirname $$tgt`/index.md ]; then \
+									for name in index.md Readme.md README.md; do \
+										if [ ! -e `dirname $$tgt`/index.md ]; then \
+											if [ -e `dirname $$file`/$$name ]; then \
+												cp `dirname $$file`/$$name `dirname $$tgt`/index.md; \
+											fi;\
+										fi;\
+									done;\
+								fi;\
 							else \
 								echo error: could not create $$tgt, exiting 1>&2; \
 								exit 1; \
