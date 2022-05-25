@@ -1,0 +1,895 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY olia "http://purl.org/olia/olia.owl#" >
+    <!ENTITY olia-top "http://purl.org/olia/olia-top.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY proiel "http://purl.org/olia/proiel.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/proiel-link.rdf#"
+     xml:base="http://purl.org/olia/proiel-link.rdf"
+     xmlns:olia="http://purl.org/olia/olia.owl#"
+     xmlns:olia-top="http://purl.org/olia/olia-top.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:proiel="http://purl.org/olia/proiel.owl#">
+    <owl:Ontology rdf:about="">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <owl:imports rdf:resource="http://purl.org/olia/proiel.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/olia-top.owl"/>
+        <rdfs:comment>Linking model for PROIEL annotations</rdfs:comment>
+        <owl:versionInfo>created by MS
+        
+        2017-06-10 fixed URIs, moved to stable (CC)
+        
+        CC Christian Chiarcos, Goethe-Universität Frankfurt
+        MS Maria Sukhareva, Goethe-Universität Frankfurt
+        </owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#superClassOf -->
+
+    <owl:ObjectProperty rdf:about="&rdfs;superClassOf"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#bottomObjectProperty -->
+
+    <owl:ObjectProperty rdf:about="&owl;bottomObjectProperty">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;bottomObjectProperty"/>
+        <owl:propertyDisjointWith rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&owl;bottomObjectProperty"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <owl:ObjectProperty rdf:about="&owl;topObjectProperty">
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#bottomDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="&owl;bottomDataProperty">
+        <rdfs:subPropertyOf rdf:resource="&owl;bottomDataProperty"/>
+        <owl:propertyDisjointWith rdf:resource="&owl;topDataProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&owl;bottomDataProperty"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="&owl;topDataProperty">
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Adjunct -->
+
+    <owl:Class rdf:about="&proiel;Adjunct">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticAdjunct"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#AdnominalPartitive -->
+
+    <owl:Class rdf:about="&proiel;AdnominalPartitive">
+        <rdfs:subClassOf rdf:resource="&olia;AdnominalConstituent"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >TODO: it is also partitive case</owl:versionInfo>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Adnominals -->
+
+    <owl:Class rdf:about="&proiel;Adnominals">
+        <rdfs:subClassOf rdf:resource="&olia;AdnominalConstituent"/>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#AdverbialAppositions -->
+
+    <owl:Class rdf:about="&proiel;AdverbialAppositions">
+        <rdfs:subClassOf rdf:resource="&olia;Adverbial"/>
+        <rdfs:subClassOf rdf:resource="&olia;Apposition"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+        <owl:versionInfo
+            >TODO: it is also apposition</owl:versionInfo>
+    </owl:Class>
+    
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Adverbials -->
+
+    <owl:Class rdf:about="&proiel;Adverbials">
+        <rdfs:subClassOf rdf:resource="&olia;Adverbial"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo>no upper model concept found, check manually</owl:versionInfo>
+    </owl:Class>
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Adverbials -->
+
+    <owl:Class rdf:about="&proiel;AdverbialAppositions">
+        <rdfs:subClassOf rdf:resource="&olia;Adverbial"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo>no upper model concept found, check manually</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Agent -->
+
+    <owl:Class rdf:about="&proiel;Agent">
+        <rdfs:subClassOf rdf:resource="&olia;AgentRole"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Apposition -->
+
+    <owl:Class rdf:about="&proiel;Apposition">
+        <rdfs:subClassOf rdf:resource="&olia;Apposition"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >automatically linked</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Argument -->
+
+    <owl:Class rdf:about="&proiel;Argument">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#ArgumentsOfNouns -->
+
+    <owl:Class rdf:about="&proiel;ArgumentsOfNouns">
+        <rdfs:subClassOf rdf:resource="&olia;Argument"/>
+        <rdfs:subClassOf rdf:resource="&olia;PrepositionalPhrase"/>
+        <owl:versionInfo>no linking</owl:versionInfo>
+        <owl:versionInfo
+            >TODO: it is arguments and it is a noun phrase</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Attributive -->
+
+    <owl:Class rdf:about="&proiel;Attributive">
+        <rdfs:subClassOf rdf:resource="&olia;Adjectival"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >TODO: not only adjective</owl:versionInfo>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Auxiliary -->
+
+    <owl:Class rdf:about="&proiel;Auxiliary">
+        <rdfs:superClassOf rdf:resource="&olia;Adposition"/>
+        <rdfs:superClassOf rdf:resource="&olia;AuxiliaryVerb"/>
+        <rdfs:superClassOf rdf:resource="&olia;Conjunction"/>
+        <rdfs:superClassOf rdf:resource="&olia;Negation"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo>linking confirmed</owl:versionInfo>
+        <owl:versionInfo
+            >TODO: auxiliary is not only verb but also conjunctions and prepositions</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Complement -->
+
+    <owl:Class rdf:about="&proiel;Complement">
+        <rdfs:subClassOf rdf:resource="&olia;ComplementClause"/>
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticComplement"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+        <owl:versionInfo
+            >TODO: it is both complement clause and syntactic complement</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Coordination -->
+
+    <owl:Class rdf:about="&proiel;Coordination">
+        <rdfs:subClassOf rdf:resource="&olia;Coordination"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >automatically linked</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#DependencyLabel -->
+
+    <owl:Class rdf:about="&proiel;DependencyLabel">
+        <owl:versionInfo
+            >no upper model concept found, check manually</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#DependencyRelation -->
+
+    <owl:Class rdf:about="&proiel;DependencyRelation">
+        <owl:versionInfo>no linking</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Nonsubj -->
+
+    <owl:Class rdf:about="&proiel;Nonsubj">
+        <owl:versionInfo
+            >no upper model concept found, check manually</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#NounPhrasesWithoutNoun -->
+
+    <owl:Class rdf:about="&proiel;NounPhrasesWithoutNoun">
+        <rdfs:subClassOf rdf:resource="&olia;NounPhrase"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo>linking confirmed</owl:versionInfo>
+        <owl:versionInfo>TODO: def a noun phrase but there is no noun</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Object -->
+
+    <owl:Class rdf:about="&proiel;Object">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticObject"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Oblique -->
+
+    <owl:Class rdf:about="&proiel;Oblique">
+        <rdfs:subClassOf rdf:resource="&olia;ObliqueCase"/>
+        <rdfs:subClassOf rdf:resource="&olia;ObliqueRole"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#ParentheticalPredicate -->
+
+    <owl:Class rdf:about="&proiel;ParentheticalPredicate">
+        <rdfs:subClassOf rdf:resource="&olia;DirectSpeech"/>
+        <rdfs:subClassOf rdf:resource="&olia;Predicate"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+        <owl:versionInfo
+            >TODO: it is also parenthetical and it is direct speech</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#PartitiveCase -->
+
+    <owl:Class rdf:about="&proiel;PartitiveCase">
+        <owl:equivalentClass rdf:resource="&proiel;AdnominalPartitive"/>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Peripheral -->
+
+    <owl:Class rdf:about="&proiel;Peripheral">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticConstruction"/>
+        <owl:versionInfo
+            >no upper model concept found, check manually</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Predicate -->
+
+    <owl:Class rdf:about="&proiel;Predicate">
+        <rdfs:subClassOf rdf:resource="&proiel;Root"/>
+        <rdfs:subClassOf rdf:resource="&olia-top;Root"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >automatically linked</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#PredicativeComplements -->
+
+    <owl:Class rdf:about="&proiel;PredicativeComplements">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticComplement"/>
+        <owl:versionInfo>no linking</owl:versionInfo>
+        <owl:versionInfo
+            >TODO: it is a complement of a predicate like subject, object</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#PrepositionalComplement -->
+
+    <owl:Class rdf:about="&proiel;PrepositionalComplement">
+        <rdfs:subClassOf rdf:resource="&olia;PrepositionalPhrase"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Root -->
+
+    <owl:Class rdf:about="&proiel;Root">
+        <rdfs:subClassOf rdf:resource="&olia;Predicate"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >automatically linked</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#SentenceLevelRelations -->
+
+    <owl:Class rdf:about="&proiel;SentenceLevelRelations">
+        <rdfs:subClassOf rdf:resource="&olia;Sentence"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Subject -->
+
+    <owl:Class rdf:about="&proiel;Subject">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticSubject"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Subjunction -->
+
+    <owl:Class rdf:about="&proiel;Subjunction">
+        <rdfs:subClassOf rdf:resource="&olia;SubordinateClause"/>
+        <owl:versionInfo
+            >no upper model concept found, check manually</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Token -->
+
+    <owl:Class rdf:about="&proiel;Token">
+        <rdfs:subClassOf rdf:resource="&olia;Token"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >automatically linked</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Vocative -->
+
+    <owl:Class rdf:about="&proiel;Vocative">
+        <rdfs:subClassOf rdf:resource="&olia;VocativeCase"/>
+        <rdfs:subClassOf rdf:resource="&olia;VocativeExpression"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:versionInfo
+            >linking confirmed</owl:versionInfo>
+        <owl:versionInfo
+            >TODO: vocative case and vocative expression</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Adjectival -->
+
+    <owl:Class rdf:about="&olia;Adjectival"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AdnominalConstituent -->
+
+    <owl:Class rdf:about="&olia;AdnominalConstituent">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Adposition -->
+
+    <owl:Class rdf:about="&olia;Adposition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Adverbial -->
+
+    <owl:Class rdf:about="&olia;Adverbial">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AgentRole -->
+
+    <owl:Class rdf:about="&olia;AgentRole">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Apposition -->
+
+    <owl:Class rdf:about="&olia;Apposition">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Argument -->
+
+    <owl:Class rdf:about="&olia;Argument"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AttributiveAdjective -->
+
+    <owl:Class rdf:about="&olia;AttributiveAdjective">
+        <rdfs:subClassOf rdf:resource="&proiel;Attributive"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="&olia;AuxiliaryVerb">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ComplementClause -->
+
+    <owl:Class rdf:about="&olia;ComplementClause">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Conjunction -->
+
+    <owl:Class rdf:about="&olia;Conjunction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Coordination -->
+
+    <owl:Class rdf:about="&olia;Coordination">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DirectSpeech -->
+
+    <owl:Class rdf:about="&olia;DirectSpeech"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#FacultativePrepositionalObject -->
+
+    <owl:Class rdf:about="&olia;FacultativePrepositionalObject">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NounPhrase -->
+
+    <owl:Class rdf:about="&olia;NounPhrase">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NullElement -->
+
+    <owl:Class rdf:about="&olia;NullElement"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ObliqueCase -->
+
+    <owl:Class rdf:about="&olia;ObliqueCase">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ObliqueRole -->
+
+    <owl:Class rdf:about="&olia;ObliqueRole"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Predicate -->
+
+    <owl:Class rdf:about="&olia;Predicate">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PrepositionalPhrase -->
+
+    <owl:Class rdf:about="&olia;PrepositionalPhrase">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Root -->
+
+    <owl:Class rdf:about="&olia;Root">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Sentence -->
+
+    <owl:Class rdf:about="&olia;Sentence">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SubordinateClause -->
+
+    <owl:Class rdf:about="&olia;SubordinateClause"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticAdjunct -->
+
+    <owl:Class rdf:about="&olia;SyntacticAdjunct">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticArgument -->
+
+    <owl:Class rdf:about="&olia;SyntacticArgument">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticComplement -->
+
+    <owl:Class rdf:about="&olia;SyntacticComplement"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticConstruction -->
+
+    <owl:Class rdf:about="&olia;SyntacticConstruction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticObject -->
+
+    <owl:Class rdf:about="&olia;SyntacticObject">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticSubject -->
+
+    <owl:Class rdf:about="&olia;SyntacticSubject">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="&proiel;Nonsubj"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Token -->
+
+    <owl:Class rdf:about="&olia;Token">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#VocativeCase -->
+
+    <owl:Class rdf:about="&olia;VocativeCase">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#VocativeExpression -->
+
+    <owl:Class rdf:about="&olia;VocativeExpression"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Nothing -->
+
+    <owl:Class rdf:about="&owl;Nothing">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&owl;Thing"/>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&proiel;Adjunct"/>
+        <rdfs:subClassOf rdf:resource="&proiel;AdnominalPartitive"/>
+        <rdfs:subClassOf rdf:resource="&proiel;AdverbialAppositions"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Adverbials"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Agent"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Apposition"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Argument"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Attributive"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Auxiliary"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Complement"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Coordination"/>
+        <rdfs:subClassOf rdf:resource="&proiel;NounPhrasesWithoutNoun"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Object"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Oblique"/>
+        <rdfs:subClassOf rdf:resource="&proiel;ParentheticalPredicate"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Predicate"/>
+        <rdfs:subClassOf rdf:resource="&proiel;PrepositionalComplement"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Root"/>
+        <rdfs:subClassOf rdf:resource="&proiel;SentenceLevelRelations"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Subject"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Token"/>
+        <rdfs:subClassOf rdf:resource="&proiel;Vocative"/>
+        <rdfs:subClassOf rdf:resource="&olia;AdnominalConstituent"/>
+        <rdfs:subClassOf rdf:resource="&olia;Adverbial"/>
+        <rdfs:subClassOf rdf:resource="&olia;AgentRole"/>
+        <rdfs:subClassOf rdf:resource="&olia;Apposition"/>
+        <rdfs:subClassOf rdf:resource="&olia;AttributiveAdjective"/>
+        <rdfs:subClassOf rdf:resource="&olia;AuxiliaryVerb"/>
+        <rdfs:subClassOf rdf:resource="&olia;ComplementClause"/>
+        <rdfs:subClassOf rdf:resource="&olia;Coordination"/>
+        <rdfs:subClassOf rdf:resource="&olia;FacultativePrepositionalObject"/>
+        <rdfs:subClassOf rdf:resource="&olia;NounPhrase"/>
+        <rdfs:subClassOf rdf:resource="&olia;ObliqueCase"/>
+        <rdfs:subClassOf rdf:resource="&olia;Predicate"/>
+        <rdfs:subClassOf rdf:resource="&olia;PrepositionalPhrase"/>
+        <rdfs:subClassOf rdf:resource="&olia;Root"/>
+        <rdfs:subClassOf rdf:resource="&olia;Sentence"/>
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticAdjunct"/>
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticArgument"/>
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticObject"/>
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticSubject"/>
+        <rdfs:subClassOf rdf:resource="&olia;Token"/>
+        <rdfs:subClassOf rdf:resource="&olia;VocativeCase"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="&proiel;Adjunct"/>
+        <owl:disjointWith rdf:resource="&proiel;AdnominalPartitive"/>
+        <owl:disjointWith rdf:resource="&proiel;AdverbialAppositions"/>
+        <owl:disjointWith rdf:resource="&proiel;Adverbials"/>
+        <owl:disjointWith rdf:resource="&proiel;Agent"/>
+        <owl:disjointWith rdf:resource="&proiel;Apposition"/>
+        <owl:disjointWith rdf:resource="&proiel;Argument"/>
+        <owl:disjointWith rdf:resource="&proiel;Attributive"/>
+        <owl:disjointWith rdf:resource="&proiel;Auxiliary"/>
+        <owl:disjointWith rdf:resource="&proiel;Complement"/>
+        <owl:disjointWith rdf:resource="&proiel;Coordination"/>
+        <owl:disjointWith rdf:resource="&proiel;NounPhrasesWithoutNoun"/>
+        <owl:disjointWith rdf:resource="&proiel;Object"/>
+        <owl:disjointWith rdf:resource="&proiel;Oblique"/>
+        <owl:disjointWith rdf:resource="&proiel;ParentheticalPredicate"/>
+        <owl:disjointWith rdf:resource="&proiel;Predicate"/>
+        <owl:disjointWith rdf:resource="&proiel;PrepositionalComplement"/>
+        <owl:disjointWith rdf:resource="&proiel;Root"/>
+        <owl:disjointWith rdf:resource="&proiel;SentenceLevelRelations"/>
+        <owl:disjointWith rdf:resource="&proiel;Subject"/>
+        <owl:disjointWith rdf:resource="&proiel;Token"/>
+        <owl:disjointWith rdf:resource="&proiel;Vocative"/>
+        <owl:disjointWith rdf:resource="&olia;AdnominalConstituent"/>
+        <owl:disjointWith rdf:resource="&olia;Adverbial"/>
+        <owl:disjointWith rdf:resource="&olia;AgentRole"/>
+        <owl:disjointWith rdf:resource="&olia;Apposition"/>
+        <owl:disjointWith rdf:resource="&olia;AttributiveAdjective"/>
+        <owl:disjointWith rdf:resource="&olia;AuxiliaryVerb"/>
+        <owl:disjointWith rdf:resource="&olia;ComplementClause"/>
+        <owl:disjointWith rdf:resource="&olia;Coordination"/>
+        <owl:disjointWith rdf:resource="&olia;FacultativePrepositionalObject"/>
+        <owl:disjointWith rdf:resource="&olia;NounPhrase"/>
+        <owl:disjointWith rdf:resource="&olia;ObliqueCase"/>
+        <owl:disjointWith rdf:resource="&olia;Predicate"/>
+        <owl:disjointWith rdf:resource="&olia;PrepositionalPhrase"/>
+        <owl:disjointWith rdf:resource="&olia;Root"/>
+        <owl:disjointWith rdf:resource="&olia;Sentence"/>
+        <owl:disjointWith rdf:resource="&olia;SyntacticAdjunct"/>
+        <owl:disjointWith rdf:resource="&olia;SyntacticArgument"/>
+        <owl:disjointWith rdf:resource="&olia;SyntacticObject"/>
+        <owl:disjointWith rdf:resource="&olia;SyntacticSubject"/>
+        <owl:disjointWith rdf:resource="&olia;Token"/>
+        <owl:disjointWith rdf:resource="&olia;VocativeCase"/>
+    </owl:Class>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&owl;Nothing"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&owl;Nothing"/>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&owl;Nothing"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#DependencyLabel -->
+
+    <owl:Thing rdf:about="&proiel;DependencyLabel"/>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#DependencyRelation -->
+
+    <owl:Thing rdf:about="&proiel;DependencyRelation"/>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Marker -->
+
+    <owl:Thing rdf:about="&proiel;Marker">
+        <owl:versionInfo>no linking</owl:versionInfo>
+    </owl:Thing>
+    
+
+
+    <!-- file:///home/maria/Data/experimental/acoli/proiel.owl#Relative -->
+
+    <owl:Thing rdf:about="&proiel;Relative">
+        <rdfs:superClassOf rdf:resource="&olia;ReducedRelativeClause"/>
+        <rdfs:superClassOf rdf:resource="&olia;RelativeClause"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ReducedRelativeClause -->
+
+    <owl:Thing rdf:about="&olia;ReducedRelativeClause"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#RelativeClause -->
+
+    <owl:Thing rdf:about="&olia;RelativeClause"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

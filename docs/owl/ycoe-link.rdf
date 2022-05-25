@@ -1,0 +1,961 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY ycoe "http://purl.org/olia/ycoe.owl#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY olia "http://purl.org/olia/olia.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY olia-top "http://purl.org/olia/olia-top.owl#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/ycoe-link.rdf#"
+     xml:base="http://purl.org/olia/ycoe-link.rdf"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:olia="http://purl.org/olia/olia.owl#"
+     xmlns:ycoe="http://purl.org/olia/ycoe.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:olia-top="http://purl.org/olia/olia-top.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <rdfs:comment xml:lang="en"
+            >OLiA Linking Model for the York-Toronto-Helsinki Parsed Corpus
+of Old English Prose (YCOE), POS tags</rdfs:comment>
+        <owl:versionInfo xml:lang="en"
+            >TODO: add syntax labels
+2017-06-16 created for POS (CC)
+
+contributors:
+CC Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+        <owl:imports rdf:resource="http://purl.org/olia/ycoe.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#CaseFeature -->
+
+    <owl:Class rdf:about="&olia-top;CaseFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#MoodFeature -->
+
+    <owl:Class rdf:about="&olia-top;MoodFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#MorphosyntacticCategory -->
+
+    <owl:Class rdf:about="&olia-top;MorphosyntacticCategory"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#SemanticRole -->
+
+    <owl:Class rdf:about="&olia-top;SemanticRole"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#TenseFeature -->
+
+    <owl:Class rdf:about="&olia-top;TenseFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Accusative -->
+
+    <owl:Class rdf:about="&olia;Accusative"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Adjective -->
+
+    <owl:Class rdf:about="&olia;Adjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Adverb -->
+
+    <owl:Class rdf:about="&olia;Adverb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="&olia;AuxiliaryVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CommonNoun -->
+
+    <owl:Class rdf:about="&olia;CommonNoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Comparative -->
+
+    <owl:Class rdf:about="&olia;Comparative"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="&olia;CoordinatingConjunction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Copula -->
+
+    <owl:Class rdf:about="&olia;Copula"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DativeCase -->
+
+    <owl:Class rdf:about="&olia;DativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Determiner -->
+
+    <owl:Class rdf:about="&olia;Determiner"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DirectionRole -->
+
+    <owl:Class rdf:about="&olia;DirectionRole"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Foreign -->
+
+    <owl:Class rdf:about="&olia;Foreign"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#GenitiveCase -->
+
+    <owl:Class rdf:about="&olia;GenitiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ImperativeMood -->
+
+    <owl:Class rdf:about="&olia;ImperativeMood"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndefinitePronoun -->
+
+    <owl:Class rdf:about="&olia;IndefinitePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndicativeMood -->
+
+    <owl:Class rdf:about="&olia;IndicativeMood"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Infinitive -->
+
+    <owl:Class rdf:about="&olia;Infinitive"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InstrumentalCase -->
+
+    <owl:Class rdf:about="&olia;InstrumentalCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Interjection -->
+
+    <owl:Class rdf:about="&olia;Interjection"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#LocationRole -->
+
+    <owl:Class rdf:about="&olia;LocationRole"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ModalVerb -->
+
+    <owl:Class rdf:about="&olia;ModalVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NegativeParticle -->
+
+    <owl:Class rdf:about="&olia;NegativeParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Nominative -->
+
+    <owl:Class rdf:about="&olia;Nominative"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Numeral -->
+
+    <owl:Class rdf:about="&olia;Numeral"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ParticleAdverb -->
+
+    <owl:Class rdf:about="&olia;ParticleAdverb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Past -->
+
+    <owl:Class rdf:about="&olia;Past"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PastParticiple -->
+
+    <owl:Class rdf:about="&olia;PastParticiple"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="&olia;PersonalPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PossessivePronoun -->
+
+    <owl:Class rdf:about="&olia;PossessivePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Preposition -->
+
+    <owl:Class rdf:about="&olia;Preposition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Present -->
+
+    <owl:Class rdf:about="&olia;Present"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PresentParticiple -->
+
+    <owl:Class rdf:about="&olia;PresentParticiple"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ProperNoun -->
+
+    <owl:Class rdf:about="&olia;ProperNoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Punctuation -->
+
+    <owl:Class rdf:about="&olia;Punctuation"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Quantifier -->
+
+    <owl:Class rdf:about="&olia;Quantifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SentenceFinalPunctuation -->
+
+    <owl:Class rdf:about="&olia;SentenceFinalPunctuation"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SentenceMedialPunctuation -->
+
+    <owl:Class rdf:about="&olia;SentenceMedialPunctuation"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#StrictAuxiliaryVerb -->
+
+    <owl:Class rdf:about="&olia;StrictAuxiliaryVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SubjunctiveMood -->
+
+    <owl:Class rdf:about="&olia;SubjunctiveMood"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="&olia;SubordinatingConjunction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Superlative -->
+
+    <owl:Class rdf:about="&olia;Superlative"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#TimeRole -->
+
+    <owl:Class rdf:about="&olia;TimeRole"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Verb -->
+
+    <owl:Class rdf:about="&olia;Verb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#WHDeterminer -->
+
+    <owl:Class rdf:about="&olia;WHDeterminer"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#WHPronoun -->
+
+    <owl:Class rdf:about="&olia;WHPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#WHTypeAdverbs -->
+
+    <owl:Class rdf:about="&olia;WHTypeAdverbs"/>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AccusativeCase -->
+
+    <owl:Class rdf:about="&ycoe;AccusativeCase">
+        <rdfs:subClassOf rdf:resource="&olia;Accusative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Adjective -->
+
+    <owl:Class rdf:about="&ycoe;Adjective">
+        <rdfs:subClassOf rdf:resource="&olia;Adjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Adverb -->
+
+    <owl:Class rdf:about="&ycoe;Adverb">
+        <rdfs:subClassOf rdf:resource="&olia;Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AdverbialParticle -->
+
+    <owl:Class rdf:about="&ycoe;AdverbialParticle">
+        <rdfs:subClassOf rdf:resource="&olia;ParticleAdverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AmbiguousVerbForm -->
+
+    <owl:Class rdf:about="&ycoe;AmbiguousVerbForm">
+        <rdfs:subClassOf rdf:resource="&olia-top;MoodFeature"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;IndicativeMood"/>
+                    <rdf:Description rdf:about="&olia;SubjunctiveMood"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >This ambiguity seems to exclusively refer to Indicative vs. Subjunctive</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="&ycoe;AuxiliaryVerb">
+        <rdfs:subClassOf rdf:resource="&olia;StrictAuxiliaryVerb"/>
+        <owl:versionInfo
+            >TODO: verify definition of &quot;auxiliary&quot;: does this include copula?</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Be -->
+
+    <owl:Class rdf:about="&ycoe;Be">
+        <rdfs:subClassOf rdf:resource="&olia;Copula"/>
+        <owl:versionInfo
+            >TODO: verify definition of YCOE category. May include non-copular (and non-auxiliary?) uses.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Case -->
+
+    <owl:Class rdf:about="&ycoe;Case">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia-top;CaseFeature"/>
+                    <rdf:Description rdf:about="&olia-top;SemanticRole"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#CommonNoun -->
+
+    <owl:Class rdf:about="&ycoe;CommonNoun">
+        <rdfs:subClassOf rdf:resource="&olia;CommonNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ComparativeAdjective -->
+
+    <owl:Class rdf:about="&ycoe;ComparativeAdjective">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Adjective"/>
+                    <rdf:Description rdf:about="&olia;Comparative"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ComparativeAdverb -->
+
+    <owl:Class rdf:about="&ycoe;ComparativeAdverb">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Adverb"/>
+                    <rdf:Description rdf:about="&olia;Comparative"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ComparativeQuantifier -->
+
+    <owl:Class rdf:about="&ycoe;ComparativeQuantifier">
+        <rdfs:subClassOf rdf:resource="&olia;Comparative"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Quantifier"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Numeral"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Complementizer -->
+
+    <owl:Class rdf:about="&ycoe;Complementizer">
+        <rdfs:subClassOf rdf:resource="&olia;SubordinatingConjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="&ycoe;CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="&olia;CoordinatingConjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#DativeCase -->
+
+    <owl:Class rdf:about="&ycoe;DativeCase">
+        <rdfs:subClassOf rdf:resource="&olia;DativeCase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Determiner -->
+
+    <owl:Class rdf:about="&ycoe;Determiner">
+        <rdfs:subClassOf rdf:resource="&olia;Determiner"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Directional -->
+
+    <owl:Class rdf:about="&ycoe;Directional">
+        <rdfs:subClassOf rdf:resource="&olia;DirectionRole"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#FinalPunctuation -->
+
+    <owl:Class rdf:about="&ycoe;FinalPunctuation">
+        <rdfs:subClassOf rdf:resource="&olia;SentenceFinalPunctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ForeignWord -->
+
+    <owl:Class rdf:about="&ycoe;ForeignWord">
+        <rdfs:subClassOf rdf:resource="&olia;Foreign"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#GenitiveCase -->
+
+    <owl:Class rdf:about="&ycoe;GenitiveCase">
+        <rdfs:subClassOf rdf:resource="&olia;GenitiveCase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Have -->
+
+    <owl:Class rdf:about="&ycoe;Have">
+        <owl:versionInfo
+            >TODO: check definition, apparently, this is not the auxiliary HAVE</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Imperative -->
+
+    <owl:Class rdf:about="&ycoe;Imperative">
+        <rdfs:subClassOf rdf:resource="&olia;ImperativeMood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ImperativeOrSubjunctive -->
+
+    <owl:Class rdf:about="&ycoe;ImperativeOrSubjunctive">
+        <rdfs:subClassOf rdf:resource="&olia-top;MoodFeature"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;ImperativeMood"/>
+                    <rdf:Description rdf:about="&olia;SubjunctiveMood"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#IndefiniteMan -->
+
+    <owl:Class rdf:about="&ycoe;IndefiniteMan">
+        <rdfs:subClassOf rdf:resource="&olia;IndefinitePronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Indicative -->
+
+    <owl:Class rdf:about="&ycoe;Indicative">
+        <rdfs:subClassOf rdf:resource="&olia;IndicativeMood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Infinitive -->
+
+    <owl:Class rdf:about="&ycoe;Infinitive">
+        <rdfs:subClassOf rdf:resource="&olia;Infinitive"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#InstrumentalCase -->
+
+    <owl:Class rdf:about="&ycoe;InstrumentalCase">
+        <rdfs:subClassOf rdf:resource="&olia;InstrumentalCase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Interjection -->
+
+    <owl:Class rdf:about="&ycoe;Interjection">
+        <rdfs:subClassOf rdf:resource="&olia;Interjection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Locative -->
+
+    <owl:Class rdf:about="&ycoe;Locative">
+        <rdfs:subClassOf rdf:resource="&olia;LocationRole"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ModalVerb -->
+
+    <owl:Class rdf:about="&ycoe;ModalVerb">
+        <rdfs:subClassOf rdf:resource="&olia;ModalVerb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Negation -->
+
+    <owl:Class rdf:about="&ycoe;Negation">
+        <rdfs:subClassOf rdf:resource="&olia;NegativeParticle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NominativeCase -->
+
+    <owl:Class rdf:about="&ycoe;NominativeCase">
+        <rdfs:subClassOf rdf:resource="&olia;Nominative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NonFinalPunctuation -->
+
+    <owl:Class rdf:about="&ycoe;NonFinalPunctuation">
+        <rdfs:subClassOf rdf:resource="&olia;SentenceMedialPunctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#NonLinguisticTag -->
+
+    <owl:Class rdf:about="&ycoe;NonLinguisticTag">
+        <rdfs:comment
+            >technical elements of the annotation, not present in the text</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Numeral -->
+
+    <owl:Class rdf:about="&ycoe;Numeral">
+        <rdfs:subClassOf rdf:resource="&olia;Numeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#OtherVerb -->
+
+    <owl:Class rdf:about="&ycoe;OtherVerb">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Verb"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;AuxiliaryVerb"/>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;ModalVerb"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PartOfSpeech -->
+
+    <owl:Class rdf:about="&ycoe;PartOfSpeech">
+        <rdfs:subClassOf rdf:resource="&olia-top;MorphosyntacticCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PastParticiple -->
+
+    <owl:Class rdf:about="&ycoe;PastParticiple">
+        <rdfs:subClassOf rdf:resource="&olia;PastParticiple"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PastTense -->
+
+    <owl:Class rdf:about="&ycoe;PastTense">
+        <rdfs:subClassOf rdf:resource="&olia;Past"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="&ycoe;PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="&olia;PersonalPronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PossessivePronoun -->
+
+    <owl:Class rdf:about="&ycoe;PossessivePronoun">
+        <rdfs:subClassOf rdf:resource="&olia;PossessivePronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Preposition -->
+
+    <owl:Class rdf:about="&ycoe;Preposition">
+        <rdfs:subClassOf rdf:resource="&olia;Preposition"/>
+        <rdfs:comment
+            >the linking is imprecise, as YCOE (like the PTB tagset) conflates prepositions and subordinating conjunctions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PresentParticiple -->
+
+    <owl:Class rdf:about="&ycoe;PresentParticiple">
+        <rdfs:subClassOf rdf:resource="&olia;PresentParticiple"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#PresentTense -->
+
+    <owl:Class rdf:about="&ycoe;PresentTense">
+        <rdfs:subClassOf rdf:resource="&olia;Present"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#ProperNoun -->
+
+    <owl:Class rdf:about="&ycoe;ProperNoun">
+        <rdfs:subClassOf rdf:resource="&olia;ProperNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Punctuation -->
+
+    <owl:Class rdf:about="&ycoe;Punctuation">
+        <rdfs:subClassOf rdf:resource="&olia;Punctuation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Quantifier -->
+
+    <owl:Class rdf:about="&ycoe;Quantifier">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Quantifier"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Numeral"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#QuantifierNumeral -->
+
+    <owl:Class rdf:about="&ycoe;QuantifierNumeral">
+        <rdfs:subClassOf rdf:resource="&olia;Quantifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Subjunctive -->
+
+    <owl:Class rdf:about="&ycoe;Subjunctive">
+        <rdfs:subClassOf rdf:resource="&olia;SubjunctiveMood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#SuperlativeAdjective -->
+
+    <owl:Class rdf:about="&ycoe;SuperlativeAdjective">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Adjective"/>
+                    <rdf:Description rdf:about="&olia;Superlative"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#SuperlativeAdverb -->
+
+    <owl:Class rdf:about="&ycoe;SuperlativeAdverb">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Adverb"/>
+                    <rdf:Description rdf:about="&olia;Superlative"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#SuperlativeQuantifier -->
+
+    <owl:Class rdf:about="&ycoe;SuperlativeQuantifier">
+        <rdfs:subClassOf rdf:resource="&olia;Superlative"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Quantifier"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Numeral"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Temporal -->
+
+    <owl:Class rdf:about="&ycoe;Temporal">
+        <rdfs:subClassOf rdf:resource="&olia;TimeRole"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Tense -->
+
+    <owl:Class rdf:about="&ycoe;Tense">
+        <rdfs:subClassOf rdf:resource="&olia-top;TenseFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#UnknownWord -->
+
+    <owl:Class rdf:about="&ycoe;UnknownWord">
+        <rdfs:comment
+            >unlinked, as we cannot say anything about this item</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Verb -->
+
+    <owl:Class rdf:about="&ycoe;Verb">
+        <rdfs:subClassOf rdf:resource="&olia;Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WHAdjective -->
+
+    <owl:Class rdf:about="&ycoe;WHAdjective">
+        <rdfs:subClassOf rdf:resource="&olia;WHDeterminer"/>
+        <rdfs:comment
+            >I take these to be interrogative and relative attributive pronouns. Approximated by olia:WHDeterminer</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WHAdverb -->
+
+    <owl:Class rdf:about="&ycoe;WHAdverb">
+        <rdfs:subClassOf rdf:resource="&olia;WHTypeAdverbs"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WHPronoun -->
+
+    <owl:Class rdf:about="&ycoe;WHPronoun">
+        <rdfs:subClassOf rdf:resource="&olia;WHPronoun"/>
+        <rdfs:comment
+            >I take these as substitutive interrogative/relative pronouns.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#WHWord -->
+
+    <owl:Class rdf:about="&ycoe;WHWord">
+        <owl:versionInfo
+            >TODO: The English &quot;WH&quot;-terminology systematicaly conflates relative and interrogative use of a form. Check Old English usage.</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ycoe.owl#Whether -->
+
+    <owl:Class rdf:about="&ycoe;Whether">
+        <rdfs:subClassOf rdf:resource="&olia;SubordinatingConjunction"/>
+        <owl:versionInfo
+            >TODO: check historical use of WHETHER in Old English. Comparing with Modern German,I take this to be a subordinating conjunction.</owl:versionInfo>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

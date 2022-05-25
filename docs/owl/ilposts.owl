@@ -1,0 +1,2231 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY system "http://purl.org/olia/system.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/ilposts.owl#"
+     xml:base="http://purl.org/olia/ilposts.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/ilposts.owl">
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/ben"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/hin"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/kan"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/mal"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/mar"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/san"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/tam"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/tel"/>
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <owl:versionInfo>2011-07-26 created on the basis of Tab 1 and Tab 2 of Baskaran et al. (2008)
+
+Note that so far, no ressources annotated according to this scheme seem to be available. Hence, there are no individuals included. The abbreviations encoded as rdfs:label here are probably meant to be used as substrings of tags.
+
+Also note that all combinatoric information from Baskaran et al. (2008) is encoded in axioms.
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <rdfs:comment>Annotation Model for the IL-POSTS tagset, a pan-Indian annotation scheme (Baskaran et al. 2008), primarily applied to Bangla, Hindi, Kannada, Malayalam, Marathi, Sanskrit, Tamil and Telugu. Unless marked otherwise, all comments refer to Baskaran et al. (2008).
+
+&quot;There are four main language families found in India, viz., Austro-Asiatic, Dravidian, Indo-Aryan and Tibeto-Burman, of which Dravidian and Indo-Aryan (IA) form the largest group of languages spoken in the sub-continent. This framework concentrates on Dravidian and IA language families for two main reasons: (i) practical issues of manageability, (ii) the fact that of the 22 official languages in India a large majority belonged to these two language families. However, the detailed linguistic analysis and discussions that led to the design of this framework leads us to believe that it is broad enough to cover Indian Languages from the other language families as well.&quot;
+
+Sankaran Baskaran, Kalika Bali, Tanmoy Bhattacharya, Pushpak Bhattacharyya, Monojit Choudhury, Girish Nath Jha, Rajendran S., Saravanan K., Sobha L., and KVS Subbarao (2008), A Common Parts-of-Speech Tagset Framework for Indian Languages, In Proceedings of LREC 2008, p. 1331-1337, http://www.lrec-conf.org/proceedings/lrec2008/pdf/337_paper.pdf</rdfs:comment>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasAspect -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasAspect">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Aspect"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalParticiple"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasCase -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasCase">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Case"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Adverb"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Demonstrative"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalModifier"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Noun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasCaseMarker -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasCaseMarker">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Adverb"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Noun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Postposition"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasDistance -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasDistance">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Distance"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#CommonNoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Demonstrative"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ProperNoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasDistributivity -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasDistributivity">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Distributivity"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronominal"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#RelativePronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#WhPronoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasEmphasis -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasEmphasis">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Adverb"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Classifier"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Demonstrative"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Noun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#OtherParticle"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Participle"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Postposition"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Quantifier"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasFeature -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasFeature">
+        <rdfs:isDefinedBy>Basakaran et al. (2008), Tab. 1</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://purl.org/olia/ilposts.owl#Category"/>
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasFiniteness -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasFiniteness">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Finiteness"/>
+        <rdfs:domain rdf:resource="http://purl.org/olia/ilposts.owl#Verb"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasGender -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasGender">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AdjectivalParticiple"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#CommonNoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalModifier"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalParticiple"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Postposition"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronominal"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ProperNoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ReciprocalPronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ReflexivePronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasHonorificity -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasHonorificity">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Honorificity"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="http://purl.org/olia/ilposts.owl#ReciprocalPronoun"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasInclExcl -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasInclExcl">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#InclExcl"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://purl.org/olia/ilposts.owl#ReciprocalPronoun"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasMood -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasMood">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+        <rdfs:domain rdf:resource="http://purl.org/olia/ilposts.owl#Verb"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasNumber -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasNumber">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AdjectivalParticiple"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#CommonNoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Demonstrative"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalModifier"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalParticiple"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Postposition"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronominal"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ProperNoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#RelativePronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#WhPronoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasNumeral -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasNumeral">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Numeral"/>
+        <rdfs:domain rdf:resource="http://purl.org/olia/ilposts.owl#Quantifier"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasPerson -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasPerson">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronominal"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasPolarity -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasPolarity">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Adverb"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalModifier"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Participle"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Noun"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="http://purl.org/olia/ilposts.owl#VerbalNoun"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="http://purl.org/olia/ilposts.owl#ReciprocalPronoun"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasRealis -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasRealis">
+        <rdfs:domain rdf:resource="http://purl.org/olia/ilposts.owl#ConditionalParticiple"/>
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Realis"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#hasTense -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/ilposts.owl#hasTense">
+        <rdfs:range rdf:resource="http://purl.org/olia/ilposts.owl#Tense"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AdjectivalParticiple"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalParticiple"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasFeature -->
+
+    <rdf:Description rdf:about="&system;hasFeature">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#AbilitativeMood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#AbilitativeMood">
+        <rdfs:label>abt</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#AblativeCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#AblativeCase">
+        <rdfs:label>abl</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#AbsoluteDemonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#AbsoluteDemonstrative">
+        <rdfs:label>AB</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Demonstrative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#AccusativeCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#AccusativeCase">
+        <rdfs:label>acc</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#AdjectivalParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#AdjectivalParticiple">
+        <rdfs:label>RL</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Participle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasTense"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Tense"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Adjective">
+        <rdfs:label>J</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#NominalModifier"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#Quantifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Adverb">
+        <rdfs:label>A</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCase"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Case"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCaseMarker"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#AdverbialParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#AdverbialParticiple">
+        <rdfs:label>V</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Participle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Aspect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Aspect">
+        <rdfs:label>Asp</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#AuxiliaryVerb">
+        <rdfs:label>A</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Verb"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#MainVerb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#BenefactiveCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#BenefactiveCase">
+        <rdfs:label>bnf</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+        <rdfs:comment>Baskaran et al. (2008) write &quot;Benefective&quot; (Tab. 2), which is certainly a typo. (Chiarcos)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#CardinalNumeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#CardinalNumeral">
+        <rdfs:label>crd</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Numeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Case">
+        <rdfs:label>Cs</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#CaseMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#CaseMarker">
+        <rdfs:label>Csm</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+        <rdfs:comment>Apparently, &quot;Case-marker&quot; refers to specific cases (and its subcategories are named as such, hence &quot;ErgativeCase&quot; instead of &quot;ErgativeCaseMarker&quot;). However, this is not explicitly stated in the document. 
+
+According to its usage, CaseMarker is a feature of Postposition, but also of Nouns. Accordingly, it seems to conflate two aspects: the case governed by an adposition, and the morphological case of nouns. (Chiarcos)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Category -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Category">
+        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:comment>The function of a word offers significant clues for the subsequent stages of processing (e.g. parsing) and hence cannot be missed. Here, we adopt a balance between the form and the function of a word in a systematic and consistent way. Based on our analysis, when a word is morphologically derived from other words then we propose to tag them by their function. In all other cases, the words are tagged by their form. Thus, for example, the infinitive form of the Hindi verb “....” [rahanaa] “to stay”, is tagged as verbal noun in the example “.... .. .... .....” [rahane kaa kamaraa chaahiye] “(subj) needs a room to stay” (Literally, “staying room is needed”).
+However, in “.... .... ... .... ..” [mujhe hotal me rahanaa hai] “I want to stay in a hotel” it is marked as a main verb with an infinitive attribute.
+Similarly, in Tamil, the same form of a verb “....” [paadu] „sing. in “...... ....” [paadum paRavai] „singing bird., is tagged as relative participle, but in “.... ......” [paRavai paadum] „bird will sing., is tagged as a verb.</rdfs:comment>
+        <rdfs:comment>IL-POSTS has a hierarchical layout of decomposable tags with three levels in the hierarchy viz., categories, types (subcategories) and attributes (features). (Baskaran et al. 2008)
+
+Here, subcategories are modelled as part of the OWL hierarchy.</rdfs:comment>
+        <rdfs:isDefinedBy>Baskaran et al. (2008), Tab. 1</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Classifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Classifier">
+        <rdfs:label>CL</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Particle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#CommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#CommonNoun">
+        <rdfs:label>C</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Noun"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasDistance"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Distance"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ConditionalMood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ConditionalMood">
+        <rdfs:label>cnd</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ConditionalParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ConditionalParticiple">
+        <rdfs:label>C</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Participle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasRealis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Realis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#CoordinatingParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#CoordinatingParticle">
+        <rdfs:label>CD</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Particle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+                        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#DativeCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#DativeCase">
+        <rdfs:label>dat</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#DeclarativeMood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#DeclarativeMood">
+        <rdfs:label>dcl</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Demonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Demonstrative">
+        <rdfs:label>D</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCase"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Case"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasDistance"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Distance"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#DirectCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#DirectCase">
+        <rdfs:label>dir</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Case"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#ObliqueCase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Distal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Distal">
+        <rdfs:label>dst</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Distance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Distance -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Distance">
+        <rdfs:label>Dist</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+        <owl:versionInfo>original feature &quot;Distances&quot;</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Distributive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Distributive">
+        <rdfs:label>y</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Distributivity"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#NonDistributive"/>
+        <rdfs:comment>Distributive=yes</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Distributivity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Distributivity">
+        <rdfs:label>Dstb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+        <owl:versionInfo>original feature &quot;Distributive&quot;</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#DualNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#DualNumber">
+        <rdfs:label>du</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Emphasis -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Emphasis">
+        <rdfs:label>Emph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+        <owl:versionInfo>original feature &quot;Emphatic&quot;</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Emphatic -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Emphatic">
+        <rdfs:label>y</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#NonEmphatic"/>
+        <rdfs:comment>Emphatic=yes</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ErgativeCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ErgativeCase">
+        <rdfs:label>erg</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Exclusive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Exclusive">
+        <rdfs:label>exl</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#InclExcl"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#Inclusive"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Feature -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Feature">
+        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:isDefinedBy>Baskaran et al. (2008), Tab. 2</rdfs:isDefinedBy>
+        <owl:versionInfo>The hierarchical organiztation adopted here follows strictly the hierarchy as presented by Baskaran et al. (2008). However, certain Feature concepts should be better modelled as sub-subcategories rather than as features and properties.
+
+This includes features that are specific to a single subcategory, i.e., Realis (should be a subconcept of ConditionalParticle), Numeral (should be subconcept of Quantifier).
+Further, this includes features that cannot be described naturally as a feature, i.e. InclExcl (should define subcategories for most kinds of Pronouns), and possibly Distributivity, as well. (Chiarcos)</owl:versionInfo>
+        <rdfs:comment>IL-POSTS has a hierarchical layout of decomposable tags with three levels in the hierarchy viz., categories, types (subcategories) and attributes (features). ...
+Attributes are morphosyntactic features of Types. All attributes are optional, though in some cases they may be recommended. Further, Special extensions to attributes provide for features to be specified for future use that are not covered in the currently defined list of attributes. These can be generic attributes that may be needed for a special purpose including those outside the scope of morphosyntax, and language-specific attributes that may be applicable to only a very small group of or even a single language(s).
+
+In the ontology, these special extensions have not been adopted as they were not further discussed in the paper. (Christian Chiarcos)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#FeminineGender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#FeminineGender">
+        <rdfs:label>fem</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Finite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Finite">
+        <rdfs:label>fin</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Finiteness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Finiteness -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Finiteness">
+        <rdfs:label>Fin</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#FirstPerson -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#FirstPerson">
+        <rdfs:label>1</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ForeignWord -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ForeignWord">
+        <rdfs:label>F</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Residual"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#FutureTense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#FutureTense">
+        <rdfs:label>fut</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Gender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Gender">
+        <rdfs:label>Gen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#GenitiveCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#GenitiveCase">
+        <rdfs:label>gen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#HabitualMood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#HabitualMood">
+        <rdfs:label>hab</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Honorific -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Honorific">
+        <rdfs:label>y</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Honorificity"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#NonHonorific"/>
+        <rdfs:comment>Honorificity=yes</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Honorificity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Honorificity">
+        <rdfs:label>Hon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ImperativeMood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ImperativeMood">
+        <rdfs:label>imp</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#InclExcl -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#InclExcl">
+        <rdfs:label>Set</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+        <rdfs:comment>original feature name &quot;Incl/Excl&quot;, abbreviation &quot;Set&quot;, values &quot;Inclusive&quot; and &quot;Exclusive&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Inclusive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Inclusive">
+        <rdfs:label>inl</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#InclExcl"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Infinite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Infinite">
+        <rdfs:label>inf</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Finiteness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#InstrumentalCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#InstrumentalCase">
+        <rdfs:label>ins</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Interjection">
+        <rdfs:label>IN</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Particle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#LocationAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#LocationAdverb">
+        <rdfs:label>LC</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Adverb"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#MannerAdverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#LocativeCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#LocativeCase">
+        <rdfs:label>loc</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#MainVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#MainVerb">
+        <rdfs:label>M</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#MannerAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#MannerAdverb">
+        <rdfs:label>MN</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#MasculineGender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#MasculineGender">
+        <rdfs:label>mas</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Mood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Mood">
+        <rdfs:label>Mood</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Negative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Negative">
+        <rdfs:label>y</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#NonNegative"/>
+        <rdfs:comment>Negative=yes</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NeuterGender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NeuterGender">
+        <rdfs:label>neu</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NominalModifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NominalModifier">
+        <rdfs:label>J</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCase"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Case"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NominalParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NominalParticiple">
+        <rdfs:label>N</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Participle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasAspect"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Aspect"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasTense"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Tense"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NonDistributive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NonDistributive">
+        <rdfs:label>n</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Distributivity"/>
+        <rdfs:comment>Distributive=no</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NonEmphatic -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NonEmphatic">
+        <rdfs:label>n</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+        <rdfs:comment>Emphatic=no</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NonFinite -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NonFinite">
+        <rdfs:label>nfn</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Finiteness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NonHonorific -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NonHonorific">
+        <rdfs:label>n</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Honorificity"/>
+        <rdfs:comment>Honorificity=no</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NonNegative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NonNegative">
+        <rdfs:label>n</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+        <rdfs:comment>Negative=no</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NonNumeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NonNumeral">
+        <rdfs:label>nnm</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Numeral"/>
+        <owl:versionInfo>original attribute value &quot;Non-Numeral&quot;</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#NonReal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#NonReal">
+        <rdfs:label>n</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Realis"/>
+        <owl:disjointWith rdf:resource="http://purl.org/olia/ilposts.owl#Real"/>
+        <rdfs:comment>Realis=no</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Noun">
+        <rdfs:label>N</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCase"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Case"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCaseMarker"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Number -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Number">
+        <rdfs:label>Num</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Numeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Numeral">
+        <rdfs:label>Nml</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ObliqueCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ObliqueCase">
+        <rdfs:label>obl</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Case"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#OrdinalNumeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#OrdinalNumeral">
+        <rdfs:label>ord</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Numeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Other -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Other">
+        <rdfs:label>X</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Residual"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#OtherParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#OtherParticle">
+        <rdfs:label>X</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Particle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Participle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Participle">
+        <rdfs:label>L</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Particle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Particle">
+        <rdfs:label>C</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Category"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#PastTense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#PastTense">
+        <rdfs:label>pst</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Person">
+        <rdfs:label>Per</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#PluralNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#PluralNumber">
+        <rdfs:label>pl</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Polarity -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Polarity">
+        <rdfs:label>Neg</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+        <owl:versionInfo>original feature &quot;Negative&quot;</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Postposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Postposition">
+        <rdfs:label>PP</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCaseMarker"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#PresentTense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#PresentTense">
+        <rdfs:label>prs</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Tense"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#PresumptiveMood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#PresumptiveMood">
+        <rdfs:label>psm</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ProgressiveAspect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ProgressiveAspect">
+        <rdfs:label>prg</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Aspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Pronominal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Pronominal">
+        <rdfs:label>PR</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasDistributivity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Distributivity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasHonorificity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Honorificity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasInclExcl"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#InclExcl"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPerson"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Person"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Pronoun">
+        <rdfs:label>P</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCase"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Case"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasCaseMarker"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ProperNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ProperNoun">
+        <rdfs:label>P</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Noun"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasDistance"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Distance"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Proximal -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Proximal">
+        <rdfs:label>prx</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Distance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Punctuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Punctuation">
+        <rdfs:label>PU</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+                        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#PurposiveAspect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#PurposiveAspect">
+        <rdfs:label>prf</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Aspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#PurposiveCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#PurposiveCase">
+        <rdfs:label>pur</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Quantifier -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Quantifier">
+        <rdfs:label>Q</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalModifier"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumeral"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Numeral"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Real -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Real">
+        <rdfs:label>y</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Realis"/>
+        <rdfs:comment>Realis=y</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Realis -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Realis">
+        <rdfs:label>Rls</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ReciprocalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ReciprocalPronoun">
+        <rdfs:label>RC</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ReflexivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ReflexivePronoun">
+        <rdfs:label>RF</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasHonorificity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Honorificity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasInclExcl"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#InclExcl"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#RelativeDemonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#RelativeDemonstrative">
+        <rdfs:label>RL</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Demonstrative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#RelativePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#RelativePronoun">
+        <rdfs:label>RL</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasHonorificity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Honorificity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasInclExcl"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#InclExcl"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Residual -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Residual">
+        <rdfs:label>RD</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+                        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#SecondPerson -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#SecondPerson">
+        <rdfs:label>2</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Sequel -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Sequel">
+        <rdfs:label>seq</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Distance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#SimpleAspect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#SimpleAspect">
+        <rdfs:label>sim</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Aspect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#SingularNumber -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#SingularNumber">
+        <rdfs:label>sg</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#SociativeCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#SociativeCase">
+        <rdfs:label>soc</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#SpatiotemporalNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#SpatiotemporalNoun">
+        <rdfs:label>ST</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Noun"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#SubjunctiveMood -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#SubjunctiveMood">
+        <rdfs:label>sbj</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#SubordinatingParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#SubordinatingParticle">
+        <rdfs:label>SB</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Particle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasFeature"/>
+                        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Symbol -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Symbol">
+        <rdfs:label>S</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Residual"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Tense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Tense">
+        <rdfs:label>Tns</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#ThirdPerson -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#ThirdPerson">
+        <rdfs:label>3</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#Verb">
+        <rdfs:label>V</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Category"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasAspect"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Aspect"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasEmphasis"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Emphasis"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasFiniteness"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Finiteness"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasGender"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Gender"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasHonorificity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Honorificity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasMood"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Mood"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPerson"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Person"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasTense"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Tense"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#VerbalNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#VerbalNoun">
+        <rdfs:label>V</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#VocativeCase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#VocativeCase">
+        <rdfs:label>voc</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#CaseMarker"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#WhDemonstrative -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#WhDemonstrative">
+        <rdfs:label>WH</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ilposts.owl#Demonstrative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/ilposts.owl#WhPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/ilposts.owl#WhPronoun">
+        <rdfs:label>WH</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasHonorificity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Honorificity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasInclExcl"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#InclExcl"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasNumber"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Number"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/olia/ilposts.owl#hasPolarity"/>
+                        <owl:onClass rdf:resource="http://purl.org/olia/ilposts.owl#Polarity"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#CardinalNumeral"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NonNumeral"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#OrdinalNumeral"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#DualNumber"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#PluralNumber"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#SingularNumber"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AbsoluteDemonstrative"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#RelativeDemonstrative"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#WhDemonstrative"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#FutureTense"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#PastTense"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#PresentTense"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ForeignWord"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Other"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Symbol"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Classifier"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#CoordinatingParticle"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Interjection"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#OtherParticle"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#SubordinatingParticle"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronominal"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ReciprocalPronoun"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ReflexivePronoun"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#RelativePronoun"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#WhPronoun"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Finite"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Infinite"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NonFinite"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AblativeCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AccusativeCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#BenefactiveCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#DativeCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ErgativeCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#GenitiveCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#InstrumentalCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#LocativeCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#PurposiveCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#SociativeCase"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#VocativeCase"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#FeminineGender"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#MasculineGender"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NeuterGender"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AdjectivalParticiple"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AdverbialParticiple"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ConditionalParticiple"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalParticiple"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#FirstPerson"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#SecondPerson"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ThirdPerson"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ProgressiveAspect"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#PurposiveAspect"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#SimpleAspect"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Distal"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Proximal"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Sequel"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Adverb"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Demonstrative"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#NominalModifier"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Noun"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Participle"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Particle"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Postposition"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Pronoun"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Punctuation"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Residual"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#Verb"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#CommonNoun"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ProperNoun"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#SpatiotemporalNoun"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#VerbalNoun"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#AbilitativeMood"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ConditionalMood"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#DeclarativeMood"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#HabitualMood"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#ImperativeMood"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#PresumptiveMood"/>
+            <rdf:Description rdf:about="http://purl.org/olia/ilposts.owl#SubjunctiveMood"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

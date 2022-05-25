@@ -1,0 +1,1850 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:olia_system="http://purl.org/olia/system.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dct="http://purl.org/dc/terms/"
+    xmlns="http://purl.org/olia/sfb632.owl#"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+  xml:base="http://purl.org/olia/sfb632.owl">
+  <owl:Ontology rdf:about="http://purl.org/olia/sfb632.owl">
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/zho"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/nld"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/fre"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/kat"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/deu"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/grc"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/hun"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/jap"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/kok"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/xmm"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/mph"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/niu"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/goh"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/pmi"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/pmj"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/tfr"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/vie"/>
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+	<owl:versionInfo>
+		2006 initialized by Christian Chiarcos (morphology only)
+		2006-2008 morphology maintained by Angelika Adam
+			  syntax developed and maintained by Christian Chiarcos
+		2008-05-23 (last revision)
+		2010-04-08 updated and merged morphology and syntax 
+			   into a single ontology
+		2020-12-07 tag overloaded URIs
+		2020-12-09 languages added
+
+		Christian Chiarcos, chiarcos@uni-potsdam.de
+	</owl:versionInfo>
+	<owl:versionInfo>TODO: phonology and semantics</owl:versionInfo>
+	<rdfs:comment>
+		OLiA Annotation Model for the SFB632 Annotation Guidelines
+		(Dipper et al. 2007) for Morphology and Syntax
+		&lt;br/&gt;
+		
+		By 2007, there were corpora ranging
+		across 18 different languages, including typologically diverse languages such as
+		Chinese, Dutch, English, Canadian and European French, Georgian, German,
+		Greek, Hungarian, Japanese, Konkani (India: Indo-European), Manado Malay,
+		Mawng (Australia: Non-Pama-Nyungan), Niue (Niue Island: Austronesian), Old
+		High German, Prinmi (China: Tibeto-Burman), Teribe (Panama: Chibchan), and
+		Vietnamese.
+		
+		Stefanie Dipper, Michael Götze and Stavros Skopeteas (2007),
+		Information Structure in Cross-Linguistic Corpora: 
+		Annotation Guidelines for Phonology, Morphology, 
+		Syntax, Semantics, and Information Structure.
+		In: Interdisciplinary Studies on Information Structure (ISIS)
+		Working papers of the SFB 632; vol. 7.
+		Universität Potsdam
+	</rdfs:comment>
+  </owl:Ontology>
+
+  <!-- |========================================|
+      ||          Morphology                  ||
+      |========================================| -->
+
+  <owl:Class rdf:ID="GLOSS">
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/system.owl#Feature"/>
+	</rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="POS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Encoding Standard for Morphology and
+Syntax (Layer III:POS)
+============================================
+http://www.ling.uni-potsdam.de/~goetze/sfb/guidelines.html (Wed Nov 23
+13:47:35 CET 2005)
+
+primaer entwickelt von SFB632-D2 (in Zusammenarbeit mit SFB632-D1,
+deren PCC-Annotation derzeit Tiger-STTS ist)
+vorr. auch eingesetzt von SFB632-B4
+
+ignored _CLIT distinction (4.3.12.3)</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotatio"/>
+	</rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="HabitualGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AspectGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Habitual aspect is an imperfective aspect that expresses the occurrence of an event or state as characteristic of a period of time.		http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsHabitualAspect.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="VoiceFeature">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GrammaticalFeatures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ThirdGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PersonGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TransitivizerGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DerivationGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TransitiveVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LexicalVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are transitive verbs, e.g. "buy".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="IndefiniteGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indefiniteness is a kind of definiteness indicating that the referent(s) of an expression are not presumed to be identifiable. The referent is not identifiable because of a lack of shared knowledge or situation, including no  previous mention of the referent. http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsIndefiniteness.htm</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DefinitenessGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Substitutive">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Attributive"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >If you need substantive paradigm of pronouns, then append SU. Substantive pronouns replace the whole NP. E.g. "yours" is tagged as PRONPOS-SU.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: sub-classification of  combined tags</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Pronoun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PersonGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PossessivePronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are possessive pronouns, e.g. "your".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="InterrogativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReflexivePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Quantifier"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="RelativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ExpletivePronoun"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD 
+PRONPOS possessive pronouns, e.g. "your" (4.3.10.6)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pronoun"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="DemonstrativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PersonalPronoun"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="SubjunctiveGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Subjunctive mood is a mood that typically signals irrealis meanings, such as potentiality, uncertainty, 
+prediction obligation, and desire. It most typically occurs in a subordinate clause, but may occur outside of one.				
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsSubjunctiveMood.htm</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MoodGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="VoiceGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DefinitenessFeature">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GrammaticalFeatures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FirstGloss">
+    <rdfs:subClassOf rdf:resource="#PersonGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PassiveGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Passive voice is a voice that indicates that the subject is the patient or recipient of the action denoted
+by the verb. 
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsPassiveVoice.htm</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#VoiceGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CommonNoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NCOM is used for common nouns, e.g. "house".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.1)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Noun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ComitativeGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Comitative case is a case expressing accompaniment. 
+ It carries the meaning "with" or "accompanied by."
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsComitativeCase.htm</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CaseGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GenderFeature">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GrammaticalFeatures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Pronoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the class of pronouns which also includes the quantifiers.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >pronoun
+
+umfasst auch Quantifizierer !
+
+a loose sub-class of PronounOrDeterminer, but treatment of Quantifiers is unclear in Eagles (if these are determiners, this inclusion is  proper)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#POS"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InterrogativePronoun">
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PersonalPronoun"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD 
+PRONINT interrogative pronouns, e.g. "who" (4.3.10.2)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are interrogative pronouns, e.g. "who".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ExpletivePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#PossessivePronoun"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Quantifier"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RelativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#DemonstrativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReflexivePronoun"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="ObliqueGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CaseGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An oblique case (Latin: casus generalis) in linguistics is a noun case of synthetic languages that is used generally when a noun is the object of a sentence or a preposition. An oblique case can appear in any case relationship except the nominative case of a sentence subject or the vocative case of direct address.
+( http://en.wikipedia.org/wiki/Oblique_case)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#AspectGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GenderGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IndicativeGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The indicative mood is used for factual statements and positive beliefs. All intentions in speaking that a particular language does not put into another mood use the indicative. It is the most commonly used mood  and is found in all languages. Example: "Paul is reading a book" or "Paul reads books".
+http://en.wikipedia.org/wiki/Indicative</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MoodGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PersonalPronoun">
+    <owl:disjointWith rdf:resource="#PossessivePronoun"/>
+    <owl:disjointWith rdf:resource="#InterrogativePronoun"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RelativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#DemonstrativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReflexivePronoun"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are personal pronouns, e.g. "you" .
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Quantifier"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ExpletivePronoun"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="FocusGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InformationStateGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The focus of a sentence is the portion that presents salient information of high communicative interest. The rest of the sentence is extrafocal and contains presupposed information.
+(http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&amp;file=lido/servlet/Lido_Servlet Fokus 18.06.07)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PluralGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NumberGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Plural number is number that expresses reference to a quantity greater than that expressed by the largest specific number category in a language, such as "more than one" in English, and "more than two" in some other languages. http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsPluralNumber.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Classifier">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD
+CLF classifier
+
+definition ?</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are classifiers.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#POS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ImperfectiveGloss">
+    <rdfs:subClassOf rdf:resource="#AspectGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Imperfective aspect is an aspect that expresses an event or state, with respect to its internal structure, instead of expressing it as a simple whole.		http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsImperfectiveAspect.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MoodGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DemonstrativePronoun">
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <owl:disjointWith rdf:resource="#PossessivePronoun"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReflexivePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RelativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Quantifier"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#PersonalPronoun"/>
+    <owl:disjointWith rdf:resource="#InterrogativePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are demonstrative pronouns, e.g. "this". Notice that German displays a demonstrative pronoun that is in most cases homonymous to the definite article.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ExpletivePronoun"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="DitransitiveVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LexicalVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are ditransitive verbs, e.g. "give".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="IntransitiveVerb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LexicalVerb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are intransitive verbs, e.g. "sleep".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#DefinitenessGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DegreeGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LexicalVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are  lexical verbs, e.g. "walk", cf. German "wollen" in "ich will ein Eis".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD 
+VLEX lexical verb (4.3.2.2), e.g. "walk", cf. German "wollen" in "ich will ein Eis"
+
+note: transitivity in EAGLES ignored</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SingularGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NumberGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Singular number is number that refers to one member of a designated class.
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsSingularNumber.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TopicGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InformationStateGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A topic of a sentence is a syntagm that contains reference points for the predication contained in the rest of the sentence.
+(http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&amp;file=lido/servlet/Lido_Servlet Topik18.06.07)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PossessiveGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PronounFeatureGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GenitiveGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Genitive case is a case in which the referent of the marked noun is the possessor of the referent of another noun. In some languages, genitive case may express an associative relation between the marked noun and another noun.
+(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsGenitiveCase.htm)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CaseGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ExpletivePronoun">
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <owl:disjointWith rdf:resource="#PossessivePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Expletive pronouns (also called 'impersonal pronouns', 'pleonastic pronouns') are pronouns which do not have any meaning but are syntactically required, e.g. "there is a man". 
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD 
+    PRONEXPL expletive pronouns, e.g. "there" in "there is a man" (4.3.10.8)
+	      Expletive pronouns (also called 'impersonal pronouns',
+	      'pleonastic pronouns') are pronouns,	  
+	      which do not have any meaning,
+	      but are syntactically required
+
+	      We also use PRONEXPL for pre-field es in German "es
+	      kamen Sportler"
+
+here regarded as personal pronoun (equal form)</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#RelativePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#DemonstrativePronoun"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReflexivePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#PersonalPronoun"/>
+    <owl:disjointWith rdf:resource="#InterrogativePronoun"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Quantifier"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Adverb">
+    <rdfs:subClassOf rdf:resource="#POS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are adverbs, e.g. "soon".
+So called pronominal adverbs in German are also annotated as ADV, e.g. "darueber".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.4)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD 
+adverb (4.3.7), e.g. "soon"
+    (including adverbial numerals, e.g. "twice" 4.3.8)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="InstrumentalGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Instrumental case is a case indicating that the referent of the noun it marks is the means of the
+accomplishment of the action expressed by the clause.
+(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsInstrumentalCase.htm)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CaseGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProperNoun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NPRP is used for proper noun, e.g. "Peter".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.1)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Noun"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ModalVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are modal verbs, e.g. "can", cf. German "wollen" in "in will gehen".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Attributive">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >If you need a attributive paradigm of pronouns, then append AT. Attributive pronouns replace function as a determiner. E.g. "your" is tagged as PRONPOS-AT.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Substitutive"/>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Adjective">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are adjectives, e.g. Spanish "aburrido" (boring).
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.3)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD 
+adjective, (4.3.3), e.g. Spanish "aburrido" (boring)
+  (including cardinal numerals, e.g. "second" 4.3.8)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#POS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PastGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TenseGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Past tense is an absolute tense that refers to a time before the moment of utterance. http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsPastTense.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Determiner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Determiners include articles ("the") and cardinal numerals ("two") used as determiners (see 5.3.5; 5.3.8). They do not include demonstratives or quantifiers (cf. 5.3.8).
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.6)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#POS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PresentGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Present tense is an absolute tense that refers to the moment of utterance. It often refers to events or
+states that do not merely coincide with the moment of utterance, such as those that are continuous, habitual, or lawlike.
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsPresentTense.htm</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TenseGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NominativeGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nominative case is the case that identifies clause subjects in nominative-accusative languages. Nouns used  in isolation have this case. Nominative case is not often formally marked in nominative-accusative languages.
+(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsNominativeCase.htm</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CaseGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#GrammaticalFeatures">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class GrammaticalFeatures corresponds to the grammatical properties.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Adposition">
+    <rdfs:subClassOf rdf:resource="#POS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are  adpositions: preposition/postposition/X-positions,  e.g. "before" in "before two years", "ago" in "two years ago", cf. German "um ... willen" in "um unseres Vaters willen".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.5)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="VerbalNoun">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Verb"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD 
+These are verbal nouns.  Some of the Chadic languages have morphologically opaque verbal noun stems in the progresive aspect, i.e. it is not obvious from the morphology that we deal with a deverbal noun, instead of a verb proper. In such cases, use the tag VN.
+N and V are not defined as disjoint in the EAGLES categorization yet, so we assign VN to both nouns and verbs (possibly a specific verb form ? a participle ?)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are verbal nouns.  Some of the Chadic languages have morphologically opaque verbal noun stems in the progresive aspect, i.e. it is not obvious from the morphology that we deal with a deverbal noun, instead of a verb proper. In such cases, use the tag VN.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ImperativeGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Imperative mood is mood that signals directive modality, especially in commands. Its use may be extended to signal permission. http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsImperativeMood.htm</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MoodGloss"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Verb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are verbs in general case, e.g. "sleep".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#POS"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InformationStateGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ComplementizerGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A complementizer is a conjunction which marks a complement clause.
+(http://www.sil.org/linguistics/GlossaryofLinguisticTerms/WhatIsAComplementizer.htm 22.07.07)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SubordinatingConjunction">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are subordinating conjunctions, e.g. "if", "that", "when".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.7)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#POS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CopulaVerb">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are copula verbs, e.g. "be" in "be happy".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD
+no EAGLES category, possibly best interpreted as Auxliary
+(consistent with SUSANNE, where "be" in all instances is grouped together)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Verb"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DistalGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ProximalDistalDimensionGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A distal is a distinction in place deixis that indicates location far from the speaker or other deictic
+center. It is a kind of a proximal-distal dimension.	  http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsADistal.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DativeGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CaseGloss"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Dative case is a case that marks indirect objects (for languages in which they are held to exist) or nouns having the role of recipient (as of things given), beneficiary of an action, or possessor of an item. 
+( http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsDativeCase.htm)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TenseFeature">
+    <rdfs:subClassOf rdf:resource="#GrammaticalFeatures"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DerivationGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DemonstrativeGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PronounFeatureGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SecondGloss">
+    <rdfs:subClassOf rdf:resource="#PersonGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PronominalAdverb">
+    <rdfs:subClassOf rdf:resource="#Adverb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ADV:P pronominal adverbs (4.3.12.1), e.g. "darueber", "hierueber",
+    "worueber" (Definition ?)</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A pronominal adverb is a pro-form that belongs to an adverbial syntactic category.
+E.g. "there" in "If you'll look on the table, you'll find the book there."
+
+(http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&amp;file=lido/servlet/Lido_Servlet   Pronominaladverb  19.06.07)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DegreeFeature">
+    <rdfs:subClassOf rdf:resource="#GrammaticalFeatures"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MasculineGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Masculine gender is a grammatical gender that marks nouns having human or animal male referents, and often marks nouns having referents that do not have distinctions of sex.
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsMasculineGender.htm</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#GenderGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AuxiliaryVerb">
+    <rdfs:subClassOf rdf:resource="#Verb"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are auxiliary verb, e.g. "have", cf. "be" in "be destroyed", cf. German "haben" in the formation of perfect tenses ("gegessen haben").
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NumberFeature">
+    <rdfs:subClassOf rdf:resource="#GrammaticalFeatures"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FeminineGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Feminine gender is a grammatical gender that marks nouns that have human or animal female referents, and often marks nouns that have referents that do not carry distinctions of sex.	http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsFeminineGender.htm</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#GenderGloss"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ProximalDistalDimensionGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A proximal-distal dimension is a distinction in place deixis that indicates distance from the speaker or other deictic center.
+(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAProximalDistalDimension.htm)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NumberGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GLOSS"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Noun">
+    <rdfs:subClassOf rdf:resource="#POS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The tag N is used for the general case of a noun, e.g. "water".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.1)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NominalizerGloss">
+    <rdfs:subClassOf rdf:resource="#DerivationGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Complemetizer">
+    <rdfs:subClassOf rdf:resource="#SubordinatingConjunction"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This tag is used if you need to indicate complementizers or adverbial subordinating conjunctions separately, e.g. "that", "when".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.7)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PerfectiveGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Perfective aspect is an aspect that expresses a temporal view of an event or state as a simple whole, apart from the consideration of the internal structure of the time in which it occurs.
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsPerfectiveAspect.htm</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#AspectGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MedialGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Medial/ Immediacy is a distinction in place deixis that indicates location at a distance intermediate
+between locations considered proximal and distal. It is a kind of a proximal-distal dimension.
+(in according to: http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsImmediacy.htm)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ProximalDistalDimensionGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ComparativeGloss">
+    <rdfs:subClassOf rdf:resource="#DegreeGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The comparative is the form of an adjective or adverb which denotes the degree or grade by which a person, thing, or other entity has a property or quality greater or less in extent than that of another.
+http://en.wikipedia.org/wiki/Comparative</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#RelativePronoun">
+    <owl:disjointWith rdf:resource="#ExpletivePronoun"/>
+    <owl:disjointWith rdf:resource="#InterrogativePronoun"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Quantifier"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReflexivePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#PossessivePronoun"/>
+    <owl:disjointWith rdf:resource="#PersonalPronoun"/>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are relative pronouns, e.g. "which".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <owl:disjointWith rdf:resource="#DemonstrativePronoun"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InfinitiveGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An infinitive is the base form of a verb. It is unmarked for inflectional categories aspect, modality,  number, person and tense. http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAnInfinitive.htm</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="VerbFormGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ParticipleGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A participle is a lexical item, derived from a verb, that has some of the characteristics and functions of both verbs and adjectives. http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAParticiple.htm</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#VerbFormGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#GLOSS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class GLOSS corresponds to annotations.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PersonFeature">
+    <rdfs:subClassOf rdf:resource="#GrammaticalFeatures"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DiminutiveGloss">
+    <rdfs:subClassOf rdf:resource="#DerivationGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A diminutive is a formation of a word used to convey a slight degree of the root meaning, smallness of the object or quality named, encapsulation, intimacy, or endearment. (http://en.wikipedia.org/wiki/Diminutive 22.07.07)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ErgativeGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ergative case is the case of nouns in ergative-absolutive languages that would generally be the subjects of transitive verbs in the translation equivalents of nominative-accusative languages such as English. Ergative case is more likely to be formally marked on the noun than absolutive case is.
+(http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsErgativeCase.htm)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CaseGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Quantifier">
+    <owl:disjointWith rdf:resource="#InterrogativePronoun"/>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <owl:disjointWith rdf:resource="#PossessivePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are quantifiers, e.g. "jeder", "alle".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <owl:disjointWith rdf:resource="#PersonalPronoun"/>
+    <owl:disjointWith rdf:resource="#ExpletivePronoun"/>
+    <owl:disjointWith rdf:resource="#DemonstrativePronoun"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReflexivePronoun"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#RelativePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0LD 
+PRONQUANT quantifiers (4.3.10.9), e.g. German "jeder", "alle", "kein"
+
+hat Beruehrungspunkte mit IndefiniteDeterminer ("every")</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#VerbFormGloss">
+    <rdfs:subClassOf rdf:resource="#GLOSS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CoordinatingConjunction">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are coordinating conjunctions, e.g. "and", "or".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.7)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#POS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NeuterGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Neuter gender is a grammatical gender that includes those nouns having referents which do not have 
+distinctions of sex, and often includes some which do have a natural sex distinction.
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsNeuterGender.htm</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#GenderGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SuperlativeGloss">
+    <rdfs:subClassOf rdf:resource="#DegreeGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The superlative of an adjective or adverb is a form of adjective or adverb which indicates that something has some feature to a greater degree than anything it is being compared to in a given context. 
+http://en.wikipedia.org/wiki/Superlative</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AccusativeGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Accusative case is the case in nominative-accusative languages that marks certain syntactic functions, usually direct objects. (http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAccusativeCase.htm)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CaseGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CaseGloss">
+    <rdfs:subClassOf rdf:resource="#GLOSS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NegativeGloss">
+    <rdfs:subClassOf rdf:resource="#MoodGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The negative mood expresses a negated action. In many languages, this is not a distinct mood. Negation is expressed by adding a particle before the verb phrase, as in Spanish "No esta en casa", or after it, as in archaic and dialectal English "Thou remembrest not" or Dutch "Ik zie hem niet", or both, as in French "Je ne sais pas" or Afrikaans "Hy kan nie Afrikaans praat nie".
+http://en.wikipedia.org/wiki/Negative_mood#Negative</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ProximalGloss">
+    <rdfs:subClassOf rdf:resource="#ProximalDistalDimensionGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A proximal is a distinction in place deixis that indicates location close to the speaker or other
+deictic center. It is a kind of a proximal-distal dimension.  http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAProximal.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DefiniteGloss">
+    <rdfs:subClassOf rdf:resource="#DefinitenessGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definite entities are specific and identifiable in a given context.
+http://en.wikipedia.org/wiki/Definite</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AspectFeature">
+    <rdfs:subClassOf rdf:resource="#GrammaticalFeatures"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ReflexiveGloss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PronounFeatureGloss"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PronounFeatureGloss">
+    <rdfs:subClassOf rdf:resource="#GLOSS"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TenseGloss">
+    <rdfs:subClassOf rdf:resource="#GLOSS"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FutureGloss">
+    <rdfs:subClassOf rdf:resource="#TenseGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Future tense is an absolute tense that refers to a time after the moment of utterance. http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsFutureTense.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="LocativeGloss">
+    <rdfs:subClassOf rdf:resource="#CaseGloss"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Locative case is a case that expresses location at the referent of the noun it marks.
+The term adessive case, a synonym of locative case, is used especially in studies of Finno-Ugric grammar.
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsLocativeCase.htm</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MoodFeature">
+    <rdfs:subClassOf rdf:resource="#GrammaticalFeatures"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CopulaGloss">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A copula is an intransitivity verb which links a subject to a noun phrase, an adjective, or other 
+constituent which expresses the predicate.
+http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsACopula.htm</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#VerbFormGloss"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Particle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are particles, e.g. German  "ja". Interjections are also annotated as particles, e.g. "oh".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.9)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#POS"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ReflexivePronoun">
+    <owl:disjointWith rdf:resource="#PersonalPronoun"/>
+    <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <owl:disjointWith rdf:resource="#PossessivePronoun"/>
+    <owl:disjointWith rdf:resource="#RelativePronoun"/>
+    <owl:disjointWith rdf:resource="#InterrogativePronoun"/>
+    <owl:disjointWith rdf:resource="#ExpletivePronoun"/>
+    <owl:disjointWith rdf:resource="#DemonstrativePronoun"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PRONRFL reflexive pronouns, e.g. "myself" (4.3.10.5)
+	     This category should be
+	     used only if the language possesses pronouns, which are always usedas
+	     reflexives, e.g. the English reflexive pronouns (not the German
+	     pronouns of the type "ich schaeme mich", where the ambiguity
+	     personal/reflexive is resolved in the argument structure
+	     of the given verb).</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are reflexive pronouns. This category should be used only if the language possesses pronouns which are always used as reflexives, e.g. the English reflexive pronouns (not the German pronouns of the type "ich schaeme mich", where the ambiguity personal/reflexive is resolved in the argument structure of the given verb), e.g. "myself".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Quantifier"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CaseFeature">
+    <rdfs:subClassOf rdf:resource="#GrammaticalFeatures"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasNumber">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#NumberGloss"/>
+    <rdfs:range rdf:resource="#NumberFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCase">
+    <rdfs:domain rdf:resource="#CaseGloss"/>
+    <rdfs:range rdf:resource="#CaseFeature"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMood">
+    <rdfs:range rdf:resource="#MoodFeature"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain rdf:resource="#MoodGloss"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAspect">
+    <rdfs:domain rdf:resource="#AspectGloss"/>
+    <rdfs:range rdf:resource="#AspectFeature"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTense">
+    <rdfs:domain rdf:resource="#TenseGloss"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:range rdf:resource="#TenseFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPerson">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain rdf:resource="#PersonGloss"/>
+    <rdfs:range rdf:resource="#PersonFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasVoice">
+    <rdfs:domain rdf:resource="#VoiceGloss"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:range rdf:resource="#VoiceFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDegree">
+    <rdfs:range rdf:resource="#DegreeFeature"/>
+    <rdfs:domain rdf:resource="#DegreeGloss"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDefiniteness">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:range rdf:resource="#DefinitenessFeature"/>
+    <rdfs:domain rdf:resource="#DefinitenessGloss"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasGender">
+    <rdfs:range rdf:resource="#GenderFeature"/>
+    <rdfs:domain rdf:resource="#GenderGloss"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagContaining">
+    <rdfs:domain rdf:resource="#GLOSS"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagEndingWith">
+    <rdfs:domain rdf:resource="#GLOSS"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#startsWith">
+    <rdfs:domain rdf:resource="#GLOSS"/>
+  </owl:DatatypeProperty>
+  <MedialGloss rdf:ID="MED">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MED</olia_system:hasTagContaining>
+  </MedialGloss>
+  <CaseFeature rdf:ID="loc">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the locative case.</rdfs:comment>
+  </CaseFeature>
+  <DemonstrativeGloss rdf:ID="DEM">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DEM</startsWith>
+  </DemonstrativeGloss>
+  <CoordinatingConjunction rdf:ID="COOR"/>
+  <ReflexivePronoun rdf:ID="PRONRFL"/>
+  <IndicativeGloss rdf:ID="IND">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IND</olia_system:hasTagContaining>
+  </IndicativeGloss>
+  <PronominalAdverb rdf:ID="PRONDEM_P">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are pronominal adverbs composed of a demonstrative and a preposition, e.g. German "deswegen".</rdfs:comment>
+  </PronominalAdverb>
+  <DegreeFeature rdf:ID="superl"/>
+  <Adjective rdf:ID="A"/>
+  <VoiceFeature rdf:ID="pass"/>
+  <CopulaVerb rdf:ID="VCOP"/>
+  <ComplementizerGloss rdf:ID="COMP">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >COMP</startsWith>
+  </ComplementizerGloss>
+  <CaseFeature rdf:ID="dat">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the dative case.</rdfs:comment>
+  </CaseFeature>
+  <Classifier rdf:ID="CLF"/>
+  <PresentGloss rdf:ID="PRS">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PRS</olia_system:hasTagContaining>
+  </PresentGloss>
+  <GenitiveGloss rdf:ID="GEN">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GEN</olia_system:hasTagEndingWith>
+  </GenitiveGloss>
+  <PersonFeature rdf:ID="first"/>
+  <HabitualGloss rdf:ID="HAB">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HAB</olia_system:hasTagContaining>
+  </HabitualGloss>
+  <GenderFeature rdf:ID="n"/>
+  <SingularGloss rdf:ID="SG">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SG</olia_system:hasTagContaining>
+  </SingularGloss>
+  <ParticipleGloss rdf:ID="PTCP">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PTCP</olia_system:hasTagContaining>
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PTCP</startsWith>
+  </ParticipleGloss>
+  <TransitivizerGloss rdf:ID="TR"/>
+  <InterrogativePronoun rdf:ID="PRONINT"/>
+  <AspectFeature rdf:ID="hab"/>
+  <InfinitiveGloss rdf:ID="INF">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >INF</olia_system:hasTagContaining>
+  </InfinitiveGloss>
+  <DefinitenessFeature rdf:ID="indf"/>
+  <NominativeGloss rdf:ID="NOM">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NOM</olia_system:hasTagEndingWith>
+  </NominativeGloss>
+  <ImperativeGloss rdf:ID="IMP">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IMP</olia_system:hasTagContaining>
+  </ImperativeGloss>
+  <PronominalAdverb rdf:ID="ADV_P">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are pronominal adverbs composed of an adverbial and a preposition, e.g. in German "darum", in English "thereby".</rdfs:comment>
+  </PronominalAdverb>
+  <NominalizerGloss rdf:ID="NMLZ">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NMLZ</startsWith>
+  </NominalizerGloss>
+  <SecondGloss rdf:ID="Second">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></startsWith>
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2</startsWith>
+  </SecondGloss>
+  <DativeGloss rdf:ID="DAT">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DAT</olia_system:hasTagEndingWith>
+  </DativeGloss>
+  <AccusativeGloss rdf:ID="ACC">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ACC</olia_system:hasTagEndingWith>
+  </AccusativeGloss>
+  <IndefiniteGloss rdf:ID="INDF">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >INDF</olia_system:hasTagContaining>
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >INDF</startsWith>
+  </IndefiniteGloss>
+  <TenseFeature rdf:ID="fut"/>
+  <SuperlativeGloss rdf:ID="SUPERL">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SUPERL</olia_system:hasTagContaining>
+  </SuperlativeGloss>
+  <FirstGloss rdf:ID="First">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1</startsWith>
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1</olia_system:hasTagContaining>
+  </FirstGloss>
+  <DistalGloss rdf:ID="DIST">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DIST</olia_system:hasTagContaining>
+  </DistalGloss>
+  <ComparativeGloss rdf:ID="COMPR">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >COMPR</olia_system:hasTagContaining>
+  </ComparativeGloss>
+  <Substitutive rdf:ID="_SU"/>
+  <Complemetizer rdf:ID="SUBCOM"/>
+  <FocusGloss rdf:ID="FOC">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >FOC</olia_system:hasTagContaining>
+  </FocusGloss>
+  <NumberFeature rdf:ID="sg"/>
+  <ProperNoun rdf:ID="NPRP"/>
+  <InstrumentalGloss rdf:ID="INS">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >INS</olia_system:hasTagEndingWith>
+  </InstrumentalGloss>
+  <ProximalGloss rdf:ID="PROX">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PROX</olia_system:hasTagContaining>
+  </ProximalGloss>
+  <MoodFeature rdf:ID="sbjv"/>
+  <PersonFeature rdf:ID="second"/>
+  <AspectFeature rdf:ID="ipfv"/>
+  <MoodFeature rdf:ID="imp"/>
+  <DefiniteGloss rdf:ID="DEF">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DEF</olia_system:hasTagContaining>
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DEF</startsWith>
+  </DefiniteGloss>
+  <Adposition rdf:ID="P"/>
+  <AspectFeature rdf:ID="pfv"/>
+  <NegativeGloss rdf:ID="NEG">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NEG</olia_system:hasTagEndingWith>
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NEG</startsWith>
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NEG</olia_system:hasTagContaining>
+  </NegativeGloss>
+  <PersonalPronoun rdf:ID="PRONPRS"/>
+  <IntransitiveVerb rdf:ID="VINTR"/>
+  <SubjunctiveGloss rdf:ID="SBJV">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SBJV</olia_system:hasTagContaining>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SBJV</olia_system:hasTagEndingWith>
+  </SubjunctiveGloss>
+  <CaseFeature rdf:ID="gen">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the genitive case.</rdfs:comment>
+  </CaseFeature>
+  <FeminineGloss rdf:ID="F">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >F</olia_system:hasTagContaining>
+  </FeminineGloss>
+  <CopulaGloss rdf:ID="COP">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >COP</startsWith>
+  </CopulaGloss>
+  <GenderFeature rdf:ID="f"/>
+  <Determiner rdf:ID="DET"/>
+  <GenderFeature rdf:ID="m"/>
+  <Quantifier rdf:ID="PRONQUANT"/>
+  <PastGloss rdf:ID="PST">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PST</olia_system:hasTagContaining>
+  </PastGloss>
+  <PossessiveGloss rdf:ID="POSS">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >POSS</olia_system:hasTagContaining>
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >POSS</startsWith>
+  </PossessiveGloss>
+  <MoodFeature rdf:ID="neg"/>
+  <PluralGloss rdf:ID="PL">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PL</olia_system:hasTagContaining>
+  </PluralGloss>
+  <NumberFeature rdf:ID="pl"/>
+  <CaseFeature rdf:ID="acc">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the accusative case</rdfs:comment>
+  </CaseFeature>
+  <ModalVerb rdf:ID="VMOD"/>
+  <CommonNoun rdf:ID="NCOM"/>
+  <ThirdGloss rdf:ID="Third">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >3</startsWith>
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >3</olia_system:hasTagContaining>
+  </ThirdGloss>
+  <FutureGloss rdf:ID="FUT">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >FUT</olia_system:hasTagContaining>
+  </FutureGloss>
+  <DemonstrativePronoun rdf:ID="PRONDEM"/>
+  <TenseFeature rdf:ID="prs"/>
+  <LocativeGloss rdf:ID="LOC">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >LOC</olia_system:hasTagEndingWith>
+  </LocativeGloss>
+  <CaseFeature rdf:ID="nom">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the nominative case.</rdfs:comment>
+  </CaseFeature>
+  <CaseFeature rdf:ID="com">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the comitative case.</rdfs:comment>
+  </CaseFeature>
+  <ComitativeGloss rdf:ID="COM">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >COM</olia_system:hasTagEndingWith>
+  </ComitativeGloss>
+  <ImperfectiveGloss rdf:ID="IPFV">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IPFV</olia_system:hasTagContaining>
+  </ImperfectiveGloss>
+  <PossessivePronoun rdf:ID="PRONPOS"/>
+  <MoodFeature rdf:ID="ind"/>
+  <Particle rdf:ID="PTC"/>
+  <DiminutiveGloss rdf:ID="DIM"/>
+  <TransitiveVerb rdf:ID="VTR"/>
+  <CaseFeature rdf:ID="erg">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the ergative case.</rdfs:comment>
+  </CaseFeature>
+  <MasculineGloss rdf:ID="M">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >M</olia_system:hasTagContaining>
+  </MasculineGloss>
+  <ErgativeGloss rdf:ID="ERG">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ERG</olia_system:hasTagEndingWith>
+  </ErgativeGloss>
+  <TenseFeature rdf:ID="pst"/>
+  <DefinitenessFeature rdf:ID="def"/>
+  <PassiveGloss rdf:ID="PASS">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PASS</olia_system:hasTagContaining>
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PASS</startsWith>
+  </PassiveGloss>
+  <PronominalAdverb rdf:ID="PRONPRS_P">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are pronominal adverbs composed of a possessive pronoun and
+a preposition, e.g. German "seinetwegen".</rdfs:comment>
+  </PronominalAdverb>
+  <PerfectiveGloss rdf:ID="PFV">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PFV</olia_system:hasTagContaining>
+  </PerfectiveGloss>
+  <DitransitiveVerb rdf:ID="VDITR"/>
+  <ReflexiveGloss rdf:ID="REFL">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >REFL</startsWith>
+  </ReflexiveGloss>
+  <NeuterGloss rdf:ID="N">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N</olia_system:hasTagContaining>
+  </NeuterGloss>
+  <DegreeFeature rdf:ID="compr"/>
+  <AuxiliaryVerb rdf:ID="VAUX"/>
+  <RelativePronoun rdf:ID="PRONREL"/>
+  <ExpletivePronoun rdf:ID="PRONEXPL"/>
+  <ObliqueGloss rdf:ID="OBL">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OBL</olia_system:hasTagEndingWith>
+  </ObliqueGloss>
+  <PersonFeature rdf:ID="third"/>
+  <CaseFeature rdf:ID="ins">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the instrumental case.</rdfs:comment>
+  </CaseFeature>
+  <CaseFeature rdf:ID="obl">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the oblique case.</rdfs:comment>
+  </CaseFeature>
+  <VerbalNoun rdf:ID="VN"/>
+  <TopicGloss rdf:ID="TOP">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TOP</olia_system:hasTagContaining>
+  </TopicGloss>
+  <Attributive rdf:ID="_AT"/>
+
+  <!-- |========================================|
+      ||              Syntax                  ||
+      |========================================| -->
+
+  <owl:Class rdf:ID="CONST">
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+	</rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >cs</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasFunction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasRole"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the Constituent structure layer. There are used multiple layers which are named 'CS1', 'CS2', ..., 'CSn'.
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 3.1)</rdfs:comment>
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="UnspecifiedObject">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Argument"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This categorie belongs to the extended scheme in the guidelines. Prepositional objects are annotated with the generic label OBJ. 
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.4)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Theme">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Theme is a general term covering the notions of patient that means an entity affected by the action, of result that means an entity effected by the action, i.e. which emerges out of the action, or of theme that means an entity effected by the action, i.e. which emerges out of the action.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.3)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ROLE"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Location">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ROLE"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Location covers the spatial relations of static spatial location, direction of movement, source which is indicating the origin of movement, and the relation of path which is indicating a place through which the movement takes place.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.8)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AdverbialSubordinateClause">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FUNCTION"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are subordinate clauses with adverbial function which are annotated as ADV, e.g. "Tom sleeps when the sun rises."
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.6)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ROLE">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the semantic Role layer. Lexical heads not only require a certain number of arguments but also determine the semantic properties of these arguments depending on how these are involved in the state of affairs described by the lexical head. This means that the syntactic arguments enter certain semantic (also called thematic or theta-) roles, which are pre-established by the selecting properties of the lexical head. The relationship between a lexical head and its arguments can be explained by the use of a small finite set of universally applicable notions which indicate whether a certain argument is the performer of an action, just undergoes an action etc. Note that only constituents that are annotated at the CS and FUNCTION layers may be labeled for semantic role.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.1)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/system.owl#Feature"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >cs</owl:hasValue>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#FUNCTION">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the grammatical function layer. This layer encodes the syntactic relations that various syntactic constituents in a clause (NP, PP, AP, S) entertain with respect to the main verb of that clause.
+Relevant information at this layer relates to the questions of 
+(i) whether a syntactic constituent is an obligatory addition the verb (argument), or wether it is an optional addition that could be easily left out (adjunct),
+(ii) wether the relative status of the different arguments differs and - if so - which of the arguments of a verb (if any) has a prominent status with respect to grammatical processes such as agreement, binding, focus marking etc. Only constituents that are annotated at the CS layers may be labeled for grammatical functions.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.1)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >cs</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Adjunct">
+    <rdfs:subClassOf rdf:resource="#FUNCTION"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The category adjunct (ADJ) is assigned to those constituents that appear as optional additions, be it to the main verb or to a given noun. This means that they can be left out freely without a change in
+grammaticality or a significant change in meaning. 
+In  "John called Mary (from school) (with his cell phone)"  the optional additions "from school" and "with his cell phone" are such optional additions that can be left out freely.
+Adjuncts are generally used to convey additional information about the time, place, manner, or cause of the event or situation described by the clause (see below). That is, they restrict the class of events/  situations described by the clause to a subset. If required the category ADJ can be split up into semantic
+sub-categories, that are annotated in layer semantic roles (time, location, etc.).
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.3)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Possessor">
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Possessor is the entity who owns something.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.7)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Manner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Manner applies to constituents that denote how something is carried out.
+Adverbs may also denote manner, however, they are not annotated at any of the
+syntactic layers.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.11)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IndirectObject">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The category Indirect Object (IO) belongs to the extended scheme in the guidelines and is assigned to that argument of a (ditransitive) verb that is not assigned the status of Subject (SUBJ) nor Direct Object (DO). In case-languages, IOs are often assigned the Dative. Semantically, the IO is often used to express the receiver or eneficient/ maleficient of an event, such as the NP John in Mary gave John a book/ kiss. Unlike SUBJs and DOs, IOs seem to always refer to individuals and must be expressed by a nominal constituent.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.4)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Argument"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PredicateNominal">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is a nominal predicate (noun or adjective), either with or without copula. The term nominal predicate may be used for the complements of further copulative verbs (cf. small clauses), e.g. consider, call, etc.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.5)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#FUNCTION"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AdjectivalPhrase">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is the Adjectival Phrase (AP). In general, adjectives are not annotated at the syntactic layer. However, there are two exeptions: adjectives (or APs) that function as nominal predicats are annotated with AP. The head of the AP is not labeled; this information can be retrieved from the POS layer.
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 3.3.4)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CONST"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Agent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NPs that refer to the entities that cause actions, either animates or inanimates,
+are annotated as agents.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.2)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MainClause">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are main clauses, e.g. "John sleeps.".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.6)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#FUNCTION"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Comitative">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Comitative applies to an animate entity that accompanies a participant of the
+action.
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.12)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Instrument">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Instruments are means with the help of which the action is carried out.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.6)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PrepositionalPhrase">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Prepositional Phrase (PP) consists of a prepositional/ postpositional head and its NP-complement, plus optional modifiers. Pronominal adverbs are also PP constituents.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 3.3.2)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CONST"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="VerbalHead">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CONST"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Verb (V) at the syntax layer is either a lexical (VLEX) or a copula verb (VCOP) at the POS layer. Modal verbs and auxiliaries are not annotated in the constituent structure. The verb and its arguments are placed at the same CSn layer. Raising and control verbs are treated like ordinary verbs. They subcategorize for a sentential complement.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 3.3.3)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Time">
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Time covers a point or an interval of time at which the action takes place.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.9)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cause">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cause indicates the reason why something happens and is often expressed by a
+PP (because of, with, through etc.). Sometimes this role is close to the role of
+Instrument. The criterion for the choice of tag CAUSE is if the expression can
+be paraphrased through a clausal subordinate clause.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.10)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Argument">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The category ARG is assigned to those syntactic constituents that appear as obligatory complements to the main verb. This means that they cannot be left out without a change in grammaticality or a significant change in meaning.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.3)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#FUNCTION"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Experiencer">
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Experiencer is the sentient being that participates in a state/event of emotion (love, hate, etc.), volition (wish, want, etc.), cognition (think, remember, etc.), perception (see, hear, etc.) or bodily sensation (feel cold, feel hungry, etc.).
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.4)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NounPhrase">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CONST"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Noun Phrase (NP) consists of a head plus any modifying or determining material, i.e. adjectives, relative clauses, determiners, demonstratives, ect.
+NPs typically occur as complements to verbs or prepositions/ postpositions.
+Substantive pronouns (he, she, it, this, that, someone, anyone, ect.) and expletive subjects are NPs.
+And NPs can be embedded within another NP.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 3.3.1)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Subject">
+    <rdfs:subClassOf rdf:resource="#Argument"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The category Subject (SUBJ) belongs to the extended scheme in the guidelines and is assigned to a designated argument that is prominent with respect to a number of grammatical relations such (i.) as constituency with the verb, (ii.) agreement, (iii.) and binding, etc. This prominence is often taken to correspond to a prominent position in the syntactic structure of the clause.
+(i) Unlike direct objects, subjects do not seem to form a constituent with the verb as shown by the fact that the two cannot be topicalised together in
+" *[Johann gesehen] hat den Mann nicht" vs.  "[Den Mann gesehen] hat Johann nicht."
+(ii) In agreement languages, the subject is that argument that the verb always agrees with (in some languages the verb additionally agrees with the object as well): "Johann (sg.) sleeps (sg.)" vs. "*The boys (pl.) sleeps (sg.)"
+(iii) subjects can bind reflexive pronomina: "Peter blamed himself" vs. " *Heself blamed Peter." Subjects are most often expressed by nominal constituents (NPs), but sentential subjects as in 
+"[That Peter won the race] surprised me" are also possible with certain verbs. Often the subject has the semantic role of AGENT, but this is not a 1:1-correspondence.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.4)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="DirectObject">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The category Direct Object (DO) belongs to the extended scheme in the guidelines and is assigned to the second argument of a transitive verb, which is not designated in the sense that it is less prominent than the subject. This rule of thumb makes the Nominal Phrase "Bill" in "The boys like Bill" the DO, since it does not agree with the main verb in number. Like subjects, DOs are assigned structural case (ACC/PAR or ABS) in case-assigning languages. Like subjects, DOs have a default base position relative to verb and subject in languages that do not assign case: In English and French, the DO follows the main verb (and the subject). DOs are generally taken
+to stand in close syntactic relation with the main verb, which is reflected by the fact that they can be displaced together: "[Den Mann gerufen] haben wir." Apart from this, DOs are often only identifiable based of the absence of properties typical for subjects.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.4)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Argument"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Clause">
+    <rdfs:subClassOf rdf:resource="#CONST"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is a sentence/ clause (S). It marks both main clauses and subordinate clauses. The root S symbol also covers the final punctuation mark.
+Dependent verb forms (infinitives, gerunds, participles, etc.) are labeled as S. Also infinitival complements of lexical verbs are annotated as S.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 3.3.5)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="RelativeClause">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These are relative clauses which are annotated as ATTR, e.g. " I saw the boy who ate the mango.".
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 4.3.6)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#FUNCTION"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Goal">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Goal is a general term covering the notions of recipient that means an entity which receives something, of benefactive that is an entity to whose advantage an action is performed (or
+malefactive: an entity to whose disadvantage an action is performed), and of purpose which means the intension for which an action is performed.
+
+(Information Structure in Cross-Linguistic Corpora:
+Annotation Guidelines for Phonology, Morphology, Syntax, Semantics, and Information Structure 5.3.5)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ROLE"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#hasFunction">
+    <rdfs:range rdf:resource="#FUNCTION"/>
+    <rdfs:domain rdf:resource="#CONST"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasRole">
+    <rdfs:range rdf:resource="#ROLE"/>
+    <rdfs:domain rdf:resource="#CONST"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagContaining">
+    <rdfs:domain rdf:resource="#FUNCTION"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
+  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagEndingWith">
+    <rdfs:domain rdf:resource="#ROLE"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#startsWith">
+    <rdfs:domain rdf:resource="#CONST"/>
+  </owl:DatatypeProperty>
+  <Location rdf:about="#LOC">
+	<rdfs:comment>TODO: check whether two items are being conflated here</rdfs:comment>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-LOC</olia_system:hasTagEndingWith>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >LOC</olia_system:hasTag>
+  </Location>
+  <Cause rdf:ID="CAUSE">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-CAUSE</olia_system:hasTagEndingWith>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CAUSE</olia_system:hasTag>
+  </Cause>
+  <Agent rdf:ID="AG">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AG</olia_system:hasTag>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-AG</olia_system:hasTagEndingWith>
+  </Agent>
+  <IndirectObject rdf:ID="IO">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-IO</olia_system:hasTagContaining>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IO</olia_system:hasTag>
+  </IndirectObject>
+  <MainClause rdf:ID="MAIN">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-MAIN</olia_system:hasTagContaining>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MAIN</olia_system:hasTag>
+  </MainClause>
+  <Clause rdf:ID="S">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S</olia_system:hasTag>
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S</startsWith>
+  </Clause>
+  <NounPhrase rdf:ID="NP">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NP</startsWith>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NP</olia_system:hasTag>
+  </NounPhrase>
+  <Experiencer rdf:ID="EXPER">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EXPER</olia_system:hasTag>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-EXPER</olia_system:hasTagEndingWith>
+  </Experiencer>
+  <PredicateNominal rdf:ID="PRDNOM">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PRDNOM</olia_system:hasTag>
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-PRDNOM</olia_system:hasTagContaining>
+  </PredicateNominal>
+  <UnspecifiedObject rdf:ID="OBJ">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-OBJ</olia_system:hasTagContaining>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OBJ</olia_system:hasTag>
+  </UnspecifiedObject>
+  <Comitative rdf:about="#COM">
+	<rdfs:comment>TODO: check whether two tags are being conflated</rdfs:comment>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >COM</olia_system:hasTag>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-COM</olia_system:hasTagEndingWith>
+  </Comitative>
+  <RelativeClause rdf:ID="ATTR">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-ATTR</olia_system:hasTagContaining>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ATTR</olia_system:hasTag>
+  </RelativeClause>
+  <Goal rdf:ID="GOAL">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GOAL</olia_system:hasTag>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-GOAL</olia_system:hasTagEndingWith>
+  </Goal>
+  <PrepositionalPhrase rdf:ID="PP">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PP</startsWith>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PP</olia_system:hasTag>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </PrepositionalPhrase>
+  <Subject rdf:ID="SUBJ">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SUBJ</olia_system:hasTag>
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-SUBJ</olia_system:hasTagContaining>
+  </Subject>
+  <Time rdf:ID="TIME">
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></olia_system:hasTagEndingWith>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TIME</olia_system:hasTag>
+  </Time>
+  <Instrument rdf:ID="INSTR">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >INSTR</olia_system:hasTag>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-INSTR</olia_system:hasTagEndingWith>
+  </Instrument>
+  <VerbalHead rdf:ID="V">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V</startsWith>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >V</olia_system:hasTag>
+  </VerbalHead>
+  <Theme rdf:ID="THEME">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >THEME</olia_system:hasTag>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-THEME</olia_system:hasTagEndingWith>
+  </Theme>
+  <Manner rdf:ID="MAN">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MAN</olia_system:hasTag>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-MAN</olia_system:hasTagEndingWith>
+  </Manner>
+  <Possessor rdf:about="#POSS">
+	<rdfs:comment>TODO: check whether two tags are being conflated</rdfs:comment>
+    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-POSS</olia_system:hasTagEndingWith>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >POSS</olia_system:hasTag>
+  </Possessor>
+  <AdjectivalPhrase rdf:ID="AP">
+    <startsWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AP</startsWith>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AP</olia_system:hasTag>
+  </AdjectivalPhrase>
+  <Adjunct rdf:ID="ADJ">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ADV</olia_system:hasTag>
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-ADJ</olia_system:hasTagContaining>
+  </Adjunct>
+  <DirectObject rdf:ID="DO">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-DO</olia_system:hasTagContaining>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DO</olia_system:hasTag>
+  </DirectObject>
+  <Argument rdf:ID="ARG">
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ARG</olia_system:hasTag>
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-ARG</olia_system:hasTagContaining>
+  </Argument>
+  <AdverbialSubordinateClause rdf:ID="ADV">
+    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-ADV</olia_system:hasTagContaining>
+    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ADV</olia_system:hasTag>
+  </AdverbialSubordinateClause>
+</rdf:RDF>

@@ -1,0 +1,514 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY CCR "http://purl.org/olia/discourse/discourse.CCR.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/discourse/discourse.CCR.owl#"
+     xml:base="http://purl.org/olia/discourse/discourse.CCR.owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:CCR="http://purl.org/olia/discourse/discourse.CCR.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment xml:lang="en"
+            >CCR ontology, based on Sanders et al. (2018)
+
+As for the modelling, features are modelled as classes here. Sander et al.&#39;s original formulation would be grounded on features and their values, but we follow the modelling approach of OLiA because this allows for subsequent refinements of the hierarchical organization, whereas individuals are not hierarchically structured. This was necessary, for example, for NonConditionalCause which was not introduced in the model description but whose existence is entailed (!) from the subsequent assertion that conditional relations are a subtype of causal relations but not identical with them (so there must be a remainder).
+
+References:
+Ted J.M. Sanders*, Vera Demberg, Jet Hoek, Merel C.J. Scholman, Fatemeh Torabi Asr, Sandrine Zufferey and Jacqueline Evers-Vermeul (2018), Unifying dimensions in coherence relations: How various annotation frameworks are related, Corpus Linguistics and Ling. Theory 2018; aop, https://doi.org/10.1515/cllt-2016-0078</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:DatatypeProperty rdf:about="&skos;altLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Additive -->
+
+    <owl:Class rdf:about="#Additive">
+        <rdfs:subClassOf rdf:resource="#BasicOperation"/>
+        <owl:disjointWith rdf:resource="#Causal"/>
+        <rdfs:comment xml:lang="en"
+            >A relation is additive if the segments cannot be connected by an implication
+operation, but rather in a logical conjunction (P &amp; Q), as in (9).
+(9) [The quality of this fuel with bio component is completely similar to Shell&#8217;s
+regular Euro 95]S1 and [the price at the pump is the same as well.]S2
+The relation in (9) consists of a conjunction of two segments that both describe a
+fact about fuel with a bio component. Temporal relations such as SEQUENCE
+(which can typically be expressed as: S1 And then S2) and TEMPORAL OVERLAP
+(with a prototypical connective expressed as: S1 Meanwhile S2) are additive
+relations too, but the events expressed in the segments are ordered in time
+
+....
+
+A case like (11) shows a negative additive relation: passengers say X (P), and
+Easyjet says not-X (Q). This is a classical OPPOSITION relation (Lakoff 1971;
+Spooren 1989).
+(11) [Passengers reported in the British tabloid Daily Express that the pilot tried
+to get the landing gear in position with strange nose dives] but [this is
+denied by Easyjet].
+
+(Sanders et al. 2018, p.11)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Antichronological -->
+
+    <owl:Class rdf:about="#Antichronological">
+        <rdfs:label xml:lang="en"
+            >anti-chronological</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+        <rdfs:comment xml:lang="en"
+            >Within the category of temporal relations, a
+further distinction, referred to as temporal order, is made between chronological
+(with event 1 in S1 and event 2 in S2), anti-chronological (with event 2 in S1 and
+Unifying dimensions in coherence relations 13
+Bereitgestellt von | Universit&#228;tsbibliothek Bern
+Angemeldet
+Heruntergeladen am | 27.06.19 14:20
+event 1 in S2) and synchronous relations (where events 1 and 2 described in S1
+and S2 happen simultaneously).
+
+(Sanders et al. 2018, p.134)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#BasicOperation -->
+
+    <owl:Class rdf:about="#BasicOperation">
+        <rdfs:label xml:lang="en">basic operation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#CCRFeature"/>
+        <rdfs:comment xml:lang="en"
+            >In discourse, segments can be strongly or weakly connected. On the basis of this
+pre-theoretical intuition, CCR distinguishes between causal and additive relations.
+More specifically, this dimension concerns the operation that has to be
+carried out on the two discourse segments. ...
+
+basic operation distinguishes between causals and conditionals on
+the one hand, and additive and temporal relations on the other hand. In terms of
+prototypical lexical markers: because, so and if, versus and, also, and then. (Sanders et al. 2018 p. 11)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#CCRFeature -->
+
+    <owl:Class rdf:about="#CCRFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Causal -->
+
+    <owl:Class rdf:about="#Causal">
+        <rdfs:subClassOf rdf:resource="#BasicOperation"/>
+        <rdfs:comment xml:lang="en"
+            >A relation is causal if an implication
+relation (P ? Q) can be deduced between the two discourse segments, as in (7).
+(7) [The athletics union was forced to emigrate to Belgium,]S1 because [there
+was no accommodation available in the Netherlands.]S2
+In (7), the consequence Q is presented in S1, and the cause P in S2: a lack of
+accommodation has led to the emigration of the athletics union.
+
+The category of causal relations also comprises conditional relations. They
+share the implicational nature of the relation, but at the same time they differ in
+the status of the antecedent (P) in the implication (P ? Q) relation. In conditionals,
+P is not yet realized; in causals it is. (8) is an example of a conditional
+relation, where P is in S1 and Q in S2.
+(8) If [you take one more step,]S1 [I will arrest you.]S2
+In (8), the speaker confronts the listener with a condition. If the listener takes
+one more step, there will be a consequence: he will be arrested.
+
+...
+
+negative (...) causal relations are typically
+DENIALS OF EXPECTATIONS, as illustrated in (10).
+(10) Although [they were officially assured the police would not be involved in
+the census] [many people are afraid of reprisals &#8230; ]
+Here, the causal operation lies between the fact that people were assured the
+police would not be involved (P in S1) and the fact that people are still afraid of
+reprisals, which is not-Q (S2) because the implication would be: police not
+involved (P) ? no need to be afraid of reprisals (Q). It is this expected implication
+that is denied, and that is why although is used. A connective like although can
+often be used as the negative counterpart of because.
+
+(Sanders et al. 2018, p.10-11)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#CauseConsequence -->
+
+    <owl:Class rdf:about="#CauseConsequence">
+        <rdfs:label xml:lang="en">basic order</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >cause-consequence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Order"/>
+        <owl:disjointWith rdf:resource="#ConsequenceCause"/>
+        <rdfs:comment xml:lang="en"
+            >A relation with a basic order has an antecedent P as
+S1, followed by a consequent Q in S2, as in (14). The antecedent is the cause or
+the argument, and the consequent is the consequence or the claim.
+
+....
+
+(14) Sometimes children tease me. But [I don&#8217;t reply,]S1 that&#8217;s why [they don&#8217;t
+do it anymore.]S2
+
+Sanders et al. 2018, p.13</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Chronological -->
+
+    <owl:Class rdf:about="#Chronological">
+        <rdfs:label xml:lang="en">chronological</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+        <rdfs:comment xml:lang="en"
+            >Within the category of temporal relations, a
+further distinction, referred to as temporal order, is made between chronological
+(with event 1 in S1 and event 2 in S2), anti-chronological (with event 2 in S1 and
+Unifying dimensions in coherence relations 13
+Bereitgestellt von | Universit&#228;tsbibliothek Bern
+Angemeldet
+Heruntergeladen am | 27.06.19 14:20
+event 1 in S2) and synchronous relations (where events 1 and 2 described in S1
+and S2 happen simultaneously).
+
+(Sanders et al. 2018, p.134)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Conditional -->
+
+    <owl:Class rdf:about="#Conditional">
+        <rdfs:subClassOf rdf:resource="#Causal"/>
+        <owl:disjointWith rdf:resource="#NonConditionalCause"/>
+        <rdfs:comment xml:lang="en"
+            >&quot;CCR considers conditional relations to be a subtype of causal relations.&quot; (Sanders et al. 2018, p.23)
+
+However, this is not expressed in the model descriptions, but only as an afterthought when comparing with PDTB</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#ConsequenceCause -->
+
+    <owl:Class rdf:about="#ConsequenceCause">
+        <rdfs:label xml:lang="en"
+            >In a [causal] relation 
+with a non-basic order, such as (15), the consequent precedes the antecedent.
+
+(15) [Universities supposedly cancel subscriptions to scientific journals more
+often]S1 because [there is more information available through the internet.]S2
+
+(Sanders et al. 2018, p.13)</rdfs:label>
+        <rdfs:label xml:lang="en"
+            >consequence-cause</rdfs:label>
+        <rdfs:label xml:lang="en">non-basic order</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Order"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Negative -->
+
+    <owl:Class rdf:about="#Negative">
+        <rdfs:subClassOf rdf:resource="#Polarity"/>
+        <owl:disjointWith rdf:resource="#Positive"/>
+        <rdfs:comment xml:lang="en"
+            >A relation is negative if a negated version of either P or Q, not-P or not-Q, functions in the relation. In terms of connectives, negative relations can be typically expressed by connectives such as but and although, as is illustrated in (6).
+
+(6) [The biofuel is more expensive to produce,]S1 but [by reducing the excisetax the government makes it possible to sell the fuel for the same price.]S2
+
+In (6), where P is in S1, a logical positive S2 would be that the biofuel costs more, as a consequence of the higher production costs. However, S2 presents a denial of this expectation; the fuel is not sold at a higher price due to a reduced excise-tax. S2 expresses not-Q, that is, the negation of the consequent of the relation. This results in a negative relation. Note that not-P or not-Q may, but need not involve explicit negation. In (6), for instance, S2 expresses not-Q without
+using a negation marker (as would be the case in &#8220;not impossible&#8221;), but still reverses the polarity of the consequence.
+
+
+(Sanders et al. 2018, p.9-10)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#NonConditionalCause -->
+
+    <owl:Class rdf:about="#NonConditionalCause">
+        <rdfs:subClassOf rdf:resource="#Causal"/>
+        <rdfs:comment xml:lang="en"
+            >Non-conditional Causals are entailed by modelling conditionals as causals and asserting that these are different (&quot;CCR considers conditional relations to be a subtype of causal relations. PDTB
+makes a similar distinction&quot; [!]).
+
+&quot;CCR considers conditional relations to be a subtype of causal relations.&quot; (Sanders et al. 2018, p.23)
+
+However, this is not expressed in the model descriptions, but only as an afterthought when comparing with PDTB</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#NonTemporal -->
+
+    <owl:Class rdf:about="#NonTemporal">
+        <rdfs:label xml:lang="en">non-temporal</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Temporality"/>
+        <owl:disjointWith rdf:resource="#Temporal"/>
+        <rdfs:comment xml:lang="en"
+            >If temporal order is not relevant to the
+relation at hand, as is the case in for example purely additive relations, we talk
+about a non-temporal relation. (Sanders et al. 2018, p.13)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Objective -->
+
+    <owl:Class rdf:about="#Objective">
+        <rdfs:subClassOf rdf:resource="#Source"/>
+        <owl:disjointWith rdf:resource="#Subjective"/>
+        <rdfs:comment xml:lang="en"
+            >A relation is objective if the discourse segments are
+connected at the level of their propositional content. In other words, both segments
+describe situations in the real world, as in (12). The speaker merely reports
+these facts, and is not actively involved in the construction of the relation.
+(12) [A cloud moved before the sun,]S1 so [suddenly the room turned darker.]S2
+
+(Sanders et al. 2018, p. 12)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Order -->
+
+    <owl:Class rdf:about="#Order">
+        <rdfs:label xml:lang="en"
+            >implication order</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#CCRFeature"/>
+        <rdfs:comment xml:lang="en"
+            >Given two
+discourse segments in a causal relation, they can be connected in a basic or a
+non-basic order. This implication order is defined in terms of the mapping of P
+and Q onto the segments. A relation with a basic order has an antecedent P as
+S1, followed by a consequent Q in S2, as in (14). The antecedent is the cause or
+the argument, and the consequent is the consequence or the claim. In a relation
+with a non-basic order, such as (15), the consequent precedes the antecedent.
+(14) Sometimes children tease me. But [I don&#8217;t reply,]S1 that&#8217;s why [they don&#8217;t
+do it anymore.]S2
+(15) [Universities supposedly cancel subscriptions to scientific journals more
+often]S1 because [there is more information available through the internet.]S2
+Thus, implication order distinguishes cause-consequence relations (S1 As a
+result/So S2) from consequence-cause relations (S1 because S2) and claim-argument
+(S1 since S2) from argument-claim or conclusion (S1 therefore S2) relations.
+
+... 
+[It] was originally called the order of the
+segments
+
+... The implication order dimension is not applicable
+to additive relations, as they are symmetrical by definition.
+
+Sanders et al. (2018,p13)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Polarity -->
+
+    <owl:Class rdf:about="#Polarity">
+        <rdfs:label xml:lang="en">polarity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#CCRFeature"/>
+        <rdfs:comment xml:lang="en"
+            >Polarity &quot;distinguishes between positive and negative (or adversative) relations&quot; (Sanders et al. 2018, p.9).
+
+&quot;Polarity distinguishes contrastive, adversative and concession relations from all other relations. Hence, in terms of connectives and cue phrases, polarity distinguishes negative relations signaled by, for example, but or although from positive relations expressed by conjunctions such as and or because.&quot; (Sanders et al. 2018, p.10)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Positive -->
+
+    <owl:Class rdf:about="#Positive">
+        <rdfs:subClassOf rdf:resource="#Polarity"/>
+        <rdfs:comment xml:lang="en"
+            >A relation is positive if the relation holds between P and Q, expressed in S1 and S2. A positive relation  is typically expressed by connectives such as and or because. For example, in (5), S2 has a direct link to S1: Q in S2 is an expected consequence of P in S1
+.
+(5) [The stocks can decrease tremendously in value]S1 and [thereby result in a loss for the investor.]S2
+
+(Sanders et al. 2018, p.9)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Source -->
+
+    <owl:Class rdf:about="#Source">
+        <rdfs:subClassOf rdf:resource="#CCRFeature"/>
+        <rdfs:comment xml:lang="en"
+            >The third dimension is source of coherence, which distinguishes between objective
+and subjective relations. ... Originally, CCR labeled these categories as semantic versus pragmatic relations. Other terms
+have been used to refer to similar categories: external versus internal (Halliday and Hasan 1976;
+Martin 1992), propositional vs. illocutionary (Sanders and Spooren 1999), subject matter versus
+presentational (Mann and Thompson 1988) or content versus epistemic and speech act use
+(Sweetser 1990), see Sanders and Spooren (2009a: 208). ...
+
+... source of coherence distinguishes between relations describing real
+world-situations such as temporal sequence (SUCCESSION) and cause-consequence
+(RESULT) or consequence-cause (REASON), from typical argumentative
+relations such as claim-argument (EVIDENCE, JUSTIFICATION) and CONCLUSION.
+
+(Sanders et al. 2018, p.12)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Subjective -->
+
+    <owl:Class rdf:about="#Subjective">
+        <rdfs:label xml:lang="en"
+            >source of coherence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Source"/>
+        <rdfs:comment xml:lang="en"
+            >Relations are subjective if speakers or authors are actively engaged in the
+construction of these relations, either because they are reasoning, or because
+they perform a speech act in one or both segments. Subjective relations, such as
+(13), usually express the speaker&#8217;s opinion, argument, claim or conclusion.
+(13) [Drugs destroy people&#8217;s lives,]S1 so [drugs have to be battled judicially.]S2
+In (13), the statement in S1 is not the cause for S2, but an argument that is given
+to support the claim in S2.
+
+(Sanders et al. 2018, p.12)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Synchronuous -->
+
+    <owl:Class rdf:about="#Synchronuous">
+        <rdfs:subClassOf rdf:resource="#Temporal"/>
+        <rdfs:comment xml:lang="en"
+            >Within the category of temporal relations, a
+further distinction, referred to as temporal order, is made between chronological
+(with event 1 in S1 and event 2 in S2), anti-chronological (with event 2 in S1 and
+Unifying dimensions in coherence relations 13
+Bereitgestellt von | Universit&#228;tsbibliothek Bern
+Angemeldet
+Heruntergeladen am | 27.06.19 14:20
+event 1 in S2) and synchronous relations (where events 1 and 2 described in S1
+and S2 happen simultaneously).
+
+(Sanders et al. 2018, p.134)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Temporal -->
+
+    <owl:Class rdf:about="#Temporal">
+        <rdfs:subClassOf rdf:resource="#Temporality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Temporality -->
+
+    <owl:Class rdf:about="#Temporality">
+        <rdfs:subClassOf rdf:resource="#CCRFeature"/>
+        <rdfs:comment xml:lang="en"
+            >Temporality defines whether two segments are ordered in time. When S1 and S2
+display a temporal sequence (e.g., SEQUENCE or PRECEDENCE), or temporal overlap,
+the relation is temporally ordered. If temporal order is not relevant to the
+relation at hand, as is the case in for example purely additive relations, we talk
+about a non-temporal relation.
+
+(Sanders et al. 2018, p.13)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/discourse/discourse.CCR.owl#Order -->
+
+    <owl:Thing rdf:about="#Order">
+        <skos:altLabel xml:lang="en"
+            >order of the segments</skos:altLabel>
+    </owl:Thing>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Antichronological"/>
+            <rdf:Description rdf:about="#Chronological"/>
+            <rdf:Description rdf:about="#Synchronuous"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

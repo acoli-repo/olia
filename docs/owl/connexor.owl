@@ -1,0 +1,2545 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY olia_system "http://purl.org/olia/system.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/connexor.owl#"
+     xml:base="http://purl.org/olia/connexor.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:olia_system="http://purl.org/olia/system.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/olia/connexor.owl">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/deu"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/fre"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/spa"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/ita"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/nld"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/rus"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/swe"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/dan"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/nor"/>
+ 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/fin"/>
+
+       <rdfs:comment rdf:datatype="&xsd;string">annotation model for connexor machinese syntax&lt;br/&gt;
+		
+		The supported languages are English, German, French, Spanish, Italian, Dutch, Russian, Swedish, Danish, Norwegian and Finnish.
+		
+2008/03/27 created (for the English scheme under http://193.185.105.50/demo/machinese/doc/enfdg3-tags.html, pos tags only)
+2010/01/08 linked with system.owl 
+2010/01/25 added morphological features: subclassification of verbs, aspect, gender, revised participle, etc.; distinction between hasTag, hasTagContaining etc.
+2010/11/25 added syntax tags and missing tags from http://193.185.105.50/demo/machinese/doc/MS-all-tags.html
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</rdfs:comment>
+        <owl:versionInfo>TODO: 
+- integrate XYFeature with PartOfSpeech hierarchy
+- hasTier for annotations other than morph
+- syntax properties ?</owl:versionInfo>
+        <dc:source>http://193.185.105.50/demo/machinese/doc/MS-all-tags.html</dc:source>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&owl;versionInfo"/>
+    <owl:AnnotationProperty rdf:about="&dc;source"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#hasAspect -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/connexor.owl#hasAspect">
+        <rdfs:subPropertyOf rdf:resource="&olia_system;hasFeature"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Aspect"/>
+                    <rdf:Description rdf:about="&olia_system;Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Aspect"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#hasCase -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/connexor.owl#hasCase">
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/olia/connexor.owl#Case"/>
+        <rdfs:subPropertyOf rdf:resource="&olia_system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Abbreviation"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Case"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Determiner"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Noun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Pronoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#hasDegreeOfComparison -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/connexor.owl#hasDegreeOfComparison">
+        <rdfs:range rdf:resource="http://purl.org/olia/connexor.owl#Comparison"/>
+        <rdfs:subPropertyOf rdf:resource="&olia_system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Adjective"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Adverb"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Comparison"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Determiner"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Pronoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#hasGender -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/connexor.owl#hasGender">
+        <rdfs:range rdf:resource="http://purl.org/olia/connexor.owl#Gender"/>
+        <rdfs:subPropertyOf rdf:resource="&olia_system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Feature"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Gender"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#hasNumber -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/connexor.owl#hasNumber">
+        <rdfs:range rdf:resource="http://purl.org/olia/connexor.owl#Number"/>
+        <rdfs:subPropertyOf rdf:resource="&olia_system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Abbreviation"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Determiner"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Noun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Number"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Numeral"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Pronoun"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#hasPerson -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/connexor.owl#hasPerson">
+        <rdfs:range rdf:resource="http://purl.org/olia/connexor.owl#Person"/>
+        <rdfs:subPropertyOf rdf:resource="&olia_system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Person"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#hasTense -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/connexor.owl#hasTense">
+        <rdfs:range rdf:resource="http://purl.org/olia/connexor.owl#Tense"/>
+        <rdfs:subPropertyOf rdf:resource="&olia_system;hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Tense"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasFeature -->
+
+    <owl:ObjectProperty rdf:about="&olia_system;hasFeature"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTag">
+        <rdfs:comment rdf:datatype="&xsd;string">Connexor produces space-separated lists of tags, every tag element assigned by this property represents one token in such a list. With different tag-tokenization, hasTag is to be renamed to &quot;containsTag&quot;.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#MorphologicalTag"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagContaining -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTagContaining"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagEndingWith -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTagEndingWith"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagStartingWith -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTagStartingWith"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="&olia_system;hasTier"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Abbreviation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Abbreviation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string">With abbreviations, the obligatory tags include &#39;ABBR&#39; and case. In Conexor FDG, the obligatory tags for abbreviations include &#39;ABBR&#39;, case and number.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string">With adjectives, the obligatory tags include &#39;A&#39; and degree of comparison.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string">With adverbs, the obligatory tags include &#39;ADV&#39;. The anglebracket tag again occurs in front of the &#39;ADV&#39; tag, when relevant.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#AdverbSubfeatures -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#AdverbSubfeatures">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+        <rdfs:comment rdf:datatype="&xsd;string">features specific to Adverb</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#AdverbialFunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#AdverbialFunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#SyntacticRelation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Aspect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Aspect">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#AttributivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#AttributivePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Pronoun"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This is actually a combination of two annotations: &quot;PRON adj&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Axiom_1 -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Axiom_1"/>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Case">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Comparison -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Comparison">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Complementation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Complementation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#SyntacticRelation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ConstructiveFunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#ConstructiveFunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#SyntacticRelation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#DefinitenessFeature -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#DefinitenessFeature">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Determiner -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Determiner">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string">With determiners, the only obligatory tag is &#39;DET&#39;. In Conexor FDG, the obligatory tags for determiners include &#39;DET&#39; and number. In the ordering of the morphological tags, the number tag is the last one and the case tag second to last, when relevant.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#DeterminerSubfeatures -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#DeterminerSubfeatures">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Features specific to determiners</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Feature -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Feature">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#MorphologicalTag"/>
+        <rdfs:subClassOf rdf:resource="&olia_system;Feature"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Subfeatures of PartOfSpeech tags.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Gender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Gender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Gerund -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Gerund">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ImperativeVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#ImperativeVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#IndicativeVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#IndicativeVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Infinitive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Infinitive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#InfinitiveMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#InfinitiveMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Interjection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Modification -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Modification">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#SyntacticRelation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#MorphologicalTag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#MorphologicalTag">
+        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&olia_system;hasTag"/>
+                        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&olia_system;hasTagContaining"/>
+                        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&olia_system;hasTier"/>
+                <owl:hasValue rdf:datatype="&xsd;string">morph</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#NegativeParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#NegativeParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string">With nouns, the obligatory tags include &#39;N&#39; and case. In Conexor FDG, the obligatory tags for nouns include &#39;N&#39;, case, and number.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Number -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Number">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Numeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Numeral">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string">With numerals, the obligatory tags include &#39;NUM&#39; and either &#39;CARD&#39; or &#39;ORD&#39;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#NumeralFeatures -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#NumeralFeatures">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Subfeatures specific to Numeral</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PartOfSpeech -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#PartOfSpeech">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#MorphologicalTag"/>
+        <rdfs:subClassOf rdf:resource="&olia_system;UnitOfAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Participle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Participle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PastParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#PastParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Participle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Person">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Postposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Postposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Preposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Preposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PresentParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#PresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Participle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string">With pronouns, the only obligatory tag is &#39;PRON&#39;. The anglebracket tags occur in front of the &#39;PRON&#39; tag, when relevant. After the &#39;PRON&#39; tag come the tags &#39;PERS&#39;, &#39;RECIPR&#39;, &#39;WH&#39;, &#39;DEM&#39;, or degree of comparison, when relevant. Next is the place for case, then number, and last, &#39;INDEP&#39;, when relevant.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PronounSubfeatures -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#PronounSubfeatures">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Subjunctive -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Subjunctive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Also applied for German conjunctive.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#SubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SurfaceSyntacticTag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag">
+        <rdfs:subClassOf rdf:resource="&olia_system;UnitOfAnnotation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SyntacticRelation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#SyntacticRelation">
+        <rdfs:subClassOf rdf:resource="&olia_system;Relation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Tense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Tense">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#UnknownWord -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#UnknownWord">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+        <rdfs:comment rdf:datatype="&xsd;string">verb; used only for finite verbs and infinitives.
+With verbs, the obligatory tags include &#39;V&#39; and one of the following: &#39;AUXMOD&#39;, &#39;INF&#39;, &#39;IMP&#39;, or tense. With tense, person is possible. The subfeature &lt;N+&gt; is placed before the &#39;V&#39; tag when relevant.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#VerbParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#VerbParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#PartOfSpeech"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Voice -->
+
+    <owl:Class rdf:about="http://purl.org/olia/connexor.owl#Voice">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/connexor.owl#Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#Feature -->
+
+    <owl:Class rdf:about="&olia_system;Feature"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
+
+    <owl:Class rdf:about="&olia_system;LinguisticAnnotation"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#Relation -->
+
+    <owl:Class rdf:about="&olia_system;Relation"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#UnitOfAnnotation -->
+
+    <owl:Class rdf:about="&olia_system;UnitOfAnnotation"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#A -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#A">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Adjective"/>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">A </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. These integrated algorithms are stored on the computer&#39;s &lt;b&gt;hard&lt;/b&gt; disk, from which they are downloaded into the DSP board&#39;s &lt;b&gt;random&lt;/b&gt; access memory (RAM).</rdfs:comment>
+        <olia_system:hasTag>A</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ABBR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ABBR">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Abbreviation"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> ABBR</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> ABBR </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ABBR</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">ABBR </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. 
+&quot;SODA Manual of Operation&quot;, R. C. Brigham and C. G. Bell, School of Elec &lt;b&gt;Eng&lt;/b&gt;, &lt;b&gt;U&lt;/b&gt; New &lt;b&gt;S&lt;/b&gt; Wales, Sydney, &lt;b&gt;NSW&lt;/b&gt; (1958)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ABS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ABS">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Comparison"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> ABS</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> ABS </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ABS</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">ABS </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">absolutive degree of comparison, e.g. &lt;b&gt;big&lt;/b&gt;, &lt;b&gt;much&lt;/b&gt;, &lt;b&gt;many&lt;/b&gt; options, &lt;b&gt;far&lt;/b&gt;</rdfs:comment>
+        <hasDegreeOfComparison rdf:resource="http://purl.org/olia/connexor.owl#ABS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ACC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ACC">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Case"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> ACC</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> ACC </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ACC</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">ACC </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">accusative (of pronouns), e.g. &lt;b&gt;him&lt;/b&gt;</rdfs:comment>
+        <hasCase rdf:resource="http://purl.org/olia/connexor.owl#ACC"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ACT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ACT">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Voice"/>
+        <olia_system:hasTagContaining> ACT </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ACT </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>ACT</olia_system:hasTag>
+        <rdfs:comment>active</rdfs:comment>
+        <olia_system:hasTagEndingWith> ACT</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ADV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ADV">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Adverb"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> ADV</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> ADV </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ADV</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">ADV </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. Others go &lt;b&gt;further&lt;/b&gt; and define software to be programs plus documentation though this does not correspond with common usage.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ADVL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ADVL">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag"/>
+        <olia_system:hasTagStartingWith>@ADVL </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> @ADVL</olia_system:hasTagEndingWith>
+        <rdfs:comment>adverbial head</rdfs:comment>
+        <olia_system:hasTag>@ADVL</olia_system:hasTag>
+        <olia_system:hasTagContaining> @ADVL </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#AUX -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#AUX">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag"/>
+        <olia_system:hasTag>@AUX</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> @AUX</olia_system:hasTagEndingWith>
+        <rdfs:comment>auxiliary verb</rdfs:comment>
+        <olia_system:hasTagContaining> @AUX </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>@AUX </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#AUXMOD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#AUXMOD">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> AUXMOD</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> AUXMOD </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">AUXMOD</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">AUXMOD </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">modal auxiliary, e.g. &lt;b&gt;would&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#CARD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#CARD">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#NumeralFeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> CARD</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> CARD </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">CARD</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">CARD </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">cardinal number, e.g. &lt;b&gt;2010&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#CC">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#CoordinatingConjunction"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">CC</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">CC </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">coordination marker, e.g. &lt;b&gt;and&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#CC_syntax -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#CC_syntax">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag"/>
+        <olia_system:hasTagStartingWith>@CC </olia_system:hasTagStartingWith>
+        <rdfs:comment>coordination marker</rdfs:comment>
+        <olia_system:hasTagEndingWith> @CC</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>@CC</olia_system:hasTag>
+        <olia_system:hasTagContaining> @CC </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#CMP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#CMP">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Comparison"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> CMP</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> CMP </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">CMP</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">CMP </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">comparative degree of comparison, e.g. &lt;b&gt;bigger&lt;/b&gt;, &lt;b&gt;more&lt;/b&gt;, &lt;b&gt;further&lt;/b&gt;</rdfs:comment>
+        <hasDegreeOfComparison rdf:resource="http://purl.org/olia/connexor.owl#CMP"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#COND -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#COND">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Aspect"/>
+        <olia_system:hasTagStartingWith>CND </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> CND</olia_system:hasTagEndingWith>
+        <rdfs:comment>conditional</rdfs:comment>
+        <olia_system:hasTagContaining> CND </olia_system:hasTagContaining>
+        <olia_system:hasTag>CND</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#CS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#CS">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SubordinatingConjunction"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> CS</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> CS </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">CS</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">CS </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">clause marker, e.g. &lt;b&gt;if&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#DAT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#DAT">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Case"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> DAT</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> DAT </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">Dative</rdfs:comment>
+        <hasCase rdf:resource="http://purl.org/olia/connexor.owl#DAT"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#DEM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#DEM">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> Dem</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> Dem </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">Dem</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">Dem </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">demonstrative pro-nominal, e.g.  &lt;b&gt;these&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#DEM_1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#DEM_1">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#DeterminerSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> Dem</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> Dem </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">Dem</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">Dem </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">demonstrative determiner, e.g. &lt;b&gt;this&lt;/b&gt; option</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#DET -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#DET">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Determiner"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> DET</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> DET </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">DET</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">DET </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. If you&#39;re running &lt;b&gt;the&lt;/b&gt; mess-dos emulator, control-alt-insert will cause &lt;b&gt;a&lt;/b&gt; soft boot of &lt;b&gt;the&lt;/b&gt; emulator, while leaving &lt;b&gt;the&lt;/b&gt; rest of &lt;b&gt;the&lt;/b&gt; system running.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Def -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Def">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#DefinitenessFeature"/>
+        <olia_system:hasTagContaining> Def </olia_system:hasTagContaining>
+        <rdfs:comment>definite form (of an adjective or noun); indefinite article (if applied to determiner)</rdfs:comment>
+        <olia_system:hasTag>Def</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> Def</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>Def </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Dem_adj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Dem_adj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagStartingWith>Dem adj </olia_system:hasTagStartingWith>
+        <rdfs:comment>non-independent demonstrative pro-nominal</rdfs:comment>
+        <olia_system:hasTagEndingWith> Dem adj</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> Dem adj </olia_system:hasTagContaining>
+        <olia_system:hasTag>Dem adj</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#EN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#EN">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PastParticiple"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> EN</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> EN </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">EN</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">EN </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. These &lt;b&gt;integrated&lt;/b&gt; algorithms are &lt;b&gt;stored&lt;/b&gt; on the computer&#39;s hard disk, from which they are &lt;b&gt;downloaded&lt;/b&gt; into the DSP board&#39;s random access memory (RAM).</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Ex -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Ex">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbSubfeatures"/>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> &lt;Ex&gt; </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> Ex</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> Ex </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">Ex</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">Ex </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">existential adverb, e.g., existential &lt;b&gt;there&lt;/b&gt;: &lt;b&gt;There&lt;/b&gt; are various models of the software life-cycle, and many methodologies for the different phases.</rdfs:comment>
+        <olia_system:hasTagEndingWith> &lt;Ex&gt;</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>&lt;Ex&gt;</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>&lt;Ex&gt; </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#FUT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#FUT">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Tense"/>
+        <olia_system:hasTagStartingWith>FUT </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>FUT</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> FUT</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> FUT </olia_system:hasTagContaining>
+        <dc:format>future</dc:format>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#GEN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#GEN">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Case"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> GEN</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> GEN </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">genitive, e.g. These integrated algorithms are stored on the &lt;b&gt;computer&#39;s&lt;b&gt; hard disk., &lt;b&gt;other&#39;s&lt;b&gt;</rdfs:comment>
+        <hasCase rdf:resource="http://purl.org/olia/connexor.owl#GEN"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#GER -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#GER">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Gerund"/>
+        <olia_system:hasTagEndingWith> GER</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> GER </olia_system:hasTagContaining>
+        <olia_system:hasTag>GER</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>GER </olia_system:hasTagStartingWith>
+        <rdfs:comment>gerund</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Heur -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Heur">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#UnknownWord"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> Heur</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> Heur </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">Heur</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">Heur </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">mark for unknown word; occurs in front of a part-of-speech tag, e.g. &lt;b&gt;mechansim&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#IMP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#IMP">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#ImperativeVerb"/>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> IMP </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string">IMP </olia_system:hasTagEndingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">imperative 	e.g. John, &lt;b&gt;come&lt;/b&gt; here!</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#IMPF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#IMPF">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Aspect"/>
+        <olia_system:hasTag>IMPF</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> IMPF</olia_system:hasTagEndingWith>
+        <rdfs:comment>imperfect</rdfs:comment>
+        <olia_system:hasTagContaining> IMPF </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>IMPF </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#INDEP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#INDEP">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Case"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> INDEP</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> INDEP </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">INDEP</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">INDEP </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">independent genitive form of pronouns, i.e. the independent genitive form functioning always as head of a noun phrase, e.g. &lt;b&gt;theirs&lt;/b&gt;</rdfs:comment>
+        <hasCase rdf:resource="http://purl.org/olia/connexor.owl#INDEP"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#INF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#INF">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Infinitive"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> INF</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> INF </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">INF</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">INF </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">infinitive , e.g. would &lt;b&gt;be&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#INFMARK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#INFMARK">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#InfinitiveMarker"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> INFMARK</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> INFMARK </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">INFMARK</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">INFMARK </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. &lt;b&gt;to&lt;/b&gt; do this &lt;b&gt;in order to&lt;/b&gt; do that</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ING -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ING">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PresentParticiple"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> ING</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> ING </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ING</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">ING </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. The Berkeley UNIX mechanism for &lt;b&gt;creating&lt;/b&gt; a virtual connection between processes.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#INTERJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#INTERJ">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Interjection"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> INTERJ</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> INTERJ </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">INTERJ</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">INTERJ </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. &lt;b&gt;Hey&lt;/b&gt;, so-and-so needs an instruction to do such-and-such.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Indef -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Indef">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#DefinitenessFeature"/>
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <rdfs:comment>indefinite form (of an adjective or noun), indefinite article (if applied to a determiner), indefinite pro-nominal (if applied to a pronoun)</rdfs:comment>
+        <olia_system:hasTagContaining> Indef </olia_system:hasTagContaining>
+        <olia_system:hasTag>Indef</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>Indef </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> Indef</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Indef_Refl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Indef_Refl">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagStartingWith>Indef Refl </olia_system:hasTagStartingWith>
+        <rdfs:comment>reflexive indefinite pro-nominal</rdfs:comment>
+        <olia_system:hasTagContaining> Indef Refl </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Indef Refl</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>Indef Refl</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Indef_adj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Indef_adj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTag>Indef adj</olia_system:hasTag>
+        <olia_system:hasTagContaining> Indef adj </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>Indef adj </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> Indef adj</olia_system:hasTagEndingWith>
+        <rdfs:comment>non-independent indefinite pro-nominal</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Interr -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Interr">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbSubfeatures"/>
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> Interr</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> Interr </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">interrogative pronoun, e.g. &lt;b&gt;why&lt;/b&gt;; interrogative adverb</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Interr_adj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Interr_adj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <rdfs:comment>non-independent interrogative pro-nominal</rdfs:comment>
+        <olia_system:hasTagEndingWith> Interr adj</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> Interr adj </olia_system:hasTagContaining>
+        <olia_system:hasTag>Interr adj</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>Interr adj </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#MAIN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#MAIN">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag"/>
+        <rdfs:comment>main verb</rdfs:comment>
+        <olia_system:hasTag>@MAIN</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#N -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#N">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Noun"/>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> N </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">N</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">N </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. 
+These &lt;b&gt;integrated&lt;/b&gt; algorithms are stored on the &lt;b&gt;computer&#39;s&lt;/b&gt; hard &lt;b&gt;disk&lt;/b&gt;.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#NEG-PART -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#NEG-PART">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#NegativeParticle"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> NEG-PART</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> NEG-PART </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NEG-PART</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">NEG-PART </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. are &lt;b&gt;not&lt;/b&gt;, are&lt;b&gt;n&#39;t&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#NH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#NH">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag"/>
+        <olia_system:hasTag>@NH</olia_system:hasTag>
+        <rdfs:comment>nominal head</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#NOM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#NOM">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Case"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> NOM</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> NOM </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NOM</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string">nominative, e.g. These integrated &lt;b&gt;algorithms&lt;/b&gt; are stored on the computer&#39;s hard disk., &lt;b&gt;others&lt;/b&gt;</rdfs:comment>
+        <hasCase rdf:resource="http://purl.org/olia/connexor.owl#NOM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#NUM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#NUM">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Numeral"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> NUM</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> NUM </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NUM</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">NUM </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. Software can be split roughly into &lt;b&gt;two&lt;/b&gt; main types - system software and application software or programs.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#N_Abbr -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#N_Abbr">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Abbreviation"/>
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Noun"/>
+        <owl:versionInfo>Also linked with Abbreviation for the sake of consistency.</owl:versionInfo>
+        <rdfs:comment>abbreviation (as a feature of noun)</rdfs:comment>
+        <olia_system:hasTagStartingWith>N Abbr</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#N_Prop -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#N_Prop">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Noun"/>
+        <rdfs:comment>proper noun</rdfs:comment>
+        <olia_system:hasTagStartingWith>N Prop</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#NounVerbCombination -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#NounVerbCombination">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Noun"/>
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> N+</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> N+ </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">N+</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">N+ </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">noun-verb combination, e.g. &lt;b&gt;India&#39;s&lt;/b&gt; got..</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ORD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ORD">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#NumeralFeatures"/>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> ORD </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">ORD</olia_system:hasTag>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string">ORD</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">ORD </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">ordinal number, e.g. &lt;b&gt;first&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#P1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#P1">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Person"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> P1</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> P1 </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">1st person (verbs and pronouns)</rdfs:comment>
+        <olia_system:hasTag rdf:datatype="&xsd;string">P1</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">P1 </olia_system:hasTagStartingWith>
+        <hasPerson rdf:resource="http://purl.org/olia/connexor.owl#P1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#P2 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#P2">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Person"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> P2</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> P2 </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">2nd person (verbs and pronoun)</rdfs:comment>
+        <olia_system:hasTag rdf:datatype="&xsd;string">P2</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">P2 </olia_system:hasTagStartingWith>
+        <hasPerson rdf:resource="http://purl.org/olia/connexor.owl#P2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#P3 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#P3">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Person"/>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> P3 </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">P3</olia_system:hasTag>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string">P3</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">P3 </olia_system:hasTagStartingWith>
+        <rdfs:comment>third person (verbs and pronouns)</rdfs:comment>
+        <hasPerson rdf:resource="http://purl.org/olia/connexor.owl#P3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PASS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PASS">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Voice"/>
+        <olia_system:hasTagStartingWith>PASS </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>PASS</olia_system:hasTag>
+        <olia_system:hasTagContaining> PASS </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> PASS</olia_system:hasTagEndingWith>
+        <rdfs:comment>passive</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PAST -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PAST">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Tense"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PAST</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PAST </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">past tense, e.g. &lt;b&gt;were&lt;/b&gt;</rdfs:comment>
+        <hasTense rdf:resource="http://purl.org/olia/connexor.owl#PAST"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PCP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PCP">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Participle"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> V PCP</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> V PCP </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">V PCP</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">V PCP </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">participle</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PERS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PERS">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> Pers</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> Pers </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">Pers</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">Pers </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">personal pronoun, e.g. &lt;b&gt;us&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PL">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Number"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PL</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PL </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PL</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">PL </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">plural, e.g. These integrated &lt;b&gt;algorithms&lt;/b&gt; are stored on the computer&#39;s hard disk., &lt;b&gt;others&lt;/b&gt;</rdfs:comment>
+        <hasNumber rdf:resource="http://purl.org/olia/connexor.owl#PL"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PL1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PL1">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Number"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PL1</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PL1 </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">plural, 1st person pronouns, e.g. &lt;b&gt;us&lt;/b&gt;</rdfs:comment>
+        <hasNumber rdf:resource="http://purl.org/olia/connexor.owl#PL1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PL3 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PL3">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Number"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PL3</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PL3 </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">plural, 3rd person pronoun, &lt;b&gt;them&lt;/b&gt;</rdfs:comment>
+        <hasNumber rdf:resource="http://purl.org/olia/connexor.owl#PL3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#POSTMOD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#POSTMOD">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag"/>
+        <olia_system:hasTag>@POSTMOD</olia_system:hasTag>
+        <rdfs:comment>postmodifier</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#POSTP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#POSTP">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Postposition"/>
+        <olia_system:hasTagContaining> POSTP </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>POSTP </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>POSTP</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> POSTP</olia_system:hasTagEndingWith>
+        <rdfs:comment>postposition</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PREMARK -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PREMARK">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag"/>
+        <rdfs:comment>preposed marker</rdfs:comment>
+        <olia_system:hasTag>@PREMARK</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PREMOD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PREMOD">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#SurfaceSyntacticTag"/>
+        <olia_system:hasTag>@PREMOD</olia_system:hasTag>
+        <rdfs:comment>premodifier</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PREP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PREP">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Preposition"/>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PREP</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">PREP </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. &lt;b&gt;of&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PRES -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PRES">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Tense"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PRES</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PRES </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PRES</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">PRES </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">present tense, e.g.  &lt;b&gt;am&lt;/b&gt;</rdfs:comment>
+        <hasTense rdf:resource="http://purl.org/olia/connexor.owl#PRES"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PRET -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PRET">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Tense"/>
+        <rdfs:comment>preterite</rdfs:comment>
+        <olia_system:hasTag>PRET</olia_system:hasTag>
+        <olia_system:hasTagContaining> PRET </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PRET </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> PRET</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PRON -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PRON">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Pronoun"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PRON</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PRON </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PRON</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">PRON </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">pro-nominal, e.g. &lt;b&gt;Others&lt;/b&gt; go further and define software to be programs plus documentation though &lt;b&gt;this&lt;/b&gt; does not correspond with common usage.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Pers_tonic -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Pers_tonic">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagStartingWith>Pers tonic </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> Pers tonic </olia_system:hasTagContaining>
+        <rdfs:comment>personal pronoun, tonic form</rdfs:comment>
+        <olia_system:hasTagEndingWith> Pers tonic</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>Pers tonic</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Poss -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Poss">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagStartingWith>Poss </olia_system:hasTagStartingWith>
+        <rdfs:comment>possessive pro-nominal</rdfs:comment>
+        <olia_system:hasTag>Poss</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> Poss</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> Poss </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Poss_Refl_adj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Poss_Refl_adj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <rdfs:comment>non-independent reflexive possessive pro-nominal</rdfs:comment>
+        <olia_system:hasTagContaining> Poss Refl adj </olia_system:hasTagContaining>
+        <olia_system:hasTag>Poss Refl adj</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> Poss Refl adj</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>Poss Refl adj </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Poss_adj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Poss_adj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTag>Poss adj</olia_system:hasTag>
+        <rdfs:comment>non-independent possessive pro-nominal</rdfs:comment>
+        <olia_system:hasTagStartingWith>Poss adj </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> Poss adj</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> Poss adj </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#PronAdj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#PronAdj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AttributivePronoun"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PRON adj</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PRON adj </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">A combination of two annotation values.</rdfs:comment>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PRON adj</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">PRON adj </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#RECIPR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#RECIPR">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> RECIPR </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">RECIPR</olia_system:hasTag>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string">RECIPR </olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">RECIPR </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">reciprocal pronoun, e.g. &lt;b&gt;each other&lt;/b&gt;</rdfs:comment>
+        <olia_system:hasTagEndingWith> Recipr</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>Recipr </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>Recipr</olia_system:hasTag>
+        <olia_system:hasTagContaining> Recipr </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Refl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Refl">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> Refl</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> Refl </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">reflexive pronoun, e.g. &lt;b&gt;herself&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Refl_tonic -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Refl_tonic">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTag>Refl tonic</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> Refl tonic</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> Refl tonic </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>Refl tonic </olia_system:hasTagStartingWith>
+        <rdfs:comment>reflexive pronoun, tonic</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Rel -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Rel">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbSubfeatures"/>
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> Rel</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> Rel </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">Rel</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">Rel </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">relative pronoun, e.g. &lt;b&gt;which&lt;/b&gt;, relative adverb</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Rel_adj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Rel_adj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <rdfs:comment>non-independent relative pro-nominal</rdfs:comment>
+        <olia_system:hasTagEndingWith> Rel adj</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>Rel adj</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>Rel adj </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> Rel adj </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#SG">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Number"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> SG</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> SG </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">singular, e.g. These integrated algorithms are stored on the &lt;b&gt;computer&#39;s&lt;/b&gt; hard &lt;b&gt;disk&lt;/b&gt;, &lt;b&gt; other&lt;/b&gt;</rdfs:comment>
+        <hasNumber rdf:resource="http://purl.org/olia/connexor.owl#SG"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SG1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#SG1">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Number"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> SG1</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> SG1 </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">SG1</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string">singular, first person, of pronouns, e.g. &lt;b&gt;me&lt;/b&gt;</rdfs:comment>
+        <hasNumber rdf:resource="http://purl.org/olia/connexor.owl#SG1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SG1_1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#SG1_1">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Person"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> SG1</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> SG1 </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">SG1</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">SG1 </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">singular, first-person verb, e.g. &lt;b&gt;am&lt;/b&gt;</rdfs:comment>
+        <hasPerson rdf:resource="http://purl.org/olia/connexor.owl#SG1_1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SG3 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#SG3">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Number"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> SG3</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> SG3 </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">SG3</olia_system:hasTag>
+        <rdfs:comment rdf:datatype="&xsd;string">singular, third person, of pronouns, e.g. &lt;b&gt;him&lt;/b&gt;</rdfs:comment>
+        <hasNumber rdf:resource="http://purl.org/olia/connexor.owl#SG3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SG3_1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#SG3_1">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Person"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> SG3</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> SG3 </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">SG3</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">SG3 </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">singular, third-person verb, e.g. &lt;b&gt;is&lt;/b&gt;</rdfs:comment>
+        <hasPerson rdf:resource="http://purl.org/olia/connexor.owl#SG3_1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SUBJUNCTIVE -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#SUBJUNCTIVE">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Subjunctive"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> SUB</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> SUB </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">SUB</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">SUB </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">subjunctive, e.g.  	The casket &lt;b&gt;be&lt;/b&gt; brought in.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#SUP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#SUP">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Comparison"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> SUP</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> SUP </olia_system:hasTagContaining>
+        <rdfs:comment rdf:datatype="&xsd;string">superlative, e.g. &lt;b&gt;biggest&lt;/b&gt;, &lt;b&gt;most&lt;/b&gt;, &lt;b&gt;furthest&lt;/b&gt;</rdfs:comment>
+        <hasDegreeOfComparison rdf:resource="http://purl.org/olia/connexor.owl#SUP"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#V -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#V">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Verb"/>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> V </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">V</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">V </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">e.g. Others &lt;b&gt;go&lt;/b&gt; further and &lt;b&gt;define&lt;/b&gt; software to &lt;b&gt;be&lt;/b&gt; programs plus documentation though this &lt;b&gt;does&lt;/b&gt; not &lt;b&gt;correspond&lt;/b&gt; with common usage.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#VPART -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#VPART">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#VerbParticle"/>
+        <olia_system:hasTagEndingWith> VPART</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>VPART </olia_system:hasTagStartingWith>
+        <rdfs:comment>verb particle</rdfs:comment>
+        <olia_system:hasTagContaining> VPART </olia_system:hasTagContaining>
+        <olia_system:hasTag>VPART</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Vimp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Vimp">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#ImperativeVerb"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> V IMP</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> V IMP </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">V IMP</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">V IMP </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Vind -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Vind">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#IndicativeVerb"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> V IND</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> V IND </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">V IND</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">V IND </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Vinf -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Vinf">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Infinitive"/>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> V INF </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> VINF</olia_system:hasTagEndingWith>
+        <olia_system:hasTag rdf:datatype="&xsd;string">V INF</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">V INF </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">infinitive</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#Vsbj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#Vsbj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Subjunctive"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> V SUB</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> V SUB </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">V SUB</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">V SUB </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#WH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#WH">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#PronounSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> WH</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> WH </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">WH</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">WH </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">relative or interrogative pronoun beginning with the letters &#39;wh&#39; or &#39;how&#39;, e.g. &lt;b&gt;which&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#WH_1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#WH_1">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#DeterminerSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> WH</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> WH </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">WH</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">WH </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">determiner beginning with the letters &#39;wh&#39; or &#39;how&#39;, e.g. &lt;b&gt;which&lt;/b&gt; option</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#WH_2 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#WH_2">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbSubfeatures"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> WH</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> WH </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">WH</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">WH </olia_system:hasTagStartingWith>
+        <rdfs:comment rdf:datatype="&xsd;string">adverb beginning with the letters &#39;wh&#39; or &#39;how&#39;, e.g. &lt;b&gt;why&lt;/b&gt;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ad -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ad">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Modification"/>
+        <olia_system:hasTag>ad</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> ad</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> ad </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ad </olia_system:hasTagStartingWith>
+        <rdfs:comment>attributive adverb</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ads -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ads">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Modification"/>
+        <olia_system:hasTagStartingWith>ads </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>ads</olia_system:hasTag>
+        <olia_system:hasTagContaining> ads </olia_system:hasTagContaining>
+        <rdfs:comment>adjectival postmodifier</rdfs:comment>
+        <olia_system:hasTagEndingWith> ads</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#advl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#advl">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagEndingWith> advl</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>advl </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>advl</olia_system:hasTag>
+        <rdfs:comment>underspecified adverbial </rdfs:comment>
+        <olia_system:hasTagContaining> advl </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#agt -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#agt">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <olia_system:hasTagContaining> agt </olia_system:hasTagContaining>
+        <olia_system:hasTag>agt</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> agt</olia_system:hasTagEndingWith>
+        <rdfs:comment>agent</rdfs:comment>
+        <olia_system:hasTagStartingWith>agt </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#app -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#app">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Modification"/>
+        <olia_system:hasTagEndingWith> app</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>app </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> app </olia_system:hasTagContaining>
+        <olia_system:hasTag>app</olia_system:hasTag>
+        <rdfs:comment>apposition</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#attr -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#attr">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Modification"/>
+        <olia_system:hasTagStartingWith>attr </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> attr</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> attr </olia_system:hasTagContaining>
+        <rdfs:comment>attributive nominal</rdfs:comment>
+        <olia_system:hasTag>attr</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#cc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#cc">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#ConstructiveFunction"/>
+        <olia_system:hasTagEndingWith> cc</olia_system:hasTagEndingWith>
+        <rdfs:comment>coordination</rdfs:comment>
+        <olia_system:hasTagContaining> cc </olia_system:hasTagContaining>
+        <olia_system:hasTag>cc</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>cc </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#cla -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#cla">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagStartingWith>cla </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> cla </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> cla</olia_system:hasTagEndingWith>
+        <rdfs:comment>clause-initial adverbial</rdfs:comment>
+        <olia_system:hasTag>cla</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#cnd -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#cnd">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagStartingWith>cnd </olia_system:hasTagStartingWith>
+        <rdfs:comment>adverbial of condition</rdfs:comment>
+        <olia_system:hasTagEndingWith> cnd</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> cnd </olia_system:hasTagContaining>
+        <olia_system:hasTag>cnd</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#cnt -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#cnt">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTag>cnt</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>cnt </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> cnt </olia_system:hasTagContaining>
+        <rdfs:comment>adverbial of contingency</rdfs:comment>
+        <olia_system:hasTagEndingWith> cnt</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#com -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#com">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <rdfs:comment>comitative adverbial</rdfs:comment>
+        <olia_system:hasTag>com</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>com </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> com</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> com </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#common -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#common">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Gender"/>
+        <olia_system:hasTagContaining> UTR </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> UTR</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>UTR</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>UTR </olia_system:hasTagStartingWith>
+        <rdfs:comment>common gender</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#comp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#comp">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <olia_system:hasTagContaining> comp </olia_system:hasTagContaining>
+        <rdfs:comment>subject complement</rdfs:comment>
+        <olia_system:hasTagStartingWith>comp </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>comp</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> comp</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#copred -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#copred">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <olia_system:hasTagEndingWith> copred</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>copred</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>copred </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> copred </olia_system:hasTagContaining>
+        <rdfs:comment>copredicative</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#dat -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#dat">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <olia_system:hasTagContaining> dat </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> dat</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>dat </olia_system:hasTagStartingWith>
+        <rdfs:comment>indirect object</rdfs:comment>
+        <olia_system:hasTag>dat</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#det -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#det">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Modification"/>
+        <rdfs:comment>determiner</rdfs:comment>
+        <olia_system:hasTagContaining> det </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> det</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>det </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>det</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#dur -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#dur">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagContaining> dur </olia_system:hasTagContaining>
+        <rdfs:comment>adverbial of duration</rdfs:comment>
+        <olia_system:hasTagEndingWith> dur</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>dur </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>dur</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#feminine -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#feminine">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Gender"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> FEM</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> FEM </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">FEM</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">FEM </olia_system:hasTagStartingWith>
+        <hasGender rdf:resource="http://purl.org/olia/connexor.owl#feminine"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#frq -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#frq">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagContaining> frq </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> frq</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>frq</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>frq </olia_system:hasTagStartingWith>
+        <rdfs:comment>adverbial of frequency</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#goa -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#goa">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagContaining> goa </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> goa</olia_system:hasTagEndingWith>
+        <rdfs:comment>adverbial of goal</rdfs:comment>
+        <olia_system:hasTagStartingWith>goa </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>goa</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ha -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ha">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#ConstructiveFunction"/>
+        <olia_system:hasTag>ha</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>ha </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> ha</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> ha </olia_system:hasTagContaining>
+        <rdfs:comment>heuristic attachment </rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#ins -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#ins">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagContaining> ins </olia_system:hasTagContaining>
+        <olia_system:hasTag>ins</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> ins</olia_system:hasTagEndingWith>
+        <rdfs:comment>adverbial of instrument</rdfs:comment>
+        <olia_system:hasTagStartingWith>ins </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#loc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#loc">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagEndingWith> loc</olia_system:hasTagEndingWith>
+        <rdfs:comment>adverbial of location</rdfs:comment>
+        <olia_system:hasTagContaining> loc </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>loc </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>loc</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#main -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#main">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#ConstructiveFunction"/>
+        <olia_system:hasTagEndingWith> main</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> main </olia_system:hasTagContaining>
+        <rdfs:comment>main element</rdfs:comment>
+        <olia_system:hasTag>main</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>main </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#man -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#man">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagContaining> man </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> man</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>man </olia_system:hasTagStartingWith>
+        <rdfs:comment>adverbial of manner</rdfs:comment>
+        <olia_system:hasTag>man</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#masculine -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#masculine">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Gender"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> MSC</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> MSC </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">MSC</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">MSC </olia_system:hasTagStartingWith>
+        <hasGender rdf:resource="http://purl.org/olia/connexor.owl#masculine"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#meta -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#meta">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <rdfs:comment>sentence adverbial</rdfs:comment>
+        <olia_system:hasTagContaining> meta </olia_system:hasTagContaining>
+        <olia_system:hasTag>meta</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> meta</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>meta </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#mod -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#mod">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Modification"/>
+        <olia_system:hasTagContaining> mod </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> mod</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>mod</olia_system:hasTag>
+        <rdfs:comment>generic modifier </rdfs:comment>
+        <olia_system:hasTagStartingWith>mod </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#neg -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#neg">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTag>neg</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>neg </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> neg </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> neg</olia_system:hasTagEndingWith>
+        <rdfs:comment>negator</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#neutral -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#neutral">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Gender"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> NEU</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> NEU </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">NEU</olia_system:hasTag>
+        <hasGender rdf:resource="http://purl.org/olia/connexor.owl#neutral"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#obj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#obj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <rdfs:comment>object</rdfs:comment>
+        <olia_system:hasTagContaining> obj </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> obj</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>obj</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>obj </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#oc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#oc">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <olia_system:hasTagContaining> oc </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> oc</olia_system:hasTagEndingWith>
+        <rdfs:comment>object complement</rdfs:comment>
+        <olia_system:hasTagStartingWith>oc </olia_system:hasTagStartingWith>
+        <olia_system:hasTag>oc</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#perfective -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#perfective">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Aspect"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PERF</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PERF </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PERF</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">PERF </olia_system:hasTagStartingWith>
+        <rdfs:comment>perfect, perfective</rdfs:comment>
+        <hasAspect rdf:resource="http://purl.org/olia/connexor.owl#perfective"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#phr -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#phr">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#ConstructiveFunction"/>
+        <rdfs:comment>phrasal construction</rdfs:comment>
+        <olia_system:hasTag>phr</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>phr </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> phr </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> phr</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#pm -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#pm">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#ConstructiveFunction"/>
+        <olia_system:hasTagStartingWith>pm </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> pm</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining> pm </olia_system:hasTagContaining>
+        <olia_system:hasTag>pm</olia_system:hasTag>
+        <rdfs:comment>preposed marker</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#progressive -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#progressive">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Aspect"/>
+        <olia_system:hasTagEndingWith rdf:datatype="&xsd;string"> PROG</olia_system:hasTagEndingWith>
+        <olia_system:hasTagContaining rdf:datatype="&xsd;string"> PROG </olia_system:hasTagContaining>
+        <olia_system:hasTag rdf:datatype="&xsd;string">PROG</olia_system:hasTag>
+        <olia_system:hasTagStartingWith rdf:datatype="&xsd;string">PROG </olia_system:hasTagStartingWith>
+        <hasAspect rdf:resource="http://purl.org/olia/connexor.owl#progressive"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#pth -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#pth">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTag>pth</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> pth</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>pth </olia_system:hasTagStartingWith>
+        <rdfs:comment>adverbial of path</rdfs:comment>
+        <olia_system:hasTagContaining> pth </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#qn -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#qn">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Modification"/>
+        <olia_system:hasTag>qn</olia_system:hasTag>
+        <olia_system:hasTagContaining> qn </olia_system:hasTagContaining>
+        <rdfs:comment>quantifier </rdfs:comment>
+        <olia_system:hasTagStartingWith>qn </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> qn</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#qtag -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#qtag">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagEndingWith> qtag</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>qtag</olia_system:hasTag>
+        <olia_system:hasTagContaining> qtag </olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>qtag </olia_system:hasTagStartingWith>
+        <rdfs:comment>tag question</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#qua -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#qua">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <rdfs:comment>quantity</rdfs:comment>
+        <olia_system:hasTagStartingWith>qua </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> qua </olia_system:hasTagContaining>
+        <olia_system:hasTag>qua</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> qua</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#rsn -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#rsn">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagContaining> rsn </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> rsn</olia_system:hasTagEndingWith>
+        <rdfs:comment>adverbial of reason</rdfs:comment>
+        <olia_system:hasTag>rsn</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>rsn </olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#sou -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#sou">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <rdfs:comment>adverbial of source</rdfs:comment>
+        <olia_system:hasTag>sou</olia_system:hasTag>
+        <olia_system:hasTagEndingWith> sou</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>sou </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> sou </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#subj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#subj">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <olia_system:hasTagStartingWith>subj </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> subj </olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> subj</olia_system:hasTagEndingWith>
+        <rdfs:comment>subject</rdfs:comment>
+        <olia_system:hasTag>subj</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#tmp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#tmp">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#AdverbialFunction"/>
+        <olia_system:hasTagStartingWith>tmp </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> tmp </olia_system:hasTagContaining>
+        <olia_system:hasTag>tmp</olia_system:hasTag>
+        <rdfs:comment>adverbial of time</rdfs:comment>
+        <olia_system:hasTagEndingWith> tmp</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#v-ch -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#v-ch">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#ConstructiveFunction"/>
+        <olia_system:hasTag>v-ch</olia_system:hasTag>
+        <olia_system:hasTagStartingWith>v-ch </olia_system:hasTagStartingWith>
+        <olia_system:hasTagContaining> v-ch </olia_system:hasTagContaining>
+        <rdfs:comment>verb chain</rdfs:comment>
+        <olia_system:hasTagEndingWith> v-ch</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/connexor.owl#voc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/connexor.owl#voc">
+        <rdf:type rdf:resource="http://purl.org/olia/connexor.owl#Complementation"/>
+        <olia_system:hasTagStartingWith>voc </olia_system:hasTagStartingWith>
+        <olia_system:hasTagEndingWith> voc</olia_system:hasTagEndingWith>
+        <olia_system:hasTag>voc</olia_system:hasTag>
+        <rdfs:comment>vocative</rdfs:comment>
+        <olia_system:hasTagContaining> voc </olia_system:hasTagContaining>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.0.0.1451) http://owlapi.sourceforge.net -->
+

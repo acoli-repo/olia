@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://purl.org/olia/discourse/discourse.RST.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://purl.org/olia/discourse/discourse.RST.owl">
+  <owl:Ontology rdf:about="http://purl.org/olia/discourse/discourse.RST.owl">
+	<owl:versionInfo>
+	2010-05-21 created
+	2014-03-21 integrated in the OLiA architecture
+	
+	Christian Chiarcos, christian.chiarcos@web.de
+	</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Annotation Model for Rhetorical Structure Theory as defined by Mann and Taboada (2010), resp. Mann and Thompson (1988)
+
+RST was originally developed as part of studies of computer-based text generation. A team at Information Sciences Institute (part of University of Southern California) was working on computer-based authoring. In about 1983, part of the team (Bill Mann, Sandy Thompson and Christian Matthiessen) noted that there was no available theory of discourse structure or function that provided enough detail to guide programming any sort of author. Responding to this lack, RST was developed out of studies of edited or carefully prepared text from a wide variety of sources. It now has a status in linguistics that is independent of its computational uses. 
+
+RST generally provides an analysis for any coherent carefully written text, and because such an analysis provides a motivated account of why each element of the text has been included by the author, it gives an account of textual coherence that is independent of the lexical and grammatical forms of the text. Because of its specification of the role of the observer, it provides a basis for statements about the objectivity and subjectivity of the analysis. It also provides a functional basis for studying the discourse-relevant specific forms in texts, "discourse markers" and other formal correlates of discourse structure. Where RST posits structure within sentences, it provides a basis for studying the functions of various forms of clause combining, and more generally the relationships between these sorts of discourse structure and various cohesive devices.
+(Mann and Taboada 2010)
+
+RST is widely used for annotations of discourse structure. Its set of relations, however, is not exactle prescribed by the theory, but rather, is extended upon demand. Accordingly, this ontology should be used as a basis to develop RST-based annotation schemes for concrete data sets. Most analyses from the Discourse Relations Reference Corpus (http://www.sfu.ca/rst/06tools/index.html) should follow the specifications in this document.
+
+William C. Mann, Maite Taboada (2010), The RST web site (2005-2010), http://www.sfu.ca/rst/01intro/index.html
+Mann, W.C. and Thompson, S.A. 1988. Rhetorical Structure Theory: Toward a functional theory of text organization. Text, 8 (3). 243-281.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Elaboration">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ># S presents additional detail about the situation or some element of subject matter which is presented in N or inferentially accessible in N in one or more of the ways listed below. In the list, if N presents the first member of any pair, then S includes the second: set :: member
+# abstraction :: instance
+# whole :: part
+# process :: step
+# object :: attribute
+# generalization :: specific 
+
+intenion: R recognizes S as providing additional detail for N. R identifies the element of subject matter for which detail is provided.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Solutionhood">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S presents a problem 
+
+N is a solution to the problem presented in S; 
+
+intention: R recognizes N as a solution to the problem presented in S</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Conjunction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MultiNuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The items are conjoined to form a unit in which each item plays a comparable role
+
+intention: R recognizes that the linked items are conjoined
+
+(not provided by Mann and Thompson 1988, added in Mann and Taboada 2010)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Background">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R won't comprehend N sufficiently before reading text of S 
+
+S increases the ability of R to comprehend an element in N 
+
+intention of W: R's ability to comprehend N increases</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PresentationalRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Means">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N represents an activity 
+
+S presents a method or instrument which tends to make realization of N more likely 
+
+intention: R recognizes that the method or instrument in S tends to make realization of N more likely
+
+(not provided by Mann and Thompson 1988, added in Mann and Taboada 2010)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Unconditional">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S conceivably could affect the realization of N 
+
+N does not depend on S 
+
+intention: R recognizes that N does not depend on S
+
+(not provided by Mann and Thompson 1988, added in Mann and Taboada 2010)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NonVolitionalResult">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S is not a volitional action 
+
+N caused S; presentation of N is more central to W's purposes in putting forth the N-S combination than is the presentation of S.
+
+intention: R recognizes that N could have caused the situation in S</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Sequence">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultiNuclearRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >There is a succession relationship between the situations in the nuclei 
+
+intention: R recognizes the succession relationships among the nuclei.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Antithesis">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >W has positive regard for N 
+
+N and S are in contrast (see the Contrast relation); because of the incompatibility that arises from the contrast, one cannot have positive regard for both of those situations; comprehending S and the incompatibility between the situations increases R's positive regard for N
+
+intention: R's positive regard for N is increased</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PresentationalRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MultiNuclearRestatement">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An item is primarily a reexpression of one linked to it; the items are of comparable importance to the purposes of W 
+
+intention: R recognizes the reexpression by the linked items
+
+(not provided by Mann and Thompson 1988, added in Mann and Taboada 2010)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultiNuclearRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NonVolitionalCause">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N is not a volitional action 
+
+S, by means other than motivating a volitional action, caused N; without the presentation of S, R might not know the particular cause of the situation; a presentation of N is more central than S to W's purposes in putting forth the N-S combination.
+
+intention: R recognizes S as a cause of N</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Unless">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S affects the realization of N; N is realized provided that S is not realized 
+
+intention: R recognizes that N is realized provided that S is not realized
+
+(not provided by Mann and Thompson 1988, added in Mann and Taboada 2010)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Enablement">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PresentationalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >presents an action by R (including accepting an offer), unrealized with respect to the context of N 
+
+R comprehending S increases R's potential ability to perform the action in N 
+
+intention: R's potential ability to perform the action in N increases</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="VolitionalCause">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N is a volitional action or else a situation that could have arisen from a volitional action 
+
+S could have caused the agent of the volitional action in N to perform that action; without the presentation of S, R might not regard the action as motivated or know the particular motivation; N is more central to W's purposes in putting forth the N-S combination than S is.
+
+intention: R recognizes S as a cause for the volitional action in N</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Justify">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PresentationalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R's comprehending S increases R's readiness to accept W's right to present N 
+
+intention: R's readiness to accept W's right to present N is increased</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="RSTStructure">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RST is intended to describe texts, rather than the processes of creating or reading and understanding them. It posits a range of possibilities of structure -- various sorts of "building blocks" which can be observed to occur in texts. These "blocks" are at two levels, the principal one dealing with "nuclearity" and "relations" (often called coherence relations in the linguistic literature). A second level of structures, called schemas, is not presented here.
+(Mann and Taboada 2010)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Circumstance">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S is not unrealized 
+
+S sets a framework in the subject matter within which R is intended to interpret N 
+
+intention: R recognizes that S provides the framework for interpreting N</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MultiNuclearRelation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >there are relations that do not carry a definite selection of one nucleus. ... These are called multinuclear relations. 
+(Mann and Taboada 2010)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RSTRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Otherwise">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N is an unrealized situation
+S is an unrealized situation
+
+realization of N prevents realization of S 
+
+intention: R recognizes the dependency relation of prevention between the realization of N and the realization of S</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Disjunction">
+    <rdfs:subClassOf rdf:resource="#MultiNuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An item presents a (not necessarily exclusive) alternative for the other(s)
+
+intention: R recognizes that the linked items are alternatives
+
+(not provided by Mann and Thompson 1988, added in Mann and Taboada 2010)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Evidence">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >R might not believe N to a degree satisfactory to W
+R believes S or will find it credible
+
+R's comprehending S increases R's belief of N 
+
+intention: R's belief of N is increased</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PresentationalRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Contrast">
+    <rdfs:subClassOf rdf:resource="#MultiNuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >No more than two nuclei; the situations in these two nuclei are (a) comprehended as the same in many respects (b) comprehended as differing in a few respects and (c) compared with respect to one or more of these differences
+
+intention: R recognizes the comparability and the difference(s) yielded by the comparison is being made</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Interpretation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectMatterRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S relates N to a framework of ideas not involved in N itself and not concerned with W's positive regard 
+
+intenion: R recognizes that S relates N to a framework of ideas not involved in the knowledge presented in N itself</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Motivation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PresentationalRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N is an action in which R is the actor (including accepting an offer), unrealized with respect to the context of N 
+
+Comprehending S increases R's desire to perform action in N 
+
+intention: R's desire to perform action in N is increased</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SubjectMatterRelation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NucleusSatelliteRelation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >a distinction is made between Subject-Matter relations and Presentational relations. Subject-Matter relations express parts of the subject matter of the text. The Presentational relations facilitate the presentation process. 
+(Mann and Taboada 2010)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#NucleusSatelliteRelation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The most frequent structural pattern is that two spans of text (virtually always adjacent, but exceptions can be found) are related such that one of them has a specific role relative to the other. A paradigm case is a claim followed by evidence for the claim. RST posits an "Evidence" relation between the two spans. It also says that the claim is more essential to the text than the particular evidence, and this essentiality is represented by calling the claim span a nucleus and the evidence span a satellite. The order of spans is not constrained, but there are more likely and less likely orders for all of the relations. ...
+
+The set of relations is in principle open, but the set (...) defined in Mann &amp; Thompson 1988 (which is currently the definitive paper on RST) has proven effective for many purposes. (...) a distinction is made between Subject-Matter relations and Presentational relations. Subject-Matter relations express parts of the subject matter of the text. The Presentational relations facilitate the presentation process. 
+(Mann and Taboada 2010)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RSTRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Evaluation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S relates N to degree of W's positive regard toward N. 
+
+intention: R recognizes that S assesses N and recognizes the value it assigns</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SubjectMatterRelation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PresentationalRelation">
+    <rdfs:subClassOf rdf:resource="#NucleusSatelliteRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >a distinction is made between Subject-Matter relations and Presentational relations. Subject-Matter relations express parts of the subject matter of the text. The Presentational relations facilitate the presentation process. 
+(Mann and Taboada 2010)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Restatement">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S restates N, where S and N are of comparable bulk; N is more central to W's purposes than S is. 
+
+intention: R recognizes S as a restatement of N</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SubjectMatterRelation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RSTRelation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RST is intended to describe texts, rather than the processes of creating or reading and understanding them. It posits a range of possibilities of structure -- various sorts of "building blocks" which can be observed to occur in texts. These "blocks" are at two levels, the principal one dealing with "nuclearity" and "relations" (often called coherence relations in the linguistic literature). 
+
+On terminology in definitions: N stands for nucleus, S for satellite, W for writer (author, speaker) and R for reader (hearer.) For some brevity: in many places, N and S stand for the situations presented by N and S; N and S never stand for the text of N or S. Situation is a broad cover term that ranges over propositions or beliefs, actions whether realized or not, desires to act and approval for another to act. Similarly, positive regard is a broad attitudinal term that ranges over belief, approval of ideas, desire to act, and approval for another to act, all identifiably positive. Positive regard and belief (with its cognates), and plausible above are all degree terms, not binary. 
+(Mann and Taboada 2010)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RSTStructure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Purpose">
+    <rdfs:subClassOf rdf:resource="#SubjectMatterRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N is an activity;
+S is a situation that is unrealized 
+
+S is to be realized through the activity in N 
+
+intention: R recognizes that the activity in N is initiated in order to realize S</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Summary">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >N must be more than one unit 
+
+S presents a restatement of the content of N, that is shorter in bulk
+
+intention: R recognizes S as a shorter restatement of N</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SubjectMatterRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="List">
+    <rdfs:subClassOf rdf:resource="#MultiNuclearRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An item comparable to others linked to it by the List relation 
+
+intention: R recognizes the comparability of linked items</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="VolitionalResult">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S is a volitional action or a situation that could have arisen from a volitional action 
+
+N could have caused S; presentation of N is more central to W's purposes than is presentation of S; 
+
+intention: R recognizes that N could be a cause for the action or situation in S</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SubjectMatterRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Concession">
+    <rdfs:subClassOf rdf:resource="#PresentationalRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >W has positive regard for N
+W is not claiming that S does not hold
+
+W acknowledges a potential or apparent incompatibility between N and S; recognizing the compatibility between N and S increases R's positive regard for N
+
+intention: R's positive regard for N is increased</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Joint">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >no constraints, Joint represents the lack of a rhetorical relation between the nuclei.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MultiNuclearRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RSTSchema">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RST is intended to describe texts, rather than the processes of creating or reading and understanding them. It posits a range of possibilities of structure -- various sorts of "building blocks" which can be observed to occur in texts. These "blocks" are at two levels, the principal one dealing with "nuclearity" and "relations" (often called coherence relations in the linguistic literature). A second level of structures, called schemas, is not presented here.
+(Mann and Taboada 2010)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RSTStructure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Condition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S presents a hypothetical, future, or otherwise unrealized situation (relative to the situational context of S)  	
+
+Realization of N depends on realization of S 
+
+intention: R recognizes how the realization of N depends on the realization of S</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#SubjectMatterRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Preparation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S precedes N in the text; S tends to make R more ready, interested or oriented for reading N 
+
+intention: R is more ready, interested or oriented for reading N
+
+(not provided by Mann and Thompson 1988, added in Mann and Taboada 2010)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#PresentationalRelation"/>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

@@ -1,0 +1,4863 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY terms "http://purl.org/dc/terms/" >
+    <!ENTITY lemon "http://lemon-model.net/lemon#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY olia "http://purl.org/olia/olia.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY olia-top "http://purl.org/olia/olia-top.owl#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY lexinfo "http://www.lexinfo.net/ontology/3.0/lexinfo#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/olia/lexinfo-link.rdf#"
+     xml:base="http://purl.org/olia/lexinfo-link.rdf"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:olia="http://purl.org/olia/olia.owl#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:lemon="http://lemon-model.net/lemon#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:lexinfo="http://www.lexinfo.net/ontology/3.0/lexinfo#"
+	xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:olia-top="http://purl.org/olia/olia-top.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <terms:description xml:lang="en"
+            >Linking model for lexinfo v.2, version of 2019-07-26, fully manually created</terms:description>
+        <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+        <owl:versionInfo>
+            2022-05-2022 updated from lexinfo 2.0 model to lexinfo v.3 (by direct replacement, not validated)
+        </owl:versionInfo>
+        <owl:imports rdf:resource="http://www.lexinfo.net/ontology/3.0/lexinfo"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&terms;description"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://lemon-model.net/lemon#Argument -->
+
+    <owl:Class rdf:about="&lemon;Argument">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticArgument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lemon-model.net/lemon#Frame -->
+
+    <owl:Class rdf:about="&lemon;Frame">
+        <rdfs:comment
+            >Syntactic frames are beyond OLiA. Instead, as this provides definitions for annotations only, i.e., label definitions, whereas a syntactic frame is a highly structured object. Syntactic frames may be modelled using vocabularies such as POWLA.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://lemon-model.net/lemon#Phrase -->
+
+    <owl:Class rdf:about="&lemon;Phrase">
+        <rdfs:subClassOf rdf:resource="&olia;Phrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lemon-model.net/lemon#PropertyValue -->
+
+    <owl:Class rdf:about="&lemon;PropertyValue">
+        <rdfs:subClassOf rdf:resource="&olia-top;UsageAndFrequencyFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lemon-model.net/lemon#RaisableArgument -->
+
+    <owl:Class rdf:about="&lemon;RaisableArgument">
+        <rdfs:subClassOf rdf:resource="&olia;RaisableArgument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lemon-model.net/lemon#SenseContext -->
+
+    <owl:Class rdf:about="&lemon;SenseContext">
+        <rdfs:subClassOf rdf:resource="&olia-top;DiscourseFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lemon-model.net/lemon#Word -->
+
+    <owl:Class rdf:about="&lemon;Word">
+        <rdfs:subClassOf rdf:resource="&olia-top;Word"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#AnimacyFeature -->
+
+    <owl:Class rdf:about="&olia-top;AnimacyFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#AspectFeature -->
+
+    <owl:Class rdf:about="&olia-top;AspectFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#CaseFeature -->
+
+    <owl:Class rdf:about="&olia-top;CaseFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#DefinitenessFeature -->
+
+    <owl:Class rdf:about="&olia-top;DefinitenessFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#DegreeFeature -->
+
+    <owl:Class rdf:about="&olia-top;DegreeFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#DiscourseFeature -->
+
+    <owl:Class rdf:about="&olia-top;DiscourseFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#GenderFeature -->
+
+    <owl:Class rdf:about="&olia-top;GenderFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#MoodFeature -->
+
+    <owl:Class rdf:about="&olia-top;MoodFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#MorphosyntacticCategory -->
+
+    <owl:Class rdf:about="&olia-top;MorphosyntacticCategory"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#NumberFeature -->
+
+    <owl:Class rdf:about="&olia-top;NumberFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#PersonFeature -->
+
+    <owl:Class rdf:about="&olia-top;PersonFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#PolarityFeature -->
+
+    <owl:Class rdf:about="&olia-top;PolarityFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#RegisterFeature -->
+
+    <owl:Class rdf:about="&olia-top;RegisterFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#TenseFeature -->
+
+    <owl:Class rdf:about="&olia-top;TenseFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature -->
+
+    <owl:Class rdf:about="&olia-top;UsageAndFrequencyFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#VoiceFeature -->
+
+    <owl:Class rdf:about="&olia-top;VoiceFeature"/>
+    
+
+
+    <!-- http://purl.org/olia/olia-top.owl#Word -->
+
+    <owl:Class rdf:about="&olia-top;Word"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Abbreviation -->
+
+    <owl:Class rdf:about="&olia;Abbreviation"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AbessiveCase -->
+
+    <owl:Class rdf:about="&olia;AbessiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AblativeCase -->
+
+    <owl:Class rdf:about="&olia;AblativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AbsolutiveCase -->
+
+    <owl:Class rdf:about="&olia;AbsolutiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Accusative -->
+
+    <owl:Class rdf:about="&olia;Accusative"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Acronym -->
+
+    <owl:Class rdf:about="&olia;Acronym"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ActiveVoice -->
+
+    <owl:Class rdf:about="&olia;ActiveVoice"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AdessiveCase -->
+
+    <owl:Class rdf:about="&olia;AdessiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AditiveCase -->
+
+    <owl:Class rdf:about="&olia;AditiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Adjective -->
+
+    <owl:Class rdf:about="&olia;Adjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AdjectivePhrase -->
+
+    <owl:Class rdf:about="&olia;AdjectivePhrase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AdnominalConstituent -->
+
+    <owl:Class rdf:about="&olia;AdnominalConstituent"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Adposition -->
+
+    <owl:Class rdf:about="&olia;Adposition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Adverb -->
+
+    <owl:Class rdf:about="&olia;Adverb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AffirmativeParticle -->
+
+    <owl:Class rdf:about="&olia;AffirmativeParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Affix -->
+
+    <owl:Class rdf:about="&olia;Affix"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AffixedPersonalPronoun -->
+
+    <owl:Class rdf:about="&olia;AffixedPersonalPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AllativeCase -->
+
+    <owl:Class rdf:about="&olia;AllativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AllusivePronoun -->
+
+    <owl:Class rdf:about="&olia;AllusivePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Animate -->
+
+    <owl:Class rdf:about="&olia;Animate"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Apellation -->
+
+    <owl:Class rdf:about="&olia;Apellation"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Article -->
+
+    <owl:Class rdf:about="&olia;Article"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#AuxiliaryVerb -->
+
+    <owl:Class rdf:about="&olia;AuxiliaryVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#BenchLevelRegister -->
+
+    <owl:Class rdf:about="&olia;BenchLevelRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#BenefactiveCase -->
+
+    <owl:Class rdf:about="&olia;BenefactiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Boilerplate -->
+
+    <owl:Class rdf:about="&olia;Boilerplate"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#BoundClitic -->
+
+    <owl:Class rdf:about="&olia;BoundClitic"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Bullet -->
+
+    <owl:Class rdf:about="&olia;Bullet"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CardinalNumber -->
+
+    <owl:Class rdf:about="&olia;CardinalNumber"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CausativeCase -->
+
+    <owl:Class rdf:about="&olia;CausativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CessativeAspect -->
+
+    <owl:Class rdf:about="&olia;CessativeAspect"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Circumposition -->
+
+    <owl:Class rdf:about="&olia;Circumposition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Clause -->
+
+    <owl:Class rdf:about="&olia;Clause"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ClippedTerm -->
+
+    <owl:Class rdf:about="&olia;ClippedTerm"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Cliticization -->
+
+    <owl:Class rdf:about="&olia;Cliticization"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CloseParenthesis -->
+
+    <owl:Class rdf:about="&olia;CloseParenthesis"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Collective -->
+
+    <owl:Class rdf:about="&olia;Collective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CollectivePronoun -->
+
+    <owl:Class rdf:about="&olia;CollectivePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Colon -->
+
+    <owl:Class rdf:about="&olia;Colon"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ComitativeCase -->
+
+    <owl:Class rdf:about="&olia;ComitativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Comma -->
+
+    <owl:Class rdf:about="&olia;Comma"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CommonGender -->
+
+    <owl:Class rdf:about="&olia;CommonGender"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CommonNoun -->
+
+    <owl:Class rdf:about="&olia;CommonNoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CommonlyUsed -->
+
+    <owl:Class rdf:about="&olia;CommonlyUsed"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Comparative -->
+
+    <owl:Class rdf:about="&olia;Comparative"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ComparativeParticle -->
+
+    <owl:Class rdf:about="&olia;ComparativeParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Composition -->
+
+    <owl:Class rdf:about="&olia;Composition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CompoundPreposition -->
+
+    <owl:Class rdf:about="&olia;CompoundPreposition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ConditionalMood -->
+
+    <owl:Class rdf:about="&olia;ConditionalMood"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ConditionalParticle -->
+
+    <owl:Class rdf:about="&olia;ConditionalParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ConditionalPronoun -->
+
+    <owl:Class rdf:about="&olia;ConditionalPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Conjunction -->
+
+    <owl:Class rdf:about="&olia;Conjunction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Contraction -->
+
+    <owl:Class rdf:about="&olia;Contraction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="&olia;CoordinatingConjunction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#CoordinationParticle -->
+
+    <owl:Class rdf:about="&olia;CoordinationParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Copula -->
+
+    <owl:Class rdf:about="&olia;Copula"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DativeCase -->
+
+    <owl:Class rdf:about="&olia;DativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DeclarativeSentence -->
+
+    <owl:Class rdf:about="&olia;DeclarativeSentence"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DeficientVerb -->
+
+    <owl:Class rdf:about="&olia;DeficientVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Definite -->
+
+    <owl:Class rdf:about="&olia;Definite"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DefiniteArticle -->
+
+    <owl:Class rdf:about="&olia;DefiniteArticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DelativeCase -->
+
+    <owl:Class rdf:about="&olia;DelativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DemonstrativeDeterminer -->
+
+    <owl:Class rdf:about="&olia;DemonstrativeDeterminer"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DemonstrativePronoun -->
+
+    <owl:Class rdf:about="&olia;DemonstrativePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DenominalAdjective -->
+
+    <owl:Class rdf:about="&olia;DenominalAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Deprecated -->
+
+    <owl:Class rdf:about="&olia;Deprecated"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Determiner -->
+
+    <owl:Class rdf:about="&olia;Determiner"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DeverbalAdjective -->
+
+    <owl:Class rdf:about="&olia;DeverbalAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DialectRegister -->
+
+    <owl:Class rdf:about="&olia;DialectRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Diminuitive -->
+
+    <owl:Class rdf:about="&olia;Diminuitive"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DirectObject -->
+
+    <owl:Class rdf:about="&olia;DirectObject"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#DistinctiveParticle -->
+
+    <owl:Class rdf:about="&olia;DistinctiveParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Dual -->
+
+    <owl:Class rdf:about="&olia;Dual"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ElativeCase -->
+
+    <owl:Class rdf:about="&olia;ElativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ElementWithClitic -->
+
+    <owl:Class rdf:about="&olia;ElementWithClitic"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ElementWithoutClitic -->
+
+    <owl:Class rdf:about="&olia;ElementWithoutClitic"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#EmphaticPronoun -->
+
+    <owl:Class rdf:about="&olia;EmphaticPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#EquativeCase -->
+
+    <owl:Class rdf:about="&olia;EquativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ErgativeCase -->
+
+    <owl:Class rdf:about="&olia;ErgativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#EssiveCase -->
+
+    <owl:Class rdf:about="&olia;EssiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ExclamativePoint -->
+
+    <owl:Class rdf:about="&olia;ExclamativePoint"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ExclamatoryDeterminer -->
+
+    <owl:Class rdf:about="&olia;ExclamatoryDeterminer"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ExclamatoryPronoun -->
+
+    <owl:Class rdf:about="&olia;ExclamatoryPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ExistentialPronoun -->
+
+    <owl:Class rdf:about="&olia;ExistentialPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#FacetiousRegister -->
+
+    <owl:Class rdf:about="&olia;FacetiousRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Feminine -->
+
+    <owl:Class rdf:about="&olia;Feminine"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#FiniteVerb -->
+
+    <owl:Class rdf:about="&olia;FiniteVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#First -->
+
+    <owl:Class rdf:about="&olia;First"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#FormalRegister -->
+
+    <owl:Class rdf:about="&olia;FormalRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Formula -->
+
+    <owl:Class rdf:about="&olia;Formula"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Fraction -->
+
+    <owl:Class rdf:about="&olia;Fraction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#FullDefiniteArticle -->
+
+    <owl:Class rdf:about="&olia;FullDefiniteArticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#FusedPreposition -->
+
+    <owl:Class rdf:about="&olia;FusedPreposition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Future -->
+
+    <owl:Class rdf:about="&olia;Future"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#FutureParticle -->
+
+    <owl:Class rdf:about="&olia;FutureParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#GenericNumeral -->
+
+    <owl:Class rdf:about="&olia;GenericNumeral"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#GenitiveCase -->
+
+    <owl:Class rdf:about="&olia;GenitiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Gerund -->
+
+    <owl:Class rdf:about="&olia;Gerund"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#GerundVerbPhrase -->
+
+    <owl:Class rdf:about="&olia;GerundVerbPhrase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Head -->
+
+    <owl:Class rdf:about="&olia;Head"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Identifier -->
+
+    <owl:Class rdf:about="&olia;Identifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IllativeCase -->
+
+    <owl:Class rdf:about="&olia;IllativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ImperativeMood -->
+
+    <owl:Class rdf:about="&olia;ImperativeMood"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Imperfect -->
+
+    <owl:Class rdf:about="&olia;Imperfect"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ImperfectiveAspect -->
+
+    <owl:Class rdf:about="&olia;ImperfectiveAspect"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ImpersonalPronoun -->
+
+    <owl:Class rdf:about="&olia;ImpersonalPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InHouseRegister -->
+
+    <owl:Class rdf:about="&olia;InHouseRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Inanimate -->
+
+    <owl:Class rdf:about="&olia;Inanimate"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InchoativeAspect -->
+
+    <owl:Class rdf:about="&olia;InchoativeAspect"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Indefinite -->
+
+    <owl:Class rdf:about="&olia;Indefinite"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndefiniteArticle -->
+
+    <owl:Class rdf:about="&olia;IndefiniteArticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndefiniteCardinalQuantifier -->
+
+    <owl:Class rdf:about="&olia;IndefiniteCardinalQuantifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndefiniteDeterminer -->
+
+    <owl:Class rdf:about="&olia;IndefiniteDeterminer"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndefiniteMultiplicativeQuantifier -->
+
+    <owl:Class rdf:about="&olia;IndefiniteMultiplicativeQuantifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndefinitePronoun -->
+
+    <owl:Class rdf:about="&olia;IndefinitePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndicativeMood -->
+
+    <owl:Class rdf:about="&olia;IndicativeMood"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IndirectObject -->
+
+    <owl:Class rdf:about="&olia;IndirectObject"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InessiveCase -->
+
+    <owl:Class rdf:about="&olia;InessiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Infinitive -->
+
+    <owl:Class rdf:about="&olia;Infinitive"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InfinitiveParticle -->
+
+    <owl:Class rdf:about="&olia;InfinitiveParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InfinitiveVerbPhrase -->
+
+    <owl:Class rdf:about="&olia;InfinitiveVerbPhrase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Infix -->
+
+    <owl:Class rdf:about="&olia;Infix"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InflectionElement -->
+
+    <owl:Class rdf:about="&olia;InflectionElement"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InfrequentlyUsed -->
+
+    <owl:Class rdf:about="&olia;InfrequentlyUsed"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Initialism -->
+
+    <owl:Class rdf:about="&olia;Initialism"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InstrumentalCase -->
+
+    <owl:Class rdf:about="&olia;InstrumentalCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Interjection -->
+
+    <owl:Class rdf:about="&olia;Interjection"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Internationalism -->
+
+    <owl:Class rdf:about="&olia;Internationalism"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InterrogativeCardinalQuantifier -->
+
+    <owl:Class rdf:about="&olia;InterrogativeCardinalQuantifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InterrogativeDeterminer -->
+
+    <owl:Class rdf:about="&olia;InterrogativeDeterminer"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InterrogativeModality -->
+
+    <owl:Class rdf:about="&olia;InterrogativeModality"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InterrogativeMultiplicativeQuantifier -->
+
+    <owl:Class rdf:about="&olia;InterrogativeMultiplicativeQuantifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InterrogativeParticle -->
+
+    <owl:Class rdf:about="&olia;InterrogativeParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InterrogativePronoun -->
+
+    <owl:Class rdf:about="&olia;InterrogativePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InvertedComma -->
+
+    <owl:Class rdf:about="&olia;InvertedComma"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#IronicRegister -->
+
+    <owl:Class rdf:about="&olia;IronicRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#LativeCase -->
+
+    <owl:Class rdf:about="&olia;LativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#LegalRegister -->
+
+    <owl:Class rdf:about="&olia;LegalRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Letter -->
+
+    <owl:Class rdf:about="&olia;Letter"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Lexeme -->
+
+    <owl:Class rdf:about="&olia;Lexeme"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#LightVerb -->
+
+    <owl:Class rdf:about="&olia;LightVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#LocativeCase -->
+
+    <owl:Class rdf:about="&olia;LocativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#MainVerb -->
+
+    <owl:Class rdf:about="&olia;MainVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Masculine -->
+
+    <owl:Class rdf:about="&olia;Masculine"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#MassNoun -->
+
+    <owl:Class rdf:about="&olia;MassNoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#MiddleVoice -->
+
+    <owl:Class rdf:about="&olia;MiddleVoice"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ModalVerb -->
+
+    <owl:Class rdf:about="&olia;ModalVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ModernUsage -->
+
+    <owl:Class rdf:about="&olia;ModernUsage"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Morpheme -->
+
+    <owl:Class rdf:about="&olia;Morpheme"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#MultipleNumeral -->
+
+    <owl:Class rdf:about="&olia;MultipleNumeral"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Negation -->
+
+    <owl:Class rdf:about="&olia;Negation"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NegativeParticle -->
+
+    <owl:Class rdf:about="&olia;NegativeParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NegativePronoun -->
+
+    <owl:Class rdf:about="&olia;NegativePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Neuter -->
+
+    <owl:Class rdf:about="&olia;Neuter"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NeutralRegister -->
+
+    <owl:Class rdf:about="&olia;NeutralRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Nominative -->
+
+    <owl:Class rdf:about="&olia;Nominative"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NonFiniteVerb -->
+
+    <owl:Class rdf:about="&olia;NonFiniteVerb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NonNegated -->
+
+    <owl:Class rdf:about="&olia;NonNegated"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Noun -->
+
+    <owl:Class rdf:about="&olia;Noun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#NounPhrase -->
+
+    <owl:Class rdf:about="&olia;NounPhrase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Numeral -->
+
+    <owl:Class rdf:about="&olia;Numeral"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ObliqueCase -->
+
+    <owl:Class rdf:about="&olia;ObliqueCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#OldUsage -->
+
+    <owl:Class rdf:about="&olia;OldUsage"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#OpenParenthesis -->
+
+    <owl:Class rdf:about="&olia;OpenParenthesis"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#OrdinalAdjective -->
+
+    <owl:Class rdf:about="&olia;OrdinalAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#OrdinalNumber -->
+
+    <owl:Class rdf:about="&olia;OrdinalNumber"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Participle -->
+
+    <owl:Class rdf:about="&olia;Participle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ParticipleAdjective -->
+
+    <owl:Class rdf:about="&olia;ParticipleAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Particle -->
+
+    <owl:Class rdf:about="&olia;Particle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PartitiveArticle -->
+
+    <owl:Class rdf:about="&olia;PartitiveArticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PartitiveCase -->
+
+    <owl:Class rdf:about="&olia;PartitiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PassiveVoice -->
+
+    <owl:Class rdf:about="&olia;PassiveVoice"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Past -->
+
+    <owl:Class rdf:about="&olia;Past"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PastParticipleAdjective -->
+
+    <owl:Class rdf:about="&olia;PastParticipleAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Paucal -->
+
+    <owl:Class rdf:about="&olia;Paucal"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Perfect -->
+
+    <owl:Class rdf:about="&olia;Perfect"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PerfectiveAspect -->
+
+    <owl:Class rdf:about="&olia;PerfectiveAspect"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="&olia;PersonalPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Phrase -->
+
+    <owl:Class rdf:about="&olia;Phrase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Phraseme -->
+
+    <owl:Class rdf:about="&olia;Phraseme"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Plural -->
+
+    <owl:Class rdf:about="&olia;Plural"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Point -->
+
+    <owl:Class rdf:about="&olia;Point"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Positive -->
+
+    <owl:Class rdf:about="&olia;Positive"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Possessive -->
+
+    <owl:Class rdf:about="&olia;Possessive"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PossessiveAdjective -->
+
+    <owl:Class rdf:about="&olia;PossessiveAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PossessiveDeterminer -->
+
+    <owl:Class rdf:about="&olia;PossessiveDeterminer"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PossessiveParticle -->
+
+    <owl:Class rdf:about="&olia;PossessiveParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PossessivePronoun -->
+
+    <owl:Class rdf:about="&olia;PossessivePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PossessiveRelativePronoun -->
+
+    <owl:Class rdf:about="&olia;PossessiveRelativePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Possible -->
+
+    <owl:Class rdf:about="&olia;Possible"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PostNominalModifier -->
+
+    <owl:Class rdf:about="&olia;PostNominalModifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Postposition -->
+
+    <owl:Class rdf:about="&olia;Postposition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PreNominalModifier -->
+
+    <owl:Class rdf:about="&olia;PreNominalModifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Predicate -->
+
+    <owl:Class rdf:about="&olia;Predicate"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PredicativeAdjective -->
+
+    <owl:Class rdf:about="&olia;PredicativeAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Preferred -->
+
+    <owl:Class rdf:about="&olia;Preferred"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Prefix -->
+
+    <owl:Class rdf:about="&olia;Prefix"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Preposition -->
+
+    <owl:Class rdf:about="&olia;Preposition"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PrepositionalAdverb -->
+
+    <owl:Class rdf:about="&olia;PrepositionalAdverb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PrepositionalObject -->
+
+    <owl:Class rdf:about="&olia;PrepositionalObject"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PrepositionalPhrase -->
+
+    <owl:Class rdf:about="&olia;PrepositionalPhrase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Present -->
+
+    <owl:Class rdf:about="&olia;Present"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PresentParticipleAdjective -->
+
+    <owl:Class rdf:about="&olia;PresentParticipleAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PresentativePronoun -->
+
+    <owl:Class rdf:about="&olia;PresentativePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ProlativeCase -->
+
+    <owl:Class rdf:about="&olia;ProlativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#PronominalAdverb -->
+
+    <owl:Class rdf:about="&olia;PronominalAdverb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Pronoun -->
+
+    <owl:Class rdf:about="&olia;Pronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ProperNoun -->
+
+    <owl:Class rdf:about="&olia;ProperNoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Proverb -->
+
+    <owl:Class rdf:about="&olia;Proverb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Punctuation -->
+
+    <owl:Class rdf:about="&olia;Punctuation"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Quadrial -->
+
+    <owl:Class rdf:about="&olia;Quadrial"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#QualifierAdjective -->
+
+    <owl:Class rdf:about="&olia;QualifierAdjective"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Quantifier -->
+
+    <owl:Class rdf:about="&olia;Quantifier"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#QuestionMark -->
+
+    <owl:Class rdf:about="&olia;QuestionMark"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Radical -->
+
+    <owl:Class rdf:about="&olia;Radical"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#RaisableArgument -->
+
+    <owl:Class rdf:about="&olia;RaisableArgument"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#RarelyUsed -->
+
+    <owl:Class rdf:about="&olia;RarelyUsed"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ReciprocalPronoun -->
+
+    <owl:Class rdf:about="&olia;ReciprocalPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ReflexiveDeterminer -->
+
+    <owl:Class rdf:about="&olia;ReflexiveDeterminer"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ReflexivePronoun -->
+
+    <owl:Class rdf:about="&olia;ReflexivePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#RelationNoun -->
+
+    <owl:Class rdf:about="&olia;RelationNoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#RelativeDeterminer -->
+
+    <owl:Class rdf:about="&olia;RelativeDeterminer"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#RelativeParticle -->
+
+    <owl:Class rdf:about="&olia;RelativeParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#RelativePronoun -->
+
+    <owl:Class rdf:about="&olia;RelativePronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Root -->
+
+    <owl:Class rdf:about="&olia;Root"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Second -->
+
+    <owl:Class rdf:about="&olia;Second"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SemiColon -->
+
+    <owl:Class rdf:about="&olia;SemiColon"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SetPhrase -->
+
+    <owl:Class rdf:about="&olia;SetPhrase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#ShortDefiniteArticle -->
+
+    <owl:Class rdf:about="&olia;ShortDefiniteArticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Singular -->
+
+    <owl:Class rdf:about="&olia;Singular"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SlangRegister -->
+
+    <owl:Class rdf:about="&olia;SlangRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Slash -->
+
+    <owl:Class rdf:about="&olia;Slash"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SociativeCase -->
+
+    <owl:Class rdf:about="&olia;SociativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Standardized -->
+
+    <owl:Class rdf:about="&olia;Standardized"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#String -->
+
+    <owl:Class rdf:about="&olia;String"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#StrongPersonalPronoun -->
+
+    <owl:Class rdf:about="&olia;StrongPersonalPronoun"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SubjunctiveModality -->
+
+    <owl:Class rdf:about="&olia;SubjunctiveModality"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SubjunctiveMood -->
+
+    <owl:Class rdf:about="&olia;SubjunctiveMood"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SublativeCase -->
+
+    <owl:Class rdf:about="&olia;SublativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="&olia;SubordinatingConjunction"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Suffix -->
+
+    <owl:Class rdf:about="&olia;Suffix"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SuperessiveCase -->
+
+    <owl:Class rdf:about="&olia;SuperessiveCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Superlative -->
+
+    <owl:Class rdf:about="&olia;Superlative"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SuperlativeParticle -->
+
+    <owl:Class rdf:about="&olia;SuperlativeParticle"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SuspensionPoints -->
+
+    <owl:Class rdf:about="&olia;SuspensionPoints"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Symbol -->
+
+    <owl:Class rdf:about="&olia;Symbol"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticAdjunct -->
+
+    <owl:Class rdf:about="&olia;SyntacticAdjunct"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticArgument -->
+
+    <owl:Class rdf:about="&olia;SyntacticArgument"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticComplement -->
+
+    <owl:Class rdf:about="&olia;SyntacticComplement"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticObject -->
+
+    <owl:Class rdf:about="&olia;SyntacticObject"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#SyntacticSubject -->
+
+    <owl:Class rdf:about="&olia;SyntacticSubject"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#TabooRegister -->
+
+    <owl:Class rdf:about="&olia;TabooRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#TechnicalRegister -->
+
+    <owl:Class rdf:about="&olia;TechnicalRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#TerminativeCase -->
+
+    <owl:Class rdf:about="&olia;TerminativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Third -->
+
+    <owl:Class rdf:about="&olia;Third"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#TranslativeCase -->
+
+    <owl:Class rdf:about="&olia;TranslativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Trial -->
+
+    <owl:Class rdf:about="&olia;Trial"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#UnaccomplishedAspect -->
+
+    <owl:Class rdf:about="&olia;UnaccomplishedAspect"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#Verb -->
+
+    <owl:Class rdf:about="&olia;Verb"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#VerbPhrase -->
+
+    <owl:Class rdf:about="&olia;VerbPhrase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#VocativeCase -->
+
+    <owl:Class rdf:about="&olia;VocativeCase"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#VulgarRegister -->
+
+    <owl:Class rdf:about="&olia;VulgarRegister"/>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#WeakPersonalPronoun -->
+
+    <owl:Class rdf:about="&olia;WeakPersonalPronoun"/>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#AbbreviatedForm -->
+
+    <owl:Class rdf:about="&lexinfo;AbbreviatedForm">
+        <rdfs:subClassOf rdf:resource="&olia;Abbreviation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#AccusativePostPositiveArgument -->
+
+    <owl:Class rdf:about="&lexinfo;AccusativePostPositiveArgument">
+        <rdfs:subClassOf rdf:resource="&olia;Accusative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Adjective -->
+
+    <owl:Class rdf:about="&lexinfo;Adjective">
+        <rdfs:subClassOf rdf:resource="&olia;Adjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#AdjectivePOS -->
+
+    <owl:Class rdf:about="&lexinfo;AdjectivePOS">
+        <rdfs:subClassOf rdf:resource="&olia;Adjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#AdjectivePhrase -->
+
+    <owl:Class rdf:about="&lexinfo;AdjectivePhrase">
+        <rdfs:subClassOf rdf:resource="&olia;AdjectivePhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Adjunct -->
+
+    <owl:Class rdf:about="&lexinfo;Adjunct">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticAdjunct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Adposition -->
+
+    <owl:Class rdf:about="&lexinfo;Adposition">
+        <rdfs:subClassOf rdf:resource="&olia;Adposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#AdpositionPOS -->
+
+    <owl:Class rdf:about="&lexinfo;AdpositionPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Adposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#AdpositionalObject -->
+
+    <owl:Class rdf:about="&lexinfo;AdpositionalObject">
+        <rdfs:subClassOf rdf:resource="&olia;PrepositionalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Adverb -->
+
+    <owl:Class rdf:about="&lexinfo;Adverb">
+        <rdfs:subClassOf rdf:resource="&olia;Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#AdverbPOS -->
+
+    <owl:Class rdf:about="&lexinfo;AdverbPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Adverb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Affix -->
+
+    <owl:Class rdf:about="&lexinfo;Affix">
+        <rdfs:subClassOf rdf:resource="&olia;Affix"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Animacy -->
+
+    <owl:Class rdf:about="&lexinfo;Animacy">
+        <rdfs:subClassOf rdf:resource="&olia-top;AnimacyFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Article -->
+
+    <owl:Class rdf:about="&lexinfo;Article">
+        <rdfs:subClassOf rdf:resource="&olia;Article"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ArticlePOS -->
+
+    <owl:Class rdf:about="&lexinfo;ArticlePOS">
+        <rdfs:subClassOf rdf:resource="&olia;Article"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Aspect -->
+
+    <owl:Class rdf:about="&lexinfo;Aspect">
+        <rdfs:subClassOf rdf:resource="&olia-top;AspectFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#AttributiveArgument -->
+
+    <owl:Class rdf:about="&lexinfo;AttributiveArgument">
+        <owl:versionInfo
+            >TODO: definition?</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Case -->
+
+    <owl:Class rdf:about="&lexinfo;Case">
+        <rdfs:subClassOf rdf:resource="&olia-top;CaseFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ClausalArgument -->
+
+    <owl:Class rdf:about="&lexinfo;ClausalArgument">
+        <rdfs:subClassOf rdf:resource="&olia;Clause"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Cliticness -->
+
+    <owl:Class rdf:about="&lexinfo;Cliticness">
+        <rdfs:subClassOf rdf:resource="&olia;Cliticization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#CommonNoun -->
+
+    <owl:Class rdf:about="&lexinfo;CommonNoun">
+        <rdfs:subClassOf rdf:resource="&olia;CommonNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ComparativeAdjunct -->
+
+    <owl:Class rdf:about="&lexinfo;ComparativeAdjunct">
+        <rdfs:subClassOf rdf:resource="&olia;Comparative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Complement -->
+
+    <owl:Class rdf:about="&lexinfo;Complement">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticComplement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Conjunction -->
+
+    <owl:Class rdf:about="&lexinfo;Conjunction">
+        <rdfs:subClassOf rdf:resource="&olia;Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ConjunctionPOS -->
+
+    <owl:Class rdf:about="&lexinfo;ConjunctionPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Conjunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#DativePostPositiveArgument -->
+
+    <owl:Class rdf:about="&lexinfo;DativePostPositiveArgument">
+        <rdfs:subClassOf rdf:resource="&olia;DativeCase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#DeclarativeClause -->
+
+    <owl:Class rdf:about="&lexinfo;DeclarativeClause">
+        <rdfs:subClassOf rdf:resource="&olia;DeclarativeSentence"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Definiteness -->
+
+    <owl:Class rdf:about="&lexinfo;Definiteness">
+        <rdfs:subClassOf rdf:resource="&olia-top;DefinitenessFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Degree -->
+
+    <owl:Class rdf:about="&lexinfo;Degree">
+        <rdfs:subClassOf rdf:resource="&olia-top;DegreeFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Determiner -->
+
+    <owl:Class rdf:about="&lexinfo;Determiner">
+        <rdfs:subClassOf rdf:resource="&olia;Determiner"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#DeterminerPOS -->
+
+    <owl:Class rdf:about="&lexinfo;DeterminerPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Determiner"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#DirectObject -->
+
+    <owl:Class rdf:about="&lexinfo;DirectObject">
+        <rdfs:subClassOf rdf:resource="&olia;DirectObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Finiteness -->
+
+    <owl:Class rdf:about="&lexinfo;Finiteness">
+        <rdfs:subClassOf rdf:resource="&olia;Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Frequency -->
+
+    <owl:Class rdf:about="&lexinfo;Frequency">
+        <rdfs:subClassOf rdf:resource="&olia-top;UsageAndFrequencyFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#FusedPreposition -->
+
+    <owl:Class rdf:about="&lexinfo;FusedPreposition">
+        <rdfs:subClassOf rdf:resource="&olia;FusedPreposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#FusedPrepositionPOS -->
+
+    <owl:Class rdf:about="&lexinfo;FusedPrepositionPOS">
+        <rdfs:subClassOf rdf:resource="&olia;FusedPreposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Gender -->
+
+    <owl:Class rdf:about="&lexinfo;Gender">
+        <rdfs:subClassOf rdf:resource="&olia-top;GenderFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#GenitiveObject -->
+
+    <owl:Class rdf:about="&lexinfo;GenitiveObject">
+        <rdfs:subClassOf rdf:resource="&olia;GenitiveCase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#GenitivePostPositiveArgument -->
+
+    <owl:Class rdf:about="&lexinfo;GenitivePostPositiveArgument">
+        <rdfs:subClassOf rdf:resource="&olia;GenitiveCase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Gerund -->
+
+    <owl:Class rdf:about="&lexinfo;Gerund">
+        <rdfs:subClassOf rdf:resource="&olia;GerundVerbPhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#IndirectObject -->
+
+    <owl:Class rdf:about="&lexinfo;IndirectObject">
+        <rdfs:subClassOf rdf:resource="&olia;IndirectObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#InfinitiveClause -->
+
+    <owl:Class rdf:about="&lexinfo;InfinitiveClause">
+        <rdfs:subClassOf rdf:resource="&olia;InfinitiveVerbPhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Infix -->
+
+    <owl:Class rdf:about="&lexinfo;Infix">
+        <rdfs:subClassOf rdf:resource="&olia;Infix"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Interjection -->
+
+    <owl:Class rdf:about="&lexinfo;Interjection">
+        <rdfs:subClassOf rdf:resource="&olia;Interjection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#InterrogativeClause -->
+
+    <owl:Class rdf:about="&lexinfo;InterrogativeClause">
+        <rdfs:subClassOf rdf:resource="&olia;InterrogativeModality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ModificationType -->
+
+    <owl:Class rdf:about="&lexinfo;ModificationType">
+        <rdfs:subClassOf rdf:resource="&olia;AdnominalConstituent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Mood -->
+
+    <owl:Class rdf:about="&lexinfo;Mood">
+        <rdfs:subClassOf rdf:resource="&olia-top;MoodFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Negative -->
+
+    <owl:Class rdf:about="&lexinfo;Negative">
+        <rdfs:subClassOf rdf:resource="&olia-top;PolarityFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#NormativeAuthorization -->
+
+    <owl:Class rdf:about="&lexinfo;NormativeAuthorization">
+        <rdfs:subClassOf rdf:resource="&olia-top;UsageAndFrequencyFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Noun -->
+
+    <owl:Class rdf:about="&lexinfo;Noun">
+        <rdfs:subClassOf rdf:resource="&olia;Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#NounPOS -->
+
+    <owl:Class rdf:about="&lexinfo;NounPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#NounPhrase -->
+
+    <owl:Class rdf:about="&lexinfo;NounPhrase">
+        <rdfs:subClassOf rdf:resource="&olia;NounPhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Number -->
+
+    <owl:Class rdf:about="&lexinfo;Number">
+        <rdfs:subClassOf rdf:resource="&olia-top;NumberFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Numeral -->
+
+    <owl:Class rdf:about="&lexinfo;Numeral">
+        <rdfs:subClassOf rdf:resource="&olia;Numeral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#NumeralPOS -->
+
+    <owl:Class rdf:about="&lexinfo;NumeralPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Quantifier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Object -->
+
+    <owl:Class rdf:about="&lexinfo;Object">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ObjectComplement -->
+
+    <owl:Class rdf:about="&lexinfo;ObjectComplement">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PartOfSpeech -->
+
+    <owl:Class rdf:about="&lexinfo;PartOfSpeech">
+        <rdfs:subClassOf rdf:resource="&olia-top;MorphosyntacticCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Particle -->
+
+    <owl:Class rdf:about="&lexinfo;Particle">
+        <rdfs:subClassOf rdf:resource="&olia;Particle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ParticlePOS -->
+
+    <owl:Class rdf:about="&lexinfo;ParticlePOS">
+        <rdfs:subClassOf rdf:resource="&olia;Particle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Person -->
+
+    <owl:Class rdf:about="&lexinfo;Person">
+        <rdfs:subClassOf rdf:resource="&olia-top;PersonFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PossessiveAdjunct -->
+
+    <owl:Class rdf:about="&lexinfo;PossessiveAdjunct">
+        <rdfs:subClassOf rdf:resource="&olia;Possessive"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PostPositiveArgument -->
+
+    <owl:Class rdf:about="&lexinfo;PostPositiveArgument">
+        <owl:versionInfo
+            >TODO: definition ?</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Postposition -->
+
+    <owl:Class rdf:about="&lexinfo;Postposition">
+        <rdfs:subClassOf rdf:resource="&olia;Postposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PredicativeAdjective -->
+
+    <owl:Class rdf:about="&lexinfo;PredicativeAdjective">
+        <rdfs:subClassOf rdf:resource="&olia;Predicate"/>
+        <rdfs:subClassOf rdf:resource="&olia;PredicativeAdjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PredicativeAdverb -->
+
+    <owl:Class rdf:about="&lexinfo;PredicativeAdverb">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Adverb"/>
+                    <rdf:Description rdf:about="&olia;Predicate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PredicativeNominative -->
+
+    <owl:Class rdf:about="&lexinfo;PredicativeNominative">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Nominative"/>
+                    <rdf:Description rdf:about="&olia;Predicate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Prefix -->
+
+    <owl:Class rdf:about="&lexinfo;Prefix">
+        <rdfs:subClassOf rdf:resource="&olia;Prefix"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Preposition -->
+
+    <owl:Class rdf:about="&lexinfo;Preposition">
+        <rdfs:subClassOf rdf:resource="&olia;Preposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PrepositionPhrase -->
+
+    <owl:Class rdf:about="&lexinfo;PrepositionPhrase">
+        <rdfs:subClassOf rdf:resource="&olia;PrepositionalPhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PrepositionalAdjunct -->
+
+    <owl:Class rdf:about="&lexinfo;PrepositionalAdjunct">
+        <rdfs:subClassOf rdf:resource="&olia;PrepositionalPhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PrepositionalObject -->
+
+    <owl:Class rdf:about="&lexinfo;PrepositionalObject">
+        <rdfs:subClassOf rdf:resource="&olia;PrepositionalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Pronoun -->
+
+    <owl:Class rdf:about="&lexinfo;Pronoun">
+        <rdfs:subClassOf rdf:resource="&olia;Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#PronounPOS -->
+
+    <owl:Class rdf:about="&lexinfo;PronounPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ProperNoun -->
+
+    <owl:Class rdf:about="&lexinfo;ProperNoun">
+        <rdfs:subClassOf rdf:resource="&olia;ProperNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ReferentType -->
+
+    <owl:Class rdf:about="&lexinfo;ReferentType">
+        <rdfs:subClassOf rdf:resource="&olia;Pronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ReflexiveObject -->
+
+    <owl:Class rdf:about="&lexinfo;ReflexiveObject">
+        <rdfs:subClassOf rdf:resource="&olia;ReflexivePronoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Register -->
+
+    <owl:Class rdf:about="&lexinfo;Register">
+        <rdfs:subClassOf rdf:resource="&olia-top;RegisterFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Subject -->
+
+    <owl:Class rdf:about="&lexinfo;Subject">
+        <rdfs:subClassOf rdf:resource="&olia;SyntacticSubject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#SubjunctiveClause -->
+
+    <owl:Class rdf:about="&lexinfo;SubjunctiveClause">
+        <rdfs:subClassOf rdf:resource="&olia;SubjunctiveModality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Suffix -->
+
+    <owl:Class rdf:about="&lexinfo;Suffix">
+        <rdfs:subClassOf rdf:resource="&olia;Suffix"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#SuperlativeAdjunct -->
+
+    <owl:Class rdf:about="&lexinfo;SuperlativeAdjunct">
+        <rdfs:subClassOf rdf:resource="&olia;Superlative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Symbol -->
+
+    <owl:Class rdf:about="&lexinfo;Symbol">
+        <rdfs:subClassOf rdf:resource="&olia;Symbol"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#SymbolPOS -->
+
+    <owl:Class rdf:about="&lexinfo;SymbolPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Symbol"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#TemporalQualifier -->
+
+    <owl:Class rdf:about="&lexinfo;TemporalQualifier">
+        <rdfs:subClassOf rdf:resource="&olia-top;UsageAndFrequencyFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Tense -->
+
+    <owl:Class rdf:about="&lexinfo;Tense">
+        <rdfs:subClassOf rdf:resource="&olia-top;TenseFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Verb -->
+
+    <owl:Class rdf:about="&lexinfo;Verb">
+        <rdfs:subClassOf rdf:resource="&olia;Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#VerbFormMood -->
+
+    <owl:Class rdf:about="&lexinfo;VerbFormMood">
+        <rdfs:subClassOf rdf:resource="&olia;Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#VerbPOS -->
+
+    <owl:Class rdf:about="&lexinfo;VerbPOS">
+        <rdfs:subClassOf rdf:resource="&olia;Verb"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#VerbPhrase -->
+
+    <owl:Class rdf:about="&lexinfo;VerbPhrase">
+        <rdfs:subClassOf rdf:resource="&olia;VerbPhrase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#Voice -->
+
+    <owl:Class rdf:about="&lexinfo;Voice">
+        <rdfs:subClassOf rdf:resource="&olia-top;VoiceFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#CJK_compound -->
+
+    <owl:Thing rdf:about="&lexinfo;CJK_compound">
+        <rdfs:comment
+            >not linked, this is a surface phenomenon derivable from tokenization</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#abbreviatedForm -->
+
+    <olia:Abbreviation rdf:about="&lexinfo;abbreviatedForm">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Abbreviation>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#abbreviation -->
+
+    <owl:Thing rdf:about="&lexinfo;abbreviation">
+        <rdf:type rdf:resource="&olia;Abbreviation"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#abessiveCase -->
+
+    <owl:Thing rdf:about="&lexinfo;abessiveCase">
+        <rdf:type rdf:resource="&olia;AbessiveCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ablativeCase -->
+
+    <olia:AblativeCase rdf:about="&lexinfo;ablativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:AblativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#absolutiveCase -->
+
+    <owl:Thing rdf:about="&lexinfo;absolutiveCase">
+        <rdf:type rdf:resource="&olia;AbsolutiveCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#accusativeCase -->
+
+    <olia:Accusative rdf:about="&lexinfo;accusativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Accusative>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#acronym -->
+
+    <olia:Acronym rdf:about="&lexinfo;acronym">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Acronym>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#activeVoice -->
+
+    <owl:Thing rdf:about="&lexinfo;activeVoice">
+        <rdf:type rdf:resource="&olia;ActiveVoice"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#adessiveCase -->
+
+    <owl:Thing rdf:about="&lexinfo;adessiveCase">
+        <rdf:type rdf:resource="&olia;AdessiveCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#aditiveCase -->
+
+    <olia:AditiveCase rdf:about="&lexinfo;aditiveCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:AditiveCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#adjective -->
+
+    <olia:Adjective rdf:about="&lexinfo;adjective">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Adjective>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#adjective-i -->
+
+    <olia:DeverbalAdjective rdf:about="&lexinfo;adjective-i">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DeverbalAdjective>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#adjective-na -->
+
+    <owl:Thing rdf:about="&lexinfo;adjective-na">
+        <rdf:type rdf:resource="&olia;DenominalAdjective"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#admittedTerm -->
+
+    <olia:Possible rdf:about="&lexinfo;admittedTerm">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Possible>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#adposition -->
+
+    <owl:Thing rdf:about="&lexinfo;adposition">
+        <rdf:type rdf:resource="&olia;Adposition"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#adverb -->
+
+    <owl:Thing rdf:about="&lexinfo;adverb">
+        <rdf:type rdf:resource="&olia;Adverb"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#adverbialPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;adverbialPronoun">
+        <rdf:type rdf:resource="&olia;PronominalAdverb"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#affirmativeParticle -->
+
+    <owl:Thing rdf:about="&lexinfo;affirmativeParticle">
+        <rdf:type rdf:resource="&olia;AffirmativeParticle"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#affix -->
+
+    <olia:Affix rdf:about="&lexinfo;affix">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Affix>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#affixedPersonalPronoun -->
+
+    <olia:AffixedPersonalPronoun rdf:about="&lexinfo;affixedPersonalPronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:AffixedPersonalPronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#allativeCase -->
+
+    <owl:Thing rdf:about="&lexinfo;allativeCase">
+        <rdf:type rdf:resource="&olia;AllativeCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#allusivePronoun -->
+
+    <olia:AllusivePronoun rdf:about="&lexinfo;allusivePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:AllusivePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#animate -->
+
+    <olia:Animate rdf:about="&lexinfo;animate">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Animate>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#appellation -->
+
+    <olia:Apellation rdf:about="&lexinfo;appellation">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Apellation>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#archaicForm -->
+
+    <olia:OldUsage rdf:about="&lexinfo;archaicForm">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:OldUsage>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#article -->
+
+    <olia:Article rdf:about="&lexinfo;article">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Article>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#baseElement -->
+
+    <owl:Thing rdf:about="&lexinfo;baseElement">
+        <rdf:type rdf:resource="&olia;Root"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#benchLevelRegister -->
+
+    <olia:BenchLevelRegister rdf:about="&lexinfo;benchLevelRegister">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:BenchLevelRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#benefactiveCase -->
+
+    <olia:BenefactiveCase rdf:about="&lexinfo;benefactiveCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:BenefactiveCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#bound -->
+
+    <olia:BoundClitic rdf:about="&lexinfo;bound">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:BoundClitic>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#bullet -->
+
+    <olia:Bullet rdf:about="&lexinfo;bullet">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Bullet>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#cardinalNumeral -->
+
+    <olia:CardinalNumber rdf:about="&lexinfo;cardinalNumeral">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CardinalNumber>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#causativeCase -->
+
+    <olia:CausativeCase rdf:about="&lexinfo;causativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CausativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#cessative -->
+
+    <olia:CessativeAspect rdf:about="&lexinfo;cessative">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CessativeAspect>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#circumposition -->
+
+    <olia:Circumposition rdf:about="&lexinfo;circumposition">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Circumposition>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#clippedTerm -->
+
+    <owl:Thing rdf:about="&lexinfo;clippedTerm">
+        <rdf:type rdf:resource="&olia;ClippedTerm"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#closeParenthesis -->
+
+    <olia:CloseParenthesis rdf:about="&lexinfo;closeParenthesis">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CloseParenthesis>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#collective -->
+
+    <olia:Collective rdf:about="&lexinfo;collective">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Collective>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#collectivePronoun -->
+
+    <olia:CollectivePronoun rdf:about="&lexinfo;collectivePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CollectivePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#colon -->
+
+    <olia:Colon rdf:about="&lexinfo;colon">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Colon>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#comitativeCase -->
+
+    <olia:ComitativeCase rdf:about="&lexinfo;comitativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ComitativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#comma -->
+
+    <olia:Comma rdf:about="&lexinfo;comma">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Comma>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#commonGender -->
+
+    <olia:CommonGender rdf:about="&lexinfo;commonGender">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CommonGender>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#commonName -->
+
+    <owl:Thing rdf:about="&lexinfo;commonName">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Noun"/>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&olia-top;RegisterFeature"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="&olia;TechnicalRegister"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#commonNoun -->
+
+    <owl:Thing rdf:about="&lexinfo;commonNoun">
+        <rdf:type rdf:resource="&olia;CommonNoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#commonlyUsed -->
+
+    <olia:CommonlyUsed rdf:about="&lexinfo;commonlyUsed">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CommonlyUsed>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#comparative -->
+
+    <owl:Thing rdf:about="&lexinfo;comparative">
+        <rdf:type rdf:resource="&olia;Comparative"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#comparativeParticle -->
+
+    <owl:Thing rdf:about="&lexinfo;comparativeParticle">
+        <rdf:type rdf:resource="&olia;ComparativeParticle"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#compound -->
+
+    <owl:Thing rdf:about="&lexinfo;compound">
+        <rdf:type rdf:resource="&olia;Composition"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#compoundPreposition -->
+
+    <owl:Thing rdf:about="&lexinfo;compoundPreposition">
+        <rdf:type rdf:resource="&olia;CompoundPreposition"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#conditional -->
+
+    <owl:Thing rdf:about="&lexinfo;conditional">
+        <rdf:type rdf:resource="&olia;ConditionalMood"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#conditionalParticle -->
+
+    <olia:ConditionalParticle rdf:about="&lexinfo;conditionalParticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ConditionalParticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#conditionalPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;conditionalPronoun">
+        <rdf:type rdf:resource="&olia;ConditionalPronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#conjunction -->
+
+    <olia:Conjunction rdf:about="&lexinfo;conjunction">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Conjunction>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#contraction -->
+
+    <owl:Thing rdf:about="&lexinfo;contraction">
+        <rdf:type rdf:resource="&olia;Contraction"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#coordinatingConjunction -->
+
+    <olia:CoordinatingConjunction rdf:about="&lexinfo;coordinatingConjunction">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CoordinatingConjunction>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#coordinationParticle -->
+
+    <olia:CoordinationParticle rdf:about="&lexinfo;coordinationParticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:CoordinationParticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#copula -->
+
+    <owl:Thing rdf:about="&lexinfo;copula">
+        <rdf:type rdf:resource="&olia;Copula"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#dativeCase -->
+
+    <olia:DativeCase rdf:about="&lexinfo;dativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#deficientVerb -->
+
+    <olia:DeficientVerb rdf:about="&lexinfo;deficientVerb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DeficientVerb>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#definite -->
+
+    <olia:Definite rdf:about="&lexinfo;definite">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Definite>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#definiteArticle -->
+
+    <olia:DefiniteArticle rdf:about="&lexinfo;definiteArticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DefiniteArticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#delativeCase -->
+
+    <olia:DelativeCase rdf:about="&lexinfo;delativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DelativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#demonstrativeDeterminer -->
+
+    <olia:DemonstrativeDeterminer rdf:about="&lexinfo;demonstrativeDeterminer">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DemonstrativeDeterminer>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#demonstrativePronoun -->
+
+    <olia:DemonstrativePronoun rdf:about="&lexinfo;demonstrativePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DemonstrativePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#deprecatedTerm -->
+
+    <olia:Deprecated rdf:about="&lexinfo;deprecatedTerm">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Deprecated>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#determiner -->
+
+    <olia:Determiner rdf:about="&lexinfo;determiner">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Determiner>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#dialectRegister -->
+
+    <olia:DialectRegister rdf:about="&lexinfo;dialectRegister">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DialectRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#diminutiveNoun -->
+
+    <owl:Thing rdf:about="&lexinfo;diminutiveNoun">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;CommonNoun"/>
+                    <rdf:Description rdf:about="&olia;Diminuitive"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#distinctiveParticle -->
+
+    <olia:DistinctiveParticle rdf:about="&lexinfo;distinctiveParticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:DistinctiveParticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#dual -->
+
+    <olia:Dual rdf:about="&lexinfo;dual">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Dual>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#elativeCase -->
+
+    <olia:ElativeCase rdf:about="&lexinfo;elativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ElativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#emphaticPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;emphaticPronoun">
+        <rdf:type rdf:resource="&olia;EmphaticPronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#equation -->
+
+    <olia:Formula rdf:about="&lexinfo;equation">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Formula>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#equativeCase -->
+
+    <olia:EquativeCase rdf:about="&lexinfo;equativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:EquativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ergativeCase -->
+
+    <olia:ErgativeCase rdf:about="&lexinfo;ergativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ErgativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#essiveCase -->
+
+    <owl:Thing rdf:about="&lexinfo;essiveCase">
+        <rdf:type rdf:resource="&olia;EssiveCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#exclamativeDeterminer -->
+
+    <olia:ExclamatoryDeterminer rdf:about="&lexinfo;exclamativeDeterminer">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ExclamatoryDeterminer>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#exclamativePoint -->
+
+    <owl:Thing rdf:about="&lexinfo;exclamativePoint">
+        <rdf:type rdf:resource="&olia;ExclamativePoint"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#exclamativePronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;exclamativePronoun">
+        <rdf:type rdf:resource="&olia;ExclamatoryPronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#existentialPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;existentialPronoun">
+        <rdf:type rdf:resource="&olia;ExistentialPronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#expression -->
+
+    <owl:Thing rdf:about="&lexinfo;expression">
+        <rdf:type rdf:resource="&olia;Lexeme"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia-top;Word"/>
+                    <rdf:Description rdf:about="&olia;Phrase"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#facetiousRegister -->
+
+    <owl:Thing rdf:about="&lexinfo;facetiousRegister">
+        <rdf:type rdf:resource="&olia;FacetiousRegister"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#feminine -->
+
+    <olia:Feminine rdf:about="&lexinfo;feminine">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Feminine>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#finite -->
+
+    <owl:Thing rdf:about="&lexinfo;finite">
+        <rdf:type rdf:resource="&olia;FiniteVerb"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#firstPerson -->
+
+    <owl:Thing rdf:about="&lexinfo;firstPerson">
+        <rdf:type rdf:resource="&olia;First"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#formalRegister -->
+
+    <owl:Thing rdf:about="&lexinfo;formalRegister">
+        <rdf:type rdf:resource="&olia;FormalRegister"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#formula -->
+
+    <olia:Formula rdf:about="&lexinfo;formula">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Formula>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#fullArticle -->
+
+    <owl:Thing rdf:about="&lexinfo;fullArticle">
+        <rdf:type rdf:resource="&olia;FullDefiniteArticle"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#fullForm -->
+
+    <owl:Thing rdf:about="&lexinfo;fullForm">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Lexeme"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Abbreviation"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#fusedPreposition -->
+
+    <olia:FusedPreposition rdf:about="&lexinfo;fusedPreposition">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:FusedPreposition>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#fusedPrepositionDeterminer -->
+
+    <owl:Thing rdf:about="&lexinfo;fusedPrepositionDeterminer">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Determiner"/>
+                    <rdf:Description rdf:about="&olia;FusedPreposition"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#fusedPrepositionPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;fusedPrepositionPronoun">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;FusedPreposition"/>
+                    <rdf:Description rdf:about="&olia;Pronoun"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#fusedPronounAuxiliary -->
+
+    <owl:Thing rdf:about="&lexinfo;fusedPronounAuxiliary">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;AuxiliaryVerb"/>
+                    <rdf:Description rdf:about="&olia;Pronoun"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#future -->
+
+    <olia:Future rdf:about="&lexinfo;future">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Future>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#futureParticle -->
+
+    <olia:FutureParticle rdf:about="&lexinfo;futureParticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:FutureParticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#generalAdverb -->
+
+    <owl:Thing rdf:about="&lexinfo;generalAdverb">
+        <rdfs:comment
+            >unlinked, does not differ from superclass</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#genericNumeral -->
+
+    <olia:GenericNumeral rdf:about="&lexinfo;genericNumeral">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:GenericNumeral>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#genitiveCase -->
+
+    <olia:GenitiveCase rdf:about="&lexinfo;genitiveCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:GenitiveCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#gerundive -->
+
+    <olia:Gerund rdf:about="&lexinfo;gerundive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+        <rdfs:comment
+            >[TODO] check linking and OLiA defs</rdfs:comment>
+    </olia:Gerund>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#illativeCase -->
+
+    <olia:IllativeCase rdf:about="&lexinfo;illativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:IllativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#imperative -->
+
+    <owl:Thing rdf:about="&lexinfo;imperative">
+        <rdf:type rdf:resource="&olia;ImperativeMood"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#imperfect -->
+
+    <olia:Imperfect rdf:about="&lexinfo;imperfect">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Imperfect>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#imperfective -->
+
+    <owl:Thing rdf:about="&lexinfo;imperfective">
+        <rdf:type rdf:resource="&olia;ImperfectiveAspect"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#impersonalPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;impersonalPronoun">
+        <rdf:type rdf:resource="&olia;ImpersonalPronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#inHouseRegister -->
+
+    <olia:InHouseRegister rdf:about="&lexinfo;inHouseRegister">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:InHouseRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#inanimate -->
+
+    <owl:Thing rdf:about="&lexinfo;inanimate">
+        <rdf:type rdf:resource="&olia;Inanimate"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#inchoative -->
+
+    <olia:InchoativeAspect rdf:about="&lexinfo;inchoative">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:InchoativeAspect>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indefinite -->
+
+    <owl:Thing rdf:about="&lexinfo;indefinite">
+        <rdf:type rdf:resource="&olia;Indefinite"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indefiniteArticle -->
+
+    <olia:IndefiniteArticle rdf:about="&lexinfo;indefiniteArticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:IndefiniteArticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indefiniteCardinalNumeral -->
+
+    <owl:Thing rdf:about="&lexinfo;indefiniteCardinalNumeral">
+        <rdf:type rdf:resource="&olia;IndefiniteCardinalQuantifier"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indefiniteDeterminer -->
+
+    <owl:Thing rdf:about="&lexinfo;indefiniteDeterminer">
+        <rdf:type rdf:resource="&olia;IndefiniteDeterminer"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indefiniteMultiplicativeNumeral -->
+
+    <owl:Thing rdf:about="&lexinfo;indefiniteMultiplicativeNumeral">
+        <rdf:type rdf:resource="&olia;IndefiniteMultiplicativeQuantifier"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indefiniteOrdinalNumeral -->
+
+    <owl:Thing rdf:about="&lexinfo;indefiniteOrdinalNumeral">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;IndefiniteDeterminer"/>
+                    <rdf:Description rdf:about="&olia;OrdinalNumber"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indefinitePronoun -->
+
+    <olia:IndefinitePronoun rdf:about="&lexinfo;indefinitePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:IndefinitePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indicative -->
+
+    <olia:IndicativeMood rdf:about="&lexinfo;indicative">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:IndicativeMood>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#indifferent -->
+
+    <owl:Thing rdf:about="&lexinfo;indifferent">
+        <rdf:type rdf:resource="&olia;AdnominalConstituent"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;PostNominalModifier"/>
+                    <rdf:Description rdf:about="&olia;PreNominalModifier"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#inessiveCase -->
+
+    <owl:Thing rdf:about="&lexinfo;inessiveCase">
+        <rdf:type rdf:resource="&olia;InessiveCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#infinitive -->
+
+    <olia:Infinitive rdf:about="&lexinfo;infinitive">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Infinitive>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#infinitiveParticle -->
+
+    <owl:Thing rdf:about="&lexinfo;infinitiveParticle">
+        <rdf:type rdf:resource="&olia;InfinitiveParticle"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#infix -->
+
+    <olia:Infix rdf:about="&lexinfo;infix">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Infix>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#inflectionElement -->
+
+    <olia:InflectionElement rdf:about="&lexinfo;inflectionElement">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:InflectionElement>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#infrequentlyUsed -->
+
+    <owl:Thing rdf:about="&lexinfo;infrequentlyUsed">
+        <rdf:type rdf:resource="&olia;InfrequentlyUsed"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#initialism -->
+
+    <owl:Thing rdf:about="&lexinfo;initialism">
+        <rdf:type rdf:resource="&olia;Initialism"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#instrumentalCase -->
+
+    <olia:InstrumentalCase rdf:about="&lexinfo;instrumentalCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:InstrumentalCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#internationalScientificTerm -->
+
+    <owl:Thing rdf:about="&lexinfo;internationalScientificTerm">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Internationalism"/>
+                    <rdf:Description rdf:about="&olia;TechnicalRegister"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#internationalism -->
+
+    <owl:Thing rdf:about="&lexinfo;internationalism">
+        <rdf:type rdf:resource="&olia;Internationalism"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#interrogativeCardinalNumeral -->
+
+    <olia:InterrogativeCardinalQuantifier rdf:about="&lexinfo;interrogativeCardinalNumeral">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:InterrogativeCardinalQuantifier>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#interrogativeDeterminer -->
+
+    <owl:Thing rdf:about="&lexinfo;interrogativeDeterminer">
+        <rdf:type rdf:resource="&olia;InterrogativeDeterminer"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#interrogativeMultiplicativeNumeral -->
+
+    <owl:Thing rdf:about="&lexinfo;interrogativeMultiplicativeNumeral">
+        <rdf:type rdf:resource="&olia;InterrogativeMultiplicativeQuantifier"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#interrogativeOrdinalNumeral -->
+
+    <owl:Thing rdf:about="&lexinfo;interrogativeOrdinalNumeral">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;InterrogativeDeterminer"/>
+                    <rdf:Description rdf:about="&olia;OrdinalNumber"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#interrogativeParticle -->
+
+    <olia:InterrogativeParticle rdf:about="&lexinfo;interrogativeParticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:InterrogativeParticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#interrogativePronoun -->
+
+    <olia:InterrogativePronoun rdf:about="&lexinfo;interrogativePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:InterrogativePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#invertedComma -->
+
+    <olia:InvertedComma rdf:about="&lexinfo;invertedComma">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:InvertedComma>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ironicRegister -->
+
+    <olia:IronicRegister rdf:about="&lexinfo;ironicRegister">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:IronicRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#irreflexivePersonalPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;irreflexivePersonalPronoun">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;PersonalPronoun"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;ReflexivePronoun"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#lativeCase -->
+
+    <olia:LativeCase rdf:about="&lexinfo;lativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:LativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#legalTerm -->
+
+    <owl:Thing rdf:about="&lexinfo;legalTerm">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;LegalRegister"/>
+                    <rdf:Description rdf:about="&olia;Lexeme"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#letter -->
+
+    <olia:Letter rdf:about="&lexinfo;letter">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Letter>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#lightVerb -->
+
+    <olia:LightVerb rdf:about="&lexinfo;lightVerb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:LightVerb>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#locativeCase -->
+
+    <owl:Thing rdf:about="&lexinfo;locativeCase">
+        <rdf:type rdf:resource="&olia;LocativeCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#logicalExpression -->
+
+    <olia:Formula rdf:about="&lexinfo;logicalExpression">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Formula>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#mainVerb -->
+
+    <owl:Thing rdf:about="&lexinfo;mainVerb">
+        <rdf:type rdf:resource="&olia;MainVerb"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#masculine -->
+
+    <owl:Thing rdf:about="&lexinfo;masculine">
+        <rdf:type rdf:resource="&olia;Masculine"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#massNoun -->
+
+    <olia:MassNoun rdf:about="&lexinfo;massNoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:MassNoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#middleVoice -->
+
+    <owl:Thing rdf:about="&lexinfo;middleVoice">
+        <rdf:type rdf:resource="&olia;MiddleVoice"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#modal -->
+
+    <olia:ModalVerb rdf:about="&lexinfo;modal">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ModalVerb>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#modern -->
+
+    <olia:ModernUsage rdf:about="&lexinfo;modern">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ModernUsage>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#morphologicalElement -->
+
+    <olia:Morpheme rdf:about="&lexinfo;morphologicalElement">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Morpheme>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#multiplicativeNumeral -->
+
+    <owl:Thing rdf:about="&lexinfo;multiplicativeNumeral">
+        <rdf:type rdf:resource="&olia;MultipleNumeral"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#negativeParticle -->
+
+    <owl:Thing rdf:about="&lexinfo;negativeParticle">
+        <rdf:type rdf:resource="&olia;NegativeParticle"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#negativePronoun -->
+
+    <olia:NegativePronoun rdf:about="&lexinfo;negativePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:NegativePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#neuter -->
+
+    <owl:Thing rdf:about="&lexinfo;neuter">
+        <rdf:type rdf:resource="&olia;Neuter"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#neutralRegister -->
+
+    <olia:NeutralRegister rdf:about="&lexinfo;neutralRegister">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:NeutralRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#no -->
+
+    <owl:Thing rdf:about="&lexinfo;no">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;ElementWithoutClitic"/>
+                    <rdf:Description rdf:about="&olia;NonNegated"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#nominativeCase -->
+
+    <owl:Thing rdf:about="&lexinfo;nominativeCase">
+        <rdf:type rdf:resource="&olia;Nominative"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#nonFinite -->
+
+    <olia:NonFiniteVerb rdf:about="&lexinfo;nonFinite">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:NonFiniteVerb>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#noun -->
+
+    <olia:Noun rdf:about="&lexinfo;noun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Noun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#nucleus -->
+
+    <owl:Thing rdf:about="&lexinfo;nucleus">
+        <rdf:type rdf:resource="&olia;Head"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#numeral -->
+
+    <owl:Thing rdf:about="&lexinfo;numeral">
+        <rdf:type rdf:resource="&olia;Numeral"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#numeralFraction -->
+
+    <owl:Thing rdf:about="&lexinfo;numeralFraction">
+        <rdf:type rdf:resource="&olia;Fraction"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#obliqueCase -->
+
+    <owl:Thing rdf:about="&lexinfo;obliqueCase">
+        <rdf:type rdf:resource="&olia;ObliqueCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#obsoleteForm -->
+
+    <olia:Deprecated rdf:about="&lexinfo;obsoleteForm">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Deprecated>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#old -->
+
+    <olia:OldUsage rdf:about="&lexinfo;old">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:OldUsage>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#openParenthesis -->
+
+    <olia:OpenParenthesis rdf:about="&lexinfo;openParenthesis">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:OpenParenthesis>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#optionalElement -->
+
+    <owl:Thing rdf:about="&lexinfo;optionalElement">
+        <rdfs:comment
+            >excluded from linking, as this refers to presentational aspects in dictionaries</rdfs:comment>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#ordinalAdjective -->
+
+    <olia:OrdinalAdjective rdf:about="&lexinfo;ordinalAdjective">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:OrdinalAdjective>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#otherAnimacy -->
+
+    <owl:Thing rdf:about="&lexinfo;otherAnimacy">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia-top;AnimacyFeature"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Animate"/>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Inanimate"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#otherGender -->
+
+    <owl:Thing rdf:about="&lexinfo;otherGender">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia-top;GenderFeature"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Feminine"/>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Masculine"/>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Neuter"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#outdatedForm -->
+
+    <owl:Thing rdf:about="&lexinfo;outdatedForm">
+        <rdf:type rdf:resource="&olia;OldUsage"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#partNumber -->
+
+    <owl:Thing rdf:about="&lexinfo;partNumber">
+        <rdf:type rdf:resource="&olia;Identifier"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#participle -->
+
+    <olia:Participle rdf:about="&lexinfo;participle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Participle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#participleAdjective -->
+
+    <olia:ParticipleAdjective rdf:about="&lexinfo;participleAdjective">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ParticipleAdjective>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#particle -->
+
+    <olia:Particle rdf:about="&lexinfo;particle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Particle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#partitiveArticle -->
+
+    <olia:PartitiveArticle rdf:about="&lexinfo;partitiveArticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PartitiveArticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#partitiveCase -->
+
+    <olia:PartitiveCase rdf:about="&lexinfo;partitiveCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PartitiveCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#passiveVoice -->
+
+    <owl:Thing rdf:about="&lexinfo;passiveVoice">
+        <rdf:type rdf:resource="&olia;PassiveVoice"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#past -->
+
+    <olia:Past rdf:about="&lexinfo;past">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Past>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#pastParticipleAdjective -->
+
+    <olia:PastParticipleAdjective rdf:about="&lexinfo;pastParticipleAdjective">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PastParticipleAdjective>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#paucal -->
+
+    <owl:Thing rdf:about="&lexinfo;paucal">
+        <rdf:type rdf:resource="&olia;Paucal"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#perfective -->
+
+    <owl:Thing rdf:about="&lexinfo;perfective">
+        <rdf:type rdf:resource="&olia;PerfectiveAspect"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#personal -->
+
+    <olia:PersonalPronoun rdf:about="&lexinfo;personal">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PersonalPronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#personalPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;personalPronoun">
+        <rdf:type rdf:resource="&olia;PersonalPronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#phraseologicalUnit -->
+
+    <olia:Phraseme rdf:about="&lexinfo;phraseologicalUnit">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Phraseme>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#plainVerb -->
+
+    <owl:Thing rdf:about="&lexinfo;plainVerb">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Verb"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;AuxiliaryVerb"/>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Copula"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#plural -->
+
+    <olia:Plural rdf:about="&lexinfo;plural">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Plural>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#point -->
+
+    <olia:Point rdf:about="&lexinfo;point">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Point>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#positive -->
+
+    <owl:Thing rdf:about="&lexinfo;positive">
+        <rdf:type rdf:resource="&olia;Positive"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#possessive -->
+
+    <owl:Thing rdf:about="&lexinfo;possessive">
+        <rdf:type rdf:resource="&olia;PossessivePronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#possessiveAdjective -->
+
+    <owl:Thing rdf:about="&lexinfo;possessiveAdjective">
+        <rdf:type rdf:resource="&olia;PossessiveAdjective"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#possessiveDeterminer -->
+
+    <owl:Thing rdf:about="&lexinfo;possessiveDeterminer">
+        <rdf:type rdf:resource="&olia;PossessiveDeterminer"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#possessiveParticle -->
+
+    <olia:PossessiveParticle rdf:about="&lexinfo;possessiveParticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PossessiveParticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#possessivePronoun -->
+
+    <olia:PossessivePronoun rdf:about="&lexinfo;possessivePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PossessivePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#possessiveRelativePronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;possessiveRelativePronoun">
+        <rdf:type rdf:resource="&olia;PossessiveRelativePronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#postModifier -->
+
+    <owl:Thing rdf:about="&lexinfo;postModifier">
+        <rdf:type rdf:resource="&olia;PostNominalModifier"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#postposition -->
+
+    <owl:Thing rdf:about="&lexinfo;postposition">
+        <rdf:type rdf:resource="&olia;Postposition"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#preModifier -->
+
+    <owl:Thing rdf:about="&lexinfo;preModifier">
+        <rdf:type rdf:resource="&olia;PreNominalModifier"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#preferredTerm -->
+
+    <owl:Thing rdf:about="&lexinfo;preferredTerm">
+        <rdf:type rdf:resource="&olia;Preferred"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#prefix -->
+
+    <owl:Thing rdf:about="&lexinfo;prefix">
+        <rdf:type rdf:resource="&olia;Prefix"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#preposition -->
+
+    <olia:Preposition rdf:about="&lexinfo;preposition">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Preposition>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#prepositionalAdverb -->
+
+    <olia:PrepositionalAdverb rdf:about="&lexinfo;prepositionalAdverb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PrepositionalAdverb>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#present -->
+
+    <owl:Thing rdf:about="&lexinfo;present">
+        <rdf:type rdf:resource="&olia;Present"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#presentParticipleAdjective -->
+
+    <olia:PresentParticipleAdjective rdf:about="&lexinfo;presentParticipleAdjective">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PresentParticipleAdjective>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#presentativePronoun -->
+
+    <olia:PresentativePronoun rdf:about="&lexinfo;presentativePronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:PresentativePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#preterite -->
+
+    <owl:Thing rdf:about="&lexinfo;preterite">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Past"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&olia;Perfect"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#productName -->
+
+    <olia:Identifier rdf:about="&lexinfo;productName">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Identifier>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#prolativeCase -->
+
+    <owl:Thing rdf:about="&lexinfo;prolativeCase">
+        <rdf:type rdf:resource="&olia;ProlativeCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#pronominalAdverb -->
+
+    <owl:Thing rdf:about="&lexinfo;pronominalAdverb">
+        <rdf:type rdf:resource="&olia;PronominalAdverb"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#pronoun -->
+
+    <olia:Pronoun rdf:about="&lexinfo;pronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Pronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#properNoun -->
+
+    <owl:Thing rdf:about="&lexinfo;properNoun">
+        <rdf:type rdf:resource="&olia;ProperNoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#proverb -->
+
+    <olia:Proverb rdf:about="&lexinfo;proverb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Proverb>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#punctuation -->
+
+    <olia:Punctuation rdf:about="&lexinfo;punctuation">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Punctuation>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#quadrial -->
+
+    <owl:Thing rdf:about="&lexinfo;quadrial">
+        <rdf:type rdf:resource="&olia;Quadrial"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#qualifierAdjective -->
+
+    <owl:Thing rdf:about="&lexinfo;qualifierAdjective">
+        <rdf:type rdf:resource="&olia;QualifierAdjective"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#questionMark -->
+
+    <owl:Thing rdf:about="&lexinfo;questionMark">
+        <rdf:type rdf:resource="&olia;QuestionMark"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#radical -->
+
+    <owl:Thing rdf:about="&lexinfo;radical">
+        <rdf:type rdf:resource="&olia;Radical"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#rarelyUsed -->
+
+    <olia:RarelyUsed rdf:about="&lexinfo;rarelyUsed">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:RarelyUsed>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#reciprocalPronoun -->
+
+    <olia:ReciprocalPronoun rdf:about="&lexinfo;reciprocalPronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ReciprocalPronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#reflexiveDeterminer -->
+
+    <owl:Thing rdf:about="&lexinfo;reflexiveDeterminer">
+        <rdf:type rdf:resource="&olia;ReflexiveDeterminer"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#reflexivePersonalPronoun -->
+
+    <olia:ReflexivePronoun rdf:about="&lexinfo;reflexivePersonalPronoun">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:ReflexivePronoun>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#reflexivePossessivePronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;reflexivePossessivePronoun">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;PossessivePronoun"/>
+                    <rdf:Description rdf:about="&olia;ReflexivePronoun"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#regulatedTerm -->
+
+    <olia:LegalRegister rdf:about="&lexinfo;regulatedTerm">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:LegalRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#relationNoun -->
+
+    <owl:Thing rdf:about="&lexinfo;relationNoun">
+        <rdf:type rdf:resource="&olia;RelationNoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#relativeDeterminer -->
+
+    <owl:Thing rdf:about="&lexinfo;relativeDeterminer">
+        <rdf:type rdf:resource="&olia;RelativeDeterminer"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#relativeParticle -->
+
+    <olia:RelativeParticle rdf:about="&lexinfo;relativeParticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:RelativeParticle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#relativePronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;relativePronoun">
+        <rdf:type rdf:resource="&olia;RelativePronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#secondPerson -->
+
+    <owl:Thing rdf:about="&lexinfo;secondPerson">
+        <rdf:type rdf:resource="&olia;Second"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#semiColon -->
+
+    <owl:Thing rdf:about="&lexinfo;semiColon">
+        <rdf:type rdf:resource="&olia;SemiColon"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#setPhrase -->
+
+    <owl:Thing rdf:about="&lexinfo;setPhrase">
+        <rdf:type rdf:resource="&olia;SetPhrase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#shortArticle -->
+
+    <owl:Thing rdf:about="&lexinfo;shortArticle">
+        <rdf:type rdf:resource="&olia;ShortDefiniteArticle"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#singular -->
+
+    <owl:Thing rdf:about="&lexinfo;singular">
+        <rdf:type rdf:resource="&olia;Singular"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#sku -->
+
+    <olia:Identifier rdf:about="&lexinfo;sku">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Identifier>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#slangRegister -->
+
+    <olia:SlangRegister rdf:about="&lexinfo;slangRegister">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:SlangRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#slash -->
+
+    <owl:Thing rdf:about="&lexinfo;slash">
+        <rdf:type rdf:resource="&olia;Slash"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#sociativeCase -->
+
+    <olia:SociativeCase rdf:about="&lexinfo;sociativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:SociativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#standardText -->
+
+    <olia:Boilerplate rdf:about="&lexinfo;standardText">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Boilerplate>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#standardizedTerm -->
+
+    <owl:Thing rdf:about="&lexinfo;standardizedTerm">
+        <rdf:type rdf:resource="&olia;Standardized"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#string -->
+
+    <owl:Thing rdf:about="&lexinfo;string">
+        <rdf:type rdf:resource="&olia;String"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#strongPersonalPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;strongPersonalPronoun">
+        <rdf:type rdf:resource="&olia;StrongPersonalPronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#subjunctive -->
+
+    <owl:Thing rdf:about="&lexinfo;subjunctive">
+        <rdf:type rdf:resource="&olia;SubjunctiveMood"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#sublativeCase -->
+
+    <owl:Thing rdf:about="&lexinfo;sublativeCase">
+        <rdf:type rdf:resource="&olia;SublativeCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#subordinatingConjunction -->
+
+    <owl:Thing rdf:about="&lexinfo;subordinatingConjunction">
+        <rdf:type rdf:resource="&olia;SubordinatingConjunction"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#suffix -->
+
+    <owl:Thing rdf:about="&lexinfo;suffix">
+        <rdf:type rdf:resource="&olia;Suffix"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#superessiveCase -->
+
+    <olia:SuperessiveCase rdf:about="&lexinfo;superessiveCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:SuperessiveCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#superlative -->
+
+    <olia:Superlative rdf:about="&lexinfo;superlative">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Superlative>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#superlativeParticle -->
+
+    <owl:Thing rdf:about="&lexinfo;superlativeParticle">
+        <rdf:type rdf:resource="&olia;SuperlativeParticle"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#supersededTerm -->
+
+    <owl:Thing rdf:about="&lexinfo;supersededTerm">
+        <rdf:type rdf:resource="&olia;Deprecated"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#suspensionPoints -->
+
+    <owl:Thing rdf:about="&lexinfo;suspensionPoints">
+        <rdf:type rdf:resource="&olia;SuspensionPoints"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#symbol -->
+
+    <olia:Symbol rdf:about="&lexinfo;symbol">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Symbol>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#tabooRegister -->
+
+    <olia:TabooRegister rdf:about="&lexinfo;tabooRegister">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:TabooRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#technicalRegister -->
+
+    <owl:Thing rdf:about="&lexinfo;technicalRegister">
+        <rdf:type rdf:resource="&olia;TechnicalRegister"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#terminativeCase -->
+
+    <olia:TerminativeCase rdf:about="&lexinfo;terminativeCase">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:TerminativeCase>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#thirdPerson -->
+
+    <owl:Thing rdf:about="&lexinfo;thirdPerson">
+        <rdf:type rdf:resource="&olia;Third"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#translativeCase -->
+
+    <owl:Thing rdf:about="&lexinfo;translativeCase">
+        <rdf:type rdf:resource="&olia;TranslativeCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#trial -->
+
+    <olia:Trial rdf:about="&lexinfo;trial">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Trial>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#unaccomplished -->
+
+    <owl:Thing rdf:about="&lexinfo;unaccomplished">
+        <rdf:type rdf:resource="&olia;UnaccomplishedAspect"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#unclassifiedParticle -->
+
+    <olia:Particle rdf:about="&lexinfo;unclassifiedParticle">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Particle>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#verb -->
+
+    <olia:Verb rdf:about="&lexinfo;verb">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:Verb>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#vocativeCase -->
+
+    <owl:Thing rdf:about="&lexinfo;vocativeCase">
+        <rdf:type rdf:resource="&olia;VocativeCase"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#vulgarRegister -->
+
+    <olia:VulgarRegister rdf:about="&lexinfo;vulgarRegister">
+        <rdf:type rdf:resource="&owl;Thing"/>
+    </olia:VulgarRegister>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#weakPersonalPronoun -->
+
+    <owl:Thing rdf:about="&lexinfo;weakPersonalPronoun">
+        <rdf:type rdf:resource="&olia;WeakPersonalPronoun"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#wordElement -->
+
+    <owl:Thing rdf:about="&lexinfo;wordElement">
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;Composition"/>
+                    <rdf:Description rdf:about="&olia;Lexeme"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.lexinfo.net/ontology/3.0/lexinfo#yes -->
+
+    <owl:Thing rdf:about="&lexinfo;yes">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&olia;ElementWithClitic"/>
+                    <rdf:Description rdf:about="&olia;Negation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:Thing>
+</rdf:RDF>
+
+
+
