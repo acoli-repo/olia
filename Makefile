@@ -70,7 +70,8 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 						echo warning: $$file skipped '(files must match *-link.rdf or *.owl)' 1>&2; \
 						echo 1>&2; \
 					fi; \
-				elif egrep -L 'http://purl.org/olia.*/'`basename $$file | sed s/'\(\-link\)*\(\.rdf|\.owl\)*'//` $$file >/dev/null; then \
+				elif egrep -L 'http://purl.org/olia.*/'`basename'|'http://nl.ijs.si/ME/owl/`basename $$file`| \
+					sed s/'\(\-link\)*\(\.rdf|\.owl\)*'//` $$file >/dev/null; then \
 					echo warning: $$file skipped '(files must use http://purl.org/olia/ namespace)' 1>&2; \
 					echo 1>&2; \
 				elif ! xmllint $$file >/dev/null; then \
