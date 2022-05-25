@@ -116,6 +116,7 @@ the Reference Model in bold):
 
 ### Discourse Ontologies {#discourse.ontologies}
 
+
 <table>
 <tr>
   <th>Model</td>
