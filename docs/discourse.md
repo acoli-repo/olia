@@ -1,4 +1,4 @@
-# OLiA Discourse Extensions {#background}
+# OLiA Discourse Extensions
 
 
 The **OLiA Discourse Extensions** extend the [Ontologies of Linguistic
