@@ -1,0 +1,814 @@
+@prefix : <http://purl.org/olia/discourse/discourse.Nexus.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@base <http://purl.org/olia/discourse/discourse.Nexus.owl> .
+
+<http://purl.org/olia/discourse/discourse.Nexus.owl> rdf:type owl:Ontology ;
+                                                      rdfs:comment """Nexus Discourse guidelines
+
+based on 
+- ISO DR-Core (ISO 24617-8): Core Concepts for the Annotation of Discourse Relations
+- SeMAF Dialog
+
+In order to be better comparable with other schemas, the interdependencies between argument labels and discourse relations are modelled as an inference hierarchy. On the one hand, this reflects that most argument roles are recognized as independent discourse relations in other schemes. On the other hand, it follows a modelling practice for marker-based and/or dependency-based discourse annotation: 
+
+- Given one discourse marker and/or *one* argument 
+(either the discourse marker itself, the syntactically linked argument [PDTB: \"Arg2]\" or the less important or secondary argument of the discourse relation [RST: SAT or second NUC])
+
+- Annotate the external argument (the other argument that is connected by the current discourse relation)
+
+- Mark the discourse relation by either (a) argument role (for asymmetric DRels), or, if not applicable or not unambiguous, (b) discourse relation (for symmetric DRels and asymmetric DRels whose arguments cannot be reliably identified).
+
+By annotation ISO argument roles instead of DRels, we allow to infer the corresponding DRel because (with the exception of Consequent) there is a strict entailment relation between argument roles and the associated discourse relation. With some degree of simplification, this entailment relation is expressed here by rdfs:subClassOf between argument roles and discourse relations. As symmetric DRels do not provide argument roles, we assume that argument roles of symmetric DRels are *just* the DRel.
+
+This ontology can be directly used for annotation. So, tokens can be defines as being instances of a particular (argument of) a discourse relation, or having a particular communitative function. 
+Dialog acts can likewise be expressed by a conjunction, so a token may be :Positive and :Answer and :Uncertain.
+
+Note that this requires unambiguous annotations.
+
+References:
+Harry Bunt and Rashmi Prasad (2012), ISO DR-Core (ISO 24617-8): Core Concepts for the Annotation of Discourse Relations, paper presented at ISA-12"""@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2000/01/rdf-schema#description
+rdfs:description rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#function
+:function rdf:type owl:ObjectProperty ;
+          rdfs:domain :DiscourseMarker ;
+          rdfs:range :DiscourseFunction .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AcceptOffer
+:AcceptOffer rdf:type owl:Class ;
+             rdfs:subClassOf :GeneralDA ;
+             rdfs:label "accept offer" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AcceptRequest
+:AcceptRequest rdf:type owl:Class ;
+               rdfs:subClassOf :GeneralDA ;
+               rdfs:label "accept request" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AcceptSuggest
+:AcceptSuggest rdf:type owl:Class ;
+               rdfs:subClassOf :GeneralDA ;
+               rdfs:label "accept suggest" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Achievement
+:Achievement rdf:type owl:Class ;
+             rdfs:subClassOf :Arg2 ,
+                             :Manner ;
+             rdfs:label "Achievement" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AddressOffer
+:AddressOffer rdf:type owl:Class ;
+              rdfs:subClassOf :GeneralDA ;
+              rdfs:label "address offer" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AddressRequest
+:AddressRequest rdf:type owl:Class ;
+                rdfs:subClassOf :GeneralDA ;
+                rdfs:label "address request" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AddressSuggest
+:AddressSuggest rdf:type owl:Class ;
+                rdfs:subClassOf :GeneralDA ;
+                rdfs:label "address suggest" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#After
+:After rdf:type owl:Class ;
+       rdfs:subClassOf :Arg2 ,
+                       :Asynchrony ;
+       rdfs:label "After" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Agreement
+:Agreement rdf:type owl:Class ;
+           rdfs:subClassOf :GeneralDA ;
+           rdfs:label "agreement" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AlloNegative
+:AlloNegative rdf:type owl:Class ;
+              rdfs:subClassOf :DimensionSpecificDA ;
+              rdfs:label "allo-negative" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AlloPositive
+:AlloPositive rdf:type owl:Class ;
+              rdfs:subClassOf :DimensionSpecificDA ;
+              rdfs:label "allo-positive" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Answer
+:Answer rdf:type owl:Class ;
+        rdfs:subClassOf :GeneralDA ;
+        rdfs:label "answer" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AntecedentOfCondition
+:AntecedentOfCondition rdf:type owl:Class ;
+                       rdfs:subClassOf :Arg1 ,
+                                       :Condition ;
+                       rdfs:label "Antecedent" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Apology
+:Apology rdf:type owl:Class ;
+         rdfs:subClassOf :DimensionSpecificDA ;
+         rdfs:label "apology" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Arg1
+:Arg1 rdf:type owl:Class ;
+      rdfs:subClassOf :AsymmetricArgumentRole ;
+      owl:disjointWith :Arg2 ;
+      rdfs:label "Arg1" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Arg2
+:Arg2 rdf:type owl:Class ;
+      rdfs:subClassOf :AsymmetricArgumentRole ;
+      rdfs:label "Arg2" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AsymmetricArgumentRole
+:AsymmetricArgumentRole rdf:type owl:Class ;
+                        owl:disjointUnionOf ( :Arg1
+                                              :Arg2
+                                            ) ;
+                        rdfs:comment """In addition to discourse relations, Bunt and Prasad annotate the argument roles of asymmetric discourse relations. While the discourse relation holds between Arg1 and Arg2, the argument label designates the relation between Arg1 (resp., Arg2) and the discourse relation, in the sense that both arguments constitute the discourse relation.
+
+However, in other schemas, these argument roles would be considered as discourse relations in their own right, with differences in directionality. RST and PDTB both feature Reason, Result and Cause as distinct discourse relations. In ISO Core DRels, Cause designates the discourse relation, Reason is Arg1 and Result is Arg2.
+
+When annotating a particular *discourse marker*, say, \"because\", the sense could thus be *either* the ISO Core DRel (Cause, especially if directionality is uncertain) or the specific role that the argument syntactically associated with the discourse marker serves within this discourse relation (Reason, entails Cause as discourse relation).
+
+Because we assume that this schema is primarily used for discourse marker annotation (rather than for discourse relation annotation), this entailment relation is formalized by rdfs:subClassOf.""" ;
+                        rdfs:label "Role labels for arguments of ISO DR-core discourse relations" ;
+                        skos:prefLabel "argument type" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AsymmetricDRel
+:AsymmetricDRel rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :AsymmetricArgumentRole
+                                                           :DiscourseRelation
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf :DiscourseRelation ;
+                owl:disjointWith :SymmetricDRel ;
+                rdfs:label "Asymmetric" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Asynchrony
+:Asynchrony rdf:type owl:Class ;
+            rdfs:subClassOf :AsymmetricDRel ;
+            rdfs:comment """Arg1 temporally precedes Arg2.
+Arguments: Before, After""" ;
+            rdfs:label "Asynchrony" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AutoNegsative
+:AutoNegsative rdf:type owl:Class ;
+               rdfs:subClassOf :DimensionSpecificDA ;
+               rdfs:label "auto-negative" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#AutoPositive
+:AutoPositive rdf:type owl:Class ;
+              rdfs:subClassOf :DimensionSpecificDA ;
+              rdfs:label "auto-positive" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Before
+:Before rdf:type owl:Class ;
+        rdfs:subClassOf :Arg1 ,
+                        :Asynchrony ;
+        rdfs:label "Before" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#BroadPartOfElaboration
+:BroadPartOfElaboration rdf:type owl:Class ;
+                        rdfs:subClassOf :Arg1 ,
+                                        :Elaboration ;
+                        rdfs:label "Broad" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Cause
+:Cause rdf:type owl:Class ;
+       rdfs:subClassOf :AsymmetricDRel ;
+       rdfs:comment """Arg1 is a reason for Arg2 to come about or occur.
+Arguments: Reason, Result""" ;
+       rdfs:label "Cause" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Certain
+:Certain rdf:type owl:Class ;
+         rdfs:subClassOf :Qualifier ;
+         owl:disjointWith :Uncertain ;
+         rdfs:label "qualifier: certain" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#CheckQuestion
+:CheckQuestion rdf:type owl:Class ;
+               rdfs:subClassOf :GeneralDA ;
+               rdfs:label "check question" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#CommunicativeFunction
+:CommunicativeFunction rdf:type owl:Class ;
+                       rdfs:subClassOf :DialogAct ;
+                       rdfs:label "communicative function" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Compliment
+:Compliment rdf:type owl:Class ;
+            rdfs:subClassOf :DimensionSpecificDA ;
+            rdfs:label "compliment" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Concession
+:Concession rdf:type owl:Class ;
+            rdfs:subClassOf :AsymmetricDRel ;
+            rdfs:comment """An expected causal relation, where Arg1 is expected to cause Arg2 not to occur or come about, is cancelled or denied by Arg2.
+Arguments: Expectation-raiser, Expectation-denier""" ;
+            rdfs:label "Concession" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Condition
+:Condition rdf:type owl:Class ;
+           rdfs:subClassOf :AsymmetricDRel ;
+           rdfs:comment """Arg1 is an unrealized situation which, when realized, would lead to Arg2.
+Arguments: Antecedent, Consequent""" ;
+           rdfs:label "Condition" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Conditional
+:Conditional rdf:type owl:Class ;
+             rdfs:subClassOf :Qualifier ;
+             owl:disjointWith :Unconditional ;
+             rdfs:label "qualifier: conditional" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Confirm
+:Confirm rdf:type owl:Class ;
+         rdfs:subClassOf :GeneralDA ;
+         rdfs:label "confirm" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Congratulation
+:Congratulation rdf:type owl:Class ;
+                rdfs:subClassOf :DimensionSpecificDA ;
+                rdfs:label "congratulation" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Conjunction
+:Conjunction rdf:type owl:Class ;
+             rdfs:subClassOf :SymmetricDRel ;
+             rdfs:comment "Arg1 and Arg2 bear the same relation to some other situation evoked in the discourse. They both hold with respect to that situation." ;
+             rdfs:label "Conjunction" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#ConsequentOfCondition
+:ConsequentOfCondition rdf:type owl:Class ;
+                       rdfs:subClassOf :Arg2 ,
+                                       :Condition ;
+                       rdfs:label "Consequent" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#ConsequentOfNegativeCondition
+:ConsequentOfNegativeCondition rdf:type owl:Class ;
+                               rdfs:subClassOf :Arg2 ,
+                                               :NegativeCondition ;
+                               rdfs:label "Consequent" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#ContactCheck
+:ContactCheck rdf:type owl:Class ;
+              rdfs:subClassOf :DimensionSpecificDA ;
+              rdfs:label "contact check" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Contrast
+:Contrast rdf:type owl:Class ;
+          rdfs:subClassOf :SymmetricDRel ;
+          rdfs:comment "One or more differences between Arg1 and Arg2 are highlighted with respect to what each predicates as a whole or to some entities they mention." ;
+          rdfs:label "Contrast" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Correction
+:Correction rdf:type owl:Class ;
+            rdfs:subClassOf :GeneralDA ;
+            rdfs:label "correction" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DeclineOffer
+:DeclineOffer rdf:type owl:Class ;
+              rdfs:subClassOf :GeneralDA ;
+              rdfs:label "decline offer" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DeclineRequest
+:DeclineRequest rdf:type owl:Class ;
+                rdfs:subClassOf :GeneralDA ;
+                rdfs:label "decline request" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DeclineSuggest
+:DeclineSuggest rdf:type owl:Class ;
+                rdfs:subClassOf :GeneralDA ;
+                rdfs:label "decline suggest" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DialogAct
+:DialogAct rdf:type owl:Class ;
+           rdfs:subClassOf :DiscourseFunction ;
+           rdfs:label "ISO 24617-2" ,
+                      "dialog act" ,
+                      "dialogue act" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DimensionSpecificDA
+:DimensionSpecificDA rdf:type owl:Class ;
+                     rdfs:subClassOf :CommunicativeFunction ;
+                     rdfs:label "dimension-specific dialog act" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Disagreement
+:Disagreement rdf:type owl:Class ;
+              rdfs:subClassOf :GeneralDA ;
+              rdfs:label "disagreement" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Disconfirm
+:Disconfirm rdf:type owl:Class ;
+            rdfs:subClassOf :GeneralDA ;
+            rdfs:label "disconfirm" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DiscourseFunction
+:DiscourseFunction rdf:type owl:Class ;
+                   owl:disjointWith :DiscourseMarker .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DiscourseMarker
+:DiscourseMarker rdf:type owl:Class ;
+                 rdfs:label "discourse marker"@en .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DiscourseRelation
+:DiscourseRelation rdf:type owl:Class ;
+                   rdfs:subClassOf :DiscourseFunction ;
+                   rdfs:comment """A discourse relation is a relation expressed in discourse (written, spoken, or multimodal) between  abstract objects, such as events, states, conditions, and dialogue acts. 
+• Discourse relations can be expressed explicitly in text/speech or can be implicit. The annotation of  implicit relations may optionally include the specification of a connective that could express the inferred relation.  
+• A discourse relation takes two and only two arguments. Arguments can be shared by different  relations. 
+• The meaning of discourse relations is described in informational terms. 
+• Pragmatic aspects of meaning involving beliefs and dialogue acts as arguments are represented as a property of arguments, rather than of discourse relations. 
+• Discourse relations are categorized as a flat set of relations. 
+• Annotations are at a low level; ISO DR-Core is agnostic towards the nature of the global structure of a text or dialogue. 
+• Asymmetrical relations are represented with relation-specific argument role labels. 
+• The relative importance of a relation’s arguments  with respect to the text as a whole is not represented as such.  
+• No a priori assumptions are made concerning constraints on syntactic form, syntactic complexity, or  textual adjacency of expressions that may realize the arguments of a discourse relation.  
+
+In ISO DR-Core, annotations abstract over the linear ordering for argument realizations, since this is not a semantic distinction. Asymmetry is represented by specifying the argument roles in the definition of each relation, arguments bearing relation-specific semantic roles.   
+
+(Bunt & Prasad, ISA-12)
+
+Note that ISO DR-Core DRels proper are only the grand children of DRel, grouped into symmetric and asymmetric discourse relations. Because of the entailment relation between argument roles and discourse relations, the argument roles have been modelled as their subclasses. In terms of ISO DR-Core, however, these are not in a hierarchical structure, but only in an entailment relation.""" ;
+                   rdfs:label "DRel" ,
+                              "ISO 24617-8" ,
+                              "discourse relation" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#DisfavouredAlternative
+:DisfavouredAlternative rdf:type owl:Class ;
+                        rdfs:subClassOf :Arg1 ,
+                                        :Substitution ;
+                        rdfs:label "Disfavoured-alternative" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Disjunction
+:Disjunction rdf:type owl:Class ;
+             rdfs:subClassOf :SymmetricDRel ;
+             rdfs:comment "Arg1 and Arg2 bear the same relation to some other situation evoked in the discourse. Either one of them or both hold with respect to that situation." ;
+             rdfs:label "Disjunction" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Elaboration
+:Elaboration rdf:type owl:Class ;
+             rdfs:subClassOf :AsymmetricDRel ;
+             rdfs:comment """Arg1 and Arg2 are the same situation, but Arg2 contains more detail.
+Arguments: Broad, Specific""" ;
+             rdfs:label "Elaboration" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Enablement
+:Enablement rdf:type owl:Class ;
+            rdfs:subClassOf :Arg2 ,
+                            :Purpose ;
+            rdfs:label "Enablement" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Exception
+:Exception rdf:type owl:Class ;
+           rdfs:subClassOf :AsymmetricDRel ;
+           rdfs:comment """Arg1 indicates a set of circumstances in which the described situation holds, while Arg2 does not hold.
+Arguments: Regular, Exclusion""" ;
+           rdfs:label "Exception" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Exclusion
+:Exclusion rdf:type owl:Class ;
+           rdfs:subClassOf :Arg2 ,
+                           :Exception ;
+           rdfs:label "Exclusion" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Exemplification
+:Exemplification rdf:type owl:Class ;
+                 rdfs:subClassOf :AsymmetricDRel ;
+                 rdfs:comment """Arg1 forms a set of situations; Arg2 is an element of that set.
+Arguments: Set, Instance""" ;
+                 rdfs:label "Excemplification" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Expander
+:Expander rdf:type owl:Class ;
+          rdfs:subClassOf :Arg2 ,
+                          :Expansion ;
+          rdfs:label "Entity-description" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Expansion
+:Expansion rdf:type owl:Class ;
+           rdfs:subClassOf :AsymmetricDRel ;
+           rdfs:comment """Arg2 provides further description about some entity or entities in Arg1, expanding the narrative forward of which Arg1 is a part, or expanding on the setting relevant for interpreting Arg1. The Arg1 and Arg2 situations are distinct.
+Arguments: Foreground, Entity-description""" ;
+           rdfs:label "Expansion" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#ExpectationDenier
+:ExpectationDenier rdf:type owl:Class ;
+                   rdfs:subClassOf :Arg2 ,
+                                   :Concession ;
+                   rdfs:label "Expectation-denier" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#ExpectationRaiser
+:ExpectationRaiser rdf:type owl:Class ;
+                   rdfs:subClassOf :Arg1 ,
+                                   :Concession ;
+                   rdfs:label "Expectation-raiser" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#FavouredAlternative
+:FavouredAlternative rdf:type owl:Class ;
+                     rdfs:subClassOf :Arg2 ,
+                                     :Substitution ;
+                     rdfs:label "Favoured-alternative" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#FeedbackElicitation
+:FeedbackElicitation rdf:type owl:Class ;
+                     rdfs:subClassOf :DimensionSpecificDA ;
+                     rdfs:label "feedback elicitation" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#GeneralDA
+:GeneralDA rdf:type owl:Class ;
+           rdfs:subClassOf :CommunicativeFunction ;
+           rdfs:label "general dialog act" ,
+                      "general dialogue act" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Goal
+:Goal rdf:type owl:Class ;
+      rdfs:subClassOf :Arg1 ,
+                      :Purpose ;
+      rdfs:label "Goal" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Inform
+:Inform rdf:type owl:Class ;
+        rdfs:subClassOf :GeneralDA ;
+        rdfs:label "inform" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#InitGoodbye
+:InitGoodbye rdf:type owl:Class ;
+             rdfs:subClassOf :DimensionSpecificDA ;
+             rdfs:label "init goodbye" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#InitGreeting
+:InitGreeting rdf:type owl:Class ;
+              rdfs:subClassOf :DimensionSpecificDA ;
+              rdfs:label "init greeting" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#InitSelfIntroduction
+:InitSelfIntroduction rdf:type owl:Class ;
+                      rdfs:subClassOf :DimensionSpecificDA ;
+                      rdfs:label "init self-introduction" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Instance
+:Instance rdf:type owl:Class ;
+          rdfs:subClassOf :Arg2 ,
+                          :Exemplification ;
+          rdfs:label "Instance" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Instruct
+:Instruct rdf:type owl:Class ;
+          rdfs:subClassOf :GeneralDA ;
+          rdfs:label "instruct" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#InteractionStructuring
+:InteractionStructuring rdf:type owl:Class ;
+                        rdfs:subClassOf :DimensionSpecificDA ;
+                        rdfs:label "interaction structuring" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#InteractionalDiscourseMarker
+:InteractionalDiscourseMarker rdf:type owl:Class ;
+                              rdfs:subClassOf :DiscourseMarker .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Manner
+:Manner rdf:type owl:Class ;
+        rdfs:subClassOf :AsymmetricDRel ;
+        rdfs:comment """Arg1 is a way in which Arg2 comes about or occurs.
+Arguments: Means, Achievement""" ;
+        rdfs:label "Manner" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Means
+:Means rdf:type owl:Class ;
+       rdfs:subClassOf :Arg1 ,
+                       :Manner ;
+       rdfs:label "Means" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Narrative
+:Narrative rdf:type owl:Class ;
+           rdfs:subClassOf :Arg1 ,
+                           :Expansion ;
+           rdfs:label "Foreground" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#NegatedAntecedent
+:NegatedAntecedent rdf:type owl:Class ;
+                   rdfs:subClassOf :Arg1 ,
+                                   :NegativeCondition ;
+                   rdfs:label "Negated-Antecedent" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Negative
+:Negative rdf:type owl:Class ;
+          rdfs:subClassOf :Qualifier ;
+          owl:disjointWith :Positive ;
+          rdfs:label "qualifier: negative" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#NegativeCondition
+:NegativeCondition rdf:type owl:Class ;
+                   rdfs:subClassOf :AsymmetricDRel ;
+                   rdfs:comment """Arg1 is an unrealized situation which, when not realized, would lead to Arg2.
+Arguments: Negated-Antecedent, Consequent""" ;
+                   rdfs:label "Consequent" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Offer
+:Offer rdf:type owl:Class ;
+       rdfs:subClassOf :GeneralDA ;
+       rdfs:label "offer" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Opening
+:Opening rdf:type owl:Class ;
+         rdfs:subClassOf :DimensionSpecificDA ;
+         rdfs:label "opening" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Pausing
+:Pausing rdf:type owl:Class ;
+         rdfs:subClassOf :DimensionSpecificDA ;
+         rdfs:label "pausing" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Positive
+:Positive rdf:type owl:Class ;
+          rdfs:subClassOf :Qualifier ;
+          rdfs:label "qualifier: positive" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Promise
+:Promise rdf:type owl:Class ;
+         rdfs:subClassOf :GeneralDA ;
+         rdfs:label "promise" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Purpose
+:Purpose rdf:type owl:Class ;
+         rdfs:subClassOf :AsymmetricDRel ;
+         rdfs:comment """Arg2 is the goal or purpose of Arg1
+Purpose: Goal, Enablement""" ;
+         rdfs:label "Purpose" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Qualifier
+:Qualifier rdf:type owl:Class ;
+           rdfs:subClassOf :DialogAct ;
+           rdfs:description "qualification of communicative functions" ;
+           rdfs:label "qualifier" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Reason
+:Reason rdf:type owl:Class ;
+        rdfs:subClassOf :Arg1 ,
+                        :Cause ;
+        rdfs:label "Reason" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#RegularSituation
+:RegularSituation rdf:type owl:Class ;
+                  rdfs:subClassOf :Arg1 ,
+                                  :Exception ;
+                  rdfs:label "Regular" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#RelationalDiscourseMarker
+:RelationalDiscourseMarker rdf:type owl:Class ;
+                           owl:equivalentClass [ owl:intersectionOf ( :DiscourseMarker
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :function ;
+                                                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                        owl:onClass :DiscourseRelation
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ] ;
+                           rdfs:subClassOf :DiscourseMarker .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Request
+:Request rdf:type owl:Class ;
+         rdfs:subClassOf :GeneralDA ;
+         rdfs:label "request" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Restatement
+:Restatement rdf:type owl:Class ;
+             rdfs:subClassOf :SymmetricDRel ;
+             rdfs:comment "Arg1 and Arg2 are the same situation, but described from different perspectives." ;
+             rdfs:label "Restatement" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Result
+:Result rdf:type owl:Class ;
+        rdfs:subClassOf :Arg2 ,
+                        :Cause ;
+        rdfs:label "Result" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Retraction
+:Retraction rdf:type owl:Class ;
+            rdfs:subClassOf :DimensionSpecificDA ;
+            rdfs:label "retraction" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#SelfCorrection
+:SelfCorrection rdf:type owl:Class ;
+                rdfs:subClassOf :DimensionSpecificDA ;
+                rdfs:label "self-correction" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#SelfError
+:SelfError rdf:type owl:Class ;
+           rdfs:subClassOf :DimensionSpecificDA ;
+           rdfs:label "self-error" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Set
+:Set rdf:type owl:Class ;
+     rdfs:subClassOf :Arg1 ,
+                     :Exemplification ;
+     rdfs:label "Set" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Similarity
+:Similarity rdf:type owl:Class ;
+            rdfs:subClassOf :SymmetricDRel ;
+            rdfs:comment "One or more similarities between Arg1 and Arg2 are highlighted with respect to what each predicates as a whole or to some entities they mention." ;
+            rdfs:label "Similarity" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#SpecificPartOfElaboration
+:SpecificPartOfElaboration rdf:type owl:Class ;
+                           rdfs:subClassOf :Arg2 ,
+                                           :Elaboration ;
+                           rdfs:label "Specific" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Stalling
+:Stalling rdf:type owl:Class ;
+          rdfs:subClassOf :DimensionSpecificDA ;
+          rdfs:label "stalling" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Substitution
+:Substitution rdf:type owl:Class ;
+              rdfs:subClassOf :AsymmetricDRel ;
+              rdfs:comment """Arg1 and Arg2 are alternatives, with Arg2 being the favored or chosen alternative.
+Arguments: Regular, Exclusion""" ;
+              rdfs:label "Substitution" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Suggest
+:Suggest rdf:type owl:Class ;
+         rdfs:subClassOf :GeneralDA ;
+         rdfs:label "suggest" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#SymmetricDRel
+:SymmetricDRel rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :DiscourseRelation
+                                                          [ rdf:type owl:Class ;
+                                                            owl:complementOf :AsymmetricArgumentRole
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf :DiscourseRelation ;
+               rdfs:comment "ISO DR-Core distinguishes symmetric and asymmetric discourse relations, and this is formalized as inheritance hierarchy here (whereas ISO DRels are considered to be a flat list that differ in the symmetry feature)." ;
+               rdfs:label "Symmetric" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#SympathyExpression
+:SympathyExpression rdf:type owl:Class ;
+                    rdfs:subClassOf :DimensionSpecificDA ;
+                    rdfs:label "sympathy expression" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Synchrony
+:Synchrony rdf:type owl:Class ;
+           rdfs:subClassOf :SymmetricDRel ;
+           rdfs:comment "Some degree of temporal overlap exists between Arg1 and Arg2. All forms of overlap are included." ;
+           rdfs:label "Synchrony" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Thanking
+:Thanking rdf:type owl:Class ;
+          rdfs:subClassOf :DimensionSpecificDA ;
+          rdfs:label "thanking" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#TopicShift
+:TopicShift rdf:type owl:Class ;
+            rdfs:subClassOf :DimensionSpecificDA ;
+            rdfs:label "topic shift" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Uncertain
+:Uncertain rdf:type owl:Class ;
+           rdfs:subClassOf :Qualifier ;
+           rdfs:label "qualifier: uncertain" .
+
+
+###  http://purl.org/olia/discourse/discourse.Nexus.owl#Unconditional
+:Unconditional rdf:type owl:Class ;
+               rdfs:subClassOf :Qualifier ;
+               rdfs:label "qualifier: unconditional" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
