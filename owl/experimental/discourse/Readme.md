@@ -45,4 +45,4 @@ If you use this resource, please refer to
 - additional is and coref datasets/schemas
 - SDRT (so far, we have no corpus data as a basis)
 - integrate SemDok ontology (dated, and usage is unknown, but it is an independently developed resource adopting a similar technology)
-- integrate NERD ontology (as of Sep 2022, their hosting is failing)
+- integrate NERD ontology (as of Sep 2022, their hosting is failing): added [NERD ontology](https://github.com/NERD-project/nerd-ontology) as a [Git subtree](https://www.atlassian.com/git/tutorials/git-subtree) under `nerd-ontology/`.
