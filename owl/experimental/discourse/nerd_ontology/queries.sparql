@@ -1,0 +1,25 @@
+# over olia_discourse.owl
+# PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+# PREFIX owl: <http://www.w3.org/2002/07/owl#>
+# PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+# PREFIX : <http://purl.org/olia/discourse/olia_discourse.owl#>
+# PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+# SELECT DISTINCT ?a ?label
+# 	WHERE { ?a rdfs:subClassOf+ :EntityType. 
+# 		OPTIONAL { ?a rdfs:label|skos:prefLabel ?raw_label. BIND(str(?raw_label) as ?label) } 
+# 		OPTIONAL { ?a rdfs:subClassOf+ :EntityType. BIND(lcase(replace(strafter(str(?a),"#"),"([^A-Z])([A-Z])","$1 $2")) as ?label)}
+# } ORDER BY ?label ?a
+
+# over nerd.owl
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX : <http://purl.org/olia/discourse/olia_discourse.owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT DISTINCT ?label ?a
+	WHERE { 
+		{ ?a ?b ?c } UNION { ?x ?y ?a }.
+		BIND(lcase(replace(replace(replace(str(?a),".*[/#]([^#/]+)$","$1"),"_"," "),"([^A-Z ])([A-Z])","$1 $2")) as ?label)
+} ORDER BY ?a ?label
