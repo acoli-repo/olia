@@ -203,6 +203,10 @@ The following NERD concepts were not supported by an existing extractor other th
 	<http://purl.org/olia/discourse/olia_discourse.owl#SoccerPlayer>
 	<http://purl.org/olia/discourse/olia_discourse.owl#TennisPlayer>
 
+They are nevertheless linked.
+
+However, note that none of the NER ontologies could be loaded without errors. As a result, they are not directly integrated as OLiA Annotation Models. Instead, we only provide linking models.
+
 ## Status quo
 
 The resulting ontology captures semantic classes as supported by conventional NER classification systems. It is not representative for the language, but for existing NER annotations. Subsequently, it is to be extended for other schemas. The general framework of NERD classes is, however, maintained. As a result, the ontology has a layered structure: top-level classification follows conventions from anaphora annotation, the subclassification results from (a reassessment of) the NERD taxonomy, subsequently it is to be extended for corpus annotations.

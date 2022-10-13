@@ -74,6 +74,10 @@ Except for this readme, all other data provided here is forked from https://gith
 
 The original licensing conditions apply, i.e., [Apache v.2 license](LICENSE), and all attributions (as given in the original repository) remain unchanged. Contributors to the GitHub repository were [Giuseppe Rizzo](https://github.com/giusepperizzo) and [Sebastian Hellmann](https://github.com/kurzum), Oct 2013 - Apr 2014 in the NERD Project, supported by the French Ministry of Industry (Innovative Web call) under contract 09.2.93.0966, “Collaborative Annotation for Video Accessibility” (ACAV), with Giuseppe Rizzo and Raphäel Troncy acting as project representatives in the main publication.
 
+The conversion and linking process with the OLiA Discourse Extensions is documented in [`extending-olia`](extending-olia.md). Some services are still active, but we include the dead ones, as well. However, *all* extractors connected with NERD face validity issues (resp., their external ontologies). Unfortunately, this made the semiautomated linking break, so that links are created manually to each connected vocabulary, including NERD. Note that we do not replicate the modelling of NERD, but only the concepts. Everything is linked as subclasses (not as equivalent classes), so NERD axioms do not apply to the corresponding OLiA concepts but that OLiA concepts are true generalizations. The resulting manual mapping is provided in `mapping.tsv`. From that file, the linking models are bootstrapped.
+
+The Turtle files holding the linking are provided as `entities.XYZ-link.ttl`.
+
 ## References
 
 **Giuseppe Rizzo,
