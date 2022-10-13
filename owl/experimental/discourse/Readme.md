@@ -11,6 +11,7 @@ For full documentation, please see our [website](https://acoli-repo.github.io/ol
 Discourse phenomena considered here include
 
 -   anaphora („coreference") and entity linking
+-   named entity recognition
 -   information status („given-new")
 -   information structure („topic-focus")
 -   discourse structure (hierarchical, semantic organization of texts and other discourses)
@@ -40,9 +41,15 @@ If you use this resource, please refer to
     Discourse features in the Ontologies of Linguistic Annotation.
     In Proceedings of LREC-2014, Reykjavik, Iceland, May 2014, (pp. 4569-4577).
 
+## Recent Extensions
+
+Extensions since the original publication include:
+- 2021-11-30: linking with SemDok discourse ontology
+- 2022-09-xx: mirrorred NERD ontology (as of Sep 2022, their hosting is failing): added [NERD ontology](https://github.com/NERD-project/nerd-ontology) as a [Git subtree](https://www.atlassian.com/git/tutorials/git-subtree) under `nerd-ontology/`.
+- 2022-10-13: incorporating entity types and 10 NER schemas based on NERD
+- on-going ISO Discourse annotations
+
 ## Todos
 
 - additional is and coref datasets/schemas
 - SDRT (so far, we have no corpus data as a basis)
-- integrate SemDok ontology (dated, and usage is unknown, but it is an independently developed resource adopting a similar technology)
-- integrate NERD ontology (as of Sep 2022, their hosting is failing): added [NERD ontology](https://github.com/NERD-project/nerd-ontology) as a [Git subtree](https://www.atlassian.com/git/tutorials/git-subtree) under `nerd-ontology/`.
