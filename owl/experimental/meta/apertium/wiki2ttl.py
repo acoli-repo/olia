@@ -133,10 +133,12 @@ for file in args.files:
 		header=None
 		class_declaration=""
 		for line in input:
+			sys.stderr.write(f"{superclasses}\n")
+			sys.stderr.write(f"{line}")
 			line=line.rstrip()
 			if line.startswith("="):
-				depth=len(re.sub(r"[^=]*","",line))
-				superclasses=superclasses[0:depth+1]
+				depth=len(re.sub(r"[^=].*","",line))
+				superclasses=superclasses[0:depth-1]
 				label=re.sub(r"[^a-zA-Z\s()\-]+","", line.split("<!--")[0])
 				label=" ".join(label.split()).strip()
 				localname=get_local_name(label,className=True)
@@ -148,7 +150,7 @@ for file in args.files:
 				localnames.append(localname)
 				while(len(superclasses)<depth-1):
 					superclasses.append(superclasses[-1])
-				class_declaration=f""":{localname} rdfs:subClassOf :{superclasses[-1]} ; rdfs:label "{label}"@en ."""
+				class_declaration+=f""":{localname} rdfs:subClassOf :{superclasses[-1]} ; rdfs:label "{label}"@en .\n"""
 				superclasses.append(localname)
 			elif line.startswith("!"):
 				header=line.split("!!")
