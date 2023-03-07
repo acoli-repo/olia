@@ -70,7 +70,8 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 						echo warning: $$file skipped '(files must match *-link.rdf or *.owl)' 1>&2; \
 						echo 1>&2; \
 					fi; \
-				elif egrep -L 'http://(purl.org/olia.*|nl.ijs.si/ME/owl)/'`basename $$file | sed s/'\(\-link\)*\(\.rdf|\.owl\)*'//` $$file >/dev/null; then \
+				elif #egrep -L 'http://(purl.org/olia.*|nl.ijs.si/ME/owl)/'`basename $$file | sed s/'\(\-link\)*\(\.rdf|\.owl\)*'//` $$file >/dev/null; then \
+					egrep -L 'http://(purl.org/olia.*|nl.ijs.si/ME/owl)/' $$file >/dev/null; then \
 					echo warning: $$file skipped '(files must use http://purl.org/olia/ namespace)' 1>&2; \
 					echo 1>&2; \
 				elif ! xmllint $$file >/dev/null; then \
@@ -132,6 +133,11 @@ release: docs/owl/Readme.md docs/owl/LICENSE
 						echo 1>&2;\
 					fi; \
 				fi; \
+			fi;\
+			# renamings (copy instead of redirect) \
+			if [ -e owl/discourse/olia_discourse.owl ]; then \
+				cp owl/discourse/olia_discourse.owl owl olia-discourse.owl; \
+				# this link was occasionally used before, but didn't resolve \
 			fi;\
 		done;\
 	done;\
