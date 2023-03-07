@@ -1,8 +1,12 @@
-import re, sys, os, argparse, json
+import re, sys, os, argparse, json, datetime
+import urllib.parse
+
+xml_replacements= { "&amp;":"&", "&lt;": "<", "&gt;":">", "&quot;":'"'}
 
 args=argparse.ArgumentParser(description=""" reads (Apertium) wiki pages and transforms their tables """)
-args.add_argument("baseuri", type=str, help="base uri for the output data, should end with '#' or '/'")
+args.add_argument("baseuri", type=str, help="base URI for the output data, should end with '#' or '/'")
 args.add_argument("files", type=str, nargs="+", help="source files, Apertium wiki format")
+args.add_argument("-s","--source", type=str, help="source URL for the data provided here. Note that we do not directly read from there, this is user-provided metadata; defaults to baseuri without trailing # or /", default=None)
 
 uri_cols=["symbol", "symbols", "tag", "xMLTag","xMLAttributeValue"] # note: normalize to camelCase
 args.add_argument("-cols", "--uri_cols", type=str, nargs="+", help="wikitable column names (with camelCase normalization) that are used to create URIs, default to \""+"\", \"".join(uri_cols)+"\"",default=uri_cols)
@@ -13,12 +17,10 @@ prop_mapping={
 	":notes" : "rdfs:comment",
 	":means" : "rdfs:comment",
 	":description" : "rdfs:comment",
-	#
-	# deletables
-	":symbols": None,
-	":tag" : None,
-	":xMLAttributeValue": None,
-    ":xMLTag": None
+	":symbols": "olias:hasTag",
+	":tag" : "olias:hasTag",
+	":xMLAttributeValue": "olias:hasTag",
+    ":xMLTag": "olias:hasTag"
 }
 
 # # undefined
@@ -29,10 +31,16 @@ prop_mapping={
 #     :universalPOS
 
 prop_mapping=json.dumps(prop_mapping)
-args.add_argument("-map","--prop_mapping", type=str, help=f"JSON dict mapping generated properties (= baseuri+camelCase(column_name))  to standard RDF vocabularies, the original properties are removed, defaults to {prop_mapping}", default=prop_mapping)
+args.add_argument("-map","--prop_mapping", type=str, help=f"JSON dict mapping generated properties (= baseuri+camelCase(column_name))  to standard RDF vocabularies, the original properties are removed, defaults to {prop_mapping}; if properties are mapped to null/None, they will be deleted", default=prop_mapping)
 
 args=args.parse_args()
+
+# JSON => dict
 args.prop_mapping=json.loads(args.prop_mapping)
+
+# defaults
+if args.source==None:
+	args.source=re.sub(r"([#/]+)$","",args.baseuri)
 
 def remove_xml_comments(label: str):
 	""" normalize whitespaces and remove XML comments """
@@ -58,13 +66,19 @@ def get_local_name(label: str, camelCase=False, className=False):
 		className: use camelcase, first word upper cased
 		"""
 
+	label=remove_xml_comments(label)
+
 	result=label
 
 	# remove XML markup
-	result=re.sub(r"<[^>]*>","",result)
+	result=re.sub(r"<[^>]*>","",result).strip()
+	# if result=="" and label!="":
+	# 	sys.stderr.write(f"warning: the label {label} seems to contain XML markup only. We suppress XML markup removal in order to prevent an empty label.\n")
+	# 	result=urllib.parse.quote(label)
+
 
 	# default: underscores, lowercased
-	result=re.sub(r"[^a-zA-Z0-9\s_-]+","",result)
+	result=re.sub(r"[^a-zA-Z0-9%\s_-]+","",result)
 	result=re.sub(r"([a-z])([A-Z])",r"\1_\2",result).strip()
 	if not(camelCase) and not className:
 		result=result.lower()
@@ -81,18 +95,38 @@ def get_local_name(label: str, camelCase=False, className=False):
 			tmp.append(word)
 		result="".join(tmp)
 
-	return result
+	return urllib.parse.quote(result)
 
 superclasses=["Symbol"]
 localnames=["Symbol"]
+version=f"{datetime.datetime.now()}"
 
 print(f"""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX olias: <http://purl.org/olia/system.owl#>
+
 PREFIX : <{args.baseuri}>
 """)
+
+print(f"""
+<{args.baseuri[0:-1]}> a owl:Ontology ;
+   rdfs:comment \"\"\"OLiA Annotation Model for Apertium {datetime.datetime.now()}
+==================================
+
+- automatically generated from the wiki {args.source}
+
+Note that this documentation may not be exhaustive, and also, that renaming and future consolidation steps occur. It is thus advised to update this file occasionally, see the Readme under https://github.com/acoli-repo/olia/tree/master/owl/experimental/meta/apertium for further instructions. 
+
+Also, make sure to record the time of compilation. At the moment, we rely on GitHub for versioning, so that past versions can be retrieved from Git history. In case an overall versioning system will be established at some point in the future within Apertium, this should be reflected in the base URIs.\"\"\"@en ;
+   rdfs:isDefinedBy <{args.source}> ;
+   owl:versionInfo \"\"\"{version}\"\"\" .
+""")
+
 
 for file in args.files:
 	with open(file, "rt", errors="ignore") as input:
@@ -147,6 +181,26 @@ for file in args.files:
 					#print(anno)
 					anno={ h:f for _,h,f in anno if h!=None }
 
+					# normalize olias:hasTag
+					if "olias:hasTag" in anno:
+						tag=anno["olias:hasTag"]
+
+						# remove <code>..</code>
+						if tag.startswith("<code>") and tag.endswith("</code>"):
+							tag=tag[len("<code>"):-len("</code>")]
+						
+						# replace XML elements
+						for src,tgt in xml_replacements.items():
+							if src in tag:
+								tag=tag[0:tag.index(src)]+tgt+tag[tag.index(src)+len(src):]
+
+						# remove Apertium wiki links
+						if re.match(r"^\{[^\}]+|.*\}$", tag):
+							tag=tag.split("|")[1]
+							tag=tag.split("}")[0]
+
+						anno["olias:hasTag"]=tag
+
 					if len(class_declaration)>0:
 						print("\n"+class_declaration)
 						class_declaration=""
@@ -156,3 +210,5 @@ for file in args.files:
 						while f.endswith('"'): f=f[0:-1]
 						print(f"; {h} \"\"\"{f}\"\"\" ", end="")
 					print(".")
+				# print(dict(zip(header,fields)))
+				# print(anno)
