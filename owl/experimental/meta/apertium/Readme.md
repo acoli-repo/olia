@@ -10,9 +10,18 @@ Apertium implements symbolic, transfer-based machine translation, where source l
 
 Apertium tags and morphosyntactic features are not standardized, but there are some [common conventions](https://wiki.apertium.org/wiki/List_of_symbols), and these are captured here with an OLiA Annotation and Linking Model. Both are automatically generated, but Linking Models should be reviewed after linking.
 
-
 Build with
 
 	$> make
 
-Note: not a proper OWL ontology, yet. This is to come.
+This produces a valid annotation model.
+
+A baseline linking model can be created by 
+
+	$> make link-unsupervised
+
+However, this will produce data for subsequent manual refinement. It is *strongly recommended* to perform the linking in a semi-automated fashion:
+
+	$> make apertium-link.rdf
+
+Note that you may need to manually delete apertium-link.rdf before running this command because it will not be overwritten by default. It can be safely removed if the earlier `apertium-link.rdf` was created with `make link-unsupervised`.
