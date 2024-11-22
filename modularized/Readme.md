@@ -26,10 +26,10 @@ The idea is to provide multiple independent ontologies for different components 
 	- [ ] `LinguisticConcept/SyntacticFeature`
 	- [ ] validate
 - `semlex.owl` -> `../owl/core/olia.owl`
-	- [ ] `LinguisticConcept/SemanticFeature`
-	- [ ] `LinguisticConcept/SemanticUnit`
-	- [ ] `LinguisticConcept/LexicalRelation`
-	- [ ] validate
+	- [x] `LinguisticConcept/SemanticFeature`
+	- [x] `LinguisticConcept/SemanticUnit`
+	- [x] `LinguisticConcept/LexicalRelation`
+	- [x] validate
 - `graphon.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/OrthographicEntity`
 	- [x] `LinguisticConcept/PhonologicalProcess`
