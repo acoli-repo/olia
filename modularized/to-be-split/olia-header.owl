@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+<!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF
+    xmlns:dcr="http://www.isocat.org/ns/dcr.rdf#"
+    xmlns="http://purl.org/olia/olia.owl#"
+	xmlns:olia="http://purl.org/olia/olia.owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:olia_system="http://purl.org/olia/system.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:olia_top="http://purl.org/olia/olia-top.owl#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:dct="http://purl.org/dc/terms/"
+  xml:base="http://purl.org/olia/olia.owl">
+  <owl:Ontology rdf:about="http://purl.org/olia/olia.owl">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+	<owl:versionInfo>TODO: simplify {Interrogative,Indefinite,...}/{Cardinal,Multiplicative,...}Quantifier dichothomies
+	In subsequent versions, however, orthographical definitions should be handled with existing ontologies specializing on the description on language, e.g., lexvo
+	check gerundive vs. gerund
+	update GOLD linking
+	</owl:versionInfo>
+	<dct:title>Ontology of Linguistic Annotation (OLiA)</dct:title>
+	<dct:creator rdf:resource="https://orcid.org/0000-0002-4428-029X"/>
+	<dct:contributor rdf:resource="https://github.com/chiarcos"/>
+	<dct:contributor>Angelika Adam</dct:contributor>
+	<dct:contributor>Maria Sukhareva</dct:contributor>
+	<dct:contributor rdf:resource="https://github.com/cfaeth"/>
+	<dct:contributor rdf:resource="https://github.com/kurzum"/>
+	<dct:contributor rdf:resource="https://github.com/v-dimitrova"/>
+	<dct:contributor rdf:resource="https://github.com/A027f3RC7ag8"/>
+	<dct:contributor rdf:resource="https://github.com/max-ionov"/>
+	<rdfs:label>OLiA</rdfs:label>
+	<foaf:homepage rdf:resource="http://purl.org/olia/"/>
+	<dct:publisher rdf:resource="https://github.com/acoli-repo/olia"/>
+    <owl:imports>
+		<owl:Ontology rdf:about="http://purl.org/olia/olia-top.owl"/>
+	</owl:imports>
+    <owl:imports>
+		<owl:Ontology rdf:about="http://purl.org/olia/system.owl"/>
+	</owl:imports>
+    <rdfs:comment>
+	OLiA Reference Model for Morphology, Morphosyntax and Syntax
+	(originally 
+    based on the EAGLES recommendations, with modifications in accordance to 
+    DCR (ISOcat, June 2013), TDS ontology, GOLD v.03, the SFB 632 annotation guidelines, 
+    the MULTEXT-East ontology and various annotation schemes)
+	</rdfs:comment>
+	<owl:versionInfo>
+	Oct. 2005 created by Christian Chiarcos 
+	2006-2008 maintained by Christian Chiarcos and Angelika Adam 
+	since 2008 maintained by Christian Chiarcos
+	10/01/08 updated by Christian Chiarcos 
+	10/01/25 added SyntacticUnit categorization 
+		(from GOLD [http://www.linguistics-ontology.org/gold/2008] and EAGLES recommendations 
+		[http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000]) 
+    	10/01/28 removed all owl:disjointWith and owl:complementOf, these are language-specific
+		and have to be represented in a separate language model.
+    	10/02/17 extended SyntacticUnit categorization in accordance with the TDS ontologies 
+		(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl) Christian 
+    	10/02/18 adopted TIGER edge labels as syntactic role and semantic role
+    	10/03/11 manual restructuring of OWL file begun
+	10/03/23 morphosyntactic classes revised
+	10/03/24 CaseFeature extended by TDS grammaticalCase, GOLD CaseValue and DCR case features
+			DefinitenessFeature checked against TDS definitenessProperty and DCR (missing in GOLD)
+			DegreeFeature checked against DCR (missing in GOLD and TDS)
+			TenseFeature extended in accordance with TDS tenseProperty and GOLD TenseValue (DCR not yet)
+			GenderFeature checked against TDS case and GOLD GenderValue (DCR not yet)
+			SemanticRole extended in accordance with TDS semanticRoleProperty (missing in GOLD, 
+					merged with grammatical case there)
+			PersonFeature checked and extended against GOLD and TDS
+			MoodFeature extended in accordance with TDS modalityProperty and GOLD MoodValue
+			AspectFeature extended in accordance with TDS aspectProperty and GOLD AspectValue
+				Habitual remodelled as Aspect
+	10/03/25 SyntacticRole checked and extended against GOLD syntacticRole (properties) 
+				and DCR syntacticCategory, modifyingRelation
+			VoiceFeature extended against GOLD VoiceValue and TDS grammaticalVoice
+				hierarchically structured
+			restructuring concluded
+	10/04/06 extended InflectionType, added Countability and Valency as features and properties (in accordance with
+			Sampson (1995), see susa.owl
+	10/04/08 extensions with respect to constituent types, syntactic relations and semantic roles 
+			in accordance with Dipper et al. (2007), see sfb632.owl
+	10/04/13 extension wrt. the morphosyntactic profile of the DCR (ISOcat, www.isocat.org)
+	10/04/14 validation, PossessiveFeature removed
+	10/04/15-18 additions in accordance to the PTB Bracketing Guidelines (Santorini 1991, Bies et al. 1995)
+	10/11/26 introduced NounHeadedPhrase for improved compatibility with dependency parsing schemes (e.g., Connexor)
+	10/11/29 added categories for topological fields in German (as used in TüBa-D/Z)
+	10/12/02 added DeterminerPhrase, ForeignPhrase, subclasses of ExpletivePronoun (TüBa-D/Z)
+	11/07/29 replaced url http://purl.org/olia with purl http://purl.olcl.org/olia
+	11/07/31-11/08/04 linking with MULTEXT-East (http://nl.ijs.si/ME/owl/multext-east.owl = http://purl.org/olia/mte/multext-east.owl)
+		Clitic deprecated (replaced by CliticElement because of the ambiguity of the category in MULTEXT-East and ISOcat)
+		additions: hasProximity, Distal, Proximal, CliticElement, CliticDefiniteArticle, SpecificArticle, CliticSpecificArticle,
+		hasSpecificity, Specific, Nonspecific, Cliticization, ElementWithClitic, ElementWithoutClitic, ElementDemandingClitic, 
+		DistributiveCase, FactiveCase, DirectCase, FormalCase, MultiplicativeCase, TemporalisCase, ElativeDegree, CountNumber, 
+		AspectParticle, SubjunctiveParticle, VerbalParticle, LightVerb, VerbalAdverb, NegativeAdverb, ModifierAdverb, AdjectivalAdverb, 
+		NonspecificPronoun, DeterminalPronoun, AttributivePronoun, EmphaticDeterminer, NegativeDeterminer, UniquitiveDeterminer, PossessiveArticle,
+		hasConjunct, hasWordConjunct, hasSentenceConjunct, RepetitiveCoordinatingConjunction, SubordinatingConjunctionWithNegation,
+		SubordinatingConjunctionWithoutNegation, RelationalAdjective, PossessiveAdjective, NonreducedInflection, ReducedInflection, CollectiveNumeral,
+		hasNumeralAgreement, DualQuantifier, PaucalQuantifier, SingularQuantifier, PluralQuantifier, Fraction, ApproximateNumeral, MultipleNumeral,
+		ProQuantifier, InterrogativeQuantifier, IndefiniteQuantifier, DemonstrativeQuantifier, RelativeQuantifier, QuotativeVerb, QuotativeMood,
+		NonNegated, Diminuitive, Human, AbbreviatedPronoun, FixedExpression, Adjectival, Typo, Verbal, hasObjectNumber, hasNumeralForm, ExistentialParticle
+	11/08/04 eliminated redundancy of olia-top:SyntacticRelation and olia:SyntacticRelation
+		SubordType, CoordType deprecated, remodelled as subconcepts of Sub/CoordinatingConjunction
+	11/08/05 validation
+	11/08/11 VoiceParticle (from Portuguese EAGLES)
+	11/08/12 linking with T-CODEX (Old High German)
+			 VocativeExpression, Fronting, ConditionRole, HangingTopic (for Old High German, T-CODEX)
+			 CausalAdverb deprecated (= Adverb and hasSemanticRole some CauseRole)
+			 DeclarativeSentence = Sentence and hasMood some DeclarativeMood
+			 PresentParticiple (= Sentence and hasTense some Present)
+			 PastParticiple (= Sentence and hasTense some Past)
+	11/08/12-15 linking with ILPOSTS (for Indian languages)
+			added PurposiveCase, PurposiveAspect, DistributivePronoun, ConditionalParticiple, ConditionalRealisMood, ConditionalIrrealisMood, PresumptiveMood, Sequel, AbilitativeMood, SecondHonorific, SecondNonHonorific, hasEmphasis, Emphatic, NonEmphatic, SimpleAspect
+			EmphaticDeterminer, EmphaticPronoun deprecated
+			CausalMood (from Nowak 1996, for Inuktitut)
+			MannerAdverb (= Adverb and hasSemanticRole some MannerRole) {introduced as deprecated}
+			LocationAdverb (= Adverb and hasSemanticRole some LocationRole) {introduced as deprecated}
+			HabitualMood (= HabitualAspect)
+	11/08/15 olia_top:PhonologicalProcess introduced (reorganization of MorphologicalProcess)
+	11/08/15 linking with Ancorra and IIIT tagset (for Indian languages)
+			GerundVerbPhrase, SpatiotemporalNoun, InfinitiveVerbPhrase, EchoWord, Composition
+			Intensifier
+	11/08/15 linking with Urdu tagset (Sajjad 2007)
+		TitleNoun, UnitNoun, AspectMarkingAuxiliary, TenseMarkingAuxiliary, Date added
+	11/08/16 linking with EMILLE Urdu tagset (Hardie 2003)
+		AdjectivalParticle, ModalityMarkingAdverb, OpenQuote, CloseQuote, ContrastiveParticle, EmphaticParticle, MultiplicativeMarker, ExclusiveEmphaticParticle, InclusiveEmphaticParticle, ReflexivePossessiveDeterminer, Izafat, RelativeAdjective added
+		ContrastiveEmphaticParticle (= ContrastiveParticle and EmphaticParticle)
+	11/08/16 linking with Dzongkha tagset (Chungku et al. 2010)
+		added AspirationalVerb, AgentiveVerb, TenseMarkingParticle, NonAgentiveVerb, LocativePronoun, NominalNumber, CaseMarker, PeriodicAdjective, CharacteristicAdjective, DifferentialPronoun, NominalQuantifier
+		HonorificVerb, HonorificCommonNoun added (=> Honorificity to be remodelled)
+	13/03/03 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
+		added GivenName, FamilyName, comments for PersonalPronoun, Separability
+	13/03/03 partial "hasFeature Self"-modeling for ...Feature concepts: not inferable through Fact++ or Hermit, though, hence incomplete
+	13/03/04 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
+		Contraction, Phraseme, LexicalUnit (as generalization over Phraseme and Lexeme), Initialism
+	13/03/04 olia-top:XYFeature olia:hasXY Self for most XYFeatures
+	13/06/24 additions from ISOcat morphosyntactic profile: FusedPrepositionPronoun, ElativeNoun, InterrogativeMultiplicativeQuantifier, FocusMarker, AdjutativeVoice, AversiveCase
+	13/06/25 additions from ISOcat morphosyntactic profile: VisualEvidentiality, OtherSourceEvidentiality, DeductiveEvidentiality, Exclusive, Inclusive, Homonym, Homophone, CircumstantialVoice
+	13/06/27 ISOcat additions: MannerNoun (deprecated), QuestionWord (extended to be a generalization over InterrogativeXY, deprecated), GeneralizationWord, EpistemicPossibilityModality, DebitiveMood, InchoativeAspect, PresentativePronoun, IndefiniteCardinalQuantifier, NumeralBoth (deprecated), GraphicalSeparator, Impossible, Possible, EpistemicNecessityModality, TemporallyDefinedUsage, PrepositionalAdverb, DeclarativePunctuation, Multal, ObligativeModality, RomanNumeral, DigitNumeral, Script, ParticleAdverb (deprecrated), ApplicativeVoice, EvaluativeModality, PlaceNoun (deprecated), String [generalized as orthographical anchor point for RomanNumeral]
+	13/06/28 ISOcat additions: Masdar, Ideophone, DeficientVerb (deprecated), IndefiniteMultiplicativeQuantifier, PermissiveModality, WeakObligativeModality, ExistentialPronoun (deprecated), InstrumentNoun, PhysicalAbilitiveModality, MedioPassiveVoice, InterrogativeCardinalQuantifier, CompletiveAspect, PseudopassiveVoice, LetterNumeral, ContextualVariation, Homograph, CollectivePronoun, PossessiveRelativePronoun, ExpansionVariation, CausativeVoice, Augmentative, FusedPronounAuxiliary, AntiCausativeVoice, StatusConstructus, PreferredEvaluative, PejorativeEvaluative, CommissiveForce, ActionalForce, VolitiveForce
+		hasEvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), HortativeModality (from GOLD, missing in the corresponding ISOcat export)
+		disentangled Modality and Mood: for every Mood, created a corresponding Modality as superclass; XYMood is subconcept of Mood and XYModality concept, hasMood only for Mood, hasModality for Modality	
+	16/04/18 selected French labels for the Bambara Reference Corpus (BRC)
+		added OnomatopoeticWord, QualitativeVerb, PredicativeMarker
+	OWL/DL validation
+	16/08/29 added Frame, hasMovementFeature, Control and Raising for compliance with lexinfo
+	17/06/26 fixed occasional type errors at owl:deprecated
+	18/01/08 added Converb (for Eastern Armenian National Corpus)
+	19/07/27 lexinfo linking: added DeverbalAdjective as a generalization over (and superclass of) ParticipleAdjective, DenominalAdjective (for lexinfo:adjective-na), GenericNumeral (for lexinfo:genericNumeral), InflectionElement (for lexinfo:inflectionElement), Radical (for lexinfo:radical), Syllable (for lexinfo:syllable), ClippedTerm, Appellation, Idiom, Internationalism, SetPhrase, Boilerplate (for lexinfo:standardText), Deprecated (for lexinfo:deprecatedTerm), LegalRegister (for lexinfo:legalTerm), Deprecated (for lexinfo:deprecatedTerm), Preferred (for lexinfo:preferredTerm), Standardized (for lexinfo:standardizedTerm);
+		revised Contraction, Composition; 
+		introduced Identifier as generalization over Appellation, NamedEntity and lexinfo:partNumber;
+		introduced TextStructuralElement as generalization over Headline, Boilerplate, etc.
+	20/02/24 add Chunk (from Ancorra tagset), JussiveMood (from Arabic, Khoja et al. 2008)
+	20/02/27 clarify definition of Unique
+	2022-05-23 rdfs:labels added (automatically)	
+	2024-11-22 modularization
+
+Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
+	</owl:versionInfo>
+ </owl:Ontology>  
+  
+
+  </rdf:RDF>
