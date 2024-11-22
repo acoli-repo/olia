@@ -12,24 +12,24 @@ The idea is to provide multiple independent ontologies for different components 
 	- [ ] add `LinguisticConcept/DiscourseFeature`	
 	- [ ] validate
 - `morphosyntax.owl` -> `../owl/core/olia.owl`
-	- [ ] `LinguisticConcept/MorphosyntacticFeature`
-	- [ ] `LinguisticConcept/MorphosyntacticCategory` (aka `Word`)
-	- [ ] validate
+	- [x] `LinguisticConcept/MorphosyntacticFeature`
+	- [x] `LinguisticConcept/MorphosyntacticCategory` (aka `Word`)
+	- [x] validate
 - `morph.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/MorphologicalCategory`
 	- [x] `LinguisticConcept/MorphologicalFeature`
 	- [x] `LinguisticConcept/MorphologicalProcess`
-	- [x] validate
+	- [ ] validate
 - `syntax.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/SyntacticRelation`
 	- [x] `LinguisticConcept/SyntacticCategory`
 	- [x] `LinguisticConcept/SyntacticFeature`
-	- [x] validate
+	- [ ] validate
 - `semlex.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/SemanticFeature`
 	- [x] `LinguisticConcept/SemanticUnit`
 	- [x] `LinguisticConcept/LexicalRelation`
-	- [x] validate
+	- [ ] validate
 - `graphon.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/OrthographicEntity`
 	- [x] `LinguisticConcept/PhonologicalProcess`

@@ -358,6 +358,218 @@
 	<owl:versionInfo>defined in OLiA-top</owl:versionInfo>
     </owl:Class>
 
+	<!-- InflectionTypeFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasInflectionType"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			In this category, different inflection-relevant features are assembled. 
+			Typically, inflection phenomena are language-specific and pertain to different grammatial categories;
+			therefore, this collection is neither to be supposed exhaustive nor are the features necessarily disjoint
+			(e.g., InflectedWithOvertMarker overlaps with StrongInflection or WeakInflection)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#StrongInflection">
+		<owl:versionInfo>EAGLES</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			In German (and other Germanic languages), when gender, number and case are not expressed 
+			by a determiner, the adjective takes the endings of the strong inflection.
+			(http://www.canoo.net/services/OnlineGrammar/Wort/Adjektiv/Deklinationstyp/Stark.html  20.11.06)
+			
+			Strong inflection is a characteristic of lexemes, not individual tokens.
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#BaseForm">
+		<owl:versionInfo>SUSANNE (Sampson 1995)</owl:versionInfo>
+		<rdfs:comment>
+			Strong inflection is a characteristic of lexemes, not individual tokens.
+			In traditional English tagsets, e.g., SUSANNE  or the PennTreeBank tagset, surface ambiguities are normally not resolved.
+			Uninflected forms and forms that have the same form (e.g., "be" as an imperative) are tagged as BaseForm. (Ch. Chiarcos)
+			
+			Since it is impractical (...) to resolve automatically the 
+			ambiguity of these six morphological functions, it is a common practice to assign a single value to the base form, 
+			or else to assign two values, one for the finite and one for the non-finite functions. Because of this, the tables 
+			below show two tagsets: one tagset representing the 6 attribute-values above, and a reduced tagset (`RTags'), which
+			resembles most tagsets so far used for the English language in reducing the six values to two.
+			http://www.ilc.cnr.it/EAGLES96/morphsyn/node150.html#SECTION00054000000000000000
+			
+			BaseForm is not a characteristic of lexemes, but specific to certain forms in a complex paradigm.
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Uninflected">
+		<owl:versionInfo>Chiarcos, cf. BaseForm in Susanne (Sampson 1995) and related schemes, and http://purl.org/olia/emille.owl#UnmarkedForGender</owl:versionInfo>
+		<rdfs:comment>
+			In many inflecting languages, there occur lexemes whose form does not change throughout the paradigm, e.g.,
+			Russian papa "dad". For such forms, the category uninflected may be assigned.
+			However, Uninflected is not to be confused with BaseForm that applies to forms in a paradigm where overt
+			marking exists.
+			
+			Uninflected is a characteristic of lexemes, not individual tokens.
+		</rdfs:comment>
+		<owl:versionInfo>For the EMILLE tagset (for Urdu, Hardi 2003), we need the possibility to specify that a lexeme is (un)inflected ([un]marked) *for a specific feature* (e.g., Gender, http://purl.org/olia/emille.owl#GenderMarking).
+			At the moment, this cannot be expressed.</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Inflected">
+		<owl:versionInfo>Chiarcos</owl:versionInfo>
+		<rdfs:comment>
+			see subclasses
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Conjugated">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2207"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2207</owl:versionInfo>
+      <rdfs:comment>
+                            Property of a verbal form when inflected
+                                (http://www.isocat.org/datcat/DC-2207)
+                            </rdfs:comment>
+      <rdfs:label>conjugated</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Inflected"/>
+	  </rdfs:subClassOf>
+   </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InflectedWithOvertMarker">
+		<owl:versionInfo>Chiarcos, motivated by BaseForm in SUSANNE (Sampson 1995) and related schemes; cf. http://purl.org/olia/emille.owl#MarkedForGender</owl:versionInfo>
+		<rdfs:comment>
+			An inflected form with overt morphological marking (as opposed to the base form and lexemes that do not inflect at all).
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Inflected"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MixedInflection">
+		<owl:versionInfo>EAGLES</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			German mixed inflection takes its name from 
+			the fact that it has endings from both the strong inflection and 
+			the weak inflection. The mixed inflection is used after the indefinite 
+			article "ein" and after "irgendein" e.g. "(irgend) ein kleines Kind", 
+			after "kein" or after possessive pronouns e.g. "ihr kleines Kind". 
+			(http://www.canoo.net/services/OnlineGrammar/Wort/Adjektiv/Deklinationstyp/Gemischt.html?MenuId=Word3132  20.11.06)
+			
+			Mixed inflection is a characteristic of lexemes, not individual tokens.
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WeakInflection">
+		<owl:versionInfo>EAGLES</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			German adjectives take the endings of the weak inflection 
+			when a determiner expresses number, gender and case.
+			The weak adjective inflection has only two endings: –e and –en. 
+			(http://www.canoo.net/services/OnlineGrammar/Wort/Adjektiv/Deklinationstyp/Schwach.html  20.11.06)
+			In other Germanic languages, similar systems exist.
+			
+			Weak inflection is a characteristic of lexemes, not individual tokens.
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	
+
+	<!-- SeparabilityFunction -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSeparability"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonSeparable">
+		<owl:versionInfo>EAGLES; note that UbyPos extends separability to particles</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Non-separable verbs are not composed of a verb stem and a separable 
+			affix. (cf. SeparabilityFeature: Separable)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Separable">
+		<owl:versionInfo>EAGLES; note that UbyPos extends separability to particles</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A separable verb is a verb that is composed of a verb stem and a separable 
+			affix. In some verb forms, the verb appears in one word, whilst in others 
+			the verb stem and the affix are separated. German and Dutch are notable for 
+			having many separable verbs. For example, the Dutch verb "aankomen" is a 
+			separable verb. (http://en.wikipedia.org/wiki/Separable_verb  20.11.06)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+
+	<!-- StrengthFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#StrengthFeature">
+		<owl:versionInfo>TODO: link with concept hierarchy</owl:versionInfo>
+		<owl:versionInfo>TODO: rename to ReductionFeature</owl:versionInfo>
+		<owl:versionInfo>merged with http://purl.org/olia/mte/multext-east.owl#AdjectiveFormation, http://purl.org/olia/mte/multext-east.owl#ReductionFeature: reduced vs. full inflection</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasStrength"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonreducedInflection">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#CompoundAdjective</owl:versionInfo>
+		<rdfs:comment>Nonreduced adjective inflection of Slavic languages, e.g., Czech nejubo&#382;ej&#353;&#237;mi/uboh&#253;, nejvysp&#283;lej&#353;&#237;ch/vysp&#283;l&#253;, nejvy&#353;&#353;&#237;ch/vysok&#253;, nejvzne&#353;en&#283;j&#353;&#237;mu/vzne&#353;en&#253;, nejv&#225;&#382;n&#283;j&#353;&#237;mu/v&#225;&#382;n&#253;, nejv&#253;znamn&#283;j&#353;&#237;ch/v&#253;znamn&#253;, nejv&#253;znamn&#283;j&#353;&#237;mi/v&#253;znamn&#253;, nejv&#253;znamn&#283;j&#353;&#237;mu/v&#253;znamn&#253;, nejv&#283;t&#353;&#237;mi/velk&#253; (http://purl.org/olia/mte/multext-east.owl#CompoundAdjective)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#StrengthFeature"/>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ReducedInflection">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#NominalAdjective</owl:versionInfo>
+		<rdfs:comment>Reduced adjective inflection of Slavic languages, e.g., Czech e.g., brillsk&#225;/brillsk&#253;, nezn&#225;mo/nezn&#225;m&#253;, samo/s&#225;m, samy/s&#225;m (http://purl.org/olia/mte/multext-east.owl#NominalAdjective)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#StrengthFeature"/>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Weak">
+		<owl:versionInfo>EAGLES</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#StrengthFeature"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Weak pronouns are helping pronouns many languages have for easily 
+			explaining the possessive status of something, to which something 
+			belongs. Many languages have different ways to express this. For 
+			example, English has distinctive words for all of these: "my", "mine". 
+			Germanic languages and Romance languages have the same, but inflect 
+			them for gender: (Spanish example) "mío", "mía", "míos" and "mías" 
+			("mine", in the masculine singular, feminine singular, masculine plural,
+			and feminine plural form, respectively). 
+			(http://en.wikipedia.org/wiki/Weak_pronoun  20.11.06)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Strong">
+		<owl:versionInfo>EAGLES</owl:versionInfo>
+		<owl:versionInfo>TODO: rename to StrongPronoun</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Strong pronouns are different from the weak pronouns (cf.  StrengthFeature:Weak)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#StrengthFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+
+
+
 <!-- ======================================================
      ||                    PROPERTIES                    ||
      ====================================================== -->
@@ -380,6 +592,35 @@
 </rdfs:range>
   </owl:ObjectProperty>
 
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasStrength">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+		<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#StrengthFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasStrength"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasInflectionType">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasInflectionType"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+
   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasReduplicationType">
     <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
 	      <owl:versionInfo>cf. http://www.isocat.org/datcat/DC-2240</owl:versionInfo>
@@ -395,6 +636,33 @@
 		</owl:Class>
 </rdfs:range>
   </owl:ObjectProperty>
+
+<!-- from olia-top.owl -->
+
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#StrengthFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphologicalFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#ReduplicationTypeFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphologicalFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphologicalFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphologicalFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalCategory">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalProcess">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
 
 
   </rdf:RDF>

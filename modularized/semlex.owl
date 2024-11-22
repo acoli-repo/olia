@@ -1058,6 +1058,35 @@ Words such as fully and completely are absolutes and do not receive -EXT.
 		<rdfs:subClassOf rdf:resource="#ConditionalModality"/>
 	</owl:Class>
 
+	<!-- PolarityFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPolarity"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Negation">
+		<rdfs:label>negative</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1839</rdfs:isDefinedBy>
+      <rdfs:comment>denotes the negation or the absence (http://www.isocat.org/datcat/DC-1839)
+		http://purl.org/olia/mte/multext-east.owl#Negated: Negative=&quot;yes&quot; encodes negative verbal word-forms in Slavic languages and Estonian. (MTE v4) 
+    	In Slovak, for example, verbs form negative by prefix &#39;ne-&#39;, with the exception of the verb &quot;by&#357;&quot; (E. &quot;to be&quot;) which forms the negative in indicative by using separate particle &quot;nie&quot;, e.g. &quot;nie je&quot; (is not). Here, Slovak &quot;je&quot; would be marked as negative, despite having positive form. In Resian, negative is always marked as &#39;n&#39; except for two verbs: &#39;n&#239;man&#39; / not to have, &#39;n&#239;si&#39; / not to be. (MTE v4)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature"/>
+		</rdfs:subClassOf>
+    </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonNegated">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#NonNegated</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>Non-negated verbs carry no morphological marks of negation. In Resian, negative is always marked as &#39;no&#39; except for two verbs: &#39;n&#239;man&#39; / not to have, &#39;n&#239;si&#39; / not to be. In Slovak, verbs form negative by prefix &#39;ne-&#39;, with the exception of the verb &quot;by&#357;&quot; (E. &quot;to be&quot;) which forms the negative in indicative by using separate particle &quot;nie&quot;, e.g. &quot;nie je&quot; (is not). Here, &quot;je&quot; would be marked as negative, despite having positive form. (MTE v4, http://purl.org/olia/mte/multext-east.owl#NonNegated)</rdfs:comment>
+	</owl:Class>
+
+
+
 <!-- ======================================================
      ||                    PROPERTIES                    ||
      ====================================================== -->
@@ -1076,6 +1105,19 @@ Words such as fully and completely are absolutes and do not receive -EXT.
     </rdfs:range>
   </owl:ObjectProperty>
 
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasPolarity">
+    <rdfs:range>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPolarity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+    </rdfs:range>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
 
 
 <!-- duplicated from olia-top -->

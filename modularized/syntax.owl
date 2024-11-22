@@ -1484,11 +1484,1145 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 	</owl:equivalentClass>
 	</owl:Class> 
 
+
+    <!-- MovementFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MovementFeature">
+		<owl:versionInfo>
+			2016/08/29 introduced to account for raising and control features in lexinfo
+		</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Control">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MovementFeature"/>
+		<rdfs:comment xml:lang="en">Control indicates how a an argument from a main clause will be utilized in a subclause. This class includes both control structures and raising structures (http://www.lexinfo.net/ontology/2.0/lexinfo#Control)</rdfs:comment>
+		<owl:versionInfo>From http://www.lexinfo.net/ontology/2.0/lexinfo#Control. But note that we regard Control as a feature of syntactic units (either verbs [=> control/raising] or arguments [=> raisable argument], not as a subclass of Frame, this reflects a different understanding of "Frame", in OLiA, Frames are semantic units, in lexinfo, they seem to be syntactic patterns, in other resources, e.g., VerbNet, both aspects are combined.</owl:versionInfo>
+	</owl:Class>	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ArbitraryControl">
+		<owl:versionInfo>http://www.lexinfo.net/ontology/2.0/lexinfo#ArbitraryControl</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Control"/>
+		<rdfs:comment xml:lang="en">Indicates either the subject or object of the main clause may be the omitted argument of the subclause (http://www.lexinfo.net/ontology/2.0/lexinfo#ArbitraryControl)</rdfs:comment>
+	</owl:Class>	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ObjectControl">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Control"/>
+		<rdfs:comment xml:lang="en">Indicates the object of the main clause is also the (omitted) object of the subclause (http://www.lexinfo.net/ontology/2.0/lexinfo#ObjectControl)</rdfs:comment>
+		<owl:versionInfo>http://www.lexinfo.net/ontology/2.0/lexinfo#ObjectControl</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubjectControl">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Control"/>
+		<rdfs:comment xml:lang="en">Indicates the subject of the main clause is the (omitted) subject of the subclause (http://www.lexinfo.net/ontology/2.0/lexinfo#SubjectControl)</rdfs:comment>
+		<owl:versionInfo>http://www.lexinfo.net/ontology/2.0/lexinfo#SubjectControl</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RaisingSubject">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Control"/>
+		<rdfs:comment xml:lang="en">Indicates the syntactic subject of the main clause is in fact the subject of the subclause. The main clause should then be interpreted as being impersonal. (http://www.lexinfo.net/ontology/2.0/lexinfo#RaisingSubject)</rdfs:comment>
+		<owl:versionInfo>http://www.lexinfo.net/ontology/2.0/lexinfo#RaisingSubject</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Raising">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MovementFeature"/>
+		<rdfs:comment xml:lang="en">Control indicates how a an argument from a main clause will be utilized in a subclause. Control includes both control structures and raising structures of verbs/clauses (see Control). As opposed to this, the OLiA Raising class pertains to raisable/raised arguments, cf. http://www.lexinfo.net/ontology/2.0/lexinfo#RaisableArgument</rdfs:comment>
+		<owl:versionInfo>http://www.lexinfo.net/ontology/2.0/lexinfo#RaisableArgument</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RaisableArgument">
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Raising"/>
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<owl:versionInfo>from http://lemon-model.net/lemon#RaisableArgument, deprecated because this is just a shorthand for Raising and SyntacticArgument</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RaisableSubject">
+		<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Raising"/>
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<owl:versionInfo>from http://lemon-model.net/lemon#RaisableSubject, deprecated because this is just a shorthand for Raising and SyntacticSubject</owl:versionInfo>
+	</owl:Class>
+	
+	<!-- SyntacticRole -->	
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole">
+		<owl:versionInfo>
+			2010/04/08 merged with EAGLES NPFunction
+			"NPFunction is an additional optional attribute for adjectives. 
+			It subsumes the values HeadFunction, Postmodifying and Premodifying." 
+			(http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1a  20.11.06)
+		</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Head">
+		<owl:versionInfo>TIGER edge label HD, definition according to Penn Treebank Bracketing Guidelines (Santorini 1991)</owl:versionInfo>
+		<rdfs:comment>
+		Heads are single words that function as the nucleus of a phrase. For instance, the head of the noun
+phrase John’s book is book. Book is also the head of the more complex noun phrase that interesting book
+that you were telling me about the other day. The head of the verb phrase telling me about the other day is
+telling. The head of a prepositional phrase is the preposition.
+(Santorini 1991)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment>TIGER edge label HD</rdfs:comment>
+	</owl:Class>	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Predicate">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			The predicate is the relation between the Clause and a portion of a  clause, excluding the subject, 
+			that expresses something about the subject (Crystal 1980: 280; Hartmann and Stork 1972: 182; Pei and
+			Gaynor 1954: 173; Pike and Pike 1982: 40; Mish et al. 1990: 926; Crystal 1985: 241-242).
+			(http://purl.org/linguistics/gold/predicate)
+		</rdfs:comment>
+		<owl:versionInfo>adapted from http://purl.org/linguistics/gold/predicate</owl:versionInfo>
+		<owl:versionInfo>
+				Note that most predicates are also (semantic) Heads of the respective clause 
+				(cf. van Valin and Lapolla 1997, who, however, use the term "nucleus").
+				A syntax-centered approach on heads may, however, assign the label Head to an
+				auxiliary. As "head" is ambiguous between a syntactic function (finite verb) and
+				a semantic function (predicate), a direct association is avoided here.
+		</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticComplement">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			A complement is a phrase that fits a particular slot in the syntax 
+			requirements of a parent phrase 
+			(http://en.wikipedia.org/wiki/Complement_%28linguistics%29).
+			An additional (morpho)syntactic constituent that may be subcategorized 
+			for by the predicate.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticComplement)
+		</rdfs:comment>
+		<rdfs:comment>
+The complement is attached inside the VP, NP, ADJP, or PP. 
+
+Verbs:
+The term “complement” as it is used here refers to: 
+1.	internal arguments such as NP objects, S and SBAR with no adverbial dash tags (including some if-clauses, as in I wonder if the Cubs are winning), and quoted constituents (including SINV and FRAG)
+2.	the passive logical-subject by-phrase 
+3.	VP 
+4.	constituents tagged -BNF, -CLR, -DTV, -PRD, and -PUT
+	
+	  (S (NP-SBJ-1 the guide)
+	     (VP was
+	         (VP given
+	             (NP *-1)
+	             (PP-DTV to
+	                     (NP Arthur))
+	             (PP by
+	                 (NP-LGS Ford)))))
+	
+	
+
+Nouns: 
+Since it is difficult to consistently annotate an argument/adjunct distinction, all PP modifiers of nouns are Chomsky-adjoined to the NP: 
+	
+	  (NP (NP a teacher)
+	      (PP of
+	          (NP chemistry)))
+
+Adjectives: 
+Except in comparatives, any modifier following an adjective is bracketed as a complement. 
+	
+	  (ADJP eager/likely/ready
+	        (S to believe anything))
+	
+Prepositions: 
+The NP or S complement of a preposition is placed inside the PP.
+
+(Bies et al. 1995)
+		</rdfs:comment>
+		<owl:versionInfo>according to the PennTreebank definition (Bies et al. 1995), arguments are complements</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticAdjunct">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			Prototypically, an optional (morpho)syntactic constituent.
+
+			'Satellites are not ... required by the predicate; they give 
+			optional further information pertaining to additional features of the 
+			SoA ..., the location of the SoA ..., the speaker's attitude towards 
+			or evaluation of the propositional content ..., or the character of 
+			the speech act...' (Dik, 1997:87)
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticAdjunct)
+			
+			The category adjunct (ADJ) is assigned to those constituents that appear as optional additions, 
+			be it to the main verb or to a given noun. This means that they can be left out freely without 
+			a change in grammaticality or a significant change in meaning.
+			In  "John called Mary (from school) (with his cell phone)"  the optional additions "from school" 
+			and "with his cell phone" are such optional additions that can be left out freely.
+			Adjuncts are generally used to convey additional information about the time, place, manner, or 
+			cause of the event or situation described by the clause (see below). That is, they restrict the 
+			class of events/  situations described by the clause to a subset. If required the category ADJ 
+			can be split up into semantic sub-categories, that are annotated in layer semantic roles (time, 
+			location, etc.).
+			(Dipper et al. 2007, §4.3.3)
+		</rdfs:comment>
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticAdjunct</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Modifier">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment>added in conformance with TIGER</rdfs:comment>
+		<owl:versionInfo>added in conformance with TIGER, equivalent to SyntacticAdjunct, cf. definition by Dipper et al. (2007) there</owl:versionInfo>
+		<owl:equivalentClass>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticAdjunct"/>
+		</owl:equivalentClass>
+		<owl:equivalentClass>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Modifier"/>
+		</owl:equivalentClass>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Qualifier">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1373"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1373</owl:versionInfo>
+      <rdfs:comment>
+                            Also called MODIFIER : A word or phrase that qualifies the sense of another word; for example, the noun alarm is a modifier of clock in "alarm clock" and the phrase every day is an adverbial modifier of walks in "he walks every day"
+                                (www.wordreference.com/English/definition.asp?en=modifier; http://www.isocat.org/datcat/DC-1373)
+                            </rdfs:comment>
+      <rdfs:label>Qualifier</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Modifier"/>
+		</rdfs:subClassOf>
+   </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Conjunct">
+		<owl:versionInfo>TIGER edge label CJ</owl:versionInfo>
+		<rdfs:comment>TIGER edge label CJ</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticArgument">
+		<owl:versionInfo>
+			added to account for TIGER edge labels with syntactic function
+		</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			An inherent (morpho)syntactic constituent subcategorized for by a predicate.&lt;br/&gt;
+			'Arguments are those terms which are required by some predicate in 
+			order to form a complete nuclear predication. They are essential to 
+			the integrity of the SoA designated by the predicate frame. If we 
+			leave them out, the property/relation designated by the predicate is 
+			not fulfilled or satisfied.' (Dik, 1997:86f)&lt;br/&gt;
+			An argument can be a controller in an agreement relation.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticArgument)&lt;br/&gt;
+			
+			The category ARG is assigned to those syntactic constituents that appear as obligatory complements 
+			to the main verb. This means that they cannot be left out without a change in grammaticality or a 
+			significant change in meaning.
+			(Dipper et al. 2007, §4.3.3)
+		</rdfs:comment>
+	</owl:Class>
+
+	<!-- SyntacticRole/Predicate and SyntacticRole/Head -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NominalPredicate">
+		<rdfs:comment>
+			A nominal predicate (noun or adjective), either with or without copula. 
+			The term nominal predicate may be used for the complements of further 
+			copulative verbs (cf. small clauses), e.g. "consider", "call", etc.
+			(Dipper et al. 2007, §4.3.5)
+		</rdfs:comment>
+		<owl:versionInfo>added in conformance with SFB632 annotation guidelines (Dipper et al., 2007)</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Predicate"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbalPredicate">
+		<rdfs:comment>
+			The predicate of the clause is represented by a verbal lexeme. (Ch. Chiarcos)
+		</rdfs:comment>
+		<owl:versionInfo>introduced for non-nominal predicates, normally referred to as ``predicate'' (Ch. Chiarcos)</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Predicate"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbalHead">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Head"/>
+		</rdfs:subClassOf>
+		<owl:equivalentClass>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbalHead"/>
+		</owl:equivalentClass>
+		<rdfs:comment>
+			A Verb (V) at the syntax layer is either a lexical (VLEX) or a copula verb (VCOP) at the POS layer. 
+			Modal verbs and auxiliaries are not annotated in the constituent structure. The verb and its arguments 
+			are placed at the same CSn layer. Raising and control verbs are treated like ordinary verbs. 
+			They subcategorize for a sentential complement.
+			(Dipper et al 2007, §3.3.3)
+		</rdfs:comment>
+		<owl:versionInfo>added in conformance with the SFB632 Annotation Guidelines (Dipper et al. 2007)</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#HeadOfNP">
+		<owl:versionInfo>EAGLES NPFunction="head"</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Head"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			The HeadFunction is a function of an adjective or participle that can serve as the focus of the phrase.
+		</rdfs:comment>
+	</owl:Class>
+
+	<!-- SyntacticRole/SyntacticArgument -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticSubject">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticSubject</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+</rdfs:subClassOf>
+		<rdfs:comment>	
+        The subject of a sentence is one of the two main parts of a sentence, 
+        the other being the predicate. Providing an adequate definition of the 
+        notion of a subject is notoriously difficult, and depends on a range 
+        of grammatical properties that may vary from language to language. For 
+        this reason, many current grammatical theories avoid using the term, 
+        except for purely descriptive purposes, or define it in terms of 
+        occupying a particular position in the clause. The term subject refers 
+        to the grammatical function an expression may have in relation to 
+        other expressions in a sentence, and it should be distinguished from 
+        parts of speech, which classify expressions independently of their 
+        relations to other constituents of a sentence.
+
+        The subject of a verb is the argument which generally refers to the 
+        origin of the action or the undergoer of the state shown by the verb. 
+        However, this definition depends on the particular language under 
+        consideration. In languages where a passive voice exists, the subject 
+        of a passive verb may be the target or result of the action. This is a 
+        semantic definition. (http://en.wikipedia.org/wiki/Subject_(grammar)).
+
+		(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticSubject)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#TransitiveSubject">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#A</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			First argument of a transitive or ditransitive verb.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#A)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#IntransitiveSubject">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#S</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticSubject"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			Intransitive argument (S), single argument of an intransitive verb or 
+			only argument in a one-place predicate (frame). 
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#S)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticObject">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticObject</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticArgument"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			In linguistics, the object of a transitive verb is one of its core 
+			arguments, which generally represents the target of the verb's action or 
+			the undergoer of its effects. In more general terms, an object is a 
+			patient.
+
+			Verbs with no object (as in the sentence "I run") are called 
+			intransitive verbs. Those which do take objects are called transitive 
+			verbs. Transitive verbs which take only one object are known as 
+			monotransitive. Ditransitive verbs have two objects, a patient and a 
+			recipient. (http://en.wikipedia.org/wiki/Object_%28grammar%29).
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#syntacticObject)
+			
+			An object, traditionally defined, is either a direct object or an indirect object. 
+			An object, in some usages, is any  grammatical relation other than subject 
+			(Crystal 1985: 211; Hartmann and Stork 1972: 155-156; Mish et al. 1990: 814, Comrie 1989: 66).
+			(http://purl.org/linguistics/gold/object)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PrepositionalObject">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticObject"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+			>Prepositional object</rdfs:comment>
+		<owl:versionInfo>Added in conformance with SFB632 annotation guidelines (Dipper et al. 2007, §4.3.4).
+			Note that we include postpositional objects under this term, as well, so a more adequate term would be adpositional object.
+		</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FacultativePrepositionalObject">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PrepositionalObject"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+			>facultative (i.e. optional) prepositional object, e.g., passivized subject (von-phrase)</rdfs:comment>
+		<owl:versionInfo>TüBa-D/Z edge label FOPP</owl:versionInfo>
+	</owl:Class>
+
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#IndirectObject">
+		<owl:versionInfo>
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#R,
+			http://www.isocat.org/datcat/DC-1310
+		</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticObject"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			 An indirect object is a grammatical relation that is one means of    
+			 expressing the semantic role of goal and other similar roles. It is 
+			 proposed for languages in    which the role is distinct from the 
+			 direct object and the oblique object on the basis of multiple    
+			 independent syntactic or morphological criteria, such as the following: 
+				(i) Having a particular case marking, commonly dative 
+				(ii) Governing an agreement affix on the verb, such as person or number 
+				(iii) Being distinct from oblique relations in that it may be relativized 
+			 A noun, pronoun, or    noun phrase indicating the recipient or beneficiary of the action of a verb and its direct object   
+			 (http://www.isocat.org/datcat/DC-1310)
+			 
+			 Third argument of a ditransitive verb. Ditransitive recipient (Siewierska 2004:57).
+			 (http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#R)
+		</rdfs:comment>
+	</owl:Class>	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectObject">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/directObject,
+			http://www.isocat.org/datcat/DC-1274
+		</owl:versionInfo>
+		<rdfs:comment>
+		A direct object is a grammatical relation that exhibits a combination of certain 
+		independent syntactic properties, such as the following:  the usual grammatical 
+		characteristics of the patient of typically  transitive verbs; particular case 
+		marking; a particular clause  position; the conditioning of an agreement  affix 
+		on the verb; the capability of becoming the clause subject in  passivization; the
+		capability of reflexivization. The identification of the direct object relation 
+		may be further confirmed by finding significant overlap with similar direct object 
+		relations previously established in other languages. This may be done by analyzing 
+		correspondence between  translation equivalents (Crystal 1985: 94; Hartmann and 
+		Stork 1972: 155; Mish et al. 1990: 358; Comrie 1989: 66; Andrews, Avery 1985: 
+		68,120,126; Comrie 1985a: 337).
+		(http://purl.org/linguistics/gold/directObject)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#SyntacticObject"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#TransitiveObject">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#P</owl:versionInfo>
+		<rdfs:comment>
+			Second argument of a transitive verb, transitive object (P)
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#P)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectObject"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DitransitiveTheme">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#T</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectObject"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			Ditransitive theme (T) (Siewierska 2004:57).
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#T)
+		</rdfs:comment>
+	</owl:Class>
+
+	<!-- SyntacticRole/Modifier -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RhetoricalModifier">
+		<rdfs:comment>added in conformance with TIGER</rdfs:comment>
+		<owl:versionInfo>added in conformance with TIGER</owl:versionInfo>
+		<owl:versionInfo>TODO: check definition</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Modifier"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdverbialModifier">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#adverbialModifier</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Modifier"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			An adverbial modifier modifies a verb.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#adverbialModifier)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent">
+		<rdfs:label>adnominal constituent</rdfs:label>
+		<rdfs:label>adnominal modifier</rdfs:label>
+		<rdfs:label>nominal modifier</rdfs:label>
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#nominalModifier</owl:versionInfo>
+		<owl:versionInfo>TODO: rename to AdnominalModifier</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Modifier"/>
+		</rdfs:subClassOf>
+		<rdfs:comment xml:lang="en">
+			Each element in a construction is called adnominal that modifies a 
+			nominal, such as, all types of attributives, such as adjectives, possessives,
+			prepositional attributes and relative clauses, such as the beautiful 
+			house; the neighbour’s house, the house at the sea, the house, that I want.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#nominalModifier)
+		</rdfs:comment>
+		<rdfs:comment xml:lang="de">
+			Adnominal wird jedes Element in einer Konstruktion bezeichnet, das der 
+			Modifizierung eines Nomens dient, d.h. alle Formen von Attributen wie 
+			Adjektive, Genitivattribute, PrÃ¤positionalattribute, RelativsÃ¤tze. Zum 
+			Beispiel, das schÃ¶ne Haus; das Haus des Nachbars; das Haus am See; das 
+			Haus, das ich mir schon immer gewÃ¼nscht habe. 
+			(http://www.uni-trier.de/uni/fb2/ldv/ldv_wiki/index.php/Adnominal)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PostNominalModifier">
+		<owl:versionInfo>EAGLES, NPFunction="postmodifying", http://www.isocat.org/datcat/DC-1945 (without restriction on nominal heads ?)</owl:versionInfo>
+		      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1945"/-->
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Postmodifying is a function of an adjective that can modify, describe, or qualify a preceding noun.
+			(EAGLES)
+			modificationType: Refers to the prenominal or postnominal positions of determiners which distinguish different forms. (http://www.isocat.org/datcat/DC-1931)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PreNominalModifier">
+		<!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1943"/-->
+		<owl:versionInfo>EAGLES, NPFunction="premodifying", cf. http://www.isocat.org/datcat/DC-1943 (preModifier, but without reference to nominal heads)</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Premodifying is a function of an adjective that can modify a following noun.
+			(EAGLES)
+			modificationType: Refers to the prenominal or postnominal positions of determiners which distinguish different forms. (http://www.isocat.org/datcat/DC-1931)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#GenitiveAttribute">
+		<owl:versionInfo>added in conformance to the TIGER scheme</owl:versionInfo>
+		<owl:versionInfo>TODO: check definition</owl:versionInfo>
+		<rdfs:comment>added in conformance to the TIGER scheme</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MeasureArgument">
+		<owl:versionInfo>added in conformance with TIGER</owl:versionInfo>
+		<owl:versionInfo>TODO: check definition</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
+</rdfs:subClassOf>
+		<rdfs:comment>added in conformance with TIGER</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DemonstrativeModifier">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#demonstrativeModifier</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			A nominal is modified by a demonstrative.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#demonstrativeModifier)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdjectivalModifier">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#adjectivalModifier</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			A nominal is modified by an adjective.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#adjectivalModifier)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NumeralModifier">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#numeralModifier</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdnominalConstituent"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			A nominal is modified by a numeral.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#numeralModifier)
+		</rdfs:comment>
+	</owl:Class>
+
+	<!-- VoideFeature -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasVoice"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+		<owl:versionInfo>hierarchically restructured</owl:versionInfo>
+	</owl:Class>
+
+   <owl:Class rdf:ID="CausativeVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3847</rdfs:isDefinedBy>
+      <rdfs:comment>voice where the subject causes someone or something else to do or be something</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	
+   <owl:Class rdf:ID="AntiCausativeVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3080</rdfs:isDefinedBy>
+      <rdfs:comment>An intransitive verb is derived from a basically
+                        transitive one with the direct object of the transitive verb corresponding
+                        to the subject of the intransitive [Siewierska 1988: 267].</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+
+	
+	 <owl:Class rdf:ID="CircumstantialVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3848</rdfs:isDefinedBy>
+      <rdfs:comment>voice that promotes an oblique argument of a verb to the role of subject</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="MediopassiveVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3850</rdfs:isDefinedBy>
+      <rdfs:comment>voice which subsumes both the middle voice and the passive voice</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	  </rdfs:subClassOf>
+	  <owl:equivalentClass>
+		<owl:Class>
+			<owl:unionOf rdf:parseType="Collection">
+				<owl:Class rdf:about="#MiddleVoice"/>
+				<owl:Class rdf:about="#PassiveVoice"/>
+			</owl:unionOf>
+		</owl:Class>
+	</owl:equivalentClass>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="PseudopassiveVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3851</rdfs:isDefinedBy>
+      <rdfs:comment>voice in a specify passive construction (different from the regular passive) where the patient is the syntactic subject and agent is the syntactic object</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="#PassiveVoice"/>
+	</owl:Class>
+
+
+
+   <owl:Class rdf:ID="ApplicativeVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3846</rdfs:isDefinedBy>
+      <rdfs:comment>voice which promotes an oblique argument of a verb to the core patient argument and indicates the oblique role within the meaning of the verb</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	 </owl:Class>
+	<owl:Class rdf:ID="AdjutativeVoice">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3844</rdfs:isDefinedBy>
+      <rdfs:comment>voice for a construction where the subject of the verb is not an agent of the action denoted by the verb but is assisting an unstated agent in performing the action</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActiveVoice">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#activeVoice</owl:versionInfo>
+		<rdfs:comment>
+			When the subject is the agent or actor of the verb, 
+			the verb is in the active voice. 
+			(http://en.wikipedia.org/wiki/Grammatical_voice  17.11.06)
+			
+			Associated with transitivity, when the action is performed by an agent 
+			(subject) on another participant (object), or with intransitivity 
+			(McIntosh 1984:108). Refers to the category of underived verb forms 
+			associated with the basic diathesis: Diathesis=D0:(X=SUBabs/nom) (Y=DIROBacc)
+			(Shibatani 1995:7)
+			(http://purl.org/linguistics/gold/Active)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice">
+		<rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3839</rdfs:isDefinedBy>
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#passiveVoice</owl:versionInfo>
+		<rdfs:comment>
+			When the subject is the patient, target or undergoer of the action, 
+			it is said to be in the passive voice. 
+			(http://en.wikipedia.org/wiki/Grammatical_voice  17.11.06)
+			
+			When the subject is the agent or actor of the verb, the verb is said 
+			to be in the active voice. When the subject is the patient, target or
+			undergoer of the action, it is said to be in the passive voice.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#passiveVoice)
+			
+			Passive is often not clearly distinguished from Inverse: According to Givón (1988),
+			Inverse is characterized by obligatory realization of the suppressed agent,
+			whereas the realization of the agent in a passive construction is optional 
+			(or impossible).
+			This restrictive definition of passive does, however, conflict with the 
+			use of the term "passive" for European languages. Then, English and German 
+			"Passive" would be Inverses. Therefore, Inverse is a subconcept of Passive here.
+			Givón's original Passive is NonInversePassive.
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MiddleVoice">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#middleVoice</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			A verb that appears active but expresses a passive action may be called middle voice, e.g. 
+			'The chicken cooked in the oven'. In Greek the middle voice is often reflexive expressing a
+			causative reading or that the action is performed for one's own benefit.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#middleVoice)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ReflexiveVoice">
+		<owl:versionInfo>
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#reflexiveVoice
+		</owl:versionInfo>
+		<rdfs:comment>
+			The reflexive voice is a grammatical voice in which the subject is both the agent and the patient or recipient.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#reflexiveVoice)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Antipassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/Antipassive</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Derives an intransitive verb from a transitive stem whereby the original agent (only) 
+			is cross-referrenced by the absolutive markers on the verb and the original patient, 
+			if it appears, is in an oblique phrase. (England 1983:110)
+			(http://purl.org/linguistics/gold/Antipassive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	
+	<!-- VoiceFeature/MiddleVoice -->
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#ReflexiveMiddle">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/ReflexiveMiddle,
+			but the definition given there ("Subjects perform action to self")
+			may be oversimplistic as it entails that ReflectiveMiddle
+			is the *same* as Reflexive.
+			In my current understanding, reflexive middle is a middle construction 
+			that makes use of grammatical devices that normally indicate reflexivity,
+			cf. the definition of ReflexivePassive.
+			The definition given below is a generalization that covers the original
+			definition as well.
+		</owl:versionInfo>
+		<owl:versionInfo>TODO: Check Siewierska (1988:257)</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#MiddleVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			Reflexive middle makes use of 
+			grammatical devices that normally indicate reflexivity.
+			(Ch. Chiarcos)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DeponentMiddle">
+		<owl:versionInfo>http://purl.org/linguistics/gold/DeponentMiddle</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#MiddleVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			Action denotes physical/mental disposition of subject. (Siewierska 1988:257)
+			(http://purl.org/linguistics/gold/DeponentMiddle)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ReciprocalMiddle">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/ReciprocalMiddle
+		</owl:versionInfo>
+		<rdfs:comment>
+			Referents of plural subject do action to one another. (Siewierska 1988:257)
+			(http://purl.org/linguistics/gold/ReciprocalMiddle)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#MiddleVoice"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PlainMiddle">
+		<owl:versionInfo>http://purl.org/linguistics/gold/PlainMiddle</owl:versionInfo>
+		<rdfs:comment>
+			Results of action occur to subject. (Siewierska 1988:257)
+			(http://purl.org/linguistics/gold/PlainMiddle)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#MiddleVoice"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NucleonicMiddle">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/NucleonicMiddle
+		</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#MiddleVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			Object of action belongs to. Moves into, or moves from sphere of subject.
+			(Siewierska 1988:257)
+			(http://purl.org/linguistics/gold/NucleonicMiddle)
+		</rdfs:comment>
+	</owl:Class>
+
+	<!-- VoiceFeature/Passive -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ReflexivePassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/ReflexivePassive</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			A Passive construction which contains reflexive markings. (Siewierska 1988:257)
+			(http://purl.org/linguistics/gold/ReflexivePassive)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PersonalPassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/PersonalPassive</owl:versionInfo>
+		<rdfs:comment>
+			A Passive in which the argument mapped to Object in a basic 
+			structural configuration assumes the Subject relation in a 
+			corresponding nonbasic configuration. (Klaiman 1991:23)
+			(http://purl.org/linguistics/gold/PersonalPassive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AgentDeletionPassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/AgentDeletionPassive</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			The object of the active retains its old case-marking in the passive, 
+			the subject of the active cannot appear in the passive clause, and the 
+			passive tends to be semantically active. (Givon 1988:419)
+			(http://purl.org/linguistics/gold/AgentDeletionPassive)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InverseVoice">
+		<owl:versionInfo>http://purl.org/linguistics/gold/InverseVoice</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Signals when actions proceed from ontologically less salient to more 
+			salient participants (Klaiman 1991:32)
+			(http://purl.org/linguistics/gold/InverseVoice)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonInversePassive">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/Passive
+			
+			Unlike the GOLD definition, Passive is often not clearly distinguished from Inverse: According to Givón (1988),
+			Inverse is characterized by obligatory realization of the suppressed agent,
+			whereas the realization of the agent in a passive construction is optional 
+			(or impossible).
+			This restrictive definition of passive does, however, conflict with the 
+			use of the term "passive" for European languages. Then, English and German 
+			"Passive" would be Inverses. Therefore, Inverse is a subconcept of Passive here.
+			Givón's original Passive is NonInversePassive.
+		</owl:versionInfo>
+		<rdfs:comment>
+			An agent-demoting voice construction where the realization of the demoted agent
+			is not obligatory (against Inverse). In terminological systems that distinguish
+			"InverseVoice" from "Passive" (e.g., Givon, 1988), this is the "Passive" concept. 
+			(Ch. Chiarcos)
+			
+			Associated with actions performed on the subject by an unspecified agent.
+			(McIntosh 1984:108) Refers to the category of verb forms, typically identifies 
+			with a specific morphological marking, that encode the derived diatheses in 
+			which the agent role is not linked with a subject noun phrase (Shibatani 1995:7)
+			(http://purl.org/linguistics/gold/Passive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+		</rdfs:subClassOf>
+		<owl:disjointWith>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#InverseVoice"/>
+		</owl:disjointWith>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PromotionalInverseVoice">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/PromotionalInverse
+		</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Involves promotion of the topical proximate-patient to subjecthood. (Givon 1994:24)
+			(http://purl.org/linguistics/gold/PromotionalInverse)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#InverseVoice"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ImpersonalPassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/ImpersonalPassive</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A Passive that alters the mapping of a nominal to the Subject 
+			relation in a basic intransitive structure (Klaiman 1991:23)
+			(http://purl.org/linguistics/gold/ImpersonalPassive)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#LocativePassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/LocativePassive</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			An oblique locative nominal assumes the subject relation.
+			(Klaiman 1991:17)
+			(http://purl.org/linguistics/gold/LocativePassive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PragmaticInverseVoice">
+		<owl:versionInfo>http://purl.org/linguistics/gold/PragmaticInverse</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#InverseVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			If the agent is more topical than the patient, the direct-active clause 
+			is used.  If norm is reversed and the patient is more topical, the inverse 
+			clause is used. (Givon 1994:23)
+			(http://purl.org/linguistics/gold/PragmaticInverse)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NecessitativePassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/NecessitativePassive</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A passive in Irish in which the preposition "with" is used, and a semantic 
+			meaning of necessity is added. (Noonan 1994:280)
+			(http://purl.org/linguistics/gold/NecessitativePassive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ObliquePassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/ObliquePassive</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A Passive in which a basic Oblique nominal assumes the Subject relation 
+			in a corresponding nonbasic configuration.  Can include locative passives, 
+			benefactive passives and instrumental passives. (Klaiman 1991:23)
+			(http://purl.org/linguistics/gold/ObliquePassive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonpromotionalInverseVoice">
+		<owl:versionInfo>http://purl.org/linguistics/gold/NonpromotionalInverse</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#InverseVoice"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Involves demotion of the non-topical obviate-agent from subjecthood. (Givon 1994:24)
+			(http://purl.org/linguistics/gold/NonpromotionalInverse)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SemanticInverseVoice">
+		<owl:versionInfo>http://purl.org/linguistics/gold/SemanticInverse</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			If the agent outranks the patient on the relevant generic topic hierarchy, 
+			the direct-active clause is used.  If the relevant norm is reversed and the 
+			patient outranks the agent on the relevant hierarchy, the inverse clause is 
+			used. (Givon 1994:23)
+			(http://purl.org/linguistics/gold/SemanticInverse)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#InverseVoice"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ProgressivePassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/ProgressivePassive</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#PassiveVoice"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A passive in Irish  in which the preposition "at" is used, and a semantic 
+			meaning of progressive tense is found (Noonan 1994:280)
+			(http://purl.org/linguistics/gold/ProgressivePassive)
+		</rdfs:comment>
+	</owl:Class>
+	
+	<!-- VoiceFeature/Antipassive -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AbsolutiveAntipassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/AbsolutiveAntipassive</owl:versionInfo>
+		<rdfs:comment>
+			An Antipassive in which the P or logical object is suppressed 
+			or overtly absent. (Klaiman 1991:232)
+			(http://purl.org/linguistics/gold/AbsolutiveAntipassive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Antipassive"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ReferentialVoice">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/ReferentialVoice,
+			classified as Antipassive here in analogy with ObliquePassive
+		</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			entails assignment of the absolutive to certain kinds of arguments other 
+			than the logical subjects (A) and objects (P), including the dative, 
+			benefactive, malefactive, and possessor.  (Klaiman 1991:239)
+			(http://purl.org/linguistics/gold/ReferentialVoice)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Antipassive"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FocusAntipassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/FocusAntipassive</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Blocks the P or logical object (basic absolutive) nominal from being 
+			assigned Focus salience.  Topic salience is available for assignment 
+			to various arguments, including the P, but Focus salience is always 
+			assigned to A, and is therefore inaccessible to P or any other nominal.
+			(Klaiman 1991:236)
+			(http://purl.org/linguistics/gold/FocusAntipassive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Antipassive"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonabsolutiveAntipassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/NonabsolutiveAntipassive</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			An Antipassive in which the P or logical object is overtly downgraded.  (Klaiman 1991:232)
+			(http://purl.org/linguistics/gold/NonabsolutiveAntipassive)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Antipassive"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#IncorporatingAntipassive">
+		<owl:versionInfo>http://purl.org/linguistics/gold/IncorporatingAntipassive</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Antipassive"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Blocks the P or logical object (basic absolutive) nominal from being assigned Focus salience. 
+			This correlates with the P's morphosyntactic downgrading, whereby it becomes insusceptible to 
+			any informational salience assignment. (Klaiman 1991:236)
+			(http://purl.org/linguistics/gold/IncorporatingAntipassive)
+		</rdfs:comment>
+	</owl:Class>
+
+	<!-- VoiceFeature/Active -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Anticausative">
+		<owl:versionInfo>
+			http://purl.org/linguistics/gold/Anticausative
+			This is a semantic manipulation of the verb frame 
+			(and thus limited to a specific semantic class of verbs)
+			rather than a grammatical device for the manipulation
+			of argument structure, therefore classified as Active here.
+		</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActiveVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			An intransitive verb is derived from a basically transitive one 
+			with the direct object of the transitive verb corresponding to 
+			the subject of the intransitive.
+			(Siewierska 1988:267)
+			(http://purl.org/linguistics/gold/Anticausative)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectVoice">
+		<owl:versionInfo>http://purl.org/linguistics/gold/DirectVoice</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActiveVoice"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Signals that the action proceeds in an ontologically salient way, 
+			i.e. that salience is assigned to nominals based on their referent's 
+			relative real-world capacities to control situations. (Klaiman 1991:32)
+			(http://purl.org/linguistics/gold/DirectVoice)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Causative">
+		<owl:versionInfo>TODO: rename to CausativeVoice</owl:versionInfo>
+		<owl:versionInfo>http://purl.org/linguistics/gold/Causative, cf. Anticausative</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Expressing the causation of an action.
+			(http://purl.org/linguistics/gold/Causative)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActiveVoice"/>
+</rdfs:subClassOf>
+	</owl:Class>
+  
+
+	<!-- Valency -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Atransitive">
+		<owl:versionInfo>Chiarcos</owl:versionInfo>
+		<rdfs:comment>
+			A predicate/verb that takes no argument.
+			English "to rain" is semantically atransitive, hence, an expletive is to be used in "it's raining",
+			cf. van Valin and Lapolla (1997).
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Intransitive">
+		<owl:versionInfo>SUSANNE (Sampson 1995)</owl:versionInfo>
+		<rdfs:comment>
+			A predicate/verb that takes one argument, e.g., English "to go", cf. van Valin and Lapolla (1997).
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Transitive">
+		<owl:versionInfo>SUSANNE (Sampson 1995)</owl:versionInfo>
+		<rdfs:comment>
+			A predicate/verb that takes two arguments, e.g., English "to kiss", cf. van Valin and Lapolla (1997).
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Ditransitive">
+		<owl:versionInfo>SUSANNE (Sampson 1995)</owl:versionInfo>
+		<rdfs:comment>
+			A predicate/verb that takes two arguments, e.g., English "to give", cf. van Valin and Lapolla (1997).
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+
+
 <!-- ======================================================
      ||                    PROPERTIES                    ||
      ====================================================== -->
 
   <!-- Properties -->
+  
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasValency">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasValency"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
   
     <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticFunction">
 			<owl:versionInfo>Bies et al. 1995</owl:versionInfo>
