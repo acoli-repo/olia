@@ -167,7 +167,181 @@
 Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 	</owl:versionInfo>
  </owl:Ontology>  
+  
+  	<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
 
-  	<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>  
+  <!-- ======================================================
+     ||            ORTHOGRAPHIC CATEGORIES               ||
+     ====================================================== -->
+
+	<owl:Class rdf:ID="Script">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1855</rdfs:isDefinedBy>
+      <rdfs:comment>Set of graphic characters used for the written form of one or more languages.</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="Radical">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-296</rdfs:isDefinedBy>
+      <rdfs:comment>A basic identifiable component of every CJKV character, often found on the left side of the character, that sometimes gives a rough indication of meaning and is used for collating lexical and terminological resources. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-296)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+		<rdfs:label>radical</rdfs:label>
+	</owl:Class>
+
+	<owl:Class rdf:ID="Syllable">
+	  <owl:versionInfo>TODO: consider creating an olia:PhonologicalCategory for syllables</owl:versionInfo>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-297</rdfs:isDefinedBy>
+      <rdfs:comment>A unit of spoken language that is next bigger than a speech sound and consists of one or more vowel sounds alone or of a syllabic consonant alone or of either with one or more consonant sounds preceding or following. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-297)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+		<rdfs:label>syllable</rdfs:label>
+	</owl:Class>
+
+	
+		 
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Character">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Space">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2189"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2189</owl:versionInfo>
+      <rdfs:comment>
+                            Empty area between words, lines or columns
+                                (http://www.isocat.org/datcat/DC-2189)
+                            </rdfs:comment>
+      <rdfs:label>space</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#GraphicalSeparator"/>
+</rdfs:subClassOf>
+   </owl:Class>
+   <owl:Class rdf:ID="GraphicalSeparator">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1863</rdfs:isDefinedBy>
+      <rdfs:comment>Character string that appears between two written forms</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Character"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Letter">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1889"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1889</owl:versionInfo>
+      <rdfs:comment>
+                            Letter.
+                                (http://www.isocat.org/datcat/DC-1889)
+                            </rdfs:comment>
+      <rdfs:label>letter</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Character"/>
+</rdfs:subClassOf>
+   </owl:Class>
+   
+   <owl:Class rdf:ID="String">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-2182</rdfs:isDefinedBy>
+      <rdfs:comment>Character string to be interpreted in context</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+		<owl:versionInfo>Introduced as a generalization over numeralRoman which is orthographically defined but not a single character</owl:versionInfo>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="RomanNumeral">
+		<rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1936</rdfs:isDefinedBy>
+		<rdfs:comment>Numeral expressed with roman digits.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Numeral"/>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#String"/>
+	</owl:Class>
+	<owl:Class rdf:ID="DigitNumeral">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1935</rdfs:isDefinedBy>
+      <rdfs:comment>Numeral expressed by Arabic digits.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Numeral"/>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#String"/>
+	  </owl:Class>
+	<owl:Class rdf:ID="LetterNumeral">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1937</rdfs:isDefinedBy>
+      <rdfs:comment>Numeral expressed with letters.</rdfs:comment>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Numeral"/>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#String"/>
+	</owl:Class>
+   
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Diacritic">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Macron">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1327"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1327</owl:versionInfo>
+      <rdfs:comment>
+                            Mark placed over a long vowel to mark quantity.
+                                (www.southwestern.edu/~carlg/Latin_Web/glossary.html; http://www.isocat.org/datcat/DC-1327)
+                            </rdfs:comment>
+      <rdfs:label>macron</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Diacritic"/>
+</rdfs:subClassOf>
+   </owl:Class>
+
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Token">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1403"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1403</owl:versionInfo>
+      <rdfs:comment>
+                            Character string surrounded by separators.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1403)
+                            </rdfs:comment>
+      <rdfs:label>token</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+   </owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Text">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1847"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1847</owl:versionInfo>
+      <rdfs:comment>
+                            Series of sentences expressed in a natural language.
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-1847)
+                            </rdfs:comment>
+      <rdfs:label>text</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#OrthographicEntity"/>
+</rdfs:subClassOf>
+	</owl:Class>
+
+	<!-- ======================================================
+		||           PHONOLOGICAL PROCESSES             ||
+		====================================================== -->
+	
+
+
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Elision">
+		<!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1277"/-->
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-1277</owl:versionInfo>
+		<rdfs:comment>
+			The omission of a syllable or vowel at the beginning or end of a word, esp. when a word ending with a vowel is next to one beginning with a vowel.
+			(www.wordreference.com/English/definition.asp?en=elision; http://www.isocat.org/datcat/DC-1277)
+		</rdfs:comment>
+		<rdfs:label>elision</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PhonologicalProcess"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Apocope">
+		<!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2254"/-->
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-2254</owl:versionInfo>
+		<rdfs:comment>
+			deletion of the final element in a word
+			(http://www.isocat.org/datcat/DC-2254)
+		</rdfs:comment>
+		<rdfs:label>apocopate</rdfs:label>
+		<rdfs:label>apocope</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PhonologicalProcess"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+
 
   </rdf:RDF>

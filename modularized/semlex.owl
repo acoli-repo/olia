@@ -1,0 +1,831 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+<!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF
+    xmlns:dcr="http://www.isocat.org/ns/dcr.rdf#"
+    xmlns="http://purl.org/olia/olia.owl#"
+	xmlns:olia="http://purl.org/olia/olia.owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:olia_system="http://purl.org/olia/system.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:olia_top="http://purl.org/olia/olia-top.owl#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:dct="http://purl.org/dc/terms/"
+  xml:base="http://purl.org/olia/olia.owl">
+  <owl:Ontology rdf:about="http://purl.org/olia/olia.owl">
+	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+	<owl:versionInfo>TODO: simplify {Interrogative,Indefinite,...}/{Cardinal,Multiplicative,...}Quantifier dichothomies
+	In subsequent versions, however, orthographical definitions should be handled with existing ontologies specializing on the description on language, e.g., lexvo
+	check gerundive vs. gerund
+	update GOLD linking
+	</owl:versionInfo>
+	<dct:title>Ontology of Linguistic Annotation (OLiA)</dct:title>
+	<dct:creator rdf:resource="https://orcid.org/0000-0002-4428-029X"/>
+	<dct:contributor rdf:resource="https://github.com/chiarcos"/>
+	<dct:contributor>Angelika Adam</dct:contributor>
+	<dct:contributor>Maria Sukhareva</dct:contributor>
+	<dct:contributor rdf:resource="https://github.com/cfaeth"/>
+	<dct:contributor rdf:resource="https://github.com/kurzum"/>
+	<dct:contributor rdf:resource="https://github.com/v-dimitrova"/>
+	<dct:contributor rdf:resource="https://github.com/A027f3RC7ag8"/>
+	<dct:contributor rdf:resource="https://github.com/max-ionov"/>
+	<rdfs:label>OLiA</rdfs:label>
+	<foaf:homepage rdf:resource="http://purl.org/olia/"/>
+	<dct:publisher rdf:resource="https://github.com/acoli-repo/olia"/>
+    <owl:imports>
+		<owl:Ontology rdf:about="http://purl.org/olia/olia-top.owl"/>
+	</owl:imports>
+    <owl:imports>
+		<owl:Ontology rdf:about="http://purl.org/olia/system.owl"/>
+	</owl:imports>
+    <rdfs:comment>
+	OLiA Reference Model for Morphology, Morphosyntax and Syntax
+	(originally 
+    based on the EAGLES recommendations, with modifications in accordance to 
+    DCR (ISOcat, June 2013), TDS ontology, GOLD v.03, the SFB 632 annotation guidelines, 
+    the MULTEXT-East ontology and various annotation schemes)
+	</rdfs:comment>
+	<owl:versionInfo>
+	Oct. 2005 created by Christian Chiarcos 
+	2006-2008 maintained by Christian Chiarcos and Angelika Adam 
+	since 2008 maintained by Christian Chiarcos
+	10/01/08 updated by Christian Chiarcos 
+	10/01/25 added SyntacticUnit categorization 
+		(from GOLD [http://www.linguistics-ontology.org/gold/2008] and EAGLES recommendations 
+		[http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000]) 
+    	10/01/28 removed all owl:disjointWith and owl:complementOf, these are language-specific
+		and have to be represented in a separate language model.
+    	10/02/17 extended SyntacticUnit categorization in accordance with the TDS ontologies 
+		(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl) Christian 
+    	10/02/18 adopted TIGER edge labels as syntactic role and semantic role
+    	10/03/11 manual restructuring of OWL file begun
+	10/03/23 morphosyntactic classes revised
+	10/03/24 CaseFeature extended by TDS grammaticalCase, GOLD CaseValue and DCR case features
+			DefinitenessFeature checked against TDS definitenessProperty and DCR (missing in GOLD)
+			DegreeFeature checked against DCR (missing in GOLD and TDS)
+			TenseFeature extended in accordance with TDS tenseProperty and GOLD TenseValue (DCR not yet)
+			GenderFeature checked against TDS case and GOLD GenderValue (DCR not yet)
+			SemanticRole extended in accordance with TDS semanticRoleProperty (missing in GOLD, 
+					merged with grammatical case there)
+			PersonFeature checked and extended against GOLD and TDS
+			MoodFeature extended in accordance with TDS modalityProperty and GOLD MoodValue
+			AspectFeature extended in accordance with TDS aspectProperty and GOLD AspectValue
+				Habitual remodelled as Aspect
+	10/03/25 SyntacticRole checked and extended against GOLD syntacticRole (properties) 
+				and DCR syntacticCategory, modifyingRelation
+			VoiceFeature extended against GOLD VoiceValue and TDS grammaticalVoice
+				hierarchically structured
+			restructuring concluded
+	10/04/06 extended InflectionType, added Countability and Valency as features and properties (in accordance with
+			Sampson (1995), see susa.owl
+	10/04/08 extensions with respect to constituent types, syntactic relations and semantic roles 
+			in accordance with Dipper et al. (2007), see sfb632.owl
+	10/04/13 extension wrt. the morphosyntactic profile of the DCR (ISOcat, www.isocat.org)
+	10/04/14 validation, PossessiveFeature removed
+	10/04/15-18 additions in accordance to the PTB Bracketing Guidelines (Santorini 1991, Bies et al. 1995)
+	10/11/26 introduced NounHeadedPhrase for improved compatibility with dependency parsing schemes (e.g., Connexor)
+	10/11/29 added categories for topological fields in German (as used in TüBa-D/Z)
+	10/12/02 added DeterminerPhrase, ForeignPhrase, subclasses of ExpletivePronoun (TüBa-D/Z)
+	11/07/29 replaced url http://purl.org/olia with purl http://purl.olcl.org/olia
+	11/07/31-11/08/04 linking with MULTEXT-East (http://nl.ijs.si/ME/owl/multext-east.owl = http://purl.org/olia/mte/multext-east.owl)
+		Clitic deprecated (replaced by CliticElement because of the ambiguity of the category in MULTEXT-East and ISOcat)
+		additions: hasProximity, Distal, Proximal, CliticElement, CliticDefiniteArticle, SpecificArticle, CliticSpecificArticle,
+		hasSpecificity, Specific, Nonspecific, Cliticization, ElementWithClitic, ElementWithoutClitic, ElementDemandingClitic, 
+		DistributiveCase, FactiveCase, DirectCase, FormalCase, MultiplicativeCase, TemporalisCase, ElativeDegree, CountNumber, 
+		AspectParticle, SubjunctiveParticle, VerbalParticle, LightVerb, VerbalAdverb, NegativeAdverb, ModifierAdverb, AdjectivalAdverb, 
+		NonspecificPronoun, DeterminalPronoun, AttributivePronoun, EmphaticDeterminer, NegativeDeterminer, UniquitiveDeterminer, PossessiveArticle,
+		hasConjunct, hasWordConjunct, hasSentenceConjunct, RepetitiveCoordinatingConjunction, SubordinatingConjunctionWithNegation,
+		SubordinatingConjunctionWithoutNegation, RelationalAdjective, PossessiveAdjective, NonreducedInflection, ReducedInflection, CollectiveNumeral,
+		hasNumeralAgreement, DualQuantifier, PaucalQuantifier, SingularQuantifier, PluralQuantifier, Fraction, ApproximateNumeral, MultipleNumeral,
+		ProQuantifier, InterrogativeQuantifier, IndefiniteQuantifier, DemonstrativeQuantifier, RelativeQuantifier, QuotativeVerb, QuotativeMood,
+		NonNegated, Diminuitive, Human, AbbreviatedPronoun, FixedExpression, Adjectival, Typo, Verbal, hasObjectNumber, hasNumeralForm, ExistentialParticle
+	11/08/04 eliminated redundancy of olia-top:SyntacticRelation and olia:SyntacticRelation
+		SubordType, CoordType deprecated, remodelled as subconcepts of Sub/CoordinatingConjunction
+	11/08/05 validation
+	11/08/11 VoiceParticle (from Portuguese EAGLES)
+	11/08/12 linking with T-CODEX (Old High German)
+			 VocativeExpression, Fronting, ConditionRole, HangingTopic (for Old High German, T-CODEX)
+			 CausalAdverb deprecated (= Adverb and hasSemanticRole some CauseRole)
+			 DeclarativeSentence = Sentence and hasMood some DeclarativeMood
+			 PresentParticiple (= Sentence and hasTense some Present)
+			 PastParticiple (= Sentence and hasTense some Past)
+	11/08/12-15 linking with ILPOSTS (for Indian languages)
+			added PurposiveCase, PurposiveAspect, DistributivePronoun, ConditionalParticiple, ConditionalRealisMood, ConditionalIrrealisMood, PresumptiveMood, Sequel, AbilitativeMood, SecondHonorific, SecondNonHonorific, hasEmphasis, Emphatic, NonEmphatic, SimpleAspect
+			EmphaticDeterminer, EmphaticPronoun deprecated
+			CausalMood (from Nowak 1996, for Inuktitut)
+			MannerAdverb (= Adverb and hasSemanticRole some MannerRole) {introduced as deprecated}
+			LocationAdverb (= Adverb and hasSemanticRole some LocationRole) {introduced as deprecated}
+			HabitualMood (= HabitualAspect)
+	11/08/15 olia_top:PhonologicalProcess introduced (reorganization of MorphologicalProcess)
+	11/08/15 linking with Ancorra and IIIT tagset (for Indian languages)
+			GerundVerbPhrase, SpatiotemporalNoun, InfinitiveVerbPhrase, EchoWord, Composition
+			Intensifier
+	11/08/15 linking with Urdu tagset (Sajjad 2007)
+		TitleNoun, UnitNoun, AspectMarkingAuxiliary, TenseMarkingAuxiliary, Date added
+	11/08/16 linking with EMILLE Urdu tagset (Hardie 2003)
+		AdjectivalParticle, ModalityMarkingAdverb, OpenQuote, CloseQuote, ContrastiveParticle, EmphaticParticle, MultiplicativeMarker, ExclusiveEmphaticParticle, InclusiveEmphaticParticle, ReflexivePossessiveDeterminer, Izafat, RelativeAdjective added
+		ContrastiveEmphaticParticle (= ContrastiveParticle and EmphaticParticle)
+	11/08/16 linking with Dzongkha tagset (Chungku et al. 2010)
+		added AspirationalVerb, AgentiveVerb, TenseMarkingParticle, NonAgentiveVerb, LocativePronoun, NominalNumber, CaseMarker, PeriodicAdjective, CharacteristicAdjective, DifferentialPronoun, NominalQuantifier
+		HonorificVerb, HonorificCommonNoun added (=> Honorificity to be remodelled)
+	13/03/03 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
+		added GivenName, FamilyName, comments for PersonalPronoun, Separability
+	13/03/03 partial "hasFeature Self"-modeling for ...Feature concepts: not inferable through Fact++ or Hermit, though, hence incomplete
+	13/03/04 linking with Uby Pos annotation model (http://www.ukp.tu-darmstadt.de/data/lexical-resources/uby/)
+		Contraction, Phraseme, LexicalUnit (as generalization over Phraseme and Lexeme), Initialism
+	13/03/04 olia-top:XYFeature olia:hasXY Self for most XYFeatures
+	13/06/24 additions from ISOcat morphosyntactic profile: FusedPrepositionPronoun, ElativeNoun, InterrogativeMultiplicativeQuantifier, FocusMarker, AdjutativeVoice, AversiveCase
+	13/06/25 additions from ISOcat morphosyntactic profile: VisualEvidentiality, OtherSourceEvidentiality, DeductiveEvidentiality, Exclusive, Inclusive, Homonym, Homophone, CircumstantialVoice
+	13/06/27 ISOcat additions: MannerNoun (deprecated), QuestionWord (extended to be a generalization over InterrogativeXY, deprecated), GeneralizationWord, EpistemicPossibilityModality, DebitiveMood, InchoativeAspect, PresentativePronoun, IndefiniteCardinalQuantifier, NumeralBoth (deprecated), GraphicalSeparator, Impossible, Possible, EpistemicNecessityModality, TemporallyDefinedUsage, PrepositionalAdverb, DeclarativePunctuation, Multal, ObligativeModality, RomanNumeral, DigitNumeral, Script, ParticleAdverb (deprecrated), ApplicativeVoice, EvaluativeModality, PlaceNoun (deprecated), String [generalized as orthographical anchor point for RomanNumeral]
+	13/06/28 ISOcat additions: Masdar, Ideophone, DeficientVerb (deprecated), IndefiniteMultiplicativeQuantifier, PermissiveModality, WeakObligativeModality, ExistentialPronoun (deprecated), InstrumentNoun, PhysicalAbilitiveModality, MedioPassiveVoice, InterrogativeCardinalQuantifier, CompletiveAspect, PseudopassiveVoice, LetterNumeral, ContextualVariation, Homograph, CollectivePronoun, PossessiveRelativePronoun, ExpansionVariation, CausativeVoice, Augmentative, FusedPronounAuxiliary, AntiCausativeVoice, StatusConstructus, PreferredEvaluative, PejorativeEvaluative, CommissiveForce, ActionalForce, VolitiveForce
+		hasEvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), HortativeModality (from GOLD, missing in the corresponding ISOcat export)
+		disentangled Modality and Mood: for every Mood, created a corresponding Modality as superclass; XYMood is subconcept of Mood and XYModality concept, hasMood only for Mood, hasModality for Modality	
+	16/04/18 selected French labels for the Bambara Reference Corpus (BRC)
+		added OnomatopoeticWord, QualitativeVerb, PredicativeMarker
+	OWL/DL validation
+	16/08/29 added Frame, hasMovementFeature, Control and Raising for compliance with lexinfo
+	17/06/26 fixed occasional type errors at owl:deprecated
+	18/01/08 added Converb (for Eastern Armenian National Corpus)
+	19/07/27 lexinfo linking: added DeverbalAdjective as a generalization over (and superclass of) ParticipleAdjective, DenominalAdjective (for lexinfo:adjective-na), GenericNumeral (for lexinfo:genericNumeral), InflectionElement (for lexinfo:inflectionElement), Radical (for lexinfo:radical), Syllable (for lexinfo:syllable), ClippedTerm, Appellation, Idiom, Internationalism, SetPhrase, Boilerplate (for lexinfo:standardText), Deprecated (for lexinfo:deprecatedTerm), LegalRegister (for lexinfo:legalTerm), Deprecated (for lexinfo:deprecatedTerm), Preferred (for lexinfo:preferredTerm), Standardized (for lexinfo:standardizedTerm);
+		revised Contraction, Composition; 
+		introduced Identifier as generalization over Appellation, NamedEntity and lexinfo:partNumber;
+		introduced TextStructuralElement as generalization over Headline, Boilerplate, etc.
+	20/02/24 add Chunk (from Ancorra tagset), JussiveMood (from Arabic, Khoja et al. 2008)
+	20/02/27 clarify definition of Unique
+	2022-05-23 rdfs:labels added (automatically)	
+	2024-11-22 modularization
+
+Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
+	</owl:versionInfo>
+ </owl:Ontology>  
+
+  	<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>  
+
+	
+  <!-- ======================================================
+     ||      SEMANTIC AND LEXICAL UNITS              ||
+     ====================================================== -->
+
+	<owl:Class rdf:ID="LexicalUnit">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >introduced as a generalization over Lexeme, Phraseme (as opposed to phrase) and Proverb (as opposed to utterance) with the extension to lexical-semantic resources like Uby and lexinfo</owl:versionInfo>
+	<rdfs:comment>A LexicalUnit is a grammatical expression that is known to the speakers of that language as a conventional expression of a particular concept. It consists of a single lexeme or a conventional combination of lexemes with certain unchangeable characteristics (CC).
+	</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticUnit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+     <owl:Class rdf:ID="Ideophone">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4192</rdfs:isDefinedBy>
+      <rdfs:comment>Ideophones are marked words that depict sensory imagery.</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticUnit"/>
+	  </rdfs:subClassOf>
+	</owl:Class>
+
+  <owl:Class rdf:ID="Frame">
+	<owl:versionInfo>Introduced to account for semantic frames in lexinfo, note that full-fledged semantic role annotation is subject to specialized resources (FrameNet, Verbnet, etc.) and beyond the scope of OLiA. For compliance with lexinfo, however, these have been added to OLiA.</owl:versionInfo>
+	<rdfs:comment>According to "Frame Semantics, deriving from the work of Charles J. Fillmore and colleagues (Fillmore 1976, 1977, 1982, 1985, Fillmore and Baker 2001, 2010) ... [,] the meanings of most words can best be understood on the basis of a semantic frame: a description of a type of event, relation, or entity and the participants in it. For example, the concept of cooking typically involves a person doing the cooking (Cook), the food that is to be cooked (Food), something to hold the food while cooking (Container) and a source of heat (Heating_instrument)." (https://framenet.icsi.berkeley.edu/fndrupal/about)</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="#LexicalUnit"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	
+  <owl:Class rdf:ID="Phraseme">
+	<owl:versionInfo>http://purl.org/olia/ubyPos.owl#phraseme (phraseme, no definition), http://www.isocat.org/datcat/DC-339 (phraseologicalUnit)</owl:versionInfo>
+	<rdfs:comment>Conventional lexical unit consisting of a particular phrase (CC)
+	
+	Any group of two or more words that form a unit, the meaning of which frequently cannot be deduced based on the combined sense of the words making up the phrase. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-339)</rdfs:comment>
+	<rdfs:label>phraseological unit</rdfs:label>
+	<rdfs:label>phraseme</rdfs:label>
+	<rdfs:label>multi-word expression</rdfs:label>
+	<owl:equivalentClass>
+		<owl:Class>
+			<owl:intersectionOf rdf:parseType="Collection">
+				<owl:Class rdf:about="#LexicalUnit"/>
+				<owl:Class rdf:about="#Phrase"/>
+			</owl:intersectionOf>
+		</owl:Class>
+	</owl:equivalentClass>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="#FixedExpression"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+
+	 
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Collocation">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Collocation</owl:versionInfo>
+		<rdfs:comment>
+			A collocation is any habitually linked group of words - a kind of lexical partnership, e.g. 'fish and chips', 'salt and pepper', 'don't mention it', 'it's nothing...', 'Oh well!', 'bangers and mash'... and so on. Many idioms or idiomatic phrases exhibit collocation, e.g. in a jiffy.
+			(http://www.englishbiz.co.uk/grammar/main_files/definitionsa-m.htm)
+		</rdfs:comment>
+		<rdfs:label>collocation</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticUnit"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Idiom">
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-351</owl:versionInfo>
+		<rdfs:comment>A group of words in a fixed order that have a particular meaning that is different from the meanings of each word understood on its own. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-351)
+		</rdfs:comment>
+		<rdfs:label>idiom</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Collocation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FixedExpression">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#PartOfFixedExpression</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Collocation"/>
+		<rdfs:comment rdf:datatype="&xsd;string">
+			Some forms can only be used in a fixed context, e.g., polsku in po polsku. They are classified as special kinds of adjectives in the IPIC. In the MTE version this information is preserved in the status of a &quot;burkinostka&quot;. This term is devised by Magdalena Derwojedowa and refers to dependent words like Burkina which only make sense and can be morphosyntactically identified in a fixed combination (Burkina Faso).</rdfs:comment>
+		<owl:versionInfo>Corresponds to MTE Burkinostka (Adverb/Clitic=&quot;burkinostka&quot;; Polish)
+			&quot;Burkinostka was a local joke :). IsPartOfFixedExpression, to be more precise. Or somehow shorter.&quot;
+			(Natalia Kotsyba, email 2010/06/21, http://purl.org/olia/mte/multext-east.owl#PartOfFixedExpression)</owl:versionInfo>
+			<rdfs:label>fixed expression</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SetPhrase">
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-341</owl:versionInfo>
+		<rdfs:comment>
+			A fixed, lexicalized phrase. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-341)
+			
+			A set phrase or fixed phrase is a phrase whose parts are fixed in a certain order, even if the phrase could be changed without harming the literal meaning. This is because a set phrase is a culturally accepted phrase. A set phrase does not necessarily have any literal meaning in and of itself. Set phrases may function as idioms (e.g. red herring) or as words with a unique referent (e.g. Red Sea). (https://en.wikipedia.org/wiki/Set_phrase, with reference to McArthur, TomsamDam. (1992) The Oxford Companion to the English Language. Oxford: Oxford University Press.)
+		</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#FixedExpression"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Phraseme"/>
+		<rdfs:label>set phrase</rdfs:label>
+		<rdfs:label>fixed phrase</rdfs:label>
+	</owl:Class>
+	
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Lexeme">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1325"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1325</owl:versionInfo>
+      <rdfs:comment>
+                            Minimal unit of language which : has a semantic interpretation and embodies a distinct cultural concept.
+                                (www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsALexeme.htm; http://www.isocat.org/datcat/DC-1325)
+                            </rdfs:comment>
+      <rdfs:label>lexeme</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#LexicalUnit"/>
+	  </rdfs:subClassOf>
+   </owl:Class>
+    <owl:Class rdf:ID="QuestionWord">
+	 <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+		<owl:versionInfo>deprecated, as merely a shorthand for Lexeme and hasModality some InterrogativeModality</owl:versionInfo>
+			<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Lexeme"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasModality"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#InterrogativeModality"></owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<rdfs:label>question word</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4205</rdfs:isDefinedBy>
+      <rdfs:comment>A proform that is used in questions to stand for the item questioned.</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Lexeme"/>
+	  </rdfs:subClassOf>
+	</owl:Class>
+
+   
+  <!-- ======================================================
+     ||      SEMANTIC FEATURES           ||
+     ====================================================== -->
+	<!-- Animacy-->
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Animate">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1911"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1911</owl:versionInfo>
+      <rdfs:comment>
+                            Perceived as alive.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1911)
+                            </rdfs:comment>
+      <rdfs:label>animate</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#AnimacyFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf animacy (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Inanimate">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1952"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1952</owl:versionInfo>
+      <rdfs:comment>
+                            Perceived as not living.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1952)
+                            </rdfs:comment>
+      <rdfs:label>inanimate</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#AnimacyFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf animacy (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#OtherAnimacy">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1953"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1953</owl:versionInfo>
+      <rdfs:comment>
+                            Perceived as related to animacy, but without specific reference to the previous items.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1953)
+                            </rdfs:comment>
+      <rdfs:label>other animacy</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#AnimacyFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf animacy (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Human">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Human</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Animate"/>
+		<rdfs:comment>For Slavic languages, animacy, and in particular, Humanness, defines so-called "sub-genders" that manifest themselves in the accusative ending of masculine and neuter singular nouns. Humans are by definition animate. 
+			(http://purl.org/olia/mte/multext-east.owl#Human)</rdfs:comment>
+	</owl:Class>
+   
+   <!-- EvaluativeFeature -->
+	<owl:Class rdf:ID="PreferredEvaluative">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3416</rdfs:isDefinedBy>
+      <rdfs:comment>An evaluative property of a noun that indicates
+                        the speaker regards the person or object being referred to with favor or
+                        admiration.</rdfs:comment>
+	<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EvaluativeFeature"/>
+	</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:ID="PejorativeEvaluative">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3380</rdfs:isDefinedBy>
+      <rdfs:comment>An evaluative property of a noun that indicates
+                        the speaker regards the person or object being referred to with distaste,
+                        contempt, or displeasure [Valentine 2001: 190-193].</rdfs:comment>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EvaluativeFeature"/>
+	  </rdfs:subClassOf>
+	</owl:Class>
+	
+   	<!-- Countability -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Uncountable">
+		<owl:versionInfo>EAGLES, remodelling of MassNoun vs. CommonNoun</owl:versionInfo>
+		<rdfs:comment>
+			A mass noun (also uncountable noun or non-count noun) can't be modified by a numeral, 
+			occur in singular/plural or co-occur with the relevant kind of determiner.
+			(http://en.wikipedia.org/wiki/Mass_noun 19.09.06)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CountabilityFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Countable">
+		<owl:versionInfo>EAGLES, remodelling of MassNoun vs. CommonNoun</owl:versionInfo>
+		<rdfs:comment>
+			A countable noun (also count noun) is a noun which can be modified by a numeral 
+			and occur in both singular and plural form, as well as co-occurring with 
+			quantificational determiners like every, each, several, most, etc..
+			(http://en.wikipedia.org/wiki/Countable_noun 19.09.06)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CountabilityFeature"/>
+</rdfs:subClassOf>
+	</owl:Class>   
+
+	<!-- SemanticRole -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole">
+		<owl:versionInfo>TODO:
+			Check subcategorization in MacroRoles. Currently, this follows the TDS ontology,
+			but the strict assignment of semantic roles to macroroles contradicts
+			the selection algorithm as described by van Valin and Lapolla (1997):
+			MacroRoles are not assigned a priori, but on on the basis of *relative 
+			agentivity* among the arguments.
+		</owl:versionInfo>
+		<owl:versionInfo>One may consider modelling SemanticRoles and discourse relations within the same dimension. In particular, the semantics of adverbial modifiers (causal, temporal, 3al, etc.) closely resembles discourse relations.</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActorMacroRole">
+		<owl:versionInfo>
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#actorRole
+		</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			The most agentive semantic role of the current clause (van Valin and 
+			Lapolla 1997), designated subject (from a semantic point of view)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AddresseeRole">
+		<owl:versionInfo>added in conformance with PTB vocative, Bies et al. 1995</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-VOC (vocative)
+— marks nouns of address, regardless of their position in the sentence. It is not coindexed to the subject and does not get -TPC when it is sentence-initial. 
+
+  (SQ (NP-VOC Mike)
+      ,
+      would
+      (NP-SBJ you)
+      (INTJ please)
+      (VP close
+          (NP the door))
+      ?)
+(Bies et al. 1995)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+	</owl:Class>	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ComitativeRole">
+		<owl:versionInfo>
+			added in conformance with TIGER edge labels, this is explicitly not defined as a grammatical case
+		</owl:versionInfo>
+		<owl:versionInfo>TODO: Check whether to be merged with ComitativeCase</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Comitative carries the meaning 'with' 
+			or 'accompanied by' (Anderson, Stephen 1985: 186; Pei and Gaynor 1954: 
+			42;Dixon, R. 1972: 12; Gove, et al. 1966: 455).
+			(http://purl.org/linguistics/gold/Comitative)
+			
+			Comitative applies to an animate entity that accompanies a participant of the
+			action. (Dipper et al. 2007,  §5.3.12)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectionRole">
+	<owl:versionInfo>added in conformance with PTB bracketing guidelines, Bies et al. (1995)</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-DIR (direction)
+â ´ marks adverbials that answer the questions â ¼from where?â ½ and â ¼to where?â ½ It implies motion, which can be metaphorical as in â ¼...rose 5 pts. to 57-1/2â ½ or â ¼increased 70% to 5.8 billion yenâ ½ (see section 23 [â ¼Financialspeakâ ½ Conventions]). -DIR is most often used with verbs of motion/transit and financial verbs: 
+
+  (S (NP-SBJ I)
+     (VP flew
+         (PP-DIR from
+                 (NP Tokyo))
+         (PP-DIR to
+                 (NP New York))))
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#ExtentRole">
+		<owl:versionInfo>added in conformance with PTB bracketing guidelines, Bies et al. (1995)</owl:versionInfo>
+		    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-EXT (extent)
+â ´ marks adverbial phrases that describe the spatial extent of an activity. -EXT was incorporated primarily for cases of movement in financial space, but is also used in analogous situations elsewhere. 
+
+  (S (NP-SBJ the Dow Jones Industrial Average)
+     (VP plunged
+         (NP-EXT 190.58 points)))
+
+
+  (S (NP-SBJ She)
+     (VP walked
+         (NP-EXT 5 miles)))
+
+Obligatory complements do not receive -EXT: 
+
+  (S (NP-SBJ The sumo wrestler)
+     (VP gained
+         (NP 80 pounds)))
+
+Words such as fully and completely are absolutes and do not receive -EXT.
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#GoalRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#goalRole</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A goal role instantiates the (intended) end location (directional path) of an event.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#goalRole)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InstrumentRole">
+		<owl:versionInfo>
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#instrumentRole, 
+			cf. TIGER edge label "Instrumental"
+		</owl:versionInfo>
+		<rdfs:comment>SemanticRole added in conformance with TIGER</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#LocationRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#locationRole, cf. the TIGER edge label "Locative"</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			Semantic role for the final location of action or a time of the action. 
+			(http://www.isocat.org/datcat/DC-1326)
+			
+			Adverbials that indicate place/setting of the event. 
+			(PP-LOC on (NP the moon))
+			May also indicate metaphorical location:
+			(PP-LOC amongst (NP yourselves))
+			(Bies et al. 1995)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ObliqueRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#obliqueRole</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A semantic role which is not straightforward.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#obliqueCase)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PathRole">
+		<owl:versionInfo>added in accordance with TIGER way (directional modifier)</owl:versionInfo>
+		<rdfs:comment>added in accordance with TIGER way (directional modifier)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectionRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PossessorRole">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SemanticRole"></rdfs:subClassOf>
+		<owl:versionInfo>added in conformance with Stanford Parser Dependency Labels</owl:versionInfo>
+		<rdfs:comment>Semantic role as used by the Stanford Dependency Parser</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PurposeRole">
+	    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-PRP (purpose or reason)
+â ´ marks purpose or reason clauses and PPs. 
+(Bies et al. 1995)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+		<owl:versionInfo>added in conformance with PTB bracketing guidelines (Bies et al. 1995)</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SourceRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#sourceRole</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectionRole"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+		A source role instantiates the origin of an event or entity.
+		(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#sourceRole)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#TargetRole">
+		<owl:versionInfo>added as counterpart of SourceRole, see there</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectionRole"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+		The target role instantiates the destination of an event or entity.
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#TimeRole">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SemanticRole"></rdfs:subClassOf>
+		<owl:versionInfo>added in conformance with Stanford Parser Dependency Label TIME and SFB632 annotation guidelines (Dipper et al. 2007)</owl:versionInfo>
+		<rdfs:comment>
+				Semantic role corresponding to the label "TIME" used by the Stanford Dependency Parser.
+				Time covers a point or an interval of time at which the action takes place. (Dipper et al. 2007, §5.3.9)
+				
+				-TMP (temporal) — marks temporal or aspectual adverbials that answer the questions when, how often, or how 
+				long. It has some uses that are not strictly adverbial, such as with dates that modify other NPs (see 
+				section 11 [Modification of NP]). 
+				(Bies et al. 1995)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MannerRole">
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			Manner applies to constituents that denote how something is carried out.
+			Adverbs may also denote manner, however, they are not annotated at any of the
+			syntactic layers.
+			(Dipper et al. 2007, §5.3.11)
+		</rdfs:comment>
+		<owl:versionInfo>added in conformance with the SFB632 annotation scheme (Dipper et al. 2007)</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CauseRole">
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+			>Cause indicates the reason why something happens and is often expressed by a
+			PP (because of, with, through etc.). Sometimes this role is close to the role of
+			Instrument. The criterion for the choice of tag CAUSE is if the expression can
+			be paraphrased through a clausal subordinate clause.
+			(Dipper et al. 2007, 5.3.10)</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+		<owl:versionInfo>added in conformance with the SFB632 Annotation Guidelines (Dipper et al. 2007)</owl:versionInfo>
+	</owl:Class>	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#UndergoerMacroRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#undergoerRole</owl:versionInfo>
+		<rdfs:comment>
+			The least agentive argument of the current clause (van Valin and Lapolla 1997), 
+			the designated object (from a semantic perspective).
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionRole">
+		<owl:versionInfo>http://purl.org/olia/tcodex.owl#ConditionalAdverb</owl:versionInfo>
+		<rdfs:comment>Adverbial that denotes a condition. (Petrova and Odebrecht 2011)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+
+	<!-- SemanticRole/UndergoerMacroRole -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ExperiencerRole">
+		<owl:versionInfo>
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#experiencerRole, 
+			originally a subconcept of UndergoerMacroRole
+		</owl:versionInfo>
+	    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			An experiencer instantiates the role of an entity (usually animate) who 
+			takes the event in through sensory means in some way.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#experiencerRole)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#UndergoerMacroRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#BenefactorRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#beneficiaryRole</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A beneficiary (benefactor) instantiates the role of an entity (usually animate) who 
+			stands to benefit in some way from the event. Prototypically “benefit” 
+			here means “to do or be good to, to be of advantage or profit to; to 
+			improve, help forward” in some way.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#beneficiaryRole)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#UndergoerMacroRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ProcessedRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#processedRole</owl:versionInfo>
+		<rdfs:comment>
+			The entity that undergoes a Process (Dik, 1997:118).
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#processedRole)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#UndergoerMacroRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PatientRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#patientRole</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#UndergoerMacroRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A patient instantiates the role of an entity which undergoes a change of 
+			state (Cruse 2000:284)
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#patientRole
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MalefactorRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#maleficiaryRole</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#UndergoerMacroRole"/>
+</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A maleficiary (malefactor) instantiates the role of an entity (usually animate) who 
+			stands to undergoe a misfortune, or be at a disadvantage in some way from 
+			the event.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#maleficiaryRole)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RecipientRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#recipientRole</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+			A recipient instantiates the role of an entity (usually animate) who 
+			recieves an entity in some way from the event.
+			&lt;p&gt;
+			Prototypically “recieve” here means “to take in one’s hand, or into 
+			one’s possession (something held out or offered by another); to take 
+			delivery of (a thing) from another” in some way. (OED)
+			&lt;/p&gt;
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#recipientRole)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#UndergoerMacroRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ThemeRole">
+		<owl:versionInfo>added in conformance with SFB632 Theme</owl:versionInfo>
+		<owl:versionInfo>TODO: check definition, AFAIK Theme also applies to the third (non-ACTOR, non-UNDERGOER) argument (Ch. Chiarcos)</owl:versionInfo>
+		<rdfs:comment>
+			Theme is a general term covering the notions of patient that means an entity 
+			affected by the action, of result that means an entity effected by the action, 
+			i.e. which emerges out of the action, or of theme that means an entity effected 
+			by the action, i.e. which emerges out of the action.
+			(Dipper et al. 2007: §5.3.3)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+
+	<!-- SemanticRole/ActorMacroRole -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PositionerRole">
+		<owl:versionInfo>
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#positionerRole
+		</owl:versionInfo>
+		<rdfs:comment>
+			The entity controlling a Position (Dik, 1997:118)
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#positionerRole)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActorMacroRole"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ForceRole">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#forceRole</owl:versionInfo>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+		A force role is one in which the instantiator (the “force”) exerts 
+        some degree of energy which initiates (or impacts on) the execution of 
+        the event. In contrast to an agent, an instantitor of a force may be 
+        an inanimate entity, such as a climactic condition.
+        The non-controlling entity instigating a Process (=Dynamism or Change) 
+        (Dik, 1997:118)
+		(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#forceRole)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActorMacroRole"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AgentRole">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#ActorMacroRole"/>
+</rdfs:subClassOf>
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#agentRole</owl:versionInfo>
+		<rdfs:comment>
+			An agentive role is one in which the actor exerts some degree 
+			of will(-power) in the execution of the event.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#agentRole)
+		</rdfs:comment>
+	</owl:Class>
+
+  <!-- ======================================================
+     ||     LEXICAL RELATIONS            				||
+     ====================================================== -->
+  
+    <owl:Class rdf:ID="Homonym">
+	  <rdfs:label>homonym</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1301</rdfs:isDefinedBy>
+      <rdfs:comment>Word that sounds the same and is written the same as another word but is different in meaning.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LexicalRelation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+		
+	<owl:Class rdf:ID="Homophone">
+		<rdfs:label>homophone</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1302</rdfs:isDefinedBy>
+      <rdfs:comment>Word that sounds like another word, but is different in writiing or meaning.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LexicalRelation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="Homograph">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1300</rdfs:isDefinedBy>
+      <rdfs:comment>Word that is written like another, but that has a different pronunciation, meaning, and/or origin.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LexicalRelation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="ExpansionVariation">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1850</rdfs:isDefinedBy>
+      <rdfs:comment>Description of the kind of variation between full and abbreviated forms.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LexicalRelation"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+
+  
+  </rdf:RDF>

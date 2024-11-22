@@ -5667,6 +5667,551 @@ Comment: Note that &quot;Dependence&quot; implies an ordering here (in analogy w
     <!-- http://www.w3.org/2002/07/owl#Thing -->
 
     <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+
+
+    <!-- the following is imported from the original olia.owl
+         it is possible that entity refs or vocabulary items are incorrectly defined, cf. to-be-split/olia-header.owl
+     -->
+
+    <!-- =============================================================
+     || DISCOURSE AND TEXT-STRUCTURAL ENTITIES ||
+     ================================================================ -->
+
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Identifier">
+        <rdfs:comment>Designation of a unique entity or a singleton concept (CC)</rdfs:comment>
+        <owl:versionInfo>introduced as generalization over NamedEntity, Apellation and lexinfo:partNumber</owl:versionInfo>
+        <rdfs:label>identifier</rdfs:label>
+      <rdfs:subClassOf>
+        <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+     
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#NamedEntity">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2275"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2275, note that the definition refers to the text that designates the entity, not the entity itself; consider renaming to NameOfEntity</owl:versionInfo>
+      <rdfs:comment>
+                            segment of text for which one or many rigid designators stands for the referent
+                                (Gil Francopoulo; http://www.isocat.org/datcat/DC-2275)
+                            </rdfs:comment>
+      <rdfs:label>named entity</rdfs:label>
+      <rdfs:subClassOf>
+        <owl:Class rdf:about="http://purl.org/olia/olia.owl#Identifier"/>
+</rdfs:subClassOf>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Apellation">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-347"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-347</owl:versionInfo>
+      <rdfs:comment>A designation that represents an individual concept. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-347)
+      
+      A verbal designation of an individual, unique concept, e. g. Mount Everest, Nobel Prize (https://en.wikipedia.org/wiki/Appellation_(disambiguation))
+                            </rdfs:comment>
+      <rdfs:label>apellation</rdfs:label>
+      <rdfs:subClassOf>
+        <owl:Class rdf:about="http://purl.org/olia/olia.owl#Identifier"/>
+</rdfs:subClassOf>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Utterance">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1409"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1409</owl:versionInfo>
+      <rdfs:comment>
+                            Complete unit of talk, bounded by the speaker's silence.
+                                (www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAnUtterance.htm; http://www.isocat.org/datcat/DC-1409)
+                            </rdfs:comment>
+      <rdfs:label>utterance</rdfs:label>
+      <rdfs:subClassOf>
+        <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+</rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Proverb">
+        <owl:versionInfo>http://www.isocat.org/datcat/DC-353</owl:versionInfo>
+        <rdfs:comment>A brief popular axiom or saying. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-353)</rdfs:comment>
+      <rdfs:subClassOf>
+        <owl:Class rdf:about="http://purl.org/olia/olia.owl#Utterance"/>
+      </rdfs:subClassOf>
+      <rdfs:subClassOf>
+        <owl:Class rdf:about="http://purl.org/olia/olia.owl#LexicalUnit"/>
+      </rdfs:subClassOf>
+
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#VocativeExpression">
+        <owl:versionInfo>http://purl.org/olia/tcodex.owl#VocativeForm</owl:versionInfo>
+        <rdfs:label>vocative expression</rdfs:label>
+        <rdfs:comment>An expression referring to a person to which the utterance is addressed, e.g. Old High German "truhtin",  "meistar" or "fater". The vocative expression typically occurs outside of the clause and not in an argument position selected by the predicate. (Petrova 2008, see http://purl.org/olia/tcodex.owl)</rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Headline">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://purl.org/olia/olia.owl#TextStructuralElement"/>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-HLN (headline)
+— marks headlines and datelines. Note that headlines and datelines always constitute a unit of text that is structurally independent from the following sentence. 
+(Bies et al. 1995)</rdfs:comment>
+    <owl:versionInfo>PTB bracketing guidelines, Bies et al. 1995</owl:versionInfo>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#TextStructuralElement">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity"/>
+        </rdfs:subClassOf>
+        <owl:versionInfo>introduced as generalization over Boilerplate, Headline etc.</owl:versionInfo>
+        <rdfs:comment>
+            Text structure relates to the physical features of text as it is laid out for reading. This includes the arrangement of sentences and paragraphs, and other aspects of the ordering of information in reading materials.
+            (https://psychology.wikia.org/wiki/Text_structure)
+        </rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#Boilerplate">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://purl.org/olia/olia.owl#TextStructuralElement"/>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A fixed chunk of recurring text. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-343)
+    
+    Boilerplate text, or simply boilerplate, is any written text (copy) that can be reused in new contexts or applications without significant changes to the original. The term is used in reference to statements, contracts and computer code ... In contract law, the term "boilerplate language" or "boilerplate clause" describes the parts of a contract that are considered standard. (https://en.wikipedia.org/wiki/Boilerplate_text)
+    </rdfs:comment>
+    <rdfs:label xml:lang="en">standard text</rdfs:label>
+    <rdfs:label xml:lang="en">boilerplate text</rdfs:label>
+    <rdfs:label>boilerplate</rdfs:label>
+    <rdfs:label xml:lang="de">Textbaustein</rdfs:label>
+    <owl:versionInfo>http://www.isocat.org/datcat/DC-343</owl:versionInfo>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://purl.org/olia/olia.owl#TitleInRunningText">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-TTL (title)
+— is attached to the top node of a title when this title appears inside running text.
+-TTL implies -NOM. The internal structure of the title is bracketed as usual. (See section 12 [Titles] for more information about the bracketing of titles.) 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf>
+        <owl:Class rdf:about="http://purl.org/olia/olia.owl#TextStructuralElement"/>
+    </rdfs:subClassOf>
+    <owl:versionInfo>PTB bracketing guidelines, Bies et al. 1995</owl:versionInfo>
+  </owl:Class>
+
+  
+
+  <!-- ======================================================
+     || DISCOURSE AND STYLE FEATURES     ||
+     ====================================================== -->
+        
+    <!-- ReferentType-->
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Possessive">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1355"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1355</owl:versionInfo>
+      <rdfs:comment>
+                            Relative to the possession or association.
+                                (www.wordreference.com/English/definition.asp?en=possessive; http://www.isocat.org/datcat/DC-1355)
+                            </rdfs:comment>
+      <rdfs:label>possessive</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReferentTypeFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf referentType (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Personal">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1946"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1946</owl:versionInfo>
+      <rdfs:comment>
+                            Property that refers to the person.
+                                (http://www.isocat.org/datcat/DC-1946)
+                            </rdfs:comment>
+      <rdfs:label>personal</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReferentTypeFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf referentType (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   
+   <!-- Register -->
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#InHouseRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1993"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1993</owl:versionInfo>
+      <rdfs:comment>
+                            Register of terms that are company-specific and not readily recognized outside this environment.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1993)
+                            </rdfs:comment>
+      <rdfs:label>in house register</rdfs:label>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#FormalRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1992"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1992</owl:versionInfo>
+      <rdfs:comment>
+                            Formal register.
+                                (12620; http://www.isocat.org/datcat/DC-1992)
+                            </rdfs:comment>
+      <rdfs:label>formal register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#BenchLevelRegister">
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1989, http://www.isocat.org/datcat/DC-427</owl:versionInfo>
+      <rdfs:comment>
+                            Register of terms used in applications-oriented as opposed to theoretical or academic levels of language.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1989, http://www.isocat.org/datcat/DC-427)
+                            </rdfs:comment>
+      <rdfs:label>bench-level register</rdfs:label>
+      <rdfs:label>shop term</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#DialectRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1990"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1990</owl:versionInfo>
+      <rdfs:comment>
+                            Register that is specific to a dialect.
+                                (http://www.isocat.org/datcat/DC-1990)
+                            </rdfs:comment>
+      <rdfs:label>dialect register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#FacetiousRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1991"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1991</owl:versionInfo>
+      <rdfs:comment>
+                            Register related to an expression that is intended to be clever and funny but that is really silly and annoying.
+                                (Longma DCE; http://www.isocat.org/datcat/DC-1991)
+                            </rdfs:comment>
+      <rdfs:label>facecious register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#IronicRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1994"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1994</owl:versionInfo>
+      <rdfs:comment>
+                            Register for irony.
+                                (12620; http://www.isocat.org/datcat/DC-1994)
+                            </rdfs:comment>
+      <rdfs:label>ironic register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#NeutralRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1999"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1999</owl:versionInfo>
+      <rdfs:comment>
+                            The register appropriate to general texts or discourse.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1999)
+                            </rdfs:comment>
+      <rdfs:label>neutral register</rdfs:label>
+      <rdfs:label>standard register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#SlangRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1995"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1995</owl:versionInfo>
+      <rdfs:comment>
+                            An extremely informal register of a word, term, or text that is used in spoken and everyday language and less commonly in documents.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1995)
+                            </rdfs:comment>
+      <rdfs:label>slang register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#TabooRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1996"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1996</owl:versionInfo>
+      <rdfs:comment>
+                            Register that expresses a situation that people avoid because it is extremely offensive or embarrassing.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1996)
+                            </rdfs:comment>
+      <rdfs:label>taboo register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#TechnicalRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1997"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1997</owl:versionInfo>
+      <rdfs:comment>
+                            The register appropriate to scientific texts or special languages.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1997)
+                            </rdfs:comment>
+      <rdfs:label>technical register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#LegalRegister">
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-380, but rendered as a feature of individual terms, there</owl:versionInfo>
+      <rdfs:comment>Used for terms that are legally defined and used in legally binding documents.
+                                (cf. http://www.isocat.org/datcat/DC-380)
+                            </rdfs:comment>
+      <rdfs:label>legal register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#VulgarRegister">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1998"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1998</owl:versionInfo>
+      <rdfs:comment>
+                            Register of a term or text type that can be characterized as profane or socially unacceptable.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1998)
+                            </rdfs:comment>
+      <rdfs:label>vulgar register</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf register (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Internationalism">
+      <rdfs:label>internationalism</rdfs:label>
+      <rdfs:comment>A term that has the same or nearly identical orthographic or phonemic form in many languages. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-320)</rdfs:comment>
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-320, TODO: check treatment as register feature</owl:versionInfo>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+      </rdfs:subClassOf>
+   </owl:Class>
+
+   <!-- Usage/Frequency -->
+   <owl:Class rdf:ID="Impossible">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1866</rdfs:isDefinedBy>
+      <rdfs:comment>to denote something that cannot be considered as being correct in a given language</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+      </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:ID="Possible">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1865</rdfs:isDefinedBy>
+      <rdfs:comment>Value that denotes a linguistic situation considered as being correct in the given language</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+      </rdfs:subClassOf>
+    </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#RarelyUsed">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1986"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1986</owl:versionInfo>
+      <rdfs:comment>
+                            Said of a term that is almost never used.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1986)
+                            </rdfs:comment>
+      <rdfs:label>rarely used</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#Possible"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf frequency (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#CommonlyUsed">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1984"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1984</owl:versionInfo>
+      <rdfs:comment>
+                            Said of a term that appears frequently.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1984)
+                            </rdfs:comment>
+      <rdfs:label>commonly used</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#Possible"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf frequency (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Preferred">
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-376</owl:versionInfo>
+      <rdfs:comment>
+                            Preferred Term: A term rated according to the scale of a term acceptability rating as the primary term for a given concept.
+                                (Sue Ellen Wright, http://www.isocat.org/datcat/DC-376)
+                            </rdfs:comment>
+      <rdfs:label>preferred</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#Possible"/>
+      </rdfs:subClassOf>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Standardized">
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-375</owl:versionInfo>
+      <rdfs:comment>
+                            Standardized Term: A term that has been standardized by a standardizing body.
+                                (Sue Ellen Wright, http://www.isocat.org/datcat/DC-375)
+                            </rdfs:comment>
+      <rdfs:label>standardized</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#Possible"/>
+      </rdfs:subClassOf>
+   </owl:Class>
+   
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#InfrequentlyUsed">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1985"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1985</owl:versionInfo>
+      <rdfs:comment>
+                            Said of a term that does not appear frequently.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1985)
+                            </rdfs:comment>
+      <rdfs:label>infrequently used</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#Possible"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf frequency (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   
+   <owl:Class rdf:ID="ContextualVariation">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1977</rdfs:isDefinedBy>
+      <rdfs:comment>Variation on a particular usage or immediate proximity of words.</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#Possible"/>
+      </rdfs:subClassOf>
+    </owl:Class>
+   
+   <owl:Class rdf:ID="TemporallyDefinedUsage">
+        <rdfs:label>dating</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-1959</rdfs:isDefinedBy>
+      <rdfs:comment>Indication specifying whether the usage is old or modern.</rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#Possible"/>
+      </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:ID="Deprecated">
+        <rdfs:label>deprecated term</rdfs:label>
+        <rdfs:label>deprecated</rdfs:label>
+        <rdfs:label>superseded term</rdfs:label>
+        <rdfs:label>superseded</rdfs:label>
+        <rdfs:label>obsolete form</rdfs:label>
+        <rdfs:label>obsolete</rdfs:label>
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-378, http://www.isocat.org/datcat/DC-379</rdfs:isDefinedBy>
+      <rdfs:comment>Deprecated Term: A term rated according to the scale of a term acceptability rating as undesired. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-378)
+      
+      Superseded Term: A term that is no longer preferred or admitted. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-379)
+      
+      Obsolete Form: A term or lexeme which is no longer in common use. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-506)
+      </rdfs:comment>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#TemporallyDefinedUsage"/>
+      </rdfs:subClassOf>
+    </owl:Class>
+    
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#ModernUsage">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1962"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1962 (modern)</owl:versionInfo>
+      <rdfs:comment>
+                            Currently in use.
+                                (http://www.isocat.org/datcat/DC-1962)
+                            </rdfs:comment>
+      <rdfs:label>modern</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#TemporallyDefinedUsage"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf dating (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#OldUsage">
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1961, http://www.isocat.org/datcat/DC-505</owl:versionInfo>
+      <rdfs:comment>
+                            Old: Used in the past.
+                                (http://www.isocat.org/datcat/DC-1961)
+                                
+                            Outdated form: A term or lexeme that has fallen from fashion, but the meaning of which is readily recognizable.(Sue Ellen Wright, http://www.isocat.org/datcat/DC-505)
+                            </rdfs:comment>
+      <rdfs:label>old</rdfs:label>
+      <rdfs:label>outdated</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="#TemporallyDefinedUsage"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf dating (dcif:conceptualDomain)</owl:versionInfo>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#GeographicalVariant">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1851"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1851</owl:versionInfo>
+      <rdfs:comment>
+                            Description of a specific form used in a certain region as opposed to another form used in another region
+                                (http://www.isocat.org/datcat/DC-1851)
+                            </rdfs:comment>
+      <rdfs:label>geographical variant</rdfs:label>
+      <rdfs:subClassOf>
+        <owl:Class rdf:about="#Possible"/>
+</rdfs:subClassOf>
+   </owl:Class>
+   <owl:Class rdf:about="http://purl.org/olia/olia.owl#Honorific">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2347"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2347</owl:versionInfo>
+      <rdfs:comment>
+                            special form of language used when talking about those in positions of social situation
+                                (http://www.isocat.org/datcat/DC-2347)
+                            </rdfs:comment>
+      <rdfs:label>honorific</rdfs:label>
+      <rdfs:subClassOf>
+        <owl:Class rdf:about="#Possible"/>
+</rdfs:subClassOf>
+   </owl:Class>
+   
+  <!-- ======================================================
+     ||     DISCOURSE PROPERTIES         ||
+     ====================================================== -->
+
+     <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasReferentType">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:range>
+        <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReferentTypeFeature"/>
+</rdfs:range>
+        <owl:versionInfo>http://www.isocat.org/datcat/DC-1376 (referentType)</owl:versionInfo>
+  </owl:ObjectProperty>
+     <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasRegister">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:range>
+        <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#RegisterFeature"/>
+</rdfs:range>
+              <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1988"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1988</owl:versionInfo>
+      <rdfs:comment>
+                            Classification indicating the relative level of language individually assigned to a lexeme or term or to a text type.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1988)
+                            </rdfs:comment>
+
+  </owl:ObjectProperty>
+     <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasUsage">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:range>
+        <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#UsageAndFrequencyFeature"/>
+</rdfs:range>
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1965"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1965</owl:versionInfo>
+      <rdfs:comment>
+                            The relative commonness with which a term occurs.
+                                (ISO12620; http://www.isocat.org/datcat/DC-1965)
+                            </rdfs:comment>
+    </owl:ObjectProperty>
+    
+      <!-- TODO:    clarify relationship between interrogative/deict. adverbs and interrogative/demonst. pronouns 
+            check for all GOLD-only cases whether they actually are semantic roles
+            Mood as feature, not (only) as verb classes
+            Valency as verb classes *and* as features (auxiliaries have no valency)
+            integrate http://www.grammaticalfeatures.net/index.html
+            narrative type to olia-top
+            elim. possessive feature
+            add concepts from TDS and DCR
+            generalization over InterrogativePronoun, InterrogativeAdverb, InterrogativeQuantifier, same for Relative, Demonstrative
+            resolve redundancy between XYMood and XYVerb
+            redundancy between SyntacticType und MorphosyntacticCategory
+            Honorificity as independent feature, cf. HonorificVerb, HonorificCommonNoun
+            replace ...Category by ...Unit
+            -->
+
+
+
+
 </rdf:RDF>
 
 
