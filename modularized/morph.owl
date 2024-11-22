@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+<!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF
+    xmlns:dcr="http://www.isocat.org/ns/dcr.rdf#"
+    xmlns="http://purl.org/olia/olia.owl#"
+	xmlns:olia="http://purl.org/olia/olia.owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:olia_system="http://purl.org/olia/system.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:olia_top="http://purl.org/olia/olia-top.owl#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:dct="http://purl.org/dc/terms/"
+  xml:base="http://purl.org/olia/olia.owl">
+  <owl:Ontology rdf:about="http://purl.org/olia/olia.owl">
+	<owl:versionInfo>OLiA-Morph: OLiA Morphology Sub-Vocabulary
+		2024-11-22 modularization: extracted from olia.owl
+	</owl:versionInfo>
+    <owl:imports>
+		<owl:Ontology rdf:about="http://purl.org/olia/olia-top.owl"/>
+	</owl:imports>
+    <owl:imports>
+		<owl:Ontology rdf:about="http://purl.org/olia/system.owl"/>
+	</owl:imports>
+ </owl:Ontology>  
+
+  <!-- ======================================================
+     ||            MORPHOLOGICAL CATEGORIES              ||
+     ====================================================== -->
+  
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalCategory"/>
+		</rdfs:subClassOf>
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1330"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1330</owl:versionInfo>
+      <rdfs:comment>
+                            A morpheme is the smallest meaningful unit in the grammar of a language.
+                                (www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAMorpheme.htm; http://www.isocat.org/datcat/DC-1330)
+                            </rdfs:comment>
+      <rdfs:label>morpheme</rdfs:label>
+	</owl:Class>
+  	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MorphologicalParticle">
+		<owl:versionInfo>added in accordance with TIGER MorphologicalParticle</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Token"/>
+		</rdfs:subClassOf>
+		<owl:equivalentClass>
+			<owl:Class>
+			<owl:intersectionOf rdf:parseType="Collection">
+				<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+				<owl:Class rdf:about="http://purl.org/olia/olia.owl#Token"/>
+			</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<rdfs:comment>added in accordance with TIGER MorphologicalParticle</rdfs:comment>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="FocusMarker">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4196</rdfs:isDefinedBy>
+      <rdfs:comment>a morpheme indicating that the element it marks is the focus of the utterance.</rdfs:comment>
+	  <owl:versionInfo>In compliance with ISOcat, this is defined here as a morpheme. However, focus markers can be independent words, as well.</owl:versionInfo>
+	  <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Morpheme"/>
+	 </owl:Class>
+
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Root">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2231"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2231</owl:versionInfo>
+      <rdfs:comment>
+                            base of a word
+                                (MIRACL &amp; LSCA; http://www.isocat.org/datcat/DC-2231)
+                            </rdfs:comment>
+      <rdfs:label>root</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+</rdfs:subClassOf>
+    </owl:Class>
+
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InflectionElement">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-292"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-292</owl:versionInfo>
+      <rdfs:comment>
+                            An element of language used to change the form of a word (noun, adjective) by declension, and (verbs) by conjugation.
+                                (Sue Ellen Wright; http://www.isocat.org/datcat/DC-292)
+                            </rdfs:comment>
+      <rdfs:label>inflection element</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Affix">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1234"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1234</owl:versionInfo>
+      <rdfs:comment>
+                            Letter or group of letters which are added to a word to make a new word.
+                                (Sue Ellen Wright; http://www.isocat.org/datcat/DC-1234)
+                            </rdfs:comment>
+      <rdfs:label>affix</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Infix">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1313"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1313</owl:versionInfo>
+      <rdfs:comment>
+                            Affix inserted in the middle of a word to change its meaning or part of speech value.
+                                (Sue Ellen Wright; http://www.isocat.org/datcat/DC-1313)
+                            </rdfs:comment>
+      <rdfs:label>infix</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Affix"/>
+</rdfs:subClassOf>
+   </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#zuInclusion">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1954"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1954</owl:versionInfo>
+      <rdfs:comment>
+                            Inclusion of zu.
+                                (DFKI; http://www.isocat.org/datcat/DC-1954)
+                            </rdfs:comment>
+      <rdfs:label>zu inclusion</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Infix"/>
+</rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Prefix">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1365"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1365</owl:versionInfo>
+      <rdfs:comment>
+                            Affix added before a word to change its meaning or part of speech.
+                                (Sue Ellen Wright + Gil Francopoulo; http://www.isocat.org/datcat/DC-1365)
+                            </rdfs:comment>
+      <rdfs:label>prefix</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Affix"/>
+</rdfs:subClassOf>
+   </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SeparablePrefix">
+		<owl:versionInfo>TüBa-D/Z</owl:versionInfo>
+		<rdfs:comment>separable verb prefix, e.g., "Auch die Vertreter der AfB [stimmten] den 86 Millionen [zu]."</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Prefix"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Suffix">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1395"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1395</owl:versionInfo>
+      <rdfs:comment>
+                            Affix added at the end of the word to change its meaning or part of speech.
+                                (Sue Ellen Wright + Gil Francopoulo; http://www.isocat.org/datcat/DC-1395)
+                            </rdfs:comment>
+      <rdfs:label>suffix</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Affix"/>
+</rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Clitic">
+	   <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1903"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1903 (cliticness), http://purl.org/olia/mte/multext-east.owl#Cliticness</owl:versionInfo>
+	  <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+	  <owl:versionInfo>Deprecated: Note that the original MULTEXT-East definition of cliticness conflates four different aspects under this label: (a) whether an element *is* a clitic, (b) whether an element *contains* a clitic, (c) whether an element *should contain* a clitic that is, however, represented as a separate token, and (d) whether an element is part of a collocation.
+	  In the MULTEXT-East ontology (and here), this is made explicit by CliticElement, NoncliticElement, ElementWithClitic, ElementWithoutClitic and Collocation. Instead of the original "Clitic", CliticElement (state of being a clitic) and Cliticization (process of adding a clitic) are to be used</owl:versionInfo>
+      <rdfs:comment>Categorization of the different types of clitics
+	  (MultText-East; http://www.isocat.org/datcat/DC-1903)
+      </rdfs:comment>
+      <rdfs:label>cliticness</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+	  </rdfs:subClassOf>
+      <owl:equivalentClass rdf:resource="#CliticElement"/>
+    </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CliticElement">
+		<!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1903"/-->
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-1903 (cliticness), http://purl.org/olia/mte/multext-east.owl#Cliticness</owl:versionInfo>
+		<rdfs:comment>Note that Clitic covers only one aspect of the original MULTEXT-East (and ISOcat) definitions of cliticness, i.e., that an element is a clitic</rdfs:comment>
+		<rdfs:label>cliticness</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+		</rdfs:subClassOf>
+	</owl:Class>	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Cliticization">
+		<!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1903"/-->
+		<owl:versionInfo>http://www.glottopedia.de/index.php/Cliticization; http://www.isocat.org/datcat/DC-1903 (cliticness), http://purl.org/olia/mte/multext-east.owl#Cliticness. Note that Cliticization covers only one aspect of the original MULTEXT-East (and ISOcat) definitions of cliticness, i.e., that an element is a clitic</owl:versionInfo>
+		<rdfs:comment>
+			In morphosyntax, cliticization is a process by which a complex word is formed by attaching a clitic to a fully inflected word.
+			Exsmple: In Je t'aime, t' is the clitic attached to aime. 
+			(http://www.glottopedia.de/index.php/Cliticization)
+		
+			Note that cliticization can also be understood as the process of an independent word developing into a clitic. This is not the meaning intended here, as the OLiA ontologies are currently not applied to the description of diachronic processes. (Chiarcos)
+		</rdfs:comment>
+		<rdfs:label>cliticization</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalProcess"/>
+		</rdfs:subClassOf>
+	</owl:Class>	
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ElementWithClitic">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#ElementWithClitic"</owl:versionInfo>
+		<rdfs:comment>Expression representing a lexeme together with its clitics (Chiarcos)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Cliticization"/>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ElementWithoutClitic">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#ElementWithoutClitic"</owl:versionInfo>
+		<rdfs:comment>Expression representing a lexeme without any clitics (i.e. because of the absence of cliticization or because the clitic is represented separately) (Chiarcos)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Cliticization"/>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ElementDemandingClitic">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#DemandingClitic</owl:versionInfo>
+		<rdfs:comment>Expression representing a lexeme with cliticization whose clitics are, however, represented as a separate token</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#ElementWithoutClitic"/>
+		</rdfs:subClassOf>
+	</owl:Class>	
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#BoundClitic">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1933"/-->
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-1933 (bound as value of cliticness http://www.isocat.org/datcat/DC-1933), originally from MULTEXT-East, see http://purl.org/olia/mte/multext-east.owl#BoundClitic, but note that as it is used in MULTEXT-East, BoundClitic is ambiguous between "being" a bound clitic and "containing a bound clitic". Here, only the first aspect is preserved, is is thus a subclass of CliticElement.</owl:versionInfo>
+      <rdfs:comment>Linked to a particular element.
+                                (http://www.isocat.org/datcat/DC-1933)
+                            </rdfs:comment>
+      <rdfs:label>bound</rdfs:label>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia.owl#CliticElement"/>
+      </rdfs:subClassOf>
+      <owl:versionInfo>subClassOf cliticness (dcif:conceptualDomain)</owl:versionInfo>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Stem">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1389"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1389</owl:versionInfo>
+      <rdfs:comment>
+                            Root of a word, together with any derivational affixes, to which inflectional affixes are added.
+                                (www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAStem.htm; http://www.isocat.org/datcat/DC-1389)
+                            </rdfs:comment>
+      <rdfs:label>stem</rdfs:label>
+      <rdfs:label>base</rdfs:label>
+      <rdfs:label>root</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#Morpheme"/>
+</rdfs:subClassOf>
+    </owl:Class>
+   
+  <!-- ======================================================
+     ||            MORPHOLOGICAL PROCESSES              ||
+     ====================================================== -->
+
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Derivation">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1271"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1271</owl:versionInfo>
+      <rdfs:comment>
+                            Change in the form of a linguistic unit, usually modification in the base/root or affixation to create a new word.
+                                (Sue Ellen Wright + Gil Francopoulo; http://www.isocat.org/datcat/DC-1271)
+                            </rdfs:comment>
+      <rdfs:label>derivation</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalProcess"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:ID="Composition">
+		<owl:versionInfo>http://www.isocat.org/datcat/DC-352</owl:versionInfo>
+		<rdfs:comment>In linguistics, a compound is a lexeme (less precisely, a word) that consists of more than one stem. Compounding or composition is the word formation that creates compound lexemes (the other word-formation process being derivation). Compounding or Word-compounding refers to the faculty and device of language to form new words by combining or putting together old words. In other words, compound, compounding or word-compounding occurs when a person attaches two or more words together to make them one word. The meanings of the words interrelate in such a way that a new meaning comes out which is very different from the meanings of the words in isolation.
+		(http://en.wikipedia.org/wiki/Compound_%28linguistics%29)
+		
+		Compound: A lexical unit that combines two or sometimes more different words, frequently such that the sense of the new lexical unit is not clearly derivable from the combination of its parts. (Sue Ellen Wright, http://www.isocat.org/datcat/DC-352)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphologicalProcess"/>
+		<rdfs:label>compound</rdfs:label>
+		<rdfs:label>composition</rdfs:label>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Reduplication">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2346"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2346 (reduplication)</owl:versionInfo>
+      <rdfs:comment>
+                            process to modify the sense of a word by some operations to repeat the sound of a word.
+                                (http://www.isocat.org/datcat/DC-2346)
+                            </rdfs:comment>
+      <rdfs:label>reduplication</rdfs:label>
+	  <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalProcess"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:ID="EchoWord">
+		<owl:versionInfo>adopted from Ancorra for Indian languages, http://purl.org/olia/ancorra.owl#EchoWord</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="#Reduplication"/>
+		<rdfs:label>echo word</rdfs:label>
+		<rdfs:label>reduplicative</rdfs:label>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Word"/>
+        <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-4209</rdfs:isDefinedBy>
+      <rdfs:comment>The word is a copy of a previous word. In Hindi, this would add the meaning of distribution ("one rupee each"), separation ("sit separately"), variety, diversity or just emphasis. (http://www.isocat.org/datcat/DC-4209, reduplicative)
+	  
+			Echo word is a linguistic term that refers to a particular kind of reduplication which is a widespread areal feature in the languages of South Asia. Echo words are characterized by reduplication of a complete word or phrase, with the initial segment or syllable of the reduplicant being overwritten by a fixed segment or syllable. In most languages in which this phenomenon is present, echo words serve to express a meaning of "... and such; and things like that." In some cases the echo word may express a depreciative meaning as well.
+			
+			Echo words in Hindi are typically created with a fixed initial v:
+			aam 	"mango"
+			aam vaam 	"mangoes and the like"
+			tras 	"grief"
+			tras vras 	"grief and the like"
+			(http://en.wikipedia.org/wiki/Echo_word)
+			</rdfs:comment>
+	</owl:Class>
+	
+	<!-- Derivation -->
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Collective">
+		<owl:versionInfo>Normally realized by derivation rather than inflection, unless other evidence is provided, OLiA follows *both* the modelling of EAGLES (Collective rdf:type Number) and the modelling of the MTE ontology (Collective rdf:type MorphologicalDerivation, cf. http://purl.org/olia/mte/multext-east.owl#Collective)</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Derivation"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Nominalization">
+		<owl:versionInfo>TODO: compare against Lehmann, Handbuch Relativsätze</owl:versionInfo>
+		<owl:versionInfo>Nominalization is the process of forming a noun from (mostly) a verbal form, often marked morphologically or via zero derivation. (Hasmik Sargsian and Christian Chiarcos)</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Derivation"/>
+	</owl:Class>
+
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Diminuitive">
+		<rdfs:comment>A diminutive is a formation of a word used to convey a slight degree of the root meaning, smallness of the object or quality named, encapsulation, intimacy, or endearment. It is the opposite of an augmentative. (http://en.wikipedia.org/wiki/Diminutive)</rdfs:comment>
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Diminuitive, in MTE v.4 originally modelled as an aspect of Degree, but this is a misplacement. 
+			There are languages where Degree and Diminuitivity are independent. In Latvian, for example, the diminutive suffix may be attached to an adjective, 
+			not only in the positive but in the comparative and superlative degrees (Ruke-Dravina 1953).
+			
+			Velta Ruke-Dravina (1953), Adjectival Diminuitives in Latvian. The Slavonic and East European Review  31(77): 452-465
+		</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Derivation"/>
+	</owl:Class>
+	
+	<owl:Class rdf:ID="Augmentative">
+      <rdfs:isDefinedBy>http://www.isocat.org/datcat/DC-3094 (augmentativeSize)</rdfs:isDefinedBy>
+      <rdfs:comment>A special form of a noun that signals that the
+                        object being referred to is large relative to the usual size of such an
+                        object [Crystal 1980: 34].</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Derivation"/>
+		<owl:versionInfo>modelled as a derivational process analoguously to Diminuitive</owl:versionInfo>
+	</owl:Class>
+
+   <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReduplicationTypeFeature">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2240"/-->
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#MorphologicalFeature"/>
+		<owl:versionInfo>defined in OLiA-top</owl:versionInfo>
+	</owl:Class>
+
+  <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MorphologicalFeature"/>
+    </rdfs:subClassOf>
+	<owl:versionInfo>defined in OLiA-top</owl:versionInfo>
+    </owl:Class>
+
+<!-- ======================================================
+     ||                    PROPERTIES                    ||
+     ====================================================== -->
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSeparability">
+    <!--rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/ -->
+	<!-- can also be particles, cf. UbyPos -->
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSeparability"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasReduplicationType">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	      <owl:versionInfo>cf. http://www.isocat.org/datcat/DC-2240</owl:versionInfo>
+
+	    <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReduplicationTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasReduplicationType"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+
+
+  </rdf:RDF>

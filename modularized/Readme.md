@@ -16,10 +16,10 @@ The idea is to provide multiple independent ontologies for different components 
 	- [ ] `LinguisticConcept/MorphosyntacticCategory` (aka `Word`)
 	- [ ] validate
 - `morph.owl` -> `../owl/core/olia.owl`
-	- [ ] `LinguisticConcept/MorphologicalCategory`
-	- [ ] `LinguisticConcept/MorphologicalFeature`
-	- [ ] `LinguisticConcept/MorphologicalProcess`
-	- [ ] validate
+	- [x] `LinguisticConcept/MorphologicalCategory`
+	- [x] `LinguisticConcept/MorphologicalFeature`
+	- [x] `LinguisticConcept/MorphologicalProcess`
+	- [x] validate
 - `syntax.owl` -> `../owl/core/olia.owl`
 	- [ ] `LinguisticConcept/SyntacticRelation`
 	- [ ] `LinguisticConcept/SyntacticCategory`
