@@ -1627,5 +1627,99 @@ S â ´ Simple declarative clause, i.e. one that is not introduced by a (
 	</owl:equivalentClass>
 	</owl:Class> 
 
+<!-- ======================================================
+     ||                    PROPERTIES                    ||
+     ====================================================== -->
+
+  <!-- Properties -->
+  
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticFunction">
+			<owl:versionInfo>Bies et al. 1995</owl:versionInfo>
+    	<rdfs:subPropertyOf>
+    		<owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    	</rdfs:subPropertyOf>
+		<rdfs:comment>
+			Relation to be used when the syntactic function of a constituent is different from its morphosyntactic type, 
+			cf. FormFunctionDiscrepancy in the PTB bracketing guidelines, Bies et al. (1995, §2.2.1)
+		</rdfs:comment>
+		<owl:versionInfo>TODO: apply this to primitive concepts, too</owl:versionInfo>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticFunction"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticValency">
+    <owl:versionInfo>SUSANNE (Sampson 1995)</owl:versionInfo>
+	<rdfs:comment>
+		In annotation schemes for morphosyntax, "valency" normally means syntactic valency, i.e., the number of syntactic arguments 
+		a verb/clause takes.
+	</rdfs:comment>
+	<rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+			<rdfs:comment>ValencyFeature cannot be reflexive, because hasSyntacticValency is distinguished from hasSemanticValency</rdfs:comment>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasVoice">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasVoice"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticRole">
+    <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticRole"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+    <rdfs:domain>
+    	<owl:Class rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+  
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasMovementFeature">
+    <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MovementFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasMovementFeature"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+    <rdfs:domain>
+    	<owl:Class rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+
+
+
 
   </rdf:RDF>

@@ -482,5 +482,43 @@ Christian Chiarcos chiarcos@informatik.uni-frankfurt.de
 		<owl:versionInfo>modelled as a derivational process analoguously to Diminuitive</owl:versionInfo>
 	</owl:Class>
 
+<!-- ======================================================
+     ||                    PROPERTIES                    ||
+     ====================================================== -->
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSeparability">
+    <!--rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/ -->
+	<!-- can also be particles, cf. UbyPos -->
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SeparabilityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSeparability"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasReduplicationType">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	      <owl:versionInfo>cf. http://www.isocat.org/datcat/DC-2240</owl:versionInfo>
+
+	    <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReduplicationTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasReduplicationType"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+
 
   </rdf:RDF>

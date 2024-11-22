@@ -8645,4 +8645,516 @@ The purpose of the jussive is to express a command in the first or third person 
 	</owl:Class>
 
 
+<!-- ======================================================
+     ||                    PROPERTIES                    ||
+     ====================================================== -->
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasDefiniteness">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DefinitenessFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasDefiniteness"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasEmphasis">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+		<rdfs:range>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EmphasisFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasEmphasis"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+		</rdfs:range>
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasProximity">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+		<rdfs:range>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ProximityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasProximity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+		</rdfs:range>
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasClusivity">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+		<rdfs:range>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ClusivityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasClusivity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+		</rdfs:range>
+	</owl:ObjectProperty>
+
+	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSpecificity">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+		<rdfs:range>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SpecificityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSpecificity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+		</rdfs:range>
+	</owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasChild">
+    <rdfs:subPropertyOf>
+    	<owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasTarget"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In hierarchical relations, the parent is modelled as source, the child as target.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasParent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In hierarchical relations, the parent is modelled as source, the child as target.</rdfs:comment>
+    <rdfs:subPropertyOf>
+    	<owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasSource"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasDegree">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adverb"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DegreeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasDegree"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasPolarity">
+    <rdfs:range>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PolarityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPolarity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+    </rdfs:range>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasInflectionType">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#InflectionTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasInflectionType"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasStrength">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+		<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#StrengthFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasStrength"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasNumber">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Noun"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Article"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Numeral"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumberFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasOwnedNumber">
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1930"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1930</owl:versionInfo>
+      <rdfs:comment>
+                            Indication concerning the number of the possessed thing.
+                                (http://www.isocat.org/datcat/DC-1930)
+                            </rdfs:comment>
+      <rdfs:label>owned number</rdfs:label>
+	  	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumberFeature"/>
+</rdfs:range>
+   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasOwnerNumber">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1417"/-->
+  	<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+      <owl:versionInfo>
+		EAGLES feature for the inherent plural/singular of possessive pronouns and possessive determiners;
+		http://www.isocat.org/datcat/DC-1417, does not entail hasNumber (against hasOwnedNumber), 
+		because hasNumber applies to agreement information
+	  </owl:versionInfo>
+		<rdfs:comment>
+				The EAGLES-recommended attribute Possessive accounts for the fact that a possessive 
+				pronoun or possessive determiner may have two different numbers. This attribute handles 
+				the number which is inherent to the possessive form (e.g. Italian "(la) mia", "(la) 
+				nostra" as first-person singular and first-person plural) as contrasted with the number 
+				it has by virtue of agreeing with a particular noun (e.g. Italian "(la) mia", "(le) mie)".  		
+				(http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recc  20.11.06)
+		
+                Indication concerning the number of the person that ownes something.
+                (http://www.isocat.org/datcat/DC-1417)
+								
+				Inherent plural or singular of possessive pronouns and possessive determiners.
+		</rdfs:comment>
+      <rdfs:label>owner number</rdfs:label>
+  </owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSubjectNumber">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasNumber"/>
+		<owl:versionInfo>introduced for double agreement of transitive verbs, e.g., in Hungarian, see http://purl.org/olia/mte/multext-east.owl#FirstSgSecondSg</owl:versionInfo>
+		<rdfs:comment>
+			Number of the subject of a transitive verb. (By default, this is the meaning of hasNumber).
+		</rdfs:comment>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticValency"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#Transitive"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</rdfs:domain>
+		<rdfs:label>subject number</rdfs:label>
+		<rdfs:range>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumberFeature"/>
+		</rdfs:range>
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasObjectNumber">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+		<owl:versionInfo>introduced for double agreement of transitive verbs, e.g., in Hungarian, see http://purl.org/olia/mte/multext-east.owl#FirstSgSecondSg</owl:versionInfo>
+		<rdfs:comment>
+			Number of the object of a transitive verb. (Note that this does not entail of hasNumber).
+		</rdfs:comment>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticValency"/>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#Transitive"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</rdfs:domain>
+		<rdfs:range>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumberFeature"/>
+		</rdfs:range>
+	</owl:ObjectProperty>
+	
+	
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSubordType">
+  	<owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+	<owl:versionInfo>remodelled within the hierarchy</owl:versionInfo>
+    <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#SubordinatingConjunction"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasReflexivity">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ReflexivityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasReflexivity"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasTense">
+    <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#TenseFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasTense"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasCoordType">
+    <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#CoordinatingConjunction"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CoordTypeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasCoordType"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasEvidentiality">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EvidentialityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasGender"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasGender">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Noun"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Article"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Numeral"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Residual"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#GenderFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasGender"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasOwnerGender">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1416"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1416</owl:versionInfo>
+      <rdfs:comment>
+                            Indication concerning the gender of the person that ownes something.
+                                (http://www.isocat.org/datcat/DC-1416)
+                            </rdfs:comment>
+      <rdfs:label>owner gender</rdfs:label>
+	  <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	  <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#GenderFeature"/>
+	  </rdfs:range>
+   </owl:ObjectProperty>
+   
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasCase">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Noun"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjective"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Numeral"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Article"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CaseFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasCase"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasPerson">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
+          <owl:Class rdf:about="http://purl.org/olia/olia.owl#PronounOrDeterminer"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PersonFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range></owl:ObjectProperty>
+	
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSubjectPerson">
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/olia.owl#hasPerson"/>
+	<rdfs:domain>
+        <owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
+	</rdfs:domain>
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2278"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2278 (subject person)</owl:versionInfo>
+      <rdfs:comment>
+                            person for the subject of the verb 
+							(in languages with double congruency)
+                                (http://www.isocat.org/datcat/DC-2278)
+                            </rdfs:comment>
+      <rdfs:label>subject person</rdfs:label>
+   </owl:ObjectProperty>
+   
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasObjectPerson">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-2279"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-2279</owl:versionInfo>
+      <rdfs:comment>
+                            person for the object of the verb
+                                (http://www.isocat.org/datcat/DC-2279)
+                            </rdfs:comment>
+      <rdfs:label>object person</rdfs:label>
+	  <rdfs:domain>
+        <owl:Class rdf:about="http://purl.org/olia/olia.owl#Verb"/>
+		</rdfs:domain>
+	  <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	  <rdfs:range>
+        <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PersonFeature"/>
+		</rdfs:range>
+   </owl:ObjectProperty>
+   
+   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasOwnerPerson">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1929"/-->
+      <owl:versionInfo>http://www.isocat.org/datcat/DC-1929</owl:versionInfo>
+      <rdfs:comment>
+                            Indication concerning the person that ownes something.
+                                (http://www.isocat.org/datcat/DC-1929)
+                            </rdfs:comment>
+      <rdfs:label>owner person</rdfs:label>
+	  <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	  <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PersonFeature"/>
+	  </rdfs:range>
+	  <owl:versionInfo>does not entail hasPerson: hasPerson pertains to agreement</owl:versionInfo>
+   </owl:ObjectProperty>
+   
+   <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasMood">
+    <rdfs:subPropertyOf rdf:resource="#hasModality"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MoodFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasMood"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasAspect">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Verb"/>
+	 <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#AspectFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasAspect"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasValency">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasValency"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  
+	<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasNumeralAgreementClass">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+		<rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Quantifier"/>
+		<rdfs:range>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NumeralAgreementClass">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasNumeralAgreementClass"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+			</owl:Class>
+		</rdfs:range>
+	</owl:ObjectProperty>
+
+
   </rdf:RDF>

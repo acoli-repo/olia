@@ -827,5 +827,90 @@ Words such as fully and completely are absolutes and do not receive -EXT.
 		</rdfs:subClassOf>
 	</owl:Class>
 
+<!-- ======================================================
+     ||                    PROPERTIES                    ||
+     ====================================================== -->
+
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSemanticValency">
+    <owl:versionInfo>Ch. Chiarcos</owl:versionInfo>
+	<rdfs:comment>
+		Semantic valency pertains to the number of semantic arguments a predicate takes.
+		This is not necessarily the same as syntactic valency: In English, expletive "it" is
+		used as a syntactic argument if no semantic argument is available, cf. van Valin and 
+		Lapolla (1997).
+	</rdfs:comment>
+	<rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+				<rdfs:comment>ValencyFeature cannot be reflexive, because hasSyntacticValency is distinguished from hasSemanticValency</rdfs:comment>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+ 
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasCountability">
+	<rdfs:domain rdf:resource="http://purl.org/olia/olia.owl#Noun"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#CountabilityFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasCountability"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+	<rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasEvaluativeFeature">
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#EvaluativeFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasEvaluativeFeature"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+	<rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+
   
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSemanticRole">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  
+
+  <owl:ObjectProperty rdf:about="hasSemanticRole">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SemanticRole">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSemanticRole"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+</rdfs:range>
+  </owl:ObjectProperty>
+
   </rdf:RDF>

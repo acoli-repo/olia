@@ -36,10 +36,12 @@ The idea is to provide multiple independent ontologies for different components 
 	- [ ] `LinguisticConcept/OrthographicEntity`
 	- [ ] `LinguisticConcept/PhonologicalProcess`
 	- [ ] validate
+- put log separately
 - rebuild `../owl/core`
+	- [ ] Makefile
 	- [ ] `olia-top.owl`
 	- [ ] `system.owl`
+	- [ ] generate header for `olia.owl` (logs, DO NOT EDIT disclaimer)
 	- [ ] `olia.owl`
-	- [ ] Makefile
 
 whitepaper on `Revisiting the Ontologies of Linguistic Annotation (OLiA)`, concerned with frequencies, modularization and SPARQL queries for tag mapping (shortest path+frequency ranking for alternatives)
