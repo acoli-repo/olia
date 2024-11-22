@@ -31,15 +31,16 @@ The idea is to provide multiple independent ontologies for different components 
 	- [ ] `LinguisticConcept/LexicalRelation`
 	- [ ] validate
 - `graphon.owl` -> `../owl/core/olia.owl`
-	- [ ] `LinguisticConcept/OrthographicEntity`
-	- [ ] `LinguisticConcept/PhonologicalProcess`
-	- [ ] validate
+	- [x] `LinguisticConcept/OrthographicEntity`
+	- [x] `LinguisticConcept/PhonologicalProcess`
+	- [x] validate
 - put log separately
 - rebuild `../owl/core`
 	- [ ] Makefile
 	- [ ] `olia-top.owl`
 	- [ ] `system.owl`
 	- [ ] generate header for `olia.owl` (logs, DO NOT EDIT disclaimer)
+	- [ ] integrate `olia-header.owl` in `olia.owl`
 	- [ ] dynamically build labels for `olia.owl` (remove `olia-rest.owl`)
 	- [ ] `olia.owl`
 
