@@ -1,0 +1,1642 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+<!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF
+    xmlns:dcr="http://www.isocat.org/ns/dcr.rdf#"
+    xmlns="http://purl.org/olia/olia.owl#"
+	xmlns:olia="http://purl.org/olia/olia.owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:olia_system="http://purl.org/olia/system.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:olia_top="http://purl.org/olia/olia-top.owl#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:dct="http://purl.org/dc/terms/"
+  xml:base="http://purl.org/olia/olia.owl">
+  <owl:Ontology rdf:about="http://purl.org/olia/olia.owl">
+	<owl:versionInfo>2024-11-22 OLiA Syntax extracted from olia.owl</owl:versionInfo>
+ </owl:Ontology>  
+
+  	<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>  
+
+  <!-- ======================================================
+     ||     SYNTACTIC RELATIONS AND STRUCTURES           ||
+     ====================================================== -->
+
+	<!-- syntactic relation -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRelation">
+		<owl:versionInfo>TODO: check TDS and GOLD</owl:versionInfo>
+    <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/system.owl#Relation"/>
+	</rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasParent"/>
+            </owl:onProperty>
+            <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >1</owl:cardinality>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasChild"/>
+            </owl:onProperty>
+            <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >1</owl:cardinality>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DependencyRelation">
+    <rdfs:subClassOf>
+    	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DominanceRelation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRelation"/>
+    </rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#hasConjunct">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#CoordinatingConjunction_ConjunctType</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRelation"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+					<owl:Restriction>
+						<owl:onProperty>
+							<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasParent"/>
+						</owl:onProperty>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#CoordinatingConjunction"/>
+					</owl:Restriction>
+					<!-- more than one coordinating conjunctiuon is possible for correlative conjunctions, e.g., either ... or ... -->
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#hasSentenceConjunct">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#SentenceCoordinatingConjunction</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#hasConjunct"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+					<owl:Restriction>
+						<owl:onProperty>
+							<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasChild"/>
+						</owl:onProperty>
+					<owl:someValuesFrom>
+						<owl:Class>
+							<owl:unionOf rdf:parseType="Collection">
+								<owl:Class rdf:about="http://purl.org/olia/olia.owl#Sentence"/>
+								<owl:Class rdf:about="http://purl.org/olia/olia.owl#Clause"/>
+							</owl:unionOf>
+						</owl:Class>
+					</owl:someValuesFrom>
+				</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#hasWordConjunct">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#WordCoordinatingConjunction</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#hasConjunct"/>
+		<rdfs:subClassOf>
+					<owl:Restriction>
+						<owl:onProperty>
+							<owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasChild"/>
+						</owl:onProperty>
+						<owl:someValuesFrom rdf:resource="http://purl.org/olia/olia.owl#Token"/>
+					</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+
+	<!-- SyntacticConstruction -->  
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjunction">
+		<owl:versionInfo>PTB Bracketing Guidelines, Santorini (1991)</owl:versionInfo>
+		<rdfs:comment>The term \adjunction structure" refers to structures which would be represented by tree diagrams of
+the general form in (@9). The defining characteristic of adjunction structures is that a node X dominates
+another instance of X.
+(Santorini 1991)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticConstruction"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Apposition">
+		<rdfs:comment>Apposition is a relation between two phrases: (1) the nucleus phrase and (2) an appositive phrase,
+generally set o by punctuation, which modi es the nucleus phrase. An example of apposition is given in
+(@11).
+
+(11) Ryukichi Imai, Japan’s ambassador to Mexico, agrees that Mexico may be too eager.
+
+Here, Ryukichi Imai is the nucleus phrase, and the phrase enclosed in commas, Japan’s ambassador to
+Mexico, is the appositive.
+Instances of apposition should be represented as adjunction structures (see Section 3.1). 
+(Santorini 1991)</rdfs:comment>
+		<owl:versionInfo>added in accordance with TIGER, definition according to PTB Bracketing Guidelines (Santorini 1991)</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjunction"/>
+		</rdfs:subClassOf>		
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WordOrderInverse">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticConstruction"/>
+		</rdfs:subClassOf>
+		<owl:versionInfo>PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SINV|Inverted declarative sentence, i.e. one in which the subject follows the verb. See Section 5.19.
+(Santorini 1991)
+
+The SINV label is used for subject-auxiliary inversion in the case of negative inversion, conditional inversion, locative inversion, and some topicalizations. ...
+SINV â ´ Inverted declarative sentence, i.e. one in which the subject follows the tensed verb or modal. 
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHCleft">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticConstruction"/>
+		</rdfs:subClassOf>
+		<owl:versionInfo>PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SubordinateClause"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wh-clefts are constructions in which a wh-clause functions as the subject of a sentence. A simple
+example is What matters is the price. Here, the wh-clause What matters is the subject, and is the price is
+the predicate. The internal structure of the subject is:
+(NP (SBAR (WHNP what)
+(S (NP T)
+(VP matters))))
+(Santorini 1991)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ItCleft">
+	<owl:versionInfo>PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-CLF (cleft)
+— marks it-clefts (“true” clefts) and may be added to the labels S, SINV, or SQ. See section 16 [Clefts]. 
+
+  (SQ-CLF Was
+          (NP-SBJ it)
+          (NP-PRD (NP John's)
+                  car)
+          (SBAR (WHNP-6 0)
+                (S (NP-SBJ you)
+                   (VP borrowed
+                       (NP *T*-6))))
+          ?)
+(Bies et al. 1995)
+
+S-CLF
+(it-cleft or “true” cleft) 
+
+Declarative it-clefts are labeled S-CLF, expletive it is tagged as the surface subject (-SBJ), the SBAR is attached at VP-level, and a trace is coindexed to the wh-complementizer of the clefted portion. (See section 16 [Clefts] for more information.) 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticConstruction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Extraposition">
+		<owl:versionInfo>PTB bracketing guidelines, Bies et al. 1995</owl:versionInfo>
+    <rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticConstruction"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >*EXP*
+— Expletive (extraposition) ...
+In cases where a clausal subject has been extraposed and replaced by an expletive it, we use a type of pseudo-attach called *EXP*. (In the small ATIS sample included with this release, it is also used for existential there.) Use of *EXP*-attach is discussed in more detail in section 17 [It-Extraposition]. 
+
+  (S (NP-SBJ (NP It)
+             (SBAR *EXP*-1))
+     (VP is
+         (ADJP-PRD clear)
+         (PP to
+             (NP me))
+         (SBAR-1 that
+                 (S (NP-SBJ this message)
+                    (VP is
+                        (ADJP-PRD unclear))))))
+
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Fronting">
+		<owl:versionInfo>T-CODEX (Petrova 2008, http://purl.org/olia/tcodex.owl#InitionalPosition)</owl:versionInfo>
+		<rdfs:comment>Expression occurs at the left periphery of the sentence. This includes various noncanonical and canonical word order possibilities. (Note that it is not restricted here to noncanonical word order; for noncanonical fronting see subconcepts, e.g., Topicalization.) (Chiarcos)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticConstruction"/>
+		</rdfs:subClassOf>		
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Topicalization">
+		<owl:versionInfo>PTB bracketing guidelines, Bies et al. 1995</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Fronting"/>
+		</rdfs:subClassOf>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+			>Topicalization structures are ones where a non-subject immediately precedes a subject, which
+			immediately precedes the verb/auxiliary of the sentence. Two examples:
+			Pizza, John likes.
+			Tomorrow, I will go to the store.
+			Such examples should be bracketed as adjunction structures.
+			(Santorini 1991)
+			
+			-TPC (“topicalized”)
+			— marks elements that appear before the subject in a declarative sentence, but in two cases only: 
+			
+			(i) if the fronted element is associated with a *T* in the position of the gap.
+			
+			(ii) if the fronted element is left-dislocated (i.e., it is associated with a resumptive pronoun in the position of the gap). (See the section on fronted elements in section 1 [Overview of Basic Clause Structure] for more details on the treatment of fronted elements and the section on *T* with fronted elements in section 4 [Null Elements] for more details on the distribution of *T*.) 
+			(Bies et al. 1995)
+			
+			Fronted elements are placed inside the top clause level (e.g. S, SINV, SQ, SBAR). (Only certain fronted elements are tagged -TPC: (i) constituents associated with a *T* in the position of the gap and (ii) left-dislocated constituents (those associated with a resumptive pronoun in the position of the gap).) (See section 1 [Overview of Basic Clause Structure] for more details on the treatment of fronted elements.) 
+			(Bies et al. 1995)</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#HangingTopic">
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Fronting"/>
+		<owl:versionInfo>http://purl.org/olia/tcodex.owl#HangingTopic</owl:versionInfo>
+		<rdfs:label>hanging topic</rdfs:label>
+		<rdfs:comment>HangingTopic constructions are closely related to LeftDislocation. 
+			Unlike LeftDislocation, the dislocated element and its resuming pronoun do not 
+			necessarily agree in case, number and gender. (Petrova and Odebrecht 2011, http://purl.org/olia/tcodex.owl#HangingTopic)</rdfs:comment>
+	</owl:Class>
+	
+	<!-- NullElement -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Trace">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#NullElement"/>
+    </rdfs:subClassOf>
+	<owl:versionInfo>PTB bracketing guidelines, Bies et al. (1995)</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >T|Trace. Marks the position where a fronted wh-constituent is interpreted. ...
+
+T marks the spot where an argument NP that has been moved by wh-movement or relative clause
+formation is interpreted. For instance, the relative clause the man that I saw should be bracketed as
+follows, by analogy to the corresponding simple declarative I saw the man.
+
+(NP (NP the man) (SBAR that (S (NP I) (VP saw) (NP T)))))
+
+T is also used to represent the empty subjects of as-clauses.
+(Santorini 1991)
+
+*T*
+â ´ trace of Aâ ²-movement 
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ZeroPronoun">
+		<owl:versionInfo>PTB bracketing guidelines, Santorini 1991, Bies et al. 1995; 
+			often considered as extremely weak form of personal pronouns (Ariel 1990; Givón 1995)
+		</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >*|An asterisk represents a zero pronoun; it may need to be deleted. ...
+* is used to represent the empty subject of gerunds, imperatives and to-infinitive clauses. 
+(Santorini 1991)
+
+(NP *) â ´ arbitrary PRO, controlled PRO, and trace of A-movement 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NullElement"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#PersonalPronoun"/>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ZeroComplementizer">
+		<owl:versionInfo>added in conformance with PTB bracketing guidelines (Santorini 1991)</owl:versionInfo>
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NullElement"/>
+	<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#SubordinatingConjunction"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0|Zero represents a zero complementizer (= subordinating conjunction); it may need to be deleted. The
+zero complementizer is generally the counterpart of the overt complementizer that. Example: Iâ ¹m sure 0
+heâ ¹ll be here any minute. ...
+
+0 stands in for overt subordinating conjunctions like that in tensed subordinate clauses, including
+relative clauses. So the relative clause the man I saw should be bracketed as follows:
+(NP (NP the man) (SBAR 0 (S (NP I) (VP saw) (NP T)))))
+
+(Santorini 1991)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#OmittedUnit">
+		<owl:versionInfo>added in conformance with PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NullElement"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >*U*
+â ´ unit ...
+This element marks the interpreted position of a unit symbol, such as $, # (British pounds), FFr (French francs), C$, US$, HK$, A$, M$, S$, and NZ$. It may also appear after % or even cents, when convenient. See section 11 [Modification of NP] for more details on the use of *U*. ...
+In general, *U* is placed where the word corresponding to the symbol would appear in the string if the text were read aloud. One notable exception is in certain hyphenated compound adjectives, such as a $5-a-share increase (spoken: â ¼A five dollar a share increaseâ ½). Here, the bracketing will usually not reflect the spoken order, with *U* placed as the last element in the ADJP: 
+
+  (NP a (ADJP $ 5-a-share *U*)
+      increase)
+
+Sometimes, this type may lack the *U* entirely. 
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Ellipsis">
+		<owl:versionInfo>added in conformance with PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NullElement"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >*?* â ´ placeholder for ellipsed material ...
+
+*?* is now available in the following great-tasting flavors: (VP *?*), (ADJP-PRD *?*), (PP-PRD *), (NP *?*), (S *?*), (SBAR *?*). These act as placeholders for a missing predicate or piece thereof, especially in comparative constructions and other environments where predicate deletion occurs. Although the missing material represented by *?* is often identical to another constituent in the same sentence, the two are never coindexed. Postmodifiers of the verb (including traces) may be attached under (VP *?*), but not to any other null element, including the other *?* null elements and (VP *T*).
+
+Note that policy for *?* was never finalized, so its use varies to some extent. In general, *?* is used by the annotators as a last resort (short of the FRAG analysis) for the annotation of clauses with â ¼missingâ ½ material. Nonetheless, there are certain constructions that are particularly likely to contain *?*:
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Gapping">
+	<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#NullElement"/>
+    <owl:versionInfo>PTB bracketing guidelines (Santorini 1991)</owl:versionInfo>
+	<rdfs:comment>
+		The term "gapping" refers to a form of coordination in which the coordinated phrases after the rst
+		are incomplete. For instance, the gapped equivalent of the full coordination structure in (@18a) is given in
+		( 18b).
+			( 18)
+				a. Mary likes Bach and Susan likes Beethoven.
+				b. Mary likes Bach and Susan, Beethoven.
+		Gapped sequences like Susan, Beethoven should be labelled X. On the other hand, while coordination
+		constructions containing gapped sequences involve coordination of unlike categories, it is clear that the
+		entire coordination structure is a clause; hence, it should be labelled S.
+		(Santorini 1991)
+	</rdfs:comment>
+  </owl:Class>
+  
+	<!-- TopologicalField -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField">
+		<rdfs:comment>
+		Topological fields are a descriptive formalism to describe regularities of the makro-structure of sentences, 
+		for example, in the traditional description of word order inseveral Germanic languages (e.g., German, Dutch, Danish). 
+		More recently, similar conceptions of topological fields have been further developed in the context of constructivistic
+		grammar formalisms, e.g., Role and Reference Grammar (van Valin and LaPolla 1997).
+		</rdfs:comment>
+		<owl:versionInfo>Telljohann et al. (2009, p.13)</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InitialField">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+In a German clause, the finite verb can appear in three different positions: verb-second, 
+verb-initial, and verb-final. Only in verb-final clauses the verb complex consisting of the
+finite verb and non-finite verbal elements forms a unit. The discontinuous positioning
+of the verbal elements in verb-first and verb-second clauses is the traditional reason
+for structuring German clauses into fields. The positions of the verbal elements form
+the Satzklammer (sentence bracket) which divides the sentence into a Vorfeld (initial
+field), a Mittelfeld (middle field), and a Nachfeld (final field). The Vorfeld and the
+Mittelfeld are divided by the linke Satzklammer (left sentence bracket), which is the finite
+verb, the rechte Satzklammer (right sentence bracket) is the verb complex between the
+Mittelfeld and the Nachfeld. 
+(Telljohann et al. 2009, p.13)
+		</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Fronting"/>
+		<owl:versionInfo>In the canonical sentence, the initial field is the first position in the sentence, hence grouped under Fronting.</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FinalField">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+In a German clause, the finite verb can appear in three different positions: verb-second, 
+verb-initial, and verb-final. Only in verb-final clauses the verb complex consisting of the
+finite verb and non-finite verbal elements forms a unit. The discontinuous positioning
+of the verbal elements in verb-first and verb-second clauses is the traditional reason
+for structuring German clauses into fields. The positions of the verbal elements form
+the Satzklammer (sentence bracket) which divides the sentence into a Vorfeld (initial
+field), a Mittelfeld (middle field), and a Nachfeld (final field). The Vorfeld and the
+Mittelfeld are divided by the linke Satzklammer (left sentence bracket), which is the finite
+verb, the rechte Satzklammer (right sentence bracket) is the verb complex between the
+Mittelfeld and the Nachfeld. 
+(Telljohann et al. 2009, p.13)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MiddleField">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+In a German clause, the finite verb can appear in three different positions: verb-second, 
+verb-initial, and verb-final. Only in verb-final clauses the verb complex consisting of the
+finite verb and non-finite verbal elements forms a unit. The discontinuous positioning
+of the verbal elements in verb-first and verb-second clauses is the traditional reason
+for structuring German clauses into fields. The positions of the verbal elements form
+the Satzklammer (sentence bracket) which divides the sentence into a Vorfeld (initial
+field), a Mittelfeld (middle field), and a Nachfeld (final field). The Vorfeld and the
+Mittelfeld are divided by the linke Satzklammer (left sentence bracket), which is the finite
+verb, the rechte Satzklammer (right sentence bracket) is the verb complex between the
+Mittelfeld and the Nachfeld. 
+(Telljohann et al. 2009, p.13)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#LeftSentenceBracket">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+In a German clause, the finite verb can appear in three different positions: verb-second, 
+verb-initial, and verb-final. Only in verb-final clauses the verb complex consisting of the
+finite verb and non-finite verbal elements forms a unit. The discontinuous positioning
+of the verbal elements in verb-first and verb-second clauses is the traditional reason
+for structuring German clauses into fields. The positions of the verbal elements form
+the Satzklammer (sentence bracket) which divides the sentence into a Vorfeld (initial
+field), a Mittelfeld (middle field), and a Nachfeld (final field). The Vorfeld and the
+Mittelfeld are divided by the linke Satzklammer (left sentence bracket), which is the finite
+verb, the rechte Satzklammer (right sentence bracket) is the verb complex between the
+Mittelfeld and the Nachfeld. 
+(Telljohann et al. 2009, p.13)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbalComplex">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+In a German clause, the finite verb can appear in three different positions: verb-second, 
+verb-initial, and verb-final. Only in verb-final clauses the verb complex consisting of the
+finite verb and non-finite verbal elements forms a unit. The discontinuous positioning
+of the verbal elements in verb-first and verb-second clauses is the traditional reason
+for structuring German clauses into fields. The positions of the verbal elements form
+the Satzklammer (sentence bracket) which divides the sentence into a Vorfeld (initial
+field), a Mittelfeld (middle field), and a Nachfeld (final field). The Vorfeld and the
+Mittelfeld are divided by the linke Satzklammer (left sentence bracket), which is the finite
+verb, the rechte Satzklammer (right sentence bracket) is the verb complex between the
+Mittelfeld and the Nachfeld. 
+(Telljohann et al. 2009, p.13)
+
+The Verbkomplex is a sequence of verb forms. In verb-second and verb-first
+clauses it consists of one or more non-finite elements or - depending on the verb - of
+a separable prefix. In verb-final clauses it also contains the finite verb. The rule for
+the linear order in general is: right determines left. If there is a finite verb in the verb
+complex, it is usually the right-most element.
+(Telljohann et al. 2009, p.15)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#LeftDislocationField">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia.owl#Extraposition"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia.owl#Fronting"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+The German Linksversetzungsfeld is a field for the left-dislocated phrase of resumptive constructions. A Linksversetzung is a pendent constituent. 
+It can be regarded as a syntactic anticipation of a part of a sentence
+(Telljohann et al. 2009, p.16)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ComplementizerField">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+The C-Feld occurs in verb-final clauses in German (exception: the conjunction als in
+subordinated sentences of comparison als w¨are es nie geschehen.). It is obligatorily
+occupied in finite verb-final clauses if there is no conjunction in the Linke Klammer. In
+non-finite verb-final clauses the C-position may be empty. This field can be occupied by
+conjunctions of sentential objects (e.g. daß, ob) or sentence initial conjunctions like um,
+obwohl, wenn and also by complex interrogative or relative phrases, e.g. ..., ’um wieviel
+Geld’ geht es dabei? / ..., ’an der’ Max Daniel Professor f¨ur Klavier ist.
+(Telljohann et al. 2009, p.17)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CoordinatorField">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+The KOORD-field is the field for coordinating particles in the German clause. In contrast to the PARORD-field, it can optionally occur as the left-most element of all clause types.
+(Telljohann et al. 2009, p.17)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubordinatorField">
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+In the German clause, the PARORD-field is the field for non-coordinating particles which
+optionally occur as the left-most element of a verb-second clause 
+(Telljohann et al. 2009, p.17)
+		</rdfs:comment>
+	</owl:Class>
+	
+	<!-- Constituent -->
+	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#Constituent">
+		<owl:versionInfo>http://www.linguistics-ontology.org/gold/2008/SyntacticConstruction</owl:versionInfo>
+        <rdfs:comment>
+			Constituents correspond to a GOLD SyntacticConstruction:
+			SyntacticConstruction is the class of grammar units that 
+			have syntactic structure, i.e., consisting of more than 
+			one syntactic word or construction in a syntactic 
+			configuration. [Crystal 1980, 85-86]. 
+			(http://www.linguistics-ontology.org/gold/2008)
+
+			Corresponds to units of annotation in the EAGLES recommendations for syntactic annotation
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node29.html#SECTION00052000000000000000)
+		</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#Sentence">
+		<owl:versionInfo>
+			EAGLES category Sentence (S), 
+			http://purl.org/linguistics/gold/OrthographicSentence
+		</owl:versionInfo>
+		<rdfs:subClassOf>
+			<rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Constituent"/>
+		</rdfs:subClassOf>
+		<owl:versionInfo>
+		TODO: model Sentence as separate concept indepdendently from Constituent (cf. TüBa-DZ "Root").
+		But what would be an appropriate name for that ?
+		</owl:versionInfo>
+		<rdfs:comment>
+			The maximal, syntactically independent, segments into which a text is subdivided, 
+			for parsing purposes, are normally considered to be sentences. In a written text, 
+			they are typically (though by no means invariably) delimited by an initial capital 
+			letter and a final full stop (`.') or other terminal punctuation. It is convenient 
+			to accept this primary orthographic definition of `sentence' for the purposes of 
+			syntactic annotation. However, a sentence, so defined, may be either a full 
+			sentence (9) or a `grammatically incomplete' one (10).
+
+			(9)  	[S This is a sentence. S]
+			(10)  	[S Well done. S]
+
+			The same applies to sentences included within other sentences, as in (11)
+
+			(11)  	[S [S ``Well done'', S] she said. S] }
+			
+			``Well done'' in 11 is labelled as a sentence, since it clearly has an independent 
+			syntactic status equivalent to those of 9, even though it is included in another 
+			sentence. This inclusion of one independent sentence within another is found both 
+			with reported speech and elsewhere. Phenomena such as those illustrated in 10 are 
+			by no means exceptional in text corpora.
+
+			In transcriptions of spoken discourse, there is no simple answer to the question 
+			``What is a sentence?''. Some transcriptions, based on standard orthography, yield 
+			de facto sentences in the form of units beginning with a capital letter and closing 
+			with a terminal punctuation mark. For these, there is no problem in recognising the 
+			primary sentential segments and delimiting them by [S ... S], even though these 
+			segments frequently lack the canonical structure of a complete written sentence. 
+			Moreover, even in other transcriptions, where the standard orthographic practices of 
+			sentence delimitation are avoided, it is possible to identify `primary segments' 
+			analogous to the written sentence, viz. the primary units into which the transcribed 
+			discourse is divided for parsing purposes. For spoken as well as written language, 
+			then, the [S] unit may be retained, although it may be interpreted differently, and 
+			some other term, such as `primary segment', may be preferred to `sentence'.
+
+			We conclude by recommending, for the syntactic annotation of any text (including a 
+			transcription of spoken language), an exhaustive division of the text into units 
+			labelled [S ... S].
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node30.html#SECTION00052100000000000000)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase">
+		<owl:versionInfo>http://purl.org/linguistics/gold/Phrase</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#Constituent"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			Phrase is the class of syntactic constructions that consist of one or more 
+			syntactic words, but lack the subject-predicate organization of a clause. 
+			Phrases get their grammatical characteristics according to what word occupies 
+			the head position; thus, all phrases have heads [Crystal 1980, 232-233; Pei 
+			and Gaynor 1954, 169; Pike and Pike 1982, 453].
+			(http://purl.org/linguistics/gold/Phrase)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Clause">
+		<owl:versionInfo>
+			EAGLES, http://purl.org/linguistics/gold/Clause
+		</owl:versionInfo>
+		<rdfs:comment>
+			Clause is the class of constructions that form minimal sentential units. 
+			They must include a predicate, all arguments of the predicate, and all 
+			modifiers of the predicate and the arguments.
+			(http://purl.org/linguistics/gold/Clause)
+		</rdfs:comment>
+		<rdfs:comment>
+			Traditionally sentences are deemed to be composed of major constituents 
+			known as clauses, which may be main clauses (not included in a superordinate 
+			clause) or embedded clauses (included in a superordinate clause) such as 
+			relative clauses or adverbial clauses. A main clause, unless it is coordinated, 
+			is equivalent to a simple sentence, and does not need to be separately labelled. 
+			Embedded and coordinated clauses, on the other hand, will need to be separately 
+			identified. We recommend that such units be identified in the annotation, and 
+			labelled either as sentences (S) or as clauses (CL), according to the preference 
+			specified in the annotation scheme.
+
+			The reason for allowing choice here is that different theoretical preferences 
+			have to be accommodated. In some syntactic models, the `clause' category is not 
+			used (except informally), embedded clauses being marked by included [S] 
+			constituents. In other models, clauses are identified as such, even where they 
+			are coextensive with an independent sentence.
+
+			One solution which commends itself (and is employed in the Lancaster Treebank and 
+			the SUSANNE Corpus) is to retain [S ... S] as the delimiter of sentences, whether 
+			included or not, and also to use [S ... S] for the coordinated parts of a compound 
+			sentence; but to use `clause' labels for subordinate clauses. An example which 
+			illustrates this division is 12:
+
+			(12)  	[S [S The distinction at issue is relatively clear S] , but [S closer 
+					examination reveals [CL that all is not quite so straightforward 
+					[CL as it seems CL] CL] S] . S]
+					
+			Embedded (subordinate) clauses are generally identified by some sign of their 
+			dependence on the superordinate clause or sentence, such as an introductory 
+			conjunction or a non-finite verb form. It is noticeable that the coordinated 
+			parts of the compound sentence do not have to be clause-like units with subjects 
+			and verbs, and to this extent [CL] would be a misleading label to apply to them. 
+			This is true, in 13, of so far so good in:
+
+			(13)  	[S [S So far so good S] , but [S now consider gender in adjectives S] . S] 
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node31.html)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#Constituent"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Fragment">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#Constituent"/>
+		</rdfs:subClassOf>
+		    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >FRAG marks those portions of text that appear to be clauses, but lack too many essential elements for the exact structure to be easily determined (e.g., answers to questions). Predicate argument structure therefore cannot be extracted from FRAGs.
+(Bies et al. 1995)
+
+Sentence fragments that end with sentence- nal punctuation like Not even an earthquake. should not
+be bracketed as S, but only with the highest appropriate label|in this case, NP. Do not attach such
+fragments to the preceding or following full sentence.
+(Santorini 1991)</rdfs:comment>
+	<owl:versionInfo>PTB bracketing guidelines, Santorini 1991, Bies et al. 1995</owl:versionInfo>
+
+	</owl:Class>
+	
+	<!-- Constituent/Clause -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FiniteClause">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Clause"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubordinateClause">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#FiniteClause"/>
+		</rdfs:subClassOf>
+		<owl:versionInfo>
+			Subclassification here follows the functional subclassification 
+			of subordinate clauses in the TDS ontologies. GOLD proposes an 
+			alternative syntax-based subclassification (yet without documentation 
+			or explanation) in AdjunctSubordinate and ComplementSubordinate. 		
+			(http://purl.org/linguistics/gold/ComplementSubordinate, 
+			http://purl.org/linguistics/gold/AdjunctSubordinate)
+		</owl:versionInfo>
+		<rdfs:comment>
+			SubordinateClause is the class of clauses that cannot stand on their 
+			own as sentences. A matrix clause combined with a subordinate clause 
+			form a main clause. In the sentence 'John thinks that Mary is sick', 
+			'Mary is sick' is the subordinate clause.
+			(http://purl.org/linguistics/gold/SubordinateClause)
+
+			Dependent clauses (which are also sometimes referred to as subordinate 
+			clauses) cannot stand alone as sentences. They usually begin with 
+			subordinating conjunctions. A sentence with an independent clause and 
+			any number of dependent clauses is referred to as a complex sentence. 
+			One with two or more independent clauses and any number of dependent 
+			clauses is referred to as a compound-complex sentence 
+			(http://en.wikipedia.org/wiki/Clause, cf. 
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#subordinateClause).
+
+			A subordinate clause is an embedded construction which contains a finite verb form. 			
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#finiteEmbeddedConstruction)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#MainClause">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#FiniteClause"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			MainClause is the class of clauses that can stand on their own as a full, independent sentence. 
+			If a sentence contains any embedded clauses, the main clause is understood as the matrix plus 
+			the embedded clauses. In the sentence 'John thinks that Mary is sick', 'John thinks that Mary 
+			is sick' is the main clause [Crystal 2001, 231].
+			(http://purl.org/linguistics/gold/MainClause)
+
+			The independent clause can stand by itself as a grammatically viable simple sentence. Multiple 
+			independent clauses can be joined (usually with a comma and a coordinating conjunction) to form 
+			a compound sentence (http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#mainClause 
+			with reference to http://en.wikipedia.org/wiki/Clause).
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CoordinateClause">
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#FiniteClause"/>
+</rdfs:subClassOf>
+		<owl:versionInfo>
+			adopted from http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#coordinateClause
+		</owl:versionInfo>
+		<rdfs:comment>
+			A coordinate clause is a clause belonging to a series of two or more clauses which are not 
+			syntactically dependent on one another, and are joined by means of a coordinate conjunction, 
+			a connective or parataxis.  
+			(http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsACoordinateClause.htm).
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonFiniteEmbeddedConstruction">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Clause"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			An embedded construction which contains a non-finite verb form
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#non-finiteEmbeddedConstruction 
+			with reference to Dik 1997)
+		</rdfs:comment>
+	</owl:Class>
+
+	<!-- Constituent/Clause/CoordinateClause and  Constituent/Clause/SubordinateClause-->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#CosubordinateClause">
+		<owl:versionInfo>
+			http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#non-embeddedSubordinateClause
+			Termed "cosubordination" here in accordance with van Valin and LaPolla (1997)
+		</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#CoordinateClause"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#RelativeClause">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#relativeClause</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubordinateClause"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			A relative clause is a subordinate clause that modifies a noun. For example, the noun phrase 
+			[the man who wasn't there] contains the noun [man], which is modified by the relative clause 
+			[who wasn't there]
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#relativeClause with reference 
+			to  http://en.wikipedia.org/wiki/Relative_clause and Dik 1997)
+			
+			There are three di erent types of relative clauses in English (be careful not to confuse relative clauses
+			and complement clauses):
+			(i) wh-relative clauses (a guy who(m) I know),
+			(ii) that-relative clauses (a guy that I know), and
+			(iii) zero relative clauses (a guy I know).
+			(Santorini 1991)
+		</rdfs:comment>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#ReducedRelativeClause">
+	<owl:versionInfo>Santorini 1991</owl:versionInfo>	
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#SubordinateClause"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >RRC (reduced relative clause)
+Reduced relative clauses are adjoined to the NP they modify. 
+(Bies et al. 1995)
+
+We will use the term \reduced relative clause" to refer to participial or adjectival constituents of the
+type illustrated in (@26).
+
+(26) He bought two watches designed by Paloma Picasso.
+
+Reduced relative clauses should be bracketed as adjunction structures. The structure of ( 26) is thus as in
+(@27). Note that the reduced relative clause, which is headed by a participle, is bracketed as a VP.
+
+(27)
+(S (NP He)
+(VP bought
+(NP (NP two watches)
+(VP designed
+(PP by
+(PNP (PNP Paloma)
+(PNP Picasso))))))
+.)
+(Santorini 1991)</rdfs:comment>
+  </owl:Class> 
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConditionalClause">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#conditionalClause</owl:versionInfo>
+		<rdfs:comment>
+			Conditional clauses refer to a hypothetical situation, in English they are introduced by 
+			'if' or 'unless'.
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#conditionalClause)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubordinateClause"/>
+</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdverbialSubordinateClause">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#SubordinateClause"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			Subordinate clauses with adverbial function are annotated as ADV, e.g. "Tom sleeps when the sun rises."
+			(Dipper et al. 2007, §4.3.6)
+		</rdfs:comment>
+		<owl:versionInfo>added in conformance with the SFB632 Annotation Guidelines (Dipper et al. 2007)</owl:versionInfo>
+	</owl:Class>
+    <owl:Class rdf:about="http://purl.org/olia/olia.owl#ComplementClause">
+		<owl:versionInfo>Santorini 1991</owl:versionInfo>	
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In noun phrases like the fact that she is late, the subordinate clause that she is late is a complement of
+the noun fact and should not be confused with a relative clause. (Note that the embedded clause she is
+late is not missing a constituent; by contrast, in a relative clause construction like the TV that she bought
+the other day, the clause that she bought
+the other day is incomplete.) The entire noun phrase should be
+bracketed as a sister of the head noun.
+
+(NP the fact 
+(SBAR that
+(S (NP she)
+(VP is
+(ADJP late)))))
+
+(Santorini 1991)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#SubordinateClause"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+	<!-- Constituent/Clause/NonFiniteEmbeddedConstruction-->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NominalizedVerb">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#withNominalProperites</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonFiniteEmbeddedConstruction"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			A non-finite embedded construction which contains features 
+			with nominal properties 
+			(http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#withNominalProperites, 
+			with reference to Dik 1997)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#EmbeddedParticiple">
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#withParticipleAsHead, http://purl.org/olia/tcodex.owl#ParticipialConstruction</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonFiniteEmbeddedConstruction"/>
+</rdfs:subClassOf>
+		<rdfs:comment>A participle is the head of the embedded construction. (http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#withParticipleAsHead)
+			Participial constructions are used as adjunct clauses in Old High German. As they lack a finite verb form they are kept separately from finite subordinate clauses. (http://purl.org/olia/tcodex.owl#ParticipialConstruction)</rdfs:comment>
+	<rdfs:label>participle construction</rdfs:label>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#EmbeddedInfinitive">
+		<rdfs:label>infinitival clause</rdfs:label>
+		<owl:versionInfo>http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#withInfinitiveAsHead, http://purl.org/olia/tcodex.owl#InfinitivalClause</owl:versionInfo>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonFiniteEmbeddedConstruction"/>
+</rdfs:subClassOf>
+		<rdfs:comment>
+			An infinitive is the head of the embedded construction. (http://languagelink.let.uu.nl/tds/onto/LinguisticOntology.owl#withInfinitiveAsHead)
+			
+			Infinitival relatives. See section 14 [Infinitives] for more information. 
+	
+	  (NP (NP a movie)
+	      (SBAR (WHNP-1 0)
+	            (S (NP-SBJ *)
+	               (VP to
+	                   (VP see
+	                       (NP *T*-1))))))
+	(Bies et al. 1995)
+		</rdfs:comment>
+	</owl:Class>
+
+	<!-- Constituent/Phrase -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Chunk">
+		<owl:versionInfo>Ancorra tagset</owl:versionInfo>
+		<rdfs:comment>“A minimal (non recursive) phrase(partial structure) consisting of correlated, inseparable words/entities, such that the intra-chunk dependencies are not distorted” ... A chunk would contain a &#39;head&#39; and its modifiers. 
+		
+		Akshar Bharati, Dipti Misra Sharma, Lakshmi Bai, Rajeev Sangal (2006), AnnCorra : Annotating Corpora. Guidelines For POS And Chunk Annotation For Indian Languages, Tech. Rep., L anguage Technologies Research Centre IIIT, Hyderabad, version of 15-12-2006, http://ltrc.iiit.ac.in/tr031/posguidelines.pdf
+		
+		Note that, often, it is not required that chunks are complete. Chunks can thus be phrases or fragments. In the sense of OLiA, they are, however, constituents (of an annotation).</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#Constituent"/>
+		<rdfs:subClassOf>
+		  <owl:Class>
+			<owl:unionOf rdf:parseType="Collection">
+			  <owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+			  <owl:Class rdf:about="http://purl.org/olia/olia.owl#Fragment"/>
+			</owl:unionOf>
+		  </owl:Class>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ForeignPhrase">
+		<owl:versionInfo>TüBa-D/Z</owl:versionInfo>
+		<rdfs:comment>
+		Single foreign words are projected to a syntactic level assigned the node label FX, which is
+		an universal label for any syntactic category (phrasal and sentential) in the respective
+		foreign language.
+		(Telljohann et al. 2009, p.44)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DeterminerPhrase">
+		<owl:versionInfo>
+		TüBa-D/Z, NOTE: not to be confused with "determiner phrase" in generative grammar, 
+		which would be a NounPhrase in most annotation frameworks</owl:versionInfo>
+		<rdfs:comment>
+		Certain pronouns serving as determiners in noun phrases may be premodified, for instance, 
+		by degree adverbs such as in German "so viele ¨Altere", "gar kein Schutz", etc.
+		In the case of "so viele Ältere", the premodifying adverb so is attached to the indefinite
+		pronoun viele. Together, they form a determiner phrase (DP), which is attached to the
+		head noun Ältere on the same level: [so viele] Ältere
+		(Telljohann et al. 2009, p.63)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NounHeadedPhrase">
+		<rdfs:comment>
+			A NounHeadedPhrase takes a nominal as its (semantic) head. 
+			Introduced as a generalization over NounPhrase and PrepositionalPhrase for reasons of consistency with dependency parsers like 
+			Connexor where this differentiation is not made.
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NounPhrase">
+		<rdfs:comment>
+			NounPhrase is the class of phrases that have nouns as heads. They can play the role of subject 
+			in a main clause.
+			(http://purl.org/linguistics/gold/NounPhrase)
+		</rdfs:comment>
+		<rdfs:comment>
+			At phrase level, the noun phrase is probably the least problematic of the categories to be dealt 
+			with. In general, a noun phrase will a have noun or a pronoun as its head, and included within 
+			the noun phrase are the determinative elements, any premodification, and any postmodification. 
+			The examples below, 14 to 17 show noun phrases with the head noun/pronoun in bold:
+
+			(14)  	[NP He NP] was a tiny man
+			(15)  	[NP his white shirt cuffs NP]
+			(16)  	[NP his surprisingly thick and hairy wrists NP]
+			(17)  	[NP some wholly unanticipated but remotely possible event of absorbing interest NP]
+
+			However, noun phrases may also occur with adjectival heads, as in 18 and 19:
+
+			(18)  	[NP The unemployed NP] have had enough
+			(19)  	We've beaten [NP the best NP]
+
+			or with a head which is a cardinal or ordinal number, as in 20 and 21:
+
+			(20)  	[NP The ninth NP] is my particular favourite
+			(21)  	[NP The other seven NP] continued with the trip
+			
+			In `pro-drop' languages, such as Spanish and Italian, pronominal Subjects are usually not expressed. 
+			Depending on the chosen type of analysis, this may require another definition of noun phrase, in order 
+			to include `empty noun phrases', in which the pronoun is not actually present, but may be inferred 
+			from the verb ending.
+
+			A classic constituency test for Noun Phrases is that only whole NPs can be moved within the same sentence. 
+			In English, constituents can be preposed to achieve some effect, as in 23 (from Radford 1988: 70):
+
+			(22)  	I can't stand your elder sister
+			(23)  	Your elder sister I can't stand (though your brother's OK).
+			
+			Examples 24 and 25 show that it is not possible to move only part of the NP:
+
+			(24)  	*Your elder I can't stand sister
+			(25)  	*Elder sister, I can't stand your
+
+			However, this test should be used with caution. It works well in English, but not always in other languages. 
+			For example, in 26 Neue Bücher is moved to the beginning of the sentence while keine is left at the end:
+
+			(26) 	Neue	Bücher	habe	ich	keine
+					new	books	have	I	no
+					`I have not got any new books'
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node32.html)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#NounHeadedPhrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHNounPhrase">
+	<owl:versionInfo>added in conformance with PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#NounPhrase"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHNP|Wh-noun phrase. Noun phrase containing (among other things) a wh-determiner, as in which
+book or whose daughter, or consisting of a wh-pronoun like who.
+(Santorini 1991)
+
+WHNP
+â ´ Wh-noun Phrase. Introduces a clause with an NP gap. May be null (containing the 0 complementizer) or lexical, containing some wh-word, e.g. who, which book, whose daughter, none of which, or how many leopards. 
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbPhrase">
+		<rdfs:comment>
+			VerbPhrase is the class of phrases that have verbs as heads. They can play the role of predicate in a main clause.
+			(http://purl.org/linguistics/gold/VerbPhrase)
+		</rdfs:comment>
+		<rdfs:comment>
+			This category is slightly more difficult to define, since there is disagreement over the extent of the verb phrase.
+			In particular, should the verb phrase include only the words that are verbs, or should it also include the
+			complements of the verb? In the examples given in this document, and in the sample texts in the appendices, we have
+			chosen to include the complements, but it must be noted that this is an open issue, and we are in no way implying
+			that this analysis is preferable to the alternative. The choice to be made at this level, i.e. the inclusion or
+			exclusion of verbal complements in the Verb Phrase, is shown by the examples in 27 and 28, 27 showing the inclusion
+			of the complement of the verb in the verb phrase and 28 excluding the complement:
+
+			(27)  	He [VP took up [NP a clothes brush NP] VP]
+			(28)  	He [VP took up VP] [NP a clothes brush NP]
+
+			An advantage in the type of analysis shown in 27 is that the relative levels of the constituents can be shown to a
+			greater extent -- i.e. complements of the verb are included in the verb phrase, while adjuncts and peripheral
+			adverbials are left at sentence level.
+
+			However, in a case where an adjunct occurs before the complement of the verb, the approaches used in 27 and 28 would
+			cause problems, since either both the adjunct and the complement would be included as daughters of the verb phrase,
+			or both would be daughters of the sentence, rather than keeping the complement as a daughter of the verb phrase and
+			the adjunct as a sister of the verb phrase. These problems may be solved by an additional notation, but at some
+			level, arbitrariness is inevitable.
+
+			Regardless of the choice made over the extent of the Verb Phrase, there arises a problem of discontinuous Verb
+			Phrases. A complex verbal construction may be discontinuous, e.g. the auxiliary and the main verb are separated in
+			inverted constructions in English, or the main verb is positioned at the end of the sentence in German and Dutch.
+			Such discontinuity can be avoided by having different labels and constituents for the auxiliary verb and the main
+			verb, resulting in an analysis as shown in the Dutch example 29 below:
+
+			(29)  	[NP Ze NP] [AUX zullen AUX] [ADVP er ADVP] [VP [NP de VN-agenda 
+					[PP voor [NP het komende jaar NP] PP] NP] behandelen VP].
+					
+			and in the English interrogative inverted example 30, using the so-called `dummy auxiliary' do:
+
+			(30)  	[AUX Do AUX] [NP they NP] [VP confide [PP in you PP] VP]?
+
+			As with Noun Phrases, Verb Phrases can be identified by a constituency test. In strong constituency languages like
+			English, the whole VP can be moved, but not part of it: compare 31 and 32:
+
+			(31)  	  Give in to blackmail, I never will
+			(32)  	*Give in, I never will to blackmail
+			
+			However, there are languages in which constituent tests do not work. These will typically be languages with flexible
+			word order, such as Finnish. 33 is an example of a discontinuous VP (Vilkuna 1989: 26):
+
+			(33)  	Maailmaa	nähnyt	hän	on.
+			    	world-Part	seen	he	is
+					`He IS a widely-travelled person.'
+
+			For Finnish, then, evidence for a VP is less convincing than it is for English, and a dependency approach seems the
+			more natural choice. (Covington (1990) provides a parsing strategy for variable word order languages and Covington
+			(1991) for parsing discontinuous constituents, both using a dependency syntax approach.)
+
+			In Italian also, constituency tests cannot be applied. This can be shown through the distribution of VP-adverbs
+			(e.g. completamente `completely', intenzionalmente `intentionally', attentamente `carefully') and S-adverbs (e.g.
+			probabilmente `probably', certamente `certainly'). In English, these different classes of adverbs have a different
+			distribution within the sentence. In contrast, in Italian, the distinct adverb classes cannot be distinguished on
+			the basis of their distribution in the sentence. S-adverbs and VP-adverbs can occur in the same positions within the
+			sentence, as illustrated in examples 34 to 37:
+
+			(34)  	Attentamente/certamente, il bambino ascoltó la storia
+					`Carefully/certainly, the child listened to the story'
+			(35)  	Il bambino attentamente/certamente ascoltó la storia
+					`The child carefully/certainly listened to the story'
+			(36)  	Il bambino ascoltó attentamente/certamente la storia
+					`The child listened carefully/certainly to the story'
+			(37)  	Il bambino ascoltó la storia attentamente/certamente
+					`The child listened to the story carefully/certainly'
+
+			Thus, in Italian as well as other languages, neither the position nor the syntactic context can help to decide
+			whether an adverb is an S-adverb or a VP-adverb; this can only be stated by considering its semantic content and the
+			way it relates to the content of the predicate or the sentence. This situation has consequences for the success of
+			standard VP-tests. 
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node33.html)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#FiniteVerbPhrase">
+			<owl:versionInfo>TüBa-D/Z</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbPhrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonfiniteVerbPhrase">
+			<owl:versionInfo>TüBa-D/Z</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#VerbPhrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#GerundVerbPhrase">
+		<owl:versionInfo>Ancorra, http://purl.org/olia/ancorra.owl#GerundChunk</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonfiniteVerbPhrase"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+		VGNN Gerunds
+		A verb chunk having a gerund will be annotated as VGNN. For example,
+		h18a. sharAba ((pInA_VM))_VGNN sehata ke liye hAnikAraka hE.
+		&#39;liquor&#39; &#39;drinking&#39; &#39;heath&#39; &#39;for&#39; &#39;harmful&#39; &#39;is&#39;
+		“Drinking (liquor) is bad for health”
+		h19a. mujhe rAta meM ((khAnA_VM))_VGNN acchA lagatA hai
+		&#39;to me&#39; &#39;night&#39; &#39;in&#39; &#39;eating&#39; &#39;good&#39; &#39;appeals&#39;
+		“I like eating at night”
+		h20a. ((sunane_VM meM_PSP))_VGNN saba kuccha acchA lagatA hE
+		&#39;listening&#39; &#39;in&#39; &#39;all&#39; &#39;things&#39; &#39;good&#39; &#39;appeal&#39; &#39;is&#39;
+		
+		(Akshar Bharati, Dipti Misra Sharma, Lakshmi Bai, Rajeev Sangal (2006), AnnCorra : Annotating Corpora. Guidelines For POS And Chunk Annotation For Indian Languages, Tech. Rep., L anguage Technologies Research Centre IIIT, Hyderabad, version of 15-12-2006, http://ltrc.iiit.ac.in/tr031/posguidelines.pdf)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#InfinitiveVerbPhrase">
+		<owl:versionInfo>Ancorra, http://purl.org/olia/ancorra.owl#InfiniteVerbChunk</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#NonfiniteVerbPhrase"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			VGINF Infinitival Verb Chunk
+			This tag is to mark the infinitival verb form. In Hindi, both, gerunds and infinitive forms of the verb end with a -nA suffix. Since both behave functionally in a similar manner, the distinction is not very clear. However, languages such as Bangla etc have two different forms for the two types. Examples from Bangla are given below.
+			b8. Borabela ((snAna karA))_VGNN SorIrera pokze BAlo
+			'Morning' 'bath' 'do-verbal noun' 'health-gen' 'for' 'good'
+			‘Taking bath in the early morning is good for health”
+			b9. bindu Borabela ((snAna karawe))_VGINF BAlobAse
+			'Bindu' 'morning' 'bath' 'take-inf' 'love-3pr'
+			“Bindu likes to take bath in the early morning”
+			In Bangla, the gerund form takes the suffix –A / -Ano, while the infinitive marker is –we. The syntactic distribution of these two forms of verbs is different. For example, the gerund form is allowed in the context of the word darakAra “necessary” while the infinitive form is not, as exemplified below:
+			b10 Borabela ((snAna karA))_VGNN darakAra
+			'Morning' 'bath' 'do-verbal noun' 'necessary'
+			“It is necessary to take bath in the early morning”
+			b11. *Borabela ((snAna karawe))_VGINF darakAra
+			Based on the above evidence from Bangla, the tag VGINF has been included to mark a verb chunk.
+			
+			(Akshar Bharati, Dipti Misra Sharma, Lakshmi Bai, Rajeev Sangal (2006), AnnCorra : Annotating Corpora. Guidelines For POS And Chunk Annotation For Indian Languages, Tech. Rep., L anguage Technologies Research Centre IIIT, Hyderabad, version of 15-12-2006, http://ltrc.iiit.ac.in/tr031/posguidelines.pdf)
+		</rdfs:comment>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdverbPhrase">
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>
+			An adverb phrase may consist of an adverb, or a sequence of words in which an adverb is the head of the phrase.
+			Adverb phrases may function as adverbials, as in 41:
+
+			(41)  	[NP Her beautiful white hat NP] [VP was [ADVP very nearly ADVP] ruined VP]
+			
+			or as modifiers of adjectives, as in 42:
+			
+			(42)  	[NP Il NP] [VP parle [ADVP infiniment plus couramment ADVP] VP]
+
+			or noun phrases, as in 43:
+
+			(43)  	[NP They NP] [VP let [NP me NP] [VP speak VP] [ADVP now and then ADVP] VP]
+			
+			or as the complement of a preposition, as in 44:
+			
+			(44)  	[ADVP Strangely enough ADVP] , [NP we NP] [VP received [NP a reply NP] [NP the next day NP] VP]
+
+			Other examples:
+
+			(45)  	[NP The book NP] [VP is [ADVP right here ADVP] VP]
+			(46)  	[ADVP Como [NP resultado [PP de [NP esa trama NP] PP] NP] ADVP] 
+					[VP no se lleva [PP a cabo PP] [NP ninguna acción NP] VP] 
+					
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node35.html)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHAdverbPhrase">
+		<owl:versionInfo>added in conformance with PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#AdverbPhrase"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHADVP|Wh-adverb phrase. Phrasal category headed by a wh-adverb such as how or why.
+(Santorini 1991)
+WHADVP â ´ Wh-adverb Phrase. Introduces a clause with an ADVP gap. May be null (containing the 0 complementizer) or lexical, containing a wh-adverb such as how or why. 
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#AdjectivePhrase">
+		<owl:versionInfo>http://purl.org/linguistics/gold/AdjectivePhrase</owl:versionInfo>
+		<rdfs:comment>
+			AdjectivePhrase is the class of phrases that have adjectives as heads.
+			(http://purl.org/linguistics/gold/AdjectivePhrase)
+		</rdfs:comment>
+		<rdfs:comment>
+			An adjective phrase may consist of an adjective, or a sequence of words in which an adjective is the head of the
+			phrase, as shown in 47 to 50 below.
+
+			(47)  	[NP his [ADJP surprisingly thick and hairy ADJP] wrists NP]
+			(48)  	[NP some [ADJP [ADJP wholly unanticipated ADJP] but [ADJP remotely possible ADJP] ADJP] event NP]
+			(49)  	[S [NP His speeches NP] [VP are [ADVP always ADVP] [ADJP too long [PP for comfort PP] ADJP] VP] S]
+			(50)  	[AUX have AUX] [NP you NP] [VP found [NP something 
+					[ADJP suitable [PP for [NP your needs NP] PP] ADJP] NP] VP] ?
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node36.html)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHAdjectivePhrase">
+		<owl:versionInfo>added in conformance with PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHADJP â ´ Wh-adjective Phrase. Adjectival phrase containing a wh-adverb, as in how hot. 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#AdjectivePhrase"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Coordination">
+		<rdfs:comment>
+			As has already been shown in some of the preceding examples, the issue of coordination necessarily arises: how is
+			coordination to be represented in terms of constituency? Different approaches have been taken, and in the example
+			analyses given in this document, we have chosen to take a traditional approach, showing the coordinated constituents
+			at the same level, with the conjunction between them (see also 47 and 48):
+
+			(51)  	[NP [NP John NP] and [NP Mary NP] NP]
+			(52)  	She went [PP [PP to the library PP] or [PP to the cafeteria PP] PP]
+			(53)  	He works [ADVP [ADVP very slowly ADVP] but [ADVP very meticulously ADVP] ADVP]
+			
+			However, in practice, in an automated parsing system, this is not an easy differentiation to make, and in some
+			existing schemes, a slightly less satisfactory solution has been found, viz. analysing coordination in a similar
+			fashion to subordination.
+
+			Most constituents (both phrases and clauses) can be coordinated, but the extent to which this is possible will
+			differ across languages. The conjuncts may be marked as such by separate descriptors: NPtex2html_wrap_inline4084
+			etc. However, there are many occasions where the conjuncts are not of the same formal category, or where they do not
+			correspond to an entire phrasal or clausal constituent. There is much to be said, in these cases, or perhaps for all
+			cases of coordination, for the use of a generalised label applied to all coordinate constituents or conjuncts, e.g.
+			the label CO used in the TOSCA system. We do not offer a definitive solution for the annotation of coordination, and
+			the many variants of coordination will not be considered further in this report. See Sampson (1995: 310f) for a
+			detailed treatment. 
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node37.html)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#PrepositionalPhrase">
+		<rdfs:comment>
+			A sequence of a preposition and its complement is a prepositional phrase. The complement of a preposition is usually
+			a noun phrase (see examples 38 to 40), but may also be a clause or an adverb phrase. According to the categories
+			recommended here, a prepositional phrase may be analysed further into preposition and noun phrase. The examples
+			below demonstrate how this further analysis can be a recursive procedure.
+
+			(38)  	[PP en [NP sustitucion [PP de [NP los canales correspondientes [PP de [NP 50 baudios NP] PP] NP] PP] NP] PP].
+			(39)  	[NP Fairbanks NP] [VP hummed [NP a few bars NP] VP] [PP in [NP a voice [VP made resonant 
+					[PP by [NP the very weakness [PP of [NP his chest NP] PP] NP] PP] VP] NP] PP].
+			(40)  	[PP En [NP el caso [PP de [NP un sistema mixto [PP en [NP el 
+					[CL que [VP se utilicen [NP canales [PP con [NP tres velocidades 
+					[PP de [NP modulacion NP] PP] diferentes NP] PP] NP] VP] CL] NP] PP] NP] PP] NP] PP]
+
+			In a language such as Spanish, where a large proportion of the modification of nouns takes the form of a following
+			preposition de and another noun, this recursion is extremely prevalent, as in 40. In cases where the prepositional
+			phrase is complemented by a one word noun phrase, it may be advantageous to leave the analysis at this point, rather
+			than continuing to analyse further by enclosing the complement (see also one-word constituents).
+
+			(http://www.ilc.cnr.it/EAGLES96/segsasg1/node34.html#SECTION00052500000000000000)
+		</rdfs:comment>
+		<rdfs:subClassOf>
+		<owl:Class rdf:about="http://purl.org/olia/olia.owl#NounHeadedPhrase"/>
+</rdfs:subClassOf>
+		<owl:versionInfo>EAGLES</owl:versionInfo>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#WHPrepositionalPhrase">
+		<owl:versionInfo>added in conformance with PTB bracketing guidelines (Santorini 1991, Bies et al. 1995)</owl:versionInfo>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#PrepositionalPhrase"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WHPP|Wh-prepositional phrase. Prepositional phrase containing a wh-determiner, as in by whatever
+means necessary.
+(Santorini 1991)
+
+WHPP â ´ Wh-prepositional Phrase. Prepositional phrase containing a wh-noun phrase (such as of which or by whose authority) that either introduces a PP gap or is contained by a WHNP. 
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#ConjunctionPhrase">
+		<owl:versionInfo>Penn bracketing guidelines, Bies et al. 1995</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Multi-word conjunction
+	
+	Besides the usual and, or, but, etc., certain prepositions and subordinating conjunctions can be used as coordinating conjunctions. Multi-word coordinating conjunctions are labeled CONJP (see section 7 [Coordination]). ...
+CONJP — Conjunction Phrase. Used to mark certain “multi-word” conjunctions, such as as well as, instead of. 
+(Bies et al. 1995)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Phrase"/>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia.owl#Conjunction"/>
+		</rdfs:subClassOf>
+
+  </owl:Class>
+
+  <!-- ======================================================
+     ||                SYNTACTIC FEATURES                  ||
+     ====================================================== -->
+
+	 <!-- SyntacticFunction -->
+ 	<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticFunction"/>
+                <owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+            </owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adverbial">
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction"/>
+      </rdfs:subClassOf>
+	  <owl:versionInfo>Bies et al. 1995</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-ADV (adverbial)
+— marks a constituent other than ADVP or PP when it is used adverbially (e.g., NPs or free (“headless”) relatives). However, constituents that themselves are modifying an ADVP generally do not get -ADV. 
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Nominal">
+	  <owl:versionInfo>Bies et al. 1995</owl:versionInfo>
+	<rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction"/>
+      </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >-NOM (nominal)
+— marks free (“headless”) relatives and gerunds when they act nominally. (See section 9 [WH-Phrases] for more information about free relatives, and section 13 [Gerunds and Participles] for more information about gerunds.) 
+(Bies et al. 1995)</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Adjectival">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Adjectival</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>In MULTEXT-East a characteristic of attributive pronouns and abbreviated adjectives, e.g., in Ukrainian e.g., &#1072;&#1073;&#1080;&#1095;&#1080;&#1081;/= &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;/= &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081;/= &#1076;&#1077;&#1095;&#1080;&#1081;/= &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;/= &#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100;/= &#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/= &#1095;&#1080;&#1081;&#1089;&#1100;/=, &#1072;&#1073;&#1080;&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1072;&#1073;&#1080; &#1076;&#1086; &#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1095;&#1080;&#1081;&#1086;&#1075;&#1086;-&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1081;&#1086;&#1075;&#1086;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1081;&#1086;&#1075;&#1086;&#1089;&#1100;/&#1095;&#1080;&#1081;&#1089;&#1100;, &#1072;&#1073;&#1080;&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;&#1086;&#1075;&#1086;/&#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1095;&#1080;&#1081;&#1086;&#1075;&#1086;-&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1081;&#1086;&#1075;&#1086;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1081;&#1086;&#1075;&#1086;&#1089;&#1100;/&#1095;&#1080;&#1081;&#1089;&#1100;, &#1072;&#1073;&#1080;&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1072;&#1073;&#1080;&#1095;&#1080;&#1108;&#1084;&#1091;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1072;&#1073;&#1080;&#1095;&#1080;&#1111;&#1084;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1072;&#1073;&#1080; &#1085;&#1072; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1072;&#1073;&#1080; &#1085;&#1072; &#1095;&#1080;&#1108;&#1084;&#1091;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1072;&#1073;&#1080; &#1085;&#1072; &#1095;&#1080;&#1111;&#1084;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072; &#1085;&#1072; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072; &#1085;&#1072; &#1095;&#1080;&#1108;&#1084;&#1091;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072; &#1085;&#1072; &#1095;&#1080;&#1111;&#1084;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1108;&#1084;&#1091;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1111;&#1084;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100; &#1085;&#1072; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100; &#1085;&#1072; &#1095;&#1080;&#1108;&#1084;&#1091;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100; &#1085;&#1072; &#1095;&#1080;&#1111;&#1084;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1108;&#1084;&#1091;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1111;&#1084;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1076;&#1077; &#1085;&#1072; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1076;&#1077; &#1085;&#1072; &#1095;&#1080;&#1108;&#1084;&#1091;/&#1076;&#1077;&#1095;&#1080;&#1081;, &#1072;&#1073;&#1080;&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1072;&#1073;&#1080;&#1095;&#1080;&#1108;&#1084;&#1091;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1108;&#1084;&#1091;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1108;&#1084;&#1091;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1108;&#1084;&#1091;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1108;&#1084;&#1091;/&#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;-&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1108;&#1084;&#1091;-&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1108;&#1084;&#1091;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;&#1089;&#1100;/&#1095;&#1080;&#1081;&#1089;&#1100; &#1095;&#1080;&#1108;&#1084;&#1091;&#1089;&#1100;/&#1095;&#1080;&#1081;&#1089;&#1100;, &#1072;&#1073;&#1080;&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1072;&#1073;&#1080;&#1095;&#1080;&#1108;&#1084;&#1091;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1108;&#1084;&#1091;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081;&#1086;&#1084;&#1091;/&#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;-&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1081;&#1086;&#1084;&#1091;&#1089;&#1100;/&#1095;&#1080;&#1081;&#1089;&#1100;, &#1072;&#1073;&#1080;&#1095;&#1080;&#1102;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1102;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1102;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1102;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1102;/&#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1095;&#1080;&#1102;-&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1102;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1102;&#1089;&#1100;/&#1095;&#1080;&#1081;&#1089;&#1100;, &#1072;&#1073;&#1080;&#1095;&#1080;&#1103;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1103;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1103;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1103;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1103;/&#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1095;&#1080;&#1103;-&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1103;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1103;&#1089;&#1100;/&#1095;&#1080;&#1081;&#1089;&#1100;, &#1072;&#1073;&#1080;&#1095;&#1080;&#1108;/&#1072;&#1073;&#1080;&#1095;&#1080;&#1081; &#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1108;/&#1073;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1108;/&#1073;&#1091;&#1076;&#1100;-&#1095;&#1080;&#1081; &#1076;&#1077;&#1095;&#1080;&#1108;/&#1076;&#1077;&#1095;&#1080;&#1081; &#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1108;/&#1093;&#1090;&#1086;&#1079;&#1085;&#1072;-&#1095;&#1080;&#1081; &#1095;&#1080;&#1108;-&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1108;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100;/&#1095;&#1080;&#1081;-&#1085;&#1077;&#1073;&#1091;&#1076;&#1100; &#1095;&#1080;&#1108;&#1089;&#1100;/&#1095;&#1080;&#1081;&#1089;&#1100;
+			(http://purl.org/olia/mte/multext-east.owl#Adjectival)
+		</rdfs:comment>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Verbal">
+		<owl:versionInfo>http://purl.org/olia/mte/multext-east.owl#Verbal</owl:versionInfo>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction"/>
+		</rdfs:subClassOf>
+		<rdfs:comment>In MULTEXT-East a characteristic of abbreviated verbs (http://purl.org/olia/mte/multext-east.owl#Verbal)
+		</rdfs:comment>
+	</owl:Class>
+	 
+	 <!-- SentenceType -->
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#Question">
+      <!--dcr:datcat rdf:about="http://www.isocat.org/datcat/DC-1911"/-->
+      <owl:versionInfo>Santorini 1991, Bies et al. 1995</owl:versionInfo>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature"/>
+      </rdfs:subClassOf>
+	  <rdfs:subClassOf rdf:resource="#InterrogativeModality"/>
+      <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >There are two types of questions: direct questions (which are main clauses ending with a question
+mark) and indirect questions (which are subordinate clauses embedded under a verb). In this section, we
+discuss only direct questions; indirect questions are bracketed as SBARâ ¹s (see Section 5.17).
+(Santorini 1991)</rdfs:comment>
+  </owl:Class>  
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#YesNoQuestion">
+	<owl:versionInfo>Santorini 1991, Bies et al. 1995</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >There are two types of direct questions: yes-no questions and wh-questions. Yes-no questions should be
+bracketed as SQ. The auxiliary verb or form of do that precedes the subject in a yes-no question is a child
+of SQ. Note that yes-no questions need not contain a VP node
+(Santorini 1991)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectQuestion"/>
+    </rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#QuestionPredicate">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#Question"/>
+    </rdfs:subClassOf>
+	<owl:versionInfo>Santorini 1991, Bies et al. 1995</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SQ â ´ Inverted yes/no question, or main clause of a wh-question, following the wh-phrase in SBARQ. 
+(Bies et al. 1995)
+
+SQ|That part of an SBARQ that excludes the wh-word or wh-phrase. See Section 5.32.
+(Santorini 1991)
+
+The SBARQ label marks wh-questions (i.e., those that contain a gap and therefore require a trace). A further level of structure, SQ, contains the inverted auxiliary (if there is one) and the rest of the sentence. The inverted auxiliary in wh-questions is not labeled. ...
+
+SQ
+(See also section 1.2.7.) 
+â ¢	inside SBARQ:
+
+As described above, inside wh-questions, SQ holds the subject, inverted auxiliary (if any), main verb phrase, and some adjuncts.
+â ¢	yes/no questions: 
+
+SQ is used for yes/no questions (i.e., those with inversion but no wh-movement). ...
+
+â ¢	subject-less yes/no questions: 
+
+In questions where the auxiliary and subject do not appear, the auxiliary is unlabeled and a null subject (NP-SBJ *) is used. ...
+
+Note that questions with overt subjects and auxiliaries that show declarative word order are simply labeled S.
+
+â ¢	Tag questions: 
+
+Tag questions are treated as an adjunction of SQ to S. The resulting structure is labeled SQ, since the whole thing is interrogative in nature. The lower SQ is annotated to show predicate deletion; that is, an appropriate null *?* is inserted. 
+(Bies et al. 1995)</rdfs:comment>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectQuestion">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#Question"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >There are two types of direct questions: yes-no questions and wh-questions. Yes-no questions should be
+bracketed as SQ. The auxiliary verb or form of do that precedes the subject in a yes-no question is a child
+of SQ. Note that yes-no questions need not contain a VP node
+(Santorini 1991)</rdfs:comment>
+	<owl:versionInfo>Santorini 1991, Bies et al. 1995</owl:versionInfo>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectWHQuestion">
+	<owl:versionInfo>Santorini 1991, Bies et al. 1995</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SBARQ|Direct question introduced by a wh-word or wh-phrase. See Section 5.32. Indirect questions
+and relative clauses should be bracketed as SBAR, not SBARQ.
+(Santorini 1991)
+
+Wh-questions should be bracketed as SBARQ. The wh-constituent (whether it is a subject or not) is a
+child of SBARQ; the rest of the question is an SQ. If the wh-constituent is a subject or an object, the
+position where it is interpreted should be represented by the empty element T.
+(Santorini 1991)
+
+The SBARQ label marks wh-questions (i.e., those that contain a gap and therefore require a trace). A further level of structure, SQ, contains the inverted auxiliary (if there is one) and the rest of the sentence. The inverted auxiliary in wh-questions is not labeled. ...
+SBARQ â ´ Direct question introduced by a wh-word or wh-phrase. See section 1 [Overview of Basic Clause Structure]. Indirect questions and relative clauses should be bracketed as SBAR, not SBARQ. 
+(Bies et al. 1995)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia.owl#DirectQuestion"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+	<owl:Class rdf:about="http://purl.org/olia/olia.owl#DeclarativeSentence">
+      <owl:versionInfo>Santorini 1991, Bies et al. 1995</owl:versionInfo>
+      <rdfs:subClassOf>
+         <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature"/>
+      </rdfs:subClassOf>
+	  <rdfs:subClassOf rdf:resource="#DeclarativeModality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S|Simple declarative clause, i.e. one that is not introduced by a (possibly empty) subordinating
+conjunction or wh-word and that does not exhibit subject-verb inversion.
+(Santorini 1991)
+
+Simple declarative sentences: 
+(S (NP-SBJ Casey) (VP threw (NP the ball))) ...
+
+S â ´ Simple declarative clause, i.e. one that is not introduced by a (possibly empty) subordinating conjunction or wh-word and that does not exhibit subject-verb inversion. 
+(Bies et al. 1995)</rdfs:comment>
+	<owl:equivalentClass>
+		<owl:Class>
+			<owl:intersectionOf rdf:parseType="Collection">
+				<owl:Class rdf:about="http://purl.org/olia/olia.owl#Sentence"/>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="#hasModality"/>
+					<owl:someValuesFrom rdf:resource="#DeclarativeModality"/>
+				</owl:Restriction>
+			</owl:intersectionOf>
+		</owl:Class>
+	</owl:equivalentClass>
+	</owl:Class> 
+
+<!-- ======================================================
+     ||                    PROPERTIES                    ||
+     ====================================================== -->
+
+  <!-- Properties -->
+  
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticFunction">
+			<owl:versionInfo>Bies et al. 1995</owl:versionInfo>
+    	<rdfs:subPropertyOf>
+    		<owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    	</rdfs:subPropertyOf>
+		<rdfs:comment>
+			Relation to be used when the syntactic function of a constituent is different from its morphosyntactic type, 
+			cf. FormFunctionDiscrepancy in the PTB bracketing guidelines, Bies et al. (1995, §2.2.1)
+		</rdfs:comment>
+		<owl:versionInfo>TODO: apply this to primitive concepts, too</owl:versionInfo>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticFunction"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticValency">
+    <owl:versionInfo>SUSANNE (Sampson 1995)</owl:versionInfo>
+	<rdfs:comment>
+		In annotation schemes for morphosyntax, "valency" normally means syntactic valency, i.e., the number of syntactic arguments 
+		a verb/clause takes.
+	</rdfs:comment>
+	<rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://purl.org/olia/system.owl#hasFeature"/>
+    </rdfs:subPropertyOf>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+			<rdfs:comment>ValencyFeature cannot be reflexive, because hasSyntacticValency is distinguished from hasSemanticValency</rdfs:comment>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasVoice">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+	<rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasVoice"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasSyntacticRole">
+    <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasSyntacticRole"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+    <rdfs:domain>
+    	<owl:Class rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+  
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/olia.owl#hasMovementFeature">
+    <rdfs:range>
+		<owl:Class rdf:about="http://purl.org/olia/olia-top.owl#MovementFeature">
+			<rdfs:subClassOf>
+				<owl:Restriction>
+					<owl:onProperty rdf:resource="http://purl.org/olia/olia.owl#hasMovementFeature"/>
+					<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+				</owl:Restriction>
+			</rdfs:subClassOf>
+		</owl:Class>
+	</rdfs:range>
+    <rdfs:domain>
+    	<owl:Class rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+  </owl:ObjectProperty>
+
+
+<!-- duplicates from olia-top.owl -->
+
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Constituent">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MovementFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#ValencyFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#MovementFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Word">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRelation">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#Constituent">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#TopologicalField">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#NullElement">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#DominanceRelation">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticRelation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticCategory">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#DependencyRelation">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticRelation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SentenceTypeFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticFunction">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticRole">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#SyntacticConstruction">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#VoiceFeature">
+    <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#SyntacticFeature"/>
+  </rdf:Description>
+
+
+  </rdf:RDF>

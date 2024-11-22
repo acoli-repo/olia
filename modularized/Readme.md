@@ -21,10 +21,10 @@ The idea is to provide multiple independent ontologies for different components 
 	- [x] `LinguisticConcept/MorphologicalProcess`
 	- [x] validate
 - `syntax.owl` -> `../owl/core/olia.owl`
-	- [ ] `LinguisticConcept/SyntacticRelation`
-	- [ ] `LinguisticConcept/SyntacticCategory`
-	- [ ] `LinguisticConcept/SyntacticFeature`
-	- [ ] validate
+	- [x] `LinguisticConcept/SyntacticRelation`
+	- [x] `LinguisticConcept/SyntacticCategory`
+	- [x] `LinguisticConcept/SyntacticFeature`
+	- [x] validate
 - `semlex.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/SemanticFeature`
 	- [x] `LinguisticConcept/SemanticUnit`
