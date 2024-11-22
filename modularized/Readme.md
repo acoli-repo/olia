@@ -8,8 +8,9 @@ The idea is to provide multiple independent ontologies for different components 
 	- [x] validate
 - `discourse.owl` -> `../owl/olia.owl`
 	- [x] move from experimental into reference model, but see [../owl/experimental/discourse](../owl/experimental/discourse) for accompanying files
-	- [ ] add `LinguisticConcept/DiscourseEntity`
-	- [ ] add `LinguisticConcept/DiscourseFeature`	
+	- [x] add `LinguisticConcept/DiscourseEntity`
+	- [x] add `LinguisticConcept/DiscourseFeature`	
+	- [ ] for all experimental features link as owl:sameAs with new URIs, mark the old ones as deprecated
 	- [ ] validate
 - `morphosyntax.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/MorphosyntacticFeature`
