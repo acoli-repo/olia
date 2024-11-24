@@ -1,14 +1,36 @@
 build: ../owl/core/olia.owl
 
-refresh:
+refresh: olia-top.owl system.owl disclaimer.txt
 	@if [ -e olia.owl ]; then rm olia.owl; fi; \
 	if make olia.owl; then \
 		cp olia.owl ../owl/core/olia.owl;\
+		echo 2>&1;\
 	else \
 		echo 'validity errors, keeping ../owl/core/olia.owl' 1>&2;\
-	fi;
+	fi;\
+	\
+	for file in system.owl olia-top.owl; do \
+		echo -n $$file' XML validation .. ' 1>&2;\
+		if xmllint $$file 1>/dev/null 2>$$file.log; then \
+			echo ok 2>&1;\
+			echo -n $$file' RDFXML validation .. ' 1>&2;\
+			if rapper $$file 1>/dev/null 2>$$file.log; then \
+				rm $$file.log;\
+				echo ok 2>&1;\
+				cp $$file ../owl/core;\
+			else \
+				echo failed, see $$file.log 2>&1;\
+			fi;\
+		else echo failed, see $$file.log 2>&1;\
+		fi;\
+		echo 2>&1;\
+	done;
 
 ../owl/core/olia.owl: refresh
+
+../owl/core/system.owl: refresh
+
+../owl/core/olia-top.owl: refresh
 
 olia.owl:
 	@if [ -e olia.owl ]; then \

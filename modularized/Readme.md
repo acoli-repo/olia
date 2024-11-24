@@ -12,7 +12,7 @@ For building the [OLiA Reference Model](../owl/core(olia.owl), run `make`. Note 
 	- [x] move from experimental into reference model, but see [../owl/experimental/discourse](../owl/experimental/discourse) for accompanying files
 	- [x] add `LinguisticConcept/DiscourseEntity`
 	- [x] add `LinguisticConcept/DiscourseFeature`	
-	- [ ] for all experimental features link as owl:sameAs with new URIs, mark the old ones as deprecated
+	- [ ] create a legacy file in `../owl/experimental` with owl:sameAs with new URIs, it as deprecated
 	- [ ] validate
 - `morphosyntax.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/MorphosyntacticFeature`
