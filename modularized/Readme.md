@@ -38,14 +38,14 @@ For building the [OLiA Reference Model](../owl/core(olia.owl), run `make`. Note 
 	- [x] `LinguisticConcept/PhonologicalProcess`
 	- [x] validate
 - put log separately
-	- [ ] remove log from `olia-header.owl`
+	- [x] remove log from `olia-header.owl`
 - rebuild `../owl/core`
 	- [x] Makefile
 	- [x] `olia-top.owl`
 	- [x] `system.owl`
 	- [x] integrate `olia-header.owl` in `olia.owl`
 	- [x] DO NOT EDIT disclaimer for core ontologies
-	- [ ] extend header for `olia.owl` (logs)
+	- [x] extend header for `olia.owl` (logs)
 	- [ ] dynamically build labels for `olia.owl` (remove `olia-rest.owl`)
 	- [x] `olia.owl`
 

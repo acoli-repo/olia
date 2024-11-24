@@ -63,6 +63,26 @@ olia.owl:
 			echo;\
 			echo;\
 		done;\
+		(	echo '<http://purl.org/olia/olia.owl> <http://www.w3.org/2002/07/owl#versionInfo> """';\
+			(	cat olia-logs.txt; \
+				echo;\
+				for file in *.owl ; do \
+					rapper $$file 2>/dev/null ; \
+				done \
+				| grep versionInfo \
+				| grep 'olia.owl>' \
+				| cut -f 3 -d '>' \
+				| perl -pe 's/(\\[nt])+/\n/g; s/"+/\n/g;' \
+				| grep '^[0-9][0-9][0-9][0-9]';\
+			) \
+			| sort -u \
+			| grep -P '[^\s]' \
+			| sed s/'$$'/'<br><br>'/g \
+			| w3m -T text/html -cols 72 -dump \
+			| sed s/'^'/'       '/g;\
+		echo '""" .';) \
+		| rapper -i turtle - '#' -o rdfxml \
+		| xmllint --xpath '/*/*' -;\
 		echo '</rdf:RDF>';) \
 		> olia.xml;\
 		\
