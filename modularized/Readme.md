@@ -41,10 +41,11 @@ For building the [OLiA Reference Model](../owl/core(olia.owl), run `make`. Note 
 	- [ ] remove log from `olia-header.owl`
 - rebuild `../owl/core`
 	- [x] Makefile
-	- [ ] `olia-top.owl`
-	- [ ] `system.owl`
+	- [x] `olia-top.owl`
+	- [x] `system.owl`
 	- [x] integrate `olia-header.owl` in `olia.owl`
-	- [ ] extend header for `olia.owl` (logs, DO NOT EDIT disclaimer)
+	- [x] DO NOT EDIT disclaimer for core ontologies
+	- [ ] extend header for `olia.owl` (logs)
 	- [ ] dynamically build labels for `olia.owl` (remove `olia-rest.owl`)
 	- [x] `olia.owl`
 

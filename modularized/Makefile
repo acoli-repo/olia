@@ -1,9 +1,22 @@
+SHELL=bash
+
 build: ../owl/core/olia.owl
 
-refresh: olia-top.owl system.owl disclaimer.txt
+# function to add a disclaimer, cf. https://www.gnu.org/software/make/manual/make.html#Call-Function, https://www.gnu.org/software/make/manual/make.html#Canned-Recipes
+define add_core_disclaimer = 
+	(egrep -m 1 '<\?' $(1); \
+	 echo; \
+	 echo '<!-- '; \
+	 cat disclaimer-for-core-ontologies.txt | sed s/'^'/'\t'/; \
+	 echo '-->'; \
+	 echo; \
+	 egrep -v '<\?' $(1))
+endef
+
+refresh: olia-top.owl system.owl disclaimer-for-core-ontologies.txt
 	@if [ -e olia.owl ]; then rm olia.owl; fi; \
 	if make olia.owl; then \
-		cp olia.owl ../owl/core/olia.owl;\
+		$(call add_core_disclaimer,olia.owl) > ../owl/core/olia.owl;\
 		echo 2>&1;\
 	else \
 		echo 'validity errors, keeping ../owl/core/olia.owl' 1>&2;\
@@ -17,7 +30,7 @@ refresh: olia-top.owl system.owl disclaimer.txt
 			if rapper $$file 1>/dev/null 2>$$file.log; then \
 				rm $$file.log;\
 				echo ok 2>&1;\
-				cp $$file ../owl/core;\
+				$(call add_core_disclaimer,$$file) > ../owl/core/$$file;\
 			else \
 				echo failed, see $$file.log 2>&1;\
 			fi;\
