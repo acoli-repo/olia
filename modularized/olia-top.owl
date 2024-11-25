@@ -3,6 +3,7 @@
     xmlns:dcr="http://www.isocat.org/ns/dcr.rdf#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:olia_system="http://purl.org/olia/system.owl#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -14,31 +15,54 @@
 	<owl:versionInfo>TODO: check upper level organization, remodel strength as categories (as in DCR), rename UsageAndFrequencyFeature to UsageFeature</owl:versionInfo>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Top categories of the OLiA Reference Model
-    2010/01/19 created 
-    2010/04/08 removed NPFunction (=> SyntacticRole) 
-	2010/04/13 added MorphologicalProcess, MorphologicalFeature, DiscourseFeature, AnimacyFeature, 
-			ReferentTypeFeature, RegisterFeature, UsageAndFrequencyFeature
-	2010/04/14 validation, PossessiveFeature removed (see olia:hasOwnerNumber), moved olia:NarrativeType and olia:PolarityFeature here
-	2010/04/15 additions in accordance to the PTB Bracketing Guidelines: NullElement, SentenceTypeFeature (Santorini 1991, Bies et al. 1995)
-	2010/11/30 added TopologicalField in accordance to the TueDa-D/Z annotation guidelines (Telljohann et al. 2009)
-	2011/07/29 replace url by purl
-	2011/07/31 added ProximityFeature
-	2011/08/03 added SpecificityFeature
-	2011/08/04 SubordTypeFeature, CoordTypeFeature deprecated, added NumeralAgreementClass
-	2011/08/11 StrengthFeature recast as MorphologicalFeature rather than MorphosyntacticFeature
-	2011/08/15 EmphasisFeature added
-	2011/08/15 PhonologicalProcess added (for Elision and Apocope, formerly both classified as MorphologicalProcess)
-	2013/06/25 EvidentialityFeature, ClusivityFeature added (from ISOcat), intensity as new label to EmphasisFeature
-			   LexicalRelation for labels for relations holding between lexemes
-	2013/06/27 AgreementFeature (from ISOcat, as superclass of NominalAgreementClass, Person, Gender, Number; not as a relation between words)	
-	2013/06/28 EvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), ModalityFeature (Modality and Mood distinction revised)
-	2016/04/18 fixed minor validity warnings
-	2016/08/29 added MovementFeature as cover term for Rising and Control (for compliance with lexinfo)
-	2020/02/06 fixed use of owl:deprecated
-	2020/02/24 description of Constituent
-  2022-05-23 rdfs:labels added (automatically)
+  2010-01-19 OLiA-Top created 
+  
+  2010-04-08 OLiA-Top: removed NPFunction (=> SyntacticRole) 
+	
+  2010-04-13 OLiA-Top: added MorphologicalProcess, MorphologicalFeature, DiscourseFeature (PragmaticFeature), AnimacyFeature, ReferentTypeFeature, RegisterFeature, UsageAndFrequencyFeature
+	
+  2010-04-14 OLiA-Top: validation, PossessiveFeature removed (see olia:hasOwnerNumber), moved olia:NarrativeType and olia:PolarityFeature here
+	
+  2010-04-15 OLiA-Top: additions in accordance to the PTB Bracketing Guidelines: NullElement, SentenceTypeFeature (Santorini 1991, Bies et al. 1995)
+	
+  2010-11-30 OLiA-Top: added TopologicalField in accordance to the TueDa-D/Z annotation guidelines (Telljohann et al. 2009)
+	
+  2011-07-29 OLiA-Top: replace url by purl
+	
+  2011-07-31 OLiA-Top: added ProximityFeature
+	
+  2011-08-03 OLiA-Top: added SpecificityFeature
+	
+  2011-08-04 OLiA-Top: SubordTypeFeature, CoordTypeFeature deprecated, added NumeralAgreementClass
+	
+  2011-08-11 OLiA-Top: StrengthFeature recast as MorphologicalFeature rather than MorphosyntacticFeature
+	
+  2011-08-15 OLiA-Top: EmphasisFeature added
+	
+  2011-08-15 OLiA-Top: PhonologicalProcess added (for Elision and Apocope, formerly both classified as MorphologicalProcess)
+	
+  2013-06-25 OLiA-Top: EvidentialityFeature, ClusivityFeature added (from ISOcat), intensity as new label to EmphasisFeature; LexicalRelation for labels for relations holding between lexemes
+	
+  2013-06-27 OLiA-Top: AgreementFeature (from ISOcat, as superclass of NominalAgreementClass, Person, Gender, Number; not as a relation between words)	
+	
+  2013-06-28 OLiA-Top: EvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), ModalityFeature (Modality and Mood distinction revised)
+	
+  2016-04-18 OLiA-Top: fixed minor validity warnings
+	
+  2016-08-29 OLiA-Top: added MovementFeature as cover term for Rising and Control (for compliance with lexinfo)
+	
+  2020-02-06 OLiA-Top: fixed use of owl:deprecated
+	
+  2020-02-24 OLiA-Top: description of Constituent
+  
+  2022-05-23 OLiA-Top: rdfs:labels added (automatically)
+  
+  2024-11-25 OLiA-Top: integration of OLiA Discourse: 
+    PragmaticRelation, TextStructuralUnit,
+    DiscourseFeature => PragmaticFeature, 
+    PragmaticUnit introduced as superclass of DiscourseEntity,
 
-    Christian Chiarcos, chiarcos@uni-potsdam.de</rdfs:comment>
+  </rdfs:comment>
     <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
   </owl:Ontology>
 
@@ -50,9 +74,24 @@
     </rdfs:subClassOf>
   </owl:Class>
 
-    <owl:Class rdf:ID="DiscourseEntity">
+
+  <owl:Class rdf:ID="PragmaticUnit">
     <rdfs:subClassOf>
       <owl:Class rdf:about="#LinguisticConcept"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="TextStructuralUnit">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LinguisticConcept"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+    <owl:Class rdf:ID="DiscourseEntity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PragmaticUnit"/>
     </rdfs:subClassOf>
   </owl:Class>
 
@@ -78,7 +117,9 @@
 
   </owl:Class>
   
-    <owl:Class rdf:ID="DiscourseFeature">
+    <owl:Class rdf:ID="PragmaticFeature">
+    <dct:replaces rdf:about="http://purl.org/olia/olia-top.owl#DiscourseFeature"/>
+    <owl:versionInfo>has been renamed from "discourse feature" to "pragmatic feature" in the process of integrating the OLiA Discourse Extensions into the OLiA Reference Model, adopting OLiA Discourse lingo. In general, "pragmatic feature" is considered to be broader and to encompass discourse phenomena, as well. In the 2010 OLiA Discourse extensions, a difference was made between "pragmatic relations" (encompassing anaphoric relations, bridging, etc.) and "discourse relation" (a subclass of pragmatic relation concerned exclusively with aspects of discourse structure)</owl:versionInfo>
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
     </rdfs:subClassOf>
@@ -92,7 +133,7 @@
                                 (DFKI; http://www.isocat.org/datcat/DC-1376)
                             </rdfs:comment>
       <rdfs:label>referent type</rdfs:label>
-	  <rdfs:subClassOf rdf:resource="#DiscourseFeature"/>
+	  <rdfs:subClassOf rdf:resource="#PragmaticFeature"/>
     </owl:Class>
   
   <owl:Class rdf:ID="ProximityFeature">
@@ -177,7 +218,7 @@
                                 (ISO12620; http://www.isocat.org/datcat/DC-1988)
                             </rdfs:comment>
       <rdfs:label>register</rdfs:label>
-	  <rdfs:subClassOf rdf:resource="#DiscourseFeature"/>
+	  <rdfs:subClassOf rdf:resource="#PragmaticFeature"/>
    </owl:Class>
 
     <owl:Class rdf:ID="UsageAndFrequencyFeature">
@@ -191,7 +232,7 @@
 			Dating: Indication specifying whether the usage is old or modern.
             (http://www.isocat.org/datcat/DC-1959)
 	  </rdfs:comment>
-	  <rdfs:subClassOf rdf:resource="#DiscourseFeature"/>
+	  <rdfs:subClassOf rdf:resource="#PragmaticFeature"/>
    </owl:Class>
 
    
@@ -454,6 +495,16 @@ The in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. 
       <owl:versionInfo>http://www.isocat.org/datcat/DC-1415, cf. GOLD SyntacticWord</owl:versionInfo>
       <rdfs:label>word</rdfs:label>
   </owl:Class>
+
+  <owl:Class rdf:ID="PragmaticRelation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#Relation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
   <owl:Class rdf:ID="SyntacticRelation">
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#LinguisticConcept"/>
@@ -654,7 +705,7 @@ There is a great extent of overlap between LinguisticCategories/LinguisticFeatur
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
       ></rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#DiscourseFeature">
+  <owl:Class rdf:about="http://purl.org/olia/olia-top.owl#PragmaticFeature">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     ></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
@@ -663,7 +714,7 @@ There is a great extent of overlap between LinguisticCategories/LinguisticFeatur
 
 	<owl:Class rdf:ID="NarrativeType">
 		<rdfs:subClassOf>
-			<owl:Class rdf:about="#DiscourseFeature"/>
+			<owl:Class rdf:about="#PragmaticFeature"/>
 		</rdfs:subClassOf>
 	</owl:Class>
 
@@ -714,7 +765,7 @@ There is a great extent of overlap between LinguisticCategories/LinguisticFeatur
   <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#DiscourseEntity">
     <rdfs:label xml:lang="en">discourse entity</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#DiscourseFeature">
+  <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#PragmaticFeature">
     <rdfs:label xml:lang="en">discourse feature</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/olia/olia-top.owl#DominanceRelation">

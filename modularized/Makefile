@@ -3,13 +3,18 @@ SHELL=bash
 build: ../owl/core/olia.owl
 
 # function to add a disclaimer, cf. https://www.gnu.org/software/make/manual/make.html#Call-Function, https://www.gnu.org/software/make/manual/make.html#Canned-Recipes
-define add_core_disclaimer = 
+define add_core_disclaimer_no_body = 
 	(egrep -m 1 '<\?' $(1); \
 	 echo; \
 	 echo '<!-- '; \
 	 cat disclaimer-for-core-ontologies.txt | sed s/'^'/'\t'/; \
 	 echo '-->'; \
-	 echo; \
+	 echo;)
+endef
+
+# function to add a disclaimer, cf. https://www.gnu.org/software/make/manual/make.html#Call-Function, https://www.gnu.org/software/make/manual/make.html#Canned-Recipes
+define add_core_disclaimer = 
+	($(call add_core_disclaimer_no_body,$(1)); \
 	 egrep -v '<\?' $(1))
 endef
 
@@ -26,9 +31,26 @@ endef
 
 # for refreshing the *experimental* files, i.e., those published under http://purl.org/olia/discourse/olia_discourse.owl
 refresh_discourse:
-	cat discourse.owl \
-	| sed s/'olia\.owl'/'olia_discourse\.owl'/g \
-	> ../owl/experimental/discourse/olia_discourse.owl
+	@(($(call add_core_disclaimer_no_body,discourse.owl); \
+	   (cat discourse.owl \
+	    | grep -v '<?' \
+	    | sed s/'olia\.owl'/'discourse\/olia_discourse\.owl'/g \
+	    | grep -v '</rdf:RDF>';\
+	    echo;\
+	    echo '<!-- OLiA links -->';\
+	    echo;\
+	    rapper discourse.owl \
+	    | cut -f 1-2 -d '<' \
+	    | grep 'olia.owl#' \
+	    | sort -u \
+	    | perl -pe 's/^((.*)\/olia.owl(#[^\s]*))/\2\/discourse\/olia_discourse.owl\3 <http:\/\/purl.org\/dc\/terms\/replacedBy> \1 ; <http:\/\/www.w3.org\/2002\/07\/owl#deprecated> true . /;' \
+	    | rapper -i turtle - '#' -o rdfxml \
+	    | xmllint - --xpath '/*/*';\
+	    echo '</rdf:RDF>';\
+	   ) \
+	  | rapper - '#' -o rdfxml ) \
+	  > ../owl/experimental/discourse/olia_discourse.owl) 2>&1 \
+	| tee discourse.log 1>&2
 
 refresh: olia-top.owl system.owl disclaimer-for-core-ontologies.txt
 	@if [ -e olia.owl ]; then rm olia.owl; fi; \

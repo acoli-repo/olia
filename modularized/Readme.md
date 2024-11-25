@@ -49,11 +49,11 @@ For building the [OLiA Reference Model](../owl/core(olia.owl) and other core ont
 	- [x] add `LinguisticConcept/DiscourseEntity`
 	- [x] add `LinguisticConcept/DiscourseFeature`	
 	- [x] create legacy file `../owl/experimental/olia_discourse.owl`
-	- [ ] add owl:sameAs with new URIs statements to `../owl/experimental/olia-discourse.owl`, it as deprecated
+	- [x] add dct:replacedWith and deprecation notes to `../owl/experimental/olia-discourse.owl`, it as deprecated
 	- [x] merge into main namespace
 	- [ ] update documentation in `../doc` (Reference Model deprecated)
 	- [ ] update `../owl/experimental` documentation (Reference Model deprecated)
-	- [ ] "DO NOT EDIT" disclaimer for `../owl/experimental/olia-discourse.owl`
+	- [x] "DO NOT EDIT" disclaimer for `../owl/experimental/olia-discourse.owl`
 	- [ ] validate
 - build scripts
 	- [ ] update `../Makefile` 
