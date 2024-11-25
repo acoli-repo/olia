@@ -15,6 +15,7 @@ help:
 	@echo "  checks   check whether all OLiA URIs resolve" 1>&2;
 	@echo "           note that this should be called a while after the publication,"1>&2
 	@echo "           because publication involves server-side processing that just takes a while" 1>&2
+	@echo "  core     update OLiA core ontologies (olia.owl. olia-top.owl, system.owl)" 1>&2
 	@echo "Note: to publish docs/owl updates via GitHub pages, *you* need" 1>&2
 	@echo "      to run the following commands after running this Makefile" 1>&2
 	@echo "         $> git add docs/owl" 1>&2
@@ -26,6 +27,9 @@ help:
 	@echo "         $> rm -rf docs/owl" 1>&2
 	@echo "         $> git checkout docs/owl" 1>&2
 	@echo 1>&2
+
+core:
+	@cd modularized; make refresh
 
 clean:
 	@if [ -e docs/owl ]; then rm -rf docs/owl ; fi;
