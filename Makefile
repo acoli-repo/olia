@@ -60,7 +60,7 @@ docs/owl/LICENSE: LICENSE.data
 	@if [ ! -d docs/owl ]; then mkdir -p docs/owl; fi;
 	@cp LICENSE.data docs/owl/LICENSE
 
-release: docs/owl/Readme.md docs/owl/LICENSE
+release: core docs/owl/Readme.md docs/owl/LICENSE
 	@echo validate and publish ontologies via GitHub pages 1>&2
 	@DIRS="owl/core owl/stable owl/experimental";\
 	for dir in $$DIRS; do \

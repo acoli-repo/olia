@@ -8,7 +8,17 @@ can be employed to facilitate the conceptual (semantic) interoperability
 of annotations of discourse phenomena as found in important corpora
 available to the community.
 
-The OWL2/DL Reference Model of the OLiA Discourse Extensions can be found under [http://purl.org/olia/discourse/olia_discourse.owl](olia/discourse/olia_discourse.owl)
+As of Nov 2024, the OWL2/DL Reference Model of the OLiA Discourse Extensions are fully integrated with the [OLiA Reference Model](http://purl.org/olia/olia.owl). A standalone legacy ontology (using the original URL schema, synchronized and linked with the OLiA Reference Model, but marked as deprecated) can be found under [http://purl.org/olia/discourse/olia_discourse.owl](olia/discourse/olia_discourse.owl)
+
+> **IMPORTANT NOTE:**
+> After the integration with the OLiA Reference Model. the ontology [http://purl.org/olia/discourse/olia_discourse.owl](olia_discourse.owl) will remain available and it will retain the original URI schema, BUT
+>
+> - its concepts are declared deprecated,
+> - it will be automatically generated from [modularized/discourse.owl](https://github.com/acoli-repo/olia/blob/master/modularized/discourse.owl),
+> - and it may be overwritten any time without further notice
+>
+> **DO NOT** apply changes to the original [olia_discourse.owl](https://github.com/acoli-repo/olia/blob/master/owl/experimental/olia_discourse.owl), as this be overwritten, too. (And update your links as soon as possible to http://purl.org/olia/olia.owl.)
+
 
 ## Background
 

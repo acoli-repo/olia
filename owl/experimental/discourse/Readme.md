@@ -6,6 +6,15 @@ Discourse Treebank](http://catalog.ldc.upenn.edu/LDC2008T05) as well as standard
 
 For full documentation, please see our [website](https://acoli-repo.github.io/olia/discourse.html).
 
+> **IMPORTANT NOTE:**
+> As of Nov 2024, the OLiA Discourse Extensions are integrated with the OLiA Reference Model. The ontology [http://purl.org/olia/discourse/olia_discourse.owl](olia_discourse.owl) will remain available and it will retain the original URI schema, BUT
+>
+> - its concepts are declared deprecated,
+> - it will by automatically synched (and linked) with [../../../modularized/discourse.owl](../../../modularized/discourse.owl),
+> - and it may be overwritten any time without further notice
+>
+> **DO NOT** apply changes to the local [olia_discourse.owl](olia_discourse.owl). (And update your links as soon as possible.)
+
 ## Coverage
 
 Discourse phenomena considered here include
@@ -47,9 +56,5 @@ Extensions since the original publication include:
 - 2021-11-30: linking with SemDok discourse ontology
 - 2022-09-xx: mirrorred NERD ontology (as of Sep 2022, their hosting is failing): added [NERD ontology](https://github.com/NERD-project/nerd-ontology) as a [Git subtree](https://www.atlassian.com/git/tutorials/git-subtree) under `nerd-ontology/`.
 - 2022-10-13: incorporating entity types and 10 NER schemas based on NERD
-- on-going ISO Discourse annotations
+- 2024-11-25: integrated into the OLiA Reference Model
 
-## Todos
-
-- additional is and coref datasets/schemas
-- SDRT (so far, we have no corpus data as a basis)

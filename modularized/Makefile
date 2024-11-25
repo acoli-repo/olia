@@ -39,20 +39,20 @@ refresh_discourse:
 	    echo;\
 	    echo '<!-- OLiA links -->';\
 	    echo;\
-	    rapper discourse.owl \
+	    rapper discourse.owl 2>/dev/null \
 	    | cut -f 1-2 -d '<' \
 	    | grep 'olia.owl#' \
 	    | sort -u \
 	    | perl -pe 's/^((.*)\/olia.owl(#[^\s]*))/\2\/discourse\/olia_discourse.owl\3 <http:\/\/purl.org\/dc\/terms\/replacedBy> \1 ; <http:\/\/www.w3.org\/2002\/07\/owl#deprecated> true . /;' \
-	    | rapper -i turtle - '#' -o rdfxml \
+	    | rapper -i turtle - '#' -o rdfxml 2>/dev/null \
 	    | xmllint - --xpath '/*/*';\
 	    echo '</rdf:RDF>';\
 	   ) \
-	  | rapper - '#' -o rdfxml ) \
+	  | rapper - '#' -o rdfxml 2>/dev/null) \
 	  > ../owl/experimental/discourse/olia_discourse.owl) 2>&1 \
 	| tee discourse.log 1>&2
 
-refresh: olia-top.owl system.owl disclaimer-for-core-ontologies.txt
+refresh: olia-top.owl system.owl disclaimer-for-core-ontologies.txt refresh_discourse
 	@if [ -e olia.owl ]; then rm olia.owl; fi; \
 	if make olia.owl; then \
 		$(call add_core_disclaimer,olia.owl) > ../owl/core/olia.owl;\
@@ -103,6 +103,17 @@ olia.owl:
 			echo;\
 		done;\
 		\
+		echo '<!-- labels converted from CamelCase -->';\
+		for file in *owl; do \
+			if [ $$file != olia.owl ]; then \
+				echo '<!-- labels from '$$file' -->';\
+				$(call add_labels_to_owl,$$file,'olia.owl#');\
+				echo;\
+			fi;\
+		done;\
+		echo;\
+		echo;\
+		\
 		echo '<!-- aggregated logs -->';\
 		(	echo '<http://purl.org/olia/olia.owl> <http://www.w3.org/2002/07/owl#versionInfo> """';\
 			(	cat olia-logs.txt; \
@@ -118,24 +129,15 @@ olia.owl:
 			) \
 			| sort -u \
 			| grep -P '[^\s]' \
-			| sed s/'$$'/'<br><br>'/g \
-			| w3m -T text/html -cols 72 -dump \
+			| sed -e s/'$$'/'<br><br>'/g -e s/'"'//g \
+			| w3m -T text/html -cols 72 -dump -I utf-8 -O utf-8 \
+			| sed s/'\\$$'// \
 			| sed s/'^'/'       '/g;\
 		echo '""" .';) \
-		| rapper -i turtle - '#' -o rdfxml 2>/dev/null\
+		| rapper -i turtle - '#' -o rdfxml 2>/dev/null \
 		| xmllint --xpath '/*/*' -;\
 		echo;\
-		echo;\
 		\
-		echo '<!-- labels converted from CamelCase -->';\
-		for file in *owl; do \
-			if [ $$file != olia.owl ]; then \
-				echo '<!-- labels from '$$file' -->';\
-				$(call add_labels_to_owl,$$file,'olia.owl#');\
-				echo;\
-			fi;\
-		done;\
-		echo;\
 		echo '</rdf:RDF>';) \
 		> olia.xml;\
 		\
@@ -156,5 +158,32 @@ olia.owl:
 		fi;\
 	fi;
 
+tmp:
+		@#echo '<!-- aggregated logs -->';\
+		
+		@(	echo '<http://purl.org/olia/olia.owl> <http://www.w3.org/2002/07/owl#versionInfo> """ ';\
+			(	cat olia-logs.txt; \
+				echo;\
+				for file in *.owl ; do \
+					rapper $$file  ; \
+				done \
+				| grep versionInfo \
+				| grep 'olia.owl>' \
+				| cut -f 3 -d '>' \
+				| perl -pe 's/(\\[nt])+/\n/g; s/"+/\n/g;' \
+				| sed s/'^\s*'//g \
+				| grep '^[0-9][0-9][0-9][0-9]';\
+			) \
+			| sed s/'"'//g \
+			| sort -u \
+			| grep -P '[^\s]' \
+			| sed s/'$$'/'<br><br>'/g \
+			| w3m -T text/html -cols 72 -dump -I utf-8 -O utf-8 \
+			| sed s/'\\$$'// \
+			| sed s/'^'/'       '/g;\
+			echo '""" .';) \
+		| tee raw.ttl \
+		| rapper -i turtle - '#' -o rdfxml  \
+		#| xmllint --xpath '/*/*' -;\
+		#echo;\
 
-# TODO: add discourse.owl 

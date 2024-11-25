@@ -51,12 +51,10 @@ For building the [OLiA Reference Model](../owl/core(olia.owl) and other core ont
 	- [x] create legacy file `../owl/experimental/olia_discourse.owl`
 	- [x] add dct:replacedWith and deprecation notes to `../owl/experimental/olia-discourse.owl`, it as deprecated
 	- [x] merge into main namespace
-	- [ ] update documentation in `../doc` (Reference Model deprecated)
-	- [ ] update `../owl/experimental` documentation (Reference Model deprecated)
+	- [x] update documentation in `../doc` (Reference Model deprecated)
+	- [x] update `../owl/experimental` documentation (Reference Model deprecated)
 	- [x] "DO NOT EDIT" disclaimer for `../owl/experimental/olia-discourse.owl`
-	- [ ] validate
+	- [x] validate
 - build scripts
-	- [ ] update `../Makefile` 
-	- [ ] update release data
-
-whitepaper on `Revisiting the Ontologies of Linguistic Annotation (OLiA)`, concerned with frequencies, modularization and SPARQL queries for tag mapping (shortest path+frequency ranking for alternatives)
+	- [x] update `../Makefile` 
+	- [x] update release data
