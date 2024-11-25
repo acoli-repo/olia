@@ -46,7 +46,7 @@ For building the [OLiA Reference Model](../owl/core(olia.owl), run `make`. Note 
 	- [x] integrate `olia-header.owl` in `olia.owl`
 	- [x] DO NOT EDIT disclaimer for core ontologies
 	- [x] extend header for `olia.owl` (logs)
-	- [ ] dynamically build labels for `olia.owl` (remove `olia-rest.owl`)
+	- [x] dynamically build labels for `olia.owl`
 	- [x] `olia.owl`
 
 whitepaper on `Revisiting the Ontologies of Linguistic Annotation (OLiA)`, concerned with frequencies, modularization and SPARQL queries for tag mapping (shortest path+frequency ranking for alternatives)

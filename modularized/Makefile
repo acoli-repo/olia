@@ -13,6 +13,17 @@ define add_core_disclaimer =
 	 egrep -v '<\?' $(1))
 endef
 
+# function to retrieve labels from one OWL (RDFXML) file, arguments are file name and source namespace (make sure to include # or / in the end!)
+define add_labels_to_owl=
+	(rapper $(1) 2>/dev/null\
+		| cut -f 1-2 -d '<'  \
+		| grep $(2)  \
+		| sort -u  \
+		| perl -pe 's/[\r\n]+/ /; my $$orig=$$_; s/^[^#]*[#\/]([^>\/#]+)>/\1/; s/_/ /g; while(m/.*[a-z](.*[^ ])?[A-Z].*[a-z].*/) { s/(.*[a-z](.*[^ ])?)([A-Z].*[a-z].*)/\1 \3/g; }; s/([A-Z][a-z])/\L\1/g; s/ +$$//; print($$orig," <http://www.w3.org/2000/01/rdf-schema#label> \"\"\"",$$_,"\"\"\"@en.\n"); s/.*//g;' \
+		| rapper -i turtle - '#' -o rdfxml 2>/dev/null \
+		| xmllint - -xpath "*/*" 2>/dev/null)
+endef
+
 refresh: olia-top.owl system.owl disclaimer-for-core-ontologies.txt
 	@if [ -e olia.owl ]; then rm olia.owl; fi; \
 	if make olia.owl; then \
@@ -63,6 +74,8 @@ olia.owl:
 			echo;\
 			echo;\
 		done;\
+		\
+		echo '<!-- aggregated logs -->';\
 		(	echo '<http://purl.org/olia/olia.owl> <http://www.w3.org/2002/07/owl#versionInfo> """';\
 			(	cat olia-logs.txt; \
 				echo;\
@@ -81,8 +94,20 @@ olia.owl:
 			| w3m -T text/html -cols 72 -dump \
 			| sed s/'^'/'       '/g;\
 		echo '""" .';) \
-		| rapper -i turtle - '#' -o rdfxml \
+		| rapper -i turtle - '#' -o rdfxml 2>/dev/null\
 		| xmllint --xpath '/*/*' -;\
+		echo;\
+		echo;\
+		\
+		echo '<!-- labels converted from CamelCase -->';\
+		for file in *owl; do \
+			if [ $$file != olia.owl ]; then \
+				echo '<!-- labels from '$$file' -->';\
+				$(call add_labels_to_owl,$$file,'olia.owl#');\
+				echo;\
+			fi;\
+		done;\
+		echo;\
 		echo '</rdf:RDF>';) \
 		> olia.xml;\
 		\
@@ -104,14 +129,4 @@ olia.owl:
 	fi;
 
 
-
-
-
-
-
-
-#	| tee olia.ttl \
-#	| rapper -i turtle -o rdfxml - '#' \
-#	> olia.owl
-		
-				# TODO: add discourse.owl 
+# TODO: add discourse.owl 
