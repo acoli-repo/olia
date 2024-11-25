@@ -1,8 +1,10 @@
 # OLiA Modularization
 
-The idea is to provide multiple independent ontologies for different components of the OLiA Reference Model, and then to build [../owl/core](../owl/core) from them. The files here should thus replace ../owl/core. 
+TO facilitate the local management of individual components, OLiA is broken down down into several sub-vocabularies.
+All of these use the same namespaces, but they are *edited* independently in separate physical files. 
+The files in this repository are used to generate the OLiA Reference Model and associated ontologies (`olia-top.owl`, `system.owl`) in [../owl/core](../owl/core).
 
-For building the [OLiA Reference Model](../owl/core(olia.owl), run `make`. Note that this will build `../owl/core/olia.owl` only if it does not exist yet. In order to overwrite an existing model so, run `make refresh`.
+For building the [OLiA Reference Model](../owl/core(olia.owl) and other core ontologies, run `make`. Note that this will build `../owl/core/olia.owl` only if it does not exist yet. In order to overwrite an existing model so, run `make refresh`.
 
 - `system.owl` -> `../owl/core/system.owl`  (no changes)
 	- [x] validate
@@ -44,7 +46,7 @@ For building the [OLiA Reference Model](../owl/core(olia.owl), run `make`. Note 
 	- [x] `olia-top.owl`
 	- [x] `system.owl`
 	- [x] integrate `olia-header.owl` in `olia.owl`
-	- [x] DO NOT EDIT disclaimer for core ontologies
+	- [x] "DO NOT EDIT" disclaimer for core ontologies
 	- [x] extend header for `olia.owl` (logs)
 	- [x] dynamically build labels for `olia.owl`
 	- [x] `olia.owl`
