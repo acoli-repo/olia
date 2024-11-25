@@ -10,13 +10,6 @@ For building the [OLiA Reference Model](../owl/core(olia.owl) and other core ont
 	- [x] validate
 - `olia-top.owl` -> `../owl/core/olia-top.owl` (no changes)
 	- [x] validate
-- `discourse.owl` -> `../owl/olia.owl`
-	- [x] move from experimental into reference model, but see [../owl/experimental/discourse](../owl/experimental/discourse) for accompanying files
-	- [x] add `LinguisticConcept/DiscourseEntity`
-	- [x] add `LinguisticConcept/DiscourseFeature`	
-	- [ ] merge into main namespace
-	- [ ] create a legacy file in `../owl/experimental` with owl:sameAs with new URIs, it as deprecated
-	- [ ] validate
 - `morphosyntax.owl` -> `../owl/core/olia.owl`
 	- [x] `LinguisticConcept/MorphosyntacticFeature`
 	- [x] `LinguisticConcept/MorphosyntacticCategory` (aka `Word`)
@@ -51,5 +44,19 @@ For building the [OLiA Reference Model](../owl/core(olia.owl) and other core ont
 	- [x] extend header for `olia.owl` (logs)
 	- [x] dynamically build labels for `olia.owl`
 	- [x] `olia.owl`
+- `discourse.owl` -> `../owl/olia.owl`
+	- [x] move from experimental into reference model, but see [../owl/experimental/discourse](../owl/experimental/discourse) for accompanying files
+	- [x] add `LinguisticConcept/DiscourseEntity`
+	- [x] add `LinguisticConcept/DiscourseFeature`	
+	- [x] create legacy file `../owl/experimental/olia_discourse.owl`
+	- [ ] add owl:sameAs with new URIs statements to `../owl/experimental/olia-discourse.owl`, it as deprecated
+	- [x] merge into main namespace
+	- [ ] update documentation in `../doc` (Reference Model deprecated)
+	- [ ] update `../owl/experimental` documentation (Reference Model deprecated)
+	- [ ] "DO NOT EDIT" disclaimer for `../owl/experimental/olia-discourse.owl`
+	- [ ] validate
+- build scripts
+	- [ ] update `../Makefile` 
+	- [ ] update release data
 
 whitepaper on `Revisiting the Ontologies of Linguistic Annotation (OLiA)`, concerned with frequencies, modularization and SPARQL queries for tag mapping (shortest path+frequency ranking for alternatives)

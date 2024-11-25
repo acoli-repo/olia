@@ -24,6 +24,12 @@ define add_labels_to_owl=
 		| xmllint - -xpath "*/*" 2>/dev/null)
 endef
 
+# for refreshing the *experimental* files, i.e., those published under http://purl.org/olia/discourse/olia_discourse.owl
+refresh_discourse:
+	cat discourse.owl \
+	| sed s/'olia\.owl'/'olia_discourse\.owl'/g \
+	> ../owl/experimental/discourse/olia_discourse.owl
+
 refresh: olia-top.owl system.owl disclaimer-for-core-ontologies.txt
 	@if [ -e olia.owl ]; then rm olia.owl; fi; \
 	if make olia.owl; then \
@@ -62,7 +68,7 @@ olia.owl:
 	else \
 		(cat olia-header.owl \
 		  | grep -v '</rdf:RDF>';\
-		  for file in morphosyntax.owl  syntax.owl morph.owl semlex.owl graphon.owl ; do \
+		  for file in morphosyntax.owl  syntax.owl morph.owl semlex.owl graphon.owl discourse.owl; do \
 			msg='# '$$file' #';\
 			echo '<!-- ';\
 			echo '	'$$msg | sed s/'[^\t]'/'#'/g;\
