@@ -14,6 +14,7 @@ For building the [OLiA Reference Model](../owl/core(olia.owl) and other core ont
 	- [x] move from experimental into reference model, but see [../owl/experimental/discourse](../owl/experimental/discourse) for accompanying files
 	- [x] add `LinguisticConcept/DiscourseEntity`
 	- [x] add `LinguisticConcept/DiscourseFeature`	
+	- [ ] merge into main namespace
 	- [ ] create a legacy file in `../owl/experimental` with owl:sameAs with new URIs, it as deprecated
 	- [ ] validate
 - `morphosyntax.owl` -> `../owl/core/olia.owl`
