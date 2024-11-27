@@ -7,6 +7,6 @@ From 2005-2011, the OLiA ontologies were hosted at the [University of Potsdam, G
 
 OLiA has been designed as an open source resource and has always been released as such. The SourceForge edition (until 2019) used CC-BY-SA 3.0. For up-to-date licensing information and the necessary attribution, please see http://purl.org/olia/Readme.md.
 
-Brought to you by the Applied Computational Linguistics lab at Goethe University Frankfurt, Germany.
+Brought to you by the Applied Computational Linguistics labs at University of Augsburg, Germany. Earlier development took place at Goethe University Frankfurt, Germany (2013-2022), the Information Sciences Institute of the University of Southern California (2012, funded by DAAD with a PostDoc stipend to Christian Chiarcos) and University of Potsdam, Germany (2005-2011, funded by DFG as part of the Collaborative Research Centers 441 "Linguistic Data Structures" and 632 "Information Structure").
 
 > OLiA is open source (code: Apache v.2, data: CC-BY 3.0), for terms of use, attribution and detailed documentation, please see [the official website](https://acoli-repo.github.io/olia/).
