@@ -1,40 +1,29 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY french-tt "http://purl.org/olia/french-tt.owl#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/french-tt.owl#"
      xml:base="http://purl.org/olia/french-tt.owl"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:system="http://purl.org/olia/system.owl#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:french-tt="http://purl.org/olia/french-tt.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/french-tt.owl">
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
- 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/fre"/>
-        <rdfs:isDefinedBy>http://www.ims.uni-stuttgart.de/~schmid/french-tagset.html</rdfs:isDefinedBy>
-        <owl:versionInfo>2011-11-11 created
-
-Christian Chiarcos
-chiarcos@uni-potsdam.de</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/fre"/>
         <rdfs:comment>OLiA annotation model for French part-of-speech tags as produced by the TreeTagger. Tagset courtesy of Achim Stein. Unless specified otherwise, all comments are literal quotes from Stein (2003).
 
 References:
 
 Achim Stein (2003), French TreeTagger Part-of-Speech Tags, version of April 2003, http://www.ims.uni-stuttgart.de/~schmid/french-tagset.html</rdfs:comment>
-        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <rdfs:isDefinedBy>http://www.ims.uni-stuttgart.de/~schmid/french-tagset.html</rdfs:isDefinedBy>
+        <owl:versionInfo>2011-11-11 created
+
+Christian Chiarcos
+chiarcos@uni-potsdam.de</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -50,14 +39,9 @@ Achim Stein (2003), French TreeTagger Part-of-Speech Tags, version of April 2003
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://w3id.org/meta-share/meta-share/language -->
 
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -173,17 +157,17 @@ Achim Stein (2003), French TreeTagger Part-of-Speech Tags, version of April 2003
     <!-- http://purl.org/olia/french-tt.owl#PartOfSpeech -->
 
     <owl:Class rdf:about="http://purl.org/olia/french-tt.owl#PartOfSpeech">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue>pos</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTag"/>
-                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTag"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -409,260 +393,292 @@ Achim Stein (2003), French TreeTagger Part-of-Speech Tags, version of April 2003
 
     <!-- http://purl.org/olia/french-tt.owl#ABR -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#ABR"><system:hasTag>ABR</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#ABR">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Abbreviation"/>
+        <system:hasTag>ABR</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#ADJ -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#ADJ"><system:hasTag>ADJ</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#ADJ">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Adjective"/>
+        <system:hasTag>ADJ</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#ADV -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#ADV"><system:hasTag>ADV</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#ADV">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Adverb"/>
+        <system:hasTag>ADV</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#DET_ART -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#DET_ART"><system:hasTag>DET:ART</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#DET_ART">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Article"/>
+        <system:hasTag>DET:ART</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#DET_POS -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#DET_POS"><system:hasTag>DET:POS</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#DET_POS">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#PossessiveDeterminer"/>
+        <system:hasTag>DET:POS</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#INT -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#INT"><system:hasTag>INT</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#INT">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Interjection"/>
+        <system:hasTag>INT</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#KON -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#KON"><system:hasTag>KON</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#KON">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Conjunction"/>
+        <system:hasTag>KON</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#NAM -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#NAM"><system:hasTag>NAM</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#NAM">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#ProperName"/>
+        <system:hasTag>NAM</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#NOM -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#NOM"><system:hasTag>NOM</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#NOM">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Noun"/>
+        <system:hasTag>NOM</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#NUM -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#NUM"><system:hasTag>NUM</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#NUM">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Numeral"/>
+        <system:hasTag>NUM</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PRO -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO"><system:hasTag>PRO</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Pronoun"/>
+        <system:hasTag>PRO</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PRO_DEM -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_DEM"><system:hasTag>PRO:DEM</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_DEM">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#DemonstrativePronoun"/>
+        <system:hasTag>PRO:DEM</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PRO_IND -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_IND"><system:hasTag>PRO:IND</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_IND">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#IndefinitePronoun"/>
+        <system:hasTag>PRO:IND</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PRO_PER -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_PER"><system:hasTag>PRO:PER</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_PER">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#PersonalPronoun"/>
+        <system:hasTag>PRO:PER</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PRO_POS -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_POS"><system:hasTag>PRO:POS</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_POS">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#PossessivePronoun"/>
+        <system:hasTag>PRO:POS</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PRO_REL -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_REL"><system:hasTag>PRO:REL</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRO_REL">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#RelativePronoun"/>
+        <system:hasTag>PRO:REL</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PRP -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRP"><system:hasTag>PRP</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRP">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Preposition"/>
+        <system:hasTag>PRP</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PRP_det -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRP_det"><system:hasTag>PRP:det</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PRP_det">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#PrepositionPlusArticle"/>
+        <system:hasTag>PRP:det</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PUN -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PUN"><system:hasTag>PUN</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PUN">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Punctuation"/>
+        <system:hasTag>PUN</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#PUN_cit -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PUN_cit"><system:hasTag>PUN:cit</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#PUN_cit">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#PunctuationCitation"/>
+        <system:hasTag>PUN:cit</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#SENT -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#SENT"><system:hasTag>SENT</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#SENT">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Sentence"/>
+        <system:hasTag>SENT</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#SYM -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#SYM"><system:hasTag>SYM</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#SYM">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#Symbol"/>
+        <system:hasTag>SYM</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_cond -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_cond"><system:hasTag>VER:cond</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_cond">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbConditional"/>
+        <system:hasTag>VER:cond</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_futu -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_futu"><system:hasTag>VER:futu</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_futu">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbFutur"/>
+        <system:hasTag>VER:futu</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_impe -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_impe"><system:hasTag>VER:impe</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_impe">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbImperative"/>
+        <system:hasTag>VER:impe</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_impf -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_impf"><system:hasTag>VER:impf</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_impf">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbImperfect"/>
+        <system:hasTag>VER:impf</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_infi -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_infi"><system:hasTag>VER:infi</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_infi">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbInfinitive"/>
+        <system:hasTag>VER:infi</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_pper -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_pper"><system:hasTag>VER:pper</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_pper">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbPastParticiple"/>
+        <system:hasTag>VER:pper</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_ppre -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_ppre"><system:hasTag>VER:ppre</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_ppre">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbPresent"/>
+        <system:hasTag>VER:ppre</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_simp -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_simp"><system:hasTag>VER:simp</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_simp">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbSimplePast"/>
+        <system:hasTag>VER:simp</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_subi -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_subi"><system:hasTag>VER:subi</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_subi">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbSubjunctiveImperfect"/>
+        <system:hasTag>VER:subi</system:hasTag>
     </owl:NamedIndividual>
     
 
 
     <!-- http://purl.org/olia/french-tt.owl#VER_subp -->
 
-    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_subp"><system:hasTag>VER:subp</system:hasTag>
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/french-tt.owl#VER_subp">
         <rdf:type rdf:resource="http://purl.org/olia/french-tt.owl#VerbSubjunctivePresent"/>
+        <system:hasTag>VER:subp</system:hasTag>
     </owl:NamedIndividual>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

@@ -1,39 +1,28 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/french.owl#"
      xml:base="http://purl.org/olia/french.owl"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/french.owl">
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
- 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/fre"/>
-        <owl:versionInfo>2011-10-30 created by Christian Chiarcos
-
-So far, included only part-of-speech tags (ettiquettes, Abeille and Clément 2003, Annexe 1), but not les différents types de composés (Annexe 2). Also, phrase labels for constituent syntax are missing. For the surface forms of the tags, I used the forms provided by Abeillén and Clément, *not* the actual XML encoding. Its abbreviations seem to differ. Accordingly, system:hasTier is &quot;cat&quot;, not split into &quot;cat&quot; (resp. &quot;catint&quot;), &quot;sous-cat&quot;, &quot;mph&quot;.
-
-Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/fre"/>
         <rdfs:comment>OLiA Annotation Model for the morphosyntactic annotations of the French Le Monde corpus (Abeillé et al. 2000). Unless specified otherwise, all comments (mostly examples) are quotes from Abeillé and Clément (2003).
 
 References
 Abeille A., Clement L., Kinyon A. (2000) “Building a treebank for French”, In Proc. LREC 2000
 Abeillé, A. and Clément, L. (2003), &quot;Annotation Morpho-syntaxique. Les mots simples - Les mots composés. Corpus Le Monde&quot;, ms., version of 10 janvier 2003, http://www.llf.cnrs.fr/Gens/Abeille/guide-morpho-synt.02.pdf</rdfs:comment>
         <rdfs:isDefinedBy>http://www.llf.cnrs.fr/Gens/Abeille/guide-morpho-synt.02.pdf</rdfs:isDefinedBy>
-        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <owl:versionInfo>2011-10-30 created by Christian Chiarcos
+2024-11-29 changed hasTier &quot;cat&quot; to &quot;POS&quot;
+
+So far, included only part-of-speech tags (ettiquettes, Abeille and Clément 2003, Annexe 1), but not les différents types de composés (Annexe 2). Also, phrase labels for constituent syntax are missing. For the surface forms of the tags, I used the forms provided by Abeillén and Clément, *not* the actual XML encoding. Its abbreviations seem to differ. Accordingly, system:hasTier is &quot;POS&quot; (original: &quot;cat&quot;), not split into &quot;cat&quot; (resp. &quot;catint&quot;), &quot;sous-cat&quot;, &quot;mph&quot;.</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -49,14 +38,9 @@ Abeillé, A. and Clément, L. (2003), &quot;Annotation Morpho-syntaxique. Les mo
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://w3id.org/meta-share/meta-share/language -->
 
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -73,13 +57,13 @@ Abeillé, A. and Clément, L. (2003), &quot;Annotation Morpho-syntaxique. Les mo
 
     <!-- http://purl.org/olia/system.owl#hasTag -->
 
-    <owl:DatatypeProperty rdf:about="&system;hasTag"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
     
 
 
     <!-- http://purl.org/olia/system.owl#hasTier -->
 
-    <owl:DatatypeProperty rdf:about="&system;hasTier"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
     
 
 
@@ -97,8 +81,8 @@ Abeillé, A. and Clément, L. (2003), &quot;Annotation Morpho-syntaxique. Les mo
     <!-- http://purl.org/olia/french.owl#Adjectif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Adjectif">
-        <rdfs:label xml:lang="en">adjective</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:label xml:lang="en">adjective</rdfs:label>
     </owl:Class>
     
 
@@ -106,12 +90,12 @@ Abeillé, A. and Clément, L. (2003), &quot;Annotation Morpho-syntaxique. Les mo
     <!-- http://purl.org/olia/french.owl#AdjectifCardinal -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifCardinal">
-        <rdfs:label xml:lang="en">cardinal adjective</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
         <rdfs:comment xml:lang="fr">ACfp les NEUF différences
 ACmp les NEUF stylos
 ACms le livre TROIS
 Acfs la porte TROIS</rdfs:comment>
+        <rdfs:label xml:lang="en">cardinal adjective</rdfs:label>
     </owl:Class>
     
 
@@ -119,12 +103,12 @@ Acfs la porte TROIS</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdjectifIndéfini -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifIndéfini">
-        <rdfs:label xml:lang="en">indefinite adjective</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
         <rdfs:comment xml:lang="fr">A-indef-ms le MEME cabinet
 A-indef-fs Une SEULE fleur
 A-indef-mp TOUS les ans
 A-indef-fp TOUTES les fleurs</rdfs:comment>
+        <rdfs:label xml:lang="en">indefinite adjective</rdfs:label>
     </owl:Class>
     
 
@@ -132,12 +116,12 @@ A-indef-fp TOUTES les fleurs</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdjectifInterrogatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifInterrogatif">
-        <rdfs:label xml:lang="en">interrogative adjective</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
         <rdfs:comment xml:lang="fr">A-inter-ms QUEL est ce vainqueur ?
 A-inter-fs QUELLE est cette fille ?
 A-inter-fp QUELLES sont nos chances ?
 A-inter-mp QUELS sont les candidats ?</rdfs:comment>
+        <rdfs:label xml:lang="en">interrogative adjective</rdfs:label>
     </owl:Class>
     
 
@@ -145,12 +129,12 @@ A-inter-mp QUELS sont les candidats ?</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdjectifOrdinal -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifOrdinal">
-        <rdfs:label xml:lang="en">ordinal adjective</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
         <rdfs:comment xml:lang="fr">AOms le XIXe siècle
 AOfs une SECONDE chance
 AOmp les TROISIEME trimestres
 AOfp les DIXIEMES saisons</rdfs:comment>
+        <rdfs:label xml:lang="en">ordinal adjective</rdfs:label>
     </owl:Class>
     
 
@@ -158,10 +142,10 @@ AOfp les DIXIEMES saisons</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdjectifPossessif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifPossessif">
-        <rdfs:label xml:lang="en">possessive adjective</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
         <rdfs:comment xml:lang="fr">A-poss-fs Cette pipe est MIENNE
         A-poss-ms un MIEN cousin</rdfs:comment>
+        <rdfs:label xml:lang="en">possessive adjective</rdfs:label>
     </owl:Class>
     
 
@@ -169,7 +153,6 @@ AOfp les DIXIEMES saisons</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdjectifQualificatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdjectifQualificatif">
-        <rdfs:label xml:lang="en">qualificative adjective</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adjectif"/>
         <rdfs:comment xml:lang="fr">il est INTELLIGENT
 le PETIT chien de la voisine
@@ -180,6 +163,7 @@ De GRANDS enfants
 AQfs une défaite EVIDENTE
 une IMPORTANTE victoire
 AQfp trois disquettes ENDOMMAGEES</rdfs:comment>
+        <rdfs:label xml:lang="en">qualificative adjective</rdfs:label>
     </owl:Class>
     
 
@@ -187,15 +171,15 @@ AQfp trois disquettes ENDOMMAGEES</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Adverbe -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Adverbe">
-        <rdfs:label xml:lang="en">adverb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
         <rdfs:comment xml:lang="fr">il est PRESQUE midi
 le ministre est ENSUITE nommé
-il s&#39;avance LENTEMENT DESSOUS
+il s&apos;avance LENTEMENT DESSOUS
 BIEN des années ont passé
 BEAUCOUP de ces étudiants sont diplomés
-il en veut D&#39;AVANTAGE
+il en veut D&apos;AVANTAGE
 DEPUIS, il est parti</rdfs:comment>
+        <rdfs:label xml:lang="en">adverb</rdfs:label>
     </owl:Class>
     
 
@@ -203,9 +187,9 @@ DEPUIS, il est parti</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdverbeDémonstratif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdverbeDémonstratif">
-        <rdfs:label xml:lang="en">demonstrative adverb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
         <rdfs:comment xml:lang="fr">ce garçon-CI</rdfs:comment>
+        <rdfs:label xml:lang="en">demonstrative adverb</rdfs:label>
     </owl:Class>
     
 
@@ -213,9 +197,9 @@ DEPUIS, il est parti</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdverbeExclamatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdverbeExclamatif">
-        <rdfs:label xml:lang="en">exclamative adverb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
         <rdfs:comment xml:lang="fr">ADV-exclam QUE oui ! COMME elle est belle !</rdfs:comment>
+        <rdfs:label xml:lang="en">exclamative adverb</rdfs:label>
     </owl:Class>
     
 
@@ -223,11 +207,11 @@ DEPUIS, il est parti</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdverbeInterrogatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdverbeInterrogatif">
-        <rdfs:label xml:lang="en">interrogative adverb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
         <rdfs:comment xml:lang="fr">COMBIEN sont ils ?
 il me demande COMBIEN ils sont
 OU vas-tu ? QUAND pars-tu ?</rdfs:comment>
+        <rdfs:label xml:lang="en">interrogative adverb</rdfs:label>
     </owl:Class>
     
 
@@ -235,10 +219,10 @@ OU vas-tu ? QUAND pars-tu ?</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#AdverbeNégatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#AdverbeNégatif">
-        <rdfs:label xml:lang="en">negative adverb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Adverbe"/>
         <rdfs:comment xml:lang="fr">pour ne prendre QUE des exemples
         Jean ne boit PLUS</rdfs:comment>
+        <rdfs:label xml:lang="en">negative adverb</rdfs:label>
     </owl:Class>
     
 
@@ -246,8 +230,8 @@ OU vas-tu ? QUAND pars-tu ?</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Clitique -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Clitique">
-        <rdfs:label xml:lang="en">clitic</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:label xml:lang="en">clitic</rdfs:label>
     </owl:Class>
     
 
@@ -255,16 +239,16 @@ OU vas-tu ? QUAND pars-tu ?</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#ClitiqueObjet -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#ClitiqueObjet">
-        <rdfs:label xml:lang="en">clitic object pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Clitique"/>
-        <rdfs:comment xml:lang="fr">CLO1ms me, m&#39; -moi
-CLO1fs me, m&#39; -moi
-CLO2fs te, -toi, t&#39;
-CLO2ms te, -toi, t&#39;
-CLO3ms en, y, le, l&#39;, lui
-CLO3fs la, l&#39;, lui
+        <rdfs:comment xml:lang="fr">CLO1ms me, m&apos; -moi
+CLO1fs me, m&apos; -moi
+CLO2fs te, -toi, t&apos;
+CLO2ms te, -toi, t&apos;
+CLO3ms en, y, le, l&apos;, lui
+CLO3fs la, l&apos;, lui
 CLO3fp les, leur
 CLO3mp les, leur</rdfs:comment>
+        <rdfs:label xml:lang="en">clitic object pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -272,18 +256,18 @@ CLO3mp les, leur</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#ClitiqueRéfléchi -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#ClitiqueRéfléchi">
-        <rdfs:label xml:lang="en">clitic reflexive pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Clitique"/>
-        <rdfs:comment xml:lang="fr">CLR1ms me, m&#39; -moi,
-CLR1fs me, -moi, m&#39;
-CLR2ms te, -toi, t&#39;
-CLR2fs te, -toi, t&#39;
+        <rdfs:comment xml:lang="fr">CLR1ms me, m&apos; -moi,
+CLR1fs me, -moi, m&apos;
+CLR2ms te, -toi, t&apos;
+CLR2fs te, -toi, t&apos;
 CLR1mp nous, -nous
 CLR1fp nous, -nous
 CLR2mp vous, -vous
 CLR2fp vous , -vous
-CLR3fp se, s&#39;
-CLR3mp se, s&#39;</rdfs:comment>
+CLR3fp se, s&apos;
+CLR3mp se, s&apos;</rdfs:comment>
+        <rdfs:label xml:lang="en">clitic reflexive pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -291,9 +275,8 @@ CLR3mp se, s&#39;</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#ClitiqueSujet -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#ClitiqueSujet">
-        <rdfs:label xml:lang="en">clitic subject pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Clitique"/>
-        <rdfs:comment xml:lang="fr">CLS1ms je, j&#39;
+        <rdfs:comment xml:lang="fr">CLS1ms je, j&apos;
 CLS2ms tu
 CLS1mp nous
 CLS2mp vous
@@ -301,6 +284,7 @@ CLS3ms on, ce
 CLS3mp ils
 CLS3fs elle
 CLS3fp elles</rdfs:comment>
+        <rdfs:label xml:lang="en">clitic subject pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -308,8 +292,8 @@ CLS3fp elles</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Conjonction -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Conjonction">
-        <rdfs:label xml:lang="en">conjunction</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:label xml:lang="en">conjunction</rdfs:label>
     </owl:Class>
     
 
@@ -317,10 +301,10 @@ CLS3fp elles</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#ConjonctionDeCoordination -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#ConjonctionDeCoordination">
-        <rdfs:label xml:lang="en">coordinating conjunction</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Conjonction"/>
         <rdfs:comment xml:lang="fr">La table AINSI QUE les chaises sont en orme.
-        Le combustible est mélangé à l&#39;air ET injecté dans la chambre</rdfs:comment>
+        Le combustible est mélangé à l&apos;air ET injecté dans la chambre</rdfs:comment>
+        <rdfs:label xml:lang="en">coordinating conjunction</rdfs:label>
     </owl:Class>
     
 
@@ -328,14 +312,14 @@ CLS3fp elles</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#ConjonctionDeSubordination -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#ConjonctionDeSubordination">
-        <rdfs:label xml:lang="en">subordinating conjunction</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Conjonction"/>
-        <rdfs:comment xml:lang="fr">QUAND Marie travaille, elle n&#39;écoute personne
-Le député n&#39;a pas fait de déclaration LORSQU&#39;il a été battu
-Jean est gros ALORS QUE Marie ne l&#39;est pas.
+        <rdfs:comment xml:lang="fr">QUAND Marie travaille, elle n&apos;écoute personne
+Le député n&apos;a pas fait de déclaration LORSQU&apos;il a été battu
+Jean est gros ALORS QUE Marie ne l&apos;est pas.
 Il est aussi petit QUE Marie.
-Je pense QU&#39; elle a tort.
-Je me demande SI elle m&#39;écoute.</rdfs:comment>
+Je pense QU&apos; elle a tort.
+Je me demande SI elle m&apos;écoute.</rdfs:comment>
+        <rdfs:label xml:lang="en">subordinating conjunction</rdfs:label>
     </owl:Class>
     
 
@@ -343,8 +327,8 @@ Je me demande SI elle m&#39;écoute.</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Determinant -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Determinant">
-        <rdfs:label xml:lang="en">determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:label xml:lang="en">determiner</rdfs:label>
     </owl:Class>
     
 
@@ -352,10 +336,10 @@ Je me demande SI elle m&#39;écoute.</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantCardinal -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantCardinal">
-        <rdfs:label xml:lang="en">cardinal determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
         <rdfs:comment xml:lang="fr">DCfp TROIS amies sont venues
         DCmp TROIS éléphants sont traqués par les chasseurs</rdfs:comment>
+        <rdfs:label xml:lang="en">cardinal determiner</rdfs:label>
     </owl:Class>
     
 
@@ -363,12 +347,12 @@ Je me demande SI elle m&#39;écoute.</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantDéfini -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantDéfini">
-        <rdfs:label xml:lang="en">definite determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
         <rdfs:comment xml:lang="fr">Dms LE ministre a pris la parole
 Dmp Marie garde LES enfants
-Dfs LA linguistique, c&#39;est passionnant
+Dfs LA linguistique, c&apos;est passionnant
 Dfp LES ordinateurs sont allumés</rdfs:comment>
+        <rdfs:label xml:lang="en">definite determiner</rdfs:label>
     </owl:Class>
     
 
@@ -376,12 +360,12 @@ Dfp LES ordinateurs sont allumés</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantDémonstratif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantDémonstratif">
-        <rdfs:label xml:lang="en">demonstrative determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
         <rdfs:comment xml:lang="fr">DDms CE vélo est-il a vendre ?
 DDmp CES ustensiles sont pratiques
 DDfs Je regarde CETTE peinture
 DDfp CES peintures sont laides</rdfs:comment>
+        <rdfs:label xml:lang="en">demonstrative determiner</rdfs:label>
     </owl:Class>
     
 
@@ -389,12 +373,12 @@ DDfp CES peintures sont laides</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantExclamatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantExclamatif">
-        <rdfs:label xml:lang="en">exclamative determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
         <rdfs:comment xml:lang="fr">DEms QUEL homme que cet homme là !
 DEmp QUELS individus sinistres !
 DEfs QUELLE chance !
 DEfp QUELLES belles fleurs !</rdfs:comment>
+        <rdfs:label xml:lang="en">exclamative determiner</rdfs:label>
     </owl:Class>
     
 
@@ -402,12 +386,12 @@ DEfp QUELLES belles fleurs !</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantIndéfini -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantIndéfini">
-        <rdfs:label xml:lang="en">indefinite determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
         <rdfs:comment xml:lang="fr">D-indef-fs UNE action rentable
 D-indef-ms UN ordinateur est en panne
 D-indef-mp la grogne parmi CERTAINS anciens cadres
 D-indef-fp Tu achètera DES prunes</rdfs:comment>
+        <rdfs:label xml:lang="en">indefinite determiner</rdfs:label>
     </owl:Class>
     
 
@@ -415,12 +399,12 @@ D-indef-fp Tu achètera DES prunes</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantInterrogatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantInterrogatif">
-        <rdfs:label xml:lang="en">interrogative determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
         <rdfs:comment xml:lang="fr">D-inter-fs QUELLE meilleure méthode que celle du puzzle ?
 D-inter-fp Jean demande QUELLES filles sont candidates
 D-inter-ms QUEL pain veut-tu ?
 D-inter-mp QUELS enfants cherches-tu ?</rdfs:comment>
+        <rdfs:label xml:lang="en">interrogative determiner</rdfs:label>
     </owl:Class>
     
 
@@ -428,12 +412,12 @@ D-inter-mp QUELS enfants cherches-tu ?</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantNégatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantNégatif">
-        <rdfs:label xml:lang="en">negative determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
         <rdfs:comment xml:lang="fr">DNfs NULLE fille
 DNms AUCUN garçon
 DNms NULS soucis
 DNfp NULLES filles</rdfs:comment>
+        <rdfs:label xml:lang="en">negative determiner</rdfs:label>
     </owl:Class>
     
 
@@ -441,10 +425,10 @@ DNfp NULLES filles</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantPartitif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantPartitif">
-        <rdfs:label xml:lang="en">partitive determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
-        <rdfs:comment xml:lang="fr">D-part-ms j&#39;ai acheté DU pain
+        <rdfs:comment xml:lang="fr">D-part-ms j&apos;ai acheté DU pain
         D-part-fs Jean boit DE LA bière</rdfs:comment>
+        <rdfs:label xml:lang="en">partitive determiner</rdfs:label>
     </owl:Class>
     
 
@@ -452,12 +436,12 @@ DNfp NULLES filles</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#DeterminantPossessif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#DeterminantPossessif">
-        <rdfs:label xml:lang="en">possessive determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Determinant"/>
         <rdfs:comment xml:lang="fr">D-poss-ms MON chien
 D-poss-fs SA voiture
 D-poss-mp MES amis
 D-poss-fp TES fleurs</rdfs:comment>
+        <rdfs:label xml:lang="en">possessive determiner</rdfs:label>
     </owl:Class>
     
 
@@ -465,13 +449,14 @@ D-poss-fp TES fleurs</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Etiquette -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Etiquette">
-        <rdfs:label xml:lang="en">tag</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue>cat</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">tag</rdfs:label>
     </owl:Class>
     
 
@@ -479,9 +464,9 @@ D-poss-fp TES fleurs</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Interjection -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Interjection">
-        <rdfs:label xml:lang="en">interjection</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
         <rdfs:comment xml:lang="fr">HELAS !</rdfs:comment>
+        <rdfs:label xml:lang="en">interjection</rdfs:label>
     </owl:Class>
     
 
@@ -489,10 +474,10 @@ D-poss-fp TES fleurs</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#MotEtranger -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#MotEtranger">
-        <rdfs:label xml:lang="en">foreign word</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
         <rdfs:comment xml:lang="fr">MOTS ETRANGERS
         ET % mettre exemple</rdfs:comment>
+        <rdfs:label xml:lang="en">foreign word</rdfs:label>
     </owl:Class>
     
 
@@ -500,8 +485,8 @@ D-poss-fp TES fleurs</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Nom -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Nom">
-        <rdfs:label xml:lang="en">Noun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:label xml:lang="en">Noun</rdfs:label>
     </owl:Class>
     
 
@@ -509,7 +494,6 @@ D-poss-fp TES fleurs</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#NomCommun -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#NomCommun">
-        <rdfs:label xml:lang="en">common noun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Nom"/>
         <rdfs:comment xml:lang="fr">NCfp 
 Trois VACHES
@@ -526,6 +510,7 @@ NCms
 TAUREAU
 Un MILLIARD de fois
 le FRANCAIS</rdfs:comment>
+        <rdfs:label xml:lang="en">common noun</rdfs:label>
     </owl:Class>
     
 
@@ -533,7 +518,6 @@ le FRANCAIS</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#NomPropre -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#NomPropre">
-        <rdfs:label xml:lang="en">proper noun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Nom"/>
         <rdfs:comment xml:lang="fr">NPfp 
 les ALPES
@@ -550,6 +534,7 @@ Les ETATS-UNIS
 NPms 
 PAUL
 le JAPON</rdfs:comment>
+        <rdfs:label xml:lang="en">proper noun</rdfs:label>
     </owl:Class>
     
 
@@ -557,8 +542,8 @@ le JAPON</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Ponctuation -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Ponctuation">
-        <rdfs:label xml:lang="en">punctuation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:label xml:lang="en">punctuation</rdfs:label>
     </owl:Class>
     
 
@@ -566,10 +551,10 @@ le JAPON</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#PonctuationFaible -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PonctuationFaible">
-        <rdfs:label xml:lang="en">weak punctuation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Ponctuation"/>
         <rdfs:comment xml:lang="fr">faible
-        PONCTW - , ; : / &quot; &#39;</rdfs:comment>
+        PONCTW - , ; : / &quot; &apos;</rdfs:comment>
+        <rdfs:label xml:lang="en">weak punctuation</rdfs:label>
     </owl:Class>
     
 
@@ -577,10 +562,10 @@ le JAPON</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#PonctuationForte -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PonctuationForte">
-        <rdfs:label xml:lang="en">strong punctuation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Ponctuation"/>
         <rdfs:comment xml:lang="fr">forte
         PONCTS . ? ! ...</rdfs:comment>
+        <rdfs:label xml:lang="en">strong punctuation</rdfs:label>
     </owl:Class>
     
 
@@ -588,10 +573,10 @@ le JAPON</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Prefixe -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Prefixe">
-        <rdfs:label xml:lang="en">prefix</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
         <rdfs:comment xml:lang="fr">PREFIXE
         PREF ANTI, ARCHI, PR…, POST...</rdfs:comment>
+        <rdfs:label xml:lang="en">prefix</rdfs:label>
     </owl:Class>
     
 
@@ -599,7 +584,6 @@ le JAPON</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Preposition -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Preposition">
-        <rdfs:label xml:lang="en">preposition</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
         <rdfs:comment xml:lang="fr">DEPUIS midi
 je viens DE sortir
@@ -607,6 +591,7 @@ QUANT A vous, vous restez
 elle est partie VOICI 3 ans
 Le sel est SUR la table
 Il jette un oeil AVANT DE partir</rdfs:comment>
+        <rdfs:label xml:lang="en">preposition</rdfs:label>
     </owl:Class>
     
 
@@ -614,8 +599,8 @@ Il jette un oeil AVANT DE partir</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Pronom -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Pronom">
-        <rdfs:label xml:lang="en">pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
+        <rdfs:label xml:lang="en">pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -623,10 +608,10 @@ Il jette un oeil AVANT DE partir</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#PronomCardinal -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomCardinal">
-        <rdfs:label xml:lang="en">cardinal pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
         <rdfs:comment xml:lang="fr">PRO-inter-3mp On ne sait pas LESQUELS viendront
         PRO-inter-3fp On se demande LESQUELLES choisir</rdfs:comment>
+        <rdfs:label xml:lang="en">cardinal pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -634,12 +619,12 @@ Il jette un oeil AVANT DE partir</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#PronomIndéfini -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomIndéfini">
-        <rdfs:label xml:lang="en">indefinite pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
-        <rdfs:comment xml:lang="fr">PRO-indef-3ms L&#39;UN des notres, TOUT va bien
-PRO-indef-3fs L&#39;UNE des nôtres
+        <rdfs:comment xml:lang="fr">PRO-indef-3ms L&apos;UN des notres, TOUT va bien
+PRO-indef-3fs L&apos;UNE des nôtres
 PRO-indef-3mp TOUS sont partis, BEAUCOUP de ces étudiants, PLUSIEURS sont arrivés
 PRO-indef-3fp Elles sont TOUTES venues, CERTAINES sont là</rdfs:comment>
+        <rdfs:label xml:lang="en">indefinite pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -647,12 +632,12 @@ PRO-indef-3fp Elles sont TOUTES venues, CERTAINES sont là</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#PronomInterrogatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomInterrogatif">
-        <rdfs:label xml:lang="en">interrogative pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
         <rdfs:comment xml:lang="fr">PRO-inter-3ms LEQUEL est parti ?
 PRO-inter-3fs LAQUELLE veux-tu ?
 PRO-inter-3mp On ne sait pas LESQUELS viendront
 PRO-inter-3fp On se demande LESQUELLES choisir</rdfs:comment>
+        <rdfs:label xml:lang="en">interrogative pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -660,12 +645,12 @@ PRO-inter-3fp On se demande LESQUELLES choisir</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#PronomNégatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomNégatif">
-        <rdfs:label xml:lang="en">negative pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
-        <rdfs:comment xml:lang="fr">PRO-inter-ms PERSONNE ne viendra, RIEN ne bouge, NUL n&#39;est censé ignorer la loi
+        <rdfs:comment xml:lang="fr">PRO-inter-ms PERSONNE ne viendra, RIEN ne bouge, NUL n&apos;est censé ignorer la loi
 PRO-inter-mp AUCUNS ne viendront
-PRO-inter-fs AUCUNE n&#39;est partie
+PRO-inter-fs AUCUNE n&apos;est partie
 PRO-inter-fp AUCUNES ne seront interrogées</rdfs:comment>
+        <rdfs:label xml:lang="en">negative pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -673,8 +658,6 @@ PRO-inter-fp AUCUNES ne seront interrogées</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#PronomPersonnel -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomPersonnel">
-        <rdfs:label xml:lang="en">strong personal pronoun</rdfs:label>
-        <rdfs:label xml:lang="fr">Pronoms personels (forts)</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
         <rdfs:comment xml:lang="fr">Pronoms personnels (forts)
 PRO-pers-1ms moi
@@ -689,6 +672,8 @@ PRO-pers-3fp elles
 PRO-pers-1fs moi
 PRO-pers-2fs toi
 PRO-pers-3fs elle, soi</rdfs:comment>
+        <rdfs:label xml:lang="fr">Pronoms personels (forts)</rdfs:label>
+        <rdfs:label xml:lang="en">strong personal pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -696,12 +681,12 @@ PRO-pers-3fs elle, soi</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#PronomPossessif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomPossessif">
-        <rdfs:label xml:lang="en">possessive pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
         <rdfs:comment xml:lang="fr">PRO-poss-3ms le MIEN, le TIEN, le SIEN, le NOTRE, le VOTRE, le LEUR
 PRO-poss-3mp les AUTRES, , les MIENs, les TIENS, les SIENS,
 PRO-poss-3fp les NOTRES, les VOTRES, les LEURS
-PRO-poss-3fs j&#39;en veux UNE, la MIENNE, la TIENNE, la NOTRE, la VOTRE, la LEUR</rdfs:comment>
+PRO-poss-3fs j&apos;en veux UNE, la MIENNE, la TIENNE, la NOTRE, la VOTRE, la LEUR</rdfs:comment>
+        <rdfs:label xml:lang="en">possessive pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -709,20 +694,20 @@ PRO-poss-3fs j&#39;en veux UNE, la MIENNE, la TIENNE, la NOTRE, la VOTRE, la LEU
     <!-- http://purl.org/olia/french.owl#PronomRelatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#PronomRelatif">
-        <rdfs:label xml:lang="en">relative pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Pronom"/>
         <rdfs:comment xml:lang="fr">PROR1ms moi QUI suis parti
-PROR2ms toi QUE l&#39;on cherche
-PROR3ms l&#39;endroit OU on va
+PROR2ms toi QUE l&apos;on cherche
+PROR3ms l&apos;endroit OU on va
 PROR1mp nous QUI sommes ignorants
 PROR2mp vous QUE tous admirent
-PROR3mp des bons QU&#39;il faut acheter
+PROR3mp des bons QU&apos;il faut acheter
 PROR1fs moi QUI suis partie
-PROR2fs toi QUE l&#39;on a arrêtée
+PROR2fs toi QUE l&apos;on a arrêtée
 PROR3fs la femme à LAQUELLE on écrira
 PROR1fp nous à QUI personne ne pense
 PROR2fp vous QUI êtes belles
 PROR3fp les femmes DONT on parle</rdfs:comment>
+        <rdfs:label xml:lang="en">relative pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -730,13 +715,13 @@ PROR3fp les femmes DONT on parle</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#Verbe -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#Verbe">
-        <rdfs:label xml:lang="en">verb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Etiquette"/>
         <rdfs:comment xml:lang="fr">Pour les formes composées, nous notons les traits morphologiques du ou des auxiliaires puis du participe.
 Exemple :
 il:CL3ms a:VP3s été:VKms mangé:VKms
 j:CL1ms eusse:VT1s mangé:VKms
 j:CL1ms ai:VP1s eu:VKms mangé:VKms</rdfs:comment>
+        <rdfs:label xml:lang="en">verb</rdfs:label>
     </owl:Class>
     
 
@@ -744,7 +729,6 @@ j:CL1ms ai:VP1s eu:VKms mangé:VKms</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbeFuturIndicatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeFuturIndicatif">
-        <rdfs:label xml:lang="en">verb, future indicative</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">futur indicatif
 VF1s MANGERAI
@@ -753,6 +737,7 @@ VF3s MANGERA
 VF1p MANGERONS
 VF2p MANGEREZ
 VF3p MANGERONT</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, future indicative</rdfs:label>
     </owl:Class>
     
 
@@ -760,7 +745,6 @@ VF3p MANGERONT</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbeImparfaitIndicatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeImparfaitIndicatif">
-        <rdfs:label xml:lang="en">verb, imperfect indicative</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">imparfait indicatif
 VI1s MANGEAIS
@@ -769,6 +753,7 @@ VI3s MANGEAIT
 VI1p MANGIONS
 VI2p MANGIEZ
 VI3p MANGEAIENT</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, imperfect indicative</rdfs:label>
     </owl:Class>
     
 
@@ -776,13 +761,13 @@ VI3p MANGEAIENT</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbeImparfaitSubjonctif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeImparfaitSubjonctif">
-        <rdfs:label xml:lang="en">verb, imperfect subjunctive</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">imparfait subjonctif
 VT1s MANGEASSE, EUSSE
 VT3s MANGE¬T
 VT1p MANGEASSIONS, CHOISISSIONS
 VT3p MANGEASSENT</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, imperfect subjunctive</rdfs:label>
     </owl:Class>
     
 
@@ -790,12 +775,12 @@ VT3p MANGEASSENT</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbeImpératif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeImpératif">
-        <rdfs:label xml:lang="en">verb, imperative</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">impératif
 VY1p MANGEONS
 VY2s MANGE
 VY2p MANGEZ</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, imperative</rdfs:label>
     </owl:Class>
     
 
@@ -803,10 +788,10 @@ VY2p MANGEZ</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbeInfinitif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeInfinitif">
-        <rdfs:label xml:lang="en">verb, infinitive</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">infinitif
 VW MANGER</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, infinitive</rdfs:label>
     </owl:Class>
     
 
@@ -814,13 +799,13 @@ VW MANGER</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbeParticipePassé -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeParticipePassé">
-        <rdfs:label xml:lang="en">verb, past participle</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">participe passé
 VKms MANGé
 VKmp MANGéS
 VKfs MANGéE
 VKfp MANGéES</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, past participle</rdfs:label>
     </owl:Class>
     
 
@@ -828,10 +813,10 @@ VKfp MANGéES</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbeParticipePrésent -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbeParticipePrésent">
-        <rdfs:label xml:lang="en">verb, present participle</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">participe présent
 VG MANGEANT</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, present participle</rdfs:label>
     </owl:Class>
     
 
@@ -839,12 +824,12 @@ VG MANGEANT</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbePasséSimpleIndicatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbePasséSimpleIndicatif">
-        <rdfs:label xml:lang="en">verb, simple past indicative</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">passé simple indicatif
 VJ1s MANGEAI
 VJ3s MANGEA
 VJ3p MANGèRENT</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, simple past indicative</rdfs:label>
     </owl:Class>
     
 
@@ -852,7 +837,6 @@ VJ3p MANGèRENT</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbePrésentConditionnel -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbePrésentConditionnel">
-        <rdfs:label xml:lang="en">present conditional verb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">présent conditionnel
 VC1s MANGERAIS
@@ -861,6 +845,7 @@ VC3s MANGERAIT
 VC1p MANGERIONS
 VC2p MANGERIEZ
 VC3p MANGERAIENT</rdfs:comment>
+        <rdfs:label xml:lang="en">present conditional verb</rdfs:label>
     </owl:Class>
     
 
@@ -868,7 +853,6 @@ VC3p MANGERAIENT</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbePrésentIndicatif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbePrésentIndicatif">
-        <rdfs:label xml:lang="en">verb, indicative present</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">présent indicatif
 VP1s MANGE
@@ -877,6 +861,7 @@ VP3s MANGE, VOICI
 VP1p MANGEONS
 VP2p MANGEZ
 VP3p MANGENT</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, indicative present</rdfs:label>
     </owl:Class>
     
 
@@ -884,7 +869,6 @@ VP3p MANGENT</rdfs:comment>
     <!-- http://purl.org/olia/french.owl#VerbePrésentSubjonctif -->
 
     <owl:Class rdf:about="http://purl.org/olia/french.owl#VerbePrésentSubjonctif">
-        <rdfs:label xml:lang="en">verb, subjunctive present</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/french.owl#Verbe"/>
         <rdfs:comment xml:lang="fr">présent subjonctif
 VS1s MANGE
@@ -893,6 +877,7 @@ VS3s MANGE
 VS1p MANGIONS
 VS2p MANGIEZ
 VS3p MANGENT</rdfs:comment>
+        <rdfs:label xml:lang="en">verb, subjunctive present</rdfs:label>
     </owl:Class>
     
 
@@ -2588,5 +2573,5 @@ VS3p MANGENT</rdfs:comment>
 
 
 
-<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

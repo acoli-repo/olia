@@ -1,28 +1,18 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/pctb.owl#"
      xml:base="http://purl.org/olia/pctb.owl"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/pctb.owl">
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/zho"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-        <rdfs:isDefinedBy>http://www.cis.upenn.edu/~chinese/posguide.3rd.ch.pdf</rdfs:isDefinedBy>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/zho"/>
         <rdfs:comment>OLiA Annotation Model for the morphosyntactic annotations of the Penn Chinese Treebank (PCTB)
 
 &quot;This document is designed for the Penn Chinese Treebank Project [XPX+00]. The goal of the project is the creation of a 100-thousand word corpus of Mandarin Chinese text with syntactic bracketing. The annotation consists of two stages: the first phrase is word segmentation and part-of-speech (POS) tagging and the second phrase is syntactic bracketing. ... We have chosen syntactic distribution as the main criterion for our POS tagging because itcomplies with the principles adopted in contemporary linguistics theories, such as the notion of head projections in the X-bar theory and the GB theory.&quot; (Xia 2000, p.4f)
@@ -30,13 +20,13 @@
 Unless specified otherwise, all comments are quotes from Xia (2000)
 
 Fei Xia (2000), The Part-Of-Speech Tagging Guidelines for the Penn Chinese Treebank (3.0), version of October 17, 2000, http://www.cis.upenn.edu/~chinese/posguide.3rd.ch.pdf</rdfs:comment>
-        <owl:versionInfo>NOTE: If further Annotation Models for Chinese are to be developed, the tagset harmony provided by http://www.cis.upenn.edu/~chinese/posguide.3rd.ch.pdf is to be consulted.</owl:versionInfo>
+        <rdfs:isDefinedBy>http://www.cis.upenn.edu/~chinese/posguide.3rd.ch.pdf</rdfs:isDefinedBy>
         <owl:versionInfo>2011/08/16-17 created
 
 Christian Chiarcos, chiarcos@uni-potsdam.de
 
 Special thanks to Fei Xia and Nianwen Xue for providing me with the TeX source file of Xia (2000).</owl:versionInfo>
-        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <owl:versionInfo>NOTE: If further Annotation Models for Chinese are to be developed, the tagset harmony provided by http://www.cis.upenn.edu/~chinese/posguide.3rd.ch.pdf is to be consulted.</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -52,14 +42,9 @@ Special thanks to Fei Xia and Nianwen Xue for providing me with the TeX source f
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://w3id.org/meta-share/meta-share/language -->
 
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -85,7 +70,7 @@ The adverb is a big class. It includes manner adverbs, frequency adverbs, degree
 Ex: 仍然[still], 很[very], 最[most], 大大[greatly], 又[again], 约[approximately].</rdfs:comment>
         <rdfs:comment>The followings are some ADs occured in the corpus:
 
-Conjunctive adverbs: otherwise:  否则, therefore: 所以, 因此, 因而, however:  却, then, as a result:    那么, 就, 便, 结果, 则, 这样, in addition: 另外, 此外, furthermore: 进而, later: 随后, 然后, as well: 也, so that: 以便, 从而, &quot;for example&quot;: 例如, 如, ``that is&#39;&#39;: 即
+Conjunctive adverbs: otherwise:  否则, therefore: 所以, 因此, 因而, however:  却, then, as a result:    那么, 就, 便, 结果, 则, 这样, in addition: 另外, 此外, furthermore: 进而, later: 随后, 然后, as well: 也, so that: 以便, 从而, &quot;for example&quot;: 例如, 如, ``that is&apos;&apos;: 即
 Temporal adverbs: 届时[at the appointed time], 即将[be about to], 紧接着 [right after].
 Frequency adverbs: 多次[many times] (e.g., 多次[many times]/AD 发生[happen]/VV).
 Degree adverbs: 极为[very], 较[comparatively], 较为[comparatively].
@@ -120,7 +105,7 @@ This only includes 把 and 将 when they occur in the ba-construction (i.e.,    
 
 Note: 将 has other tags: AD and VV (e.g., 他[he] 将[check]/VV 了[AS] 我[I] 的[DEG] 军[king] $\langle$ (In chess) My king is in check by him$\rangle$).
 
-Note: Whether bei4(被)and ba3(把) are prepositions or verbs is highly controversial. In the tagging stage,we don&#39;t make any commitment to that. That&#39;s the reason why we tag them as LB, SB, BA, respectively, rather than tagging them as P or VV.</rdfs:comment>
+Note: Whether bei4(被)and ba3(把) are prepositions or verbs is highly controversial. In the tagging stage,we don&apos;t make any commitment to that. That&apos;s the reason why we tag them as LB, SB, BA, respectively, rather than tagging them as P or VV.</rdfs:comment>
     </owl:Class>
     
 
@@ -177,18 +162,18 @@ Note: the words that are called 连词[connective words] in traditional Chinese 
 
     <owl:Class rdf:about="http://purl.org/olia/pctb.owl#CoordinatingConjunction">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#Conjunction"/>
-        <rdfs:comment>&#39;And&#39;: 与 (also P [with]), 和 (also P[with]), 跟 (also P[with]), 同 (also P[with]), 及, 以及, 并 (also AD), 并且, 而 (大[big]/VA 而[and]/CC 全[complete]/VA), 而且, 且.
-&#39;Or&#39;: 或, 或者, 还是 (e.g., 去[go] 还是[or]/CC 不[not] 去[go], also AD).
+        <rdfs:comment>&apos;And&apos;: 与 (also P [with]), 和 (also P[with]), 跟 (also P[with]), 同 (also P[with]), 及, 以及, 并 (also AD), 并且, 而 (大[big]/VA 而[and]/CC 全[complete]/VA), 而且, 且.
+&apos;Or&apos;: 或, 或者, 还是 (e.g., 去[go] 还是[or]/CC 不[not] 去[go], also AD).
 
 Paired-CCs: 
 既[both]/CC .. 又[and]/CC, 又[both]/CC .. 又[and]/CC , 不仅[not only]/CC ... 而且[but also]/CC.
-(Like similar collocations in English such as  ``either ... or&#39;&#39; and ``both ... and&#39;&#39;, it is possible that the first words in the pairs are not  CCs. These words are consistently  marked as CCs.)
+(Like similar collocations in English such as  ``either ... or&apos;&apos; and ``both ... and&apos;&apos;, it is possible that the first words in the pairs are not  CCs. These words are consistently  marked as CCs.)
 
 Others:
 (i) 至[to]: 九一年[1991] 至[to] 九五年[1995] \\
 (ii) 到[to]:  一月[January] 到[to]/CC 三月[March] \\
 (iii) 兼[and]: 国务[state affairs] 委员[committee member] 兼[and]/CC  科委[committee of science and technology]  主任[director])\\
-(It could be argued that these  words listed here are prepositions or verbs when they appear in the pattern ``YP X YP&#39;&#39;. But the conversion of the POS tags and the corresponding structures are pretty easy.)</rdfs:comment>
+(It could be argued that these  words listed here are prepositions or verbs when they appear in the pattern ``YP X YP&apos;&apos;. But the conversion of the POS tags and the corresponding structures are pretty easy.)</rdfs:comment>
         <rdfs:comment>A coordinating conjunction (CC) conjoins two constituents, each of which has approximately the same function as the whole construction. 
 
 Ex: 与[and], 和[and],  或[or], 或者[or], 还是[or]. </rdfs:comment>
@@ -225,7 +210,7 @@ This includes demonstratives (e.g.,  这[this], 那[that], 该[the]) and words  
 Demonstrative determiners:
 这[this], 这些[these], 此[this], 该[that], 本[our], 那[that], 那些[those], 上[the previous], 下[the next], 前[the previous] (前[the previous]/DT ７ 个[M] 月[month]),  后[the later], 头[the first](头[the first]/DT ７ 个[M] 月[month]), 另[another], 其余[the rest], 其他[the other], 其它[the other], 某[certain/some],  某些[some],  
 
-Quantifiers (excluding quantitative quantifiers): ``every, all, any&#39;&#39; and so on:
+Quantifiers (excluding quantitative quantifiers): ``every, all, any&apos;&apos; and so on:
 (i) 各[each], 诸[every], 每[every]. 
 (ii) 何[any], 什么[any], 任何[any]. 
 (iii) 整[whole]: 整[whole]/DT 个/M 欧洲[Europe].
@@ -288,7 +273,7 @@ The pattern is: NP/PP/JJ/DT DEG \{NP\}. Note: 的 has other tags: DEC, SP, and A
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#OtherPOS"/>
         <rdfs:comment>Interjection: IJ
 
-Interjections appear in the sentence-initial position (i.e., ``IJ, S&#39;&#39;).
+Interjections appear in the sentence-initial position (i.e., ``IJ, S&apos;&apos;).
 
 Ex: 啊[Ah]</rdfs:comment>
     </owl:Class>
@@ -335,7 +320,6 @@ Localizers are of two types:
 
     <owl:Class rdf:about="http://purl.org/olia/pctb.owl#LongBei4">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#OtherPOS"/>
-        <rdfs:comment>被, 叫, 给, 为 (e.g., 交换机[switchboard] 市场[market] 为/LB 外国 [foreign] 产品[product] 垄断[monopolize] $\langle$The market of the switchboard is monopolized by foreign products$\rangle$)</rdfs:comment>
         <rdfs:comment>bei4 in long bei-construction: LB
 
 This only includes 被, 叫, 给(in spoken language), and wei2(为) when they occur in the long bei-construction (i.e., NP0 + LB + NP1 + VP).
@@ -343,7 +327,8 @@ For example, 他[he] 被/LB 我[I] 训[scold] 了/AS 一[one] 顿/M $\langle$He 
 
 Note: 叫 is tagged as VV when it is used as a telescopic verb; for example, 他[he] 叫[order]/VV 你[you] 去[go] $\langle$He ordered you to go.$\rangle$.
 
-Note: Whether bei4(被)and ba3(把) are prepositions or verbs is highly controversial. In the tagging stage,we don&#39;t make any commitment to that. That&#39;s the reason why we tag them as LB, SB, BA, respectively, rather than tagging them as P or VV.</rdfs:comment>
+Note: Whether bei4(被)and ba3(把) are prepositions or verbs is highly controversial. In the tagging stage,we don&apos;t make any commitment to that. That&apos;s the reason why we tag them as LB, SB, BA, respectively, rather than tagging them as P or VV.</rdfs:comment>
+        <rdfs:comment>被, 叫, 给, 为 (e.g., 交换机[switchboard] 市场[market] 为/LB 外国 [foreign] 产品[product] 垄断[monopolize] $\langle$The market of the switchboard is monopolized by foreign products$\rangle$)</rdfs:comment>
     </owl:Class>
     
 
@@ -354,7 +339,7 @@ Note: Whether bei4(被)and ba3(把) are prepositions or verbs is highly controve
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#Particle"/>
         <rdfs:comment>Manner de5: DEV
 
-This only includes 地 when it occurs in ``XP 地 VP&#39;&#39;, where XP modifies the VP. In some old literature, 的 is used in this pattern too. In that case, we will tag that 的 as DEV.
+This only includes 地 when it occurs in ``XP 地 VP&apos;&apos;, where XP modifies the VP. In some old literature, 的 is used in this pattern too. In that case, we will tag that 的 as DEV.
 
 Ex: 高兴[happy]/VA 地/DEV 说[speak]/VV $\langle$speak happily$\rangle$.</rdfs:comment>
     </owl:Class>
@@ -365,17 +350,17 @@ Ex: 高兴[happy]/VA 地/DEV 说[speak]/VV $\langle$speak happily$\rangle$.</rdf
 
     <owl:Class rdf:about="http://purl.org/olia/pctb.owl#MeasureWord">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#POStag"/>
+        <rdfs:comment>Measure word: M
+
+Measure words follow determiners/numbers to form Det+M structure to modify nouns or verbs. They include classifiers (e.g., 个), group measure words (e.g., 群[group]), and words such as 公里[kilometer] and 升[liter].
+
+Some measure words can be modified by a limited set of adjectives (e.g.,  一[one]/CD 小[small]/JJ 瓶[bottle]/M 水[water]/NN). 临时量词[temporary measure word] can be modified by nouns and adjectives (e.g.,  一[one]/CD 铁[iron]/NN 箱子[box]/M 书[book]/NN).</rdfs:comment>
         <rdfs:comment>There are about 130 Ms in our corpus:
 (i) classifiers: 个, 种, 批, 位, 条, 起, 组, 笔, 幢, 点.
 (ii) unit: 吨[ton], 公里[kilometer], 平方公里[square kilometer].
 (iii) currency: 马克[Mark], 澳元[Australian dollar].
 (iv) compound measure word: 人次[number of people], 架次[number of flights], 排排[row].
 (v) unit of time: 年[year], 天[date], 秒[second], 分钟[minute] (We tag them as Ms because no measure words can be inserted between them and the preceding CDs. According to the same test, we tag 小时[hour] and 月[month] as NNs.)</rdfs:comment>
-        <rdfs:comment>Measure word: M
-
-Measure words follow determiners/numbers to form Det+M structure to modify nouns or verbs. They include classifiers (e.g., 个), group measure words (e.g., 群[group]), and words such as 公里[kilometer] and 升[liter].
-
-Some measure words can be modified by a limited set of adjectives (e.g.,  一[one]/CD 小[small]/JJ 瓶[bottle]/M 水[water]/NN). 临时量词[temporary measure word] can be modified by nouns and adjectives (e.g.,  一[one]/CD 铁[iron]/NN 箱子[box]/M 书[book]/NN).</rdfs:comment>
     </owl:Class>
     
 
@@ -398,15 +383,19 @@ Some measure words can be modified by a limited set of adjectives (e.g.,  一[on
 
     <owl:Class rdf:about="http://purl.org/olia/pctb.owl#NounModifier">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#OtherPOS"/>
+        <rdfs:comment>Ex: 共同[mutual], 双边[both parties], 很大[great amount/degree/deal], 高
+科技[high-tech], 有关[concerned] (有关[concerned]/JJ 国际[international]/NN 公约[treaty]/NN $\langle$the international treaty concerned$\rangle$), 老牌[old brand]/JJ (老牌[old brand]/JJ 军工[military industry]/JJ  企业[business]/NN).\\ 
+
+上述[aforementioned], 下列[the following]: 上述[aforementioned]/JJ 三[three]/CD 国[country]/NN</rdfs:comment>
         <rdfs:comment>other noun-modifier: JJ
 
 JJs include the following three types:
 
-[Type 1]``区别词&#39;&#39;(非谓形容词): They modify nouns in the pattern JJ+的+{N} or JJ+N, but they cannot be the predicate of a sentence without the help of 的. They cannot be modified by degree adverbs.
+[Type 1]``区别词&apos;&apos;(非谓形容词): They modify nouns in the pattern JJ+的+{N} or JJ+N, but they cannot be the predicate of a sentence without the help of 的. They cannot be modified by degree adverbs.
 The patterns: JJ + 的/DEG + N, JJ+N.
 Ex: 共同[mutual]/JJ \{的/DEG\} 目标[goal]/NN, 她[she] 是[VC] 女[female]/JJ 的/DEG $\langle$She is a woman.$\rangle$
 
-[Type 2] ``hyphenated-compound&#39;&#39;: Those words can be seen as shortened forms of relative clauses or preposition phrases. The words normally have two syllables. One (or both) is a shortened form of a longer word. The common POS combinations for this type of JJ are V+N, P+N/LC, AD+VA, and so on.
+[Type 2] ``hyphenated-compound&apos;&apos;: Those words can be seen as shortened forms of relative clauses or preposition phrases. The words normally have two syllables. One (or both) is a shortened form of a longer word. The common POS combinations for this type of JJ are V+N, P+N/LC, AD+VA, and so on.
 The pattern: JJ+N. 
 Ex: 留美[having studied in the US]/JJ scholar/NN. 
 
@@ -419,10 +408,6 @@ We tag an  adjective X in X+N as JJ because:
 (i) Sometimes the distinction between adjectives and non-predicative adjectives in X+N is not clear. 
 (ii) Unlike in the predicative position, the adjectives in the noun modifier position cannot be modified by adverbs (e.g., 好[good] 学生[student], *很好[very good] 学生[student]).
 (iii) Many adjectives cannot occur in this position; that is, without 的/DEC they cannot modify nouns (e.g., 这[this] 个[M] 学生[student]  很[very] 失望[disappointed],  * 失望[disappointed] 学生[student]).</rdfs:comment>
-        <rdfs:comment>Ex: 共同[mutual], 双边[both parties], 很大[great amount/degree/deal], 高
-科技[high-tech], 有关[concerned] (有关[concerned]/JJ 国际[international]/NN 公约[treaty]/NN $\langle$the international treaty concerned$\rangle$), 老牌[old brand]/JJ (老牌[old brand]/JJ 军工[military industry]/JJ  企业[business]/NN).\\ 
-
-上述[aforementioned], 下列[the following]: 上述[aforementioned]/JJ 三[three]/CD 国[country]/NN</rdfs:comment>
     </owl:Class>
     
 
@@ -435,8 +420,8 @@ We tag an  adjective X in X+N as JJ because:
 
 The term 象声词[onomatopoeia], a word that imitates sounds, has been mentioned in several Chinese grammar books and POS  tagsets. However, it is not clear to us whether those words form a unique syntactic category. We have not found any occurrence of 象声词[onomatopoeia] in our 100K-word Treebank; nevertheless,  we reserve the tag ON for this type of word.  The following are some patterns in which an ON can occur:
 
-(i) modify VPs in the pattern ``ON 地 V&#39;&#39;: 雨[rain] 哗哗[ON] 地[DEV] 下[fall down] 了[AS] 一[one] 夜[night] $\langle$The rain has been pouring down for the whole night$\rangle$.
-(ii) modify NPs in the pattern ``ON 的 N&#39;&#39;: 砰[ON] 的/DEG 一声[a sound] $\langle$Bang$\rangle$!
+(i) modify VPs in the pattern ``ON 地 V&apos;&apos;: 雨[rain] 哗哗[ON] 地[DEV] 下[fall down] 了[AS] 一[one] 夜[night] $\langle$The rain has been pouring down for the whole night$\rangle$.
+(ii) modify NPs in the pattern ``ON 的 N&apos;&apos;: 砰[ON] 的/DEG 一声[a sound] $\langle$Bang$\rangle$!
 (iii) form a sentence by itself:  砰砰[ON]! 屋里[in the house] 传出[spread] 两[two] 声/M 枪响[gunfire] $\langle $Bang! Bang! Two sounds of gunfire spread out from the house$\rangle$. 
 (iv) ONs normally cannot be modified by adverbs, etc.
 
@@ -516,7 +501,7 @@ This includes the rest of the verbs, such as  modals, raising predicates (e.g., 
 
 (i) AD-like VV: 是否[whether or not]/VV.
 (ii) Phrase-word: 在座[be present]/VV, 报以[respond with]/VV, 为期[scheduled for a duration of time]/VV, 处于[be in a certain condition]/VV.
-(iii) Words such as 这样[this way] and 那样[that way] are tagged as VVs when they are followed by AS, or when there is no other verb in that clause. For example, 就[then] 这样[do...this way]/VV 吧[SP] $\langle$Let&#39;s do it this way$\rangle$.</rdfs:comment>
+(iii) Words such as 这样[this way] and 那样[that way] are tagged as VVs when they are followed by AS, or when there is no other verb in that clause. For example, 就[then] 这样[do...this way]/VV 吧[SP] $\langle$Let&apos;s do it this way$\rangle$.</rdfs:comment>
     </owl:Class>
     
 
@@ -524,7 +509,13 @@ This includes the rest of the verbs, such as  modals, raising predicates (e.g., 
     <!-- http://purl.org/olia/pctb.owl#POStag -->
 
     <owl:Class rdf:about="http://purl.org/olia/pctb.owl#POStag">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:versionInfo>The hierarchical organization follows the overview of Xia (2000, p.5)</owl:versionInfo>
     </owl:Class>
     
@@ -561,6 +552,11 @@ Note: words such as 把/BA and 被/LB-or-SB are not tagged as P. See OtherPOS fo
 
     <owl:Class rdf:about="http://purl.org/olia/pctb.owl#Pronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#POStag"/>
+        <rdfs:comment>Pronoun: PN
+
+Pronouns function as substitutes for noun phrases and denote persons or things asked for, previously specified, or understood from the context. They are normally not modified by Det-M or adjectival expressions. (Because unlike English pronouns in Chinese are not inflected with case markers, it is not always easy to decide whether some words (such as 大家[everyone], 本人[oneself], 本身[self]) should be tagged as PN or NN. To be consistent, we compiled a list of PNs appeared in our 100K-word corpus.)
+
+PNs include personal pronouns (e.g., 我[I], 你[you]), demonstratives when used alone as NPs (e.g., 这[this], 此[this]), possessive pronouns (e.g., 其[his/her/its]), and  reflexives (e.g., 我自己[myself], 自己[self]).</rdfs:comment>
         <rdfs:comment>There are about 30 PNs in or corpus.
 
 Ex:
@@ -570,11 +566,6 @@ Ex:
 (iv) Reflexives:  他自己[himself], 自己[self].
 (v) Others:  彼此[each other], 大家[everyone], 对方[the other party], 双方[both parties], 自身[self].
   </rdfs:comment>
-        <rdfs:comment>Pronoun: PN
-
-Pronouns function as substitutes for noun phrases and denote persons or things asked for, previously specified, or understood from the context. They are normally not modified by Det-M or adjectival expressions. (Because unlike English pronouns in Chinese are not inflected with case markers, it is not always easy to decide whether some words (such as 大家[everyone], 本人[oneself], 本身[self]) should be tagged as PN or NN. To be consistent, we compiled a list of PNs appeared in our 100K-word corpus.)
-
-PNs include personal pronouns (e.g., 我[I], 你[you]), demonstratives when used alone as NPs (e.g., 这[this], 此[this]), possessive pronouns (e.g., 其[his/her/its]), and  reflexives (e.g., 我自己[myself], 自己[self]).</rdfs:comment>
     </owl:Class>
     
 
@@ -650,7 +641,7 @@ This only includes 被 and 给 (in spoken language) when they occur in the short
 
 Note: 给 has other tags: LB, VV, and P (e.g., 你[you] 给[to]/P 他[he] 写[write] 封/M 信[letter]  $\langle$You should write a letter to him$\rangle$).
 
-Note: Whether bei4(被)and ba3(把) are prepositions or verbs is highly controversial. In the tagging stage,we don&#39;t make any commitment to that. That&#39;s the reason why we tag them as LB, SB, BA, respectively, rather than tagging them as P or VV.</rdfs:comment>
+Note: Whether bei4(被)and ba3(把) are prepositions or verbs is highly controversial. In the tagging stage,we don&apos;t make any commitment to that. That&apos;s the reason why we tag them as LB, SB, BA, respectively, rather than tagging them as P or VV.</rdfs:comment>
     </owl:Class>
     
 
@@ -658,20 +649,20 @@ Note: Whether bei4(被)and ba3(把) are prepositions or verbs is highly controve
     <!-- http://purl.org/olia/pctb.owl#StativeVerb -->
 
     <owl:Class rdf:about="http://purl.org/olia/pctb.owl#StativeVerb">
-        <rdfs:label>predicative adjective</rdfs:label>
-        <rdfs:label>stative verb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#Verb"/>
         <rdfs:comment>Predicative adjective (VA) roughly corresponds to adjectives in English and stative verbs in the literature on Chinese grammar.
 
 Our VAs include two types:
 
 Type 1: predicates that have no object and can be modified by 很[very].
-Type 2: predicates derived from type 1 either through reduplication(e.g., 红彤彤[bright red]) or through the pattern N + A meaning ``as A as an N&#39;&#39;(e.g., 雪白[snow white]). This type of VAs don&#39;t have objects, but some of them cannot be modified by 很[very] either, because the intensifying meaning is already built-in.
+Type 2: predicates derived from type 1 either through reduplication(e.g., 红彤彤[bright red]) or through the pattern N + A meaning ``as A as an N&apos;&apos;(e.g., 雪白[snow white]). This type of VAs don&apos;t have objects, but some of them cannot be modified by 很[very] either, because the intensifying meaning is already built-in.
 
 There are about 350 VAs in our corpus, e.g., 便宜[inexpensive],  不错[not bad],   方便[convenient].
 
 Note: when a word in set(VA) modifies N without 的[DEC], it is tagged as JJ or a noun, rather than as VA. When a word in set(VA) has an object, it is tagged as VV, rather than  VA. For example, 这[this] 项/M 活动[activity] 丰富[enrich]/VV 了/AS 他[he] 的/DEG 
 生活[life] &quot;This activity enriched his life&quot;.</rdfs:comment>
+        <rdfs:label>predicative adjective</rdfs:label>
+        <rdfs:label>stative verb</rdfs:label>
         <owl:versionInfo>Xia (2000) describes the category as &quot;predicative adjective&quot;, but mentions that they are traditionally referred to as &quot;stative verb&quot;. Here, the latter term is adopted as it reflects the taxonomic organization of the VA category. Furthermore, &quot;adjective&quot; could lead to a confusion with NounModifier, also described as &quot;adjective&quot;.</owl:versionInfo>
     </owl:Class>
     
@@ -686,7 +677,7 @@ Note: when a word in set(VA) modifies N without 的[DEC], it is tagged as JJ or 
 (i) CS S1, S2. 
 (ii) S2 CS S1. 
 
-Where S1 is the subordinating clause, S2 is the main clause. In the first pattern, the CS can also appear after the subject of S1; For example, 你[you] 要是[if] 不[not] 去[go], 我[I] 就[then] 去[go] 了/SP. $\langle$If you don&#39;t want to go, then I will go.$\rangle$ 
+Where S1 is the subordinating clause, S2 is the main clause. In the first pattern, the CS can also appear after the subject of S1; For example, 你[you] 要是[if] 不[not] 去[go], 我[I] 就[then] 去[go] 了/SP. $\langle$If you don&apos;t want to go, then I will go.$\rangle$ 
 
 Ex:    如果[if]/CS ... 就[then]/AD .... </rdfs:comment>
     </owl:Class>
@@ -733,12 +724,12 @@ the tests for N and JJ), not as V.</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/pctb.owl#You3">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/pctb.owl#Verb"/>
-        <owl:versionInfo>The abbreviation indicates that this category was originally named &quot;Verb [in] Existential [sentence]&quot;</owl:versionInfo>
         <rdfs:comment>you3 as the main verb: VE
 
 Only 有[have], 没[not have], 没有[not have], and 无[not have] are tagged as VE when they are the main verbs (including the possessive you3, existential you3, etc.).
 
 (The main reason why we assign those verbs with a new tag is that the treatment of existential sentences is controversial. Giving these verbs a different tag will make it easy to find the existential sentences in the corpus.)</rdfs:comment>
+        <owl:versionInfo>The abbreviation indicates that this category was originally named &quot;Verb [in] Existential [sentence]&quot;</owl:versionInfo>
     </owl:Class>
     
 
@@ -1043,5 +1034,5 @@ Only 有[have], 没[not have], 没有[not have], and 无[not have] are tagged as
 
 
 
-<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

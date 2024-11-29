@@ -1,29 +1,19 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY tibet "http://purl.org/olia/tibet.owl#:" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/tibet.owl#"
      xml:base="http://purl.org/olia/tibet.owl"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:dct="http://purl.org/dc/terms/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:tibet="http://purl.org/olia/tibet.owl#:">
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:tibet="http://purl.org/olia/tibet.owl#:"
+     xmlns:system="http://purl.org/olia/system.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/tibet.owl">
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/bod"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/bod"/>
         <rdfs:comment>OLiA Annotation Model for the morphosyntactic, syntactic, semantic and discourse annotations of the Tübingen Tibetan corpora as described by Wagner and Zeisler (2004). Note that only the annotations of the corpora are covered, not the specifications of the lexicons (Zeisler 2009, §6)
 
 Originally applied to Old Tibetan, Classical Tibetan, Balti and Ladakh.
@@ -40,7 +30,6 @@ Zeisler, Bettina (2009). Project B11: Semantic roles, case relations, and cross-
 2011-07-27 complete revision on the basis of http://www.sfb441.uni-tuebingen.de/b11/b11annotation.html
 
 Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
-        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
     </owl:Ontology>
     
 
@@ -56,14 +45,9 @@ Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://w3id.org/meta-share/meta-share/language -->
 
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -81,7 +65,7 @@ Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
     <!-- http://purl.org/olia/tibet.owl#hasCase -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/tibet.owl#hasCase">
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
     </owl:ObjectProperty>
     
 
@@ -99,13 +83,13 @@ Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
 
     <!-- http://purl.org/olia/system.owl#hasTagStartingWith -->
 
-    <owl:DatatypeProperty rdf:about="&system;hasTagStartingWith"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagStartingWith"/>
     
 
 
     <!-- http://purl.org/olia/system.owl#hasTier -->
 
-    <owl:DatatypeProperty rdf:about="&system;hasTier"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
     
 
 
@@ -160,7 +144,7 @@ absolutive </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#AddressingPronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">PRON2voc
+        <rdfs:comment>PRON2voc
 	
 
 addressing pronoun (WT wa, la) </rdfs:comment>
@@ -172,7 +156,7 @@ addressing pronoun (WT wa, la) </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Adjective">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">ADJ nominal adjective (only derived bi- or multisyllabic forms) </rdfs:comment>
+        <rdfs:comment>ADJ nominal adjective (only derived bi- or multisyllabic forms) </rdfs:comment>
         <owl:versionInfo>Generalization over all annotations containing ADJ</owl:versionInfo>
     </owl:Class>
     
@@ -182,7 +166,7 @@ addressing pronoun (WT wa, la) </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Adverb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">ADV plain adverb</rdfs:comment>
+        <rdfs:comment>ADV plain adverb</rdfs:comment>
         <owl:versionInfo>generalization over all ADJ tags</owl:versionInfo>
     </owl:Class>
     
@@ -204,7 +188,7 @@ adverbial noun phrase </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#AesthetiveCase">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Case"/>
-        <rdfs:comment>Aes aesthetive (=DatLoc), only WT, CT/OT only for yod &#39;have&#39; (Zeisler 2009)
+        <rdfs:comment>Aes aesthetive (=DatLoc), only WT, CT/OT only for yod &apos;have&apos; (Zeisler 2009)
 
 West Tibetan ... is distinguished by having widespread use of
 an &quot;Aesthetive subject&quot;: dative/locative marker with transitive accidental
@@ -323,11 +307,11 @@ bound argument of a collocation </rdfs:comment>
     <!-- http://purl.org/olia/tibet.owl#Case -->
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Case">
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue>case</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>CASE</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>//tok/desc/case
@@ -353,11 +337,11 @@ clause chaining, non-finite Verb (linear, iconic representation of main story li
     <!-- http://purl.org/olia/tibet.owl#Clause -->
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Clause">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue>clauseCat</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>CLAUSE_STATUS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>//clause/clauseCat</rdfs:comment>
@@ -477,7 +461,7 @@ comitative postposition</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Conjunction">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">CONJ conjunction
+        <rdfs:comment>CONJ conjunction
 
 dir -CONJ-tags bezeichnen Fälle, in denen die das traditionell als eigenständig aufgefasste Partikel als zum Wort gehöriges Morphem aufgefasst wird (Zeisler, p.c. 2006)</rdfs:comment>
     </owl:Class>
@@ -500,7 +484,7 @@ dative/locative (la) </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Deixis">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">Generalisation over all tags that are characterised as &quot;deixis&quot; (Zeisler 2006. p.c.), or &quot;demonstratives&quot; (Zeisler 2009)</owl:versionInfo>
+        <owl:versionInfo>Generalisation over all tags that are characterised as &quot;deixis&quot; (Zeisler 2006. p.c.), or &quot;demonstratives&quot; (Zeisler 2009)</owl:versionInfo>
     </owl:Class>
     
 
@@ -692,7 +676,7 @@ emphatic demonstrative pronoun &quot;exactly this/that one&quot; </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#EmphaticPronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">EPRON
+        <rdfs:comment>EPRON
 
 emphatic pronoun (PRON + raÅ‹ oder Ã±id); an additional number indicates the person </rdfs:comment>
     </owl:Class>
@@ -748,11 +732,11 @@ expeditive procedure (addressing the addressee in a speech act) </rdfs:comment>
     <!-- http://purl.org/olia/tibet.owl#Feature -->
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Feature">
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue>feature</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>FEATS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>//tok/desc/feature</rdfs:comment>
@@ -763,10 +747,10 @@ expeditive procedure (addressing the addressee in a speech act) </rdfs:comment>
     <!-- http://purl.org/olia/tibet.owl#FiniteSentence -->
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#FiniteSentence">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <rdfs:comment>//s
 
-simple, simple-spch.intro, endchain, endchain-spch.intro, phrs-spch.intro, superord, cres, and quest.alt2, if not further modified, conclude a &#39;finite sentence&#39; &lt;s&gt;. The same holds for postp.purp.</rdfs:comment>
+simple, simple-spch.intro, endchain, endchain-spch.intro, phrs-spch.intro, superord, cres, and quest.alt2, if not further modified, conclude a &apos;finite sentence&apos; &lt;s&gt;. The same holds for postp.purp.</rdfs:comment>
     </owl:Class>
     
 
@@ -787,7 +771,7 @@ simple sentence with finite verb without embedded or chained structures (maximal
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#FiniteVerb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">VFIN
+        <rdfs:comment>VFIN
 	
 
 finite use of mere stem or complex periphrastic form (Â± final marker) </rdfs:comment>
@@ -852,7 +836,7 @@ inclusive plural (only PRON1) </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#IndefiniteQuantifier">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Quantifier"/>
-        <rdfs:comment rdf:datatype="&xsd;string">IQ &quot;indefinite quantifier/qualifier&quot;, e.g.  tsam, &quot;how much, as much&quot; </rdfs:comment>
+        <rdfs:comment>IQ &quot;indefinite quantifier/qualifier&quot;, e.g.  tsam, &quot;how much, as much&quot; </rdfs:comment>
     </owl:Class>
     
 
@@ -885,7 +869,7 @@ instrumental postposition</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Interjection">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">INTJ exclamation, interjection within the text </rdfs:comment>
+        <rdfs:comment>INTJ exclamation, interjection within the text </rdfs:comment>
     </owl:Class>
     
 
@@ -897,7 +881,7 @@ instrumental postposition</rdfs:comment>
         <rdfs:comment>cond.intro
 	
 
- introductory condition clause, almost like a question (if you don&#39;t know/don&#39;t you know ..., this is x </rdfs:comment>
+ introductory condition clause, almost like a question (if you don&apos;t know/don&apos;t you know ..., this is x </rdfs:comment>
     </owl:Class>
     
 
@@ -1041,8 +1025,8 @@ modifying clause without embedding </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Morpheme">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#POSModifyingElements"/>
-        <owl:versionInfo>most of these morphemes seem to be clitics, but not all of them</owl:versionInfo>
         <rdfs:comment>&quot;-x&quot; for morphemes are joined to the main elements for the sake of a flat annotation</rdfs:comment>
+        <owl:versionInfo>most of these morphemes seem to be clitics, but not all of them</owl:versionInfo>
     </owl:Class>
     
 
@@ -1060,7 +1044,7 @@ modifying clause without embedding </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Name">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">NAME personal or place name</rdfs:comment>
+        <rdfs:comment>NAME personal or place name</rdfs:comment>
     </owl:Class>
     
 
@@ -1100,11 +1084,11 @@ simple sentence with non-finite introductory verbum dicendi</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#NonFiniteVerbStem">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Verb"/>
-        <owl:versionInfo>note that the encoding error in the individual original from the original HTML</owl:versionInfo>
         <rdfs:comment>VÎµ
 	
 
 non-finite use of mere stem (in the case of cross clausal group inflection: the first members appear in a non-modified, thus seemingly finite form, but the morphemes of the final non-finite verb operates also on the preceeding verbs; stylistic device for closely related event sequences, particularly frequent for ritual(ised) actions)</rdfs:comment>
+        <owl:versionInfo>note that the encoding error in the individual original from the original HTML</owl:versionInfo>
     </owl:Class>
     
 
@@ -1113,7 +1097,7 @@ non-finite use of mere stem (in the case of cross clausal group inflection: the 
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#NonfiniteVerb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">V
+        <rdfs:comment>V
 	
 
 verb (any non-finite form) </rdfs:comment>
@@ -1125,7 +1109,7 @@ verb (any non-finite form) </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Noun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">NOM
+        <rdfs:comment>NOM
 	
 
 noun </rdfs:comment>
@@ -1144,11 +1128,11 @@ noun </rdfs:comment>
     <!-- http://purl.org/olia/tibet.owl#NtNode -->
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#NtNode">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue>ntNodeCat</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>CAT</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>//ntNode/ntNodeCat</rdfs:comment>
@@ -1160,8 +1144,8 @@ noun </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Number">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#POSModifyingElements"/>
-        <owl:versionInfo> as all instances of .x are plurals, -pl has been included here, too</owl:versionInfo>
         <rdfs:comment>&quot;.x&quot; for lexicalised items, involves only plural forms</rdfs:comment>
+        <owl:versionInfo> as all instances of .x are plurals, -pl has been included here, too</owl:versionInfo>
     </owl:Class>
     
 
@@ -1170,7 +1154,7 @@ noun </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Numeral">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">NUM (cardinal) numeral, number word</rdfs:comment>
+        <rdfs:comment>NUM (cardinal) numeral, number word</rdfs:comment>
     </owl:Class>
     
 
@@ -1179,7 +1163,7 @@ noun </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Onomatopoetic">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">ONM
+        <rdfs:comment>ONM
 	
 
 onomatopoetica</rdfs:comment>
@@ -1190,11 +1174,11 @@ onomatopoetica</rdfs:comment>
     <!-- http://purl.org/olia/tibet.owl#POSModifyingElements -->
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#POSModifyingElements">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue>pos</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>//tok/pos-modifying elemets (&quot;:x&quot; for subcategories, &quot;.x&quot; for lexicalised items, and &quot;-x&quot; for morphemes are joined to the main elements for the sake of a flat annotation; one could have tagged them as features)</rdfs:comment>
@@ -1214,17 +1198,11 @@ onomatopoetica</rdfs:comment>
     <!-- http://purl.org/olia/tibet.owl#PartOfSpeech -->
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#PartOfSpeech">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">morph</owl:hasValue>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&system;hasTier"/>
-                <owl:hasValue>pos</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>//tok/pos, part of speech</rdfs:comment>
@@ -1248,7 +1226,7 @@ person (also in the case of titles); typically cogitative or intentional persons
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#PersonalPronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">PRON personal pronomen; an additional number indicates the person </rdfs:comment>
+        <rdfs:comment>PRON personal pronomen; an additional number indicates the person </rdfs:comment>
     </owl:Class>
     
 
@@ -1355,7 +1333,7 @@ non-embedded, i.e. preposed purposive clause (&quot;in order to verb 1 / verb 2)
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Pronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">Generalisation over all tags that contain the substring PRON and refer to the category &quot;pronoun&quot;</owl:versionInfo>
+        <owl:versionInfo>Generalisation over all tags that contain the substring PRON and refer to the category &quot;pronoun&quot;</owl:versionInfo>
     </owl:Class>
     
 
@@ -1409,7 +1387,7 @@ purposive clause </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#QuantitativeAdjective">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Adjective"/>
-        <rdfs:comment rdf:datatype="&xsd;string">QADJ quantitative adjective (including ordinals) (Zeisler, p.c., 2006), e.g., maÅ‹po &#39;many&#39;, gÃ±iska &#39;both&#39;, etc.</rdfs:comment>
+        <rdfs:comment>QADJ quantitative adjective (including ordinals) (Zeisler, p.c., 2006), e.g., maÅ‹po &apos;many&apos;, gÃ±iska &apos;both&apos;, etc.</rdfs:comment>
     </owl:Class>
     
 
@@ -1427,7 +1405,7 @@ purposive clause </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#QuestionPronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">QPRON question pronoun </rdfs:comment>
+        <rdfs:comment>QPRON question pronoun </rdfs:comment>
     </owl:Class>
     
 
@@ -1436,7 +1414,7 @@ purposive clause </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#QuotationAdverb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">QoADV
+        <rdfs:comment>QoADV
 	
 
 quotation adverb {ces} </rdfs:comment>
@@ -1448,7 +1426,7 @@ quotation adverb {ces} </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#QuoteIntroduction">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">QoI
+        <rdfs:comment>QoI
 	
 
 quote introduction naÂ·re </rdfs:comment>
@@ -1460,7 +1438,7 @@ quote introduction naÂ·re </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#QuoteMarker">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">QoM
+        <rdfs:comment>QoM
 	
 
 quote marker lo WT </rdfs:comment>
@@ -1481,7 +1459,7 @@ quote marker lo WT </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#ReflexivePronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">RFLX
+        <rdfs:comment>RFLX
 	
 
 reflexive pronoun raÅ‹ </rdfs:comment>
@@ -1493,7 +1471,7 @@ reflexive pronoun raÅ‹ </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#RelationalAdjective">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Adjective"/>
-        <rdfs:comment rdf:datatype="&xsd;string">RADJ
+        <rdfs:comment>RADJ
 	
 
 relational (deiktic) adjective: gÅ¾an &quot;other&quot; </rdfs:comment>
@@ -1524,7 +1502,7 @@ relat2
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#RelativePronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">QPRONrel
+        <rdfs:comment>QPRONrel
 	
 
 question pronoun used as relative pronoun </rdfs:comment>
@@ -1589,10 +1567,10 @@ root: monosyllabic elements of adverbs or adjective-compounds that do not occur 
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#SequentialParticle">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#DistalDemonstrativePronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">SEQ
+        <rdfs:comment>SEQ
 	
 
-sequentielle marker &#39;and then&#39; (formally DEMfar plus Abl) </rdfs:comment>
+sequentielle marker &apos;and then&apos; (formally DEMfar plus Abl) </rdfs:comment>
     </owl:Class>
     
 
@@ -1610,7 +1588,7 @@ sequentielle marker &#39;and then&#39; (formally DEMfar plus Abl) </rdfs:comment
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#SummarisingExpression">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">SUM sumariser: Â·la-sogs(Â·pa) /Â·las-stsogs(Â·pa) &#39;etc.&#39;  (Zeisler 2009)
+        <rdfs:comment>SUM sumariser: Â·la-sogs(Â·pa) /Â·las-stsogs(Â·pa) &apos;etc.&apos;  (Zeisler 2009)
 
 SUM &quot;and so on&quot;, das ist eine verlegenheitslösung für einen nicht analysierbaren phrasalen Ausdruck, möglicherweise ändern wir hier noch die Schreibweise (Zeisler, p.c., 2006)
 
@@ -1687,7 +1665,7 @@ supplement of a light verb </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#TopicMarker">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <rdfs:comment rdf:datatype="&xsd;string">TOP
+        <rdfs:comment>TOP
 	
 
 topic marker ni </rdfs:comment>
@@ -1699,11 +1677,11 @@ topic marker ni </rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#Verb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#PartOfSpeech"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">Generalization over &quot;verb&quot; tags</owl:versionInfo>
         <rdfs:comment>VÎµ
 	
 
 non-finite use of mere stem (in the case of cross clausal group inflection: the first members appear in a non-modified, thus seemingly finite form, but the morphemes of the final non-finite verb operates also on the preceeding verbs; stylistic device for closely related event sequences, particularly frequent for ritual(ised) actions)</rdfs:comment>
+        <owl:versionInfo>Generalization over &quot;verb&quot; tags</owl:versionInfo>
     </owl:Class>
     
 
@@ -1736,7 +1714,7 @@ predicatively used verb compounds (or nominalisations) governing arguments </rdf
 
     <owl:Class rdf:about="http://purl.org/olia/tibet.owl#VerbalNoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tibet.owl#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">VN verbal noun 
+        <rdfs:comment>VN verbal noun 
 Vâ¿ verbally/predicatively used VN (reanalysis as VN possible) 
 VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
     </owl:Class>
@@ -1754,21 +1732,12 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
     
 
 
-    <!-- http://purl.org/olia/tibet.owl#:pers -->
-
-    <owl:NamedIndividual rdf:about="&tibet;pers">
-        <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Person"/>
-        <system:hasTagContaining>:pers</system:hasTagContaining>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://purl.org/olia/tibet.owl#ADJ -->
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#ADJ">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Adjective"/>
-        <rdfs:comment rdf:datatype="&xsd;string">adjective (S)</rdfs:comment>
         <system:hasTagStartingWith>ADJ</system:hasTagStartingWith>
+        <rdfs:comment>adjective (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1787,8 +1756,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#ADV">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">adverb (S)</rdfs:comment>
         <system:hasTagStartingWith>ADV</system:hasTagStartingWith>
+        <rdfs:comment>adverb (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1806,8 +1775,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#Abl">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#AblativeCase"/>
-        <system:hasTag>Abl</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Abl"/>
+        <system:hasTag>Abl</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1816,8 +1785,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#Abs">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#AbsolutiveCase"/>
-        <system:hasTag>Abs</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Abs"/>
+        <system:hasTag>Abs</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1826,8 +1795,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#Aes">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#AesthetiveCase"/>
-        <system:hasTag>Aes</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Aes"/>
+        <system:hasTag>Aes</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1836,8 +1805,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#CONJ">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Conjunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">conjunction (S)</rdfs:comment>
         <system:hasTagStartingWith>CONJ</system:hasTagStartingWith>
+        <rdfs:comment>conjunction (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1846,8 +1815,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#Com">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#ComitativeCase"/>
-        <system:hasTag>Com</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Com"/>
+        <system:hasTag>Com</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1901,8 +1870,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#DatLoc">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#DativeLocative"/>
-        <system:hasTag>DatLoc</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#DatLoc"/>
+        <system:hasTag>DatLoc</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1920,8 +1889,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#EPRON2-pl">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#EmphaticPronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">emphatic pronoun, 2nd person, pl (S)</rdfs:comment>
         <system:hasTagStartingWith>EPRON2-pl</system:hasTagStartingWith>
+        <rdfs:comment>emphatic pronoun, 2nd person, pl (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1930,8 +1899,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#Erg">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#ErgativeCase"/>
-        <system:hasTag>Erg</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Erg"/>
+        <system:hasTag>Erg</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1958,8 +1927,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#Gen">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#GenitiveCase"/>
-        <system:hasTag>Gen</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Gen"/>
+        <system:hasTag>Gen</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1968,8 +1937,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#INTJ">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Interjection"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Interjection (S)</rdfs:comment>
         <system:hasTagStartingWith>INTJ</system:hasTagStartingWith>
+        <rdfs:comment>Interjection (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1978,8 +1947,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#IQ">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#IndefiniteQuantifier"/>
-        <rdfs:comment rdf:datatype="&xsd;string">indefinite quantifier/qualifier</rdfs:comment>
         <system:hasTagStartingWith>IQ</system:hasTagStartingWith>
+        <rdfs:comment>indefinite quantifier/qualifier</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1988,8 +1957,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#Instr">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#InstrumentalCase"/>
-        <system:hasTag>Instr</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Instr"/>
+        <system:hasTag>Instr</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1998,8 +1967,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#Loc">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#LocativeCase"/>
-        <system:hasTag>Loc</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Loc"/>
+        <system:hasTag>Loc</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2008,8 +1977,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#LocPurp">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#LocativePurposiveCase"/>
-        <system:hasTag>LocPurp</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#LocPurp"/>
+        <system:hasTag>LocPurp</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2027,8 +1996,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#NAME">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Name"/>
-        <rdfs:comment rdf:datatype="&xsd;string">personal name, betrifft alle namen, insbesondere auch geographische (S)</rdfs:comment>
         <system:hasTagStartingWith>NAME</system:hasTagStartingWith>
+        <rdfs:comment>personal name, betrifft alle namen, insbesondere auch geographische (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2055,8 +2024,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#NUM">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Numeral"/>
-        <rdfs:comment rdf:datatype="&xsd;string">cardinal numeral (S)</rdfs:comment>
         <system:hasTagStartingWith>NUM</system:hasTagStartingWith>
+        <rdfs:comment>cardinal numeral (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2065,8 +2034,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#ONM">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Onomatopoetic"/>
-        <rdfs:comment rdf:datatype="&xsd;string">onomatopoetic (S)</rdfs:comment>
         <system:hasTagStartingWith>ONM</system:hasTagStartingWith>
+        <rdfs:comment>onomatopoetic (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2075,8 +2044,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#PPosAbl">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#AblativePostposition"/>
-        <system:hasTag>PPosAbl</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#PPosAbl"/>
+        <system:hasTag>PPosAbl</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2085,8 +2054,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#PPosCom">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#ComitativePostposition"/>
-        <system:hasTag>PPosCom</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#PPosCom"/>
+        <system:hasTag>PPosCom</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2095,8 +2064,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#PPosInstr">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#InstrumentalPostposition"/>
-        <system:hasTag>PPosInstr</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#PPosInstr"/>
+        <system:hasTag>PPosInstr</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2105,8 +2074,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#PPosLoc">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#LocationalPostposition"/>
-        <system:hasTag>PPosLoc</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#PPosLoc"/>
+        <system:hasTag>PPosLoc</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2124,8 +2093,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#PRON1">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#FirstPersonPronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">(S) 1st person pronoun</rdfs:comment>
         <system:hasTagStartingWith>PRON1</system:hasTagStartingWith>
+        <rdfs:comment>(S) 1st person pronoun</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2143,8 +2112,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#PRON2voc">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#AddressingPronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">addressing pronoun</rdfs:comment>
         <system:hasTagStartingWith>PRON2voc</system:hasTagStartingWith>
+        <rdfs:comment>addressing pronoun</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2153,8 +2122,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#PRON3">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#ThirdPersonPronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">(S) 3rd person pronoun (singular ?)</rdfs:comment>
         <system:hasTagStartingWith>PRON3</system:hasTagStartingWith>
+        <rdfs:comment>(S) 3rd person pronoun (singular ?)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2163,8 +2132,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#QADJ">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#QuantitativeAdjective"/>
-        <rdfs:comment rdf:datatype="&xsd;string">quantitative adjective, including ordinals</rdfs:comment>
         <system:hasTagStartingWith>QADJ</system:hasTagStartingWith>
+        <rdfs:comment>quantitative adjective, including ordinals</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2192,8 +2161,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#QPRON">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#QuestionPronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">question pronoun (S)</rdfs:comment>
         <system:hasTagStartingWith>QPRON</system:hasTagStartingWith>
+        <rdfs:comment>question pronoun (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2211,8 +2180,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#QoADV">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#QuotationAdverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Quotation adverb</rdfs:comment>
         <system:hasTagStartingWith>QoADV</system:hasTagStartingWith>
+        <rdfs:comment>Quotation adverb</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2221,8 +2190,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#QoI">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#QuoteIntroduction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">quote introduction</rdfs:comment>
         <system:hasTagStartingWith>QoI</system:hasTagStartingWith>
+        <rdfs:comment>quote introduction</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2231,8 +2200,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#QoM">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#QuoteMarker"/>
-        <rdfs:comment rdf:datatype="&xsd;string">quote marker</rdfs:comment>
         <system:hasTagStartingWith>QoM</system:hasTagStartingWith>
+        <rdfs:comment>quote marker</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2241,8 +2210,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#RADJ">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#RelationalAdjective"/>
-        <rdfs:comment rdf:datatype="&xsd;string">relational adjective</rdfs:comment>
         <system:hasTagStartingWith>RADJ</system:hasTagStartingWith>
+        <rdfs:comment>relational adjective</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2261,8 +2230,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#RFLX">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#ReflexivePronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">reflexive pronoun</rdfs:comment>
         <system:hasTagStartingWith>RFLX</system:hasTagStartingWith>
+        <rdfs:comment>reflexive pronoun</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2280,9 +2249,9 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#SEQ">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#SequentialParticle"/>
-        <rdfs:comment rdf:datatype="&xsd;string">sequential particle (S)</rdfs:comment>
-        <system:hasTagStartingWith>SEQ</system:hasTagStartingWith>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#Abl"/>
+        <system:hasTagStartingWith>SEQ</system:hasTagStartingWith>
+        <rdfs:comment>sequential particle (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2291,8 +2260,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#SUM">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#SummarisingExpression"/>
-        <rdfs:comment rdf:datatype="&xsd;string">summarising expression</rdfs:comment>
         <system:hasTagStartingWith>SUM</system:hasTagStartingWith>
+        <rdfs:comment>summarising expression</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2301,8 +2270,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#TOP">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#TopicMarker"/>
-        <rdfs:comment rdf:datatype="&xsd;string">topic marker</rdfs:comment>
         <system:hasTagStartingWith>TOP</system:hasTagStartingWith>
+        <rdfs:comment>topic marker</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2311,8 +2280,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#V">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#NonfiniteVerb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">verb (non-finite)</rdfs:comment>
         <system:hasTag>V</system:hasTag>
+        <rdfs:comment>verb (non-finite)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2330,8 +2299,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#VFIN">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#FiniteVerb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">finite verb (S)</rdfs:comment>
         <system:hasTagStartingWith>VFIN</system:hasTagStartingWith>
+        <rdfs:comment>finite verb (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2340,8 +2309,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#VN">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#VerbalNoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">verbal noun BZ (S)</rdfs:comment>
         <system:hasTagStartingWith>VN</system:hasTagStartingWith>
+        <rdfs:comment>verbal noun BZ (S)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -2377,8 +2346,8 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#_Loc">
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#LocationalCase"/>
-        <system:hasTag>~Loc</system:hasTag>
         <hasCase rdf:resource="http://purl.org/olia/tibet.owl#_Loc"/>
+        <system:hasTag>~Loc</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2776,9 +2745,18 @@ VNst nominally used stem, e.g. TVP maslebkyi-bardu </rdfs:comment>
         <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#SuperordinatedEmbeddedClause"/>
         <system:hasTagStartingWith>superord-emb</system:hasTagStartingWith>
     </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tibet.owl#:pers -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tibet.owl#:pers">
+        <rdf:type rdf:resource="http://purl.org/olia/tibet.owl#Person"/>
+        <system:hasTagContaining>:pers</system:hasTagContaining>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

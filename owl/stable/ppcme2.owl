@@ -1,39 +1,25 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY olia2 "http://purl.org/olia/" >
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY olia "http://purl.org/olia/olia.owl#" >
-    <!ENTITY ppcme2 "http://purl.org/olia/ppcme2.owl#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/ppcme2.owl#"
      xml:base="http://purl.org/olia/ppcme2.owl"
-     xmlns:olia="http://purl.org/olia/olia.owl#"
-     xmlns:ppcme2="http://purl.org/olia/ppcme2.owl#"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:olia="http://purl.org/olia/olia.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:olia2="http://purl.org/olia/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-     xmlns:owl="http://www.w3.org/2002/07/owl#">
-    <owl:Ontology rdf:about="">
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/enm"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >OLiA Annotation Model for the Penn-Helsinki Parsed Corpus of Middle English, 2nd edition (PPCME2)  part-of-speech annotation 
+     xmlns:ppcme2="http://purl.org/olia/ppcme2.owl#"
+     xmlns:system="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/ppcme2.owl">
+        <owl:imports rdf:resource="http://purl.org/olia/olia-top.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/enm"/>
+        <rdfs:comment>OLiA Annotation Model for the Penn-Helsinki Parsed Corpus of Middle English, 2nd edition (PPCME2)  part-of-speech annotation 
 
 Comments are taken from the annotation guideline (http://www.ling.upenn.edu/hist-corpora/annotation/index.html) or follow the original Penn Treebank definitions (see penn.owl, with reference to Santorini 1990)</rdfs:comment>
-        <rdfs:isDefinedBy rdf:datatype="&xsd;string"
-            >http://www.ling.upenn.edu/hist-corpora/annotation/index.html</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy>http://www.ling.upenn.edu/hist-corpora/annotation/index.html</rdfs:isDefinedBy>
         <owl:versionInfo>2017-06-10 moved to stable, fixed URIs, re-run through OWLAPI (CC)
             2017-02-11 tagset corrections (MS)
             2015-06-26 adapted for PPCME2 (MS)
@@ -41,10 +27,26 @@ Comments are taken from the annotation guideline (http://www.ling.upenn.edu/hist
             2011-11-28 fixed typo (PR vs. RP) (CC for PTB)
             2008-04-10 Penn Treebank model created (CC for PTB)           
             
-            MS Maria Sukhareva, Goethe-Universit&#228;t Frankfurt
-            CC Christian Chiarcos, Goethe-Universit&#228;t Frankfurt</owl:versionInfo>
-        <owl:imports rdf:resource="http://purl.org/olia/olia-top.owl"/>
+            MS Maria Sukhareva, Goethe-Universität Frankfurt
+            CC Christian Chiarcos, Goethe-Universität Frankfurt</owl:versionInfo>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/meta-share/meta-share/language -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -90,16 +92,15 @@ Comments are taken from the annotation guideline (http://www.ling.upenn.edu/hist
 
     <!-- http://purl.org/olia/ppcme2.owl#ALSO -->
 
-    <owl:Class rdf:about="#ALSO">
-        <rdfs:subClassOf rdf:resource="#Adverb"/>
-        <rdfs:subClassOf rdf:resource="#Particle"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ALSO">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Adverb"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Particle"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="#PrepositionOrSubordinatingConjunction"/>
+                <owl:complementOf rdf:resource="http://purl.org/olia/ppcme2.owl#PrepositionOrSubordinatingConjunction"/>
             </owl:Class>
         </rdfs:subClassOf>
-        <rdfs:comment
-            >NOT (ONLY) X BUT (ALSO) Y) ALSO, unlike NOT (ONLY), attaches as a sister to the conjunction. 
+        <rdfs:comment>NOT (ONLY) X BUT (ALSO) Y) ALSO, unlike NOT (ONLY), attaches as a sister to the conjunction. 
 the words ALSO (except when = AS) and EKE
 (the latter only in Middle English) 
 It is an adverb and a particle but never a preposition</rdfs:comment>
@@ -109,76 +110,74 @@ It is an adverb and a particle but never a preposition</rdfs:comment>
 
     <!-- http://purl.org/olia/ppcme2.owl#Adjective -->
 
-    <owl:Class rdf:about="#Adjective">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >Adjectives, ordinal numbers, color  terms that modify nouns, complements of copula verbs</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>Adjectives, ordinal numbers, color  terms that modify nouns, complements of copula verbs</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Adverb -->
 
-    <owl:Class rdf:about="#Adverb">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Adverbs</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>Adverbs</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#AdverbialParticle -->
 
-    <owl:Class rdf:about="#AdverbialParticle">
-        <rdfs:subClassOf rdf:resource="#Particle"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#AdverbialParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Particle"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#BackwardDoubleQuote -->
 
-    <owl:Class rdf:about="#BackwardDoubleQuote">
-        <rdfs:subClassOf rdf:resource="#DoubleQuote"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BackwardDoubleQuote">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#DoubleQuote"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Be -->
 
-    <owl:Class rdf:about="#Be">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Be">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#BeImperative -->
 
-    <owl:Class rdf:about="#BeImperative">
-        <rdfs:subClassOf rdf:resource="#Be"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BeImperative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Be"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#BeInfinitive -->
 
-    <owl:Class rdf:about="#BeInfinitive">
-        <rdfs:subClassOf rdf:resource="#Be"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BeInfinitive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Be"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#BePast -->
 
-    <owl:Class rdf:about="#BePast">
-        <rdfs:subClassOf rdf:resource="#Be"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BePast">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Be"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#BePastTense -->
 
-    <owl:Class rdf:about="#BePastTense">
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes the conditional form of the verb to be.
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BePastTense">
+        <rdfs:comment>This category includes the conditional form of the verb to be.
 EXAMPLES:
 If I were/VBD rich...
 If I were/VBD to win the lottery...</rdfs:comment>
@@ -188,16 +187,16 @@ If I were/VBD to win the lottery...</rdfs:comment>
 
     <!-- http://purl.org/olia/ppcme2.owl#BePerfectParticiple -->
 
-    <owl:Class rdf:about="#BePerfectParticiple">
-        <rdfs:subClassOf rdf:resource="#Be"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BePerfectParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Be"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#BePresent -->
 
-    <owl:Class rdf:about="#BePresent">
-        <rdfs:subClassOf rdf:resource="#Be"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BePresent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Be"/>
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -212,117 +211,113 @@ If I were/VBD to win the lottery...</rdfs:comment>
 
     <!-- http://purl.org/olia/ppcme2.owl#BePresentParticiple -->
 
-    <owl:Class rdf:about="#BePresentParticiple">
-        <rdfs:subClassOf rdf:resource="#Be"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BePresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Be"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#BePresentTense -->
 
-    <owl:Class rdf:about="#BePresentTense">
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >These are verbforms in present tense. This class includes 3rd person singular or other than 3rd person singular verbforms.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#BePresentTense">
+        <rdfs:comment>These are verbforms in present tense. This class includes 3rd person singular or other than 3rd person singular verbforms.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CardinalNumber -->
 
-    <owl:Class rdf:about="#CardinalNumber">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >These are cardinal numbers.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#CardinalNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>These are cardinal numbers.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CardinalNumberPossessive -->
 
-    <owl:Class rdf:about="#CardinalNumberPossessive">
-        <rdfs:subClassOf rdf:resource="#CardinalNumber"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#CardinalNumberPossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#CardinalNumber"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Class -->
 
-    <owl:Class rdf:about="#Class"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Class"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Clitic -->
 
-    <owl:Class rdf:about="#Clitic">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Clitic">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Colon -->
 
-    <owl:Class rdf:about="#Colon">
-        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Colon">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Punctuation"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Comma -->
 
-    <owl:Class rdf:about="#Comma">
-        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Comma">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Punctuation"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CommonNoun -->
 
-    <owl:Class rdf:about="#CommonNoun">
-        <rdfs:subClassOf rdf:resource="#Noun"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >These are common nouns in singular or plural, or mass nouns.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#CommonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Noun"/>
+        <rdfs:comment>These are common nouns in singular or plural, or mass nouns.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CommonNounPlural -->
 
-    <owl:Class rdf:about="#CommonNounPlural">
-        <rdfs:subClassOf rdf:resource="#CommonNoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#CommonNounPlural">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#CommonNoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CommonNounPluralPossessive -->
 
-    <owl:Class rdf:about="#CommonNounPluralPossessive">
-        <rdfs:subClassOf rdf:resource="#CommonNounPlural"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#CommonNounPluralPossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#CommonNounPlural"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CommonNounSingular -->
 
-    <owl:Class rdf:about="#CommonNounSingular">
-        <rdfs:subClassOf rdf:resource="#CommonNoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#CommonNounSingular">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#CommonNoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CommonNounSingularPossessive -->
 
-    <owl:Class rdf:about="#CommonNounSingularPossessive">
-        <rdfs:subClassOf rdf:resource="#CommonNounSingular"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#CommonNounSingularPossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#CommonNounSingular"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ComparativeAdjective -->
 
-    <owl:Class rdf:about="#ComparativeAdjective">
-        <rdfs:subClassOf rdf:resource="#Adjective"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >Thenne_ADV quene_NPR Igrayne_NPR waxid_VBD dayly_ADV
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ComparativeAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Adjective"/>
+        <rdfs:comment>Thenne_ADV quene_NPR Igrayne_NPR waxid_VBD dayly_ADV
 gretter_ADJR and_CONJ gretter_ADJR ._.
 he_PRO lovithe_VBP Arthure_NPR bettir_ADVR than_P us_PRO ;_.</rdfs:comment>
     </owl:Class>
@@ -331,20 +326,17 @@ he_PRO lovithe_VBP Arthure_NPR bettir_ADVR than_P us_PRO ;_.</rdfs:comment>
 
     <!-- http://purl.org/olia/ppcme2.owl#ComparativeAdverb -->
 
-    <owl:Class rdf:about="#ComparativeAdverb">
-        <rdfs:subClassOf rdf:resource="#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >These are comparative adverbs.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ComparativeAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Adverb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Complementizer -->
 
-    <owl:Class rdf:about="#Complementizer">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment
-            >THAT, +TE, and variants introducing any kind of subordinate clause are tagged C. See also AS (complementizer), AS, SO, THAN (preposition), IF. 
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Complementizer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>THAT, +TE, and variants introducing any kind of subordinate clause are tagged C. See also AS (complementizer), AS, SO, THAN (preposition), IF. 
 
 and_CONJ sei+t_VBP +tat_C it_PRO was_BED ano+ter_D+OTHER body_N
 
@@ -364,18 +356,17 @@ habbe+d_HVP forhaten_VBN te_TO laten_VB</rdfs:comment>
 
     <!-- http://purl.org/olia/ppcme2.owl#Conjunction -->
 
-    <owl:Class rdf:about="#Conjunction">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Conjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CoordinatingConjunction -->
 
-    <owl:Class rdf:about="#CoordinatingConjunction">
-        <rdfs:subClassOf rdf:resource="#Conjunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >The following items are tagged CONJ when used as coordinating conjunctions:  AND, NE, NEITHER, NOR, OR, OTHER (= OR)
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Conjunction"/>
+        <rdfs:comment>The following items are tagged CONJ when used as coordinating conjunctions:  AND, NE, NEITHER, NOR, OR, OTHER (= OR)
 It is possible for two coordinating conjunctions to be adjacent.
 
     And_CONJ nor_CONJ is this the right answer .
@@ -397,16 +388,15 @@ In instances of correlative conjunction, each of the correlative conjunctions is
 
     <!-- http://purl.org/olia/ppcme2.owl#DatatypeProperty -->
 
-    <owl:Class rdf:about="#DatatypeProperty"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DatatypeProperty"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Determiner -->
 
-    <owl:Class rdf:about="#Determiner">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >The following words are tagged D when used as determiners:  A(N), THAT, THE, THESE, THIS, THOSE, YON, YONDER
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Determiner">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>The following words are tagged D when used as determiners:  A(N), THAT, THE, THESE, THIS, THOSE, YON, YONDER
 Demonstratives are always tagged D, regardless of whether they precede a noun. Note the difference between ordinary determiners and wh- words in this regard  and_CONJ cristened_VBD hym_PRO at_P +te_D citee_N Dortik_NPR ,_, +tat_D     is_BEP Dorchestre_NPR 
     +tat_D is_BEP Friday_NPR
     +Tis_D +tat_C is_BEP i-seide_VAN in_P +te_D comyn_ADJ table_N
@@ -418,88 +408,88 @@ Demonstratives are always tagged D, regardless of whether they precede a noun. N
 
     <!-- http://purl.org/olia/ppcme2.owl#Do -->
 
-    <owl:Class rdf:about="#Do">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Do">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoImperative -->
 
-    <owl:Class rdf:about="#DoImperative">
-        <rdfs:subClassOf rdf:resource="#Do"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DoImperative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Do"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoInfinitive -->
 
-    <owl:Class rdf:about="#DoInfinitive">
-        <rdfs:subClassOf rdf:resource="#Do"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DoInfinitive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Do"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoPassiveParticiple -->
 
-    <owl:Class rdf:about="#DoPassiveParticiple">
-        <rdfs:subClassOf rdf:resource="#Do"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DoPassiveParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Do"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoPast -->
 
-    <owl:Class rdf:about="#DoPast">
-        <rdfs:subClassOf rdf:resource="#Do"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DoPast">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Do"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoPerfectParticiple -->
 
-    <owl:Class rdf:about="#DoPerfectParticiple">
-        <rdfs:subClassOf rdf:resource="#Do"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DoPerfectParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Do"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoPresent -->
 
-    <owl:Class rdf:about="#DoPresent">
-        <rdfs:subClassOf rdf:resource="#Do"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DoPresent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Do"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoPresentParticiple -->
 
-    <owl:Class rdf:about="#DoPresentParticiple">
-        <rdfs:subClassOf rdf:resource="#Do"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DoPresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Do"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoubleQuote -->
 
-    <owl:Class rdf:about="#DoubleQuote">
-        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#DoubleQuote">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Punctuation"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ELSE -->
 
-    <owl:Class rdf:about="#ELSE">
-        <rdfs:subClassOf rdf:resource="#Particle"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ELSE">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Particle"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="#PrepositionOrSubordinatingConjunction"/>
+                <owl:complementOf rdf:resource="http://purl.org/olia/ppcme2.owl#Adverb"/>
             </owl:Class>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="#Adverb"/>
+                <owl:complementOf rdf:resource="http://purl.org/olia/ppcme2.owl#PrepositionOrSubordinatingConjunction"/>
             </owl:Class>
         </rdfs:subClassOf>
     </owl:Class>
@@ -508,19 +498,17 @@ Demonstratives are always tagged D, regardless of whether they precede a noun. N
 
     <!-- http://purl.org/olia/ppcme2.owl#ExistentialThere -->
 
-    <owl:Class rdf:about="#ExistentialThere">
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >Existential &quot;there&quot; is the unstressed &quot;there&quot; that triggers inversion of the inflected verb and the logical subject of a sentence, e.g. &quot;There/EX was a party in progress.&quot;, &quot;There/EX ensued a melee.&quot;.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ExistentialThere">
+        <rdfs:comment>Existential &quot;there&quot; is the unstressed &quot;there&quot; that triggers inversion of the inflected verb and the logical subject of a sentence, e.g. &quot;There/EX was a party in progress.&quot;, &quot;There/EX ensued a melee.&quot;.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#FocusParticle -->
 
-    <owl:Class rdf:about="#FocusParticle">
-        <rdfs:subClassOf rdf:resource="#Particle"/>
-        <rdfs:comment
-            >The following words, all of which also have other uses, are tagged FP when used as focus particles:
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#FocusParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Particle"/>
+        <rdfs:comment>The following words, all of which also have other uses, are tagged FP when used as focus particles:
 
     all periods 	ALONE, BUT, EVEN, ONLY
     only Middle English 	FORTH, ONE, YET</rdfs:comment>
@@ -530,18 +518,17 @@ Demonstratives are always tagged D, regardless of whether they precede a noun. N
 
     <!-- http://purl.org/olia/ppcme2.owl#ForToClitic -->
 
-    <owl:Class rdf:about="#ForToClitic">
-        <rdfs:subClassOf rdf:resource="#Clitic"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ForToClitic">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Clitic"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ForeignWord -->
 
-    <owl:Class rdf:about="#ForeignWord">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >If a potential foreign word has an entry in the OED, it is not tagged as FW. This is true even for nouns that retain a foreign plural.
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ForeignWord">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>If a potential foreign word has an entry in the OED, it is not tagged as FW. This is true even for nouns that retain a foreign plural.
 
 Abbreviations of foreign terms do not count as words in the above sense and are tagged as FW. Some examples include:
 
@@ -563,122 +550,121 @@ Foreign language titles are generally tagged FW.
 
     <!-- http://purl.org/olia/ppcme2.owl#ForwardDoubleQuote -->
 
-    <owl:Class rdf:about="#ForwardDoubleQuote">
-        <rdfs:subClassOf rdf:resource="#DoubleQuote"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ForwardDoubleQuote">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#DoubleQuote"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#FullStop -->
 
-    <owl:Class rdf:about="#FullStop">
-        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#FullStop">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Punctuation"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Have -->
 
-    <owl:Class rdf:about="#Have">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Have">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#HaveImperative -->
 
-    <owl:Class rdf:about="#HaveImperative">
-        <rdfs:subClassOf rdf:resource="#Have"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#HaveImperative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Have"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#HaveInfinitive -->
 
-    <owl:Class rdf:about="#HaveInfinitive">
-        <rdfs:subClassOf rdf:resource="#Have"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#HaveInfinitive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Have"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#HavePassiveParticiple -->
 
-    <owl:Class rdf:about="#HavePassiveParticiple">
-        <rdfs:subClassOf rdf:resource="#Have"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#HavePassiveParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Have"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#HavePast -->
 
-    <owl:Class rdf:about="#HavePast">
-        <rdfs:subClassOf rdf:resource="#Have"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#HavePast">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Have"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#HavePerfectParticiple -->
 
-    <owl:Class rdf:about="#HavePerfectParticiple">
-        <rdfs:subClassOf rdf:resource="#Have"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#HavePerfectParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Have"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#HavePresent -->
 
-    <owl:Class rdf:about="#HavePresent">
-        <rdfs:subClassOf rdf:resource="#Have"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#HavePresent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Have"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#HavePresentParticiple -->
 
-    <owl:Class rdf:about="#HavePresentParticiple">
-        <rdfs:subClassOf rdf:resource="#Have"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#HavePresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Have"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Imperative -->
 
-    <owl:Class rdf:about="#Imperative">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Imperative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#IndefinitePronoun -->
 
-    <owl:Class rdf:about="#IndefinitePronoun">
-        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#IndefinitePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Pronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#IndefiniteSubjectPronoun -->
 
-    <owl:Class rdf:about="#IndefiniteSubjectPronoun">
-        <rdfs:subClassOf rdf:resource="#Pronoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#IndefiniteSubjectPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Pronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Infinitive -->
 
-    <owl:Class rdf:about="#Infinitive">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Infinitive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Interjection -->
 
-    <owl:Class rdf:about="#Interjection">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >INTJ is only used to tag words that are difficult or impossible to tag any other way, like the following:
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Interjection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>INTJ is only used to tag words that are difficult or impossible to tag any other way, like the following:
 
     AH, ALAS, AMEN, AYE, FAREWELL, FIE, GAR (&lt; God), GOOD-BYE, GRAMERCY, HA, HULLO, LA, LO, NAY, NO, OH, PARDEE, POOF, WASSAIL, WELAWEI, YEA, YES, WITECRIST</rdfs:comment>
     </owl:Class>
@@ -687,81 +673,77 @@ Foreign language titles are generally tagged FW.
 
     <!-- http://purl.org/olia/ppcme2.owl#LIneBreak -->
 
-    <owl:Class rdf:about="#LIneBreak">
-        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#LIneBreak">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Punctuation"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LeftBracket -->
 
-    <owl:Class rdf:about="#LeftBracket">
-        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#LeftBracket">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Punctuation"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LeftCurlyBracket -->
 
-    <owl:Class rdf:about="#LeftCurlyBracket">
-        <rdfs:subClassOf rdf:resource="#LeftBracket"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#LeftCurlyBracket">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#LeftBracket"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LeftRoundBracket -->
 
-    <owl:Class rdf:about="#LeftRoundBracket">
-        <rdfs:subClassOf rdf:resource="#LeftBracket"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#LeftRoundBracket">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#LeftBracket"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LeftSquareBracket -->
 
-    <owl:Class rdf:about="#LeftSquareBracket">
-        <rdfs:subClassOf rdf:resource="#LeftBracket"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#LeftSquareBracket">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#LeftBracket"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ListMarker -->
 
-    <owl:Class rdf:about="#ListMarker"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ListMarker"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ModalVerb -->
 
-    <owl:Class rdf:about="#ModalVerb">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes all verbs that don&#39;t take an -s ending in the third person singular present: &quot;can&quot;, 
-&quot;could&quot;, (&quot;dare&quot;), &quot;may&quot;, &quot;might&quot;, &quot;must&quot;, &quot;ought&quot;, &quot;shall&quot;, &quot;should&quot;, &quot;will&quot;, &quot;would&quot;.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ModalVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ModalVerbUntensed -->
 
-    <owl:Class rdf:about="#ModalVerbUntensed">
-        <rdfs:subClassOf rdf:resource="#ModalVerb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ModalVerbUntensed">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#ModalVerb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#NamedIndividual -->
 
-    <owl:Class rdf:about="#NamedIndividual"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Negation -->
 
-    <owl:Class rdf:about="#Negation">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment
-            >The negative particles NE and NOT are tagged NEG, as are NO and NONE in WHETHER OR NOT clauses. NE is also used as a coordinating conjunction (CONJ), and NOT is also used as a quantifier (Q).
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Negation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>The negative particles NE and NOT are tagged NEG, as are NO and NONE in WHETHER OR NOT clauses. NE is also used as a coordinating conjunction (CONJ), and NOT is also used as a quantifier (Q).
 
     non_Q senne_N ne_NEG mai_MD bien_BE idon_DAN bute_P +durh_P
     unhersumnesse_N</rdfs:comment>
@@ -771,164 +753,152 @@ Foreign language titles are generally tagged FW.
 
     <!-- http://purl.org/olia/ppcme2.owl#Noun -->
 
-    <owl:Class rdf:about="#Noun">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This is a class, we inserted to structure the tagset.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>This is a class, we inserted to structure the tagset.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ObjectProperty -->
 
-    <owl:Class rdf:about="#ObjectProperty"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ObjectProperty"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#OneNumber -->
 
-    <owl:Class rdf:about="#OneNumber">
-        <rdfs:subClassOf rdf:resource="#CardinalNumber"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#OneNumber">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#CardinalNumber"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#OnePossessive -->
 
-    <owl:Class rdf:about="#OnePossessive">
-        <rdfs:subClassOf rdf:resource="#OneNumber"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#OnePossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#OneNumber"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Ontology -->
 
-    <owl:Class rdf:about="#Ontology"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Ontology"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#OtherPronoun -->
 
-    <owl:Class rdf:about="#OtherPronoun">
-        <rdfs:subClassOf rdf:resource="#IndefinitePronoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#OtherPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#IndefinitePronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#OtherPronounPlural -->
 
-    <owl:Class rdf:about="#OtherPronounPlural">
-        <rdfs:subClassOf rdf:resource="#OtherPronoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#OtherPronounPlural">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#OtherPronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#OtherPronounPluralPossessive -->
 
-    <owl:Class rdf:about="#OtherPronounPluralPossessive">
-        <rdfs:subClassOf rdf:resource="#OtherPronounPlural"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#OtherPronounPluralPossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#OtherPronounPlural"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#OtherPronounPossessive -->
 
-    <owl:Class rdf:about="#OtherPronounPossessive">
-        <rdfs:subClassOf rdf:resource="#OtherPronoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#OtherPronounPossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#OtherPronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Particle -->
 
-    <owl:Class rdf:about="#Particle">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Particle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PassiveParticiple -->
 
-    <owl:Class rdf:about="#PassiveParticiple">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PassiveParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PastParticiple -->
 
-    <owl:Class rdf:about="#PastParticiple">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This is a verb in past participle.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PastParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PastVerb -->
 
-    <owl:Class rdf:about="#PastVerb">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PastVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PerfectParticiple -->
 
-    <owl:Class rdf:about="#PerfectParticiple">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PerfectParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PersonalPronoun -->
 
-    <owl:Class rdf:about="#PersonalPronoun">
-        <rdfs:subClassOf rdf:resource="#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes the personal pronouns proper,  without regard for case distinctions (&quot;I&quot;, &quot;me&quot;, &quot;you&quot;, &quot;he&quot;, &quot;him&quot;, etc.), the reflexive pronouns ending in -self or -selves, and the nominal possessive pronouns &quot;mine&quot;, &quot;yours&quot;, &quot;his&quot;, &quot;hers&quot;, &quot;ours&quot; and &quot;theirs&quot;.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Pronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PossessiveEnding -->
 
-    <owl:Class rdf:about="#PossessiveEnding">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >The possessive ending on nouns ending in &#39;s or  is split off by the tagging algorithm and tagged as if it
-were a separate word. e.g. &quot;John/ NP &#39;s/POS idea&quot;, &quot;the parents/NNS&#39;/POS distress&quot;.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PossessiveEnding">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PossessivePronoun -->
 
-    <owl:Class rdf:about="#PossessivePronoun">
-        <rdfs:subClassOf rdf:resource="#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes the adjectival possessive forms &quot;my&quot;, &quot;your&quot;, &quot;his&quot;, &quot;her&quot;, &quot;its&quot;, &quot;one&#39;s&quot;, &quot;our&quot; and &quot;their&quot;.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PossessivePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Pronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PossessiveWhPronoun -->
 
-    <owl:Class rdf:about="#PossessiveWhPronoun">
-        <rdfs:subClassOf rdf:resource="#PossessivePronoun"/>
-        <rdfs:subClassOf rdf:resource="#WhPronoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PossessiveWhPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#PossessivePronoun"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#WhPronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PrepositionOrSubordinatingConjunction -->
 
-    <owl:Class rdf:about="#PrepositionOrSubordinatingConjunction">
-        <rdfs:subClassOf rdf:resource="#Conjunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >We make no explicit distinction between prepositions and subordinating conjunctions. (The distinction is not lost, however - a preposition is an IN that precedes a noun phrase or a prepositional phrase, and a subordinate conjunction is an IN that precedes a clause).
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PrepositionOrSubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Conjunction"/>
+        <rdfs:comment>We make no explicit distinction between prepositions and subordinating conjunctions. (The distinction is not lost, however - a preposition is an IN that precedes a noun phrase or a prepositional phrase, and a subordinate conjunction is an IN that precedes a clause).
 The preposition &quot;to&quot; has its own special tag TO.</rdfs:comment>
     </owl:Class>
     
@@ -936,260 +906,253 @@ The preposition &quot;to&quot; has its own special tag TO.</rdfs:comment>
 
     <!-- http://purl.org/olia/ppcme2.owl#Present -->
 
-    <owl:Class rdf:about="#Present">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Present">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PresentParticiple -->
 
-    <owl:Class rdf:about="#PresentParticiple">
-        <rdfs:subClassOf rdf:resource="#Verb"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#PresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Verb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Pronoun -->
 
-    <owl:Class rdf:about="#Pronoun">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This is a class, we inserted to structure the tagset.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ProperNoun -->
 
-    <owl:Class rdf:about="#ProperNoun">
-        <rdfs:subClassOf rdf:resource="#Noun"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >These are singular or plural proper nouns.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ProperNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Noun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ProperNounPlural -->
 
-    <owl:Class rdf:about="#ProperNounPlural">
-        <rdfs:subClassOf rdf:resource="#ProperNoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ProperNounPlural">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#ProperNoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ProperNounPluralPossessive -->
 
-    <owl:Class rdf:about="#ProperNounPluralPossessive">
-        <rdfs:subClassOf rdf:resource="#ProperNounPlural"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ProperNounPluralPossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#ProperNounPlural"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ProperNounSingular -->
 
-    <owl:Class rdf:about="#ProperNounSingular">
-        <rdfs:subClassOf rdf:resource="#ProperNoun"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ProperNounSingular">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#ProperNoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ProperNounSingularPossessive -->
 
-    <owl:Class rdf:about="#ProperNounSingularPossessive">
-        <rdfs:subClassOf rdf:resource="#ProperNounSingular"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ProperNounSingularPossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#ProperNounSingular"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Punctuation -->
 
-    <owl:Class rdf:about="#Punctuation">
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Punctuation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="#PrepositionOrSubordinatingConjunction"/>
+                <owl:complementOf rdf:resource="http://purl.org/olia/ppcme2.owl#PrepositionOrSubordinatingConjunction"/>
             </owl:Class>
         </rdfs:subClassOf>
-        <owl:versionInfo
-            >Not addressed by Santorini (1990), but produced by real-world taggers, also cf. http://www.cis.upenn.edu/~treebank/tokenization.html for the treatment of PTB punctuation tags in the parsed Penn Treebank.</owl:versionInfo>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Quantifier -->
 
-    <owl:Class rdf:about="#Quantifier">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Quantifier">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#QuantifierComparative -->
 
-    <owl:Class rdf:about="#QuantifierComparative">
-        <rdfs:subClassOf rdf:resource="#Quantifier"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#QuantifierComparative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Quantifier"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#QuantifierPossessive -->
 
-    <owl:Class rdf:about="#QuantifierPossessive">
-        <rdfs:subClassOf rdf:resource="#Quantifier"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#QuantifierPossessive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Quantifier"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#QuantifierSuperlative -->
 
-    <owl:Class rdf:about="#QuantifierSuperlative">
-        <rdfs:subClassOf rdf:resource="#Quantifier"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#QuantifierSuperlative">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Quantifier"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RightBracket -->
 
-    <owl:Class rdf:about="#RightBracket">
-        <rdfs:subClassOf rdf:resource="#Punctuation"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#RightBracket">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Punctuation"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RightCurlyBracket -->
 
-    <owl:Class rdf:about="#RightCurlyBracket">
-        <rdfs:subClassOf rdf:resource="#RightBracket"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#RightCurlyBracket">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#RightBracket"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RightRoundBracket -->
 
-    <owl:Class rdf:about="#RightRoundBracket">
-        <rdfs:subClassOf rdf:resource="#RightBracket"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#RightRoundBracket">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#RightBracket"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RightSquareBracket -->
 
-    <owl:Class rdf:about="#RightSquareBracket">
-        <rdfs:subClassOf rdf:resource="#RightBracket"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#RightSquareBracket">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#RightBracket"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#SUCH -->
 
-    <owl:Class rdf:about="#SUCH"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#SUCH"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#SuperlativeAdjective -->
 
-    <owl:Class rdf:about="#SuperlativeAdjective">
-        <rdfs:subClassOf rdf:resource="#Adjective"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >in_P the_D greatest_ADJS church_N of_P London_NPR</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#SuperlativeAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Adjective"/>
+        <rdfs:comment>in_P the_D greatest_ADJS church_N of_P London_NPR</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#SuperlativeAdverb -->
 
-    <owl:Class rdf:about="#SuperlativeAdverb">
-        <rdfs:subClassOf rdf:resource="#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >These are superlative adverbs.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#SuperlativeAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Adverb"/>
+        <rdfs:comment>These are superlative adverbs.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Symbol -->
 
-    <owl:Class rdf:about="#Symbol">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This tag should be used for mathematical, scientific and technical symbols or expressions that aren&#39;t words of English. It should not used for any and all technical expressions. For instance, the names of chemicals, units of measurements (including abbreviations thereof)  and the like should be tagged as nouns.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Symbol">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
+        <rdfs:comment>This tag should be used for mathematical, scientific and technical symbols or expressions that aren&apos;t words of English. It should not used for any and all technical expressions. For instance, the names of chemicals, units of measurements (including abbreviations thereof)  and the like should be tagged as nouns.</rdfs:comment>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Tag -->
 
-    <owl:Class rdf:about="#Tag">
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Tag">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Thing -->
 
-    <owl:Class rdf:about="#Thing"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Thing"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ToParticle -->
 
-    <owl:Class rdf:about="#ToParticle">
-        <rdfs:subClassOf rdf:resource="#Particle"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#ToParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Particle"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Verb -->
 
-    <owl:Class rdf:about="#Verb">
-        <rdfs:subClassOf rdf:resource="#Tag"/>
-        <rdfs:comment
-            >Subjunctive forms and not distinguished from indicative forms</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Tag"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WhAdverb -->
 
-    <owl:Class rdf:about="#WhAdverb">
-        <rdfs:subClassOf rdf:resource="#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes &quot;how&quot;, &quot;where&quot;, &quot;why&quot;, etc. When in a temporal sense is tagged as wh-adverb.  In the sense of &quot;if&quot;,  on the other hand, it is a subordinating conjunction.
-EXAMPLES:
-&quot;When/WRB he finally arrived,  I was on my way out.&quot;</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#WhAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Adverb"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WhDeterminer -->
 
-    <owl:Class rdf:about="#WhDeterminer">
-        <rdfs:subClassOf rdf:resource="#Determiner"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes &quot;which&quot;, as well as that when it is used as a relative pronoun.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#WhDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Determiner"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WhPronoun -->
 
-    <owl:Class rdf:about="#WhPronoun">
-        <rdfs:subClassOf rdf:resource="#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >This category includes &quot;what&quot;, &quot;who&quot; and &quot;whom&quot;.</rdfs:comment>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#WhPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/ppcme2.owl#Pronoun"/>
     </owl:Class>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WhetherConjunction -->
 
-    <owl:Class rdf:about="#WhetherConjunction"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#WhetherConjunction"/>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#nonfinalpunctuation -->
 
-    <owl:Class rdf:about="#nonfinalpunctuation"/>
+    <owl:Class rdf:about="http://purl.org/olia/ppcme2.owl#nonfinalpunctuation"/>
     
 
 
@@ -1201,7 +1164,7 @@ EXAMPLES:
 
     <!-- http://www.w3.org/2002/07/owl#Thing -->
 
-    <owl:Class rdf:about="&owl;Thing"/>
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
     
 
 
@@ -1218,451 +1181,467 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl -->
 
-    <Ontology rdf:about="">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Ontology>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Ontology"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ADJ -->
 
-    <Adjective rdf:about="#ADJ">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADJ</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >adjective, ordinal numeral, ordinal number</rdfs:comment>
-    </Adjective>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ADJ">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Adjective"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>ADJ</system:hasTag>
+        <rdfs:comment>adjective, ordinal numeral, ordinal number</rdfs:comment>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ADJR -->
 
-    <ComparativeAdjective rdf:about="#ADJR">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADJR</system:hasTag>
-    </ComparativeAdjective>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ADJR">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ComparativeAdjective"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>ADJR</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ADJS -->
 
-    <owl:Thing rdf:about="#ADJS">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#SuperlativeAdjective"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADJS</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ADJS">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#SuperlativeAdjective"/>
+        <system:hasTag>ADJS</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ADV -->
 
-    <owl:Thing rdf:about="#ADV">
-        <rdf:type rdf:resource="#Adverb"/>
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADV</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >adverb, negation</rdfs:comment>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ADV">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Adverb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>ADV</system:hasTag>
+        <rdfs:comment>adverb, negation</rdfs:comment>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#CONJ -->
 
-    <owl:Thing rdf:about="#CONJ">
-        <rdf:type rdf:resource="#CoordinatingConjunction"/>
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <system:hasTag rdf:datatype="&xsd;string">CONJ</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#CONJ">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#CoordinatingConjunction"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>CONJ</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Comma -->
 
-    <Class rdf:about="#Comma">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Comma">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ComparativeAdverb -->
 
-    <owl:Class rdf:about="#ComparativeAdverb">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="#ComparativeAdverb"/>
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ComparativeAdverb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ComparativeAdverb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
         <system:hasTag>ADVR</system:hasTag>
-    </owl:Class>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#D -->
 
-    <NamedIndividual rdf:about="#D">
-        <rdf:type rdf:resource="#Determiner"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">D</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >determiner, also article</rdfs:comment>
-    </NamedIndividual>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#D">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Determiner"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>D</system:hasTag>
+        <rdfs:comment>determiner, also article</rdfs:comment>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#DoubleQuote -->
 
-    <owl:Thing rdf:about="#DoubleQuote">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#DoubleQuote">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#EX -->
 
-    <ExistentialThere rdf:about="#EX">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">EX</system:hasTag>
-    </ExistentialThere>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#EX">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ExistentialThere"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>EX</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#FW -->
 
-    <Thing rdf:about="#FW">
-        <rdf:type rdf:resource="#ForeignWord"/>
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">FW</system:hasTag>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#FW">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ForeignWord"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>FW</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ForwardDoubleQuote -->
 
-    <Class rdf:about="#ForwardDoubleQuote">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ForwardDoubleQuote">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#FullStop -->
 
-    <Thing rdf:about="#FullStop">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#FullStop">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#IN -->
 
-    <owl:Thing rdf:about="#IN">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <system:hasTag rdf:datatype="&xsd;string">IN</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#IN">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>IN</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LS -->
 
-    <owl:Thing rdf:about="#LS">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <system:hasTag rdf:datatype="&xsd;string">LS</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#LS">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>LS</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LeftBracket -->
 
-    <Thing rdf:about="#LeftBracket">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#LeftBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LeftCurlyBracket -->
 
-    <owl:Thing rdf:about="#LeftCurlyBracket">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="#Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#LeftCurlyBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LeftRoundBracket -->
 
-    <owl:Thing rdf:about="#LeftRoundBracket">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="#Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#LeftRoundBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#LeftSquareBracket -->
 
-    <Class rdf:about="#LeftSquareBracket">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#LeftSquareBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ListItemMarker -->
 
-    <Class rdf:about="#ListItemMarker">
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ListItemMarker">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#MD -->
 
-    <NamedIndividual rdf:about="#MD">
-        <rdf:type rdf:resource="#ModalVerb"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">MD</system:hasTag>
-    </NamedIndividual>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#MD">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ModalVerb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>MD</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ModalVerb -->
 
-    <owl:Thing rdf:about="#ModalVerb">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ModalVerb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#NN -->
 
-    <Thing rdf:about="#NN">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">NN</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >Noun singular or mass</rdfs:comment>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#NN">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>NN</system:hasTag>
+        <rdfs:comment>Noun singular or mass</rdfs:comment>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#NNP -->
 
-    <NamedIndividual rdf:about="#NNP">
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">NNP</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >Proper noun singular</rdfs:comment>
-    </NamedIndividual>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#NNP">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>NNP</system:hasTag>
+        <rdfs:comment>Proper noun singular</rdfs:comment>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#NNPS -->
 
-    <owl:Thing rdf:about="#NNPS">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <system:hasTag rdf:datatype="&xsd;string">NNPS</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >Proper noun plural</rdfs:comment>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#NNPS">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>NNPS</system:hasTag>
+        <rdfs:comment>Proper noun plural</rdfs:comment>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#NNS -->
 
-    <Thing rdf:about="#NNS">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">NNS</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string">Noun plural</rdfs:comment>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#NNS">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>NNS</system:hasTag>
+        <rdfs:comment>Noun plural</rdfs:comment>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#NamedIndividual -->
 
-    <Class rdf:about="#NamedIndividual">
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#NamedIndividual">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ObjectProperty -->
 
-    <owl:Thing rdf:about="#ObjectProperty">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ObjectProperty">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Ontology -->
 
-    <owl:Thing rdf:about="#Ontology">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="#Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Ontology">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PP -->
 
-    <NamedIndividual rdf:about="#PP">
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">PP</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >PP is the used Tag in &quot;Part-of-Speech Tagging Guidelines for the Penn Treebank Project&quot;,  Beatrice Santorini, 15.03.1991&quot;
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PP">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>PP</system:hasTag>
+        <rdfs:comment>PP is the used Tag in &quot;Part-of-Speech Tagging Guidelines for the Penn Treebank Project&quot;,  Beatrice Santorini, 15.03.1991&quot;
 (http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/Penn-Treebank-Tagset.ps 21.11.07)</rdfs:comment>
-    </NamedIndividual>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PPpossessive -->
 
-    <Thing rdf:about="#PPpossessive">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">PP$</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >PP$is the used Tag in &quot;Part-of-Speech Tagging Guidelines for the Penn Treebank Project&quot;,  Beatrice Santorini, 15.03.1991&quot;
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PPpossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>PP$</system:hasTag>
+        <rdfs:comment>PP$is the used Tag in &quot;Part-of-Speech Tagging Guidelines for the Penn Treebank Project&quot;,  Beatrice Santorini, 15.03.1991&quot;
 (http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/Penn-Treebank-Tagset.ps 21.11.07)</rdfs:comment>
-    </Thing>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PRO -->
 
-    <owl:Thing rdf:about="#PRO">
-        <rdf:type rdf:resource="#PersonalPronoun"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PRO">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PersonalPronoun"/>
         <system:hasTag>PRO</system:hasTag>
-    </owl:Thing>
-    
-
-
-    <!-- http://purl.org/olia/ppcme2.owl#PRO$ -->
-
-    <owl:Thing rdf:about="#PRO$">
-        <rdf:type rdf:resource="#PossessivePronoun"/>
-        <system:hasTag>PRO$</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PRP -->
 
-    <owl:Thing rdf:about="#PRP">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRP</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >PRP is the used Tag in &quot;Part of Speech Tagging Guidelines for the Penn Treebank Project, June 1990&quot; (ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz  21.11.07)</rdfs:comment>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PRP">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>PRP</system:hasTag>
+        <rdfs:comment>PRP is the used Tag in &quot;Part of Speech Tagging Guidelines for the Penn Treebank Project, June 1990&quot; (ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz  21.11.07)</rdfs:comment>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PRPpossessive -->
 
-    <NamedIndividual rdf:about="#PRPpossessive">
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRP$</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >PRP$ is the used Tag in &quot;Part of Speech Tagging Guidelines for the Penn Treebank Project, June 1990&quot; (ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz  21.11.07)</rdfs:comment>
-    </NamedIndividual>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PRPpossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>PRP$</system:hasTag>
+        <rdfs:comment>PRP$ is the used Tag in &quot;Part of Speech Tagging Guidelines for the Penn Treebank Project, June 1990&quot; (ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz  21.11.07)</rdfs:comment>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PastParticiple -->
 
-    <owl:Thing rdf:about="#PastParticiple">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="#Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PastParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PersonalPronoun -->
 
-    <owl:Thing rdf:about="#PersonalPronoun">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="#Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PersonalPronoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PossessiveEnding -->
 
-    <owl:Thing rdf:about="#PossessiveEnding">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PossessiveEnding">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PossessivePronoun -->
 
-    <Class rdf:about="#PossessivePronoun">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PossessivePronoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#PossessiveWhPronoun -->
 
-    <owl:Thing rdf:about="#PossessiveWhPronoun">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PossessiveWhPronoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Pronoun -->
 
-    <owl:Thing rdf:about="#Pronoun">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Pronoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#ProperNoun -->
 
-    <owl:Thing rdf:about="#ProperNoun">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#ProperNoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Punctuation -->
 
-    <Class rdf:about="#Punctuation">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Punctuation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Q -->
 
-    <Quantifier rdf:about="#Q">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Q">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Quantifier"/>
         <system:hasTag>Q</system:hasTag>
-    </Quantifier>
-    
-
-
-    <!-- http://purl.org/olia/ppcme2.owl#Q$ -->
-
-    <owl:Thing rdf:about="#Q$">
-        <rdf:type rdf:resource="#QuantifierPossessive"/>
-        <system:hasTag>Q$</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#QR -->
 
-    <owl:Thing rdf:about="#QR">
-        <rdf:type rdf:resource="#QuantifierComparative"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#QR">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#QuantifierComparative"/>
         <system:hasTag>QR</system:hasTag>
     </owl:Thing>
     
@@ -1670,96 +1649,107 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#QS -->
 
-    <QuantifierSuperlative rdf:about="#QS">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#QS">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#QuantifierSuperlative"/>
         <system:hasTag>QS</system:hasTag>
-    </QuantifierSuperlative>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RP -->
 
-    <AdverbialParticle rdf:about="#RP">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">RP</system:hasTag>
-    </AdverbialParticle>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#RP">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#AdverbialParticle"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>RP</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Restriction -->
 
-    <Class rdf:about="#Restriction">
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Restriction">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RightBracket -->
 
-    <owl:Thing rdf:about="#RightBracket">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#RightBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RightCurlyBracket -->
 
-    <Class rdf:about="#RightCurlyBracket">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#RightCurlyBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RightRoundBracket -->
 
-    <Class rdf:about="#RightRoundBracket">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#RightRoundBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#RightSquareBracket -->
 
-    <owl:Thing rdf:about="#RightSquareBracket">
-        <rdf:type rdf:resource="#Class"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#RightSquareBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#TO -->
 
-    <ToParticle rdf:about="#TO">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">TO</system:hasTag>
-    </ToParticle>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#TO">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ToParticle"/>
+        <system:hasTag>TO</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Tag -->
 
-    <Class rdf:about="#Tag">
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Tag">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Thing -->
 
-    <Class rdf:about="#Thing">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Thing">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#VAG -->
 
-    <owl:Thing rdf:about="#VAG">
-        <rdf:type rdf:resource="#PresentParticiple"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VAG">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PresentParticiple"/>
         <system:hasTag>VAG</system:hasTag>
     </owl:Thing>
     
@@ -1767,8 +1757,9 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#VAN -->
 
-    <owl:Thing rdf:about="#VAN">
-        <rdf:type rdf:resource="#PassiveParticiple"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VAN">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PassiveParticiple"/>
         <system:hasTag>VAN</system:hasTag>
     </owl:Thing>
     
@@ -1776,37 +1767,41 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#VB -->
 
-    <owl:Thing rdf:about="#VB">
-        <rdf:type rdf:resource="#Infinitive"/>
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <system:hasTag rdf:datatype="&xsd;string">VB</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VB">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Infinitive"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>VB</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#VBD -->
 
-    <NamedIndividual rdf:about="#VBD">
-        <rdf:type rdf:resource="#PastVerb"/>
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">VBD</system:hasTag>
-    </NamedIndividual>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VBD">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PastVerb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>VBD</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#VBG -->
 
-    <owl:Thing rdf:about="#VBG">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <system:hasTag rdf:datatype="&xsd;string">VBG</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VBG">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>VBG</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#VBI -->
 
-    <owl:Thing rdf:about="#VBI">
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VBI">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <system:hasTag>VBI</system:hasTag>
     </owl:Thing>
     
@@ -1814,61 +1809,65 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#VBN -->
 
-    <NamedIndividual rdf:about="#VBN">
-        <rdf:type rdf:resource="#PastParticiple"/>
-        <rdf:type rdf:resource="#PerfectParticiple"/>
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">VBN</system:hasTag>
-    </NamedIndividual>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VBN">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PastParticiple"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PerfectParticiple"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>VBN</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#VBP -->
 
-    <owl:Thing rdf:about="#VBP">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#Present"/>
-        <system:hasTag rdf:datatype="&xsd;string">VBP</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >Verb non 3-rd person singular present</rdfs:comment>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VBP">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Present"/>
+        <system:hasTag>VBP</system:hasTag>
+        <rdfs:comment>Verb non 3-rd person singular present</rdfs:comment>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#VBZ -->
 
-    <Thing rdf:about="#VBZ">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">VBZ</system:hasTag>
-        <rdfs:comment rdf:datatype="&xsd;string"
-            >Verb 3-rd person singular present</rdfs:comment>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#VBZ">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>VBZ</system:hasTag>
+        <rdfs:comment>Verb 3-rd person singular present</rdfs:comment>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#Verb -->
 
-    <Class rdf:about="#Verb">
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Verb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WADV -->
 
-    <WhAdverb rdf:about="#WADV">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WADV">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#WhAdverb"/>
         <system:hasTag>WADV</system:hasTag>
-    </WhAdverb>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WARD -->
 
-    <owl:Thing rdf:about="#WARD">
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WARD">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <system:hasTag>WARD</system:hasTag>
     </owl:Thing>
     
@@ -1876,54 +1875,60 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#WD -->
 
-    <WhDeterminer rdf:about="#WD">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WD">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#WhDeterminer"/>
         <system:hasTag>WD</system:hasTag>
-    </WhDeterminer>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WDT -->
 
-    <owl:Thing rdf:about="#WDT">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <system:hasTag rdf:datatype="&xsd;string">WDT</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WDT">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>WDT</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WP -->
 
-    <NamedIndividual rdf:about="#WP">
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">WP</system:hasTag>
-    </NamedIndividual>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WP">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>WP</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WPRO -->
 
-    <WhPronoun rdf:about="#WPRO">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WPRO">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#WhPronoun"/>
         <system:hasTag>WPRO</system:hasTag>
-    </WhPronoun>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WPpossessive -->
 
-    <owl:Thing rdf:about="#WPpossessive">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#PossessiveWhPronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">WPRO$</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WPpossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PossessiveWhPronoun"/>
+        <system:hasTag>WPRO$</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WQ -->
 
-    <owl:Thing rdf:about="#WQ">
-        <rdf:type rdf:resource="#WhetherConjunction"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WQ">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#WhetherConjunction"/>
         <system:hasTag>WQ</system:hasTag>
     </owl:Thing>
     
@@ -1931,54 +1936,60 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#WhAdverb -->
 
-    <Thing rdf:about="#WhAdverb">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WhAdverb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WhDeterminer -->
 
-    <Thing rdf:about="#WhDeterminer">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WhDeterminer">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#WhPronoun -->
 
-    <Class rdf:about="#WhPronoun">
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Class>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#WhPronoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#alsoAdverb -->
 
-    <ALSO rdf:about="#alsoAdverb">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#alsoAdverb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ALSO"/>
         <system:hasTag>ALSO</system:hasTag>
-    </ALSO>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#backwardDoubleQuote -->
 
-    <NamedIndividual rdf:about="#backwardDoubleQuote">
-        <rdf:type rdf:resource="#BackwardDoubleQuote"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag>&#39;&#39;</system:hasTag>
-    </NamedIndividual>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#backwardDoubleQuote">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#BackwardDoubleQuote"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <system:hasTag>&apos;&apos;</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#beImperative -->
 
-    <owl:Thing rdf:about="#beImperative">
-        <rdf:type rdf:resource="#BeImperative"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#beImperative">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#BeImperative"/>
         <system:hasTag>BEI</system:hasTag>
     </owl:Thing>
     
@@ -1986,44 +1997,49 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#beInfinitive -->
 
-    <BeInfinitive rdf:about="#beInfinitive">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#beInfinitive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#BeInfinitive"/>
         <system:hasTag>BE</system:hasTag>
-    </BeInfinitive>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#bePast -->
 
-    <BePast rdf:about="#bePast">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#bePast">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#BePast"/>
         <system:hasTag>BED</system:hasTag>
-    </BePast>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#bePerfectParticiple -->
 
-    <BePerfectParticiple rdf:about="#bePerfectParticiple">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#bePerfectParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#BePerfectParticiple"/>
         <system:hasTag>BEN</system:hasTag>
-    </BePerfectParticiple>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#bePresent -->
 
-    <BePresent rdf:about="#bePresent">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#bePresent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#BePresent"/>
         <system:hasTag>BEP</system:hasTag>
-    </BePresent>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#bePresentParticiple -->
 
-    <owl:Thing rdf:about="#bePresentParticiple">
-        <rdf:type rdf:resource="#BePresentParticiple"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#bePresentParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#BePresentParticiple"/>
         <system:hasTag>BAG</system:hasTag>
     </owl:Thing>
     
@@ -2031,17 +2047,19 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#cardinalNumber -->
 
-    <CardinalNumber rdf:about="#cardinalNumber">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#cardinalNumber">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#CardinalNumber"/>
         <system:hasTag>NUM</system:hasTag>
-    </CardinalNumber>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#cardinalNumberPossessive -->
 
-    <owl:Thing rdf:about="#cardinalNumberPossessive">
-        <rdf:type rdf:resource="#CardinalNumberPossessive"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#cardinalNumberPossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#CardinalNumberPossessive"/>
         <system:hasTag>NUM$</system:hasTag>
     </owl:Thing>
     
@@ -2049,29 +2067,32 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#colon -->
 
-    <Colon rdf:about="#colon">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#colon">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Colon"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
         <system:hasTag>:</system:hasTag>
-    </Colon>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#comma -->
 
-    <Comma rdf:about="#comma">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#comma">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Comma"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
         <system:hasTag>,</system:hasTag>
-    </Comma>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#commonNounPlural -->
 
-    <owl:Thing rdf:about="#commonNounPlural">
-        <rdf:type rdf:resource="#CommonNounPlural"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#commonNounPlural">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#CommonNounPlural"/>
         <system:hasTag>NS</system:hasTag>
     </owl:Thing>
     
@@ -2079,44 +2100,49 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#commonNounPluralPossessive -->
 
-    <CommonNounPluralPossessive rdf:about="#commonNounPluralPossessive">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#commonNounPluralPossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#CommonNounPluralPossessive"/>
         <system:hasTag>NS$</system:hasTag>
-    </CommonNounPluralPossessive>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#commonNounSingularPossessive -->
 
-    <CommonNounSingularPossessive rdf:about="#commonNounSingularPossessive">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#commonNounSingularPossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#CommonNounSingularPossessive"/>
         <system:hasTag>N$</system:hasTag>
-    </CommonNounSingularPossessive>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#complementizer -->
 
-    <Complementizer rdf:about="#complementizer">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#complementizer">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Complementizer"/>
         <system:hasTag>C</system:hasTag>
-    </Complementizer>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#doImperative -->
 
-    <DoImperative rdf:about="#doImperative">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#doImperative">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DoImperative"/>
         <system:hasTag>DOI</system:hasTag>
-    </DoImperative>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#doInfinitive -->
 
-    <owl:Thing rdf:about="#doInfinitive">
-        <rdf:type rdf:resource="#DoInfinitive"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#doInfinitive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DoInfinitive"/>
         <system:hasTag>DO</system:hasTag>
     </owl:Thing>
     
@@ -2124,17 +2150,19 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#doPassiveParticiple -->
 
-    <DoPassiveParticiple rdf:about="#doPassiveParticiple">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#doPassiveParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DoPassiveParticiple"/>
         <system:hasTag>DAN</system:hasTag>
-    </DoPassiveParticiple>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#doPast -->
 
-    <owl:Thing rdf:about="#doPast">
-        <rdf:type rdf:resource="#DoPast"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#doPast">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DoPast"/>
         <system:hasTag>DOD</system:hasTag>
     </owl:Thing>
     
@@ -2142,8 +2170,9 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#doPerfectParticiple -->
 
-    <owl:Thing rdf:about="#doPerfectParticiple">
-        <rdf:type rdf:resource="#DoPerfectParticiple"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#doPerfectParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DoPerfectParticiple"/>
         <system:hasTag>DON</system:hasTag>
     </owl:Thing>
     
@@ -2151,17 +2180,19 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#doPresent -->
 
-    <DoPresent rdf:about="#doPresent">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#doPresent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DoPresent"/>
         <system:hasTag>DOP</system:hasTag>
-    </DoPresent>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#doPresentParticiple -->
 
-    <owl:Thing rdf:about="#doPresentParticiple">
-        <rdf:type rdf:resource="#DoPresentParticiple"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#doPresentParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DoPresentParticiple"/>
         <system:hasTag>DAG</system:hasTag>
     </owl:Thing>
     
@@ -2169,8 +2200,9 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#dollar -->
 
-    <owl:Thing rdf:about="#dollar">
-        <rdf:type rdf:resource="#NamedIndividual"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#dollar">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
         <system:hasTag>$</system:hasTag>
     </owl:Thing>
     
@@ -2178,26 +2210,29 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#doubleQuote -->
 
-    <NamedIndividual rdf:about="#doubleQuote">
-        <rdf:type rdf:resource="#DoubleQuote"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#doubleQuote">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DoubleQuote"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
         <system:hasTag>&quot;</system:hasTag>
-    </NamedIndividual>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#elseAdverb -->
 
-    <ELSE rdf:about="#elseAdverb">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#elseAdverb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ELSE"/>
         <system:hasTag>ELSE</system:hasTag>
-    </ELSE>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#existentialThere -->
 
-    <owl:Thing rdf:about="#existentialThere">
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#existentialThere">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <system:hasTag>EX</system:hasTag>
     </owl:Thing>
     
@@ -2205,73 +2240,66 @@ EXAMPLES:
 
     <!-- http://purl.org/olia/ppcme2.owl#focusParticle -->
 
-    <FocusParticle rdf:about="#focusParticle">
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <rdfs:comment
-            >The following words, all of which also have other uses, are tagged FP when used as focus particles: 
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#focusParticle">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#FocusParticle"/>
+        <system:hasTag>FP</system:hasTag>
+        <rdfs:comment>The following words, all of which also have other uses, are tagged FP when used as focus particles: 
 all periods 	ALONE, BUT, EVEN, ONLY
 only Middle English 	FORTH, ONE, YET
 Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP 
 +tan_ADV wil_MD +te_PRO liste_VB stele_VB by_P +te_PRO alane_FP</rdfs:comment>
-        <system:hasTag>FP</system:hasTag>
-    </FocusParticle>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#forToClitic -->
 
-    <ForToClitic rdf:about="#forToClitic">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#forToClitic">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ForToClitic"/>
         <system:hasTag>FOR+TO</system:hasTag>
-    </ForToClitic>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#forwardDoubleQuote -->
 
-    <ForwardDoubleQuote rdf:about="#forwardDoubleQuote">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#Thing"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#forwardDoubleQuote">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ForwardDoubleQuote"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
         <system:hasTag>``</system:hasTag>
-    </ForwardDoubleQuote>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#fullStop -->
 
-    <NamedIndividual rdf:about="#fullStop">
-        <rdf:type rdf:resource="#FullStop"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#fullStop">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#FullStop"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
         <system:hasTag>.</system:hasTag>
-    </NamedIndividual>
-    
-
-
-    <!-- http://purl.org/olia/ppcme2.owl#genid8 -->
-
-    <owl:Thing/>
-    
-
-
-    <!-- http://purl.org/olia/ppcme2.owl#genid9 -->
-
-    <Class/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#hasValue -->
 
-    <DatatypeProperty rdf:about="#hasValue">
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </DatatypeProperty>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#hasValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DatatypeProperty"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#haveImperative -->
 
-    <owl:Thing rdf:about="#haveImperative">
-        <rdf:type rdf:resource="#HaveImperative"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#haveImperative">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#HaveImperative"/>
         <system:hasTag>HVI</system:hasTag>
     </owl:Thing>
     
@@ -2279,26 +2307,29 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#haveInfinitive -->
 
-    <HaveInfinitive rdf:about="#haveInfinitive">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#haveInfinitive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#HaveInfinitive"/>
         <system:hasTag>HV</system:hasTag>
-    </HaveInfinitive>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#havePassiveParticiple -->
 
-    <HavePassiveParticiple rdf:about="#havePassiveParticiple">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#havePassiveParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#HavePassiveParticiple"/>
         <system:hasTag>HAN</system:hasTag>
-    </HavePassiveParticiple>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#havePast -->
 
-    <owl:Thing rdf:about="#havePast">
-        <rdf:type rdf:resource="#HavePast"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#havePast">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#HavePast"/>
         <system:hasTag>HVD</system:hasTag>
     </owl:Thing>
     
@@ -2306,97 +2337,107 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#havePerfectParticiple -->
 
-    <HavePerfectParticiple rdf:about="#havePerfectParticiple">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#havePerfectParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#HavePerfectParticiple"/>
         <system:hasTag>HVN</system:hasTag>
-    </HavePerfectParticiple>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#havePresent -->
 
-    <HavePresent rdf:about="#havePresent">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#havePresent">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#HavePresent"/>
         <system:hasTag>HVP</system:hasTag>
-    </HavePresent>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#havePresentParticiple -->
 
-    <HavePresentParticiple rdf:about="#havePresentParticiple">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#havePresentParticiple">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#HavePresentParticiple"/>
         <system:hasTag>HAG</system:hasTag>
-    </HavePresentParticiple>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#hyphen -->
 
-    <owl:Thing rdf:about="#hyphen">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#Symbol"/>
-        <rdf:type rdf:resource="#Thing"/>
-        <system:hasTag rdf:datatype="&xsd;string">HYPH</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#hyphen">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Symbol"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+        <system:hasTag>HYPH</system:hasTag>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#indefiniteSubjectPronoun -->
 
-    <IndefiniteSubjectPronoun rdf:about="#indefiniteSubjectPronoun">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#indefiniteSubjectPronoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#IndefiniteSubjectPronoun"/>
         <system:hasTag>MAN</system:hasTag>
-    </IndefiniteSubjectPronoun>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#interjection -->
 
-    <Interjection rdf:about="#interjection">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#interjection">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Interjection"/>
         <system:hasTag>INTJ</system:hasTag>
-    </Interjection>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#leftCurlyBracket -->
 
-    <LeftCurlyBracket rdf:about="#leftCurlyBracket">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#leftCurlyBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#LeftCurlyBracket"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
         <system:hasTag>-LCB-</system:hasTag>
         <system:hasTag>{</system:hasTag>
-    </LeftCurlyBracket>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#leftRoundBracket -->
 
-    <LeftRoundBracket rdf:about="#leftRoundBracket">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag>-LRB-</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#leftRoundBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#LeftRoundBracket"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
         <system:hasTag>(</system:hasTag>
-    </LeftRoundBracket>
+        <system:hasTag>-LRB-</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#leftSquareBracket -->
 
-    <NamedIndividual rdf:about="#leftSquareBracket">
-        <rdf:type rdf:resource="#LeftSquareBracket"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag>[</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#leftSquareBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#LeftSquareBracket"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
         <system:hasTag>-LSB-</system:hasTag>
-    </NamedIndividual>
+        <system:hasTag>[</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#lineBreak -->
 
-    <owl:Thing rdf:about="#lineBreak">
-        <rdf:type rdf:resource="#LIneBreak"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#lineBreak">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#LIneBreak"/>
         <system:hasTag>LB</system:hasTag>
     </owl:Thing>
     
@@ -2404,65 +2445,71 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#listMarker -->
 
-    <ListMarker rdf:about="#listMarker">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#listMarker">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ListMarker"/>
         <system:hasTag>LS</system:hasTag>
-    </ListMarker>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#modalVerbUntensed -->
 
-    <ModalVerbUntensed rdf:about="#modalVerbUntensed">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#modalVerbUntensed">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ModalVerbUntensed"/>
         <system:hasTag>MD0</system:hasTag>
-    </ModalVerbUntensed>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#negation -->
 
-    <Negation rdf:about="#negation">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#negation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Negation"/>
         <system:hasTag>NEG</system:hasTag>
-    </Negation>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#nonfinalpunctuation -->
 
-    <owl:Class rdf:about="#nonfinalpunctuation">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="#nonfinalpunctuation"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#nonfinalpunctuation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#nonfinalpunctuation"/>
         <system:hasTag>NFP</system:hasTag>
-    </owl:Class>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#noun -->
 
-    <CommonNounSingular rdf:about="#noun">
-        <rdf:type rdf:resource="#Noun"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#noun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#CommonNounSingular"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Noun"/>
         <system:hasTag>N</system:hasTag>
-    </CommonNounSingular>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#onProperty -->
 
-    <owl:Thing rdf:about="#onProperty">
-        <rdf:type rdf:resource="#ObjectProperty"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#onProperty">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ObjectProperty"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#oneNumber -->
 
-    <owl:Thing rdf:about="#oneNumber">
-        <rdf:type rdf:resource="#OneNumber"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#oneNumber">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#OneNumber"/>
         <system:hasTag>ONE</system:hasTag>
     </owl:Thing>
     
@@ -2470,8 +2517,9 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#onePossessive -->
 
-    <owl:Thing rdf:about="#onePossessive">
-        <rdf:type rdf:resource="#OnePossessive"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#onePossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#OnePossessive"/>
         <system:hasTag>ONE$</system:hasTag>
     </owl:Thing>
     
@@ -2479,7 +2527,8 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#onePronoun -->
 
-    <owl:Thing rdf:about="#onePronoun">
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#onePronoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <system:hasTag>ONE</system:hasTag>
     </owl:Thing>
     
@@ -2487,8 +2536,9 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#otherPronounPlural -->
 
-    <owl:Thing rdf:about="#otherPronounPlural">
-        <rdf:type rdf:resource="#OtherPronounPlural"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#otherPronounPlural">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#OtherPronounPlural"/>
         <system:hasTag>OTHERS</system:hasTag>
     </owl:Thing>
     
@@ -2496,17 +2546,19 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#otherPronounPluralPossessive -->
 
-    <OtherPronounPluralPossessive rdf:about="#otherPronounPluralPossessive">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#otherPronounPluralPossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#OtherPronounPluralPossessive"/>
         <system:hasTag>OTHERS$</system:hasTag>
-    </OtherPronounPluralPossessive>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#otherPronounPossessive -->
 
-    <owl:Thing rdf:about="#otherPronounPossessive">
-        <rdf:type rdf:resource="#OtherPronounPossessive"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#otherPronounPossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#OtherPronounPossessive"/>
         <system:hasTag>OTHER$</system:hasTag>
     </owl:Thing>
     
@@ -2514,7 +2566,8 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#possessiveImpersonalPronoun -->
 
-    <owl:Thing rdf:about="#possessiveImpersonalPronoun">
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#possessiveImpersonalPronoun">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <system:hasTag>ONE$</system:hasTag>
     </owl:Thing>
     
@@ -2522,8 +2575,9 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#prepositionOrSubordinatingConjunction -->
 
-    <owl:Thing rdf:about="#prepositionOrSubordinatingConjunction">
-        <rdf:type rdf:resource="#PrepositionOrSubordinatingConjunction"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#prepositionOrSubordinatingConjunction">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PrepositionOrSubordinatingConjunction"/>
         <system:hasTag>P</system:hasTag>
     </owl:Thing>
     
@@ -2531,17 +2585,19 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#properNounPlural -->
 
-    <ProperNounPlural rdf:about="#properNounPlural">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#properNounPlural">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ProperNounPlural"/>
         <system:hasTag>NPRS</system:hasTag>
-    </ProperNounPlural>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#properNounPluralPossessive -->
 
-    <owl:Thing rdf:about="#properNounPluralPossessive">
-        <rdf:type rdf:resource="#ProperNounPluralPossessive"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#properNounPluralPossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ProperNounPluralPossessive"/>
         <system:hasTag>NPRS$</system:hasTag>
     </owl:Thing>
     
@@ -2549,8 +2605,9 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#properNounSingular -->
 
-    <owl:Thing rdf:about="#properNounSingular">
-        <rdf:type rdf:resource="#ProperNounSingular"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#properNounSingular">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ProperNounSingular"/>
         <system:hasTag>NPR</system:hasTag>
     </owl:Thing>
     
@@ -2558,78 +2615,106 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
 
     <!-- http://purl.org/olia/ppcme2.owl#properNounSingularPossessive -->
 
-    <ProperNounSingularPossessive rdf:about="#properNounSingularPossessive">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#properNounSingularPossessive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#ProperNounSingularPossessive"/>
         <system:hasTag>NPR$</system:hasTag>
-    </ProperNounSingularPossessive>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#rightCurlyBracket -->
 
-    <RightCurlyBracket rdf:about="#rightCurlyBracket">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-        <system:hasTag>}</system:hasTag>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#rightCurlyBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#RightCurlyBracket"/>
         <system:hasTag>-RCB-</system:hasTag>
-    </RightCurlyBracket>
+        <system:hasTag>}</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#rightRoundBracket -->
 
-    <RightRoundBracket rdf:about="#rightRoundBracket">
-        <rdf:type rdf:resource="#NamedIndividual"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#rightRoundBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#RightRoundBracket"/>
         <system:hasTag>)</system:hasTag>
         <system:hasTag>-RRB-</system:hasTag>
-    </RightRoundBracket>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#rightSquareBracket -->
 
-    <NamedIndividual rdf:about="#rightSquareBracket">
-        <rdf:type rdf:resource="#RightSquareBracket"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#rightSquareBracket">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#RightSquareBracket"/>
         <system:hasTag>-RSB-</system:hasTag>
         <system:hasTag>]</system:hasTag>
-    </NamedIndividual>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#suchAdverb -->
 
-    <SUCH rdf:about="#suchAdverb">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#suchAdverb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#SUCH"/>
         <system:hasTag>SUCH</system:hasTag>
-    </SUCH>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#versionInfo -->
 
-    <Thing rdf:about="#versionInfo">
-        <rdf:type rdf:resource="#DatatypeProperty"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#versionInfo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DatatypeProperty"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/ppcme2.owl#wordOther -->
 
-    <OtherPronoun rdf:about="#wordOther">
-        <rdf:type rdf:resource="&owl;Thing"/>
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#wordOther">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#OtherPronoun"/>
         <system:hasTag>OTHER</system:hasTag>
-    </OtherPronoun>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ppcme2.owl#PRO$ -->
+
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#PRO$">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#PossessivePronoun"/>
+        <system:hasTag>PRO$</system:hasTag>
+    </owl:Thing>
+    
+
+
+    <!-- http://purl.org/olia/ppcme2.owl#Q$ -->
+
+    <owl:Thing rdf:about="http://purl.org/olia/ppcme2.owl#Q$">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#QuantifierPossessive"/>
+        <system:hasTag>Q$</system:hasTag>
+    </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
 
     <owl:Thing rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation">
-        <rdf:type rdf:resource="#Class"/>
-        <rdf:type rdf:resource="#Thing"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
     </owl:Thing>
     
 
@@ -2637,18 +2722,80 @@ Singuler_ADJ lufe_N es_BEP bot_FP of_P Jhesu_NPR Cryste_NPR alane_FP
     <!-- http://purl.org/olia/system.owl#hasTag -->
 
     <owl:Thing rdf:about="http://purl.org/olia/system.owl#hasTag">
-        <rdf:type rdf:resource="#DatatypeProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DatatypeProperty"/>
     </owl:Thing>
     
 
 
     <!-- http://purl.org/olia/system.owl#hasTier -->
 
-    <Thing rdf:about="http://purl.org/olia/system.owl#hasTier">
-        <rdf:type rdf:resource="#DatatypeProperty"/>
-        <rdf:type rdf:resource="&owl;Thing"/>
-    </Thing>
+    <owl:Thing rdf:about="http://purl.org/olia/system.owl#hasTier">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#DatatypeProperty"/>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Thing"/>
+    </owl:Thing>
+    <owl:Thing/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://purl.org/olia/ppcme2.owl#Class"/>
+    </rdf:Description>
     
 
 
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#ComparativeAdverb">
+        <rdfs:comment>These are comparative adverbs.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#ModalVerb">
+        <rdfs:comment>This category includes all verbs that don&apos;t take an -s ending in the third person singular present: &quot;can&quot;, 
+&quot;could&quot;, (&quot;dare&quot;), &quot;may&quot;, &quot;might&quot;, &quot;must&quot;, &quot;ought&quot;, &quot;shall&quot;, &quot;should&quot;, &quot;will&quot;, &quot;would&quot;.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#PastParticiple">
+        <rdfs:comment>This is a verb in past participle.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#PersonalPronoun">
+        <rdfs:comment>This category includes the personal pronouns proper,  without regard for case distinctions (&quot;I&quot;, &quot;me&quot;, &quot;you&quot;, &quot;he&quot;, &quot;him&quot;, etc.), the reflexive pronouns ending in -self or -selves, and the nominal possessive pronouns &quot;mine&quot;, &quot;yours&quot;, &quot;his&quot;, &quot;hers&quot;, &quot;ours&quot; and &quot;theirs&quot;.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#PossessiveEnding">
+        <rdfs:comment>The possessive ending on nouns ending in &apos;s or  is split off by the tagging algorithm and tagged as if it
+were a separate word. e.g. &quot;John/ NP &apos;s/POS idea&quot;, &quot;the parents/NNS&apos;/POS distress&quot;.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#PossessivePronoun">
+        <rdfs:comment>This category includes the adjectival possessive forms &quot;my&quot;, &quot;your&quot;, &quot;his&quot;, &quot;her&quot;, &quot;its&quot;, &quot;one&apos;s&quot;, &quot;our&quot; and &quot;their&quot;.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#Pronoun">
+        <rdfs:comment>This is a class, we inserted to structure the tagset.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#ProperNoun">
+        <rdfs:comment>These are singular or plural proper nouns.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#Punctuation">
+        <owl:versionInfo>Not addressed by Santorini (1990), but produced by real-world taggers, also cf. http://www.cis.upenn.edu/~treebank/tokenization.html for the treatment of PTB punctuation tags in the parsed Penn Treebank.</owl:versionInfo>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#Verb">
+        <rdfs:comment>Subjunctive forms and not distinguished from indicative forms</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#WhAdverb">
+        <rdfs:comment>This category includes &quot;how&quot;, &quot;where&quot;, &quot;why&quot;, etc. When in a temporal sense is tagged as wh-adverb.  In the sense of &quot;if&quot;,  on the other hand, it is a subordinating conjunction.
+EXAMPLES:
+&quot;When/WRB he finally arrived,  I was on my way out.&quot;</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#WhDeterminer">
+        <rdfs:comment>This category includes &quot;which&quot;, as well as that when it is used as a relative pronoun.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/olia/ppcme2.owl#WhPronoun">
+        <rdfs:comment>This category includes &quot;what&quot;, &quot;who&quot; and &quot;whom&quot;.</rdfs:comment>
+    </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+

@@ -1,1193 +1,1727 @@
 <?xml version="1.0"?>
-<rdf:RDF
-    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:olia_system="http://purl.org/olia/system.owl#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns="http://purl.org/olia/morphisto.owl#"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-  xml:base="http://purl.org/olia/morphisto.owl">
-  <owl:Ontology rdf:about="http://purl.org/olia/morphisto.owl">
- 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/deu"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-    <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Tags used for Morphisto morphological analyses, extracted from the analysis of the Potsdam Commentary Corpus.
+<rdf:RDF xmlns="http://purl.org/olia/morphisto.owl#"
+     xml:base="http://purl.org/olia/morphisto.owl"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:olia_system="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/morphisto.owl">
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/deu"/>
+        <rdfs:comment>Tags used for Morphisto morphological analyses, extracted from the analysis of the Potsdam Commentary Corpus.
     10/02/01 created, Christian Chiarcos, chiarcos@uni-potsdam.de </rdfs:comment>
-  </owl:Ontology>
-  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
-  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagContaining"/>
-  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagStartingWith"/>
-  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagEndingWith"/>
-  <owl:Class rdf:ID="AdjectiveInflection">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="MorphosyntacticFeature"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Case">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="InfiniteVerb">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Verb"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Tags of the form "V (Inf|Imp|PPast|PPres) ..."</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="QuantifierInflection">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >quantifiers (INDEF) trigger strong or weak inflection of adjectives, I assume that the tags ... oD and ... mD refer to this phenomenon.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="VerbalParticle">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >The tag VPRE ... marks various particles, adverbs, prepositions and some 
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/meta-share/meta-share/language -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasAdjectiveInflection -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasAdjectiveInflection">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/morphisto.owl#hasInflection"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#AdjectiveInflection"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#AdjectiveInflection"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasAspect -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasAspect">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Aspect"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Aspect"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasCase -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasCase">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Adposition"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Article"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Case"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Noun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Case"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasDegree -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasDegree">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Degree"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Degree"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasGender -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasGender">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Article"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Gender"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Noun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasInflection -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasInflection">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasNumber -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasNumber">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Noun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Number"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Verb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Number"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasPerson -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasPerson">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#PersReflPronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Person"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Person"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasQuantifierInflection -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasQuantifierInflection">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/morphisto.owl#hasInflection"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#IndefinitePronoun"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#QuantifierInflection"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#QuantifierInflection"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#hasTense -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#hasTense">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Tense"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Tense"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#reeignsCase -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/morphisto.owl#reeignsCase">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/morphisto.owl#hasCase"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Adposition"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#Case"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag">
+        <owl:versionInfo>Note that for hasTagContaining, hasTagEndingWith, etc., I assume a representation of alternative analyses beginning with the POS tag and connected by a pipe (|). So, for every hasTagStartingWith(&apos;X&apos;), there should exist the corresponding property hasTagContaining(&apos;|X&apos;), etc.
+
+&quot;NNMasc Nom Sg|NN Masc Dat Sg|NN Masc Akk Sg&quot;</owl:versionInfo>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagContaining -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagContaining"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagEndingWith -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagEndingWith"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagStartingWith -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTagStartingWith"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#AdjectiveInAdverbialFunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#AdjectiveInAdverbialFunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#AdjectiveInflection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#AdjectiveInflection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Adposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Adposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>word classes that share the reeignCase property</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>Elements tagged with ...ADV or adv</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Article -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Article">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Aspect -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Aspect">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#AttributiveAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#AttributiveAdjective">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://purl.org/olia/morphisto.owl#AdjectiveInAdverbialFunction"/>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://purl.org/olia/morphisto.owl#PredicativeAdjective"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>Represented in Morphisto only indirectly by the lack of Pred or Adv.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Case -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Case">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#CommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#CommonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Conjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Conjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>tagged KONJ ...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#DefiniteArticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#DefiniteArticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Article"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Degree -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Degree">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#DemonstrativePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#DemonstrativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Pronoun"/>
+        <rdfs:comment>demonstrative pronouns and demonstrative determiners, tagged DEM...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#FiniteVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#FiniteVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Verb"/>
+        <rdfs:comment>Tags of the form &quot;V (1|2|3) (Sg|Pl) (Past|Pres) ...&quot;, for tense and aspect see properties.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Gender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Gender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#IndefiniteArticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#IndefiniteArticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Article"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#IndefinitePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#IndefinitePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Pronoun"/>
+        <rdfs:comment>indefinite pronouns and indefinite determiners, including quantifiers, tagged INDEF...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#InfiniteVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#InfiniteVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Verb"/>
+        <rdfs:comment>Tags of the form &quot;V (Inf|Imp|PPast|PPres) ...&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Interjection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>tag ITJ</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#InterrogativePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#InterrogativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Pronoun"/>
+        <rdfs:comment>Interrogative pronouns and determiners, tagged WPRO</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#MorphosyntacticFeature -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTagContaining"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Morphological features identified by Morphisto (as accessible under http://ingrid.sub.uni-goettingen.de/cgi-bin/analyze.cgi): everything following the POS tag, e.g. &quot;Masc Nom Sg&quot; in &quot;Test +NN Masc Nom Sg&quot;.
+Note that these features are not identical to the richer feature set used directly in the lexicon.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>Word classes that share Gender, Case and Number as the only obligatory properties. Tags starting with N...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#NounClass -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#NounClass">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+        <rdfs:comment>Apparently certain lexical classes are distinguished. I&apos;ve found Simp and Old, but there might be more. As long as it is uncertain, whether these are to be represented as subclasses of Noun or as MorphologicalFeature, there is no property to express this relation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Number -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Number">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Particle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Particle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>tagged PTKL ...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PersReflPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#PersReflPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Pronoun"/>
+        <rdfs:comment>Personal and reflexive pronouns that can occur as substitive pronouns only.
+Tagged PPRO ...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Person -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Person">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#PersReflPronoun"/>
+        <rdfs:comment>PPRO pers</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PossessivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#PossessivePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Pronoun"/>
+        <rdfs:comment>Possessive pronouns and possessive determiners, tagged POSS</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Postposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Postposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Adposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PredicativeAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#PredicativeAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Preposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Preposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Adposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>word classes that share the properties SyntacticPronounType or PronounType</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#ProperNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#ProperNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Noun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Punctuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Punctuation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>tagged IP ...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#QuantifierInflection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#QuantifierInflection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+        <rdfs:comment>quantifiers (INDEF) trigger strong or weak inflection of adjectives, I assume that the tags ... oD and ... mD refer to this phenomenon.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#ReflexivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#ReflexivePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#PersReflPronoun"/>
+        <rdfs:comment>PPRO refl</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#RelativePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#RelativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Pronoun"/>
+        <rdfs:comment>Relative pronouns and relative determiners, tagged REL</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#SyntacticAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>word classes that share the properties AdjectiveType and AdjectiveInflectionType, i.e., ADJ and ORD.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Tense -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Tense">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>POS tag V</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VerbalParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#VerbalParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
+        <rdfs:comment>The tag VPRE ... marks various particles, adverbs, prepositions and some 
     verbs. Possibly, this tag specifies a displaced verbal particle as in 
     &amp;quot;[lieb]_VPRE V gewinnen&amp;quot;, &amp;quot;Er sprang [ab]_VPRE&amp;quot;, &amp;quot;Er stand [da]_VPRE Adv&amp;quot;. 
-    However, even with this hypothesis in mind, I can't think of something 
+    However, even with this hypothesis in mind, I can&apos;t think of something 
     reasonable to make out of &amp;quot;darauf&amp;quot; being tagged as VPRE ProAdv.
 
 I assume that the tag originally referred specifically to prepositions that occur frequently in this role, hence the -PRE element.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="WordClass"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="CommonNoun">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Noun"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="NounClass">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Apparently certain lexical classes are distinguished. I've found Simp and Old, but there might be more. As long as it is uncertain, whether these are to be represented as subclasses of Noun or as MorphologicalFeature, there is no property to express this relation.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="DemonstrativePronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >demonstrative pronouns and demonstrative determiners, tagged DEM...</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Pronoun"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="ProperNoun">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Noun"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="PersReflPronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Personal and reflexive pronouns that can occur as substitive pronouns only.
-Tagged PPRO ...</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="DefiniteArticle">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Article"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="PossessivePronoun">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Possessive pronouns and possessive determiners, tagged POSS</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Punctuation">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >tagged IP ...</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="PredicativeAdjective">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="SyntacticAdjective"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Postposition">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Adposition"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="IndefinitePronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >indefinite pronouns and indefinite determiners, including quantifiers, tagged INDEF...</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="AttributiveAdjective">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
-          <owl:Class>
-            <owl:complementOf rdf:resource="http://purl.org/olia/morphisto.owl#PredicativeAdjective"/>
-          </owl:Class>
-          <owl:Class>
-            <owl:complementOf>
-              <owl:Class rdf:ID="AdjectiveInAdverbialFunction"/>
-            </owl:complementOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Represented in Morphisto only indirectly by the lack of Pred or Adv.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTagContaining"/>
-        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:minCardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Morphological features identified by Morphisto (as accessible under http://ingrid.sub.uni-goettingen.de/cgi-bin/analyze.cgi): everything following the POS tag, e.g. "Masc Nom Sg" in "Test +NN Masc Nom Sg".
-Note that these features are not identical to the richer feature set used directly in the lexicon.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="ReflexivePronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PPRO refl</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#PersReflPronoun"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Gender">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Pronoun">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >word classes that share the properties SyntacticPronounType or PronounType</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Verb">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >POS tag V</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="FiniteVerb">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Tags of the form "V (1|2|3) (Sg|Pl) (Past|Pres) ...", for tense and aspect see properties.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Verb"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Particle">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >tagged PTKL ...</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Preposition">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Adposition"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Conjunction">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >tagged KONJ ...</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Adposition">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >word classes that share the reeignCase property</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Tense">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-  </owl:Class>
-  <owl:Class rdf:ID="PersonalPronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PPRO pers</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#PersReflPronoun"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Interjection">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >tag ITJ</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Aspect">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Person">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:cardinality>
-        <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTagStartingWith"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:minCardinality>
-        <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTagContaining"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Note that for hasTagContaining, hasTagEndingWith, etc., I assume a representation of alternative analyses beginning with the POS tag and connected by a pipe (|). So, for every hasTagStartingWith('X'), there should exist the corresponding property hasTagContaining('|X'), etc.
+    </owl:Class>
+    
 
-"NNMasc Nom Sg|NN Masc Dat Sg|NN Masc Akk Sg"</owl:versionInfo>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Parts of speech produced by Morphisto (as accessible under http://ingrid.sub.uni-goettingen.de/cgi-bin/analyze.cgi), the POS tag is the first uninterrupted character sequence after +, e.g., NN in "Test +NN Masc Nom Sg"</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Degree">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Article">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
-  </owl:Class>
-  <owl:Class rdf:ID="IndefiniteArticle">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Article"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Adverb">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Elements tagged with ...ADV or adv</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
-  </owl:Class>
-  <owl:Class rdf:ID="RelativePronoun">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Pronoun"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Relative pronouns and relative determiners, tagged REL</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#AdjectiveInAdverbialFunction">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >word classes that share the properties AdjectiveType and AdjectiveInflectionType, i.e., ADJ and ORD.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Number">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#MorphosyntacticFeature"/>
-  </owl:Class>
-  <owl:Class rdf:ID="InterrogativePronoun">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#Pronoun"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Interrogative pronouns and determiners, tagged WPRO</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Noun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Word classes that share Gender, Case and Number as the only obligatory properties. Tags starting with N...</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/morphisto.owl#WordClass"/>
-  </owl:Class>
-  <owl:ObjectProperty rdf:ID="hasCase">
-    <rdfs:range>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Case"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Article"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Noun"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Adposition"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Case"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasInflection">
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="reeignsCase">
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/morphisto.owl#hasCase"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Adposition"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Case"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasDegree">
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
-    <rdfs:range>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Degree"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Degree"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasPerson">
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
-    <rdfs:range>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Person"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#PersReflPronoun"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Person"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasNumber">
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Noun"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Verb"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Number"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
-    <rdfs:range>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Number"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasGender">
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Gender"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Article"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Pronoun"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Noun"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasAdjectiveInflection">
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#AdjectiveInflection"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/morphisto.owl#hasInflection"/>
-    <rdfs:range>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#AdjectiveInflection"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasAspect">
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Aspect"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Aspect"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasTense">
-    <rdfs:range>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Tense"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#Tense"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasQuantifierInflection">
-    <rdfs:range>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#Feature"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#QuantifierInflection"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#IndefinitePronoun"/>
-          <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#QuantifierInflection"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/morphisto.owl#hasInflection"/>
-  </owl:ObjectProperty>
-  <FiniteVerb rdf:ID="V3">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V 3</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V 3</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >third person</rdfs:comment>
-  </FiniteVerb>
-  <Punctuation rdf:ID="IPlinks">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|IP links</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >left delimiters of parentheses and quotations: ', (, -, /</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >IP links</olia_system:hasTagStartingWith>
-  </Punctuation>
-  <Person rdf:ID="third">
-    <hasPerson rdf:resource="http://purl.org/olia/morphisto.owl#third"/>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 3</olia_system:hasTagEndingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 3 </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 3|</olia_system:hasTagContaining>
-  </Person>
-  <Punctuation rdf:ID="IP">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|IP</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >IP</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >punctuation in general</rdfs:comment>
-  </Punctuation>
-  <Person rdf:ID="first">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 1 </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 1|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 1</olia_system:hasTagEndingWith>
-    <hasPerson rdf:resource="http://purl.org/olia/morphisto.owl#first"/>
-  </Person>
-  <Conjunction rdf:ID="KONJ">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >conjunction in general</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|KONJ</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >KONJ</olia_system:hasTagStartingWith>
-  </Conjunction>
-  <SyntacticAdjective rdf:ID="ORD">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ORD</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|ORD</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ordinal numbers</rdfs:comment>
-  </SyntacticAdjective>
-  <Person rdf:ID="second">
-    <hasPerson rdf:resource="http://purl.org/olia/morphisto.owl#second"/>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 2 </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 2|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > 2</olia_system:hasTagEndingWith>
-  </Person>
-  <InfiniteVerb rdf:ID="VPPast">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >past participle</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V PPast</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V PPast</olia_system:hasTagStartingWith>
-  </InfiniteVerb>
-  <Particle rdf:ID="PTKLAdj">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PTKL Adj</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PTKL Adj</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >particles that express the degree of comparison of adjectives, e.g., allzu, Am, zu</rdfs:comment>
-  </Particle>
-  <QuantifierInflection rdf:ID="mD">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >examples: all, alle, allem, allen, aller, Alles, andere, anderen, anderer, anderes, beide, beiden, bisschen, jede, jeden, jeder, jedes, meiste, meisten, paar, solch, solche, solchen, solcher, viele, vielen, vieler, wenig, Wenige, wenigen, weniger, wenigsten</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > mD|</olia_system:hasTagContaining>
-    <hasQuantifierInflection rdf:resource="http://purl.org/olia/morphisto.owl#mD"/>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > mD</olia_system:hasTagEndingWith>
-  </QuantifierInflection>
-  <Conjunction rdf:ID="KONJInf">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|KONJ Inf</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >KONJ Inf</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >conjunction with infinitive</rdfs:comment>
-  </Conjunction>
-  <AdjectiveInAdverbialFunction rdf:ID="Adv">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ADJ Adv</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|ADJ Adv</olia_system:hasTagContaining>
-    <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
-  </AdjectiveInAdverbialFunction>
-  <VerbalParticle rdf:ID="VPREV">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >This tag is used for "lieben".
-Alternative analyses include the normal analyses as verb or adjective: "ADJ Pos Neut Dat Sg Sw/Mix|V 1 Pl Pres Ind|V 3 Pl Pres Konj|V Inf|ADJ Pos Neut Gen Sg|ADJ Pos Masc Gen Sg|ADJ Pos Fem Gen Sg Sw/Mix|ADJ Pos NoGend Akk Pl Sw/Mix|ADJ Pos Masc Akk Sg|V 1 Pl Pres Konj|ADJ Pos Fem Dat Sg Sw/Mix|VPRE V|V 3 Pl Pres Ind|ADJ Pos NoGend Nom Pl Sw/Mix|ADJ Pos Masc Dat Sg Sw/Mix|ADJ Pos NoGend Dat Pl|ADJ Pos NoGend Gen Pl Sw/Mix"</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >VPRE V</olia_system:hasTagStartingWith>
-    <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Verb"/>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|VPRE V</olia_system:hasTagContaining>
-  </VerbalParticle>
-  <Gender rdf:ID="masc">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Masc </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Masc|</olia_system:hasTagContaining>
-    <hasGender rdf:resource="http://purl.org/olia/morphisto.owl#masc"/>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Masc</olia_system:hasTagEndingWith>
-  </Gender>
-  <CommonNoun rdf:ID="NN">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NN</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|NN</olia_system:hasTagContaining>
-  </CommonNoun>
-  <Aspect rdf:ID="Subj">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Subj </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Subj|</olia_system:hasTagContaining>
-    <owl:sameAs>
-      <Aspect rdf:ID="Konj">
-        <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        > Konj </olia_system:hasTagContaining>
-        <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        > Konj|</olia_system:hasTagContaining>
-        <owl:sameAs rdf:resource="http://purl.org/olia/morphisto.owl#Subj"/>
-        <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        > Konj</olia_system:hasTagEndingWith>
-        <hasAspect rdf:resource="http://purl.org/olia/morphisto.owl#Konj"/>
-      </Aspect>
-    </owl:sameAs>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Subj</olia_system:hasTagEndingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Apparently, the guesser uses this tag instead of normal Konj if the word is not found in the lexicon.</rdfs:comment>
-    <hasAspect rdf:resource="http://purl.org/olia/morphisto.owl#Subj"/>
-  </Aspect>
-  <Gender rdf:ID="fem">
-    <hasGender rdf:resource="http://purl.org/olia/morphisto.owl#fem"/>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Fem </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Fem|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Fem</olia_system:hasTagEndingWith>
-  </Gender>
-  <PossessivePronoun rdf:ID="POSS">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|POSS</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >POSS</olia_system:hasTagStartingWith>
-  </PossessivePronoun>
-  <VerbalParticle rdf:ID="VPREProAdv">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >VPRE ProAdv</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >this tag is used for some pronominal adverbs, e.g., "darauf". Alternative analyses include PROADV</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|VPRE ProAdv</olia_system:hasTagContaining>
-    <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
-  </VerbalParticle>
-  <Preposition rdf:ID="PREP">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PREP</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PREP</olia_system:hasTagContaining>
-  </Preposition>
-  <Adverb rdf:ID="WADV">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >adverb derived from an interrogative stem, including, but not restricted to pronominal adverbs, e.g., Wann, warum, weshalb, Wieso, wo, wobei, WofÃ¼r, woher, wohin, wonach, worin, wovon, Wozu</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|WADV</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >WADV</olia_system:hasTagStartingWith>
-  </Adverb>
-  <SyntacticAdjective rdf:ID="ADJ">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >"proper" adjectives</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|ADJ</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ADJ</olia_system:hasTagStartingWith>
-  </SyntacticAdjective>
-  <InfiniteVerb rdf:ID="VImp">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >imperative</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V Imp</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V Imp</olia_system:hasTagContaining>
-  </InfiniteVerb>
-  <Particle rdf:ID="PTKLAnt">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PTKL Ant</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >particles that represent answers to questions or requests, e.g., Bitte, bitteschÃ¶n, ja, Nein</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PTKL Ant</olia_system:hasTagContaining>
-  </Particle>
-  <Verb rdf:ID="V">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V</olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V|</olia_system:hasTagContaining>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V</olia_system:hasTag>
-  </Verb>
-  <Particle rdf:ID="PTKLNeg">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PTKL Neg</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >particles that express negation</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PTKL Neg</olia_system:hasTagStartingWith>
-  </Particle>
-  <FiniteVerb rdf:ID="V1">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V 1</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >first person</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V 1</olia_system:hasTagContaining>
-  </FiniteVerb>
-  <DefiniteArticle rdf:ID="Def">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ART Def</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|ART Def</olia_system:hasTagContaining>
-  </DefiniteArticle>
-  <DemonstrativePronoun rdf:ID="DEM">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >DEM</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|DEM</olia_system:hasTagContaining>
-  </DemonstrativePronoun>
-  <InterrogativePronoun rdf:ID="WPRO">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|WPRO</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >WPRO</olia_system:hasTagStartingWith>
-  </InterrogativePronoun>
-  <RelativePronoun rdf:ID="REL">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|REL</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >REL</olia_system:hasTagStartingWith>
-  </RelativePronoun>
-  <Conjunction rdf:ID="KONJVgl">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >conjunctions that express comparison or similarity, e.g., "als", "wie"</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >KONJ Vgl</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|KONJ Vgl</olia_system:hasTagContaining>
-  </Conjunction>
-  <Punctuation rdf:ID="IPrechts">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >IP rechts</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|IP rechts</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >right delimiters of parentheses or quotations: )</rdfs:comment>
-  </Punctuation>
-  <VerbalParticle rdf:ID="VPREnull">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >The tag VPRE alone marks all occurrencies of "ab", possibly in its role as displaced verbal particle, see comments on VerbalParticle.</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >VPRE</olia_system:hasTag>
-    <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adposition"/>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >VPRE|</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|VPRE|</olia_system:hasTagContaining>
-  </VerbalParticle>
-  <Adverb rdf:ID="PROADV">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PROADV</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >non-interrogative pronominal adverbs, also including adverbs derived from Indo-European pronominal stems, e.g., bevor, Dabei, dadurch, dafÃ¼r, dagegen, daher, dahin, dahinter, Damit, Danach, Daran, darauf, Daraufhin, daraus, darin, darum, darÃ¼ber, Davon, davor, dazu, Dazwischen, Deshalb, deswegen, drauf, drin, Drum, flugs, gewissermaÃYen, her, herum, heut, indessen, rum, Seitdem, soeben, Trotzdem, Willens, zuerst, zurzeit, zurÃ¼ck</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PROADV</olia_system:hasTagContaining>
-  </Adverb>
-  <Gender rdf:ID="noGender">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >used for plural, where gender differentiation is not expressed</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > NoGend </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > NoGend|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > NoGend</olia_system:hasTagEndingWith>
-  </Gender>
-  <Gender rdf:ID="neut">
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Neut</olia_system:hasTagEndingWith>
-    <hasGender rdf:resource="http://purl.org/olia/morphisto.owl#neut"/>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Neut </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Neut|</olia_system:hasTagContaining>
-  </Gender>
-  <QuantifierInflection rdf:ID="oD">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >  oD|</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >examples: Einige, einigem, einigen, einiger, einiges, ersteres, etliche, etwas, irgendein, jeglichen, kein, Keine, keinem, keinen, keiner, lauter, Letzterer, manch, manche, Manchem, manchen, mancher, Manches, mehr, Mehrere, mehreren, reichlich, viel, Welche, welchem, welchen, Welcher, weniger</rdfs:comment>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > oD</olia_system:hasTagEndingWith>
-    <hasQuantifierInflection rdf:resource="http://purl.org/olia/morphisto.owl#oD"/>
-  </QuantifierInflection>
-  <IndefiniteArticle rdf:ID="Indef">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|ART Indef</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ART Indef</olia_system:hasTagStartingWith>
-  </IndefiniteArticle>
-  <Case rdf:ID="Dat">
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Dat</olia_system:hasTagEndingWith>
-    <hasCase rdf:resource="http://purl.org/olia/morphisto.owl#Dat"/>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Dat </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Dat|</olia_system:hasTagContaining>
-  </Case>
-  <Punctuation rdf:ID="IPKomma">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >comma</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >IP Komma</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|IP Komma</olia_system:hasTagContaining>
-  </Punctuation>
-  <Case rdf:ID="Nom">
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Nom</olia_system:hasTagEndingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Nom </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Nom|</olia_system:hasTagContaining>
-    <hasCase rdf:resource="http://purl.org/olia/morphisto.owl#Nom"/>
-  </Case>
-  <ReflexivePronoun rdf:ID="refl">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PPRO refl</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >reflexive pronoun</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >refl</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >refl</olia_system:hasTagEndingWith>
-  </ReflexivePronoun>
-  <Case rdf:ID="Acc">
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Acc</olia_system:hasTagEndingWith>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Akk</olia_system:hasTagEndingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Acc </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Acc|</olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Akk </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Akk|</olia_system:hasTagContaining>
-    <hasCase rdf:resource="http://purl.org/olia/morphisto.owl#Acc"/>
-  </Case>
-  <Interjection rdf:ID="INTJ">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >interjection, e.g., "aha"</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|INTJ</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >INTJ</olia_system:hasTagStartingWith>
-  </Interjection>
-  <Conjunction rdf:ID="KONJSub">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|KONJ Sub</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >KONJ Sub</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >subordinating conjunctions, e.g., da, ehe, falls, indem, Nachdem, Obschon, obwohl, sobald, sofern, Solange, Weil, wenn, wenngleich</rdfs:comment>
-  </Conjunction>
-  <Particle rdf:ID="PTKL">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PTKL</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PTKL</olia_system:hasTagStartingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >particle</rdfs:comment>
-  </Particle>
-  <Number rdf:ID="Pl">
-    <hasNumber rdf:resource="http://purl.org/olia/morphisto.owl#Pl"/>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pl </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pl|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pl</olia_system:hasTagEndingWith>
-  </Number>
-  <AdjectiveInflection rdf:ID="strong">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > St </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > St|</olia_system:hasTagContaining>
-    <hasAdjectiveInflection rdf:resource="http://purl.org/olia/morphisto.owl#strong"/>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > St</olia_system:hasTagEndingWith>
-  </AdjectiveInflection>
-  <Degree rdf:ID="Comp">
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Comp</olia_system:hasTagEndingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Comp </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Comp|</olia_system:hasTagContaining>
-    <hasDegree rdf:resource="http://purl.org/olia/morphisto.owl#Comp"/>
-  </Degree>
-  <VerbalParticle rdf:ID="VPREAdv">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >this tag is used for "da", alternative analyses include " KONJ Sub" and "ADV"</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|VPRE Adv</olia_system:hasTagContaining>
-    <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >VPRE Adv</olia_system:hasTagStartingWith>
-  </VerbalParticle>
-  <Case rdf:ID="Gen">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Gen </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Gen|</olia_system:hasTagContaining>
-    <hasCase rdf:resource="http://purl.org/olia/morphisto.owl#Gen"/>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Gen</olia_system:hasTagEndingWith>
-  </Case>
-  <Adverb rdf:ID="ADV">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|ADV</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >non-derived adverbs</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ADV</olia_system:hasTagStartingWith>
-  </Adverb>
-  <ProperNoun rdf:ID="NE">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NE</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|NE</olia_system:hasTagContaining>
-  </ProperNoun>
-  <rdf:Description rdf:about="http://purl.org/olia/system.owl#hasTag">
-    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Note that for hasTagContaining, hasTagEndingWith, etc., I assume a representation of alternative analyses beginning with the POS tag and connected by a pipe (|). So, for every hasTagStartingWith('X'), there should exist the corresponding property hasTagContaining('|X'), etc.
 
-"NNMasc Nom Sg|NN Masc Dat Sg|NN Masc Akk Sg"</owl:versionInfo>
-  </rdf:Description>
-  <Conjunction rdf:ID="KONJKon">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|KONJ Kon</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >coordinating conjunctions ???
+    <!-- http://purl.org/olia/morphisto.owl#WordClass -->
+
+    <owl:Class rdf:about="http://purl.org/olia/morphisto.owl#WordClass">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTagContaining"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTagStartingWith"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Parts of speech produced by Morphisto (as accessible under http://ingrid.sub.uni-goettingen.de/cgi-bin/analyze.cgi), the POS tag is the first uninterrupted character sequence after +, e.g., NN in &quot;Test +NN Masc Nom Sg&quot;</rdfs:comment>
+        <owl:versionInfo>Note that for hasTagContaining, hasTagEndingWith, etc., I assume a representation of alternative analyses beginning with the POS tag and connected by a pipe (|). So, for every hasTagStartingWith(&apos;X&apos;), there should exist the corresponding property hasTagContaining(&apos;|X&apos;), etc.
+
+&quot;NNMasc Nom Sg|NN Masc Dat Sg|NN Masc Akk Sg&quot;</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#ADJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#ADJ">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+        <olia_system:hasTagContaining>|ADJ</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ADJ</olia_system:hasTagStartingWith>
+        <rdfs:comment>&quot;proper&quot; adjectives</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#ADV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#ADV">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
+        <olia_system:hasTagContaining>|ADV</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ADV</olia_system:hasTagStartingWith>
+        <rdfs:comment>non-derived adverbs</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#ART -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#ART">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Article"/>
+        <olia_system:hasTagContaining>|ART</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ART</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Acc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Acc">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Case"/>
+        <hasCase rdf:resource="http://purl.org/olia/morphisto.owl#Acc"/>
+        <olia_system:hasTagContaining> Acc </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Acc|</olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Akk </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Akk|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Acc</olia_system:hasTagEndingWith>
+        <olia_system:hasTagEndingWith> Akk</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Adv -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Adv">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#AdjectiveInAdverbialFunction"/>
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
+        <olia_system:hasTagContaining>|ADJ Adv</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ADJ Adv</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Comp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Comp">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Degree"/>
+        <hasDegree rdf:resource="http://purl.org/olia/morphisto.owl#Comp"/>
+        <olia_system:hasTagContaining> Comp </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Comp|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Comp</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#DEM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#DEM">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#DemonstrativePronoun"/>
+        <olia_system:hasTagContaining>|DEM</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>DEM</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Dat -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Dat">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Case"/>
+        <hasCase rdf:resource="http://purl.org/olia/morphisto.owl#Dat"/>
+        <olia_system:hasTagContaining> Dat </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Dat|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Dat</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Def -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Def">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#DefiniteArticle"/>
+        <olia_system:hasTagContaining>|ART Def</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ART Def</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Gen -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Gen">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Case"/>
+        <hasCase rdf:resource="http://purl.org/olia/morphisto.owl#Gen"/>
+        <olia_system:hasTagContaining> Gen </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Gen|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Gen</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#INDEF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#INDEF">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#IndefinitePronoun"/>
+        <olia_system:hasTagContaining>|INDEF</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>INDEF</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#INTJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#INTJ">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Interjection"/>
+        <olia_system:hasTagContaining>|INTJ</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>INTJ</olia_system:hasTagStartingWith>
+        <rdfs:comment>interjection, e.g., &quot;aha&quot;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#IP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#IP">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Punctuation"/>
+        <olia_system:hasTagContaining>|IP</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>IP</olia_system:hasTagStartingWith>
+        <rdfs:comment>punctuation in general</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#IPKomma -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#IPKomma">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Punctuation"/>
+        <olia_system:hasTagContaining>|IP Komma</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>IP Komma</olia_system:hasTagStartingWith>
+        <rdfs:comment>comma</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#IPNorm -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#IPNorm">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Punctuation"/>
+        <olia_system:hasTagContaining>|IP Norm</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>IP Norm</olia_system:hasTagStartingWith>
+        <rdfs:comment>sentence-level punctuation: !, ., :, ?</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#IPlinks -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#IPlinks">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Punctuation"/>
+        <olia_system:hasTagContaining>|IP links</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>IP links</olia_system:hasTagStartingWith>
+        <rdfs:comment>left delimiters of parentheses and quotations: &apos;, (, -, /</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#IPrechts -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#IPrechts">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Punctuation"/>
+        <olia_system:hasTagContaining>|IP rechts</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>IP rechts</olia_system:hasTagStartingWith>
+        <rdfs:comment>right delimiters of parentheses or quotations: )</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Ind -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Ind">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Aspect"/>
+        <hasAspect rdf:resource="http://purl.org/olia/morphisto.owl#Ind"/>
+        <olia_system:hasTagContaining> Ind </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Ind|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Ind</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Indef -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Indef">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#IndefiniteArticle"/>
+        <olia_system:hasTagContaining>|ART Indef</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ART Indef</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#KONJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#KONJ">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Conjunction"/>
+        <olia_system:hasTagContaining>|KONJ</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>KONJ</olia_system:hasTagStartingWith>
+        <rdfs:comment>conjunction in general</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#KONJInf -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#KONJInf">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Conjunction"/>
+        <olia_system:hasTagContaining>|KONJ Inf</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>KONJ Inf</olia_system:hasTagStartingWith>
+        <rdfs:comment>conjunction with infinitive</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#KONJKon -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#KONJKon">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Conjunction"/>
+        <olia_system:hasTagContaining>|KONJ Kon</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>KONJ Kon</olia_system:hasTagStartingWith>
+        <rdfs:comment>coordinating conjunctions ???
 examples: beziehungsweise, dass, desto, doch, Entweder, indessen, oder, sondern, Sowas, sowie, Sowohl, und, weder,</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >KONJ Kon</olia_system:hasTagStartingWith>
-  </Conjunction>
-  <Degree rdf:ID="Pos">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pos </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pos|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pos</olia_system:hasTagEndingWith>
-    <hasDegree rdf:resource="http://purl.org/olia/morphisto.owl#Pos"/>
-  </Degree>
-  <Aspect rdf:ID="Ind">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Ind </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Ind|</olia_system:hasTagContaining>
-    <hasAspect rdf:resource="http://purl.org/olia/morphisto.owl#Ind"/>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Ind</olia_system:hasTagEndingWith>
-  </Aspect>
-  <FiniteVerb rdf:ID="V2">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >second person</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V 2</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V 2</olia_system:hasTagContaining>
-  </FiniteVerb>
-  <PersonalPronoun rdf:ID="pers">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >pers</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >personal pronouns</rdfs:comment>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > pers</olia_system:hasTagEndingWith>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PPRO pers</olia_system:hasTagStartingWith>
-  </PersonalPronoun>
-  <Tense rdf:ID="Pres">
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pres</olia_system:hasTagEndingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pres|</olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Pres </olia_system:hasTagContaining>
-    <hasTense rdf:resource="http://purl.org/olia/morphisto.owl#Pres"/>
-  </Tense>
-  <Postposition rdf:ID="POSTP">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|POSTP</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >POSTP</olia_system:hasTagStartingWith>
-  </Postposition>
-  <AdjectiveInflection rdf:ID="weak_mixed">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sw/Mix </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sw/Mix|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sw/Mix</olia_system:hasTagEndingWith>
-    <hasAdjectiveInflection rdf:resource="http://purl.org/olia/morphisto.owl#weak_mixed"/>
-  </AdjectiveInflection>
-  <Punctuation rdf:ID="IPNorm">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|IP Norm</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >sentence-level punctuation: !, ., :, ?</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >IP Norm</olia_system:hasTagStartingWith>
-  </Punctuation>
-  <NounClass rdf:ID="Simp">
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Simp</olia_system:hasTagEndingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Simp </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Simp|</olia_system:hasTagContaining>
-  </NounClass>
-  <InfiniteVerb rdf:ID="VPPres">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >present participle</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V PPres</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V PPres</olia_system:hasTagContaining>
-  </InfiniteVerb>
-  <NounClass rdf:ID="Old">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Old </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Old|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Old</olia_system:hasTagEndingWith>
-  </NounClass>
-  <IndefinitePronoun rdf:ID="INDEF">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >INDEF</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|INDEF</olia_system:hasTagContaining>
-  </IndefinitePronoun>
-  <PersReflPronoun rdf:ID="PPRO">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >personal and reflexive pronouns</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PPRO</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PPRO</olia_system:hasTagStartingWith>
-  </PersReflPronoun>
-  <Article rdf:ID="ART">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|ART</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ART</olia_system:hasTagStartingWith>
-  </Article>
-  <Degree rdf:ID="Sup">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sup </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sup|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sup</olia_system:hasTagEndingWith>
-    <hasDegree rdf:resource="http://purl.org/olia/morphisto.owl#Sup"/>
-  </Degree>
-  <DefiniteArticle rdf:ID="PREP_ART">
-    <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Preposition"/>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PREP/ART</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PREP/ART</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >preposition fused with definite article</rdfs:comment>
-  </DefiniteArticle>
-  <Tense rdf:ID="Past">
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Past</olia_system:hasTagEndingWith>
-    <hasTense rdf:resource="http://purl.org/olia/morphisto.owl#Past"/>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Past|</olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Past </olia_system:hasTagContaining>
-  </Tense>
-  <AdjectiveInflection rdf:ID="strong_mixed">
-    <hasAdjectiveInflection rdf:resource="http://purl.org/olia/morphisto.owl#strong_mixed"/>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > St/Mix</olia_system:hasTagEndingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > St/Mix </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > St/Mix|</olia_system:hasTagContaining>
-  </AdjectiveInflection>
-  <ProperNoun rdf:ID="NPROP">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|NPROP</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NPROP</olia_system:hasTagStartingWith>
-  </ProperNoun>
-  <AdjectiveInflection rdf:ID="weak">
-    <hasAdjectiveInflection rdf:resource="http://purl.org/olia/morphisto.owl#weak"/>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sw </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sw|</olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Wk </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Wk|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sw</olia_system:hasTagEndingWith>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Wk</olia_system:hasTagEndingWith>
-  </AdjectiveInflection>
-  <InfiniteVerb rdf:ID="VInf">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V Inf</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V Inf</olia_system:hasTagContaining>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >infinitive</rdfs:comment>
-  </InfiniteVerb>
-  <InfiniteVerb rdf:ID="VInfZu">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Infinitive with particle "zu"</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >V Inf zu</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|V Inf zu</olia_system:hasTagContaining>
-  </InfiniteVerb>
-  <Particle rdf:ID="PTKLzu">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >"zu" as a particle</rdfs:comment>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >|PTKL zu</olia_system:hasTagContaining>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PTKL zu</olia_system:hasTagStartingWith>
-  </Particle>
-  <PersonalPronoun rdf:ID="prfl">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >prfl</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >prfl</olia_system:hasTagEndingWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >forms that can be either personal pronouns or reflexive pronouns</rdfs:comment>
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PPRO prfl</olia_system:hasTagStartingWith>
-    <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#ReflexivePronoun"/>
-  </PersonalPronoun>
-  <PredicativeAdjective rdf:ID="Pred">
-    <olia_system:hasTagStartingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ADJ Pred</olia_system:hasTagStartingWith>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Pred</olia_system:hasTagContaining>
-  </PredicativeAdjective>
-  <Number rdf:ID="Sg">
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sg </olia_system:hasTagContaining>
-    <olia_system:hasTagContaining rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sg|</olia_system:hasTagContaining>
-    <olia_system:hasTagEndingWith rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    > Sg</olia_system:hasTagEndingWith>
-    <hasNumber rdf:resource="http://purl.org/olia/morphisto.owl#Sg"/>
-  </Number>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#KONJSub -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#KONJSub">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Conjunction"/>
+        <olia_system:hasTagContaining>|KONJ Sub</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>KONJ Sub</olia_system:hasTagStartingWith>
+        <rdfs:comment>subordinating conjunctions, e.g., da, ehe, falls, indem, Nachdem, Obschon, obwohl, sobald, sofern, Solange, Weil, wenn, wenngleich</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#KONJVgl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#KONJVgl">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Conjunction"/>
+        <olia_system:hasTagContaining>|KONJ Vgl</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>KONJ Vgl</olia_system:hasTagStartingWith>
+        <rdfs:comment>conjunctions that express comparison or similarity, e.g., &quot;als&quot;, &quot;wie&quot;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Konj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Konj">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Aspect"/>
+        <owl:sameAs rdf:resource="http://purl.org/olia/morphisto.owl#Subj"/>
+        <hasAspect rdf:resource="http://purl.org/olia/morphisto.owl#Konj"/>
+        <olia_system:hasTagContaining> Konj </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Konj|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Konj</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Subj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Subj"/>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#NE -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#NE">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#ProperNoun"/>
+        <olia_system:hasTagContaining>|NE</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>NE</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#NN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#NN">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#CommonNoun"/>
+        <olia_system:hasTagContaining>|NN</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>NN</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#NPROP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#NPROP">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#ProperNoun"/>
+        <olia_system:hasTagContaining>|NPROP</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>NPROP</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Nom -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Nom">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Case"/>
+        <hasCase rdf:resource="http://purl.org/olia/morphisto.owl#Nom"/>
+        <olia_system:hasTagContaining> Nom </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Nom|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Nom</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#ORD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#ORD">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#SyntacticAdjective"/>
+        <olia_system:hasTagContaining>|ORD</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ORD</olia_system:hasTagStartingWith>
+        <rdfs:comment>ordinal numbers</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Old -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Old">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#NounClass"/>
+        <olia_system:hasTagContaining> Old </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Old|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Old</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#POSS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#POSS">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#PossessivePronoun"/>
+        <olia_system:hasTagContaining>|POSS</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>POSS</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#POSTP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#POSTP">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Postposition"/>
+        <olia_system:hasTagContaining>|POSTP</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>POSTP</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PPRO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PPRO">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#PersReflPronoun"/>
+        <olia_system:hasTagContaining>|PPRO</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PPRO</olia_system:hasTagStartingWith>
+        <rdfs:comment>personal and reflexive pronouns</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PREP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PREP">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Preposition"/>
+        <olia_system:hasTagContaining>|PREP</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PREP</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PREP_ART -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PREP_ART">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#DefiniteArticle"/>
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Preposition"/>
+        <olia_system:hasTagContaining>|PREP/ART</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PREP/ART</olia_system:hasTagStartingWith>
+        <rdfs:comment>preposition fused with definite article</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PROADV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PROADV">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
+        <olia_system:hasTagContaining>|PROADV</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PROADV</olia_system:hasTagStartingWith>
+        <rdfs:comment>non-interrogative pronominal adverbs, also including adverbs derived from Indo-European pronominal stems, e.g., bevor, Dabei, dadurch, dafÃ¼r, dagegen, daher, dahin, dahinter, Damit, Danach, Daran, darauf, Daraufhin, daraus, darin, darum, darÃ¼ber, Davon, davor, dazu, Dazwischen, Deshalb, deswegen, drauf, drin, Drum, flugs, gewissermaÃYen, her, herum, heut, indessen, rum, Seitdem, soeben, Trotzdem, Willens, zuerst, zurzeit, zurÃ¼ck</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PTKL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PTKL">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Particle"/>
+        <olia_system:hasTagContaining>|PTKL</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PTKL</olia_system:hasTagStartingWith>
+        <rdfs:comment>particle</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PTKLAdj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PTKLAdj">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Particle"/>
+        <olia_system:hasTagContaining>|PTKL Adj</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PTKL Adj</olia_system:hasTagStartingWith>
+        <rdfs:comment>particles that express the degree of comparison of adjectives, e.g., allzu, Am, zu</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PTKLAnt -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PTKLAnt">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Particle"/>
+        <olia_system:hasTagContaining>|PTKL Ant</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PTKL Ant</olia_system:hasTagStartingWith>
+        <rdfs:comment>particles that represent answers to questions or requests, e.g., Bitte, bitteschÃ¶n, ja, Nein</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PTKLNeg -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PTKLNeg">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Particle"/>
+        <olia_system:hasTagContaining>|PTKL Neg</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PTKL Neg</olia_system:hasTagStartingWith>
+        <rdfs:comment>particles that express negation</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#PTKLzu -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#PTKLzu">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Particle"/>
+        <olia_system:hasTagContaining>|PTKL zu</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>PTKL zu</olia_system:hasTagStartingWith>
+        <rdfs:comment>&quot;zu&quot; as a particle</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Past -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Past">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Tense"/>
+        <hasTense rdf:resource="http://purl.org/olia/morphisto.owl#Past"/>
+        <olia_system:hasTagContaining> Past </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Past|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Past</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Pl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Pl">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Number"/>
+        <hasNumber rdf:resource="http://purl.org/olia/morphisto.owl#Pl"/>
+        <olia_system:hasTagContaining> Pl </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Pl|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Pl</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Pos -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Pos">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Degree"/>
+        <hasDegree rdf:resource="http://purl.org/olia/morphisto.owl#Pos"/>
+        <olia_system:hasTagContaining> Pos </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Pos|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Pos</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Pred -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Pred">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#PredicativeAdjective"/>
+        <olia_system:hasTagContaining>Pred</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>ADJ Pred</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Pres -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Pres">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Tense"/>
+        <hasTense rdf:resource="http://purl.org/olia/morphisto.owl#Pres"/>
+        <olia_system:hasTagContaining> Pres </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Pres|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Pres</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#REL -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#REL">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#RelativePronoun"/>
+        <olia_system:hasTagContaining>|REL</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>REL</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Sg -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Sg">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Number"/>
+        <hasNumber rdf:resource="http://purl.org/olia/morphisto.owl#Sg"/>
+        <olia_system:hasTagContaining> Sg </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Sg|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Sg</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Simp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Simp">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#NounClass"/>
+        <olia_system:hasTagContaining> Simp </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Simp|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Simp</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Subj -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Subj">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Aspect"/>
+        <hasAspect rdf:resource="http://purl.org/olia/morphisto.owl#Subj"/>
+        <olia_system:hasTagContaining> Subj </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Subj|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Subj</olia_system:hasTagEndingWith>
+        <rdfs:comment>Apparently, the guesser uses this tag instead of normal Konj if the word is not found in the lexicon.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#Sup -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#Sup">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Degree"/>
+        <hasDegree rdf:resource="http://purl.org/olia/morphisto.owl#Sup"/>
+        <olia_system:hasTagContaining> Sup </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Sup|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Sup</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#V -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#V">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Verb"/>
+        <olia_system:hasTag>V</olia_system:hasTag>
+        <olia_system:hasTagContaining>|V</olia_system:hasTagContaining>
+        <olia_system:hasTagContaining>|V|</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#V1 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#V1">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
+        <olia_system:hasTagContaining>|V 1</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V 1</olia_system:hasTagStartingWith>
+        <rdfs:comment>first person</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#V2 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#V2">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
+        <olia_system:hasTagContaining>|V 2</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V 2</olia_system:hasTagStartingWith>
+        <rdfs:comment>second person</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#V3 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#V3">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#FiniteVerb"/>
+        <olia_system:hasTagContaining>|V 3</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V 3</olia_system:hasTagStartingWith>
+        <rdfs:comment>third person</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VImp -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VImp">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#InfiniteVerb"/>
+        <olia_system:hasTagContaining>|V Imp</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V Imp</olia_system:hasTagStartingWith>
+        <rdfs:comment>imperative</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VInf -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VInf">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#InfiniteVerb"/>
+        <olia_system:hasTagContaining>|V Inf</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V Inf</olia_system:hasTagStartingWith>
+        <rdfs:comment>infinitive</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VInfZu -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VInfZu">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#InfiniteVerb"/>
+        <olia_system:hasTagContaining>|V Inf zu</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V Inf zu</olia_system:hasTagStartingWith>
+        <rdfs:comment>Infinitive with particle &quot;zu&quot;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VPPast -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VPPast">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#InfiniteVerb"/>
+        <olia_system:hasTagContaining>|V PPast</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V PPast</olia_system:hasTagStartingWith>
+        <rdfs:comment>past participle</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VPPres -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VPPres">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#InfiniteVerb"/>
+        <olia_system:hasTagContaining>|V PPres</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>V PPres</olia_system:hasTagStartingWith>
+        <rdfs:comment>present participle</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VPREAdv -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VPREAdv">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#VerbalParticle"/>
+        <olia_system:hasTagContaining>|VPRE Adv</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>VPRE Adv</olia_system:hasTagStartingWith>
+        <rdfs:comment>this tag is used for &quot;da&quot;, alternative analyses include &quot; KONJ Sub&quot; and &quot;ADV&quot;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VPREProAdv -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VPREProAdv">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#VerbalParticle"/>
+        <olia_system:hasTagContaining>|VPRE ProAdv</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>VPRE ProAdv</olia_system:hasTagStartingWith>
+        <rdfs:comment>this tag is used for some pronominal adverbs, e.g., &quot;darauf&quot;. Alternative analyses include PROADV</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VPREV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VPREV">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Verb"/>
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#VerbalParticle"/>
+        <olia_system:hasTagContaining>|VPRE V</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>VPRE V</olia_system:hasTagStartingWith>
+        <rdfs:comment>This tag is used for &quot;lieben&quot;.
+Alternative analyses include the normal analyses as verb or adjective: &quot;ADJ Pos Neut Dat Sg Sw/Mix|V 1 Pl Pres Ind|V 3 Pl Pres Konj|V Inf|ADJ Pos Neut Gen Sg|ADJ Pos Masc Gen Sg|ADJ Pos Fem Gen Sg Sw/Mix|ADJ Pos NoGend Akk Pl Sw/Mix|ADJ Pos Masc Akk Sg|V 1 Pl Pres Konj|ADJ Pos Fem Dat Sg Sw/Mix|VPRE V|V 3 Pl Pres Ind|ADJ Pos NoGend Nom Pl Sw/Mix|ADJ Pos Masc Dat Sg Sw/Mix|ADJ Pos NoGend Dat Pl|ADJ Pos NoGend Gen Pl Sw/Mix&quot;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#VPREnull -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#VPREnull">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adposition"/>
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#VerbalParticle"/>
+        <olia_system:hasTag>VPRE</olia_system:hasTag>
+        <olia_system:hasTagContaining>|VPRE|</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>VPRE|</olia_system:hasTagStartingWith>
+        <rdfs:comment>The tag VPRE alone marks all occurrencies of &quot;ab&quot;, possibly in its role as displaced verbal particle, see comments on VerbalParticle.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#WADV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#WADV">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Adverb"/>
+        <olia_system:hasTagContaining>|WADV</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>WADV</olia_system:hasTagStartingWith>
+        <rdfs:comment>adverb derived from an interrogative stem, including, but not restricted to pronominal adverbs, e.g., Wann, warum, weshalb, Wieso, wo, wobei, WofÃ¼r, woher, wohin, wonach, worin, wovon, Wozu</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#WPRO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#WPRO">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#InterrogativePronoun"/>
+        <olia_system:hasTagContaining>|WPRO</olia_system:hasTagContaining>
+        <olia_system:hasTagStartingWith>WPRO</olia_system:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#fem -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#fem">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Gender"/>
+        <hasGender rdf:resource="http://purl.org/olia/morphisto.owl#fem"/>
+        <olia_system:hasTagContaining> Fem </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Fem|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Fem</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#first -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#first">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Person"/>
+        <hasPerson rdf:resource="http://purl.org/olia/morphisto.owl#first"/>
+        <olia_system:hasTagContaining> 1 </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> 1|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> 1</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#mD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#mD">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#QuantifierInflection"/>
+        <hasQuantifierInflection rdf:resource="http://purl.org/olia/morphisto.owl#mD"/>
+        <olia_system:hasTagContaining> mD|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> mD</olia_system:hasTagEndingWith>
+        <rdfs:comment>examples: all, alle, allem, allen, aller, Alles, andere, anderen, anderer, anderes, beide, beiden, bisschen, jede, jeden, jeder, jedes, meiste, meisten, paar, solch, solche, solchen, solcher, viele, vielen, vieler, wenig, Wenige, wenigen, weniger, wenigsten</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#masc -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#masc">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Gender"/>
+        <hasGender rdf:resource="http://purl.org/olia/morphisto.owl#masc"/>
+        <olia_system:hasTagContaining> Masc </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Masc|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Masc</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#neut -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#neut">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Gender"/>
+        <hasGender rdf:resource="http://purl.org/olia/morphisto.owl#neut"/>
+        <olia_system:hasTagContaining> Neut </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Neut|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Neut</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#noGender -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#noGender">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Gender"/>
+        <olia_system:hasTagContaining> NoGend </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> NoGend|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> NoGend</olia_system:hasTagEndingWith>
+        <rdfs:comment>used for plural, where gender differentiation is not expressed</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#oD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#oD">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#QuantifierInflection"/>
+        <hasQuantifierInflection rdf:resource="http://purl.org/olia/morphisto.owl#oD"/>
+        <olia_system:hasTagContaining>  oD|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> oD</olia_system:hasTagEndingWith>
+        <rdfs:comment>examples: Einige, einigem, einigen, einiger, einiges, ersteres, etliche, etwas, irgendein, jeglichen, kein, Keine, keinem, keinen, keiner, lauter, Letzterer, manch, manche, Manchem, manchen, mancher, Manches, mehr, Mehrere, mehreren, reichlich, viel, Welche, welchem, welchen, Welcher, weniger</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#pers -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#pers">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#PersonalPronoun"/>
+        <olia_system:hasTagContaining>pers</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> pers</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>PPRO pers</olia_system:hasTagStartingWith>
+        <rdfs:comment>personal pronouns</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#prfl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#prfl">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#PersonalPronoun"/>
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#ReflexivePronoun"/>
+        <olia_system:hasTagContaining>prfl</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith>prfl</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>PPRO prfl</olia_system:hasTagStartingWith>
+        <rdfs:comment>forms that can be either personal pronouns or reflexive pronouns</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#refl -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#refl">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#ReflexivePronoun"/>
+        <olia_system:hasTagContaining>refl</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith>refl</olia_system:hasTagEndingWith>
+        <olia_system:hasTagStartingWith>PPRO refl</olia_system:hasTagStartingWith>
+        <rdfs:comment>reflexive pronoun</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#second -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#second">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Person"/>
+        <hasPerson rdf:resource="http://purl.org/olia/morphisto.owl#second"/>
+        <olia_system:hasTagContaining> 2 </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> 2|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> 2</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#strong -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#strong">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#AdjectiveInflection"/>
+        <hasAdjectiveInflection rdf:resource="http://purl.org/olia/morphisto.owl#strong"/>
+        <olia_system:hasTagContaining> St </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> St|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> St</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#strong_mixed -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#strong_mixed">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#AdjectiveInflection"/>
+        <hasAdjectiveInflection rdf:resource="http://purl.org/olia/morphisto.owl#strong_mixed"/>
+        <olia_system:hasTagContaining> St/Mix </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> St/Mix|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> St/Mix</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#third -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#third">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#Person"/>
+        <hasPerson rdf:resource="http://purl.org/olia/morphisto.owl#third"/>
+        <olia_system:hasTagContaining> 3 </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> 3|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> 3</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#weak -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#weak">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#AdjectiveInflection"/>
+        <hasAdjectiveInflection rdf:resource="http://purl.org/olia/morphisto.owl#weak"/>
+        <olia_system:hasTagContaining> Sw </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Sw|</olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Wk </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Wk|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Sw</olia_system:hasTagEndingWith>
+        <olia_system:hasTagEndingWith> Wk</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/morphisto.owl#weak_mixed -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/morphisto.owl#weak_mixed">
+        <rdf:type rdf:resource="http://purl.org/olia/morphisto.owl#AdjectiveInflection"/>
+        <hasAdjectiveInflection rdf:resource="http://purl.org/olia/morphisto.owl#weak_mixed"/>
+        <olia_system:hasTagContaining> Sw/Mix </olia_system:hasTagContaining>
+        <olia_system:hasTagContaining> Sw/Mix|</olia_system:hasTagContaining>
+        <olia_system:hasTagEndingWith> Sw/Mix</olia_system:hasTagEndingWith>
+    </owl:NamedIndividual>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+

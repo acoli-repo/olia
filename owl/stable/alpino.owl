@@ -1,35 +1,18 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY olia_system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/penn.owl#"
      xml:base="http://purl.org/olia/penn.owl"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:olia_system="http://purl.org/olia/system.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/alpino.owl">
- 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/nld"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">TODO: add definitions
-		
-		2017-06-10 removed inappropriate comments inherited from penn.owl, moved to stable (CC)
-		2015-08-01 created as fork from penn.owl (MS)
-		
-		CC Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de
-		MS Maria Sukahreva sukhareva.maria1@gmail.com</owl:versionInfo>
-        <rdfs:comment rdf:datatype="&xsd;string">OLiA Annotation Model for  LASSY alpino part-of-speech annotation (Dutch), http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/nld"/>
+        <rdfs:comment>OLiA Annotation Model for  LASSY alpino part-of-speech annotation (Dutch), http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html
 
 References
 http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html
@@ -37,8 +20,38 @@ http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html
 http://nederbooms.ccl.kuleuven.be/test/tags
 
 http://www.let.rug.nl/vannoord/Lassy/</rdfs:comment>
-        <rdfs:isDefinedBy rdf:datatype="&xsd;string">http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy>http://nederbooms.ccl.kuleuven.be/php/common/TreebankFreqsLASSY.html</rdfs:isDefinedBy>
+        <owl:versionInfo>TODO: add definitions
+		
+		2017-06-10 removed inappropriate comments inherited from penn.owl, moved to stable (CC)
+		2015-08-01 created as fork from penn.owl (MS)
+		
+		CC Christian Chiarcos, chiarcos@informatik.uni-frankfurt.de
+		MS Maria Sukahreva sukhareva.maria1@gmail.com</owl:versionInfo>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://w3id.org/meta-share/meta-share/language -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -55,13 +68,13 @@ http://www.let.rug.nl/vannoord/Lassy/</rdfs:comment>
 
     <!-- http://purl.org/olia/system.owl#hasTag -->
 
-    <owl:DatatypeProperty rdf:about="&olia_system;hasTag"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
     
 
 
     <!-- http://purl.org/olia/system.owl#hasTier -->
 
-    <owl:DatatypeProperty rdf:about="&olia_system;hasTier"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
     
 
 
@@ -80,7 +93,7 @@ http://www.let.rug.nl/vannoord/Lassy/</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Adjective">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string">These are adjectives, ordinal numerals, and ordinal numbers.</rdfs:comment>
+        <rdfs:comment>These are adjectives, ordinal numerals, and ordinal numbers.</rdfs:comment>
     </owl:Class>
     
 
@@ -97,7 +110,7 @@ http://www.let.rug.nl/vannoord/Lassy/</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/alpino.owl#CardinalNumber">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string">These are cardinal numbers.</rdfs:comment>
+        <rdfs:comment>These are cardinal numbers.</rdfs:comment>
     </owl:Class>
     
 
@@ -156,7 +169,7 @@ http://www.let.rug.nl/vannoord/Lassy/</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Noun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is a class inserted to structure the tagset.</rdfs:comment>
+        <rdfs:comment>This is a class inserted to structure the tagset.</rdfs:comment>
     </owl:Class>
     
 
@@ -165,7 +178,7 @@ http://www.let.rug.nl/vannoord/Lassy/</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Particle">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
+        <rdfs:comment>This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions.</rdfs:comment>
     </owl:Class>
     
 
@@ -201,7 +214,7 @@ voedsel- en landbouworganisatie</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Pronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/alpino.owl#Tag"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is a class inserted to structure the tagset.</rdfs:comment>
+        <rdfs:comment>This is a class inserted to structure the tagset.</rdfs:comment>
     </owl:Class>
     
 
@@ -209,11 +222,11 @@ voedsel- en landbouworganisatie</rdfs:comment>
     <!-- http://purl.org/olia/alpino.owl#Punctuation -->
 
     <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Punctuation">
-        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&olia_system;hasTier"/>
-                <owl:hasValue>pos</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:versionInfo>Not addressed by Santorini (1990), but produced by real-world taggers, also cf. http://www.cis.upenn.edu/~treebank/tokenization.html for the treatment of PTB punctuation tags in the parsed Penn Treebank.</owl:versionInfo>
@@ -224,7 +237,13 @@ voedsel- en landbouworganisatie</rdfs:comment>
     <!-- http://purl.org/olia/alpino.owl#Tag -->
 
     <owl:Class rdf:about="http://purl.org/olia/alpino.owl#Tag">
-        <rdfs:subClassOf rdf:resource="&olia_system;LinguisticAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -239,7 +258,7 @@ voedsel- en landbouworganisatie</rdfs:comment>
 
     <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
 
-    <owl:Class rdf:about="&olia_system;LinguisticAnnotation"/>
+    <owl:Class rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
     
 
 
@@ -348,12 +367,12 @@ voedsel- en landbouworganisatie</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/alpino.owl#pp">
         <rdf:type rdf:resource="http://purl.org/olia/alpino.owl#PronominalAdverb"/>
+        <olia_system:hasTag>pp</olia_system:hasTag>
         <rdfs:comment>Pronominal adverb like English &quot;whereof&quot;, &quot;hereby&quot; etc. 
 Dutch: &quot;ertegen&quot; (thereagainst):
 Hij protesteert ertegen. 
 &quot;erin&quot; (therein): 
 We doken erin.</rdfs:comment>
-        <olia_system:hasTag>pp</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -422,5 +441,5 @@ We doken erin.</rdfs:comment>
 
 
 
-<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

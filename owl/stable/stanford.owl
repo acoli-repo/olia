@@ -1,43 +1,32 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY olia_system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/stanford.owl#"
      xml:base="http://purl.org/olia/stanford.owl"
-     xmlns:olia_system="http://purl.org/olia/system.owl#"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:olia_system="http://purl.org/olia/system.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/stanford.owl">
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">2010-01-05 created by Sebastian Hellmann (RDF) 
-2010-01-12 OWL/DL conversion, integration with OLiA ontologies
-2011-11-30 update for Stanford Parser v.1.6.9, added PrepositionalClausalModifier, MultiWordExpression, NounPhraseAsAdverbialModifier; support for collapsed edge labels (prepc_, prep_, conj_)
-2012-01-16 encoding errors fixed
-
-Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
-        <rdfs:comment rdf:datatype="&xsd;string">OLiA Annotation Model of Stanford Parser dependency labels (de Marneffe and Manning 2011)
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+        <rdfs:comment>OLiA Annotation Model of Stanford Parser dependency labels (de Marneffe and Manning 2011)
 
 Unless specified otherwise, all comments are taken from de Marneffe and Manning (2011)
 
 References:
 Marie-Catherine de Marneffe and Christopher D. Manning (2011), Stanford typed dependencies manual, September 2008, revised for Stanford Parser v. 1.6.9 in September 2011, http://nlp.stanford.edu/software/dependencies_manual.pdf</rdfs:comment>
-        <rdfs:isDefinedBy rdf:datatype="&xsd;string">http://nlp.stanford.edu/software/dependencies_manual.pdf</rdfs:isDefinedBy>
-        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <rdfs:isDefinedBy>http://nlp.stanford.edu/software/dependencies_manual.pdf</rdfs:isDefinedBy>
+        <owl:versionInfo>2010-01-05 created by Sebastian Hellmann (RDF) 
+2010-01-12 OWL/DL conversion, integration with OLiA ontologies
+2011-11-30 update for Stanford Parser v.1.6.9, added PrepositionalClausalModifier, MultiWordExpression, NounPhraseAsAdverbialModifier; support for collapsed edge labels (prepc_, prep_, conj_)
+2012-01-16 encoding errors fixed
+
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -53,14 +42,9 @@ Marie-Catherine de Marneffe and Christopher D. Manning (2011), Stanford typed de
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://w3id.org/meta-share/meta-share/language -->
 
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -78,12 +62,12 @@ Marie-Catherine de Marneffe and Christopher D. Manning (2011), Stanford typed de
     <!-- http://purl.org/olia/stanford.owl#AbbreviationModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#AbbreviationModifier">
-        <rdfs:label rdf:datatype="&xsd;string">abbreviation modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>An abbreviation modifier of an NP is a parenthesized NP that serves to abbreviate the NP (or to define an abbreviation).
 
 &quot;The Australian Broadcasting Corporation (ABC)&quot; 
 abbrev(Corporation, ABC)</rdfs:comment>
+        <rdfs:label>abbreviation modifier</rdfs:label>
     </owl:Class>
     
 
@@ -91,12 +75,12 @@ abbrev(Corporation, ABC)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#AdjectivalComplement -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#AdjectivalComplement">
-        <rdfs:label rdf:datatype="&xsd;string">adjectival complement</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
         <rdfs:comment>An adjectival complement of a verb is an adjectival phrase which functions as the complement (like an object of the verb).
 
 &quot;She looks very beautiful&quot;
 acomp(looks, beautiful)</rdfs:comment>
+        <rdfs:label>adjectival complement</rdfs:label>
     </owl:Class>
     
 
@@ -104,12 +88,12 @@ acomp(looks, beautiful)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#AdjectivalModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#AdjectivalModifier">
-        <rdfs:label rdf:datatype="&xsd;string">adjectival modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>An adjectival modifier of an NP is any adjectival phrase that serves to modify the meaning of the NP.
 
 &quot;Sam eats red meat&quot; 
 amod(meat, red)</rdfs:comment>
+        <rdfs:label>adjectival modifier</rdfs:label>
     </owl:Class>
     
 
@@ -117,7 +101,6 @@ amod(meat, red)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#AdverbialClauseModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#AdverbialClauseModifier">
-        <rdfs:label rdf:datatype="&xsd;string">adverbial clause modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>An adverbial clause modifier of a VP or S is a clause modifying the verb (temporal clause, consequence, conditional clause, etc.).
 
@@ -126,6 +109,7 @@ advcl(happened, falling)
 
 &quot;If you know who did it, you should tell the teacher&quot;
 advcl(tell, know)</rdfs:comment>
+        <rdfs:label>adverbial clause modifier</rdfs:label>
     </owl:Class>
     
 
@@ -133,7 +117,6 @@ advcl(tell, know)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#AdverbialModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#AdverbialModifier">
-        <rdfs:label rdf:datatype="&xsd;string">adverbial modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>An adverbial modifier of a word is a (non-clausal) adverb or adverbial phrase (ADVP) that serves to modify the meaning of the word.
 
@@ -142,6 +125,7 @@ advmod(modified, genetically)
 
 &quot;less often&quot; 
 advmod(often, less)</rdfs:comment>
+        <rdfs:label>adverbial modifier</rdfs:label>
     </owl:Class>
     
 
@@ -149,7 +133,6 @@ advmod(often, less)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Agent -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Agent">
-        <rdfs:label rdf:datatype="&xsd;string">agent</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Argument"/>
         <rdfs:comment>An agent is the complement of a passive verb which is introduced by the preposition &quot;by&quot; and does the action.
 
@@ -158,6 +141,7 @@ agent(killed, police)
 
 &quot;Effects caused by the protein are important&quot; 
 agent(caused, protein)</rdfs:comment>
+        <rdfs:label>agent</rdfs:label>
     </owl:Class>
     
 
@@ -165,15 +149,15 @@ agent(caused, protein)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#AppositionalModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#AppositionalModifier">
-        <rdfs:label rdf:datatype="&xsd;string">appositional modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>An appositional modifier of an NP is an NP immediately to the right of the first NP that serves to define or modify that NP. It includes parenthesized examples.
 
 &quot;Sam, my brother&quot; 
 appos(Sam, brother)
 
-&quot;Bill (John&#39;s cousin)&quot; 
+&quot;Bill (John&apos;s cousin)&quot; 
 appos(Bill, cousin)</rdfs:comment>
+        <rdfs:label>appositional modifier</rdfs:label>
     </owl:Class>
     
 
@@ -181,8 +165,8 @@ appos(Bill, cousin)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Argument -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Argument">
-        <rdfs:label rdf:datatype="&xsd;string">argument</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
+        <rdfs:label>argument</rdfs:label>
     </owl:Class>
     
 
@@ -190,12 +174,12 @@ appos(Bill, cousin)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Attributive -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Attributive">
-        <rdfs:label rdf:datatype="&xsd;string">attributive</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
         <rdfs:comment>An attributive is a WHNP complement of a copular verb such as &quot;to be&quot;, &quot;to seem&quot;, &quot;to appear&quot;.
 
 &quot;What is that?&quot; 
 attr (is, What)</rdfs:comment>
+        <rdfs:label>attributive</rdfs:label>
     </owl:Class>
     
 
@@ -203,7 +187,6 @@ attr (is, What)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Auxiliary -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Auxiliary">
-        <rdfs:label rdf:datatype="&xsd;string">auxiliary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
         <rdfs:comment>An auxiliary of a clause is a non-main verb of the clause, e.g. modal auxiliary, &quot;be&quot; and &quot;have&quot; in a composed tense.
 
@@ -212,6 +195,7 @@ aux(died, has)
 
 &quot;He should leave&quot; 
 aux(leave, should)</rdfs:comment>
+        <rdfs:label>auxiliary</rdfs:label>
     </owl:Class>
     
 
@@ -219,8 +203,6 @@ aux(leave, should)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#ClausalComplementWithExternalSubject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#ClausalComplementWithExternalSubject">
-        <rdfs:label rdf:datatype="&xsd;string">clausal complement with external subject</rdfs:label>
-        <rdfs:label>open clausal complement</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
         <rdfs:comment>An open clausal complement (xcomp) of a VP or an ADJP is a clausal complement without its own subject, whose reference is determined by an external subject. These complements are always non-finite. The name xcomp is borrowed from Lexical-Functional Grammar. 
 
@@ -229,6 +211,8 @@ xcomp(like, swim)
 
 &quot;I am ready to leave&quot; 
 xcomp(ready, leave)</rdfs:comment>
+        <rdfs:label>open clausal complement</rdfs:label>
+        <rdfs:label>clausal complement with external subject</rdfs:label>
     </owl:Class>
     
 
@@ -236,7 +220,6 @@ xcomp(ready, leave)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#ClausalComplementWithInternalSubject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#ClausalComplementWithInternalSubject">
-        <rdfs:label rdf:datatype="&xsd;string">clausal complement with internal subject</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
         <rdfs:comment>A clausal complement of a verb or adjective is a dependent clause with an internal subject which functions like an object of the verb, or adjective. Clausal complements for nouns are limited to complement clauses with a subset of nouns like &quot;fact&quot; or &quot;report&quot;. We analyze them the same (parallel to the analysis of this class as &quot;content clauses&quot; in Huddleston and Pullum 2002). Such clausal complements are usually finite (though there are occasional remnant English subjunctives).
 
@@ -248,6 +231,7 @@ ccomp(certain, did)
 
 &quot;I admire the fact that you are honest&quot; 
 ccomp(fact, honest)</rdfs:comment>
+        <rdfs:label>clausal complement with internal subject</rdfs:label>
     </owl:Class>
     
 
@@ -255,7 +239,6 @@ ccomp(fact, honest)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#ClausalSubject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#ClausalSubject">
-        <rdfs:label rdf:datatype="&xsd;string">clausal subject</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Subject"/>
         <rdfs:comment>A clausal subject is a clausal syntactic subject of a clause, i.e., the subject is itself a clause. The governor of this relation might not always be a verb: when the verb is a copular verb, the root of the clause is the complement of the copular verb. In the two following examples, &quot;what she said&quot; is the subject.
 
@@ -264,6 +247,7 @@ csubj (makes, said)
 
 &quot;What she said is not true&quot; 
 csubj (true, said)</rdfs:comment>
+        <rdfs:label>clausal subject</rdfs:label>
     </owl:Class>
     
 
@@ -271,8 +255,8 @@ csubj (true, said)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Complement -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Complement">
-        <rdfs:label rdf:datatype="&xsd;string">complement</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Argument"/>
+        <rdfs:label>complement</rdfs:label>
     </owl:Class>
     
 
@@ -280,12 +264,12 @@ csubj (true, said)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Complementizer -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Complementizer">
-        <rdfs:label rdf:datatype="&xsd;string">complementizer</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
         <rdfs:comment>A complementizer of a clausal complement (ccomp) is the word introducing it. It will be the subordinating conjunction &quot;that&quot; or &quot;whether&quot;.
 
 &quot;He says that you like to swim&quot; 
 complm(like, that)</rdfs:comment>
+        <rdfs:label>complementizer</rdfs:label>
     </owl:Class>
     
 
@@ -293,12 +277,12 @@ complm(like, that)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#CompountNumberElement -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#CompountNumberElement">
-        <rdfs:label rdf:datatype="&xsd;string">element of compound number</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>An element of compound number is a part of a number phrase or currency amount.
 
 &quot;I lost $ 3.2 billion&quot; 
 number($, billion)</rdfs:comment>
+        <rdfs:label>element of compound number</rdfs:label>
     </owl:Class>
     
 
@@ -306,7 +290,6 @@ number($, billion)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Conjunct -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Conjunct">
-        <rdfs:label rdf:datatype="&xsd;string">conjunct</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
         <rdfs:comment>A conjunct is the relation between two elements connected by a coordinating conjunction, such as &quot;and&quot;, &quot;or&quot;, etc. We treat conjunctions asymmetrically: The head of the relation is the first
 conjunct and other conjunctions depend on it via the conj relation.
@@ -316,6 +299,7 @@ conj (big, honest)
 
 &quot;They either ski or snowboard&quot; 
 conj (ski, snowboard)</rdfs:comment>
+        <rdfs:label>conjunct</rdfs:label>
     </owl:Class>
     
 
@@ -323,12 +307,12 @@ conj (ski, snowboard)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#ControllingSubject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#ControllingSubject">
-        <rdfs:label rdf:datatype="&xsd;string">controlling subject</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#SemanticDependent"/>
         <rdfs:comment>A controlling subject is the relation between the head of a open clausal complement (xcomp) and the external subject of that clause.
 
 &quot;Tom likes to eat fish&quot; 
 xsubj (eat, Tom)</rdfs:comment>
+        <rdfs:label>controlling subject</rdfs:label>
     </owl:Class>
     
 
@@ -336,7 +320,6 @@ xsubj (eat, Tom)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Coordination -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Coordination">
-        <rdfs:label rdf:datatype="&xsd;string">coordination</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
         <rdfs:comment>A coordination is the relation between an element of a conjunct and the coordinating conjunction word of the conjunct. (Note: different dependency grammars have different treatments of coordination. We take one conjunct of a conjunction (normally the first) as the head of the conjunction.)
 
@@ -345,6 +328,7 @@ cc(big, and)
 
 &quot;They either ski or snowboard&quot; 
 cc(ski, or)</rdfs:comment>
+        <rdfs:label>coordination</rdfs:label>
     </owl:Class>
     
 
@@ -352,7 +336,6 @@ cc(ski, or)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Copula -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Copula">
-        <rdfs:label rdf:datatype="&xsd;string">copula</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Auxiliary"/>
         <rdfs:comment>A copula is the relation between the complement of a copular verb and the copular verb. (We normally take a copula as a dependent of its complement.)
 
@@ -361,6 +344,7 @@ cop(big, is)
 
 &quot;Bill is an honest man&quot; 
 cop(man, is)</rdfs:comment>
+        <rdfs:label>copula</rdfs:label>
     </owl:Class>
     
 
@@ -368,7 +352,13 @@ cop(man, is)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#DependencyLabel -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#DependencyLabel">
-        <rdfs:subClassOf rdf:resource="&olia_system;Feature"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>EDGE</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -376,16 +366,16 @@ cop(man, is)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#DependencyRelation -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#DependencyRelation">
-        <rdfs:subClassOf rdf:resource="&olia_system;Relation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Relation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&olia_system;hasSource"/>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasSource"/>
                 <owl:someValuesFrom rdf:resource="http://purl.org/olia/stanford.owl#Token"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&olia_system;hasTarget"/>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTarget"/>
                 <owl:someValuesFrom rdf:resource="http://purl.org/olia/stanford.owl#Token"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -396,21 +386,21 @@ cop(man, is)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Dependent -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Dependent">
-        <rdfs:label rdf:datatype="&xsd;string">dependent</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#DependencyLabel"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&olia_system;hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">stanford</owl:hasValue>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>stanford</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">Dependencies are established between tokens, i.e., exactly those entities that are subject to part of speech annotation.
+        <rdfs:comment>Dependencies are established between tokens, i.e., exactly those entities that are subject to part of speech annotation.
 
 A dependency is labeled as dep when the system is unable to determine a more precise dependency relation between two words. This may be because of a weird grammatical construction, a limitation in the Stanford Dependency conversion software, a parser error, or because of an unresolved long distance dependency.
 
 &quot;Then, as if to show that he could, . . . &quot; 
 dep(show, if)</rdfs:comment>
-        <owl:versionInfo rdf:datatype="&xsd;string">TODO: check tier (layer/level) identifier for stanford dependencies</owl:versionInfo>
+        <rdfs:label>dependent</rdfs:label>
+        <owl:versionInfo>TODO: check tier (layer/level) identifier for stanford dependencies</owl:versionInfo>
     </owl:Class>
     
 
@@ -418,7 +408,6 @@ dep(show, if)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Determiner -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Determiner">
-        <rdfs:label rdf:datatype="&xsd;string">determiner</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A determiner is the relation between the head of an NP and its determiner.
 
@@ -427,6 +416,7 @@ det(man, the)
 
 &quot;Which book do you prefer?&quot; 
 det(book, which)</rdfs:comment>
+        <rdfs:label>determiner</rdfs:label>
     </owl:Class>
     
 
@@ -434,7 +424,6 @@ det(book, which)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#DirectObject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#DirectObject">
-        <rdfs:label rdf:datatype="&xsd;string">direct object</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Object"/>
         <rdfs:comment>The direct object of a VP is the noun phrase which is the (accusative) object of the verb.
 
@@ -443,6 +432,7 @@ dobj (gave, raise)
 
 &quot;They win the lottery&quot; 
 dobj (win, lottery)</rdfs:comment>
+        <rdfs:label>direct object</rdfs:label>
     </owl:Class>
     
 
@@ -450,12 +440,12 @@ dobj (win, lottery)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Expletive -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Expletive">
-        <rdfs:label rdf:datatype="&xsd;string">expletive (expletive “there”)</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
         <rdfs:comment>This relation captures an existential &quot;there&quot;. The main verb of the clause is the governor.
 
 &quot;There is a ghost in the room&quot; 
 expl(is, There)</rdfs:comment>
+        <rdfs:label>expletive (expletive “there”)</rdfs:label>
     </owl:Class>
     
 
@@ -463,12 +453,12 @@ expl(is, There)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#IndirectObject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#IndirectObject">
-        <rdfs:label rdf:datatype="&xsd;string">indirect object</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Object"/>
         <rdfs:comment>The indirect object of a VP is the noun phrase which is the (dative) object of the verb.
 
 &quot;She gave me a raise&quot;
 iobj (gave, me)</rdfs:comment>
+        <rdfs:label>indirect object</rdfs:label>
     </owl:Class>
     
 
@@ -476,15 +466,15 @@ iobj (gave, me)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#InfinitivalModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#InfinitivalModifier">
-        <rdfs:label rdf:datatype="&xsd;string">infinitival modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>An infinitival modifier of an NP is an infinitive that serves to modify the meaning of the NP.
 
 &quot;Points to establish are . . . &quot; 
 infmod(points, establish)
 
-&quot;I don&#39;t have anything to say&quot; 
+&quot;I don&apos;t have anything to say&quot; 
 infmod(anything, say)</rdfs:comment>
+        <rdfs:label>infinitival modifier</rdfs:label>
     </owl:Class>
     
 
@@ -492,12 +482,12 @@ infmod(anything, say)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Marker -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Marker">
-        <rdfs:label rdf:datatype="&xsd;string">marker (word introducing an advcl )</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
         <rdfs:comment>A marker of an adverbial clausal complement (advcl) is the word introducing it. It will be a subordinating conjunction different from &quot;that&quot; or &quot;whether&quot;: e.g. &quot;because&quot;, &quot;when&quot;, &quot;although&quot;, etc.
 
 &quot;Forces engaged in fighting after insurgents attacked&quot; 
 mark(attacked, after)</rdfs:comment>
+        <rdfs:label>marker (word introducing an advcl )</rdfs:label>
     </owl:Class>
     
 
@@ -505,8 +495,8 @@ mark(attacked, after)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#MeasurePhraseModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#MeasurePhraseModifier">
-        <rdfs:label rdf:datatype="&xsd;string">measure-phrase modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
+        <rdfs:label>measure-phrase modifier</rdfs:label>
     </owl:Class>
     
 
@@ -514,8 +504,8 @@ mark(attacked, after)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Modifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Modifier">
-        <rdfs:label rdf:datatype="&xsd;string">modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
+        <rdfs:label>modifier</rdfs:label>
     </owl:Class>
     
 
@@ -541,15 +531,15 @@ mwe(of, because)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#NegationModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#NegationModifier">
-        <rdfs:label rdf:datatype="&xsd;string">negation modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#AdverbialModifier"/>
         <rdfs:comment>The negation modifier is the relation between a negation word and the word it modifies. 
 
 &quot;Bill is not a scientist&quot; 
 neg(scientist, not)
 
-&quot;Bill doesn&#39;t drive&quot; 
-neg(drive, n&#39;t)</rdfs:comment>
+&quot;Bill doesn&apos;t drive&quot; 
+neg(drive, n&apos;t)</rdfs:comment>
+        <rdfs:label>negation modifier</rdfs:label>
     </owl:Class>
     
 
@@ -557,7 +547,6 @@ neg(drive, n&#39;t)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#NominalSubject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#NominalSubject">
-        <rdfs:label rdf:datatype="&xsd;string">nominal subject</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Subject"/>
         <rdfs:comment>A nominal subject is a noun phrase which is the syntactic subject of a clause. The governor of this relation might not always be a verb: when the verb is a copular verb, the root of the clause is the complement of the copular verb, which can be an adjective or noun.
 
@@ -566,6 +555,7 @@ nsubj (defeated, Clinton)
 
 &quot;The baby is cute&quot; 
 nsubj (cute, baby)</rdfs:comment>
+        <rdfs:label>nominal subject</rdfs:label>
     </owl:Class>
     
 
@@ -573,7 +563,6 @@ nsubj (cute, baby)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#NounCompoundModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#NounCompoundModifier">
-        <rdfs:label rdf:datatype="&xsd;string">noun compound modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A noun compound modifier of an NP is any noun that serves to modify the head noun. (Note that in the current system for dependency extraction, all nouns modify the rightmost noun of the NP -- there is no intelligent noun compound analysis. This is likely to be fixed once the
 Penn Treebank represents the branching structure of NPs.)
@@ -581,6 +570,7 @@ Penn Treebank represents the branching structure of NPs.)
 &quot;Oil price futures&quot; 
 nn(futures, oil)
 nn(futures, price)</rdfs:comment>
+        <rdfs:label>noun compound modifier</rdfs:label>
     </owl:Class>
     
 
@@ -588,7 +578,6 @@ nn(futures, price)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#NounPhraseAsAdverbialModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#NounPhraseAsAdverbialModifier">
-        <rdfs:label>noun phrase as adverbial modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>This relation captures various places where something syntactically a noun phrase (NP) is used as an adverbial modifier in a sentence. These usages include: (i) a measure phrase, which is the relation between the head of an ADJP/ADVP/PP and the head of a measure phrase modifying the ADJP/ADVP; (ii) noun phrases giving an extent inside a VP which are not objects; (iii) financial constructions involving an adverbial or PP-like NP, notably the following construction $5 a share, where the second NP means &quot;per share&quot;; (iv) floating reflexives; and (v) certain other absolutive NP constructions. A temporal modifier (tmod) is a subclass of npadvmod which is distinguished as a separate relation.
 
@@ -609,6 +598,7 @@ npadvmod(significant, itself)
 
 &quot;90% of Australians like him, the most of any country&quot; 
 npadvmod(like, most)</rdfs:comment>
+        <rdfs:label>noun phrase as adverbial modifier</rdfs:label>
     </owl:Class>
     
 
@@ -616,12 +606,12 @@ npadvmod(like, most)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#NumericModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#NumericModifier">
-        <rdfs:label rdf:datatype="&xsd;string">numeric modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A numeric modifier of a noun is any number phrase that serves to modify the meaning of the noun.
 
 &quot;Sam eats 3 sheep&quot; 
 num(sheep, 3)</rdfs:comment>
+        <rdfs:label>numeric modifier</rdfs:label>
     </owl:Class>
     
 
@@ -629,8 +619,8 @@ num(sheep, 3)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Object -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Object">
-        <rdfs:label rdf:datatype="&xsd;string">object</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
+        <rdfs:label>object</rdfs:label>
     </owl:Class>
     
 
@@ -638,12 +628,12 @@ num(sheep, 3)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#ObjectOfPreposition -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#ObjectOfPreposition">
-        <rdfs:label rdf:datatype="&xsd;string">object of preposition</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Object"/>
-        <rdfs:comment>The object of a preposition is the head of a noun phrase following the preposition, or the adverbs &quot;here&quot; and &quot;there&quot;. (The preposition in turn may be modifying a noun, verb, etc.) Unlike the Penn Treebank, we here define cases of VBG quasi-prepositions like &quot;including&quot;, &quot;concerning&quot;, etc. as instances of pobj. (The preposition can be called a FW for &quot;pace&quot;, &quot;versus&quot;, etc. It can also be called a CC -- but we don&#39;t currently handle that and would need to distinguish from conjoined prepositions.) In the case of preposition stranding, the object can precede the preposition (e.g., &quot;What does CPR stand for?&quot;).
+        <rdfs:comment>The object of a preposition is the head of a noun phrase following the preposition, or the adverbs &quot;here&quot; and &quot;there&quot;. (The preposition in turn may be modifying a noun, verb, etc.) Unlike the Penn Treebank, we here define cases of VBG quasi-prepositions like &quot;including&quot;, &quot;concerning&quot;, etc. as instances of pobj. (The preposition can be called a FW for &quot;pace&quot;, &quot;versus&quot;, etc. It can also be called a CC -- but we don&apos;t currently handle that and would need to distinguish from conjoined prepositions.) In the case of preposition stranding, the object can precede the preposition (e.g., &quot;What does CPR stand for?&quot;).
 
 &quot;I sat on the chair&quot; 
 pobj (on, chair)</rdfs:comment>
+        <rdfs:label>object of preposition</rdfs:label>
     </owl:Class>
     
 
@@ -651,12 +641,12 @@ pobj (on, chair)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Parataxis -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Parataxis">
-        <rdfs:label rdf:datatype="&xsd;string">parataxis</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
         <rdfs:comment>The parataxis relation (from Greek for &quot;place side by side&quot;) is a relation between the main verb of a clause and other sentential elements, such as a sentential parenthetical, or a clause after a &quot;:&quot; or a &quot;;&quot;.
 
 &quot;The guy, John said, left early in the morning&quot; 
 parataxis(left, said)</rdfs:comment>
+        <rdfs:label>parataxis</rdfs:label>
     </owl:Class>
     
 
@@ -664,7 +654,6 @@ parataxis(left, said)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#ParticipalModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#ParticipalModifier">
-        <rdfs:label rdf:datatype="&xsd;string">participial modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A participial modifier of an NP or VP or sentence is a participial verb form that serves to modify the meaning of a noun phrase or sentence.
 
@@ -673,6 +662,7 @@ partmod(truffles, picked)
 
 &quot;Bill tried to shoot demonstrating his incompetence&quot; 
 partmod(shoot, demonstrating)</rdfs:comment>
+        <rdfs:label>participial modifier</rdfs:label>
     </owl:Class>
     
 
@@ -680,7 +670,6 @@ partmod(shoot, demonstrating)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PassiveAuxiliary -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PassiveAuxiliary">
-        <rdfs:label rdf:datatype="&xsd;string">passive auxiliary</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Auxiliary"/>
         <rdfs:comment>A passive auxiliary of a clause is a non-main verb of the clause which contains the passive information.
 
@@ -690,6 +679,7 @@ aux(killed,has)
 
 &quot;Kennedy was/got killed&quot; 
 auxpass(killed, was/got)</rdfs:comment>
+        <rdfs:label>passive auxiliary</rdfs:label>
     </owl:Class>
     
 
@@ -697,13 +687,13 @@ auxpass(killed, was/got)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PassiveClausalSubject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PassiveClausalSubject">
-        <rdfs:label rdf:datatype="&xsd;string">passive clausal subject</rdfs:label>
-        <rdfs:label>clausal passive subject</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#ClausalSubject"/>
         <rdfs:comment>A clausal passive subject is a clausal syntactic subject of a passive clause. In the example below, &quot;that she lied&quot; is the subject.
 
 &quot;That she lied was suspected by everyone&quot; 
 csubjpass(suspected, lied)</rdfs:comment>
+        <rdfs:label>clausal passive subject</rdfs:label>
+        <rdfs:label>passive clausal subject</rdfs:label>
     </owl:Class>
     
 
@@ -711,12 +701,12 @@ csubjpass(suspected, lied)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PassiveNominalSubject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PassiveNominalSubject">
-        <rdfs:label rdf:datatype="&xsd;string">passive nominal subject</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#NominalSubject"/>
         <rdfs:comment>A passive nominal subject is a noun phrase which is the syntactic subject of a passive clause.
 
 &quot;Dole was defeated by Clinton&quot; 
 nsubjpass(defeated, Dole)</rdfs:comment>
+        <rdfs:label>passive nominal subject</rdfs:label>
     </owl:Class>
     
 
@@ -724,12 +714,12 @@ nsubjpass(defeated, Dole)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PhrasalVerbParticle -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PhrasalVerbParticle">
-        <rdfs:label rdf:datatype="&xsd;string">phrasal verb particle</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>The phrasal verb particle relation identifies a phrasal verb, and holds between the verb and its particle.
 
 &quot;They shut down the station&quot; 
 prt(shut, down)</rdfs:comment>
+        <rdfs:label>phrasal verb particle</rdfs:label>
     </owl:Class>
     
 
@@ -737,15 +727,15 @@ prt(shut, down)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PossessionModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PossessionModifier">
-        <rdfs:label rdf:datatype="&xsd;string">possession modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
-        <rdfs:comment>The possession modifier relation holds between the head of an NP and its possessive determiner, or a genitive &#39;s complement.
+        <rdfs:comment>The possession modifier relation holds between the head of an NP and its possessive determiner, or a genitive &apos;s complement.
 
 &quot;their offices&quot; 
 poss(offices, their)
 
-&quot;Bill&#39;s clothes&quot; 
+&quot;Bill&apos;s clothes&quot; 
 poss(clothes, Bill)</rdfs:comment>
+        <rdfs:label>possession modifier</rdfs:label>
     </owl:Class>
     
 
@@ -753,12 +743,12 @@ poss(clothes, Bill)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PossessiveModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PossessiveModifier">
-        <rdfs:label rdf:datatype="&xsd;string">possessive modifier (’s)</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
-        <rdfs:comment>The possessive modifier relation appears between the head of an NP and the genitive &#39;s.
+        <rdfs:comment>The possessive modifier relation appears between the head of an NP and the genitive &apos;s.
 
-&quot;Bill&#39;s clothes&quot; 
-possessive(John, &#39;s)</rdfs:comment>
+&quot;Bill&apos;s clothes&quot; 
+possessive(John, &apos;s)</rdfs:comment>
+        <rdfs:label>possessive modifier (’s)</rdfs:label>
     </owl:Class>
     
 
@@ -766,12 +756,12 @@ possessive(John, &#39;s)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Preconjunct -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Preconjunct">
-        <rdfs:label rdf:datatype="&xsd;string">preconjunct</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A preconjunct is the relation between the head of an NP and a word that appears at the beginning bracketing a conjunction (and puts emphasis on it), such as &quot;either&quot;, &quot;both&quot;, &quot;neither&quot;).
 
 &quot;Both the boys and the girls are here&quot; 
 preconj (boys, both)</rdfs:comment>
+        <rdfs:label>preconjunct</rdfs:label>
     </owl:Class>
     
 
@@ -779,12 +769,12 @@ preconj (boys, both)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Predeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Predeterminer">
-        <rdfs:label rdf:datatype="&xsd;string">predeterminer</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A predeterminer is the relation between the head of an NP and a word that precedes and modifies the meaning of the NP determiner.
 
 &quot;All the boys are here&quot; 
 predet(boys, all)</rdfs:comment>
+        <rdfs:label>predeterminer</rdfs:label>
     </owl:Class>
     
 
@@ -805,9 +795,7 @@ prepc_without(purchased, paying)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PrepositionalComplement -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PrepositionalComplement">
-        <rdfs:label>prepositional complement</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
-        <owl:versionInfo>missing from the taxonomy de Maneffe &amp; Manning (2011, §4)</owl:versionInfo>
         <rdfs:comment>This is used when the complement of a preposition is a clause or prepositional phrase (or occasionally, an adverbial phrase). The prepositional complement of a preposition is the head of a clause following the preposition, or the preposition head of the following PP.
 
 &quot;We have no information on whether users are at risk&quot; 
@@ -815,6 +803,8 @@ pcomp(on, are)
 
 &quot;They heard about you missing classes&quot;
 pcomp(about, missing)</rdfs:comment>
+        <rdfs:label>prepositional complement</rdfs:label>
+        <owl:versionInfo>missing from the taxonomy de Maneffe &amp; Manning (2011, §4)</owl:versionInfo>
     </owl:Class>
     
 
@@ -822,7 +812,6 @@ pcomp(about, missing)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PrepositionalModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PrepositionalModifier">
-        <rdfs:label rdf:datatype="&xsd;string">prepositional modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A prepositional modifier of a verb, adjective, or noun is any prepositional phrase that serves to modify the meaning of the verb, adjective, noun, or even another prepositon. In the collapsed representation, this is used only for prepositions with NP complements.
 
@@ -834,6 +823,7 @@ prep(saw, with)
 
 &quot;He is responsible for meals&quot; 
 prep(responsible, for)</rdfs:comment>
+        <rdfs:label>prepositional modifier</rdfs:label>
     </owl:Class>
     
 
@@ -841,12 +831,12 @@ prep(responsible, for)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Punctuation -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Punctuation">
-        <rdfs:label rdf:datatype="&xsd;string">punctuation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
         <rdfs:comment>This is used for any piece of punctuation in a clause, if punctuation is being retained in the typed dependencies. By default, punctuation is not retained in the output.
 
 &quot;Go home!&quot; 
 punct(Go, !)</rdfs:comment>
+        <rdfs:label>punctuation</rdfs:label>
     </owl:Class>
     
 
@@ -854,12 +844,12 @@ punct(Go, !)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#PurposeClauseModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#PurposeClauseModifier">
-        <rdfs:label rdf:datatype="&xsd;string">purpose clause modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A purpose clause modifier of a VP is a clause headed by &quot;(in order) to&quot; specifying a purpose. At present the system only recognizes ones that have &quot;in order to&quot; as otherwise the system is unable to distinguish from the surface representations between these and open clausal complements (xcomp). It can also recognize fronted &quot;to&quot; purpose clauses in sentences.
 
 &quot;He talked to him in order to secure the account&quot; 
 purpcl(talked, secure)</rdfs:comment>
+        <rdfs:label>purpose clause modifier</rdfs:label>
     </owl:Class>
     
 
@@ -867,13 +857,13 @@ purpcl(talked, secure)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#QuantifierModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#QuantifierModifier">
-        <rdfs:label rdf:datatype="&xsd;string">quantifier modifier</rdfs:label>
-        <rdfs:label>quantifier phrase modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A quantifier modifier is an element modifying the head of a QP constituent. (These are modifiers in complex numeric quantifiers, not other types of &quot;quantification&quot;. Quantifiers like &quot;all&quot; become det.)
 
 &quot;About 200 people came to the party&quot; 
 quantmod(200, About)</rdfs:comment>
+        <rdfs:label>quantifier phrase modifier</rdfs:label>
+        <rdfs:label>quantifier modifier</rdfs:label>
     </owl:Class>
     
 
@@ -881,12 +871,12 @@ quantmod(200, About)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Referent -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Referent">
-        <rdfs:label rdf:datatype="&xsd;string">referent</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
         <rdfs:comment>A referent of the head of an NP is the relative word introducing the relative clause modifying the NP.
 
 &quot;I saw the book which you bought&quot; 
 ref (book, which)</rdfs:comment>
+        <rdfs:label>referent</rdfs:label>
     </owl:Class>
     
 
@@ -894,12 +884,12 @@ ref (book, which)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Relative -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Relative">
-        <rdfs:label rdf:datatype="&xsd;string">relative (word introducing a rcmod )</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
         <rdfs:comment>A relative of a relative clause is the head word of the WH-phrase introducing it. This analysis is used only for relative words which are not the subject of the relative clause. Relative words which act as the subject of a relative clause are analyzed as a nsubj.
 
 &quot;I saw the man whose wife you love&quot; 
 rel (love, wife)</rdfs:comment>
+        <rdfs:label>relative (word introducing a rcmod )</rdfs:label>
     </owl:Class>
     
 
@@ -907,7 +897,6 @@ rel (love, wife)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#RelativeClauseModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#RelativeClauseModifier">
-        <rdfs:label rdf:datatype="&xsd;string">relative clause modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
         <rdfs:comment>A relative clause modifier of an NP is a relative clause modifying the NP. The relation points from the head noun of the NP to the head of the relative clause, normally a verb.
 
@@ -916,6 +905,7 @@ rcmod(man, love)
 
 &quot;I saw the book which you bought&quot; 
 rcmod(book,bought)</rdfs:comment>
+        <rdfs:label>relative clause modifier</rdfs:label>
     </owl:Class>
     
 
@@ -938,8 +928,8 @@ root(ROOT, man)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#SemanticDependent -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#SemanticDependent">
-        <rdfs:label rdf:datatype="&xsd;string">semantic dependent</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
+        <rdfs:label>semantic dependent</rdfs:label>
     </owl:Class>
     
 
@@ -947,8 +937,8 @@ root(ROOT, man)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Subject -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Subject">
-        <rdfs:label rdf:datatype="&xsd;string">subject</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#Argument"/>
+        <rdfs:label>subject</rdfs:label>
     </owl:Class>
     
 
@@ -956,12 +946,12 @@ root(ROOT, man)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#TemporalModifier -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#TemporalModifier">
-        <rdfs:label rdf:datatype="&xsd;string">temporal modifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/stanford.owl#NounPhraseAsAdverbialModifier"/>
         <rdfs:comment>A temporal modifier (of a VP, NP, or an ADJP is a bare noun phrase constituent that serves to modify the meaning of the constituent by specifying a time. (Other temporal modifiers are prepositional phrases and are introduced as prep.)
 
 &quot;Last night, I swam in the pool&quot; 
 tmod(swam, night)</rdfs:comment>
+        <rdfs:label>temporal modifier</rdfs:label>
     </owl:Class>
     
 
@@ -969,7 +959,7 @@ tmod(swam, night)</rdfs:comment>
     <!-- http://purl.org/olia/stanford.owl#Token -->
 
     <owl:Class rdf:about="http://purl.org/olia/stanford.owl#Token">
-        <rdfs:subClassOf rdf:resource="&olia_system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
     </owl:Class>
     
 
@@ -989,7 +979,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#abbrev">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#AbbreviationModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">abbrev</olia_system:hasTag>
+        <olia_system:hasTag>abbrev</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -998,7 +988,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#acomp">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#AdjectivalComplement"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">acomp</olia_system:hasTag>
+        <olia_system:hasTag>acomp</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1007,7 +997,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#advcl">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#AdverbialClauseModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">advcl</olia_system:hasTag>
+        <olia_system:hasTag>advcl</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1016,7 +1006,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#advmod">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#AdverbialModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">advmod</olia_system:hasTag>
+        <olia_system:hasTag>advmod</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1025,7 +1015,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#agent">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Agent"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">agent</olia_system:hasTag>
+        <olia_system:hasTag>agent</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1034,7 +1024,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#amod">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#AdjectivalModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">amod</olia_system:hasTag>
+        <olia_system:hasTag>amod</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1043,7 +1033,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#appos">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#AppositionalModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">appos</olia_system:hasTag>
+        <olia_system:hasTag>appos</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1052,7 +1042,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#arg">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Argument"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">arg</olia_system:hasTag>
+        <olia_system:hasTag>arg</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1061,7 +1051,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#attr">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Attributive"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">attr</olia_system:hasTag>
+        <olia_system:hasTag>attr</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1070,7 +1060,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#aux">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Auxiliary"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">aux</olia_system:hasTag>
+        <olia_system:hasTag>aux</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1079,7 +1069,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#auxpass">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#PassiveAuxiliary"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">auxpass</olia_system:hasTag>
+        <olia_system:hasTag>auxpass</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1088,7 +1078,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#cc">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Coordination"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">cc</olia_system:hasTag>
+        <olia_system:hasTag>cc</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1097,7 +1087,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#ccomp">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#ClausalComplementWithInternalSubject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">ccomp</olia_system:hasTag>
+        <olia_system:hasTag>ccomp</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1106,7 +1096,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#comp">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Complement"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">comp</olia_system:hasTag>
+        <olia_system:hasTag>comp</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1115,7 +1105,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#compl">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Complementizer"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">compl</olia_system:hasTag>
+        <olia_system:hasTag>compl</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1133,7 +1123,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#conj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Conjunct"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">conj</olia_system:hasTag>
+        <olia_system:hasTag>conj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1151,7 +1141,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#cop">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Copula"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">cop</olia_system:hasTag>
+        <olia_system:hasTag>cop</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1160,7 +1150,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#csubj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#ClausalSubject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">csubj</olia_system:hasTag>
+        <olia_system:hasTag>csubj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1169,7 +1159,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#csubjpass">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#PassiveClausalSubject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">csubjpass</olia_system:hasTag>
+        <olia_system:hasTag>csubjpass</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1178,7 +1168,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#dep">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Dependent"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">dep</olia_system:hasTag>
+        <olia_system:hasTag>dep</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1187,7 +1177,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#det">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Determiner"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">det</olia_system:hasTag>
+        <olia_system:hasTag>det</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1196,7 +1186,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#dobj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#DirectObject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">dobj</olia_system:hasTag>
+        <olia_system:hasTag>dobj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1205,7 +1195,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#expl">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Expletive"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">expl</olia_system:hasTag>
+        <olia_system:hasTag>expl</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1214,7 +1204,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#infmod">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#InfinitivalModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">infmod</olia_system:hasTag>
+        <olia_system:hasTag>infmod</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1223,7 +1213,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#iobj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#IndirectObject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">iobj</olia_system:hasTag>
+        <olia_system:hasTag>iobj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1232,7 +1222,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#mark">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Marker"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">mark</olia_system:hasTag>
+        <olia_system:hasTag>mark</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1241,7 +1231,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#measure">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#MeasurePhraseModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">measure</olia_system:hasTag>
+        <olia_system:hasTag>measure</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1250,7 +1240,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#mod">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Modifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">mod</olia_system:hasTag>
+        <olia_system:hasTag>mod</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1268,7 +1258,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#neg">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#NegationModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">neg</olia_system:hasTag>
+        <olia_system:hasTag>neg</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1277,7 +1267,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#nn">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#NounCompoundModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">nn</olia_system:hasTag>
+        <olia_system:hasTag>nn</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1295,7 +1285,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#nsubj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#NominalSubject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">nsubj</olia_system:hasTag>
+        <olia_system:hasTag>nsubj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1304,7 +1294,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#nsubjpass">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#PassiveNominalSubject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">nsubjpass</olia_system:hasTag>
+        <olia_system:hasTag>nsubjpass</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1313,7 +1303,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#num">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#NumericModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">num</olia_system:hasTag>
+        <olia_system:hasTag>num</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1322,7 +1312,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#number">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#CompountNumberElement"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">number</olia_system:hasTag>
+        <olia_system:hasTag>number</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1331,7 +1321,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#obj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Object"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">obj</olia_system:hasTag>
+        <olia_system:hasTag>obj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1340,7 +1330,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#parataxis">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Parataxis"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">parataxis</olia_system:hasTag>
+        <olia_system:hasTag>parataxis</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1349,7 +1339,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#partmod">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#ParticipalModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">partmod</olia_system:hasTag>
+        <olia_system:hasTag>partmod</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1367,7 +1357,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#pobj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#ObjectOfPreposition"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">pobj</olia_system:hasTag>
+        <olia_system:hasTag>pobj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1376,7 +1366,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#poss">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#PossessionModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">poss</olia_system:hasTag>
+        <olia_system:hasTag>poss</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1385,7 +1375,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#possessive">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#PossessiveModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">possessive</olia_system:hasTag>
+        <olia_system:hasTag>possessive</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1394,7 +1384,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#preconj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Preconjunct"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">preconj</olia_system:hasTag>
+        <olia_system:hasTag>preconj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1403,7 +1393,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#predet">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Predeterminer"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">predet</olia_system:hasTag>
+        <olia_system:hasTag>predet</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1412,7 +1402,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#prep">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#PrepositionalModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">prep</olia_system:hasTag>
+        <olia_system:hasTag>prep</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1448,7 +1438,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#prt">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#PhrasalVerbParticle"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">prt</olia_system:hasTag>
+        <olia_system:hasTag>prt</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1457,7 +1447,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#punct">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Punctuation"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">punct</olia_system:hasTag>
+        <olia_system:hasTag>punct</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1466,7 +1456,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#purpcl">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#PurposeClauseModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">purpcl</olia_system:hasTag>
+        <olia_system:hasTag>purpcl</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1475,7 +1465,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#quantmod">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#QuantifierModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">quantmod</olia_system:hasTag>
+        <olia_system:hasTag>quantmod</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1484,7 +1474,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#rcmod">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#RelativeClauseModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">rcmod</olia_system:hasTag>
+        <olia_system:hasTag>rcmod</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1493,7 +1483,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#ref">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Referent"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">ref</olia_system:hasTag>
+        <olia_system:hasTag>ref</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1502,7 +1492,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#rel">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Relative"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">rel</olia_system:hasTag>
+        <olia_system:hasTag>rel</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1520,7 +1510,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#sdep">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#SemanticDependent"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">sdep</olia_system:hasTag>
+        <olia_system:hasTag>sdep</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1529,7 +1519,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#subj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#Subject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">subj</olia_system:hasTag>
+        <olia_system:hasTag>subj</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1538,7 +1528,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#tmod">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#TemporalModifier"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">tmod</olia_system:hasTag>
+        <olia_system:hasTag>tmod</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1547,7 +1537,7 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#xcomp">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#ClausalComplementWithExternalSubject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">xcomp</olia_system:hasTag>
+        <olia_system:hasTag>xcomp</olia_system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1556,11 +1546,11 @@ tmod(swam, night)</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/stanford.owl#xsubj">
         <rdf:type rdf:resource="http://purl.org/olia/stanford.owl#ControllingSubject"/>
-        <olia_system:hasTag rdf:datatype="&xsd;string">xsubj</olia_system:hasTag>
+        <olia_system:hasTag>xsubj</olia_system:hasTag>
     </owl:NamedIndividual>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

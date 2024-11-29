@@ -1,721 +1,1394 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://purl.org/olia/qtag.owl#"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-  xmlns:olia_system="http://purl.org/olia/system.owl#"
-  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-  xml:base="http://purl.org/olia/qtag.owl">
-  <owl:Ontology rdf:about="http://purl.org/olia/qtag.owl">
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-    <rdfs:comment> OLiA Annotation Model for the English QTag tagset by Oliver Mason </rdfs:comment>
-    <owl:versionInfo>
+     xml:base="http://purl.org/olia/qtag.owl"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:olia_system="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/qtag.owl">
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+        <rdfs:comment> OLiA Annotation Model for the English QTag tagset by Oliver Mason </rdfs:comment>
+        <owl:versionInfo>
         2008 created 
         2010-04-06 updated 
         Christian Chiarcos, chiarcos@uni-potsdam.de
     </owl:versionInfo>
-  </owl:Ontology>
-  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
-  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
-  <owl:Class rdf:ID="WhDeterminer">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Determiner"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are wh-determiner,
-      e.g. "what", "which", "whatever", "whichever".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="#Determiner">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are general
-      determiner, e.g. "a"," the", "this", "that".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Particle">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://w3id.org/meta-share/meta-share/language -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag">
+        <rdfs:domain rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are general
+      adjectives e.g. &quot;near&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Adverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Adverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are general adverbs
+      e.g. &quot;chronically&quot;, &quot;deep&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#AdverbialParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#AdverbialParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Particle"/>
+        <rdfs:comment>These are adverbial
+      particles, e.g. &quot;back&quot;, &quot;up&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Am -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Am">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#BePresent"/>
+        <rdfs:comment>This is used for the
+      present form &quot;am&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Are -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Are">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#BePresent"/>
+        <rdfs:comment>This is used for the
+      present form &quot;are&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Be -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Be">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Verb"/>
+        <rdfs:comment>This is a class, we
       inserted to structure the tagset.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Be">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Verb"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BeBaseForm -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#BeBaseForm">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Be"/>
+        <rdfs:comment>This is used for
+      &quot;be&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BePast -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#BePast">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Be"/>
+        <rdfs:comment>This is a class, we
       inserted to structure the tagset.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Have">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BePastParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#BePastParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Be"/>
+        <rdfs:comment>This is used for the past
+      participle form &quot;been&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BePresent -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#BePresent">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Be"/>
+        <rdfs:comment>This is a class, we
       inserted to structure the tagset.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Verb"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="ComparativeAdjective">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are comparative
-      adjectives e.g. "nearer".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Adjective"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Numeral">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BePresentParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#BePresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Be"/>
+        <rdfs:comment>This is used for the
+      present participle form &quot;being&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#CardinalNumeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#CardinalNumeral">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Numeral"/>
+        <rdfs:comment>These are cardinal numbers,
+      e.g. &quot;one&quot;, &quot;two&quot;, &quot;2&quot;, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#CommonNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#CommonNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Noun"/>
+        <rdfs:comment>These are singular or
+      plural common nouns, e.g. &quot;action&quot;, &quot;actions&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#ComparativeAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#ComparativeAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Adjective"/>
+        <rdfs:comment>These are comparative
+      adjectives e.g. &quot;nearer&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#ComparativeAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#ComparativeAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Adverb"/>
+        <rdfs:comment>These are comparative
+      adverbs, e.g. &quot;sooner&quot;, &quot;easier&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Conjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Conjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>This is a class, we
       inserted to structure the tagset.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Has">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
-      present form "has".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Have"/>
-  </owl:Class>
-  <owl:Class rdf:ID="HavePastParticiple">
-    <rdfs:subClassOf rdf:resource="#Have"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
-      participle form "had".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="ForeignWord">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are foreign words,
-      e.g. "ante", "de".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="PersonalPronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are personal
-      pronouns, e.g. "I", "we", "they", "you".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Pronoun"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="HavePast">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
-      form "had".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Have"/>
-  </owl:Class>
-  <owl:Class rdf:ID="HavePresentParticiple">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
-      present participle or gerund form "having".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Have"/>
-  </owl:Class>
-  <owl:Class rdf:ID="BePresent">
-    <rdfs:subClassOf rdf:resource="#Be"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#CoordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#CoordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Conjunction"/>
+        <rdfs:comment>These are coordinating
+      conjunctions, e.g. &quot;and&quot;, &quot;or&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Determiner -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Determiner">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are general
+      determiner, e.g. &quot;a&quot;,&quot; the&quot;, &quot;this&quot;, &quot;that&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Do -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Do">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Verb"/>
+        <rdfs:comment>This is a class, we
       inserted to structure the tagset.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="AdverbialParticle">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are adverbial
-      particles, e.g. "back", "up".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Particle"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Was">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
-      "was".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="BePast"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="SuperlativeAdjective">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are superlative
-      adjectives e.g. "nearest".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Adjective"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="PossessivePronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are possessive
-      pronouns, e.g. "my", "his".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Pronoun"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="LexicalVerbThirdPerson">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="LexicalVerb"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
-      third person, e.g. "believes".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Do">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DoBaseForm -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#DoBaseForm">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Do"/>
+        <rdfs:comment>This is used for
+      &quot;do&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DoPast -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#DoPast">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Do"/>
+        <rdfs:comment>This is used for the past
+      form &quot;did&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DoPastParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#DoPastParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Do"/>
+        <rdfs:comment>This is used for the past
+      participle form &quot;done&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DoPresentParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#DoPresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Do"/>
+        <rdfs:comment>This is used for the past
+      participle form &quot;doing&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Does -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Does">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Do"/>
+        <rdfs:comment>This is used for the
+      present form &quot;does&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#ExistentialThere -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#ExistentialThere">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>This is the existential
+      &quot;there&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#ForeignWord -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#ForeignWord">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are foreign words,
+      e.g. &quot;ante&quot;, &quot;de&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Has -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Has">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Have"/>
+        <rdfs:comment>This is used for the
+      present form &quot;has&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Have -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Have">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Verb"/>
+        <rdfs:comment>This is a class, we
       inserted to structure the tagset.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Verb"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="#Adjective">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are general
-      adjectives e.g. "near".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="LexicalVerbPresentParticiple">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#LexicalVerb"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
-      present participle or gerund, e.g. "believing".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="LexicalVerbPastParticiple">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#LexicalVerb"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
-      past participle, e.g. "believied".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="BePresentParticiple">
-    <rdfs:subClassOf rdf:resource="#Be"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
-      present participle form "being".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="ComparativeAdverb">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Adverb"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are comparative
-      adverbs, e.g. "sooner", "easier".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="CoordinatingConjunction">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are coordinating
-      conjunctions, e.g. "and", "or".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Conjunction"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="PossessiveParticle">
-    <rdfs:subClassOf rdf:resource="#Particle"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are possessive
-      particles, e.g. "´", "-s" like in "John's house."</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="#Pronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
-      inserted to structure the tagset.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="IndefinitePronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are indefinite
-      pronouns, e.g. "anyone", "everybody", "nothing".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Pronoun"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Noun">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
-      inserted to structure the tagset.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="HaveBaseForm">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
-      "have".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Have"/>
-  </owl:Class>
-  <owl:Class rdf:ID="NegativeMarker">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are the negative
-      markers, e.g. "not", "n't".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="#LexicalVerb">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Verb"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
-      inserted to structure the tagset.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Symbol">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are symbols or
-      formulas, e.g. "US$500", "R300".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="BePastParticiple">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
-      participle form "been".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Be"/>
-  </owl:Class>
-  <owl:Class rdf:about="#BePast">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
-      inserted to structure the tagset.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Be"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Preposition">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are prepositions,
-      e.g. "on", "of".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="SuperlativeAdverb">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Adverb"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are superlative
-      adverbs, e.g. "easiest", "soonest".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="DoPastParticiple">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
-      participle form "done".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Do"/>
-  </owl:Class>
-  <owl:Class rdf:ID="DoPresentParticiple">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
-      participle form "doing".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Do"/>
-  </owl:Class>
-  <owl:Class rdf:ID="CommonNoun">
-    <rdfs:subClassOf rdf:resource="#Noun"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are singular or
-      plural common nouns, e.g. "action", "actions".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Interjection">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are interjections and
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HaveBaseForm -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#HaveBaseForm">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Have"/>
+        <rdfs:comment>This is used for
+      &quot;have&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HavePast -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#HavePast">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Have"/>
+        <rdfs:comment>This is used for the past
+      form &quot;had&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HavePastParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#HavePastParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Have"/>
+        <rdfs:comment>This is used for the past
+      participle form &quot;had&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HavePresentParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#HavePresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Have"/>
+        <rdfs:comment>This is used for the
+      present participle or gerund form &quot;having&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#IndefinitePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#IndefinitePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Pronoun"/>
+        <rdfs:comment>These are indefinite
+      pronouns, e.g. &quot;anyone&quot;, &quot;everybody&quot;, &quot;nothing&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#InfinitiveMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#InfinitiveMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>This is the infinitive
+      marker &quot;to&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Interjection -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Interjection">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are interjections and
       exclamations.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="OrdinalNumeral">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are ordinal numbers,
-      e.g. "first", "2nd".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Numeral"/>
-  </owl:Class>
-  <owl:Class rdf:ID="WhPronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are wh-pronouns, e.g.
-      "who", "that".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Pronoun"/>
-  </owl:Class>
-  <owl:Class rdf:ID="ProperNoun">
-    <rdfs:subClassOf rdf:resource="#Noun"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are singular or
-      plural proper nouns, e.g. "Thailand", "Thatcher", "Americas", "Atwells".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="DoBaseForm">
-    <rdfs:subClassOf rdf:resource="#Do"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
-      "do".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="#Verb">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Is -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Is">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#BePresent"/>
+        <rdfs:comment>This is used for the
+      present form &quot;is&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#LexicalVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#LexicalVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Verb"/>
+        <rdfs:comment>This is a class, we
       inserted to structure the tagset.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Were">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
-      "were".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#BePast"/>
-  </owl:Class>
-  <owl:Class rdf:ID="ModalAuxiliaryVerb">
-    <rdfs:subClassOf rdf:resource="#Verb"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are modal
-      auxiliaries, e.g. "might", "will".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="SubordinatingConjunction">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Conjunction"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are subordinating
-      conjunctions, e.g."until".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="#Adverb">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are general adverbs
-      e.g. "chronically", "deep".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Am">
-    <rdfs:subClassOf rdf:resource="#BePresent"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
-      present form "am".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="WhAdverb">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are wh-adverbs, e.g.
-      "how", "where", "when", "why".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Adverb"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Are">
-    <rdfs:subClassOf rdf:resource="#BePresent"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
-      present form "are".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="PossessiveWhPronoun">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are possessive
-      wh-pronouns, e.g. "whose".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#WhPronoun"/>
-  </owl:Class>
-  <owl:Class rdf:about="#Conjunction">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a class, we
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#LexicalVerbBaseForm -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#LexicalVerbBaseForm">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerb"/>
+        <rdfs:comment>This is used for a verb in
+      base form, e.g. &quot;believe&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#LexicalVerbPastForm -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#LexicalVerbPastForm">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerb"/>
+        <rdfs:comment>This is used for a verb in
+      past, e.g. &quot;believed&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#LexicalVerbPastParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#LexicalVerbPastParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerb"/>
+        <rdfs:comment>This is used for a verb in
+      past participle, e.g. &quot;believied&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#LexicalVerbPresentParticiple -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#LexicalVerbPresentParticiple">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerb"/>
+        <rdfs:comment>This is used for a verb in
+      present participle or gerund, e.g. &quot;believing&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#LexicalVerbThirdPerson -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#LexicalVerbThirdPerson">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerb"/>
+        <rdfs:comment>This is used for a verb in
+      third person, e.g. &quot;believes&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#ModalAuxiliaryVerb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#ModalAuxiliaryVerb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Verb"/>
+        <rdfs:comment>These are modal
+      auxiliaries, e.g. &quot;might&quot;, &quot;will&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#NegativeMarker -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#NegativeMarker">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are the negative
+      markers, e.g. &quot;not&quot;, &quot;n&apos;t&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>This is a class, we
       inserted to structure the tagset.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="PreDeterminer">
-    <rdfs:subClassOf rdf:resource="#Determiner"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are predeterminer,
-      e.g. "all", "both", "half".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Is">
-    <rdfs:subClassOf rdf:resource="#BePresent"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
-      present form "is".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="LexicalVerbPastForm">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
-      past, e.g. "believed".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#LexicalVerb"/>
-  </owl:Class>
-  <owl:Class rdf:ID="ExistentialThere">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is the existential
-      "there".</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="ReflexivePronoun">
-    <rdfs:subClassOf rdf:resource="#Pronoun"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are reflexive
-      pronouns, e.g. "myself", "himself".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="DoPast">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the past
-      form "did".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Do"/>
-  </owl:Class>
-  <owl:Class rdf:ID="BeBaseForm">
-    <rdfs:subClassOf rdf:resource="#Be"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for
-      "be".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="CardinalNumeral">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are cardinal numbers,
-      e.g. "one", "two", "2", etc.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Numeral"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Punctuation">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">These are punctuation
-      marks, e.g. !, ", ', (, ), -, ., ..., :, ;, ?.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Tag"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="LexicalVerbBaseForm">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for a verb in
-      base form, e.g. "believe".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#LexicalVerb"/>
-  </owl:Class>
-  <owl:Class rdf:about="#Tag">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >http://www.english.bham.ac.uk/staff/omason/software/qtag-tagset.html</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pos</owl:hasValue>
-        <owl:onProperty>
-          <owl:DatatypeProperty
-            rdf:about="http://purl.org/olia/system.owl#hasTier"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="InfinitiveMarker">
-    <rdfs:subClassOf rdf:resource="#Tag"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is the infinitive
-      marker "to".</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Does">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is used for the
-      present form "does".</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Do"/>
-  </owl:Class>
-  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag">
-    <rdfs:domain rdf:resource="#Tag"/>
-  </owl:DatatypeProperty>
-  <LexicalVerbPastParticiple rdf:ID="VBN">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >VBN</olia_system:hasTag>
-  </LexicalVerbPastParticiple>
-  <Are rdf:ID="BER">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >BER</olia_system:hasTag>
-  </Are>
-  <Symbol rdf:ID="SYM">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >SYM</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">symbol or
-      formula</rdfs:comment>
-  </Symbol>
-  <Punctuation rdf:ID="comma">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >,</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">,</rdfs:comment>
-  </Punctuation>
-  <DoPresentParticiple rdf:ID="DOG">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >DOG</olia_system:hasTag>
-  </DoPresentParticiple>
-  <Does rdf:ID="DOZ">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >DOZ</olia_system:hasTag>
-  </Does>
-  <CardinalNumeral rdf:ID="CD">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >CD</olia_system:hasTag>
-  </CardinalNumeral>
-  <CommonNoun rdf:ID="NN">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common noun
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Numeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Numeral">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#OrdinalNumeral -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#OrdinalNumeral">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Numeral"/>
+        <rdfs:comment>These are ordinal numbers,
+      e.g. &quot;first&quot;, &quot;2nd&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Particle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Particle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PersonalPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#PersonalPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Pronoun"/>
+        <rdfs:comment>These are personal
+      pronouns, e.g. &quot;I&quot;, &quot;we&quot;, &quot;they&quot;, &quot;you&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PossessiveParticle -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#PossessiveParticle">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Particle"/>
+        <rdfs:comment>These are possessive
+      particles, e.g. &quot;´&quot;, &quot;-s&quot; like in &quot;John&apos;s house.&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PossessivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#PossessivePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Pronoun"/>
+        <rdfs:comment>These are possessive
+      pronouns, e.g. &quot;my&quot;, &quot;his&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PossessiveWhPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#PossessiveWhPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#WhPronoun"/>
+        <rdfs:comment>These are possessive
+      wh-pronouns, e.g. &quot;whose&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PreDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#PreDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Determiner"/>
+        <rdfs:comment>These are predeterminer,
+      e.g. &quot;all&quot;, &quot;both&quot;, &quot;half&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Preposition -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Preposition">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are prepositions,
+      e.g. &quot;on&quot;, &quot;of&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Pronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Pronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#ProperNoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#ProperNoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Noun"/>
+        <rdfs:comment>These are singular or
+      plural proper nouns, e.g. &quot;Thailand&quot;, &quot;Thatcher&quot;, &quot;Americas&quot;, &quot;Atwells&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Punctuation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Punctuation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are punctuation
+      marks, e.g. !, &quot;, &apos;, (, ), -, ., ..., :, ;, ?.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#ReflexivePronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#ReflexivePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Pronoun"/>
+        <rdfs:comment>These are reflexive
+      pronouns, e.g. &quot;myself&quot;, &quot;himself&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#SubordinatingConjunction -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#SubordinatingConjunction">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Conjunction"/>
+        <rdfs:comment>These are subordinating
+      conjunctions, e.g.&quot;until&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#SuperlativeAdjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#SuperlativeAdjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Adjective"/>
+        <rdfs:comment>These are superlative
+      adjectives e.g. &quot;nearest&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#SuperlativeAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#SuperlativeAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Adverb"/>
+        <rdfs:comment>These are superlative
+      adverbs, e.g. &quot;easiest&quot;, &quot;soonest&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Symbol -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Symbol">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>These are symbols or
+      formulas, e.g. &quot;US$500&quot;, &quot;R300&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Tag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Tag">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>http://www.english.bham.ac.uk/staff/omason/software/qtag-tagset.html</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Tag"/>
+        <rdfs:comment>This is a class, we
+      inserted to structure the tagset.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Was -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Was">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#BePast"/>
+        <rdfs:comment>This is used for
+      &quot;was&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#Were -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#Were">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#BePast"/>
+        <rdfs:comment>This is used for
+      &quot;were&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#WhAdverb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#WhAdverb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Adverb"/>
+        <rdfs:comment>These are wh-adverbs, e.g.
+      &quot;how&quot;, &quot;where&quot;, &quot;when&quot;, &quot;why&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#WhDeterminer -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#WhDeterminer">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Determiner"/>
+        <rdfs:comment>These are wh-determiner,
+      e.g. &quot;what&quot;, &quot;which&quot;, &quot;whatever&quot;, &quot;whichever&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#WhPronoun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/qtag.owl#WhPronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/qtag.owl#Pronoun"/>
+        <rdfs:comment>These are wh-pronouns, e.g.
+      &quot;who&quot;, &quot;that&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BE -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#BE">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#BeBaseForm"/>
+        <olia_system:hasTag>BE</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BEDR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#BEDR">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Were"/>
+        <olia_system:hasTag>BEDR</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BEDZ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#BEDZ">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Was"/>
+        <olia_system:hasTag>BEDZ</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BEG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#BEG">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#BePresentParticiple"/>
+        <olia_system:hasTag>BEG</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BEM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#BEM">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Am"/>
+        <olia_system:hasTag>BEM</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BEN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#BEN">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#BePastParticiple"/>
+        <olia_system:hasTag>BEN</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BER -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#BER">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Are"/>
+        <olia_system:hasTag>BER</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#BEZ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#BEZ">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Is"/>
+        <olia_system:hasTag>BEZ</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#CC -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#CC">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#CoordinatingConjunction"/>
+        <olia_system:hasTag>CC</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#CD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#CD">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#CardinalNumeral"/>
+        <olia_system:hasTag>CD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#CS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#CS">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#SubordinatingConjunction"/>
+        <olia_system:hasTag>CS</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#DO">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#DoBaseForm"/>
+        <olia_system:hasTag>DO</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DOD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#DOD">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#DoPast"/>
+        <olia_system:hasTag>DOD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DOG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#DOG">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#DoPresentParticiple"/>
+        <olia_system:hasTag>DOG</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DON -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#DON">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#DoPastParticiple"/>
+        <olia_system:hasTag>DON</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DOZ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#DOZ">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Does"/>
+        <olia_system:hasTag>DOZ</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#DT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#DT">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Determiner"/>
+        <olia_system:hasTag>DT</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#EX -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#EX">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#ExistentialThere"/>
+        <olia_system:hasTag>EX</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#FW -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#FW">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#ForeignWord"/>
+        <olia_system:hasTag>FW</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HV -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#HV">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#HaveBaseForm"/>
+        <olia_system:hasTag>HV</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HVD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#HVD">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#HavePast"/>
+        <olia_system:hasTag>HVD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HVG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#HVG">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#HavePresentParticiple"/>
+        <olia_system:hasTag>HVG</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HVN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#HVN">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#HavePastParticiple"/>
+        <olia_system:hasTag>HVN</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#HVZ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#HVZ">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Has"/>
+        <olia_system:hasTag>HVZ</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#IN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#IN">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Preposition"/>
+        <olia_system:hasTag>IN</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#JJ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#JJ">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Adjective"/>
+        <olia_system:hasTag>JJ</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#JJR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#JJR">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#ComparativeAdjective"/>
+        <olia_system:hasTag>JJR</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#JJS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#JJS">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#SuperlativeAdjective"/>
+        <olia_system:hasTag>JJS</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#MD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#MD">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#ModalAuxiliaryVerb"/>
+        <olia_system:hasTag>MD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#NN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#NN">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#CommonNoun"/>
+        <olia_system:hasTag>NN</olia_system:hasTag>
+        <rdfs:comment>common noun
       singular</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >NN</olia_system:hasTag>
-  </CommonNoun>
-  <OrdinalNumeral rdf:ID="OD">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >OD</olia_system:hasTag>
-  </OrdinalNumeral>
-  <Adverb rdf:ID="RB">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >RB</olia_system:hasTag>
-  </Adverb>
-  <Punctuation rdf:ID="openingParenthesis">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >(</olia_system:hasTag>
-  </Punctuation>
-  <Interjection rdf:ID="UH">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >UH</olia_system:hasTag>
-  </Interjection>
-  <DoBaseForm rdf:ID="DO">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >DO</olia_system:hasTag>
-  </DoBaseForm>
-  <LexicalVerbBaseForm rdf:ID="VB">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >VB</olia_system:hasTag>
-  </LexicalVerbBaseForm>
-  <BePastParticiple rdf:ID="BEN">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >BEN</olia_system:hasTag>
-  </BePastParticiple>
-  <SuperlativeAdjective rdf:ID="JJS">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >JJS</olia_system:hasTag>
-  </SuperlativeAdjective>
-  <SubordinatingConjunction rdf:ID="CS">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >CS</olia_system:hasTag>
-  </SubordinatingConjunction>
-  <HavePast rdf:ID="HVD">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >HVD</olia_system:hasTag>
-  </HavePast>
-  <PossessiveParticle rdf:ID="POS">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >POS</olia_system:hasTag>
-  </PossessiveParticle>
-  <WhPronoun rdf:ID="WP">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
-  </WhPronoun>
-  <Punctuation rdf:ID="quotationMark">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >"</olia_system:hasTag>
-  </Punctuation>
-  <Was rdf:ID="BEDZ">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >BEDZ</olia_system:hasTag>
-  </Was>
-  <ComparativeAdverb rdf:ID="RBR">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >RBR</olia_system:hasTag>
-  </ComparativeAdverb>
-  <ExistentialThere rdf:ID="EX">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >EX</olia_system:hasTag>
-  </ExistentialThere>
-  <Punctuation rdf:ID="dash">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >-</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-</rdfs:comment>
-  </Punctuation>
-  <Determiner rdf:ID="DT">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >DT</olia_system:hasTag>
-  </Determiner>
-  <HaveBaseForm rdf:ID="HV">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >HV</olia_system:hasTag>
-  </HaveBaseForm>
-  <ModalAuxiliaryVerb rdf:ID="MD">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >MD</olia_system:hasTag>
-  </ModalAuxiliaryVerb>
-  <IndefinitePronoun rdf:ID="PN">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >PN</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
-  </IndefinitePronoun>
-  <HavePresentParticiple rdf:ID="HVG">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >HVG</olia_system:hasTag>
-  </HavePresentParticiple>
-  <PersonalPronoun rdf:ID="PP">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >PP</olia_system:hasTag>
-  </PersonalPronoun>
-  <LexicalVerbPresentParticiple rdf:ID="VBG">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >VBG</olia_system:hasTag>
-  </LexicalVerbPresentParticiple>
-  <Preposition rdf:ID="IN">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >IN</olia_system:hasTag>
-  </Preposition>
-  <CommonNoun rdf:ID="NNS">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >NNS</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">common noun
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#NNS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#NNS">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#CommonNoun"/>
+        <olia_system:hasTag>NNS</olia_system:hasTag>
+        <rdfs:comment>common noun
       plural</rdfs:comment>
-  </CommonNoun>
-  <ForeignWord rdf:ID="FW">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >FW</olia_system:hasTag>
-  </ForeignWord>
-  <ProperNoun rdf:ID="NP">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >NP</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">proper noun
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#NP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#NP">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#ProperNoun"/>
+        <olia_system:hasTag>NP</olia_system:hasTag>
+        <rdfs:comment>proper noun
       singular</rdfs:comment>
-  </ProperNoun>
-  <Punctuation rdf:ID="closingParenthesis">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >)</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">)</rdfs:comment>
-  </Punctuation>
-  <AdverbialParticle rdf:ID="RP">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >RP</olia_system:hasTag>
-  </AdverbialParticle>
-  <DoPast rdf:ID="DOD">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >DOD</olia_system:hasTag>
-  </DoPast>
-  <ProperNoun rdf:ID="NPS">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">proper noun
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#NPS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#NPS">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#ProperNoun"/>
+        <olia_system:hasTag>NPS</olia_system:hasTag>
+        <rdfs:comment>proper noun
       plural</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >NPS</olia_system:hasTag>
-  </ProperNoun>
-  <Has rdf:ID="HVZ">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >HVZ</olia_system:hasTag>
-  </Has>
-  <BePresentParticiple rdf:ID="BEG">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >BEG</olia_system:hasTag>
-  </BePresentParticiple>
-  <ComparativeAdjective rdf:ID="JJR">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >JJR</olia_system:hasTag>
-  </ComparativeAdjective>
-  <BeBaseForm rdf:ID="BE">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >BE</olia_system:hasTag>
-  </BeBaseForm>
-  <Punctuation rdf:ID="colon">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >:</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">:</rdfs:comment>
-  </Punctuation>
-  <Were rdf:ID="BEDR">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >BEDR</olia_system:hasTag>
-  </Were>
-  <WhAdverb rdf:ID="WRB">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >WRB</olia_system:hasTag>
-  </WhAdverb>
-  <SuperlativeAdverb rdf:ID="RBS">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >RBS</olia_system:hasTag>
-  </SuperlativeAdverb>
-  <Am rdf:ID="BEM">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >BEM</olia_system:hasTag>
-  </Am>
-  <Punctuation rdf:ID="sentenceCloser">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">. ; ?
-      !</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">. ; ? !</rdfs:comment>
-  </Punctuation>
-  <NegativeMarker rdf:ID="XNOT">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >XNOT</olia_system:hasTag>
-  </NegativeMarker>
-  <LexicalVerbThirdPerson rdf:ID="VBZ">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >VBZ</olia_system:hasTag>
-  </LexicalVerbThirdPerson>
-  <PossessivePronoun rdf:ID="PPpossessive">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >PP$</olia_system:hasTag>
-  </PossessivePronoun>
-  <Is rdf:ID="BEZ">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >BEZ</olia_system:hasTag>
-  </Is>
-  <HavePastParticiple rdf:ID="HVN">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >HVN</olia_system:hasTag>
-  </HavePastParticiple>
-  <LexicalVerbPastForm rdf:ID="VBD">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >VBD</olia_system:hasTag>
-  </LexicalVerbPastForm>
-  <CoordinatingConjunction rdf:ID="CC">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >CC</olia_system:hasTag>
-  </CoordinatingConjunction>
-  <PossessiveWhPronoun rdf:ID="WPpossessive">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >WP$</olia_system:hasTag>
-  </PossessiveWhPronoun>
-  <Adjective rdf:ID="JJ">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >JJ</olia_system:hasTag>
-  </Adjective>
-  <WhDeterminer rdf:ID="WDT">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >WDT</olia_system:hasTag>
-  </WhDeterminer>
-  <ReflexivePronoun rdf:ID="PPX">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >PPX</olia_system:hasTag>
-  </ReflexivePronoun>
-  <DoPastParticiple rdf:ID="DON">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >DON</olia_system:hasTag>
-  </DoPastParticiple>
-  <InfinitiveMarker rdf:ID="TO">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >TO</olia_system:hasTag>
-  </InfinitiveMarker>
-  <PreDeterminer rdf:ID="PDT">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">half, all,
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#OD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#OD">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#OrdinalNumeral"/>
+        <olia_system:hasTag>OD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PDT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#PDT">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#PreDeterminer"/>
+        <olia_system:hasTag>PDT</olia_system:hasTag>
+        <rdfs:comment>half, all,
       both</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      >PDT</olia_system:hasTag>
-  </PreDeterminer>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#PN">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#IndefinitePronoun"/>
+        <olia_system:hasTag>PN</olia_system:hasTag>
+        <rdfs:comment></rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#POS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#POS">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#PossessiveParticle"/>
+        <olia_system:hasTag>POS</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#PP">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#PersonalPronoun"/>
+        <olia_system:hasTag>PP</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PPX -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#PPX">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#ReflexivePronoun"/>
+        <olia_system:hasTag>PPX</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#PPpossessive -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#PPpossessive">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#PossessivePronoun"/>
+        <olia_system:hasTag>PP$</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#RB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#RB">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Adverb"/>
+        <olia_system:hasTag>RB</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#RBR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#RBR">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#ComparativeAdverb"/>
+        <olia_system:hasTag>RBR</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#RBS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#RBS">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#SuperlativeAdverb"/>
+        <olia_system:hasTag>RBS</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#RP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#RP">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#AdverbialParticle"/>
+        <olia_system:hasTag>RP</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#SYM -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#SYM">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Symbol"/>
+        <olia_system:hasTag>SYM</olia_system:hasTag>
+        <rdfs:comment>symbol or
+      formula</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#TO -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#TO">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#InfinitiveMarker"/>
+        <olia_system:hasTag>TO</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#UH -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#UH">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Interjection"/>
+        <olia_system:hasTag>UH</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#VB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#VB">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerbBaseForm"/>
+        <olia_system:hasTag>VB</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#VBD -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#VBD">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerbPastForm"/>
+        <olia_system:hasTag>VBD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#VBG -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#VBG">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerbPresentParticiple"/>
+        <olia_system:hasTag>VBG</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#VBN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#VBN">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerbPastParticiple"/>
+        <olia_system:hasTag>VBN</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#VBZ -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#VBZ">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#LexicalVerbThirdPerson"/>
+        <olia_system:hasTag>VBZ</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#WDT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#WDT">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#WhDeterminer"/>
+        <olia_system:hasTag>WDT</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#WP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#WP">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#WhPronoun"/>
+        <olia_system:hasTag></olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#WPpossessive -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#WPpossessive">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#PossessiveWhPronoun"/>
+        <olia_system:hasTag>WP$</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#WRB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#WRB">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#WhAdverb"/>
+        <olia_system:hasTag>WRB</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#XNOT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#XNOT">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#NegativeMarker"/>
+        <olia_system:hasTag>XNOT</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#closingParenthesis -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#closingParenthesis">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Punctuation"/>
+        <olia_system:hasTag>)</olia_system:hasTag>
+        <rdfs:comment>)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#colon -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#colon">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Punctuation"/>
+        <olia_system:hasTag>:</olia_system:hasTag>
+        <rdfs:comment>:</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#comma -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#comma">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Punctuation"/>
+        <olia_system:hasTag>,</olia_system:hasTag>
+        <rdfs:comment>,</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#dash -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#dash">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Punctuation"/>
+        <olia_system:hasTag>-</olia_system:hasTag>
+        <rdfs:comment>-</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#openingParenthesis -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#openingParenthesis">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Punctuation"/>
+        <olia_system:hasTag>(</olia_system:hasTag>
+        <rdfs:comment>(</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#quotationMark -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#quotationMark">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Punctuation"/>
+        <olia_system:hasTag>&quot;</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/qtag.owl#sentenceCloser -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/qtag.owl#sentenceCloser">
+        <rdf:type rdf:resource="http://purl.org/olia/qtag.owl#Punctuation"/>
+        <olia_system:hasTag>. ; ?
+      !</olia_system:hasTag>
+        <rdfs:comment>. ; ? !</rdfs:comment>
+    </owl:NamedIndividual>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+

@@ -1,495 +1,412 @@
 <?xml version="1.0"?>
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:olia_system="http://purl.org/olia/system.owl#"
-    xmlns="http://purl.org/olia/tiger-syntax.owl#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-  xml:base="http://purl.org/olia/tiger-syntax.owl">
-  <owl:Ontology rdf:about="http://purl.org/olia/tiger-syntax.owl">
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/deu"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-    <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >prototype ontology for syntactic annotation.
+<rdf:RDF xmlns="http://purl.org/olia/tiger-syntax.owl#"
+     xml:base="http://purl.org/olia/tiger-syntax.owl"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:olia_system="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/tiger-syntax.owl">
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/deu"/>
+        <rdfs:comment>prototype ontology for syntactic annotation.
 Important note: Here, an ontology of labels used in syntactic annotation is provided, but not an ontology of _structures_. Especially, the ontology itself does not perform a conversion between dependency trees and constituency analyses, though its representations may be used by corresponding converters.</rdfs:comment>
-    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Christian Chiarcos, 17/07/2007
+        <owl:versionInfo>Christian Chiarcos, 17/07/2007
 Tiger Annotation Scheme, syntactic component
-based upon Bader, R. et al. (2003), "TIGER Annotationsschema", Draft 24.07.2003
+based upon Bader, R. et al. (2003), &quot;TIGER Annotationsschema&quot;, Draft 24.07.2003
 Note, that the syntactic sub-ontology is not concerned with the alignment with part of speech tags and morphology but only with the relationships between syntactic nodes.
     
     TODO: ObjectProperties of semantic and syntactic features 
     
     updated 10/02/18, Christian Chiarcos chiarcos@uni-potsdam.de 
     </owl:versionInfo>
-  </owl:Ontology>
-  <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
-  <owl:Class rdf:ID="VPEdge">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >function labels of VPs and clauses (S)</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="SyntacticEdge"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="PrepositionalPhrase">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="SyntacticNode"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="VerbalPhrase">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Jedes Verb f¨uhrt eine eigenst¨andige Phrase ein.
-Phrasen mit finitem Verb bekommen das Label S
-(Satz)
-(Bader et al. 2003, §5.1)</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="NPEdge">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >edge labels within a noun phrase (Bader et al. 2003, §2)</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticNode">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Syntactic nodes are terminal or nonterminal nodes in a syntactic tree, either a dependency tree or a phrase structure.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTag"/>
-        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:minCardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <rdf:Description rdf:about="http://purl.org/olia/system.owl#hasTier">
-            <rdfs:domain>
-              <owl:Class>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/meta-share/meta-share/language -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#dominates -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#dominates">
+        <owl:inverseOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#isDominated"/>
+        <rdfs:domain rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <rdfs:range rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <rdfs:comment>structural relationship between 
+(a) a phrase and the syntactic nodes it is attached to (in constituency analysis), or
+(b) a head and its children (in dependency analysis)
+The head/phrase dominates its children.
+Different types of dominates relations may be distinguished via edge labels which are attached to the child nodes.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#hasFunction -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#hasFunction">
+        <rdfs:domain rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <rdfs:range rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <rdfs:comment>different relationships (edges, function labels) between parent (head/phrase) and child nodes may be distinguished via different edge labels attached to the child node.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#isDominated -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#isDominated">
+        <rdfs:domain rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <rdfs:range rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTier -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier">
+        <rdfs:domain>
+            <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
-                  <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+                    <rdf:Description rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
                 </owl:unionOf>
-              </owl:Class>
-            </rdfs:domain>
-          </rdf:Description>
-        </owl:onProperty>
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        >cat</owl:hasValue>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Coordination">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Als erste Richtlinie gilt zun¨achst: In NPs, APs und PPs werden die zu koordinierenden Elemente
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#APEdge -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#APEdge">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <rdfs:comment>function labels within an adjective phrase
+Im Falle von deverbalen Adjektiven werden die Argumente des Verbs vererbt und mit ihren
+urspr¨unglichen Funktionen annotiert.
+(Bader et al. 2003, §4.7)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#AdjectivePhrase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#AdjectivePhrase">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <rdfs:comment>(Bader et al. 2003, §4)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#Coordination -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#Coordination">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <rdfs:comment>Als erste Richtlinie gilt zun¨achst: In NPs, APs und PPs werden die zu koordinierenden Elemente
 direkt zusammengefaßt und bilden wieder eine Konstituente. In VPs und S¨atzen verbinden sich die
 VP- und S-Knoten zuerst mit den Dependenten auf ihrer Seite der Koordination und werden dann zu
 einer koordinierten Phrase zusammengefaßt (siehe Beispiele).
 Beachte: die Pr¨asenz einer koordinierenden Konjunktion ist nicht notwendig. Aufz¨ahlungen werden
 ebenso annotiert.
 (Bader et al. 2003, §9)</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Relations between syntactic nodes.
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#NPEdge -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#NPEdge">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <rdfs:comment>edge labels within a noun phrase (Bader et al. 2003, §2)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#NounPhrase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#NounPhrase">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#PPEdge -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#PPEdge">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <rdfs:comment>edge labels within a PP, especially including all NP edges. (Bader et al. 2003, §3)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#PrepositionalPhrase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#PrepositionalPhrase">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#SyntacticEdge -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>EDGE</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTag"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Relations between syntactic nodes.
 Note that here, edge labels are coded as properties of child nodes. The corresponding parent node in the syntactic tree (dependency or phrase structure) has to be inferred from the dominates property</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        >label</owl:hasValue>
-        <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTag"/>
-        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:minCardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="AdjectivePhrase">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >(Bader et al. 2003, §4)</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-  </owl:Class>
-  <owl:Class rdf:ID="PPEdge">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >edge labels within a PP, especially including all NP edges. (Bader et al. 2003, §3)</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="NounPhrase">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-  </owl:Class>
-  <owl:Class rdf:ID="APEdge">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >function labels within an adjective phrase
-Im Falle von deverbalen Adjektiven werden die Argumente des Verbs vererbt und mit ihren
-urspr¨unglichen Funktionen annotiert.
-(Bader et al. 2003, §4.7)</rdfs:comment>
-  </owl:Class>
-  <owl:ObjectProperty rdf:ID="isDominated">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    ></rdfs:comment>
-    <owl:inverseOf>
-      <owl:ObjectProperty rdf:ID="dominates"/>
-    </owl:inverseOf>
-    <rdfs:range rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-    <rdfs:domain rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/olia/tiger-syntax.owl#dominates">
-    <owl:inverseOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#isDominated"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >structural relationship between 
-(a) a phrase and the syntactic nodes it is attached to (in constituency analysis), or
-(b) a head and its children (in dependency analysis)
-The head/phrase dominates its children.
-Different types of dominates relations may be distinguished via edge labels which are attached to the child nodes.</rdfs:comment>
-    <rdfs:range rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-    <rdfs:domain rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasFunction">
-    <rdfs:range rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >different relationships (edges, function labels) between parent (head/phrase) and child nodes may be distinguished via different edge labels attached to the child node.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
-  </owl:ObjectProperty>
-  <SyntacticEdge rdf:ID="conjunct">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >applies to coordinated adverbial phrases and coordinated complementisers, examples in Bader et al. (2003), § 5.2.1</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CJ</olia_system:hasTag>
-  </SyntacticEdge>
-  <VPEdge rdf:ID="passivisedSubject">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >passivised subject (PP)</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    ></olia_system:hasTag>
-  </VPEdge>
-  <NPEdge rdf:ID="genitiveAttribute">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AG</olia_system:hasTag>
-  </NPEdge>
-  <SyntacticNode rdf:ID="complexNumeral">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NM</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >complex (multi-token) numeral within an noun phrase.
-      "Für komplexe Numeralien (10 000, eine Million) ist das Label NM (NuMber) vorgesehen. Die einzelnen Komponenten bekommen das Funktionslabel
-      NMC (NuMber Component)."
-      (Bader etal. 2003, §2.1.2)</rdfs:comment>
-  </SyntacticNode>
-  <SyntacticNode rdf:ID="coordination">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CO</olia_system:hasTag>
-  </SyntacticNode>
-  <SyntacticEdge rdf:ID="coordinatingConjunction">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CD</olia_system:hasTag>
-  </SyntacticEdge>
-  <VPEdge rdf:ID="prepositionalObject">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >OP</olia_system:hasTag>
-  </VPEdge>
-  <SyntacticEdge rdf:ID="discourseLevelHead">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >DH</olia_system:hasTag>
-  </SyntacticEdge>
-  <SyntacticEdge rdf:ID="predicate">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PD</olia_system:hasTag>
-  </SyntacticEdge>
-  <PPEdge rdf:ID="modifier">
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#APEdge"/>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >MO</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Modifier, German "Modifikator" (Bader et al. 2003, §2)
-Applies within NPs only to focus particles, e.g. nur, auch, lediglich,
-zumindest, vor allem, . . . which are annotated regardless of their positioning within the NP (Bader et al. 2003, §2.7).
-Within adjective phrases, label of PPs and adverbials (Bader et al. 2003, §4.1)
-also applies to VPs (Bader et al. 2003, §5)</rdfs:comment>
-  </PPEdge>
-  <SyntacticNode rdf:ID="properNoun">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PN</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Vorname(n), Familienname(n) und Namenszus¨atze werden alle unter dem Knoten PN (proper noun)
-      zusammengefaßt und als eine komplexe Kernkomponente der NP betrachtet. Die einzelnen Komponenten
-      des PN werden als PNC (proper noun component) annotiert.
-      Dasselbe gilt für fremdsprachliche Namen. Komponenten von Firmennamen wie Bayerische Vereinsbank
-      sowie Titel werden dagegen als NKs annotiert.
-      (Bader et al. 2003, §2.1.4)</rdfs:comment>
-  </SyntacticNode>
-  <NounPhrase rdf:ID="nounPhrase">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NP</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >noun phrase (Bader et al. 2003, §2)
-      Eine NP besteht zun"achst aus einer Reihe von pronominalen, substantivischen und adjektivischen Kernelementen (NP kernel elements, NK). Ihre genauere Unterteilung kann aufgrund der Part-of-Speech bzw. kategorialen Information vorgenommen werden, so dass sich eine Unterscheidung auf der Ebene der Funktionslabels er"ubrigt.</rdfs:comment>
-  </NounPhrase>
-  <APEdge rdf:ID="adjectiveComponent">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AC</olia_system:hasTag>
-  </APEdge>
-  <VPEdge rdf:ID="vocative">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >VO</olia_system:hasTag>
-  </VPEdge>
-  <SyntacticEdge rdf:ID="junctor">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >JU</olia_system:hasTag>
-  </SyntacticEdge>
-  <VPEdge rdf:ID="dative">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >DA</olia_system:hasTag>
-  </VPEdge>
-  <VPEdge rdf:ID="clausalObject">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >OC</olia_system:hasTag>
-  </VPEdge>
-  <APEdge rdf:ID="head">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >HD</olia_system:hasTag>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
-  </APEdge>
-  <PPEdge rdf:ID="adpositionalCaseMarker">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AC</olia_system:hasTag>
-  </PPEdge>
-  <SyntacticEdge rdf:ID="reportedSpeech">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >RS</olia_system:hasTag>
-  </SyntacticEdge>
-  <SyntacticEdge rdf:ID="adverbialPhraseComponent">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AVC</olia_system:hasTag>
-  </SyntacticEdge>
-  <SyntacticNode rdf:ID="chunk">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >flat analysis of foreign material
-      "Fremdsprachliche Zitate werden als Chunks (CH) flach annotiert; die einzelnen Komponenten erhalten das Label UC (“unit component”)."
-      (Bader et al. 2003, §2.1.5)</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CH</olia_system:hasTag>
-  </SyntacticNode>
-  <SyntacticEdge rdf:ID="comparativeConjunction">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CM</olia_system:hasTag>
-  </SyntacticEdge>
-  <SyntacticNode rdf:ID="discourseLevelConstituent">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >DL</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >applied to direct speech
+    </owl:Class>
+    
 
-Da f¨ur uns die syntaktische Struktur Vorrang hat vor der Diskursstruktur, wird die letztere nur annotiert,
-wenn keine klaren syntaktischen Beziehungen bestehen. So wird im folgenden Satz die angefu
-¨ hrte A¨ ußerung als OC zu sagt annotiert.
-(65) “Nun”, sagt Peter, “m¨ussen wir nach Hause gehen”.
-Wenn hingegen keine syntaktische Beziehung (meistens OC) zwischen dem Angef¨uhrten und der es
-einbettenden Diskursstruktur besteht, verbinden sich die beiden Komponenten parataktisch zu einer
-Discourse Level Constituent (DL). Die Bestandteile einer DL sind: RS (reported speech) und DH
-(discourse-level head).
-(Bader et al. 2003, §5.5)</rdfs:comment>
-  </SyntacticNode>
-  <SyntacticNode rdf:ID="coordinatedAdposition">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CAC</olia_system:hasTag>
-  </SyntacticNode>
-  <VPEdge rdf:ID="accusativeObject">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >OA</olia_system:hasTag>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#APEdge"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >accusative argument of a verb phrase (Bader et al. 2003, §5) or a deverbal adjective 
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#SyntacticNode -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#SyntacticNode">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>CAT</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTag"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Syntactic nodes are terminal or nonterminal nodes in a syntactic tree, either a dependency tree or a phrase structure.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#VPEdge -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#VPEdge">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <rdfs:comment>function labels of VPs and clauses (S)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#VerbalPhrase -->
+
+    <owl:Class rdf:about="http://purl.org/olia/tiger-syntax.owl#VerbalPhrase">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <rdfs:comment>Jedes Verb f¨uhrt eine eigenst¨andige Phrase ein.
+Phrasen mit finitem Verb bekommen das Label S
+(Satz)
+(Bader et al. 2003, §5.1)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#MeasurementArgumentOfAdjective -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#MeasurementArgumentOfAdjective">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#APEdge"/>
+        <olia_system:hasTag>AMS</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#S -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#S">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>S</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#accusativeObject -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#accusativeObject">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#APEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>OA</olia_system:hasTag>
+        <rdfs:comment>accusative argument of a verb phrase (Bader et al. 2003, §5) or a deverbal adjective 
 (Bader et al. 2003, §4)</rdfs:comment>
-  </VPEdge>
-  <SyntacticEdge rdf:ID="numberComponent">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Part of a multi-token (complex) numeral.
-      Für komplexe Numeralien (10 000, eine Million) ist das Label NM (NuMber) vorgesehen. Die einzelnen Komponenten bekommen das Funktionslabel NMC (NuMber Component).
-      (Bader etal. 2003, §2.12)</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NMC</olia_system:hasTag>
-  </SyntacticEdge>
-  <SyntacticEdge rdf:ID="discourseMarker">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >DM</olia_system:hasTag>
-  </SyntacticEdge>
-  <VPEdge rdf:ID="subjectOrPredicate">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >SP</olia_system:hasTag>
-  </VPEdge>
-  <SyntacticEdge rdf:ID="placeholder">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >a pro-form that is resolved by a repeated element
-(Bader et al. 2003, §6.1)
-also, the so-called vorfeld-es: Vorfeld-es (PH ohne RE)
-Test: steht nur im Vorfeld (d.h., dieses es h¨angt
-weder vom Auftreten eines satzwertigen Arguments
-ab noch vom Verb) (Bader et al. 2003, §6.2)</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PH</olia_system:hasTag>
-  </SyntacticEdge>
-  <VPEdge rdf:ID="directionalModifier">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >MW</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >"way"</rdfs:comment>
-  </VPEdge>
-  <SyntacticNode rdf:ID="coordinatedZuMarkedInfinitive">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CVZ</olia_system:hasTag>
-  </SyntacticNode>
-  <APEdge rdf:ID="MeasurementArgumentOfAdjective">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AMS</olia_system:hasTag>
-  </APEdge>
-  <NPEdge rdf:ID="phrasalGenitive">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PG</olia_system:hasTag>
-  </NPEdge>
-  <SyntacticNode rdf:ID="S">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >S</olia_system:hasTag>
-  </SyntacticNode>
-  <SyntacticNode rdf:ID="quasiLanguage">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >QL</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >quasi-language</rdfs:comment>
-  </SyntacticNode>
-  <SyntacticEdge rdf:ID="unitComponent">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Fremdsprachliche Zitate werden als Chunks (CH) flach annotiert; die einzelnen Komponenten erhalten
-      das Label UC (“unit component”).
-      (Bader et al. 2003, § 2.1.5)</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >UC</olia_system:hasTag>
-  </SyntacticEdge>
-  <AdjectivePhrase rdf:ID="adjectivePhrase">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AP</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >(Bader et al. 2003, §4)</rdfs:comment>
-  </AdjectivePhrase>
-  <VPEdge rdf:ID="subject">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >SB</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >(Bader et al. 2003, §5)</rdfs:comment>
-  </VPEdge>
-  <VPEdge rdf:ID="expletiveEs">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >EP</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >expletive es</rdfs:comment>
-  </VPEdge>
-  <AdjectivePhrase rdf:ID="superlativePhraseWithAm">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AA</olia_system:hasTag>
-  </AdjectivePhrase>
-  <Coordination rdf:ID="coordinatedVerbPhrase">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CVP</olia_system:hasTag>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VerbalPhrase"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Als erste Richtlinie gilt zun¨achst: In NPs, APs und PPs werden die zu koordinierenden Elemente
-      direkt zusammengefaßt und bilden wieder eine Konstituente. In VPs und S¨atzen verbinden sich die
-      VP- und S-Knoten zuerst mit den Dependenten auf ihrer Seite der Koordination und werden dann zu
-      einer koordinierten Phrase zusammengefaßt (siehe Beispiele).
-      (Bader et al. 2003, §9.1)</rdfs:comment>
-  </Coordination>
-  <VPEdge rdf:ID="comitative">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >MC</olia_system:hasTag>
-  </VPEdge>
-  <VPEdge rdf:ID="colloconationalVerbConstruction">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >"Funktionsverbgefüge"</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CVC</olia_system:hasTag>
-  </VPEdge>
-  <NPEdge rdf:ID="nounKernelModifier">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NK</olia_system:hasTag>
-  </NPEdge>
-  <VPEdge rdf:ID="genitiveObject">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >OG</olia_system:hasTag>
-  </VPEdge>
-  <PPEdge rdf:ID="relativeClause">
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Relativs¨atze werden als T¨ochter des NP-Knotens annotiert, und zwar unabh¨angig davon, ob sie extraponiert
-sind oder nicht. Sie werden mit dem Label RC (relative clause) gekennzeichnet. (Bader et al. 2003, §2.6)
+    </owl:NamedIndividual>
+    
 
-Also applies to cleft sentences: Cleft-S¨atze: Der Relativsatz soll immer als RC zur pr¨adikativen NP annotiert werden. Das Pronomen
-es ist Subjekt.</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >RC</olia_system:hasTag>
-  </PPEdge>
-  <Coordination rdf:ID="coordinatedNounPhrase">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >(Bader et al. 2003, §9.1)</rdfs:comment>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NounPhrase"/>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CNP</olia_system:hasTag>
-  </Coordination>
-  <SyntacticEdge rdf:ID="parenthesis">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PAR</olia_system:hasTag>
-  </SyntacticEdge>
-  <SyntacticNode rdf:ID="coordinatedSentence">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CS</olia_system:hasTag>
-  </SyntacticNode>
-  <VPEdge rdf:ID="locative">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ML</olia_system:hasTag>
-  </VPEdge>
-  <VPEdge rdf:ID="complementizer">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CP</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >(Bader et al. 2003, §5)</rdfs:comment>
-  </VPEdge>
-  <SyntacticEdge rdf:ID="repeatedElement">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >RE</olia_system:hasTag>
-  </SyntacticEdge>
-  <NPEdge rdf:ID="postnominalModifier">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >MNR</olia_system:hasTag>
-  </NPEdge>
-  <VerbalPhrase rdf:ID="verbPhrase">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >verbal phrase with a non-finite verb.
-      Jedes Verb f¨uhrt eine eigenst¨andige Phrase ein.
-      Phrasen mit finitem Verb bekommen das Label S
-      (Satz)
-      (Bader et al. 2003, §5.1)</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >VP</olia_system:hasTag>
-  </VerbalPhrase>
-  <APEdge rdf:ID="comparativeComplement">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >comparative complement, German "Vergleichskomplement" 
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#adjectiveComponent -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#adjectiveComponent">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#APEdge"/>
+        <olia_system:hasTag>AC</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#adjectivePhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#adjectivePhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#AdjectivePhrase"/>
+        <olia_system:hasTag>AP</olia_system:hasTag>
+        <rdfs:comment>(Bader et al. 2003, §4)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#adpositionalCaseMarker -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#adpositionalCaseMarker">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
+        <olia_system:hasTag>AC</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#adverbialPhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#adverbialPhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>AVP</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#adverbialPhraseComponent -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#adverbialPhraseComponent">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>AVC</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#apposition -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#apposition">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
+        <olia_system:hasTag>APP</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#chunk -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#chunk">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>CH</olia_system:hasTag>
+        <rdfs:comment>flat analysis of foreign material
+      &quot;Fremdsprachliche Zitate werden als Chunks (CH) flach annotiert; die einzelnen Komponenten erhalten das Label UC (“unit component”).&quot;
+      (Bader et al. 2003, §2.1.5)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#clausalObject -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#clausalObject">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>OC</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#colloconationalVerbConstruction -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#colloconationalVerbConstruction">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>CVC</olia_system:hasTag>
+        <rdfs:comment>&quot;Funktionsverbgefüge&quot;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#comitative -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#comitative">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>MC</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#comparativeComplement -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#comparativeComplement">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#APEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
+        <olia_system:hasTag>CC</olia_system:hasTag>
+        <rdfs:comment>comparative complement, German &quot;Vergleichskomplement&quot; 
 applies to NPs (Bader et al. 2003, §2), PPs (Bader et al. §3), and APs (Bader et al. §4)
 Adjektive im Komparativ k¨onnen sich mit einem
 zus¨atzlichen Argument verbinden, einer mit
@@ -500,100 +417,622 @@ complement), das Wort als das Label CM (comparative
 conjunction). Siehe auch die Abschnitte
 7.2 und 6.4.
 (Bader et al. 2003, §4.5)</rdfs:comment>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CC</olia_system:hasTag>
-  </APEdge>
-  <VPEdge rdf:ID="instrumental">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >MI</olia_system:hasTag>
-  </VPEdge>
-  <SyntacticNode rdf:ID="coordinatedAdverbialPhrase">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CAVP</olia_system:hasTag>
-  </SyntacticNode>
-  <SyntacticEdge rdf:ID="morphologicalParticle">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PM</olia_system:hasTag>
-  </SyntacticEdge>
-  <PrepositionalPhrase rdf:ID="coordinatedPrepositionalPhrase">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CPP</olia_system:hasTag>
-  </PrepositionalPhrase>
-  <SyntacticNode rdf:ID="idiosyncraticUnit">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >ISU</olia_system:hasTag>
-  </SyntacticNode>
-  <SyntacticNode rdf:ID="adverbialPhrase">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >AVP</olia_system:hasTag>
-  </SyntacticNode>
-  <AdjectivePhrase rdf:ID="multiTokenAdjective">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >MTA</olia_system:hasTag>
-  </AdjectivePhrase>
-  <Coordination rdf:ID="coordinatedComplementizer">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >coordinated conjunctions
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#comparativeConjunction -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#comparativeConjunction">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>CM</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#complementizer -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#complementizer">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>CP</olia_system:hasTag>
+        <rdfs:comment>(Bader et al. 2003, §5)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#complexNumeral -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#complexNumeral">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>NM</olia_system:hasTag>
+        <rdfs:comment>complex (multi-token) numeral within an noun phrase.
+      &quot;Für komplexe Numeralien (10 000, eine Million) ist das Label NM (NuMber) vorgesehen. Die einzelnen Komponenten bekommen das Funktionslabel
+      NMC (NuMber Component).&quot;
+      (Bader etal. 2003, §2.1.2)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#conjunct -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#conjunct">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>CJ</olia_system:hasTag>
+        <rdfs:comment>applies to coordinated adverbial phrases and coordinated complementisers, examples in Bader et al. (2003), § 5.2.1</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedAdjectivePhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedAdjectivePhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#AdjectivePhrase"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#Coordination"/>
+        <olia_system:hasTag>CAP</olia_system:hasTag>
+        <rdfs:comment>(Bader et al. 2003, §9.1)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedAdposition -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedAdposition">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>CAC</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedAdverbialPhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedAdverbialPhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>CAVP</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedComplementizer -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedComplementizer">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#Coordination"/>
+        <olia_system:hasTag>CCP</olia_system:hasTag>
+        <rdfs:comment>coordinated conjunctions
 (Bader et al. 2003, §5.2.1, §9.2)</rdfs:comment>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CCP</olia_system:hasTag>
-  </Coordination>
-  <Coordination rdf:ID="coordinatedAdjectivePhrase">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CAP</olia_system:hasTag>
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#AdjectivePhrase"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >(Bader et al. 2003, §9.1)</rdfs:comment>
-  </Coordination>
-  <VPEdge rdf:ID="separableVerbPrefix">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >SVP</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >(Bader et al. 2003, §5)</rdfs:comment>
-  </VPEdge>
-  <SyntacticEdge rdf:ID="properNounComponent">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PNC</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Vorname(n), Familienname(n) und Namenszus¨atze werden alle unter dem Knoten PN (proper noun)
-      zusammengefaßt und als eine komplexe Kernkomponente der NP betrachtet. Die einzelnen Komponenten
-      des PN werden als PNC (proper noun component) annotiert.
-      Dasselbe gilt f¨ur fremdsprachliche Namen. Komponenten von Firmennamen wie Bayerische Vereinsbank
-      sowie Titel werden dagegen als NKs annotiert.
-      (Bader et al. 2003, §2.1.4)</rdfs:comment>
-  </SyntacticEdge>
-  <NPEdge rdf:ID="apposition">
-    <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >APP</olia_system:hasTag>
-  </NPEdge>
-  <SyntacticEdge rdf:ID="negation">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >NG</olia_system:hasTag>
-  </SyntacticEdge>
-  <PrepositionalPhrase rdf:ID="prepositionalPhrase">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PP</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >PPs werden wie NPs behandelt, also auch flach
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedNounPhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedNounPhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#Coordination"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NounPhrase"/>
+        <olia_system:hasTag>CNP</olia_system:hasTag>
+        <rdfs:comment>(Bader et al. 2003, §9.1)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedPrepositionalPhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedPrepositionalPhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PrepositionalPhrase"/>
+        <olia_system:hasTag>CPP</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedSentence -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedSentence">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>CS</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedVerbPhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedVerbPhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#Coordination"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VerbalPhrase"/>
+        <olia_system:hasTag>CVP</olia_system:hasTag>
+        <rdfs:comment>Als erste Richtlinie gilt zun¨achst: In NPs, APs und PPs werden die zu koordinierenden Elemente
+      direkt zusammengefaßt und bilden wieder eine Konstituente. In VPs und S¨atzen verbinden sich die
+      VP- und S-Knoten zuerst mit den Dependenten auf ihrer Seite der Koordination und werden dann zu
+      einer koordinierten Phrase zusammengefaßt (siehe Beispiele).
+      (Bader et al. 2003, §9.1)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatedZuMarkedInfinitive -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatedZuMarkedInfinitive">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>CVZ</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordinatingConjunction -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordinatingConjunction">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>CD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#coordination -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#coordination">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>CO</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#dative -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#dative">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>DA</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#directionalModifier -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#directionalModifier">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>MW</olia_system:hasTag>
+        <rdfs:comment>&quot;way&quot;</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#discourseLevelConstituent -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#discourseLevelConstituent">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>DL</olia_system:hasTag>
+        <rdfs:comment>applied to direct speech
+
+Da f¨ur uns die syntaktische Struktur Vorrang hat vor der Diskursstruktur, wird die letztere nur annotiert,
+wenn keine klaren syntaktischen Beziehungen bestehen. So wird im folgenden Satz die angefu
+¨ hrte A¨ ußerung als OC zu sagt annotiert.
+(65) “Nun”, sagt Peter, “m¨ussen wir nach Hause gehen”.
+Wenn hingegen keine syntaktische Beziehung (meistens OC) zwischen dem Angef¨uhrten und der es
+einbettenden Diskursstruktur besteht, verbinden sich die beiden Komponenten parataktisch zu einer
+Discourse Level Constituent (DL). Die Bestandteile einer DL sind: RS (reported speech) und DH
+(discourse-level head).
+(Bader et al. 2003, §5.5)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#discourseLevelHead -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#discourseLevelHead">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>DH</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#discourseMarker -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#discourseMarker">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>DM</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#expletiveEs -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#expletiveEs">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>EP</olia_system:hasTag>
+        <rdfs:comment>expletive es</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#genitiveAttribute -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#genitiveAttribute">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <olia_system:hasTag>AG</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#genitiveObject -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#genitiveObject">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>OG</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#head -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#head">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#APEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>HD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#idiosyncraticUnit -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#idiosyncraticUnit">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>ISU</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#instrumental -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#instrumental">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>MI</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#junctor -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#junctor">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>JU</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#locative -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#locative">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>ML</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#modifier -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#modifier">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#APEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>MO</olia_system:hasTag>
+        <rdfs:comment>Modifier, German &quot;Modifikator&quot; (Bader et al. 2003, §2)
+Applies within NPs only to focus particles, e.g. nur, auch, lediglich,
+zumindest, vor allem, . . . which are annotated regardless of their positioning within the NP (Bader et al. 2003, §2.7).
+Within adjective phrases, label of PPs and adverbials (Bader et al. 2003, §4.1)
+also applies to VPs (Bader et al. 2003, §5)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#morphologicalParticle -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#morphologicalParticle">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>PM</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#multiTokenAdjective -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#multiTokenAdjective">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#AdjectivePhrase"/>
+        <olia_system:hasTag>MTA</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#negation -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#negation">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>NG</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#nounKernelModifier -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#nounKernelModifier">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <olia_system:hasTag>NK</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#nounPhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#nounPhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NounPhrase"/>
+        <olia_system:hasTag>NP</olia_system:hasTag>
+        <rdfs:comment>noun phrase (Bader et al. 2003, §2)
+      Eine NP besteht zun&quot;achst aus einer Reihe von pronominalen, substantivischen und adjektivischen Kernelementen (NP kernel elements, NK). Ihre genauere Unterteilung kann aufgrund der Part-of-Speech bzw. kategorialen Information vorgenommen werden, so dass sich eine Unterscheidung auf der Ebene der Funktionslabels er&quot;ubrigt.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#numberComponent -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#numberComponent">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>NMC</olia_system:hasTag>
+        <rdfs:comment>Part of a multi-token (complex) numeral.
+      Für komplexe Numeralien (10 000, eine Million) ist das Label NM (NuMber) vorgesehen. Die einzelnen Komponenten bekommen das Funktionslabel NMC (NuMber Component).
+      (Bader etal. 2003, §2.12)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#parenthesis -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#parenthesis">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>PAR</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#passivisedSubject -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#passivisedSubject">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag></olia_system:hasTag>
+        <rdfs:comment>passivised subject (PP)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#phrasalGenitive -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#phrasalGenitive">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <olia_system:hasTag>PG</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#placeholder -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#placeholder">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>PH</olia_system:hasTag>
+        <rdfs:comment>a pro-form that is resolved by a repeated element
+(Bader et al. 2003, §6.1)
+also, the so-called vorfeld-es: Vorfeld-es (PH ohne RE)
+Test: steht nur im Vorfeld (d.h., dieses es h¨angt
+weder vom Auftreten eines satzwertigen Arguments
+ab noch vom Verb) (Bader et al. 2003, §6.2)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#postnominalModifier -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#postnominalModifier">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <olia_system:hasTag>MNR</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#predicate -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#predicate">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>PD</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#prepositionalObject -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#prepositionalObject">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>OP</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#prepositionalPhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#prepositionalPhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PrepositionalPhrase"/>
+        <olia_system:hasTag>PP</olia_system:hasTag>
+        <rdfs:comment>PPs werden wie NPs behandelt, also auch flach
       annotiert. Die Pr¨a-/Post-/Zirkumposition (PoSTags:
       APPR / APPO / APZR) bekommt das Label
       AC (adpositional case marker). Sonst ¨andert
       sich die Struktur nicht.
       (Bader et al. 2003, §3.1)</rdfs:comment>
-  </PrepositionalPhrase>
-  <VPEdge rdf:ID="secondAccusativeObject">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >OA2</olia_system:hasTag>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >object accusative 2 (Bader et al. 2003, §5)</rdfs:comment>
-  </VPEdge>
-  <SyntacticEdge rdf:ID="rhetoricalModifier">
-    <olia_system:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >MR</olia_system:hasTag>
-  </SyntacticEdge>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#properNoun -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#properNoun">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>PN</olia_system:hasTag>
+        <rdfs:comment>Vorname(n), Familienname(n) und Namenszus¨atze werden alle unter dem Knoten PN (proper noun)
+      zusammengefaßt und als eine komplexe Kernkomponente der NP betrachtet. Die einzelnen Komponenten
+      des PN werden als PNC (proper noun component) annotiert.
+      Dasselbe gilt für fremdsprachliche Namen. Komponenten von Firmennamen wie Bayerische Vereinsbank
+      sowie Titel werden dagegen als NKs annotiert.
+      (Bader et al. 2003, §2.1.4)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#properNounComponent -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#properNounComponent">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>PNC</olia_system:hasTag>
+        <rdfs:comment>Vorname(n), Familienname(n) und Namenszus¨atze werden alle unter dem Knoten PN (proper noun)
+      zusammengefaßt und als eine komplexe Kernkomponente der NP betrachtet. Die einzelnen Komponenten
+      des PN werden als PNC (proper noun component) annotiert.
+      Dasselbe gilt f¨ur fremdsprachliche Namen. Komponenten von Firmennamen wie Bayerische Vereinsbank
+      sowie Titel werden dagegen als NKs annotiert.
+      (Bader et al. 2003, §2.1.4)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#quasiLanguage -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#quasiLanguage">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticNode"/>
+        <olia_system:hasTag>QL</olia_system:hasTag>
+        <rdfs:comment>quasi-language</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#relativeClause -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#relativeClause">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#NPEdge"/>
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#PPEdge"/>
+        <olia_system:hasTag>RC</olia_system:hasTag>
+        <rdfs:comment>Relativs¨atze werden als T¨ochter des NP-Knotens annotiert, und zwar unabh¨angig davon, ob sie extraponiert
+sind oder nicht. Sie werden mit dem Label RC (relative clause) gekennzeichnet. (Bader et al. 2003, §2.6)
+
+Also applies to cleft sentences: Cleft-S¨atze: Der Relativsatz soll immer als RC zur pr¨adikativen NP annotiert werden. Das Pronomen
+es ist Subjekt.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#repeatedElement -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#repeatedElement">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>RE</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#reportedSpeech -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#reportedSpeech">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>RS</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#rhetoricalModifier -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#rhetoricalModifier">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>MR</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#secondAccusativeObject -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#secondAccusativeObject">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>OA2</olia_system:hasTag>
+        <rdfs:comment>object accusative 2 (Bader et al. 2003, §5)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#separableVerbPrefix -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#separableVerbPrefix">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>SVP</olia_system:hasTag>
+        <rdfs:comment>(Bader et al. 2003, §5)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#subject -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#subject">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>SB</olia_system:hasTag>
+        <rdfs:comment>(Bader et al. 2003, §5)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#subjectOrPredicate -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#subjectOrPredicate">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>SP</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#superlativePhraseWithAm -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#superlativePhraseWithAm">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#AdjectivePhrase"/>
+        <olia_system:hasTag>AA</olia_system:hasTag>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#unitComponent -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#unitComponent">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#SyntacticEdge"/>
+        <olia_system:hasTag>UC</olia_system:hasTag>
+        <rdfs:comment>Fremdsprachliche Zitate werden als Chunks (CH) flach annotiert; die einzelnen Komponenten erhalten
+      das Label UC (“unit component”).
+      (Bader et al. 2003, § 2.1.5)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#verbPhrase -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#verbPhrase">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VerbalPhrase"/>
+        <olia_system:hasTag>VP</olia_system:hasTag>
+        <rdfs:comment>verbal phrase with a non-finite verb.
+      Jedes Verb f¨uhrt eine eigenst¨andige Phrase ein.
+      Phrasen mit finitem Verb bekommen das Label S
+      (Satz)
+      (Bader et al. 2003, §5.1)</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/tiger-syntax.owl#vocative -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/tiger-syntax.owl#vocative">
+        <rdf:type rdf:resource="http://purl.org/olia/tiger-syntax.owl#VPEdge"/>
+        <olia_system:hasTag>VO</olia_system:hasTag>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
-<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+

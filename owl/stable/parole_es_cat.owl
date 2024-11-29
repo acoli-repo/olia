@@ -1,41 +1,31 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/parole_es_cat.owl#"
      xml:base="http://purl.org/olia/parole_es_cat.owl"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/parole_es_cat.owl">
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/spa"/>
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/cat"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-        <owl:versionInfo>2011-08-02 created
-2011-10-30 added English labels
-2024-11-27 added lower case tag variants
-
-Christian Chiarcos
-christian.chiarcos@uni-a.de</owl:versionInfo>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/cat"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/spa"/>
         <rdfs:comment xml:lang="es">OLiA Annotation Model for Spanish morphosyntax as used by the FreeLing Tagger (http://nlp.lsi.upc.edu/freeling/) following the PAROLE/EAGLES 2.0 guidelines
 
 Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/freeling/doc/userman/parole-es.html
 
         Note that the original FreeLing/Parole schema uses uppercase letters, and the model was initially created with these, but extended to also provide lower case labels in agreement with the Universal Depenency edition of the Ancora corpus (https://github.com/UniversalDependencies/UD_Spanish-AnCora)
         </rdfs:comment>
-        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <owl:versionInfo>2011-08-02 created
+2011-10-30 added English labels
+2024-11-27 added lower case tag variants
+
+Christian Chiarcos
+christian.chiarcos@uni-a.de</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -51,14 +41,15 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://purl.org/olia/system.owl#hasTagMatching -->
 
+    <owl:AnnotationProperty rdf:about="http://purl.org/olia/system.owl#hasTagMatching"/>
+    
+
+
+    <!-- http://w3id.org/meta-share/meta-share/language -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -76,10 +67,10 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#caso -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#caso">
-        <rdfs:label xml:lang="es">caso</rdfs:label>
-        <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Caso"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Caso"/>
+        <rdfs:label xml:lang="es">caso</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -87,10 +78,10 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#grado -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#grado">
-        <rdfs:label xml:lang="es">grado</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Grado"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:label xml:lang="es">grado</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -98,9 +89,9 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#género -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#género">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Género"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
     </owl:ObjectProperty>
     
 
@@ -108,10 +99,10 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#modo -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#modo">
-        <rdfs:label xml:lang="es">modo</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:label xml:lang="es">modo</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -119,9 +110,9 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#número -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#número">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Número"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
     </owl:ObjectProperty>
     
 
@@ -129,10 +120,10 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#persona -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#persona">
-        <rdfs:label xml:lang="es">persona</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Persona"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:label xml:lang="es">persona</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -140,10 +131,10 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#politeness -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#politeness">
-        <rdfs:label xml:lang="es">politeness</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Politeness"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:label xml:lang="es">politeness</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -151,10 +142,10 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#poseedor -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#poseedor">
-        <rdfs:label xml:lang="es">poseedor</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Poseedor"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:label xml:lang="es">poseedor</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -162,10 +153,10 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#tiempo -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/olia/parole_es_cat.owl#tiempo">
-        <rdfs:label xml:lang="es">tiempo</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/olia/system.owl#hasFeature"/>
         <rdfs:domain rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:range rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
-        <rdfs:subPropertyOf rdf:resource="&system;hasFeature"/>
+        <rdfs:label xml:lang="es">tiempo</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -184,8 +175,6 @@ Unless marked otherwise, all comments are quotes from http://nlp.lsi.upc.edu/fre
     <!-- http://purl.org/olia/parole_es_cat.owl#Abreviatura -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Abreviatura">
-        <rdfs:label xml:lang="ca">Abreviatura</rdfs:label>
-        <rdfs:label xml:lang="en">abbreviation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:comment xml:lang="ca">Exemples:		
 		
@@ -196,6 +185,8 @@ am	am	Y
 kg/m	kg/m	Y
 kWh	kWh	Y
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Abreviatura</rdfs:label>
+        <rdfs:label xml:lang="en">abbreviation</rdfs:label>
         <owl:versionInfo xml:lang="en">Catalan only</owl:versionInfo>
     </owl:Class>
     
@@ -204,10 +195,10 @@ kWh	kWh	Y
     <!-- http://purl.org/olia/parole_es_cat.owl#Adjetivo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Adjetivo">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:label xml:lang="ca">Adjectiu</rdfs:label>
         <rdfs:label xml:lang="en">Adjective</rdfs:label>
         <rdfs:label xml:lang="es">Adjetivo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
     </owl:Class>
     
 
@@ -215,22 +206,7 @@ kWh	kWh	Y
     <!-- http://purl.org/olia/parole_es_cat.owl#AdjetivoCalificativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#AdjetivoCalificativo">
-        <rdfs:label xml:lang="ca">Qualificatiu</rdfs:label>
-        <rdfs:label xml:lang="en">qualificative adjective</rdfs:label>
-        <rdfs:label xml:lang="es">AdjetivoCalificativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adjetivo"/>
-        <rdfs:comment xml:lang="ca">Exemples:		
-		
-Forma	Lema	Etiqueta
-universals	universal	AQ0CP0
-universal	universal	AQ0CS0
-boniques	bonic	AQ0FP0
-bonica	bonic	AQ0FS0
-bonics	bonic	AQ0MP0
-bonic	bonic	AQ0MS0
-rosa	rosa	AQ0CN0
-separada	separat	AQ0FSP
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Ejemplos:		
 		
 Forma	Lema	Etiqueta
@@ -243,6 +219,21 @@ pequeñitas	pequeño	AQDFP0
 antiarrugas	antiarrugas	AQ0CN0
 desnuda	desnudo	AQ0FSP
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Exemples:		
+		
+Forma	Lema	Etiqueta
+universals	universal	AQ0CP0
+universal	universal	AQ0CS0
+boniques	bonic	AQ0FP0
+bonica	bonic	AQ0FS0
+bonics	bonic	AQ0MP0
+bonic	bonic	AQ0MS0
+rosa	rosa	AQ0CN0
+separada	separat	AQ0FSP
+</rdfs:comment>
+        <rdfs:label xml:lang="es">AdjetivoCalificativo</rdfs:label>
+        <rdfs:label xml:lang="ca">Qualificatiu</rdfs:label>
+        <rdfs:label xml:lang="en">qualificative adjective</rdfs:label>
     </owl:Class>
     
 
@@ -250,9 +241,6 @@ desnuda	desnudo	AQ0FSP
     <!-- http://purl.org/olia/parole_es_cat.owl#AdjetivoOrdinal -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#AdjetivoOrdinal">
-        <rdfs:label xml:lang="en">ordinal adjective</rdfs:label>
-        <rdfs:label xml:lang="ca">Ordinal</rdfs:label>
-        <rdfs:label xml:lang="es">AdjetivoOrdinal</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adjetivo"/>
         <rdfs:comment xml:lang="ca">Els adjectius de tipus ordinal tindran com a lema la forma masculina singular. 
 
@@ -274,6 +262,9 @@ primera	primero	AO0FS0
 primeras	primero	AO0FP0
 primero	primero	AO0MS0
 primeros	primero	AO0MP0</rdfs:comment>
+        <rdfs:label xml:lang="es">AdjetivoOrdinal</rdfs:label>
+        <rdfs:label xml:lang="ca">Ordinal</rdfs:label>
+        <rdfs:label xml:lang="en">ordinal adjective</rdfs:label>
     </owl:Class>
     
 
@@ -281,12 +272,12 @@ primeros	primero	AO0MP0</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#AdjetivoParticipio -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#AdjetivoParticipio">
-        <rdfs:label xml:lang="en">participle</rdfs:label>
-        <rdfs:label xml:lang="ca">Participi</rdfs:label>
-        <rdfs:label xml:lang="es">AdjetivoParticipio</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#AdjetivoCalificativo"/>
-        <rdfs:comment xml:lang="ca">El valor de l&#39;últim dígit serà normalment 0. Només aquells adjectius que tinguin funció de participi tindran una P. </rdfs:comment>
+        <rdfs:comment xml:lang="ca">El valor de l&apos;últim dígit serà normalment 0. Només aquells adjectius que tinguin funció de participi tindran una P. </rdfs:comment>
         <rdfs:comment xml:lang="es">El valor del último dígito será normalmente 0. Tan sólo aquellos adjetivos que tengan función de participio tendrán una P. En el caso que la forma del adjetivo coincida con la del participio, solo tomará la etiqueta de participio. </rdfs:comment>
+        <rdfs:label xml:lang="es">AdjetivoParticipio</rdfs:label>
+        <rdfs:label xml:lang="ca">Participi</rdfs:label>
+        <rdfs:label xml:lang="en">participle</rdfs:label>
     </owl:Class>
     
 
@@ -294,11 +285,11 @@ primeros	primero	AO0MP0</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#Adposición -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Adposición">
-        <rdfs:label xml:lang="en">adposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:label xml:lang="ca">Adposició</rdfs:label>
         <rdfs:label xml:lang="es">Adposición</rdfs:label>
         <rdfs:label xml:lang="es">adposición</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
+        <rdfs:label xml:lang="en">adposition</rdfs:label>
     </owl:Class>
     
 
@@ -306,25 +297,6 @@ primeros	primero	AO0MP0</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#Adverbio -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Adverbio">
-        <rdfs:label xml:lang="en">adverb</rdfs:label>
-        <rdfs:label xml:lang="ca">Adverbi</rdfs:label>
-        <rdfs:label xml:lang="ca">Per als adverbis, ara mateix, tan sols indiquem que és de tipus general o de tipus negatiu. 		
-Aquesta etiqueta serveix tant per als adverbis com per a les locucions adverbials. 		
-El lema dels adverbis acabats en -ment és la mateixa forma adverbial acabada en -ment, per exemple, el lema de ràpidament serà ràpidament. 		
-L&#39;etiqueta d&#39;adverbi negatiu (RN) està reservada exclusivament per als adverbis no i pas. 		
-		
-Exemples:		
-		
-Forma	Lema	Etiqueta
-ara	ara	RG
-ahir	ahir	RG
-sempre	sempre	RG
-hàbilment	hàbilment	RG
-de_quatre_grapes	de_quatre_grapes	RG
-de_reüll	de_reüll	RG
-no	no	RN
-</rdfs:label>
-        <rdfs:label xml:lang="es">Adverbio</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:comment xml:lang="es">Para los adverbios, de momento, tan sólo indicamos que es de tipo general o de tipo negativo. 
 Esta etiqueta sirve tanto para los adverbios y para las locuciones adverbiales. 
@@ -340,6 +312,25 @@ posteriormente	posteriormente	RG
 a_cuatro_patas	a_cuatro_patas	RG
 a_granel	a_granel	RG
 no	no	RN</rdfs:comment>
+        <rdfs:label xml:lang="ca">Adverbi</rdfs:label>
+        <rdfs:label xml:lang="es">Adverbio</rdfs:label>
+        <rdfs:label xml:lang="ca">Per als adverbis, ara mateix, tan sols indiquem que és de tipus general o de tipus negatiu. 		
+Aquesta etiqueta serveix tant per als adverbis com per a les locucions adverbials. 		
+El lema dels adverbis acabats en -ment és la mateixa forma adverbial acabada en -ment, per exemple, el lema de ràpidament serà ràpidament. 		
+L&apos;etiqueta d&apos;adverbi negatiu (RN) està reservada exclusivament per als adverbis no i pas. 		
+		
+Exemples:		
+		
+Forma	Lema	Etiqueta
+ara	ara	RG
+ahir	ahir	RG
+sempre	sempre	RG
+hàbilment	hàbilment	RG
+de_quatre_grapes	de_quatre_grapes	RG
+de_reüll	de_reüll	RG
+no	no	RN
+</rdfs:label>
+        <rdfs:label xml:lang="en">adverb</rdfs:label>
     </owl:Class>
     
 
@@ -347,9 +338,9 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#AdverbioGeneral -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#AdverbioGeneral">
-        <rdfs:label xml:lang="en">general adverb</rdfs:label>
-        <rdfs:label xml:lang="es">AdverbioGeneral</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adverbio"/>
+        <rdfs:label xml:lang="es">AdverbioGeneral</rdfs:label>
+        <rdfs:label xml:lang="en">general adverb</rdfs:label>
     </owl:Class>
     
 
@@ -357,10 +348,10 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#AdverbioNegativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#AdverbioNegativo">
-        <rdfs:label xml:lang="en">negative adverb</rdfs:label>
-        <rdfs:label xml:lang="es">AdverbioNegativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adverbio"/>
         <rdfs:comment xml:lang="es">La etiqueta de adverbio negativo (RN) está reservada exclusivamente para el adverbio no. </rdfs:comment>
+        <rdfs:label xml:lang="es">AdverbioNegativo</rdfs:label>
+        <rdfs:label xml:lang="en">negative adverb</rdfs:label>
     </owl:Class>
     
 
@@ -368,12 +359,12 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#Caso -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Caso">
-        <rdfs:label xml:lang="en">case</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+        <rdfs:comment xml:lang="es">El atributo Caso es específico para los pronombres personales, para el resto será 0.</rdfs:comment>
+        <rdfs:comment xml:lang="ca">L&apos;atribut Cas és específic per als pronoms personals. </rdfs:comment>
         <rdfs:label xml:lang="ca">Cas</rdfs:label>
         <rdfs:label xml:lang="es">Caso</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
-        <rdfs:comment xml:lang="ca">L&#39;atribut Cas és específic per als pronoms personals. </rdfs:comment>
-        <rdfs:comment xml:lang="es">El atributo Caso es específico para los pronombres personales, para el resto será 0.</rdfs:comment>
+        <rdfs:label xml:lang="en">case</rdfs:label>
     </owl:Class>
     
 
@@ -381,10 +372,10 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#CasoAcusativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#CasoAcusativo">
-        <rdfs:label xml:lang="en">accusative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Caso"/>
         <rdfs:label xml:lang="ca">Acusatiu</rdfs:label>
         <rdfs:label xml:lang="es">CasoAcusativo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Caso"/>
+        <rdfs:label xml:lang="en">accusative</rdfs:label>
     </owl:Class>
     
 
@@ -392,10 +383,10 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#CasoDativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#CasoDativo">
-        <rdfs:label xml:lang="en">dative</rdfs:label>
-        <rdfs:label xml:lang="ca">Datiu</rdfs:label>
-        <rdfs:label xml:lang="es">CasoDativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Caso"/>
+        <rdfs:label xml:lang="es">CasoDativo</rdfs:label>
+        <rdfs:label xml:lang="ca">Datiu</rdfs:label>
+        <rdfs:label xml:lang="en">dative</rdfs:label>
     </owl:Class>
     
 
@@ -403,10 +394,10 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#CasoNominativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#CasoNominativo">
-        <rdfs:label xml:lang="en">nominative</rdfs:label>
-        <rdfs:label xml:lang="ca">Nominatiu</rdfs:label>
-        <rdfs:label xml:lang="es">CasoNominativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Caso"/>
+        <rdfs:label xml:lang="es">CasoNominativo</rdfs:label>
+        <rdfs:label xml:lang="ca">Nominatiu</rdfs:label>
+        <rdfs:label xml:lang="en">nominative</rdfs:label>
     </owl:Class>
     
 
@@ -414,10 +405,10 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#CasoOblicuo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#CasoOblicuo">
-        <rdfs:label xml:lang="en">oblique case</rdfs:label>
-        <rdfs:label xml:lang="ca">Oblic</rdfs:label>
-        <rdfs:label xml:lang="es">CasoOblicuo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Caso"/>
+        <rdfs:label xml:lang="es">CasoOblicuo</rdfs:label>
+        <rdfs:label xml:lang="ca">Oblic</rdfs:label>
+        <rdfs:label xml:lang="en">oblique case</rdfs:label>
     </owl:Class>
     
 
@@ -425,9 +416,15 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#Categoría -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Categoría">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>POS</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="ca">Categoria</rdfs:label>
         <rdfs:label xml:lang="es">Categoría</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
         <rdfs:label xml:lang="en">category</rdfs:label>
     </owl:Class>
     
@@ -436,12 +433,9 @@ no	no	RN</rdfs:comment>
     <!-- http://purl.org/olia/parole_es_cat.owl#Cifra -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Cifra">
-        <rdfs:label xml:lang="en">numeral</rdfs:label>
-        <rdfs:label xml:lang="ca">xifra</rdfs:label>
-        <rdfs:label xml:lang="es">Cifra</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
-        <rdfs:comment xml:lang="ca">Els números escrits en xifres s&#39;etiquetaran com a Z. Amb aquesta etiqueta trobarem: adreces, números de telèfon, resultats esportius, etc. 		
-Les quantitats monetàries rebran l&#39;etiqueta Zm, tindran com a lema la quantitat (en xifres) i el nom de la unitat monetària en singular. 		
+        <rdfs:comment xml:lang="ca">Els números escrits en xifres s&apos;etiquetaran com a Z. Amb aquesta etiqueta trobarem: adreces, números de telèfon, resultats esportius, etc. 		
+Les quantitats monetàries rebran l&apos;etiqueta Zm, tindran com a lema la quantitat (en xifres) i el nom de la unitat monetària en singular. 		
 		
 Exemples:		
 		
@@ -469,6 +463,9 @@ ochenta por ciento	80/100	Zp
 30_Km_por_hora	SP_km/h:30	Zu
 ocho_gramos_/_litro	DN_g/l:8	Zu
 </rdfs:comment>
+        <rdfs:label xml:lang="es">Cifra</rdfs:label>
+        <rdfs:label xml:lang="en">numeral</rdfs:label>
+        <rdfs:label xml:lang="ca">xifra</rdfs:label>
     </owl:Class>
     
 
@@ -476,10 +473,10 @@ ocho_gramos_/_litro	DN_g/l:8	Zu
     <!-- http://purl.org/olia/parole_es_cat.owl#CifraMoneda -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#CifraMoneda">
-        <rdfs:label xml:lang="en">money</rdfs:label>
-        <rdfs:label xml:lang="ca">Moneda</rdfs:label>
-        <rdfs:label xml:lang="es">CifraMoneda</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Cifra"/>
+        <rdfs:label xml:lang="es">CifraMoneda</rdfs:label>
+        <rdfs:label xml:lang="ca">Moneda</rdfs:label>
+        <rdfs:label xml:lang="en">money</rdfs:label>
     </owl:Class>
     
 
@@ -487,9 +484,9 @@ ocho_gramos_/_litro	DN_g/l:8	Zu
     <!-- http://purl.org/olia/parole_es_cat.owl#CifraPartitivo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#CifraPartitivo">
-        <rdfs:label xml:lang="en">partitive numeral</rdfs:label>
-        <rdfs:label xml:lang="es">CifraPartitivo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Cifra"/>
+        <rdfs:label xml:lang="es">CifraPartitivo</rdfs:label>
+        <rdfs:label xml:lang="en">partitive numeral</rdfs:label>
         <owl:versionInfo>Spanish only</owl:versionInfo>
     </owl:Class>
     
@@ -498,9 +495,9 @@ ocho_gramos_/_litro	DN_g/l:8	Zu
     <!-- http://purl.org/olia/parole_es_cat.owl#CifraPorcentaje -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#CifraPorcentaje">
-        <rdfs:label xml:lang="en">percentage</rdfs:label>
-        <rdfs:label xml:lang="es">CifraPorcentaje</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Cifra"/>
+        <rdfs:label xml:lang="es">CifraPorcentaje</rdfs:label>
+        <rdfs:label xml:lang="en">percentage</rdfs:label>
         <owl:versionInfo>Spanish only</owl:versionInfo>
     </owl:Class>
     
@@ -509,9 +506,9 @@ ocho_gramos_/_litro	DN_g/l:8	Zu
     <!-- http://purl.org/olia/parole_es_cat.owl#CifraUnidad -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#CifraUnidad">
-        <rdfs:label xml:lang="en">unit</rdfs:label>
-        <rdfs:label xml:lang="es">CifraUnidad</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Cifra"/>
+        <rdfs:label xml:lang="es">CifraUnidad</rdfs:label>
+        <rdfs:label xml:lang="en">unit</rdfs:label>
         <owl:versionInfo>Spanish only</owl:versionInfo>
     </owl:Class>
     
@@ -520,10 +517,10 @@ ocho_gramos_/_litro	DN_g/l:8	Zu
     <!-- http://purl.org/olia/parole_es_cat.owl#Conjunción -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Conjunción">
-        <rdfs:label xml:lang="en">conjunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:label xml:lang="ca">Conjunció</rdfs:label>
         <rdfs:label xml:lang="es">Conjunción</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
+        <rdfs:label xml:lang="en">conjunction</rdfs:label>
     </owl:Class>
     
 
@@ -531,9 +528,6 @@ ocho_gramos_/_litro	DN_g/l:8	Zu
     <!-- http://purl.org/olia/parole_es_cat.owl#ConjunciónCoordinada -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#ConjunciónCoordinada">
-        <rdfs:label xml:lang="en">coordinating conjunction</rdfs:label>
-        <rdfs:label xml:lang="ca">Coordinada</rdfs:label>
-        <rdfs:label xml:lang="es">Conjunción coordinada</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Conjunción"/>
         <rdfs:comment xml:lang="ca">Conjunció Coordinada		
 		
@@ -560,6 +554,9 @@ siquiera	siquiera	CC
 u	u	CC
 y	y	CC
 </rdfs:comment>
+        <rdfs:label xml:lang="es">Conjunción coordinada</rdfs:label>
+        <rdfs:label xml:lang="ca">Coordinada</rdfs:label>
+        <rdfs:label xml:lang="en">coordinating conjunction</rdfs:label>
     </owl:Class>
     
 
@@ -567,9 +564,6 @@ y	y	CC
     <!-- http://purl.org/olia/parole_es_cat.owl#ConjunciónSubordinada -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#ConjunciónSubordinada">
-        <rdfs:label xml:lang="en">subordinating conjunction</rdfs:label>
-        <rdfs:label xml:lang="ca">Subordinada</rdfs:label>
-        <rdfs:label xml:lang="es">ConjunciónSubordinada</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Conjunción"/>
         <rdfs:comment xml:lang="ca">Conjunció Subordinada 		
 		
@@ -594,6 +588,9 @@ luego	luego	CS
 mientras	mientras	CS
 porque	porque	CS
 </rdfs:comment>
+        <rdfs:label xml:lang="es">ConjunciónSubordinada</rdfs:label>
+        <rdfs:label xml:lang="ca">Subordinada</rdfs:label>
+        <rdfs:label xml:lang="en">subordinating conjunction</rdfs:label>
     </owl:Class>
     
 
@@ -601,13 +598,10 @@ porque	porque	CS
     <!-- http://purl.org/olia/parole_es_cat.owl#DeterminantNumeral -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#DeterminantNumeral">
-        <rdfs:label xml:lang="en">numeral determiner</rdfs:label>
-        <rdfs:label xml:lang="ca">Numeral</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
-        <owl:versionInfo>Catalan only</owl:versionInfo>
         <rdfs:comment xml:lang="ca">Determinants Numerals		
 		
-El lema d&#39;aquells numerals que tinguin gènere i nombre serà la forma masculina singular. 		
+El lema d&apos;aquells numerals que tinguin gènere i nombre serà la forma masculina singular. 		
 Sota els determinants numerals cardinals hem agrupat els numerals partitius (onzè, dotzè...) i els numerals multiplicatius (doble, triple...). 		
 		
 Forma	Lema	Etiqueta
@@ -624,6 +618,9 @@ quíntupla	quíntuple	DN0FS0
 quíntuple	quíntuple	DN0CS0
 quíntuples	quíntuple	DN0CP0
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Numeral</rdfs:label>
+        <rdfs:label xml:lang="en">numeral determiner</rdfs:label>
+        <owl:versionInfo>Catalan only</owl:versionInfo>
     </owl:Class>
     
 
@@ -631,14 +628,14 @@ quíntuples	quíntuple	DN0CP0
     <!-- http://purl.org/olia/parole_es_cat.owl#DeterminantRelatiu -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#DeterminantRelatiu">
-        <rdfs:label xml:lang="en">relative determiner</rdfs:label>
-        <rdfs:label xml:lang="ca">Relatiu</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
         <rdfs:comment xml:lang="ca">Determinant Relatiu		
 		
 Forma	Lema	Etiqueta
 qual	qual	DR0CS0
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Relatiu</rdfs:label>
+        <rdfs:label xml:lang="en">relative determiner</rdfs:label>
         <owl:versionInfo xml:lang="en">Catalan only</owl:versionInfo>
     </owl:Class>
     
@@ -647,10 +644,10 @@ qual	qual	DR0CS0
     <!-- http://purl.org/olia/parole_es_cat.owl#Determinante -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Determinante">
-        <rdfs:label xml:lang="en">determiner</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:label xml:lang="ca">Determinant</rdfs:label>
         <rdfs:label xml:lang="es">Determinante</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
+        <rdfs:label xml:lang="en">determiner</rdfs:label>
     </owl:Class>
     
 
@@ -658,29 +655,26 @@ qual	qual	DR0CS0
     <!-- http://purl.org/olia/parole_es_cat.owl#DeterminanteArtículo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#DeterminanteArtículo">
-        <rdfs:label xml:lang="en">article</rdfs:label>
-        <rdfs:label xml:lang="ca">Article</rdfs:label>
-        <rdfs:label xml:lang="es">Artículo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
         <rdfs:comment xml:lang="ca">Articles		
 		
-Només tractem com a article les formes de l&#39;article definit el, l&#39;article salat en i l&#39;article personal d&#39;ús familiar en. No contemplem la categoria d&#39;article indefinit (un) ja que hem decidit tractar aquestes formes com a determinants indefinits (vegeu 3.5) o numerals (vegeu 3.7). 		
+Només tractem com a article les formes de l&apos;article definit el, l&apos;article salat en i l&apos;article personal d&apos;ús familiar en. No contemplem la categoria d&apos;article indefinit (un) ja que hem decidit tractar aquestes formes com a determinants indefinits (vegeu 3.5) o numerals (vegeu 3.7). 		
 		
 Exemples:		
 		
 Forma	Lema	Etiqueta
 el	el	DA0MS0
 els	el	DA0MP0
-l&#39;	el	DA0CS0
+l&apos;	el	DA0CS0
 la	el	DA0FS0
 les	el	DA0FP0
 en	en	DA0MS0
 na	en	DA0FS0
-n&#39;	en	DA0CS0
+n&apos;	en	DA0CS0
 sa	es	DA0FS0
 ses	es	DA0FP0
 es	es	DA0MN0
-s&#39;	es	DA0CS0
+s&apos;	es	DA0CS0
 </rdfs:comment>
         <rdfs:comment xml:lang="es">Artículos		
 		
@@ -695,6 +689,9 @@ lo	el	DA0NS0
 la	el	DA0FS0
 las	el	DA0FP0
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Article</rdfs:label>
+        <rdfs:label xml:lang="es">Artículo</rdfs:label>
+        <rdfs:label xml:lang="en">article</rdfs:label>
     </owl:Class>
     
 
@@ -702,28 +699,7 @@ las	el	DA0FP0
     <!-- http://purl.org/olia/parole_es_cat.owl#DeterminanteDemostrativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#DeterminanteDemostrativo">
-        <rdfs:label xml:lang="en">demonstrative determiner</rdfs:label>
-        <rdfs:label xml:lang="ca">Demostratiu</rdfs:label>
-        <rdfs:label xml:lang="es">DeterminanteDemostrativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
-        <rdfs:comment xml:lang="ca">Determinants Demostratius		
-		
-Forma	Lema	Etiqueta
-aquell	aquell	DD0MS0
-aquella	aquell	DD0FS0
-aquelles	aquell	DD0FP0
-aquells	aquell	DD0MP0
-aqueixa	aqueix	DD0FS0
-aqueixes	aqueix	DD0FP0
-aqueix	aqueix	DD0MS0
-aqueixos	aqueix	DD0MP0
-aquesta	aquest	DD0FS0
-aquestes	aquest	DD0FP0
-aquest	aquest	DD0MS0
-aquests	aquest	DD0MP0
-tal	tal	DD0CS0
-tals	tal	DD0CP0
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Determinantes Demostrativos		
 		
 Forma	Lema	Etiqueta
@@ -744,6 +720,27 @@ tales	tal	DD0CP0
 semejante	semejante	DD0CS0
 semejantes	semejante	DD0CP0
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Determinants Demostratius		
+		
+Forma	Lema	Etiqueta
+aquell	aquell	DD0MS0
+aquella	aquell	DD0FS0
+aquelles	aquell	DD0FP0
+aquells	aquell	DD0MP0
+aqueixa	aqueix	DD0FS0
+aqueixes	aqueix	DD0FP0
+aqueix	aqueix	DD0MS0
+aqueixos	aqueix	DD0MP0
+aquesta	aquest	DD0FS0
+aquestes	aquest	DD0FP0
+aquest	aquest	DD0MS0
+aquests	aquest	DD0MP0
+tal	tal	DD0CS0
+tals	tal	DD0CP0
+</rdfs:comment>
+        <rdfs:label xml:lang="ca">Demostratiu</rdfs:label>
+        <rdfs:label xml:lang="es">DeterminanteDemostrativo</rdfs:label>
+        <rdfs:label xml:lang="en">demonstrative determiner</rdfs:label>
     </owl:Class>
     
 
@@ -751,10 +748,12 @@ semejantes	semejante	DD0CP0
     <!-- http://purl.org/olia/parole_es_cat.owl#DeterminanteExclamativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#DeterminanteExclamativo">
-        <rdfs:label xml:lang="en">exclamative determiner</rdfs:label>
-        <rdfs:label xml:lang="ca">Exclamatiu</rdfs:label>
-        <rdfs:label xml:lang="es">DeterminanteExclamativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
+        <rdfs:comment xml:lang="es">Determinantes Exclamativos		
+		
+Forma	Lema	Etiqueta
+qué	qué	DE0CN0
+</rdfs:comment>
         <rdfs:comment xml:lang="ca">Determinants Exclamatius		
 		
 Forma	Lema	Etiqueta
@@ -763,11 +762,9 @@ quines	quin	DE0FP0
 quin	quin	DE0MS0
 quines	quin	DE0MP0
 </rdfs:comment>
-        <rdfs:comment xml:lang="es">Determinantes Exclamativos		
-		
-Forma	Lema	Etiqueta
-qué	qué	DE0CN0
-</rdfs:comment>
+        <rdfs:label xml:lang="es">DeterminanteExclamativo</rdfs:label>
+        <rdfs:label xml:lang="ca">Exclamatiu</rdfs:label>
+        <rdfs:label xml:lang="en">exclamative determiner</rdfs:label>
     </owl:Class>
     
 
@@ -775,10 +772,44 @@ qué	qué	DE0CN0
     <!-- http://purl.org/olia/parole_es_cat.owl#DeterminanteIndefinido -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#DeterminanteIndefinido">
-        <rdfs:label xml:lang="en">indefinite determiner</rdfs:label>
-        <rdfs:label xml:lang="ca">Indefinit</rdfs:label>
-        <rdfs:label xml:lang="es">DeterminanteIndefinido</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
+        <rdfs:comment xml:lang="es">Determinantes Indefinidos		
+		
+Forma	Lema	Etiqueta
+alguna	alguno	DI0FS0
+algunas	alguno	DI0FP0
+alguno	alguno	DI0MS0
+algún	alguno	DI0MS0
+algunos	alguno	DI0MP0
+bastante	bastante	DI0CS0
+bastantes	bastante	DI0CP0
+cada	cada	DI0CS0
+ninguna	ninguno	DI0FS0
+ningunas	ninguno	DI0FP0
+ninguno	ninguno	DI0MS0
+ningún	ninguno	DI0MS0
+ningunos	ninguno	DI0MP0
+otra	otro	DI0FS0
+otras	otro	DI0FP0
+otro	otro	DI0MS0
+otros	otro	DI0MP0
+sendas	sendos	DI0FP0
+sendos	sendos	DI0MP0
+tantas	tanto	DI0FP0
+tanta	tanto	DI0FS0
+tantos	tanto	DI0MP0
+tanto	tanto	DI0MS0
+todas	todo	DI0FP0
+toda	todo	DI0FS0
+todos	todo	DI0MP0
+todo	todo	DI0MS0
+unas	uno	DI0FP0
+una	uno	DI0FS0
+unos	uno	DI0MP0
+un	uno	DI0MS0
+varias	varios	DI0FP0
+varios	varios	DI0MP0
+</rdfs:comment>
         <rdfs:comment xml:lang="ca">Determinants Indefinits		
 		
 Forma	Lema	Etiqueta
@@ -818,43 +849,9 @@ diferents	diferent	DI0CP0
 diverses	divers	DI0FP0
 diversos	divers	DI0MP0
 </rdfs:comment>
-        <rdfs:comment xml:lang="es">Determinantes Indefinidos		
-		
-Forma	Lema	Etiqueta
-alguna	alguno	DI0FS0
-algunas	alguno	DI0FP0
-alguno	alguno	DI0MS0
-algún	alguno	DI0MS0
-algunos	alguno	DI0MP0
-bastante	bastante	DI0CS0
-bastantes	bastante	DI0CP0
-cada	cada	DI0CS0
-ninguna	ninguno	DI0FS0
-ningunas	ninguno	DI0FP0
-ninguno	ninguno	DI0MS0
-ningún	ninguno	DI0MS0
-ningunos	ninguno	DI0MP0
-otra	otro	DI0FS0
-otras	otro	DI0FP0
-otro	otro	DI0MS0
-otros	otro	DI0MP0
-sendas	sendos	DI0FP0
-sendos	sendos	DI0MP0
-tantas	tanto	DI0FP0
-tanta	tanto	DI0FS0
-tantos	tanto	DI0MP0
-tanto	tanto	DI0MS0
-todas	todo	DI0FP0
-toda	todo	DI0FS0
-todos	todo	DI0MP0
-todo	todo	DI0MS0
-unas	uno	DI0FP0
-una	uno	DI0FS0
-unos	uno	DI0MP0
-un	uno	DI0MS0
-varias	varios	DI0FP0
-varios	varios	DI0MP0
-</rdfs:comment>
+        <rdfs:label xml:lang="es">DeterminanteIndefinido</rdfs:label>
+        <rdfs:label xml:lang="ca">Indefinit</rdfs:label>
+        <rdfs:label xml:lang="en">indefinite determiner</rdfs:label>
     </owl:Class>
     
 
@@ -862,10 +859,16 @@ varios	varios	DI0MP0
     <!-- http://purl.org/olia/parole_es_cat.owl#DeterminanteInterrogativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#DeterminanteInterrogativo">
-        <rdfs:label xml:lang="en">interrogative determiner</rdfs:label>
-        <rdfs:label xml:lang="ca">Interrogatiu</rdfs:label>
-        <rdfs:label xml:lang="es">DeterminanteInterrogativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
+        <rdfs:comment xml:lang="es">Determinantes Interrogativos		
+		
+Forma	Lema	Etiqueta
+cuánta	cuánto	DT0FS0
+cuántas	cuánto	DT0FP0
+cuánto	cuánto	DT0MS0
+cuántos	cuánto	DT0MP0
+qué	qué	DT0CN0
+</rdfs:comment>
         <rdfs:comment xml:lang="ca">Determinants Interrogatius		
 		
 Forma	Lema	Etiqueta
@@ -878,15 +881,9 @@ quines	quin	DT0FP0
 quin	quin	DT0MS0
 quines	quin	DT0MP0
 </rdfs:comment>
-        <rdfs:comment xml:lang="es">Determinantes Interrogativos		
-		
-Forma	Lema	Etiqueta
-cuánta	cuánto	DT0FS0
-cuántas	cuánto	DT0FP0
-cuánto	cuánto	DT0MS0
-cuántos	cuánto	DT0MP0
-qué	qué	DT0CN0
-</rdfs:comment>
+        <rdfs:label xml:lang="es">DeterminanteInterrogativo</rdfs:label>
+        <rdfs:label xml:lang="ca">Interrogatiu</rdfs:label>
+        <rdfs:label xml:lang="en">interrogative determiner</rdfs:label>
     </owl:Class>
     
 
@@ -894,28 +891,7 @@ qué	qué	DT0CN0
     <!-- http://purl.org/olia/parole_es_cat.owl#DeterminantePosesivo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#DeterminantePosesivo">
-        <rdfs:label xml:lang="en">possessive determiner</rdfs:label>
-        <rdfs:label xml:lang="ca">Possessiu</rdfs:label>
-        <rdfs:label xml:lang="es">DeterminantePosesivo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
-        <rdfs:comment xml:lang="ca">Determinants Possessius		
-		
-Forma	Lema	Etiqueta
-meu	meu	DP1MSS
-meus	meu	DP1MPS
-meva	meu	DP1FSS
-meves	meu	DP1FPS
-mon	mon	DP1MSS
-mos	mon	DP1MPS
-ma	mon	DP1FSS
-mes	mon	DP1FPS
-teva	teu	DP2FSS
-teves	teu	DP2FPS
-teu	teu	DP2MSS
-teus	teu	DP2MPS
-ta	ton	DP2FSS
-tes	ton	DP2FPS
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Determinantes Posesivos		
 		
 Forma	Lema	Etiqueta
@@ -934,6 +910,27 @@ vuestras	vuestro	DP2FPP
 vuestro	vuestro	DP2MSP
 vuestros	vuestro	DP2MPP
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Determinants Possessius		
+		
+Forma	Lema	Etiqueta
+meu	meu	DP1MSS
+meus	meu	DP1MPS
+meva	meu	DP1FSS
+meves	meu	DP1FPS
+mon	mon	DP1MSS
+mos	mon	DP1MPS
+ma	mon	DP1FSS
+mes	mon	DP1FPS
+teva	teu	DP2FSS
+teves	teu	DP2FPS
+teu	teu	DP2MSS
+teus	teu	DP2MPS
+ta	ton	DP2FSS
+tes	ton	DP2FPS
+</rdfs:comment>
+        <rdfs:label xml:lang="es">DeterminantePosesivo</rdfs:label>
+        <rdfs:label xml:lang="ca">Possessiu</rdfs:label>
+        <rdfs:label xml:lang="en">possessive determiner</rdfs:label>
     </owl:Class>
     
 
@@ -941,8 +938,6 @@ vuestros	vuestro	DP2MPP
     <!-- http://purl.org/olia/parole_es_cat.owl#FechaHora -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#FechaHora">
-        <rdfs:label xml:lang="en">date/hour</rdfs:label>
-        <rdfs:label xml:lang="ca">Data/Hora</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:comment xml:lang="ca">DATES i HORES
 
@@ -968,6 +963,8 @@ siglo_XIX	[s:xix]	W
 año_1987	[??:??:??:1987:??.??:??:??]	W
 cinco_de_la_mañana	[??:??/??/??:05.00:am]	
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Data/Hora</rdfs:label>
+        <rdfs:label xml:lang="en">date/hour</rdfs:label>
     </owl:Class>
     
 
@@ -975,14 +972,14 @@ cinco_de_la_mañana	[??:??/??/??:05.00:am]
     <!-- http://purl.org/olia/parole_es_cat.owl#Grado -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Grado">
-        <rdfs:label xml:lang="en">degree</rdfs:label>
-        <rdfs:label xml:lang="ca">Grau</rdfs:label>
-        <rdfs:label xml:lang="es">Grado</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
-        <rdfs:comment xml:lang="ca">L&#39;atribut grau (encara per implementar) s&#39;especificarà per a aquells adjectius que tinguin grau (comparatius, superlatius) i sufixació apreciativa (augmentatius, despectius, etc.). Es distingiran perquè el tercer dígit de l&#39;etiqueta serà A mentre que per a la resta d&#39;adjectius aquest valor serà 0. 
-L&#39;atribut grau (encara per implementar) s&#39;especificarà per a aquells noms que tinguin sufixació apreciativa (augmentatius, despectius, etc.) i es distingiran perquè el valor d&#39;aquest atribut serà A. Per a la resta de noms aquest valor serà 0. </rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:comment xml:lang="es">El atributo grado se especificará para aquellos adjetivos que tengan grado (comparativos, superlativos) o sufijación apreciativa (aumentativos, despectivos, etc.). Se distinguirán porque el tercer dígito de la etiqueta será A (aumentativo) o D (diminutivo), C (comparativo) o S (superlativo) mientras que para el resto de adjetivos este valor será 0. 
 El atributo grado se especificará para aquellos nombres que tengan sufijación apreciativa (aumentativos, despectivos, etc.). Para el resto de nombres este valor será 0. </rdfs:comment>
+        <rdfs:comment xml:lang="ca">L&apos;atribut grau (encara per implementar) s&apos;especificarà per a aquells adjectius que tinguin grau (comparatius, superlatius) i sufixació apreciativa (augmentatius, despectius, etc.). Es distingiran perquè el tercer dígit de l&apos;etiqueta serà A mentre que per a la resta d&apos;adjectius aquest valor serà 0. 
+L&apos;atribut grau (encara per implementar) s&apos;especificarà per a aquells noms que tinguin sufixació apreciativa (augmentatius, despectius, etc.) i es distingiran perquè el valor d&apos;aquest atribut serà A. Per a la resta de noms aquest valor serà 0. </rdfs:comment>
+        <rdfs:label xml:lang="es">Grado</rdfs:label>
+        <rdfs:label xml:lang="ca">Grau</rdfs:label>
+        <rdfs:label xml:lang="en">degree</rdfs:label>
     </owl:Class>
     
 
@@ -990,10 +987,10 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#GradoAumentativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#GradoAumentativo">
-        <rdfs:label xml:lang="en">augmentative degree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Grado"/>
         <rdfs:label xml:lang="ca">Apreciatiu</rdfs:label>
         <rdfs:label xml:lang="es">GradoAumentativo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Grado"/>
+        <rdfs:label xml:lang="en">augmentative degree</rdfs:label>
     </owl:Class>
     
 
@@ -1001,9 +998,9 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#GradoDiminutivo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#GradoDiminutivo">
-        <rdfs:label xml:lang="en">diminuitive degree</rdfs:label>
-        <rdfs:label xml:lang="es">GradoDiminutivo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Grado"/>
+        <rdfs:label xml:lang="es">GradoDiminutivo</rdfs:label>
+        <rdfs:label xml:lang="en">diminuitive degree</rdfs:label>
     </owl:Class>
     
 
@@ -1011,9 +1008,9 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#GradoSuperlativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#GradoSuperlativo">
-        <rdfs:label xml:lang="en">superlative degree</rdfs:label>
-        <rdfs:label xml:lang="es">GradoSuperlativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Grado"/>
+        <rdfs:label xml:lang="es">GradoSuperlativo</rdfs:label>
+        <rdfs:label xml:lang="en">superlative degree</rdfs:label>
     </owl:Class>
     
 
@@ -1021,11 +1018,11 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#Género -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Género">
-        <rdfs:label xml:lang="en">gender</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+        <rdfs:comment xml:lang="es">El atributo de Género para Verbos sólo afecta a los participios, para el resto de formas este atributo no se especifica (0). </rdfs:comment>
         <rdfs:label xml:lang="ca">Gènere</rdfs:label>
         <rdfs:label xml:lang="es">Género</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
-        <rdfs:comment xml:lang="es">El atributo de Género para Verbos sólo afecta a los participios, para el resto de formas este atributo no se especifica (0). </rdfs:comment>
+        <rdfs:label xml:lang="en">gender</rdfs:label>
     </owl:Class>
     
 
@@ -1033,10 +1030,10 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#GéneroComún -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#GéneroComún">
-        <rdfs:label xml:lang="en">common gender</rdfs:label>
-        <rdfs:label xml:lang="ca">Comú</rdfs:label>
-        <rdfs:label xml:lang="es">común</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Género"/>
+        <rdfs:label xml:lang="ca">Comú</rdfs:label>
+        <rdfs:label xml:lang="en">common gender</rdfs:label>
+        <rdfs:label xml:lang="es">común</rdfs:label>
     </owl:Class>
     
 
@@ -1044,10 +1041,10 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#GéneroFemenino -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#GéneroFemenino">
-        <rdfs:label xml:lang="en">feminine gender</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Género"/>
         <rdfs:label xml:lang="ca">Femení</rdfs:label>
         <rdfs:label xml:lang="es">femenino</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Género"/>
+        <rdfs:label xml:lang="en">feminine gender</rdfs:label>
     </owl:Class>
     
 
@@ -1055,10 +1052,10 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#GéneroMasculino -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#GéneroMasculino">
-        <rdfs:label xml:lang="en">masculine gender</rdfs:label>
-        <rdfs:label xml:lang="ca">Masculí</rdfs:label>
-        <rdfs:label xml:lang="es">masculino</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Género"/>
+        <rdfs:label xml:lang="ca">Masculí</rdfs:label>
+        <rdfs:label xml:lang="en">masculine gender</rdfs:label>
+        <rdfs:label xml:lang="es">masculino</rdfs:label>
     </owl:Class>
     
 
@@ -1066,10 +1063,10 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#GéneroNeutro -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#GéneroNeutro">
-        <rdfs:label xml:lang="en">neuter gender</rdfs:label>
-        <rdfs:label xml:lang="ca">Neutre</rdfs:label>
-        <rdfs:label xml:lang="es">neutro</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Género"/>
+        <rdfs:label xml:lang="ca">Neutre</rdfs:label>
+        <rdfs:label xml:lang="en">neuter gender</rdfs:label>
+        <rdfs:label xml:lang="es">neutro</rdfs:label>
     </owl:Class>
     
 
@@ -1077,18 +1074,7 @@ El atributo grado se especificará para aquellos nombres que tengan sufijación 
     <!-- http://purl.org/olia/parole_es_cat.owl#Interjección -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Interjección">
-        <rdfs:label xml:lang="en">interjection</rdfs:label>
-        <rdfs:label xml:lang="ca">Interjecció</rdfs:label>
-        <rdfs:label xml:lang="es">interjección</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
-        <rdfs:comment xml:lang="ca">Exemples:		
-		
-Forma	Lema	Etiqueta
-ah	ah	I
-apa	apa	I
-uf	uf	I
-vatua	vatua	I
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Ejemplos:		
 		
 Forma	Lema	Etiqueta
@@ -1097,6 +1083,17 @@ eh	eh	I
 ejem	ejem	I
 ele	ele	I
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Exemples:		
+		
+Forma	Lema	Etiqueta
+ah	ah	I
+apa	apa	I
+uf	uf	I
+vatua	vatua	I
+</rdfs:comment>
+        <rdfs:label xml:lang="ca">Interjecció</rdfs:label>
+        <rdfs:label xml:lang="es">interjección</rdfs:label>
+        <rdfs:label xml:lang="en">interjection</rdfs:label>
     </owl:Class>
     
 
@@ -1104,10 +1101,10 @@ ele	ele	I
     <!-- http://purl.org/olia/parole_es_cat.owl#Modo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Modo">
-        <rdfs:label xml:lang="en">mood</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:label xml:lang="ca">Mode</rdfs:label>
         <rdfs:label xml:lang="es">Modo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:label xml:lang="en">mood</rdfs:label>
     </owl:Class>
     
 
@@ -1115,10 +1112,10 @@ ele	ele	I
     <!-- http://purl.org/olia/parole_es_cat.owl#ModoGerundio -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#ModoGerundio">
-        <rdfs:label xml:lang="en">gerund</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
         <rdfs:label xml:lang="ca">Gerundi</rdfs:label>
         <rdfs:label xml:lang="es">ModoGerundio</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
+        <rdfs:label xml:lang="en">gerund</rdfs:label>
     </owl:Class>
     
 
@@ -1126,10 +1123,10 @@ ele	ele	I
     <!-- http://purl.org/olia/parole_es_cat.owl#ModoImperativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#ModoImperativo">
-        <rdfs:label xml:lang="en">imperative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
         <rdfs:label xml:lang="ca">Imperatiu</rdfs:label>
         <rdfs:label xml:lang="es">ModoImperativo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
+        <rdfs:label xml:lang="en">imperative</rdfs:label>
     </owl:Class>
     
 
@@ -1137,10 +1134,10 @@ ele	ele	I
     <!-- http://purl.org/olia/parole_es_cat.owl#ModoIndicativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#ModoIndicativo">
-        <rdfs:label xml:lang="en">indicative</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
         <rdfs:label xml:lang="ca">Indicatiu</rdfs:label>
         <rdfs:label xml:lang="es">ModoIndicativo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
+        <rdfs:label xml:lang="en">indicative</rdfs:label>
     </owl:Class>
     
 
@@ -1148,10 +1145,10 @@ ele	ele	I
     <!-- http://purl.org/olia/parole_es_cat.owl#ModoInfinitivo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#ModoInfinitivo">
-        <rdfs:label xml:lang="en">infinitve</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
         <rdfs:label xml:lang="ca">Infinitiu</rdfs:label>
         <rdfs:label xml:lang="es">ModoInfinitivo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
+        <rdfs:label xml:lang="en">infinitve</rdfs:label>
     </owl:Class>
     
 
@@ -1159,10 +1156,10 @@ ele	ele	I
     <!-- http://purl.org/olia/parole_es_cat.owl#ModoParticipio -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#ModoParticipio">
-        <rdfs:label xml:lang="en">participle</rdfs:label>
-        <rdfs:label xml:lang="ca">Participi</rdfs:label>
-        <rdfs:label xml:lang="es">ModoParticipio</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
+        <rdfs:label xml:lang="es">ModoParticipio</rdfs:label>
+        <rdfs:label xml:lang="ca">Participi</rdfs:label>
+        <rdfs:label xml:lang="en">participle</rdfs:label>
     </owl:Class>
     
 
@@ -1170,10 +1167,10 @@ ele	ele	I
     <!-- http://purl.org/olia/parole_es_cat.owl#ModoSubjuntivo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#ModoSubjuntivo">
-        <rdfs:label xml:lang="en">subjunctive</rdfs:label>
-        <rdfs:label xml:lang="ca">Subjuntiu</rdfs:label>
-        <rdfs:label xml:lang="es">ModoSubjuntivo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Modo"/>
+        <rdfs:label xml:lang="es">ModoSubjuntivo</rdfs:label>
+        <rdfs:label xml:lang="ca">Subjuntiu</rdfs:label>
+        <rdfs:label xml:lang="en">subjunctive</rdfs:label>
     </owl:Class>
     
 
@@ -1181,10 +1178,21 @@ ele	ele	I
     <!-- http://purl.org/olia/parole_es_cat.owl#Nombre -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Nombre">
-        <rdfs:label xml:lang="en">noun</rdfs:label>
-        <rdfs:label xml:lang="ca">Nom</rdfs:label>
-        <rdfs:label xml:lang="es">Nombre</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
+        <rdfs:comment xml:lang="es">Ejemplos:		
+		
+Forma	Lema	Etiqueta
+chico	chico	NCMS000
+chicas	chico	NCFP000
+gatito	gato	NCMS00D
+oyente	oyente	NCCS000
+oyentes	oyente	NCCP000
+cortapapeles	cortapapeles	NCMN000
+tesis	tesis	NCFN000
+Barcelona	barcelona	NP000G0
+COI	coi	NP000O0
+Pedro	pedro	NP000P0
+</rdfs:comment>
         <rdfs:comment xml:lang="ca">Exemples:		
 		
 Forma	Lema	Etiqueta
@@ -1200,20 +1208,9 @@ setciències	setciències	NCCN000
 Barcelona	barcelona	NP00G00
 COI	coi	NP00O00
 </rdfs:comment>
-        <rdfs:comment xml:lang="es">Ejemplos:		
-		
-Forma	Lema	Etiqueta
-chico	chico	NCMS000
-chicas	chico	NCFP000
-gatito	gato	NCMS00D
-oyente	oyente	NCCS000
-oyentes	oyente	NCCP000
-cortapapeles	cortapapeles	NCMN000
-tesis	tesis	NCFN000
-Barcelona	barcelona	NP000G0
-COI	coi	NP000O0
-Pedro	pedro	NP000P0
-</rdfs:comment>
+        <rdfs:label xml:lang="ca">Nom</rdfs:label>
+        <rdfs:label xml:lang="es">Nombre</rdfs:label>
+        <rdfs:label xml:lang="en">noun</rdfs:label>
     </owl:Class>
     
 
@@ -1221,10 +1218,10 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NombreComún -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NombreComún">
-        <rdfs:label xml:lang="en">nommon noun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Nombre"/>
         <rdfs:label xml:lang="ca">Comú</rdfs:label>
         <rdfs:label xml:lang="es">nombre común</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Nombre"/>
+        <rdfs:label xml:lang="en">nommon noun</rdfs:label>
     </owl:Class>
     
 
@@ -1232,12 +1229,12 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NombrePropio -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NombrePropio">
-        <rdfs:label xml:lang="en">proper noun</rdfs:label>
-        <rdfs:label xml:lang="ca">Propi</rdfs:label>
-        <rdfs:label xml:lang="es">NombrePropio</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Nombre"/>
-        <rdfs:comment xml:lang="ca">Utilitzarem les posicions 5 i 6 de l&#39;etiqueta per a la classificació semàntica dels noms propis. Per ara tan sols marcarem els de persona (SP), els d&#39;organització (O) i els de lloc (G). La resta de noms propis tindran l&#39;etiqueta NP00000. Per als noms comuns aquests dos dígits no s&#39;especificaran, és a dir, que el seu valor serà igual a 0. </rdfs:comment>
         <rdfs:comment xml:lang="es">Los nombres propios tendrán la etiqueta NP00000 si no se usa clasificación semántica, o bien, el valor correspondiente en los dígitos 5-6.</rdfs:comment>
+        <rdfs:comment xml:lang="ca">Utilitzarem les posicions 5 i 6 de l&apos;etiqueta per a la classificació semàntica dels noms propis. Per ara tan sols marcarem els de persona (SP), els d&apos;organització (O) i els de lloc (G). La resta de noms propis tindran l&apos;etiqueta NP00000. Per als noms comuns aquests dos dígits no s&apos;especificaran, és a dir, que el seu valor serà igual a 0. </rdfs:comment>
+        <rdfs:label xml:lang="es">NombrePropio</rdfs:label>
+        <rdfs:label xml:lang="ca">Propi</rdfs:label>
+        <rdfs:label xml:lang="en">proper noun</rdfs:label>
     </owl:Class>
     
 
@@ -1245,9 +1242,9 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NombrePropioOtros -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NombrePropioOtros">
-        <rdfs:label xml:lang="en">other proper noun</rdfs:label>
-        <rdfs:label xml:lang="es">NombrePropioOtros</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropio"/>
+        <rdfs:label xml:lang="es">NombrePropioOtros</rdfs:label>
+        <rdfs:label xml:lang="en">other proper noun</rdfs:label>
         <owl:versionInfo>Spanish only</owl:versionInfo>
     </owl:Class>
     
@@ -1256,10 +1253,10 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NombreProprioLugar -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NombreProprioLugar">
-        <rdfs:label xml:lang="en">place name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropio"/>
         <rdfs:label xml:lang="ca">Lloc</rdfs:label>
         <rdfs:label xml:lang="es">NombreProprioLugar</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropio"/>
+        <rdfs:label xml:lang="en">place name</rdfs:label>
     </owl:Class>
     
 
@@ -1267,10 +1264,10 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NombreProprioOrganización -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NombreProprioOrganización">
-        <rdfs:label xml:lang="en">organization name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropio"/>
         <rdfs:label xml:lang="ca">Organització</rdfs:label>
         <rdfs:label xml:lang="es">organización</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropio"/>
+        <rdfs:label xml:lang="en">organization name</rdfs:label>
     </owl:Class>
     
 
@@ -1278,10 +1275,10 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NombreProprioPersona -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NombreProprioPersona">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropio"/>
+        <rdfs:label xml:lang="es">NombreProprioPersona</rdfs:label>
         <rdfs:label xml:lang="en">person name</rdfs:label>
         <rdfs:label xml:lang="ca">Ésser-Persona</rdfs:label>
-        <rdfs:label xml:lang="es">NombreProprioPersona</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropio"/>
     </owl:Class>
     
 
@@ -1289,11 +1286,11 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#Número -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Número">
-        <rdfs:label xml:lang="en">number</rdfs:label>
-        <rdfs:label xml:lang="ca">Nombre</rdfs:label>
-        <rdfs:label xml:lang="es">número</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:comment xml:lang="es">El lema de los adjetivos calificativos será siempre la forma masculina singular (bonito) o la forma singular si el adjetivo es de género común (alegre). Para los adjetivos invariables, es decir, aquellos que tanto para el singular como para el plural presentan la misma forma, el lema y la forma han de coincidir. </rdfs:comment>
+        <rdfs:label xml:lang="ca">Nombre</rdfs:label>
+        <rdfs:label xml:lang="en">number</rdfs:label>
+        <rdfs:label xml:lang="es">número</rdfs:label>
     </owl:Class>
     
 
@@ -1301,8 +1298,8 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NúmeroImpersonalMInvariable -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NúmeroImpersonalMInvariable">
-        <rdfs:label xml:lang="es">ImpersonalMInvariable</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Número"/>
+        <rdfs:label xml:lang="es">ImpersonalMInvariable</rdfs:label>
     </owl:Class>
     
 
@@ -1310,10 +1307,10 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NúmeroInvariable -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NúmeroInvariable">
-        <rdfs:label xml:lang="en">invariable number</rdfs:label>
-        <rdfs:label xml:lang="ca">Invariable</rdfs:label>
-        <rdfs:label xml:lang="es">número invariable</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Número"/>
+        <rdfs:label xml:lang="ca">Invariable</rdfs:label>
+        <rdfs:label xml:lang="en">invariable number</rdfs:label>
+        <rdfs:label xml:lang="es">número invariable</rdfs:label>
     </owl:Class>
     
 
@@ -1321,10 +1318,10 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NúmeroPlural -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NúmeroPlural">
-        <rdfs:label xml:lang="en">plural number</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Número"/>
         <rdfs:label xml:lang="ca">Plural</rdfs:label>
         <rdfs:label xml:lang="es">plural</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Número"/>
+        <rdfs:label xml:lang="en">plural number</rdfs:label>
     </owl:Class>
     
 
@@ -1332,10 +1329,10 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#NúmeroSingular -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#NúmeroSingular">
-        <rdfs:label xml:lang="en">singular number</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Número"/>
         <rdfs:label xml:lang="ca">Singular</rdfs:label>
         <rdfs:label xml:lang="es">singular</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Número"/>
+        <rdfs:label xml:lang="en">singular number</rdfs:label>
     </owl:Class>
     
 
@@ -1343,14 +1340,14 @@ Pedro	pedro	NP000P0
     <!-- http://purl.org/olia/parole_es_cat.owl#Persona -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Persona">
-        <rdfs:label xml:lang="en">person</rdfs:label>
-        <rdfs:label xml:lang="ca">Persona</rdfs:label>
-        <rdfs:label xml:lang="es">Persona</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
-        <rdfs:comment xml:lang="ca">L&#39;atribut Persona tindrà per defecte el valor 0, excepte per als determinants possessius que podran prendre el valor 1, 2 i 3. 
-L&#39;atribut Persona s&#39;especificarà per als pronoms personals i possessius, per a la resta de formes el valor serà 0. </rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:comment xml:lang="es">El atributo Persona tendrá por defecto el valor 0, con excepción de los determinantes posesivos que podrán tomar el valor 1, 2 y 3. 
 El atributo Persona se especificará para los pronombres personales y posesivos, para el resto de formas el valor será 0.</rdfs:comment>
+        <rdfs:comment xml:lang="ca">L&apos;atribut Persona tindrà per defecte el valor 0, excepte per als determinants possessius que podran prendre el valor 1, 2 i 3. 
+L&apos;atribut Persona s&apos;especificarà per als pronoms personals i possessius, per a la resta de formes el valor serà 0. </rdfs:comment>
+        <rdfs:label xml:lang="ca">Persona</rdfs:label>
+        <rdfs:label xml:lang="es">Persona</rdfs:label>
+        <rdfs:label xml:lang="en">person</rdfs:label>
     </owl:Class>
     
 
@@ -1358,10 +1355,10 @@ El atributo Persona se especificará para los pronombres personales y posesivos,
     <!-- http://purl.org/olia/parole_es_cat.owl#PersonaPrimera -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PersonaPrimera">
-        <rdfs:label xml:lang="en">first person</rdfs:label>
-        <rdfs:label xml:lang="ca">Primera</rdfs:label>
-        <rdfs:label xml:lang="es">PersonaPrimera</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Persona"/>
+        <rdfs:label xml:lang="es">PersonaPrimera</rdfs:label>
+        <rdfs:label xml:lang="ca">Primera</rdfs:label>
+        <rdfs:label xml:lang="en">first person</rdfs:label>
     </owl:Class>
     
 
@@ -1369,10 +1366,10 @@ El atributo Persona se especificará para los pronombres personales y posesivos,
     <!-- http://purl.org/olia/parole_es_cat.owl#PersonaSegunda -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PersonaSegunda">
-        <rdfs:label xml:lang="en">second person</rdfs:label>
-        <rdfs:label xml:lang="ca">Segona</rdfs:label>
-        <rdfs:label xml:lang="es">PersonaSegunda</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Persona"/>
+        <rdfs:label xml:lang="es">PersonaSegunda</rdfs:label>
+        <rdfs:label xml:lang="ca">Segona</rdfs:label>
+        <rdfs:label xml:lang="en">second person</rdfs:label>
     </owl:Class>
     
 
@@ -1380,10 +1377,10 @@ El atributo Persona se especificará para los pronombres personales y posesivos,
     <!-- http://purl.org/olia/parole_es_cat.owl#PersonaTercera -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PersonaTercera">
-        <rdfs:label xml:lang="en">third person</rdfs:label>
-        <rdfs:label xml:lang="ca">Tercera</rdfs:label>
-        <rdfs:label xml:lang="es">PersonaTercera</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Persona"/>
+        <rdfs:label xml:lang="es">PersonaTercera</rdfs:label>
+        <rdfs:label xml:lang="ca">Tercera</rdfs:label>
+        <rdfs:label xml:lang="en">third person</rdfs:label>
     </owl:Class>
     
 
@@ -1391,10 +1388,10 @@ El atributo Persona se especificará para los pronombres personales y posesivos,
     <!-- http://purl.org/olia/parole_es_cat.owl#Polite -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Polite">
-        <rdfs:label xml:lang="en">polite</rdfs:label>
-        <rdfs:label xml:lang="ca">cortès</rdfs:label>
-        <rdfs:label xml:lang="es">Polite</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Politeness"/>
+        <rdfs:label xml:lang="es">Polite</rdfs:label>
+        <rdfs:label xml:lang="ca">cortès</rdfs:label>
+        <rdfs:label xml:lang="en">polite</rdfs:label>
     </owl:Class>
     
 
@@ -1402,12 +1399,12 @@ El atributo Persona se especificará para los pronombres personales y posesivos,
     <!-- http://purl.org/olia/parole_es_cat.owl#Politeness -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Politeness">
-        <rdfs:label xml:lang="en">politeness</rdfs:label>
-        <rdfs:label xml:lang="ca">cortesia</rdfs:label>
-        <rdfs:label xml:lang="es">Politeness</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
-        <rdfs:comment xml:lang="ca">L&#39;atribut Politeness (cortesia) s&#39;especificarà per als pronoms personals vostè, vostès i vós. </rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:comment xml:lang="es">El atributo Politeness (cortesía) se especificará para los pronombres personales usted, ustedes y vos. </rdfs:comment>
+        <rdfs:comment xml:lang="ca">L&apos;atribut Politeness (cortesia) s&apos;especificarà per als pronoms personals vostè, vostès i vós. </rdfs:comment>
+        <rdfs:label xml:lang="es">Politeness</rdfs:label>
+        <rdfs:label xml:lang="ca">cortesia</rdfs:label>
+        <rdfs:label xml:lang="en">politeness</rdfs:label>
     </owl:Class>
     
 
@@ -1415,14 +1412,14 @@ El atributo Persona se especificará para los pronombres personales y posesivos,
     <!-- http://purl.org/olia/parole_es_cat.owl#Poseedor -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Poseedor">
-        <rdfs:label xml:lang="en">possessor</rdfs:label>
-        <rdfs:label xml:lang="ca">Posseïdor</rdfs:label>
-        <rdfs:label xml:lang="es">Poseedor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
-        <rdfs:comment xml:lang="ca">L&#39;atribut Posseïdor només s&#39;especificarà per als determinants possessius. Si el referent és singular, el valor serà S, si és plural el valor serà P. Quan el referent sigui de tercera persona el valor d&#39;aquest atribut serà 0 ja que és impossible distingir els referents d&#39;ell-d&#39;ells / d&#39;ella-d&#39;elles. 
-L&#39;atribut Posseïdor només es farà servir amb els pronoms possessius per a marcar el número del posseïdor: singular per a el_meu, el_teu, plural per a el_nostre i el_vostre. Per als pronoms en què el posseïdor és una tercera persona (el_seu), com que no es podrà distingir si és singular o plural (si es refereix a ell o a ells), aquest atribut prendrà valor 0. </rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:comment xml:lang="es">El atributo Poseedor sólo se especificará para los determinantes posesivos. Si el referente es singular, el valor será S, si es plural el valor será P. Cuando el referente sea de tercera persona el valor de este atributo será 0 ya que es imposible distinguir los referentes de él-de ellos. 
 El atributo Poseedor sólo se usará con los pronombres posesivos para marcar el número del poseedor: singular para el mío, el tuyo, plural para el nuestro y el vuestro. Para los pronombres en que el poseedor es una tercera persona (el suyo), como no se podrá distinguir si es de singular o plural (si se refiere a él o a ellos), este atributo tomará valor 0. </rdfs:comment>
+        <rdfs:comment xml:lang="ca">L&apos;atribut Posseïdor només s&apos;especificarà per als determinants possessius. Si el referent és singular, el valor serà S, si és plural el valor serà P. Quan el referent sigui de tercera persona el valor d&apos;aquest atribut serà 0 ja que és impossible distingir els referents d&apos;ell-d&apos;ells / d&apos;ella-d&apos;elles. 
+L&apos;atribut Posseïdor només es farà servir amb els pronoms possessius per a marcar el número del posseïdor: singular per a el_meu, el_teu, plural per a el_nostre i el_vostre. Per als pronoms en què el posseïdor és una tercera persona (el_seu), com que no es podrà distingir si és singular o plural (si es refereix a ell o a ells), aquest atribut prendrà valor 0. </rdfs:comment>
+        <rdfs:label xml:lang="es">Poseedor</rdfs:label>
+        <rdfs:label xml:lang="ca">Posseïdor</rdfs:label>
+        <rdfs:label xml:lang="en">possessor</rdfs:label>
     </owl:Class>
     
 
@@ -1430,10 +1427,10 @@ El atributo Poseedor sólo se usará con los pronombres posesivos para marcar el
     <!-- http://purl.org/olia/parole_es_cat.owl#PoseedorPlural -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PoseedorPlural">
-        <rdfs:label xml:lang="en">plural number</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Poseedor"/>
         <rdfs:label xml:lang="ca">Plural</rdfs:label>
         <rdfs:label xml:lang="es">PoseedorPlural</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Poseedor"/>
+        <rdfs:label xml:lang="en">plural number</rdfs:label>
     </owl:Class>
     
 
@@ -1441,10 +1438,10 @@ El atributo Poseedor sólo se usará con los pronombres posesivos para marcar el
     <!-- http://purl.org/olia/parole_es_cat.owl#PoseedorSingular -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PoseedorSingular">
-        <rdfs:label xml:lang="en">singular number</rdfs:label>
-        <rdfs:label xml:lang="ca">Singular</rdfs:label>
-        <rdfs:label xml:lang="es">PoseedorSingular</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Poseedor"/>
+        <rdfs:label xml:lang="es">PoseedorSingular</rdfs:label>
+        <rdfs:label xml:lang="ca">Singular</rdfs:label>
+        <rdfs:label xml:lang="en">singular number</rdfs:label>
     </owl:Class>
     
 
@@ -1452,8 +1449,8 @@ El atributo Poseedor sólo se usará con los pronombres posesivos para marcar el
     <!-- http://purl.org/olia/parole_es_cat.owl#Preposición -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Preposición">
-        <rdfs:label xml:lang="en">preposition</rdfs:label>
-        <rdfs:comment xml:lang="ca">Els atributs de gènere i nombre tan sols s&#39;especifiquen per a les preposicions compostes al, als, del, dels, pel i pels. 		
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adposición"/>
+        <rdfs:comment xml:lang="ca">Els atributs de gènere i nombre tan sols s&apos;especifiquen per a les preposicions compostes al, als, del, dels, pel i pels. 		
 Aquestes etiquetes serveixen també per a les locucions preposicionals. 		
 		
 Exemples:		
@@ -1473,9 +1470,6 @@ a_partir_de	a_partir_de	SPS00
 a_causa_de	a_causa_de	SPS00
 al_voltant_del	al_voltant_del	SPCMS
 </rdfs:comment>
-        <rdfs:label xml:lang="ca">Preposició</rdfs:label>
-        <rdfs:label xml:lang="es">preposición</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adposición"/>
         <rdfs:comment xml:lang="es">Los atributos de género y número tan sólo se especifican para las preposiciones contraídas al y del.		
 El analizador actual separa las contracciones en sus componentes, por lo que se obtienen las categorias de la preposición mas el artículo por separado.		Estas etiquetas también se usan para las locuciones preposicionales.			
 Ejemplos:		
@@ -1491,6 +1485,9 @@ con	con	SPS00
 a_partir_de	a_partir_de	SPS00
 a_causa_del	a_causa_del	SPCMS
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Preposició</rdfs:label>
+        <rdfs:label xml:lang="es">preposición</rdfs:label>
+        <rdfs:label xml:lang="en">preposition</rdfs:label>
     </owl:Class>
     
 
@@ -1498,10 +1495,10 @@ a_causa_del	a_causa_del	SPCMS
     <!-- http://purl.org/olia/parole_es_cat.owl#PreposiciónContraída -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PreposiciónContraída">
-        <rdfs:label xml:lang="en">contracted preposition</rdfs:label>
-        <rdfs:label xml:lang="ca">Composta</rdfs:label>
-        <rdfs:label xml:lang="es">preposición contraída</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Preposición"/>
+        <rdfs:label xml:lang="ca">Composta</rdfs:label>
+        <rdfs:label xml:lang="en">contracted preposition</rdfs:label>
+        <rdfs:label xml:lang="es">preposición contraída</rdfs:label>
     </owl:Class>
     
 
@@ -1509,10 +1506,10 @@ a_causa_del	a_causa_del	SPCMS
     <!-- http://purl.org/olia/parole_es_cat.owl#PreposiciónSimple -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PreposiciónSimple">
-        <rdfs:label xml:lang="en">simple preposition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Preposición"/>
         <rdfs:label xml:lang="ca">Simple</rdfs:label>
         <rdfs:label xml:lang="es">preposición simple</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Preposición"/>
+        <rdfs:label xml:lang="en">simple preposition</rdfs:label>
     </owl:Class>
     
 
@@ -1520,10 +1517,7 @@ a_causa_del	a_causa_del	SPCMS
     <!-- http://purl.org/olia/parole_es_cat.owl#PronomNumeral -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PronomNumeral">
-        <rdfs:label xml:lang="en">numeral pronoun</rdfs:label>
-        <rdfs:label xml:lang="ca">Numeral</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
-        <owl:versionInfo>Catalan only</owl:versionInfo>
         <rdfs:comment xml:lang="ca">Pronoms Numerals		
 		
 Forma	Lema	Etiqueta
@@ -1542,6 +1536,9 @@ una	un	PN0FS000
 un	un	PN0MS000
 u	un	PN0MS000
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Numeral</rdfs:label>
+        <rdfs:label xml:lang="en">numeral pronoun</rdfs:label>
+        <owl:versionInfo>Catalan only</owl:versionInfo>
     </owl:Class>
     
 
@@ -1549,10 +1546,10 @@ u	un	PN0MS000
     <!-- http://purl.org/olia/parole_es_cat.owl#Pronombre -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Pronombre">
-        <rdfs:label xml:lang="en">pronoun</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
         <rdfs:label xml:lang="ca">Pronom</rdfs:label>
         <rdfs:label xml:lang="es">Pronombre</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
+        <rdfs:label xml:lang="en">pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -1560,36 +1557,8 @@ u	un	PN0MS000
     <!-- http://purl.org/olia/parole_es_cat.owl#PronombreDemostrativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PronombreDemostrativo">
-        <rdfs:label xml:lang="en">demonstrative pronoun</rdfs:label>
-        <rdfs:label xml:lang="es">PronombreDemostrativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
         <rdfs:comment xml:lang="ca">Demostratiu</rdfs:comment>
-        <rdfs:comment xml:lang="ca">Pronoms Demostratius		
-		
-Forma	Lema	Etiqueta
-això	això	PD0NS000
-allò	allò	PD0NS000
-açò	açò	PD0NS000
-ço	ço	PD0NS000
-aquesta	aquest	PD0FS000
-aquestes	aquest	PD0FP000
-aquest	aquest	PD0MS000
-aquests	aquest	PD0MP000
-aqueixa	aqueix	PD0FS000
-aqueixes	aqueix	PD0FP000
-aqueix	aqueix	PD0MS000
-aqueixos	aqueix	PD0MP000
-aquelles	aquell	PD0FP000
-aquella	aquell	PD0FS000
-aquells	aquell	PD0MP000
-aquell	aquell	PD0MS000
-eixa	eix	PD0FS000
-eixes	eix	PD0FP000
-eix	eix	PD0MS000
-eixos	eix	PD0MP000
-tal	tal	PD0CS000
-tals	tal	PD0CP000
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Pronombres Demostrativos		
 		
 Forma	Lema	Etiqueta
@@ -1628,6 +1597,34 @@ estotro	estotro	PD0MS000
 tal	tal	PD0CS000
 tales	tal	PD0CP000
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Pronoms Demostratius		
+		
+Forma	Lema	Etiqueta
+això	això	PD0NS000
+allò	allò	PD0NS000
+açò	açò	PD0NS000
+ço	ço	PD0NS000
+aquesta	aquest	PD0FS000
+aquestes	aquest	PD0FP000
+aquest	aquest	PD0MS000
+aquests	aquest	PD0MP000
+aqueixa	aqueix	PD0FS000
+aqueixes	aqueix	PD0FP000
+aqueix	aqueix	PD0MS000
+aqueixos	aqueix	PD0MP000
+aquelles	aquell	PD0FP000
+aquella	aquell	PD0FS000
+aquells	aquell	PD0MP000
+aquell	aquell	PD0MS000
+eixa	eix	PD0FS000
+eixes	eix	PD0FP000
+eix	eix	PD0MS000
+eixos	eix	PD0MP000
+tal	tal	PD0CS000
+tals	tal	PD0CP000
+</rdfs:comment>
+        <rdfs:label xml:lang="es">PronombreDemostrativo</rdfs:label>
+        <rdfs:label xml:lang="en">demonstrative pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -1635,15 +1632,15 @@ tales	tal	PD0CP000
     <!-- http://purl.org/olia/parole_es_cat.owl#PronombreExclamativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PronombreExclamativo">
-        <rdfs:label xml:lang="en">exclamative pronoun</rdfs:label>
-        <rdfs:label xml:lang="ca">Exclamatiu</rdfs:label>
-        <rdfs:label xml:lang="es">PronombreExclamativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
         <rdfs:comment xml:lang="es">Pronombres Exclamativos		
 		
 Forma	Lema	Etiqueta
 qué	qué	PE000000
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Exclamatiu</rdfs:label>
+        <rdfs:label xml:lang="es">PronombreExclamativo</rdfs:label>
+        <rdfs:label xml:lang="en">exclamative pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -1651,63 +1648,7 @@ qué	qué	PE000000
     <!-- http://purl.org/olia/parole_es_cat.owl#PronombreIndefinido -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PronombreIndefinido">
-        <rdfs:label xml:lang="en">indefinite pronoun</rdfs:label>
-        <rdfs:label xml:lang="ca">Indefinit</rdfs:label>
-        <rdfs:label xml:lang="es">PronombreIndefinido</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
-        <rdfs:comment xml:lang="ca">Pronoms Indefinits		
-		
-Forma	Lema	Etiqueta
-quelcom	quelcom	PI0CS000
-algú	algú	PI0CS000
-alguna	algun	PI0FS000
-algunes	algun	PI0FP000
-algun	algun	PI0MS000
-alguns	algun	PI0MP000
-bastant	bastant	PI0MS000
-bastants	bastant	PI0MP000
-cap	cap	PI0CS000
-hom	hom	PI0CS000
-mateixa	mateix	PI0FS000
-mateixes	mateix	PI0FP000
-mateix	mateix	PI0MS000
-mateixos	mateix	PI0MP000
-molta	molt	PI0FS000
-moltes	molt	PI0FP000
-molt	molt	PI0MS000
-molts	molt	PI0MP000
-res	res	PI0CS000
-ningú	ningú	PI0CS000
-ninguna	ningun	PI0FS000
-ningunes	ningun	PI0FP000
-ningun	ningun	PI0MS000
-ninguns	ningun	PI0MP000
-altra	altre	PI0FS000
-altres	altre	PI0CP000
-altre	altre	PI0MS000
-poca	poc	PI0FS000
-poques	poc	PI0FP000
-poc	poc	PI0MS000
-pocs	poc	PI0MP000
-qualsevol	qualsevol	PI0CS000
-qualssevol	qualsevol	PI0CP000
-qualsevulla	qualsevulla	PI0CS000
-qualssevulla	qualsevulla	PI0CP000
-cadascú	cadascú	PI0CS000
-tanta	tant	PI0FS000
-tantes	tant	PI0FP000
-tant	tant	PI0MS000
-tants	tant	PI0MP000
-tota	tot	PI0FS000
-totes	tot	PI0FP000
-tot	tot	PI0MS000
-tots	tot	PI0MP000
-una	un	PI0FS000
-unes	un	PI0FP000
-un	un	PI0MS000
-uns	un	PI0MP000
-tothom	tothom	PI0CS000
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Pronombres Indefinidos		
 		
 Forma	Lema	Etiqueta
@@ -1762,6 +1703,62 @@ unos	uno	PI0MP000
 varias	varios	PI0FP000
 varios	varios	PI0MP000
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Pronoms Indefinits		
+		
+Forma	Lema	Etiqueta
+quelcom	quelcom	PI0CS000
+algú	algú	PI0CS000
+alguna	algun	PI0FS000
+algunes	algun	PI0FP000
+algun	algun	PI0MS000
+alguns	algun	PI0MP000
+bastant	bastant	PI0MS000
+bastants	bastant	PI0MP000
+cap	cap	PI0CS000
+hom	hom	PI0CS000
+mateixa	mateix	PI0FS000
+mateixes	mateix	PI0FP000
+mateix	mateix	PI0MS000
+mateixos	mateix	PI0MP000
+molta	molt	PI0FS000
+moltes	molt	PI0FP000
+molt	molt	PI0MS000
+molts	molt	PI0MP000
+res	res	PI0CS000
+ningú	ningú	PI0CS000
+ninguna	ningun	PI0FS000
+ningunes	ningun	PI0FP000
+ningun	ningun	PI0MS000
+ninguns	ningun	PI0MP000
+altra	altre	PI0FS000
+altres	altre	PI0CP000
+altre	altre	PI0MS000
+poca	poc	PI0FS000
+poques	poc	PI0FP000
+poc	poc	PI0MS000
+pocs	poc	PI0MP000
+qualsevol	qualsevol	PI0CS000
+qualssevol	qualsevol	PI0CP000
+qualsevulla	qualsevulla	PI0CS000
+qualssevulla	qualsevulla	PI0CP000
+cadascú	cadascú	PI0CS000
+tanta	tant	PI0FS000
+tantes	tant	PI0FP000
+tant	tant	PI0MS000
+tants	tant	PI0MP000
+tota	tot	PI0FS000
+totes	tot	PI0FP000
+tot	tot	PI0MS000
+tots	tot	PI0MP000
+una	un	PI0FS000
+unes	un	PI0FP000
+un	un	PI0MS000
+uns	un	PI0MP000
+tothom	tothom	PI0CS000
+</rdfs:comment>
+        <rdfs:label xml:lang="ca">Indefinit</rdfs:label>
+        <rdfs:label xml:lang="es">PronombreIndefinido</rdfs:label>
+        <rdfs:label xml:lang="en">indefinite pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -1769,9 +1766,6 @@ varios	varios	PI0MP000
     <!-- http://purl.org/olia/parole_es_cat.owl#PronombreInterrogativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PronombreInterrogativo">
-        <rdfs:label xml:lang="en">interrogative pronoun</rdfs:label>
-        <rdfs:label xml:lang="ca">Interrogatiu</rdfs:label>
-        <rdfs:label xml:lang="es">PronombreInterrogativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
         <rdfs:comment xml:lang="ca">. Pronoms Interrogatius		
 		
@@ -1807,6 +1801,9 @@ qué	qué	PT0CS000
 quién	quién	PT0CS000
 quiénes	quién	PT0CP000
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Interrogatiu</rdfs:label>
+        <rdfs:label xml:lang="es">PronombreInterrogativo</rdfs:label>
+        <rdfs:label xml:lang="en">interrogative pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -1814,45 +1811,7 @@ quiénes	quién	PT0CP000
     <!-- http://purl.org/olia/parole_es_cat.owl#PronombrePersonal -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PronombrePersonal">
-        <rdfs:label xml:lang="en">personal pronoun</rdfs:label>
-        <rdfs:label xml:lang="ca">Personal</rdfs:label>
-        <rdfs:label xml:lang="es">PronombrePersonal</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
-        <rdfs:comment xml:lang="ca">Pronoms Personals		
-		
-Forma	Lema	Etiqueta
-jo	jo	PP1CSN00
-me	jo	PP1CS000
-mi	jo	PP1CSO00
-ens	jo	PP1CP000
-nosaltres	jo	PP1CP000
-em	jo	PP1CS000
-m&#39;	jo	PP1CS000
-nós	jo	PP1CSN00
-te	tu	PP2CS000
-t&#39;	tu	PP2CS000
-et	tu	PP2CS000
-tu	tu	PP2CS000
-us	tu	PP2CP000
-vostè	tu	PP2CS00P
-vostès	tu	PP2CP00P
-vós	tu	PP2CN00P
-vosaltres	tu	PP2CP000
-el	ell	PP3MSA00
-ella	ell	PP3FS000
-elles	ell	PP3FP000
-ell	ell	PP3MS000
-ells	ell	PP3MP000
-la	ell	PP3FSA00
-les	ell	PP3FPA00
-els	ell	PP3MPA00
-l&#39;	ell	PP3CSA00
-li	ell	PP3CSD00
-els	ell	PP3CPD00
-es	ell	PP3CN000
-si	ell	PP3CNO00
-s&#39;	ell	PP3CN000
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Pronombres Personales		
 		
 Forma	Lema	Etiqueta
@@ -1889,6 +1848,44 @@ se	se	PP3CN000
 sí	sí	PP3CNO00
 consigo	consigo	PP3CNO00
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Pronoms Personals		
+		
+Forma	Lema	Etiqueta
+jo	jo	PP1CSN00
+me	jo	PP1CS000
+mi	jo	PP1CSO00
+ens	jo	PP1CP000
+nosaltres	jo	PP1CP000
+em	jo	PP1CS000
+m&apos;	jo	PP1CS000
+nós	jo	PP1CSN00
+te	tu	PP2CS000
+t&apos;	tu	PP2CS000
+et	tu	PP2CS000
+tu	tu	PP2CS000
+us	tu	PP2CP000
+vostè	tu	PP2CS00P
+vostès	tu	PP2CP00P
+vós	tu	PP2CN00P
+vosaltres	tu	PP2CP000
+el	ell	PP3MSA00
+ella	ell	PP3FS000
+elles	ell	PP3FP000
+ell	ell	PP3MS000
+ells	ell	PP3MP000
+la	ell	PP3FSA00
+les	ell	PP3FPA00
+els	ell	PP3MPA00
+l&apos;	ell	PP3CSA00
+li	ell	PP3CSD00
+els	ell	PP3CPD00
+es	ell	PP3CN000
+si	ell	PP3CNO00
+s&apos;	ell	PP3CN000
+</rdfs:comment>
+        <rdfs:label xml:lang="ca">Personal</rdfs:label>
+        <rdfs:label xml:lang="es">PronombrePersonal</rdfs:label>
+        <rdfs:label xml:lang="en">personal pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -1896,34 +1893,7 @@ consigo	consigo	PP3CNO00
     <!-- http://purl.org/olia/parole_es_cat.owl#PronombrePosesivo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PronombrePosesivo">
-        <rdfs:label xml:lang="en">possessive pronoun</rdfs:label>
-        <rdfs:label xml:lang="ca">Possessiu</rdfs:label>
-        <rdfs:label xml:lang="es">PronombrePosesivo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
-        <rdfs:comment xml:lang="ca">Pronoms Possessius		
-		
-Forma	Lema	Etiqueta
-la_meva	el_meu	PX1FS0S0
-les_meves	el_meu	PX1FP0S0
-el_meu	el_meu	PX1MS0S0
-els_meus	el_meu	PX1MP0S0
-la_nostra	el_nostre	PX1FS0P0
-les_nostres	el_nostre	PX1FP0P0
-el_nostre	el_nostre	PX1MS0P0
-els_nostres	el_nostre	PX1MP0P0
-la_seva	el_seu	PX3FS000
-les_seves	el_seu	PX3FP000
-el_seu	el_seu	PX3MS000
-els_seus	el_seu	PX3MP000
-la_teva	el_teu	PX2FS0S0
-les_teves	el_teu	PX2FP0S0
-el_teu	el_teu	PX2MS0S0
-els_teus	el_teu	PX2MP0S0
-la_vostra	el_vostre	PX2FS0P0
-les_vostres	el_vostre	PX2FP0P0
-el_vostre	el_vostre	PX2MS0P0
-els_vostres	el_vostre	PX2MP0P0
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Pronombres Posesivos		
 		
 Los pronombres posesivos (mio, tuyo, suyo, etc.) se comportan como adjetivos. Se usa la etiqueta PX ya que permite expresar el número del poseedor, lo que no seria posible creando una nueva subcategoria de adjetivos. Los PX apareceran siempre detrás de un determinante (el mio, la suya, ...)		
@@ -1955,6 +1925,33 @@ vuestro	vuestro	PX2MS0P0
 vuestros	vuestro	PX2MP0P0
 vuestro	vuestro	PX2NS0P0
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Pronoms Possessius		
+		
+Forma	Lema	Etiqueta
+la_meva	el_meu	PX1FS0S0
+les_meves	el_meu	PX1FP0S0
+el_meu	el_meu	PX1MS0S0
+els_meus	el_meu	PX1MP0S0
+la_nostra	el_nostre	PX1FS0P0
+les_nostres	el_nostre	PX1FP0P0
+el_nostre	el_nostre	PX1MS0P0
+els_nostres	el_nostre	PX1MP0P0
+la_seva	el_seu	PX3FS000
+les_seves	el_seu	PX3FP000
+el_seu	el_seu	PX3MS000
+els_seus	el_seu	PX3MP000
+la_teva	el_teu	PX2FS0S0
+les_teves	el_teu	PX2FP0S0
+el_teu	el_teu	PX2MS0S0
+els_teus	el_teu	PX2MP0S0
+la_vostra	el_vostre	PX2FS0P0
+les_vostres	el_vostre	PX2FP0P0
+el_vostre	el_vostre	PX2MS0P0
+els_vostres	el_vostre	PX2MP0P0
+</rdfs:comment>
+        <rdfs:label xml:lang="ca">Possessiu</rdfs:label>
+        <rdfs:label xml:lang="es">PronombrePosesivo</rdfs:label>
+        <rdfs:label xml:lang="en">possessive pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -1962,22 +1959,7 @@ vuestro	vuestro	PX2NS0P0
     <!-- http://purl.org/olia/parole_es_cat.owl#PronombreRelativo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#PronombreRelativo">
-        <rdfs:label xml:lang="en">relative pronoun</rdfs:label>
-        <rdfs:label xml:lang="ca">Relatiu</rdfs:label>
-        <rdfs:label xml:lang="es">PronombreRelativo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
-        <rdfs:comment xml:lang="ca">Pronoms Relatius 		
-		
-Forma	Lema	Etiqueta
-com	com	PR000000
-on	on	PR000000
-qual	qual	PR0CS000
-quals	qual	PR0CP000
-què	què	PR0CN000
-que	que	PR0CN000
-qui	qui	PR0CN000
-quan	quan	PR000000
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Pronombres Relativos 		
 		
 Forma	Lema	Etiqueta
@@ -1995,6 +1977,21 @@ cuya	cuyo	PR0FS000
 cuyas	cuyo	PR0FP000
 cuyo	cuyo	PR0MS000
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Pronoms Relatius 		
+		
+Forma	Lema	Etiqueta
+com	com	PR000000
+on	on	PR000000
+qual	qual	PR0CS000
+quals	qual	PR0CP000
+què	què	PR0CN000
+que	que	PR0CN000
+qui	qui	PR0CN000
+quan	quan	PR000000
+</rdfs:comment>
+        <rdfs:label xml:lang="es">PronombreRelativo</rdfs:label>
+        <rdfs:label xml:lang="ca">Relatiu</rdfs:label>
+        <rdfs:label xml:lang="en">relative pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -2002,38 +1999,7 @@ cuyo	cuyo	PR0MS000
     <!-- http://purl.org/olia/parole_es_cat.owl#Puntuación -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Puntuación">
-        <rdfs:label xml:lang="en">punctuation</rdfs:label>
-        <rdfs:label xml:lang="ca">Puntuació</rdfs:label>
-        <rdfs:label xml:lang="es">puntuación</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
-        <rdfs:comment xml:lang="ca">Exemples:		
-		
-Forma	Lema	Etiqueta
-¡	¡	Faa
-!	!	Fat
-,	,	Fc
-[	[	Fca
-]	]	Fct
-:	:	Fd
-&quot;	&quot;	Fe
--	-	Fg
-/	/	Fh
-¿	¿	Fia
-?	?	Fit
-{	{	Fla
-}	}	Flt
-,	,	Fp
-(	(	Fpa
-)	)	Fpt
-«	«	Fra
-»	»	Frc
-...	...	Fs
-%	%	Ft
-;	;	Fx
-_	_	Fz
-+	+	Fz
-=	=	Fz
-</rdfs:comment>
         <rdfs:comment xml:lang="es">Ejemplos:		
 		
 Forma	Lema	Etiqueta
@@ -2062,6 +2028,37 @@ _	_	Fz
 +	+	Fz
 =	=	Fz
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Exemples:		
+		
+Forma	Lema	Etiqueta
+¡	¡	Faa
+!	!	Fat
+,	,	Fc
+[	[	Fca
+]	]	Fct
+:	:	Fd
+&quot;	&quot;	Fe
+-	-	Fg
+/	/	Fh
+¿	¿	Fia
+?	?	Fit
+{	{	Fla
+}	}	Flt
+,	,	Fp
+(	(	Fpa
+)	)	Fpt
+«	«	Fra
+»	»	Frc
+...	...	Fs
+%	%	Ft
+;	;	Fx
+_	_	Fz
++	+	Fz
+=	=	Fz
+</rdfs:comment>
+        <rdfs:label xml:lang="ca">Puntuació</rdfs:label>
+        <rdfs:label xml:lang="en">punctuation</rdfs:label>
+        <rdfs:label xml:lang="es">puntuación</rdfs:label>
     </owl:Class>
     
 
@@ -2069,10 +2066,10 @@ _	_	Fz
     <!-- http://purl.org/olia/parole_es_cat.owl#Tiempo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Tiempo">
-        <rdfs:label xml:lang="en">tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
         <rdfs:label xml:lang="ca">Temps</rdfs:label>
         <rdfs:label xml:lang="es">Tiempo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;Feature"/>
+        <rdfs:label xml:lang="en">tense</rdfs:label>
     </owl:Class>
     
 
@@ -2080,10 +2077,10 @@ _	_	Fz
     <!-- http://purl.org/olia/parole_es_cat.owl#TiempoCondicional -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#TiempoCondicional">
-        <rdfs:label xml:lang="en">conditional tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
         <rdfs:label xml:lang="ca">Condicional</rdfs:label>
         <rdfs:label xml:lang="es">TiempoCondicional</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
+        <rdfs:label xml:lang="en">conditional tense</rdfs:label>
     </owl:Class>
     
 
@@ -2091,10 +2088,10 @@ _	_	Fz
     <!-- http://purl.org/olia/parole_es_cat.owl#TiempoFuturo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#TiempoFuturo">
-        <rdfs:label xml:lang="en">future tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
         <rdfs:label xml:lang="ca">Futur</rdfs:label>
         <rdfs:label xml:lang="es">TiempoFuturo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
+        <rdfs:label xml:lang="en">future tense</rdfs:label>
     </owl:Class>
     
 
@@ -2102,10 +2099,10 @@ _	_	Fz
     <!-- http://purl.org/olia/parole_es_cat.owl#TiempoImperfecto -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#TiempoImperfecto">
-        <rdfs:label xml:lang="en">imperfect tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
         <rdfs:label xml:lang="ca">Imperfet</rdfs:label>
         <rdfs:label xml:lang="es">TiempoImperfecto</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
+        <rdfs:label xml:lang="en">imperfect tense</rdfs:label>
     </owl:Class>
     
 
@@ -2113,10 +2110,10 @@ _	_	Fz
     <!-- http://purl.org/olia/parole_es_cat.owl#TiempoPasado -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#TiempoPasado">
-        <rdfs:label xml:lang="en">past tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
         <rdfs:label xml:lang="ca">Passat</rdfs:label>
         <rdfs:label xml:lang="es">TiempoPasado</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
+        <rdfs:label xml:lang="en">past tense</rdfs:label>
     </owl:Class>
     
 
@@ -2124,10 +2121,10 @@ _	_	Fz
     <!-- http://purl.org/olia/parole_es_cat.owl#TiempoPresente -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#TiempoPresente">
-        <rdfs:label xml:lang="en">present tense</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
         <rdfs:label xml:lang="ca">Present</rdfs:label>
         <rdfs:label xml:lang="es">TiempoPresente</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Tiempo"/>
+        <rdfs:label xml:lang="en">present tense</rdfs:label>
     </owl:Class>
     
 
@@ -2135,14 +2132,11 @@ _	_	Fz
     <!-- http://purl.org/olia/parole_es_cat.owl#Verbo -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#Verbo">
-        <rdfs:label xml:lang="en">verb</rdfs:label>
-        <rdfs:label xml:lang="ca">Verb</rdfs:label>
-        <rdfs:label xml:lang="es">Verbo</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Categoría"/>
-        <rdfs:comment xml:lang="ca">El lema del verb ha de ser sempre l&#39;infinitiu. 		
+        <rdfs:comment xml:lang="ca">El lema del verb ha de ser sempre l&apos;infinitiu. 		
 Etiquetem les formes del verb haver i el present del verb anar com auxiliars (VA), les del verb ser com semiauxiliars (VS) i les restants com principals (VM). 		
-L&#39;atribut de Gènere tan sols afecta als participis, per a la resta de formes aquest atribut no s&#39;especifica (0). 		
-Per a les formes d&#39;infinitiu i gerundi no s&#39;especifiquen els atributs de Temps, Persona, Número i Gènere, per la qual cosa el seu valor serà 0. 		
+L&apos;atribut de Gènere tan sols afecta als participis, per a la resta de formes aquest atribut no s&apos;especifica (0). 		
+Per a les formes d&apos;infinitiu i gerundi no s&apos;especifiquen els atributs de Temps, Persona, Número i Gènere, per la qual cosa el seu valor serà 0. 		
 		
 Forma	Lema	Etiqueta
 cantada	cantar	VMP00SF
@@ -2150,9 +2144,6 @@ cantades	cantar	VMP00PF
 cantat	cantar	VMP00SM
 cantats	cantar	VMP00PM
 </rdfs:comment>
-        <rdfs:comment xml:lang="ca">Etiquetem les formes del verb haver i el present del verb anar com auxiliars (VA), les del verb ser com semiauxiliars (VS) i les restants com principals (VM).
-L&#39;atribut de Gènere tan sols afecta als participis, per a la resta de formes aquest atribut no s&#39;especifica (0).
-Per a les formes d&#39;infinitiu i gerundi no s&#39;especifiquen els atributs de Temps, Persona, Número i Gènere, per la qual cosa el seu valor serà 0. </rdfs:comment>
         <rdfs:comment xml:lang="es">Etiquetamos las formas del verbo haber como auxiliares (VA) cuando actúan como tal, y como verbo principal (VM) en los existenciales (hay dinero, cuando haya dinero), las del verbo ser como semiauxiliares (VS) y las restantes como principales (VM). 
 Para las formas de infinitivo y gerundio no se especifican los atributos de Tiempo, Persona, Número y Género, por lo que su valor será 0.
 
@@ -2162,6 +2153,12 @@ cantadas	cantar	VMP00PF
 cantado	cantar	VMP00SM
 cantados	cantar	VMP00PM
 </rdfs:comment>
+        <rdfs:comment xml:lang="ca">Etiquetem les formes del verb haver i el present del verb anar com auxiliars (VA), les del verb ser com semiauxiliars (VS) i les restants com principals (VM).
+L&apos;atribut de Gènere tan sols afecta als participis, per a la resta de formes aquest atribut no s&apos;especifica (0).
+Per a les formes d&apos;infinitiu i gerundi no s&apos;especifiquen els atributs de Temps, Persona, Número i Gènere, per la qual cosa el seu valor serà 0. </rdfs:comment>
+        <rdfs:label xml:lang="ca">Verb</rdfs:label>
+        <rdfs:label xml:lang="es">Verbo</rdfs:label>
+        <rdfs:label xml:lang="en">verb</rdfs:label>
     </owl:Class>
     
 
@@ -2169,10 +2166,10 @@ cantados	cantar	VMP00PM
     <!-- http://purl.org/olia/parole_es_cat.owl#VerboAuxiliar -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#VerboAuxiliar">
-        <rdfs:label xml:lang="en">auxiliary verb</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Verbo"/>
         <rdfs:label xml:lang="ca">Auxiliar</rdfs:label>
         <rdfs:label xml:lang="es">VerboAuxiliar</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Verbo"/>
+        <rdfs:label xml:lang="en">auxiliary verb</rdfs:label>
     </owl:Class>
     
 
@@ -2180,15 +2177,12 @@ cantados	cantar	VMP00PM
     <!-- http://purl.org/olia/parole_es_cat.owl#VerboPrincipal -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#VerboPrincipal">
-        <rdfs:label xml:lang="en">main verb</rdfs:label>
-        <rdfs:label xml:lang="ca">Principal</rdfs:label>
-        <rdfs:label xml:lang="es">VerboPrincipal</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Verbo"/>
         <rdfs:comment xml:lang="ca">Exemples:			
 			
 Temps	VERBS PRINCIPALS		
 	Forma	Lema	Etiqueta
-PRESENT D&#39;INDICATIU	canto	cantar	VMIP1S0
+PRESENT D&apos;INDICATIU	canto	cantar	VMIP1S0
 	cantes	cantar	VMIP2S0
 	canta	cantar	VMIP3S0
 	cantem	cantar	VMIP1P0
@@ -2206,7 +2200,7 @@ PRETÈRIT PERFET	cantí	cantar	VMIS1S0
 	cantàrem	cantar	VMIS1P0
 	cantàreu	cantar	VMIS2P0
 	cantaren	cantar	VMIS3P0
-FUTUR D&#39;INDICATIU	cantaré	cantar	VMIF1S0
+FUTUR D&apos;INDICATIU	cantaré	cantar	VMIF1S0
 	cantaràs	cantar	VMIF2S0
 	cantarà	cantar	VMIF3S0
 	cantarem	cantar	VMIF1P0
@@ -2310,6 +2304,9 @@ PARTICIPIO	cantada	cantar	VMP00SF
 	cantadas	cantar	VMP00PF
 	cantados	cantar	VMP00PM
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Principal</rdfs:label>
+        <rdfs:label xml:lang="es">VerboPrincipal</rdfs:label>
+        <rdfs:label xml:lang="en">main verb</rdfs:label>
     </owl:Class>
     
 
@@ -2317,15 +2314,12 @@ PARTICIPIO	cantada	cantar	VMP00SF
     <!-- http://purl.org/olia/parole_es_cat.owl#VerboSemiauxiliar -->
 
     <owl:Class rdf:about="http://purl.org/olia/parole_es_cat.owl#VerboSemiauxiliar">
-        <rdfs:label xml:lang="en">semiauxiliary verb</rdfs:label>
-        <rdfs:label xml:lang="ca">Semiauxiliar</rdfs:label>
-        <rdfs:label xml:lang="es">VerboSemiauxiliar</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/parole_es_cat.owl#Verbo"/>
         <rdfs:comment xml:lang="ca">Exemples:			
 			
 Temps	VERB SEMIAUXILIAR		
 	Forma	Lema	Etiqueta
-PRESENT D&#39;INDICATIU	sóc	ser	VSIP1S0
+PRESENT D&apos;INDICATIU	sóc	ser	VSIP1S0
 	ets	ser	VSIP2S0
 	és	ser	VSIP3S0
 	som	ser	VSIP1P0
@@ -2343,7 +2337,7 @@ PRETÈRIT PERFET	fui	ser	VSIS1S0
 	fórem	ser	VSIS1P0
 	fóreu	ser	VSIS2P0
 	foren	ser	VSIS3P0
-FUTUR D&#39;INDICATIU	seré	ser	VSIF1S0
+FUTUR D&apos;INDICATIU	seré	ser	VSIF1S0
 	seràs	ser	VSIF2S0
 	serà	ser	VSIF3S0
 	serem	ser	VSIF1P0
@@ -2447,6 +2441,9 @@ PARTICIPIO	sido	ser	VSP00SM
 			
 			
 </rdfs:comment>
+        <rdfs:label xml:lang="ca">Semiauxiliar</rdfs:label>
+        <rdfs:label xml:lang="es">VerboSemiauxiliar</rdfs:label>
+        <rdfs:label xml:lang="en">semiauxiliary verb</rdfs:label>
     </owl:Class>
     
 
@@ -2467,6 +2464,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adjetivo"/>
         <system:hasTagMatching>^A.*</system:hasTagMatching>
+        <system:hasTagMatching>^a.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2476,6 +2474,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A....P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#AdjetivoParticipio"/>
         <system:hasTagMatching>^A....P.*</system:hasTagMatching>
+        <system:hasTagMatching>^a....p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2485,6 +2484,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A...N">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroInvariable"/>
         <system:hasTagMatching>^A...N.*</system:hasTagMatching>
+        <system:hasTagMatching>^a...n.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2494,6 +2494,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A...P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroPlural"/>
         <system:hasTagMatching>^A...P.*</system:hasTagMatching>
+        <system:hasTagMatching>^a...p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2503,6 +2504,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A...S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroSingular"/>
         <system:hasTagMatching>^A...S.*</system:hasTagMatching>
+        <system:hasTagMatching>^a...s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2512,6 +2514,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A..C">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroComún"/>
         <system:hasTagMatching>^A..C.*</system:hasTagMatching>
+        <system:hasTagMatching>^a..c.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2521,6 +2524,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A..F">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroFemenino"/>
         <system:hasTagMatching>^A..F.*</system:hasTagMatching>
+        <system:hasTagMatching>^a..f.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2530,6 +2534,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A..M">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroMasculino"/>
         <system:hasTagMatching>^A..M.*</system:hasTagMatching>
+        <system:hasTagMatching>^a..m.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2539,6 +2544,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#AO">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#AdjetivoOrdinal"/>
         <system:hasTagMatching>^AO.*</system:hasTagMatching>
+        <system:hasTagMatching>^ao.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2548,6 +2554,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#AQ">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#AdjetivoCalificativo"/>
         <system:hasTagMatching>^AQ.*</system:hasTagMatching>
+        <system:hasTagMatching>^aq.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2557,6 +2564,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A_A">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GradoAumentativo"/>
         <system:hasTagMatching>^A.A.*</system:hasTagMatching>
+        <system:hasTagMatching>^a.a.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2566,6 +2574,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A_C">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GradoDiminutivo"/>
         <system:hasTagMatching>^A.C.*</system:hasTagMatching>
+        <system:hasTagMatching>^a.c.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2575,6 +2584,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#A_S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GradoSuperlativo"/>
         <system:hasTagMatching>^A.S.*</system:hasTagMatching>
+        <system:hasTagMatching>^a.s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2584,6 +2594,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#C">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Conjunción"/>
         <system:hasTagMatching>^C.*</system:hasTagMatching>
+        <system:hasTagMatching>^c.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2593,6 +2604,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#CC">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#ConjunciónCoordinada"/>
         <system:hasTag>CC</system:hasTag>
+        <system:hasTag>cc</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2602,6 +2614,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#CS">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#ConjunciónSubordinada"/>
         <system:hasTag>CS</system:hasTag>
+        <system:hasTag>cs</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2611,6 +2624,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Determinante"/>
         <system:hasTagMatching>^D.*</system:hasTagMatching>
+        <system:hasTagMatching>^d.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2620,6 +2634,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D....P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PoseedorPlural"/>
         <system:hasTagMatching>^D....P.*</system:hasTagMatching>
+        <system:hasTagMatching>^d....p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2629,6 +2644,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D....S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PoseedorSingular"/>
         <system:hasTagMatching>^D....S.*</system:hasTagMatching>
+        <system:hasTagMatching>^d....s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2638,6 +2654,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D...N">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroInvariable"/>
         <system:hasTagMatching>^D...N.*</system:hasTagMatching>
+        <system:hasTagMatching>^d...n.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2647,6 +2664,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D...P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroPlural"/>
         <system:hasTagMatching>^D...P.*</system:hasTagMatching>
+        <system:hasTagMatching>^d...p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2656,6 +2674,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D...S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroSingular"/>
         <system:hasTagMatching>D...S</system:hasTagMatching>
+        <system:hasTagMatching>d...s</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2665,6 +2684,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D..C">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroComún"/>
         <system:hasTagMatching>^D..C.*</system:hasTagMatching>
+        <system:hasTagMatching>^d..c.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2674,6 +2694,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D..F">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroFemenino"/>
         <system:hasTagMatching>^D..F.*</system:hasTagMatching>
+        <system:hasTagMatching>^d..f.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2683,6 +2704,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D..M">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroMasculino"/>
         <system:hasTagMatching>^D..M.*</system:hasTagMatching>
+        <system:hasTagMatching>^d..m.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2692,6 +2714,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D..N">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroNeutro"/>
         <system:hasTagMatching>^D..N.*</system:hasTagMatching>
+        <system:hasTagMatching>^d..n.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2701,6 +2724,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D.1">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaPrimera"/>
         <system:hasTagMatching>^D.1.*</system:hasTagMatching>
+        <system:hasTagMatching>^d.1.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2710,6 +2734,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D.2">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaSegunda"/>
         <system:hasTagMatching>^D.2.*</system:hasTagMatching>
+        <system:hasTagMatching>^d.2.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2719,6 +2744,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#D.3">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaTercera"/>
         <system:hasTagMatching>^D.3.*</system:hasTagMatching>
+        <system:hasTagMatching>^d.3.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2728,6 +2754,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#DA">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#DeterminanteArtículo"/>
         <system:hasTagMatching>^DA.*</system:hasTagMatching>
+        <system:hasTagMatching>^da.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2737,6 +2764,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#DD">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#DeterminanteDemostrativo"/>
         <system:hasTagMatching>^DD.*</system:hasTagMatching>
+        <system:hasTagMatching>^dd.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2746,6 +2774,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#DE">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#DeterminanteExclamativo"/>
         <system:hasTagMatching>^DE.*</system:hasTagMatching>
+        <system:hasTagMatching>^de.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2755,6 +2784,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#DI">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#DeterminanteIndefinido"/>
         <system:hasTagMatching>^DI.*</system:hasTagMatching>
+        <system:hasTagMatching>^di.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2764,6 +2794,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#DN">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#DeterminantNumeral"/>
         <system:hasTagMatching>^DN.*</system:hasTagMatching>
+        <system:hasTagMatching>^dn.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2773,6 +2804,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#DP">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#DeterminantePosesivo"/>
         <system:hasTagMatching>^DP.*</system:hasTagMatching>
+        <system:hasTagMatching>^dp.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2782,6 +2814,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#DR">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#DeterminantRelatiu"/>
         <system:hasTagMatching>^DR.*</system:hasTagMatching>
+        <system:hasTagMatching>^dr.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2791,6 +2824,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#DT">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#DeterminanteInterrogativo"/>
         <system:hasTagMatching>^DT.*</system:hasTagMatching>
+        <system:hasTagMatching>^dt.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2800,6 +2834,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#F">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Puntuación"/>
         <system:hasTagMatching>^F.*</system:hasTagMatching>
+        <system:hasTagMatching>^f.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2809,6 +2844,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#I">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Interjección"/>
         <system:hasTag>I</system:hasTag>
+        <system:hasTag>i</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2818,6 +2854,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#N">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Nombre"/>
         <system:hasTagMatching>^N.*</system:hasTagMatching>
+        <system:hasTagMatching>^n.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2827,6 +2864,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#N.....A">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GradoAumentativo"/>
         <system:hasTagMatching>^N.....A$</system:hasTagMatching>
+        <system:hasTagMatching>^n.....a$</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2836,6 +2874,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#N.....D">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GradoDiminutivo"/>
         <system:hasTagMatching>^N.....D$</system:hasTagMatching>
+        <system:hasTagMatching>^n.....d$</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2845,6 +2884,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#N.C">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroComún"/>
         <system:hasTagMatching>^N.C.*</system:hasTagMatching>
+        <system:hasTagMatching>^n.c.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2854,6 +2894,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#N.F">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroFemenino"/>
         <system:hasTagMatching>^N.F.*</system:hasTagMatching>
+        <system:hasTagMatching>^n.f.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2863,6 +2904,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#N.M">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroMasculino"/>
         <system:hasTagMatching>^N.M.*</system:hasTagMatching>
+        <system:hasTagMatching>^n.m.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2872,6 +2914,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#NC">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombreComún"/>
         <system:hasTagMatching>^NC.*</system:hasTagMatching>
+        <system:hasTagMatching>^nc.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2881,6 +2924,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#NP">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropio"/>
         <system:hasTagMatching>^NP.*</system:hasTagMatching>
+        <system:hasTagMatching>^np.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2890,6 +2934,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#NP..G0">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombreProprioLugar"/>
         <system:hasTagMatching>^NP..G0.*</system:hasTagMatching>
+        <system:hasTagMatching>^np..g0.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2899,6 +2944,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#NP..O0">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombreProprioOrganización"/>
         <system:hasTagMatching>^NP..O0.*</system:hasTagMatching>
+        <system:hasTagMatching>^np..o0.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2908,6 +2954,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#NP..SP">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombreProprioPersona"/>
         <system:hasTagMatching>^NP..SP.*</system:hasTagMatching>
+        <system:hasTagMatching>^np..sp.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2917,6 +2964,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#NP..V0">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NombrePropioOtros"/>
         <system:hasTagMatching>^NP..V0.*</system:hasTagMatching>
+        <system:hasTagMatching>^np..v0.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2926,6 +2974,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Pronombre"/>
         <system:hasTagMatching>^P.*</system:hasTagMatching>
+        <system:hasTagMatching>^p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2935,6 +2984,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P......P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Polite"/>
         <system:hasTagMatching>^P......P$</system:hasTagMatching>
+        <system:hasTagMatching>^p......p$</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2944,6 +2994,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P.....P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PoseedorPlural"/>
         <system:hasTagMatching>^P.....P.*</system:hasTagMatching>
+        <system:hasTagMatching>^p.....p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2953,6 +3004,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P.....S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PoseedorSingular"/>
         <system:hasTagMatching>^P.....S.*</system:hasTagMatching>
+        <system:hasTagMatching>^p.....s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2962,6 +3014,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P....A">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#CasoAcusativo"/>
         <system:hasTagMatching>^P...A.*</system:hasTagMatching>
+        <system:hasTagMatching>^p...a.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2971,6 +3024,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P....D">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#CasoDativo"/>
         <system:hasTagMatching>^P....D.*</system:hasTagMatching>
+        <system:hasTagMatching>^p....d.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2980,6 +3034,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P....N">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#CasoNominativo"/>
         <system:hasTagMatching>^P....N.*</system:hasTagMatching>
+        <system:hasTagMatching>^p....n.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2989,6 +3044,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P....O">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#CasoOblicuo"/>
         <system:hasTagMatching>^P....O.*</system:hasTagMatching>
+        <system:hasTagMatching>^p....o.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -2998,6 +3054,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P...N">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroImpersonalMInvariable"/>
         <system:hasTagMatching>^P...N.*</system:hasTagMatching>
+        <system:hasTagMatching>^p...n.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3007,6 +3064,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P...P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroPlural"/>
         <system:hasTagMatching>^P...P.*</system:hasTagMatching>
+        <system:hasTagMatching>^p...p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3016,6 +3074,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P...S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroSingular"/>
         <system:hasTagMatching>^P...S.*</system:hasTagMatching>
+        <system:hasTagMatching>^p...s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3025,6 +3084,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P..C">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroComún"/>
         <system:hasTagMatching>^P..C.*</system:hasTagMatching>
+        <system:hasTagMatching>^p..c.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3034,6 +3094,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P..F">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroFemenino"/>
         <system:hasTagMatching>^P..F.*</system:hasTagMatching>
+        <system:hasTagMatching>^p..f.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3043,6 +3104,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P..M">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroMasculino"/>
         <system:hasTagMatching>^P..M.*</system:hasTagMatching>
+        <system:hasTagMatching>^p..m.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3052,6 +3114,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P..N">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroNeutro"/>
         <system:hasTagMatching>P..N</system:hasTagMatching>
+        <system:hasTagMatching>p..n</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3061,6 +3124,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P.1">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaPrimera"/>
         <system:hasTagMatching>^P.1.*</system:hasTagMatching>
+        <system:hasTagMatching>^p.1.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3070,6 +3134,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P.2">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaSegunda"/>
         <system:hasTagMatching>^P.2.*</system:hasTagMatching>
+        <system:hasTagMatching>^p.2.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3079,6 +3144,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#P.3">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaTercera"/>
         <system:hasTagMatching>^P.3.*</system:hasTagMatching>
+        <system:hasTagMatching>^p.3.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3088,6 +3154,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#PD">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PronombreDemostrativo"/>
         <system:hasTagMatching>^PD.*</system:hasTagMatching>
+        <system:hasTagMatching>^pd.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3097,6 +3164,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#PE">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PronombreExclamativo"/>
         <system:hasTagMatching>^PE.*</system:hasTagMatching>
+        <system:hasTagMatching>^pe.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3106,6 +3174,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#PI">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PronombreIndefinido"/>
         <system:hasTagMatching>^PI.*</system:hasTagMatching>
+        <system:hasTagMatching>^pi.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3115,6 +3184,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#PN">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PronomNumeral"/>
         <system:hasTagMatching>^PN.*</system:hasTagMatching>
+        <system:hasTagMatching>^pn.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3124,6 +3194,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#PP">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PronombrePersonal"/>
         <system:hasTagMatching>^PP.*</system:hasTagMatching>
+        <system:hasTagMatching>^pp.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3133,6 +3204,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#PR">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PronombreRelativo"/>
         <system:hasTagMatching>^PR.*</system:hasTagMatching>
+        <system:hasTagMatching>^pr.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3142,6 +3214,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#PT">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PronombreInterrogativo"/>
         <system:hasTagMatching>^PT.*</system:hasTagMatching>
+        <system:hasTagMatching>^pt.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3151,6 +3224,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#PX">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PronombrePosesivo"/>
         <system:hasTagMatching>^PX.*</system:hasTagMatching>
+        <system:hasTagMatching>^px.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3160,6 +3234,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#R">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adverbio"/>
         <system:hasTagMatching>^R.*</system:hasTagMatching>
+        <system:hasTagMatching>^r.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3169,6 +3244,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#RG">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#AdverbioGeneral"/>
         <system:hasTagMatching>^RG.*</system:hasTagMatching>
+        <system:hasTagMatching>^rg.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3178,6 +3254,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#RN">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#AdverbioNegativo"/>
         <system:hasTagMatching>^RN.*</system:hasTagMatching>
+        <system:hasTagMatching>^rn.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3187,6 +3264,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Adposición"/>
         <system:hasTagMatching>^S.*</system:hasTagMatching>
+        <system:hasTagMatching>^s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3196,6 +3274,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#SP">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Preposición"/>
         <system:hasTagMatching>^SP.*</system:hasTagMatching>
+        <system:hasTagMatching>^sp.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3205,6 +3284,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#SP..S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroSingular"/>
         <system:hasTagMatching>^SP..S$</system:hasTagMatching>
+        <system:hasTagMatching>^sp..s$</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3214,6 +3294,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#SP.M">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroMasculino"/>
         <system:hasTagMatching>^SP.M.*</system:hasTagMatching>
+        <system:hasTagMatching>^sp.m.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3223,6 +3304,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#SPC">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PreposiciónContraída"/>
         <system:hasTagMatching>^SPC.*</system:hasTagMatching>
+        <system:hasTagMatching>^spc.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3232,6 +3314,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#SPS">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PreposiciónSimple"/>
         <system:hasTagMatching>^SPS.*</system:hasTagMatching>
+        <system:hasTagMatching>^sps.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3241,6 +3324,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Verbo"/>
         <system:hasTagMatching>^V.*</system:hasTagMatching>
+        <system:hasTagMatching>^v.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3250,6 +3334,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V.....F">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroFemenino"/>
         <system:hasTagMatching>^V.....F$</system:hasTagMatching>
+        <system:hasTagMatching>^v.....f$</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3259,6 +3344,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V.....M">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#GéneroMasculino"/>
         <system:hasTagMatching>^V.....M$</system:hasTagMatching>
+        <system:hasTagMatching>^v.....m$</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3268,6 +3354,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V....P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroPlural"/>
         <system:hasTagMatching>^V....P.*</system:hasTagMatching>
+        <system:hasTagMatching>^v....p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3277,6 +3364,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V....S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#NúmeroSingular"/>
         <system:hasTagMatching>^V....S.*</system:hasTagMatching>
+        <system:hasTagMatching>^v....s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3286,6 +3374,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V...1">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaPrimera"/>
         <system:hasTagMatching>^V...1.*</system:hasTagMatching>
+        <system:hasTagMatching>^v...1.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3295,6 +3384,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V...2">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaSegunda"/>
         <system:hasTagMatching>^V...2.*</system:hasTagMatching>
+        <system:hasTagMatching>^v...2.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3304,6 +3394,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V...3">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#PersonaTercera"/>
         <system:hasTagMatching>^V...3.*</system:hasTagMatching>
+        <system:hasTagMatching>^v...3.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3313,6 +3404,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V..C">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#TiempoCondicional"/>
         <system:hasTagMatching>^V..C.*</system:hasTagMatching>
+        <system:hasTagMatching>^v..c.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3322,6 +3414,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V..F">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#TiempoFuturo"/>
         <system:hasTagMatching>^V..F.*</system:hasTagMatching>
+        <system:hasTagMatching>^v..f.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3331,6 +3424,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V..I">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#TiempoImperfecto"/>
         <system:hasTagMatching>^V..I.*</system:hasTagMatching>
+        <system:hasTagMatching>^v..i.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3340,6 +3434,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V..P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#TiempoPresente"/>
         <system:hasTagMatching>^V..P.*</system:hasTagMatching>
+        <system:hasTagMatching>^v..p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3349,6 +3444,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V..S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#TiempoPasado"/>
         <system:hasTagMatching>^V..S.*</system:hasTagMatching>
+        <system:hasTagMatching>^v..s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3358,6 +3454,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V.G">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#ModoGerundio"/>
         <system:hasTagMatching>^V.G.*</system:hasTagMatching>
+        <system:hasTagMatching>^v.g.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3367,6 +3464,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V.I">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#ModoIndicativo"/>
         <system:hasTagMatching>^V.I.*</system:hasTagMatching>
+        <system:hasTagMatching>^v.i.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3376,6 +3474,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V.M">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#ModoImperativo"/>
         <system:hasTagMatching>^V.M.*</system:hasTagMatching>
+        <system:hasTagMatching>^v.m.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3385,6 +3484,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V.N">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#ModoInfinitivo"/>
         <system:hasTagMatching>^V.N.*</system:hasTagMatching>
+        <system:hasTagMatching>^v.n.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3394,6 +3494,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V.P">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#ModoParticipio"/>
         <system:hasTagMatching>^V.P.*</system:hasTagMatching>
+        <system:hasTagMatching>^v.p.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3403,6 +3504,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#V.S">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#ModoSubjuntivo"/>
         <system:hasTagMatching>^V.S.*</system:hasTagMatching>
+        <system:hasTagMatching>^v.s.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3412,6 +3514,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#VA">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#VerboAuxiliar"/>
         <system:hasTagMatching>^VA.*</system:hasTagMatching>
+        <system:hasTagMatching>^va.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3421,6 +3524,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#VM">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#VerboPrincipal"/>
         <system:hasTagMatching>^VM.*</system:hasTagMatching>
+        <system:hasTagMatching>^vm.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3430,6 +3534,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#VS">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#VerboSemiauxiliar"/>
         <system:hasTagMatching>^VS.*</system:hasTagMatching>
+        <system:hasTagMatching>^vs.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3439,6 +3544,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#W">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#FechaHora"/>
         <system:hasTag>W</system:hasTag>
+        <system:hasTag>w</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -3448,6 +3554,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#Y">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Abreviatura"/>
         <system:hasTag>Y</system:hasTag>
+        <system:hasTag>y</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -3457,6 +3564,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#Z">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#Cifra"/>
         <system:hasTagMatching>^Z.*</system:hasTagMatching>
+        <system:hasTagMatching>^z.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3466,6 +3574,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#Zd">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#CifraPartitivo"/>
         <system:hasTagMatching>^Zd.*</system:hasTagMatching>
+        <system:hasTagMatching>^zd.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3475,6 +3584,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#Zm">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#CifraMoneda"/>
         <system:hasTagMatching>^Zm.*</system:hasTagMatching>
+        <system:hasTagMatching>^zm.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3484,6 +3594,7 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#Zp">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#CifraPorcentaje"/>
         <system:hasTagMatching>^Zp.*</system:hasTagMatching>
+        <system:hasTagMatching>^zp.*</system:hasTagMatching>
     </owl:NamedIndividual>
     
 
@@ -3493,359 +3604,11 @@ PARTICIPIO	sido	ser	VSP00SM
     <owl:NamedIndividual rdf:about="http://purl.org/olia/parole_es_cat.owl#Zu">
         <rdf:type rdf:resource="http://purl.org/olia/parole_es_cat.owl#CifraUnidad"/>
         <system:hasTagMatching>^Zu.*</system:hasTagMatching>
+        <system:hasTagMatching>^zu.*</system:hasTagMatching>
     </owl:NamedIndividual>
-
-
-    <!-- lower case labels for the UD edition of the Ancora corpus -->
-
-    <rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A....P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a....p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A...N">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a...n.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A...P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a...p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A...S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a...s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A..C">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a..c.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A..F">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a..f.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A..M">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a..m.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#AO">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^ao.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#AQ">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^aq.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A_A">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a.a.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A_C">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a.c.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#A_S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^a.s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#C">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^c.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#CC">
-    <ns0:hasTag xmlns:ns0="http://purl.org/olia/system.owl#">cc</ns0:hasTag>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#CS">
-    <ns0:hasTag xmlns:ns0="http://purl.org/olia/system.owl#">cs</ns0:hasTag>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D....P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d....p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D....S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d....s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D...N">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d...n.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D...P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d...p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D...S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">d...s</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D..C">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d..c.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D..F">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d..f.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D..M">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d..m.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D..N">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d..n.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D.1">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d.1.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D.2">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d.2.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#D.3">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^d.3.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#DA">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^da.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#DD">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^dd.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#DE">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^de.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#DI">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^di.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#DN">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^dn.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#DP">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^dp.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#DR">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^dr.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#DT">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^dt.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#F">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^f.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#I">
-    <ns0:hasTag xmlns:ns0="http://purl.org/olia/system.owl#">i</ns0:hasTag>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#N">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^n.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#N.....A">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^n.....a$</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#N.....D">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^n.....d$</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#N.C">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^n.c.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#N.F">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^n.f.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#N.M">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^n.m.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#NC">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^nc.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#NP">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^np.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#NP..G0">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^np..g0.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#NP..O0">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^np..o0.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#NP..SP">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^np..sp.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#NP..V0">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^np..v0.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P......P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p......p$</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P.....P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p.....p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P.....S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p.....s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P....A">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p...a.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P....D">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p....d.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P....N">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p....n.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P....O">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p....o.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P...N">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p...n.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P...P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p...p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P...S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p...s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P..C">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p..c.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P..F">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p..f.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P..M">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p..m.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P..N">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">p..n</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P.1">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p.1.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P.2">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p.2.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#P.3">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^p.3.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#PD">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^pd.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#PE">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^pe.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#PI">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^pi.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#PN">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^pn.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#PP">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^pp.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#PR">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^pr.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#PT">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^pt.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#PX">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^px.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#R">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^r.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#RG">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^rg.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#RN">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^rn.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#SP">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^sp.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#SP..S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^sp..s$</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#SP.M">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^sp.m.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#SPC">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^spc.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#SPS">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^sps.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V.....F">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.....f$</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V.....M">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.....m$</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V....P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v....p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V....S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v....s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V...1">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v...1.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V...2">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v...2.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V...3">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v...3.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V..C">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v..c.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V..F">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v..f.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V..I">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v..i.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V..P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v..p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V..S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v..s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V.G">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.g.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V.I">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.i.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V.M">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.m.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V.N">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.n.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V.P">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.p.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#V.S">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^v.s.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#VA">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^va.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#VM">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^vm.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#VS">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^vs.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#W">
-    <ns0:hasTag xmlns:ns0="http://purl.org/olia/system.owl#">w</ns0:hasTag>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#Y">
-    <ns0:hasTag xmlns:ns0="http://purl.org/olia/system.owl#">y</ns0:hasTag>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#Z">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^z.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#Zd">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^zd.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#Zm">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^zm.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#Zp">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^zp.*</ns0:hasTagMatching>
-  </rdf:Description>
-<rdf:Description rdf:about="http://purl.org/olia/parole_es_cat.owl#Zu">
-    <ns0:hasTagMatching xmlns:ns0="http://purl.org/olia/system.owl#">^zu.*</ns0:hasTagMatching>
-  </rdf:Description>
-
-
 </rdf:RDF>
 
 
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

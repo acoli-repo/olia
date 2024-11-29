@@ -1,66 +1,211 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:dct="http://purl.org/dc/terms/"
-   xmlns:ms="http://w3id.org/meta-share/meta-share/"
-   xmlns:olias="http://purl.org/olia/system.owl#"
-   xmlns:owl="http://www.w3.org/2002/07/owl#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-   xmlns="http://purl.org/olia/uder.owl#">
-  <owl:Ontology rdf:about="http://purl.org/olia/uder.owl">
-    <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-    <rdfs:comment> OLiA Annotation Model for the Universal Derivations Tagset</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://ufal.mff.cuni.cz/universal-derivations"/>
-    <owl:versionInfo>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.org/olia/uder.owl#"
+     xml:base="http://purl.org/olia/uder.owl"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:olias="http://purl.org/olia/system.owl#">
+    <owl:Ontology rdf:about="http://purl.org/olia/uder.owl">
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <rdfs:comment> OLiA Annotation Model for the Universal Derivations Tagset</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://ufal.mff.cuni.cz/universal-derivations"/>
+        <owl:versionInfo>
         2021-11-10 created, covering DErivBase 0.5 (German)
         Christian Chiarcos, chiarcos@acoli.cs.uni-frankfurt.de
     </owl:versionInfo>
-  </owl:Ontology>
-  <Adjective rdf:about="http://purl.org/olia/uder.owl#A">
-    <olias:hasTagStartingWith>A</olias:hasTagStartingWith>
-  </Adjective>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Adjective">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Tag"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Feat">
-    <rdfs:comment>top-level class for all grammatical features</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Feminine">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Gender"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Gender">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Feat"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Masculine">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Gender"/>
-  </rdf:Description>
-  <Noun rdf:about="http://purl.org/olia/uder.owl#N">
-    <olias:hasTagStartingWith>N</olias:hasTagStartingWith>
-  </Noun>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Neuter">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Gender"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Noun">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Tag"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Tag">
-    <rdfs:comment>top-level class for all linguistic annotations</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
-  </rdf:Description>
-  <Verb rdf:about="http://purl.org/olia/uder.owl#V">
-    <olias:hasTagStartingWith>V</olias:hasTagStartingWith>
-  </Verb>
-  <rdf:Description rdf:about="http://purl.org/olia/uder.owl#Verb">
-    <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Verb"/>
-  </rdf:Description>
-  <Feminine rdf:about="http://purl.org/olia/uder.owl#f">
-    <olias:hasTagContaining>f</olias:hasTagContaining>
-  </Feminine>
-  <Masculine rdf:about="http://purl.org/olia/uder.owl#m">
-    <olias:hasTagContaining>m</olias:hasTagContaining>
-  </Masculine>
-  <Neuter rdf:about="http://purl.org/olia/uder.owl#n">
-    <olias:hasTagContaining>n</olias:hasTagContaining>
-  </Neuter>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagContaining -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/olia/system.owl#hasTagContaining"/>
+    
+
+
+    <!-- http://purl.org/olia/system.owl#hasTagStartingWith -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/olia/system.owl#hasTagStartingWith"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/system.owl#LinguisticAnnotation -->
+
+    <owl:Class rdf:about="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Adjective -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Adjective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Feat -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Feat">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+        <rdfs:comment>top-level class for all grammatical features</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Feminine -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Feminine">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Gender -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Gender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Feat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Masculine -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Masculine">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Neuter -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Neuter">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Noun -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Noun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Tag -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Tag">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#LinguisticAnnotation"/>
+        <rdfs:comment>top-level class for all linguistic annotations</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#Verb -->
+
+    <owl:Class rdf:about="http://purl.org/olia/uder.owl#Verb">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/uder.owl#Tag"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#A -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/uder.owl#A">
+        <rdf:type rdf:resource="http://purl.org/olia/uder.owl#Adjective"/>
+        <olias:hasTagStartingWith>A</olias:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#N -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/uder.owl#N">
+        <rdf:type rdf:resource="http://purl.org/olia/uder.owl#Noun"/>
+        <olias:hasTagStartingWith>N</olias:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#V -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/uder.owl#V">
+        <rdf:type rdf:resource="http://purl.org/olia/uder.owl#Verb"/>
+        <olias:hasTagStartingWith>V</olias:hasTagStartingWith>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#f -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/uder.owl#f">
+        <rdf:type rdf:resource="http://purl.org/olia/uder.owl#Feminine"/>
+        <olias:hasTagContaining>f</olias:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#m -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/uder.owl#m">
+        <rdf:type rdf:resource="http://purl.org/olia/uder.owl#Masculine"/>
+        <olias:hasTagContaining>m</olias:hasTagContaining>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/olia/uder.owl#n -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/olia/uder.owl#n">
+        <rdf:type rdf:resource="http://purl.org/olia/uder.owl#Neuter"/>
+        <olias:hasTagContaining>n</olias:hasTagContaining>
+    </owl:NamedIndividual>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+

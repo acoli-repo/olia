@@ -1,35 +1,20 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/tcodex.owl#"
      xml:base="http://purl.org/olia/tcodex.owl"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:system="http://purl.org/olia/system.owl#"
-     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
-	xmlns:dct="http://purl.org/dc/terms/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#">
     <owl:Ontology rdf:about="http://purl.org/olia/tcodex.owl">
-	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/goh"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">2008-10-14 created by Svetlana Petrova (content) and Angelika Adam (OWL modelling)
-2011-08-12 updated to T-CODEX v. 2.1, Christian Chiarcos (Note: naming conventions for tags have been changed, the naming conventions of the individuals follow the *original* naming conventions for tags)
-      
-Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
-        <rdfs:comment rdf:datatype="&xsd;string">OLiA Annotation Model for the Tatian Corpus of Deviating Examples (T-CODEX, Petrova et al. 2009) and other resources for Old High German (OHG) assembled by project B4 of the Collaborative Research Center (SFB) 632 &quot;Information Structure&quot; (2003-2015), Universität Potsdam, HU Berlin.
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/goh"/>
+        <rdfs:comment>OLiA Annotation Model for the Tatian Corpus of Deviating Examples (T-CODEX, Petrova et al. 2009) and other resources for Old High German (OHG) assembled by project B4 of the Collaborative Research Center (SFB) 632 &quot;Information Structure&quot; (2003-2015), Universität Potsdam, HU Berlin.
 
 The present corpus, the Tatian Corpus of Deviating Examples T-CODEX 2.0, provides morpho-syntactic and information structural annotation of parts of the Old High German translation attested in the MS St. Gallen Cod. 56, traditionally called the OHG Tatian, one of the largest prose texts from the classical OHG period. This corpus was designed and annotated by Project B4 of Collaborative Research Center on Information Structure at Humboldt University Berlin. (Petrova and Odebrecht 2011)
 
@@ -40,7 +25,10 @@ References:
 Svetlana Petrova and Carolin Odebrecht (2011), Tatian Corpus of Deviating Examples. T-CODEX 2.1 Corpus Description (version of 21-Mar-2011). Technical Report, HU Berlin, https://korpling.german.hu-berlin.de/~annis/T-CODEX/corpus_description_tatian2.1.pdf
 
 Petrova, Svetlana, Solf, Michael, Ritz, Julia, Chiarcos, Christian, Zeldes, Amir (2009) Building and using a richly annotated interlinear diachronic corpus: the case of Old High German Tatian. Traitement Automatique des Langues 50 (2): 47-71.</rdfs:comment>
-        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <owl:versionInfo>2008-10-14 created by Svetlana Petrova (content) and Angelika Adam (OWL modelling)
+2011-08-12 updated to T-CODEX v. 2.1, Christian Chiarcos (Note: naming conventions for tags have been changed, the naming conventions of the individuals follow the *original* naming conventions for tags)
+      
+Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -56,14 +44,15 @@ Petrova, Svetlana, Solf, Michael, Ritz, Julia, Chiarcos, Christian, Zeldes, Amir
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://purl.org/olia/system.owl#hasTagMatching -->
 
+    <owl:AnnotationProperty rdf:about="http://purl.org/olia/system.owl#hasTagMatching"/>
+    
+
+
+    <!-- http://w3id.org/meta-share/meta-share/language -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -80,13 +69,14 @@ Petrova, Svetlana, Solf, Michael, Ritz, Julia, Chiarcos, Christian, Zeldes, Amir
 
     <!-- http://purl.org/olia/system.owl#hasTag -->
 
-    <owl:DatatypeProperty rdf:about="&system;hasTag"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTag"/>
     
 
 
     <!-- http://purl.org/olia/system.owl#hasTier -->
 
-    <owl:DatatypeProperty rdf:about="&system;hasTier"/>
+    <owl:DatatypeProperty rdf:about="http://purl.org/olia/system.owl#hasTier"/>
+    
 
 
     <!-- 
@@ -100,9 +90,9 @@ Petrova, Svetlana, Solf, Michael, Ritz, Julia, Chiarcos, Christian, Zeldes, Amir
     
 
 
-    <!-- http://purl.org/olia/system.owl#Annotation -->
+    <!-- http://purl.org/olia/system.owl#UnitOfAnnotation -->
 
-    <owl:Class rdf:about="&system;UnitOfAnnotation"/>
+    <owl:Class rdf:about="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
     
 
 
@@ -113,10 +103,10 @@ Petrova, Svetlana, Solf, Michael, Ritz, Julia, Chiarcos, Christian, Zeldes, Amir
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">aboutness</owl:hasValue>
+                <owl:hasValue>ABOUTNESS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to phrases that are potential candidates for topics in the clause.</rdfs:comment>
+        <rdfs:comment>This tag is given to phrases that are potential candidates for topics in the clause.</rdfs:comment>
     </owl:Class>
     
 
@@ -125,7 +115,7 @@ Petrova, Svetlana, Solf, Michael, Ritz, Julia, Chiarcos, Christian, Zeldes, Amir
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#AccessibleInformation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Givenness"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to expressions that are accessible via contextual reference to a given entitiy or to the assumed world knowledge of the interlocutors.</rdfs:comment>
+        <rdfs:comment>This tag is given to expressions that are accessible via contextual reference to a given entitiy or to the assumed world knowledge of the interlocutors.</rdfs:comment>
     </owl:Class>
     
 
@@ -134,7 +124,7 @@ Petrova, Svetlana, Solf, Michael, Ritz, Julia, Chiarcos, Christian, Zeldes, Amir
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Adjective">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InflectedPOS"/>
-        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <rdfs:comment></rdfs:comment>
     </owl:Class>
     
 
@@ -143,7 +133,7 @@ Petrova, Svetlana, Solf, Michael, Ritz, Julia, Chiarcos, Christian, Zeldes, Amir
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#AdjectivialPhrase">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SyntacticalCategory"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A adjectival  phrase  is a phrase whose head is a adjective.</rdfs:comment>
+        <rdfs:comment>A adjectival  phrase  is a phrase whose head is a adjective.</rdfs:comment>
     </owl:Class>
     
 
@@ -163,7 +153,7 @@ These are now represented only in the GrammaticalFunction layer.</owl:versionInf
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#AdverbalPhrase">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SyntacticalCategory"/>
-        <rdfs:comment rdf:datatype="&xsd;string">An adverbial or adverbial phrase is a linguistic term for a single adverb or a group of more than one word operating adverbially, when viewed in terms of their syntactic function.
+        <rdfs:comment>An adverbial or adverbial phrase is a linguistic term for a single adverb or a group of more than one word operating adverbially, when viewed in terms of their syntactic function.
 An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire clause.
 (http://en.wikipedia.org/wiki/Adverbial_phrase 23.07.08)</rdfs:comment>
     </owl:Class>
@@ -174,7 +164,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Adverbial">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">An adverbial is a nonobligatory adjunct position which can be further specified according to its semantic function. The tag adv is given incase the interpretation of the adjunct is ambigious or impossible for particular reasons.</rdfs:comment>
+        <rdfs:comment>An adverbial is a nonobligatory adjunct position which can be further specified according to its semantic function. The tag adv is given incase the interpretation of the adjunct is ambigious or impossible for particular reasons.</rdfs:comment>
     </owl:Class>
     
 
@@ -192,7 +182,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Apposition">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">An apposition is a repetition of an argument expression which provides further information, eg.
+        <rdfs:comment>An apposition is a repetition of an argument expression which provides further information, eg.
 &quot;zacharîas sin fater&quot; (Zacharia, his father).</rdfs:comment>
     </owl:Class>
     
@@ -202,7 +192,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Attrbute_to_Object">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Attribute"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This attribute modifies the object.</rdfs:comment>
+        <rdfs:comment>This attribute modifies the object.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -212,7 +202,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Attribute">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">An attribute is a modifier to a noun.</rdfs:comment>
+        <rdfs:comment>An attribute is a modifier to a noun.</rdfs:comment>
     </owl:Class>
     
 
@@ -221,7 +211,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Attribute_to_PredicateNoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Attribute"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This attribute modifies a predicate noun.</rdfs:comment>
+        <rdfs:comment>This attribute modifies a predicate noun.</rdfs:comment>
     </owl:Class>
     
 
@@ -230,7 +220,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Attribute_to_Subject">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Attribute"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This attribute modifies the subject.</rdfs:comment>
+        <rdfs:comment>This attribute modifies the subject.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -240,7 +230,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#AttributiveSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to argument clauses which modify an argument of the matrix clause.</rdfs:comment>
+        <rdfs:comment>This tag is given to argument clauses which modify an argument of the matrix clause.</rdfs:comment>
     </owl:Class>
     
 
@@ -249,7 +239,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#AuxiliaryVerb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">An auxiliary verb is a verb which accompanies the lexical verb of a verb phrase, and expresses grammatical distinctions not carried by the lexical verb, such as person, number, tense aspect, and voice. (http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAnAuxiliaryVerb.htm 19.09.06)</rdfs:comment>
+        <rdfs:comment>An auxiliary verb is a verb which accompanies the lexical verb of a verb phrase, and expresses grammatical distinctions not carried by the lexical verb, such as person, number, tense aspect, and voice. (http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAnAuxiliaryVerb.htm 19.09.06)</rdfs:comment>
     </owl:Class>
     
 
@@ -258,7 +248,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Causal">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#ClauseStatus"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Clauses introduced by the causal conjunctions &quot;uuanta&quot;  or &quot;bithiu uuanta&quot; (because) in Old High German are ambigious between main and subordinate clauses. For this reason, they are classified as causal uniformly.</rdfs:comment>
+        <rdfs:comment>Clauses introduced by the causal conjunctions &quot;uuanta&quot;  or &quot;bithiu uuanta&quot; (because) in Old High German are ambigious between main and subordinate clauses. For this reason, they are classified as causal uniformly.</rdfs:comment>
     </owl:Class>
     
 
@@ -267,7 +257,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#CausalAdverb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to adverbs of cause.</rdfs:comment>
+        <rdfs:comment>This tag is given to adverbs of cause.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -277,7 +267,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#CausalAdverbial">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverbial"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is an adverbial of cause.</rdfs:comment>
+        <rdfs:comment>This is an adverbial of cause.</rdfs:comment>
     </owl:Class>
     
 
@@ -289,7 +279,7 @@ An adverbial phrase can modify a verb phrase, an adjectival phrase or an entire 
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">clause-status</owl:hasValue>
+                <owl:hasValue>CLAUSE_STATUS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -314,10 +304,10 @@ person. (Petrova and Odebrecht 2011)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">top-comm</owl:hasValue>
+                <owl:hasValue>TOPIC_COMMENT</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">The rest of a clause with a topic is annotated for comment. If the entire clause is annotated for comment, this implies that a topic-comment division applies but there is no overt topic phrase (e.g., due to topic-drop etc.).</rdfs:comment>
+        <rdfs:comment>The rest of a clause with a topic is annotated for comment. If the entire clause is annotated for comment, this implies that a topic-comment division applies but there is no overt topic phrase (e.g., due to topic-drop etc.).</rdfs:comment>
     </owl:Class>
     
 
@@ -326,7 +316,7 @@ person. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ComparativeSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses comparison.</rdfs:comment>
+        <rdfs:comment>This type of subclause expresses comparison.</rdfs:comment>
     </owl:Class>
     
 
@@ -334,10 +324,10 @@ person. (Petrova and Odebrecht 2011)</rdfs:comment>
     <!-- http://purl.org/olia/tcodex.owl#ComplementizerPhrase -->
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ComplementizerPhrase">
-        <rdfs:label>sentential complementizer</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SyntacticalCategory"/>
-        <rdfs:comment rdf:datatype="&xsd;string">The complementizer is widely held to be the syntactic head of a full clause, which is therefore often represented by the abbreviation CP (for complementizer phrase). 
+        <rdfs:comment>The complementizer is widely held to be the syntactic head of a full clause, which is therefore often represented by the abbreviation CP (for complementizer phrase). 
 (http://en.wikipedia.org/wiki/Complementizer 23.07.08)</rdfs:comment>
+        <rdfs:label>sentential complementizer</rdfs:label>
     </owl:Class>
     
 
@@ -346,7 +336,7 @@ person. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ConcessiveSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses a concessive relation to the matrix clause.
+        <rdfs:comment>This type of subclause expresses a concessive relation to the matrix clause.
 In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obschon&quot; or &quot;auch wenn&quot;.</rdfs:comment>
     </owl:Class>
     
@@ -366,7 +356,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ConditionalSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses conditions.</rdfs:comment>
+        <rdfs:comment>This type of subclause expresses conditions.</rdfs:comment>
     </owl:Class>
     
 
@@ -375,7 +365,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Conjunction">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#NonInflectedPOS"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to conjunctions in general. We do not differentiate at this level between coordinating and subordinating conjunctions.</rdfs:comment>
+        <rdfs:comment>This tag is given to conjunctions in general. We do not differentiate at this level between coordinating and subordinating conjunctions.</rdfs:comment>
     </owl:Class>
     
 
@@ -384,7 +374,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ConsecutiveSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses consequences.</rdfs:comment>
+        <rdfs:comment>This type of subclause expresses consequences.</rdfs:comment>
     </owl:Class>
     
 
@@ -393,8 +383,14 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Context">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InformationStructure"/>
-        <owl:versionInfo>Added with T-CODEX 2.1</owl:versionInfo>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>CONTEXT</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment>Context: Here, we annotate the relation of the clause with respect to the preceding context, especially in terms of discourse organization. We mainly distinguish between “situation shift” (Situationswechsel) und “anaphoric reference” (“AR”). Situationswechsel involves a change of time, place, speaker/narrator and participants. (Petrova and Odebrecht 2011)</rdfs:comment>
+        <owl:versionInfo>Added with T-CODEX 2.1</owl:versionInfo>
     </owl:Class>
     
 
@@ -406,7 +402,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">foc-bg</owl:hasValue>
+                <owl:hasValue>FOCUS_BACKGROUND</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -417,7 +413,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#CopulaVerb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A copula is a verb that links the subject or an object to another phrase, adjective etc. which is part of a complex predicate. The complement of a copula is annotated as PredicateNoun.</rdfs:comment>
+        <rdfs:comment>A copula is a verb that links the subject or an object to another phrase, adjective etc. which is part of a complex predicate. The complement of a copula is annotated as PredicateNoun.</rdfs:comment>
     </owl:Class>
     
 
@@ -426,7 +422,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#DeclarativeMainClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#MainClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to main declarative sentences.</rdfs:comment>
+        <rdfs:comment>This tag is given to main declarative sentences.</rdfs:comment>
     </owl:Class>
     
 
@@ -446,10 +442,10 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">definiteness</owl:hasValue>
+                <owl:hasValue>DEFINITENESS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">At this level, we annotate the semantic properties of phrases with respect to the definite/indefinite distinction. In OHG, the system of definite determiners is not developed yet. Therefore, we annotate the semantic interpretation of the phrase despite of the presence of a definite or indefinite marker.</rdfs:comment>
+        <rdfs:comment>At this level, we annotate the semantic properties of phrases with respect to the definite/indefinite distinction. In OHG, the system of definite determiners is not developed yet. Therefore, we annotate the semantic interpretation of the phrase despite of the presence of a definite or indefinite marker.</rdfs:comment>
     </owl:Class>
     
 
@@ -458,7 +454,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#DemonstrativePronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">In OHG, the demonstrative pronouns are also used as articles (definite determiners).</rdfs:comment>
+        <rdfs:comment>In OHG, the demonstrative pronouns are also used as articles (definite determiners).</rdfs:comment>
     </owl:Class>
     
 
@@ -475,7 +471,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Directional">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is given to the directional arguments of verbs of movement, e.g. &quot;in b&amp;hleem&quot; in &quot;santa sie in b&amp;hleem&quot; (And sent them to Bethlehem.) (T_040_02)</rdfs:comment>
+        <rdfs:comment>This is given to the directional arguments of verbs of movement, e.g. &quot;in b&amp;hleem&quot; in &quot;santa sie in b&amp;hleem&quot; (And sent them to Bethlehem.) (T_040_02)</rdfs:comment>
     </owl:Class>
     
 
@@ -484,7 +480,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#DirectionalAdverb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to adverbs of direction. In some cases, they can be potentially interpreted as separable verb prefixes which are formally identical with directional adverbs in OHG. See “zuo” in “gieng tho zuo/ ein buochari” (One of the learned man approached) (T__085_21-22). If you want to search for potential prefixes that are stranded from the finite verb, look for entities that are annotated as “adv:dir” at the level of “pos” and “dir” at the level of “gf”.</rdfs:comment>
+        <rdfs:comment>This tag is given to adverbs of direction. In some cases, they can be potentially interpreted as separable verb prefixes which are formally identical with directional adverbs in OHG. See “zuo” in “gieng tho zuo/ ein buochari” (One of the learned man approached) (T__085_21-22). If you want to search for potential prefixes that are stranded from the finite verb, look for entities that are annotated as “adv:dir” at the level of “pos” and “dir” at the level of “gf”.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -494,7 +490,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#FinalSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses intentions.</rdfs:comment>
+        <rdfs:comment>This type of subclause expresses intentions.</rdfs:comment>
     </owl:Class>
     
 
@@ -503,7 +499,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#FiniteVerb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to the finite verb in the annotation. 
+        <rdfs:comment>This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to the finite verb in the annotation. 
 (Pintzuk, Susann: Phrase Structures in Competition. Variation in change in old english word order, Garland New York 1999)</rdfs:comment>
     </owl:Class>
     
@@ -513,7 +509,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#FocusBackground">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InformationStructure"/>
-        <rdfs:comment rdf:datatype="&xsd;string">For more information</rdfs:comment>
+        <rdfs:comment>For more information</rdfs:comment>
     </owl:Class>
     
 
@@ -525,7 +521,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">foc-marker</owl:hasValue>
+                <owl:hasValue>FOCUS_MARKER</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -535,8 +531,8 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
     <!-- http://purl.org/olia/tcodex.owl#FocusSensitiveOperator -->
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#FocusSensitiveOperator">
-        <rdfs:label>focus-sensitive operator</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#FocusMarker"/>
+        <rdfs:label>focus-sensitive operator</rdfs:label>
         <owl:versionInfo>Added in T-CODEX 2.1</owl:versionInfo>
     </owl:Class>
     
@@ -546,7 +542,7 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Frame">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Aboutness"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to frame-setting topics, i.e. to expressions that reflect identifiable time spans and locations within which the predication holds. For more details, see SFB-Guildelines, Sec. 4.2.3.</rdfs:comment>
+        <rdfs:comment>This tag is given to frame-setting topics, i.e. to expressions that reflect identifiable time spans and locations within which the predication holds. For more details, see SFB-Guildelines, Sec. 4.2.3.</rdfs:comment>
     </owl:Class>
     
 
@@ -555,9 +551,9 @@ In modern German these clauses are introduced by &quot;obwohl&quot;, &quot;obsch
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#GermanVorfeld">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InitionalPosition"/>
-        <owl:versionInfo>Addd with T-CODEX 2.1</owl:versionInfo>
         <rdfs:comment>German Vorfeld: This tag is assigned to the clause-initial
 constituent of a V2 main clause. (Petrova and Odebrecht 2011)</rdfs:comment>
+        <owl:versionInfo>Addd with T-CODEX 2.1</owl:versionInfo>
     </owl:Class>
     
 
@@ -566,7 +562,7 @@ constituent of a V2 main clause. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Gerund">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to these categories in the annotation. 
+        <rdfs:comment>This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to these categories in the annotation. 
 (Pintzuk, Susann: Phrase Structures in Competition. Variation in change in old english word order, Garland New York 1999)</rdfs:comment>
     </owl:Class>
     
@@ -576,7 +572,7 @@ constituent of a V2 main clause. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#GivenInformation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Givenness"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to expressions that refer to entities with a given antecedent in the context.</rdfs:comment>
+        <rdfs:comment>This tag is given to expressions that refer to entities with a given antecedent in the context.</rdfs:comment>
     </owl:Class>
     
 
@@ -588,10 +584,10 @@ constituent of a V2 main clause. (Petrova and Odebrecht 2011)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">givenness</owl:hasValue>
+                <owl:hasValue>GIVENNESS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">The following tags are given to discourse refernts only. For more details on entities that have to be annotated at this level, see the SFB-Guildelines.</rdfs:comment>
+        <rdfs:comment>The following tags are given to discourse refernts only. For more details on entities that have to be annotated at this level, see the SFB-Guildelines.</rdfs:comment>
     </owl:Class>
     
 
@@ -603,7 +599,7 @@ constituent of a V2 main clause. (Petrova and Odebrecht 2011)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">gf</owl:hasValue>
+                <owl:hasValue>EDGE</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -614,10 +610,10 @@ constituent of a V2 main clause. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#HangingTopic">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InitionalPosition"/>
-        <owl:versionInfo>Added in T-CODEX 2.1</owl:versionInfo>
         <rdfs:comment>hanging topic: In this construction, a dislocated element and its
 resuming pronoun do not necessarily agree in
 case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
+        <owl:versionInfo>Added in T-CODEX 2.1</owl:versionInfo>
     </owl:Class>
     
 
@@ -626,7 +622,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ImperativeMainClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#MainClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to main sentences which use the imperative mood to utter requests.</rdfs:comment>
+        <rdfs:comment>This tag is given to main sentences which use the imperative mood to utter requests.</rdfs:comment>
     </owl:Class>
     
 
@@ -643,7 +639,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#IndefinitePronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is a cover term for indefinites and quantifiers in OHG including items like &quot;many&quot;, &quot;all&quot;, &quot;some&quot; etc.</rdfs:comment>
+        <rdfs:comment>This is a cover term for indefinites and quantifiers in OHG including items like &quot;many&quot;, &quot;all&quot;, &quot;some&quot; etc.</rdfs:comment>
     </owl:Class>
     
 
@@ -660,7 +656,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#InfinitivalClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#ClauseStatus"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to nonfinite complement clauses.</rdfs:comment>
+        <rdfs:comment>This tag is given to nonfinite complement clauses.</rdfs:comment>
     </owl:Class>
     
 
@@ -669,7 +665,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Infinitive">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to these categories in the annotation. 
+        <rdfs:comment>This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to these categories in the annotation. 
 (Pintzuk, Susann: Phrase Structures in Competition. Variation in change in old english word order, Garland New York 1999)</rdfs:comment>
     </owl:Class>
     
@@ -688,7 +684,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
     <!-- http://purl.org/olia/tcodex.owl#InformationStructure -->
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#InformationStructure">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <owl:versionInfo>T-CODEX annotation was done using with a tool that requires for every annotation to establish its own markable (Exmaralda, http://www.exmaralda.org). Thus, every annotation is a UnitOfAnnotation.</owl:versionInfo>
     </owl:Class>
     
@@ -698,7 +694,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#InitionalPosition">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Position"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to the first constituent before the finite verb in a declarative main clause.</rdfs:comment>
+        <rdfs:comment>This tag is given to the first constituent before the finite verb in a declarative main clause.</rdfs:comment>
         <owl:versionInfo>In the original T-CODEX scheme, only a differentiation between initial and non-initial position were annotated. T-CODEX 2.1 has a more fine-grained subclassification of InitialPosition.</owl:versionInfo>
     </owl:Class>
     
@@ -708,8 +704,8 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#InstrumentalAdverbial">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverbial"/>
-        <owl:versionInfo>Added with T-CODEX 2.1</owl:versionInfo>
         <rdfs:comment>instrumental adverbial: This is an adverbial of instrument. (Petrova and Odebrecht 2011)</rdfs:comment>
+        <owl:versionInfo>Added with T-CODEX 2.1</owl:versionInfo>
     </owl:Class>
     
 
@@ -726,7 +722,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#InterrogativeMainClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#MainClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to main interrogative sentences. No further distinction is made between constituent (wh) and propositional questions.</rdfs:comment>
+        <rdfs:comment>This tag is given to main interrogative sentences. No further distinction is made between constituent (wh) and propositional questions.</rdfs:comment>
     </owl:Class>
     
 
@@ -735,7 +731,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#InterrogativePronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A interrogative pronoun is a pro-form that is used in questions to stand for the item questioned.
+        <rdfs:comment>A interrogative pronoun is a pro-form that is used in questions to stand for the item questioned.
 (http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAnInterrogativeProForm.htm 19.09.06)</rdfs:comment>
     </owl:Class>
     
@@ -745,7 +741,7 @@ case, number and gender. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#InterrogativeSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses embedded questions.</rdfs:comment>
+        <rdfs:comment>This type of subclause expresses embedded questions.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -769,7 +765,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#LocalAdverb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to adverbs of location.</rdfs:comment>
+        <rdfs:comment>This tag is given to adverbs of location.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -779,7 +775,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#LocalAdverbial">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverbial"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is an adverbial of location.</rdfs:comment>
+        <rdfs:comment>This is an adverbial of location.</rdfs:comment>
     </owl:Class>
     
 
@@ -788,7 +784,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#LocalSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses embedded locations.</rdfs:comment>
+        <rdfs:comment>This type of subclause expresses embedded locations.</rdfs:comment>
     </owl:Class>
     
 
@@ -797,7 +793,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#MainClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#ClauseStatus"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to independent root clauses with a finite verb. Normally we distinguish between declarative and different types of nondeclarative main clauses, but if a clear-cut distinction is not possible, we use the tag main.</rdfs:comment>
+        <rdfs:comment>This tag is given to independent root clauses with a finite verb. Normally we distinguish between declarative and different types of nondeclarative main clauses, but if a clear-cut distinction is not possible, we use the tag main.</rdfs:comment>
     </owl:Class>
     
 
@@ -806,7 +802,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#MainVerb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to the main lexical verb in the clause.</rdfs:comment>
+        <rdfs:comment>This tag is given to the main lexical verb in the clause.</rdfs:comment>
     </owl:Class>
     
 
@@ -818,10 +814,10 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">foc-bg</owl:hasValue>
+                <owl:hasValue>FOCUS_BACKGROUND</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">The categories of „nif“ and „cf“ are not mutually exclusive. If they (partially) overplap, i.e. if a contrastive feature is included in nif, then we use a slash to mark this relation.</rdfs:comment>
+        <rdfs:comment>The categories of „nif“ and „cf“ are not mutually exclusive. If they (partially) overplap, i.e. if a contrastive feature is included in nif, then we use a slash to mark this relation.</rdfs:comment>
     </owl:Class>
     
 
@@ -830,7 +826,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ModalAdverb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to adverbs of manner.</rdfs:comment>
+        <rdfs:comment>This tag is given to adverbs of manner.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -840,7 +836,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ModalAdverbial">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverbial"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is an adverbial of manner.</rdfs:comment>
+        <rdfs:comment>This is an adverbial of manner.</rdfs:comment>
     </owl:Class>
     
 
@@ -849,7 +845,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ModalSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses manner.</rdfs:comment>
+        <rdfs:comment>This type of subclause expresses manner.</rdfs:comment>
     </owl:Class>
     
 
@@ -858,7 +854,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ModalVerb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Modals are a class of verbs that are used most often with an infinitive to express ability, possibility, disposition or obligation. Pay attention to the fact that the list of modal verbs in OHG is larger than in modern German.</rdfs:comment>
+        <rdfs:comment>Modals are a class of verbs that are used most often with an infinitive to express ability, possibility, disposition or obligation. Pay attention to the fact that the list of modal verbs in OHG is larger than in modern German.</rdfs:comment>
     </owl:Class>
     
 
@@ -866,7 +862,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
     <!-- http://purl.org/olia/tcodex.owl#Morpho-Syntactic -->
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Morpho-Syntactic">
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
         <owl:versionInfo>T-CODEX annotation was done using with a tool that requires for every annotation to establish its own markable (Exmaralda, http://www.exmaralda.org). Thus, every annotation is a UnitOfAnnotation.</owl:versionInfo>
     </owl:Class>
     
@@ -876,7 +872,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#NegationWord">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#NonInflectedPOS"/>
-        <rdfs:comment rdf:datatype="&xsd;string">In this category we subsume words that express sentence negation in Old High German:for example the negative particle &quot;ni/ ne&quot; which cliticizes on the finite verb, like in &quot;Ni quam ih&quot; (I didn&#39;t come) or words like &quot;nalles&quot; (and not), &quot;noh&quot; (neither).</rdfs:comment>
+        <rdfs:comment>In this category we subsume words that express sentence negation in Old High German:for example the negative particle &quot;ni/ ne&quot; which cliticizes on the finite verb, like in &quot;Ni quam ih&quot; (I didn&apos;t come) or words like &quot;nalles&quot; (and not), &quot;noh&quot; (neither).</rdfs:comment>
     </owl:Class>
     
 
@@ -885,7 +881,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#NewInformation">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Givenness"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to expressions that refer to entities with no antecedent in the context.</rdfs:comment>
+        <rdfs:comment>This tag is given to expressions that refer to entities with no antecedent in the context.</rdfs:comment>
     </owl:Class>
     
 
@@ -897,7 +893,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">foc-bg</owl:hasValue>
+                <owl:hasValue>FOCUS_BACKGROUND</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -918,7 +914,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#NonInitionalPosition">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Position"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag refers to all non-initial constituents in main declarative clauses.</rdfs:comment>
+        <rdfs:comment>This tag refers to all non-initial constituents in main declarative clauses.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -936,7 +932,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#NounPhrase">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SyntacticalCategory"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A noun phrase is a phrase whose head is a noun or a pronoun.</rdfs:comment>
+        <rdfs:comment>A noun phrase is a phrase whose head is a noun or a pronoun.</rdfs:comment>
     </owl:Class>
     
 
@@ -945,7 +941,7 @@ number. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Numeral">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InflectedPOS"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Numeral is a cover term for cardinal numers, ordinal numbers and some special classes like &#39;both&#39;, &#39;lots of&#39;, &#39;half&#39;. 
+        <rdfs:comment>Numeral is a cover term for cardinal numers, ordinal numbers and some special classes like &apos;both&apos;, &apos;lots of&apos;, &apos;half&apos;. 
 (Helbig, G., Buscha J., Deutsche Grammatik, Leipzig Enzyklopädie 10. edition, 1987, page 320 f.) 
 
 Example: &quot;zuelif iaro&quot; (twelve years) (T_096_31-32)</rdfs:comment>
@@ -957,7 +953,7 @@ Example: &quot;zuelif iaro&quot; (twelve years) (T_096_31-32)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ObjectFunctionRelativeClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#RelativeClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">These are relative clauses which function as object.</rdfs:comment>
+        <rdfs:comment>These are relative clauses which function as object.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -967,7 +963,7 @@ Example: &quot;zuelif iaro&quot; (twelve years) (T_096_31-32)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ObjectSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to argument clauses which provide the object of the matrix clause.</rdfs:comment>
+        <rdfs:comment>This tag is given to argument clauses which provide the object of the matrix clause.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -977,7 +973,7 @@ Example: &quot;zuelif iaro&quot; (twelve years) (T_096_31-32)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#OptativeMainClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#MainClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to main optative sentences which contain the verb in the subjunctive mood.</rdfs:comment>
+        <rdfs:comment>This tag is given to main optative sentences which contain the verb in the subjunctive mood.</rdfs:comment>
     </owl:Class>
     
 
@@ -989,7 +985,7 @@ Example: &quot;zuelif iaro&quot; (twelve years) (T_096_31-32)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">pos</owl:hasValue>
+                <owl:hasValue>POS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1000,7 +996,7 @@ Example: &quot;zuelif iaro&quot; (twelve years) (T_096_31-32)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ParticipialConstruction">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#ClauseStatus"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Participial constructions are used as adjunct clauses in Old High German. As they lack a finite verb form they are kept separately from finite subordinate clauses.</rdfs:comment>
+        <rdfs:comment>Participial constructions are used as adjunct clauses in Old High German. As they lack a finite verb form they are kept separately from finite subordinate clauses.</rdfs:comment>
     </owl:Class>
     
 
@@ -1009,7 +1005,7 @@ Example: &quot;zuelif iaro&quot; (twelve years) (T_096_31-32)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Participle">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">strukturelle Klasse, nicht in Tagset enthalten</rdfs:comment>
+        <rdfs:comment>strukturelle Klasse, nicht in Tagset enthalten</rdfs:comment>
     </owl:Class>
     
 
@@ -1018,7 +1014,7 @@ Example: &quot;zuelif iaro&quot; (twelve years) (T_096_31-32)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Particle">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#NonInflectedPOS"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Noninflected parts of speech with no proper denotation, but special functions which contribute to the truth value of the sentence. 
+        <rdfs:comment>Noninflected parts of speech with no proper denotation, but special functions which contribute to the truth value of the sentence. 
 Examples: &quot;uuârlihho&quot;, &quot;ía&quot;, &quot;enu&quot;</rdfs:comment>
     </owl:Class>
     
@@ -1028,7 +1024,7 @@ Examples: &quot;uuârlihho&quot;, &quot;ía&quot;, &quot;enu&quot;</rdfs:comment
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#PastParticiple">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Participle"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to these categories in the annotation. 
+        <rdfs:comment>This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to these categories in the annotation. 
 (Pintzuk, Susann: Phrase Structures in Competition. Variation in change in old english word order, Garland New York 1999)</rdfs:comment>
     </owl:Class>
     
@@ -1038,7 +1034,7 @@ Examples: &quot;uuârlihho&quot;, &quot;ía&quot;, &quot;enu&quot;</rdfs:comment
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#PersonalPronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A personal pronoun is a pronoun that expresses a distinction of person deixis. (http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAPersonalPronoun.htm 19.09.06)</rdfs:comment>
+        <rdfs:comment>A personal pronoun is a pronoun that expresses a distinction of person deixis. (http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAPersonalPronoun.htm 19.09.06)</rdfs:comment>
     </owl:Class>
     
 
@@ -1050,10 +1046,10 @@ Examples: &quot;uuârlihho&quot;, &quot;ía&quot;, &quot;enu&quot;</rdfs:comment
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">position</owl:hasValue>
+                <owl:hasValue>POSITION</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">This distinction mainly concerns root declaratives. An consistent extension over subclauses will be provided in future.</rdfs:comment>
+        <rdfs:comment>This distinction mainly concerns root declaratives. An consistent extension over subclauses will be provided in future.</rdfs:comment>
     </owl:Class>
     
 
@@ -1062,7 +1058,7 @@ Examples: &quot;uuârlihho&quot;, &quot;ía&quot;, &quot;enu&quot;</rdfs:comment
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#PossessivePronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">In OHG, there is no formal class of possessive pronouns. We give this tag to the genitive form of personal pronouns used to express possessive relations.</rdfs:comment>
+        <rdfs:comment>In OHG, there is no formal class of possessive pronouns. We give this tag to the genitive form of personal pronouns used to express possessive relations.</rdfs:comment>
     </owl:Class>
     
 
@@ -1071,7 +1067,7 @@ Examples: &quot;uuârlihho&quot;, &quot;ía&quot;, &quot;enu&quot;</rdfs:comment
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#PredicateNoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">The predicate noun (Deutsch: Prädikatsnomen) is a term used in classical philology to describe  the obligatory argument of copula verbs, like &#39;to be&#39;, &#39;to become&#39;, &#39;to call&#39;,  etc.
+        <rdfs:comment>The predicate noun (Deutsch: Prädikatsnomen) is a term used in classical philology to describe  the obligatory argument of copula verbs, like &apos;to be&apos;, &apos;to become&apos;, &apos;to call&apos;,  etc.
 The predicate noun can be a noun, an adjective, a prepositional phrase and even a whole sentence.
 
 Example: &quot;uuituua&quot; in &quot;thiu uuas uuituua&quot; (She was a widow.) , &quot;cephas&quot; in &quot;thu bist giheizzan cephas&quot; (Your name will be Cephas.)</rdfs:comment>
@@ -1083,7 +1079,7 @@ Example: &quot;uuituua&quot; in &quot;thiu uuas uuituua&quot; (She was a widow.)
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#PredicativeAttribute">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A traditional term which expresses secondary predication.
+        <rdfs:comment>A traditional term which expresses secondary predication.
 Example: &quot;blint&quot; in &quot;thaz her blint uuvrdi geboran&quot; (That he was born as a blind man.) (T_220_ 17)</rdfs:comment>
     </owl:Class>
     
@@ -1101,7 +1097,7 @@ Example: &quot;blint&quot; in &quot;thaz her blint uuvrdi geboran&quot; (That he
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#PrepositionalObject">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A prepositional phrase which is selected as an argument of a verb or an adjective.
+        <rdfs:comment>A prepositional phrase which is selected as an argument of a verb or an adjective.
 Examples: &quot;in inan&quot; in &quot;giloubtun in inan thó sine iungiron&quot; (His disciples started to believe in Him.) 	                  (T_056_10)
                  &quot;fora gote&quot; in &quot;siu uuarun rehtiu beidu fora gote&quot; (They were both rightious before God.) 	                  (T_026_3)</rdfs:comment>
     </owl:Class>
@@ -1112,7 +1108,7 @@ Examples: &quot;in inan&quot; in &quot;giloubtun in inan thó sine iungiron&quot
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#PrepositionalPhrase">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SyntacticalCategory"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A prepositional phrase is a phrase whose head is a preposition.</rdfs:comment>
+        <rdfs:comment>A prepositional phrase is a phrase whose head is a preposition.</rdfs:comment>
     </owl:Class>
     
 
@@ -1121,7 +1117,7 @@ Examples: &quot;in inan&quot; in &quot;giloubtun in inan thó sine iungiron&quot
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#PresentParticiple">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Participle"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to these categories in the annotation. 
+        <rdfs:comment>This tag at the level of grammatical function is forced by the subject matter of the project B4, namely to investigate verb-object orders in Old High German. It is of utmost importances to distinguish between tensed and untensed verb forms and to have a quick access to these categories in the annotation. 
 (Pintzuk, Susann: Phrase Structures in Competition. Variation in change in old english word order, Garland New York 1999)</rdfs:comment>
     </owl:Class>
     
@@ -1131,7 +1127,7 @@ Examples: &quot;in inan&quot; in &quot;giloubtun in inan thó sine iungiron&quot
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Pronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InflectedPOS"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">Added for structural reasons, not a tag.</owl:versionInfo>
+        <owl:versionInfo>Added for structural reasons, not a tag.</owl:versionInfo>
     </owl:Class>
     
 
@@ -1148,7 +1144,7 @@ Examples: &quot;in inan&quot; in &quot;giloubtun in inan thó sine iungiron&quot
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ReciprocalPronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A reciprocal pronoun is a pronoun that expresses a mutual feeling or action among the referents of a plural subject.
+        <rdfs:comment>A reciprocal pronoun is a pronoun that expresses a mutual feeling or action among the referents of a plural subject.
 (http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAReciprocalPronoun.htm 19.09.06)</rdfs:comment>
     </owl:Class>
     
@@ -1158,7 +1154,7 @@ Examples: &quot;in inan&quot; in &quot;giloubtun in inan thó sine iungiron&quot
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Referent">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Aboutness"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to expressions that are possible aboutness topics of the clause. For more information on the notion of aboutness, see SFB-Guideline 4.2.2.</rdfs:comment>
+        <rdfs:comment>This tag is given to expressions that are possible aboutness topics of the clause. For more information on the notion of aboutness, see SFB-Guideline 4.2.2.</rdfs:comment>
     </owl:Class>
     
 
@@ -1167,7 +1163,7 @@ Examples: &quot;in inan&quot; in &quot;giloubtun in inan thó sine iungiron&quot
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#ReflexivePronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">A reflexive pronoun is a pronoun that has coreference with the subject.
+        <rdfs:comment>A reflexive pronoun is a pronoun that has coreference with the subject.
 (http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/WhatIsAReflexivePronoun.htm 19.09.06)</rdfs:comment>
     </owl:Class>
     
@@ -1177,7 +1173,7 @@ Examples: &quot;in inan&quot; in &quot;giloubtun in inan thó sine iungiron&quot
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#RelativeClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#ClauseStatus"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Clauses introduced by the demonstrative pronouns in relative function in Old High German are ambigious between main and subordinate clauses. For this reason, they are classified as relative uniformly.
+        <rdfs:comment>Clauses introduced by the demonstrative pronouns in relative function in Old High German are ambigious between main and subordinate clauses. For this reason, they are classified as relative uniformly.
 Headless relative clauses are further specified according to their function in the clause, e.g. relative subject or relative object.</rdfs:comment>
     </owl:Class>
     
@@ -1187,7 +1183,7 @@ Headless relative clauses are further specified according to their function in t
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#RelativePronoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Pronoun"/>
-        <rdfs:comment rdf:datatype="&xsd;string">In OHG, there is no formal class of relative pronouns. We give this tag to different demonstrative pronouns used to introduce a relative clause.</rdfs:comment>
+        <rdfs:comment>In OHG, there is no formal class of relative pronouns. We give this tag to different demonstrative pronouns used to introduce a relative clause.</rdfs:comment>
     </owl:Class>
     
 
@@ -1196,7 +1192,7 @@ Headless relative clauses are further specified according to their function in t
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#RequestMainClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#MainClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to main sentences which use the subjunctive mood to utter requests.</rdfs:comment>
+        <rdfs:comment>This tag is given to main sentences which use the subjunctive mood to utter requests.</rdfs:comment>
     </owl:Class>
     
 
@@ -1233,7 +1229,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#SubjectFunctionRelativeClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#RelativeClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">These are relative clauses which function as subject.</rdfs:comment>
+        <rdfs:comment>These are relative clauses which function as subject.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -1243,7 +1239,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#SubjectSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This tag is given to argument clauses which provide the subject of the matrix clause.</rdfs:comment>
+        <rdfs:comment>This tag is given to argument clauses which provide the subject of the matrix clause.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -1253,7 +1249,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#SubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#ClauseStatus"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This category comprises all finite dependent clauses introduced by a subordinative conjunction except of causal clauses which are kept separately.</rdfs:comment>
+        <rdfs:comment>This category comprises all finite dependent clauses introduced by a subordinative conjunction except of causal clauses which are kept separately.</rdfs:comment>
     </owl:Class>
     
 
@@ -1265,7 +1261,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">cat</owl:hasValue>
+                <owl:hasValue>CAT</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1276,7 +1272,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#TemporalAdverb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is an adverbial of temporal location and extension.</rdfs:comment>
+        <rdfs:comment>This is an adverbial of temporal location and extension.</rdfs:comment>
         <owl:deprecated>Removed from T-CODEX 2.1</owl:deprecated>
     </owl:Class>
     
@@ -1286,7 +1282,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#TemporalAdverbial">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Adverbial"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This is an adverbial of temporal location and extension.</rdfs:comment>
+        <rdfs:comment>This is an adverbial of temporal location and extension.</rdfs:comment>
     </owl:Class>
     
 
@@ -1295,7 +1291,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#TemporalSubordinateClause">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <rdfs:comment rdf:datatype="&xsd;string">This type of subclause expresses temporal location or extension.</rdfs:comment>
+        <rdfs:comment>This type of subclause expresses temporal location or extension.</rdfs:comment>
     </owl:Class>
     
 
@@ -1307,10 +1303,10 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">top-comm</owl:hasValue>
+                <owl:hasValue>TOPIC_COMMENT</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">If the sentence favours a topic-comment reading as describe below 5., we mark the constituent that is put in A for topic.</rdfs:comment>
+        <rdfs:comment>If the sentence favours a topic-comment reading as describe below 5., we mark the constituent that is put in A for topic.</rdfs:comment>
     </owl:Class>
     
 
@@ -1319,7 +1315,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#TopicComment">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InformationStructure"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Anntoation at this level applies if the sentence favours an unambiguous topic-comment reding, i.e., if the utterance allows for any of the types of canonical tests for topics like “As for X, A says that X…” or “ A says about X that X….”</rdfs:comment>
+        <rdfs:comment>Anntoation at this level applies if the sentence favours an unambiguous topic-comment reding, i.e., if the utterance allows for any of the types of canonical tests for topics like “As for X, A says that X…” or “ A says about X that X….”</rdfs:comment>
     </owl:Class>
     
 
@@ -1331,10 +1327,10 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="&xsd;string">topic-marker</owl:hasValue>
+                <owl:hasValue>TOPIC_MARKER</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment rdf:datatype="&xsd;string">das entsprechende Wort, was einen Topic markiert kein; Tag</rdfs:comment>
+        <rdfs:comment>das entsprechende Wort, was einen Topic markiert kein; Tag</rdfs:comment>
     </owl:Class>
     
 
@@ -1343,7 +1339,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#Verb">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#InflectedPOS"/>
-        <owl:versionInfo rdf:datatype="&xsd;string">Added for structural reasons, not a tag.</owl:versionInfo>
+        <owl:versionInfo>Added for structural reasons, not a tag.</owl:versionInfo>
     </owl:Class>
     
 
@@ -1352,7 +1348,7 @@ proposition. (Petrova and Odebrecht 2011)</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#VerbalNoun">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#Verb"/>
-        <rdfs:comment rdf:datatype="&xsd;string">According to the standard literature the category of VerbalNoun in Old High German is a cover term that comprises the noninflected and the inflected infinitives (gerund) and the two participles, the present and the past participle.
+        <rdfs:comment>According to the standard literature the category of VerbalNoun in Old High German is a cover term that comprises the noninflected and the inflected infinitives (gerund) and the two participles, the present and the past participle.
 (Braune, Wilhelm Althochdeutsche Grammatik I - Laut- und Formenlehre, 15. edition by Reiffenstein, Ingo; Tübingen NIemeyer 2004, §301.5, p.257)
 
 Examples:
@@ -1376,7 +1372,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:Class rdf:about="http://purl.org/olia/tcodex.owl#VocativeForm">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/tcodex.owl#GrammaticalFunction"/>
-        <rdfs:comment rdf:datatype="&xsd;string">An expression referring to a person to which the utterance is addressed, e.g. &quot;truhtin&quot;,  &quot;meistar&quot; or &quot;fater&quot;. The vocative expression typically occurs outside of the clause and not in an argument position selected by the predicate.</rdfs:comment>
+        <rdfs:comment>An expression referring to a person to which the utterance is addressed, e.g. &quot;truhtin&quot;,  &quot;meistar&quot; or &quot;fater&quot;. The vocative expression typically occurs outside of the clause and not in an argument position selected by the predicate.</rdfs:comment>
     </owl:Class>
     
 
@@ -1441,8 +1437,8 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#CF_index">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ContrastFocus"/>
-        <rdfs:comment>CF_01: In cases of multiple foci, we assign indices to the foci belonging to different contrastive pairs. (Petrova and Odebrecht 2011)</rdfs:comment>
         <system:hasTagMatching>^CF_[0-9]*$</system:hasTagMatching>
+        <rdfs:comment>CF_01: In cases of multiple foci, we assign indices to the foci belonging to different contrastive pairs. (Petrova and Odebrecht 2011)</rdfs:comment>
     </owl:NamedIndividual>
     
 
@@ -1505,7 +1501,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#acc">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#AccessibleInformation"/>
-        <system:hasTag rdf:datatype="&xsd;string">ACC</system:hasTag>
+        <system:hasTag>ACC</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1514,7 +1510,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adj">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Adjective"/>
-        <system:hasTag rdf:datatype="&xsd;string">A</system:hasTag>
+        <system:hasTag>A</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1523,7 +1519,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adjp">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#AdjectivialPhrase"/>
-        <system:hasTag rdf:datatype="&xsd;string">adjp</system:hasTag>
+        <system:hasTag>adjp</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1532,7 +1528,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adv">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Adverb"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADV</system:hasTag>
+        <system:hasTag>ADV</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1541,7 +1537,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adv_caus">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#CausalAdverb"/>
-        <system:hasTag rdf:datatype="&xsd;string">adv:caus</system:hasTag>
+        <system:hasTag>adv:caus</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1550,7 +1546,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adv_dir">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#DirectionalAdverb"/>
-        <system:hasTag rdf:datatype="&xsd;string">adv:dir</system:hasTag>
+        <system:hasTag>adv:dir</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1559,7 +1555,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adv_loc">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#LocalAdverb"/>
-        <system:hasTag rdf:datatype="&xsd;string">adv:loc</system:hasTag>
+        <system:hasTag>adv:loc</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1568,7 +1564,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adv_mod">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ModalAdverb"/>
-        <system:hasTag rdf:datatype="&xsd;string">adv:mod</system:hasTag>
+        <system:hasTag>adv:mod</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1577,7 +1573,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adv_temp">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#TemporalAdverb"/>
-        <system:hasTag rdf:datatype="&xsd;string">adv:temp</system:hasTag>
+        <system:hasTag>adv:temp</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1586,7 +1582,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#adverbial">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Adverbial"/>
-        <system:hasTag rdf:datatype="&xsd;string">adv</system:hasTag>
+        <system:hasTag>adv</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1595,7 +1591,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#advp">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#AdverbalPhrase"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADVP</system:hasTag>
+        <system:hasTag>ADVP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1604,7 +1600,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#appos">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Apposition"/>
-        <system:hasTag rdf:datatype="&xsd;string">APPOS</system:hasTag>
+        <system:hasTag>APPOS</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1613,7 +1609,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#attr">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Attribute"/>
-        <system:hasTag rdf:datatype="&xsd;string">ATTR</system:hasTag>
+        <system:hasTag>ATTR</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1622,7 +1618,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#attr_do">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Attrbute_to_Object"/>
-        <system:hasTag rdf:datatype="&xsd;string">attr/do</system:hasTag>
+        <system:hasTag>attr/do</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1631,7 +1627,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#attr_predn">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Attribute_to_PredicateNoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">ATTRPRDNOM</system:hasTag>
+        <system:hasTag>ATTRPRDNOM</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1640,7 +1636,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#attr_su">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Attribute_to_Subject"/>
-        <system:hasTag rdf:datatype="&xsd;string">attr/su</system:hasTag>
+        <system:hasTag>attr/su</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1649,7 +1645,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#aux">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#AuxiliaryVerb"/>
-        <system:hasTag rdf:datatype="&xsd;string">VAUX</system:hasTag>
+        <system:hasTag>VAUX</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1658,7 +1654,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#caus_adverbial">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#CausalAdverbial"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADVCAUS</system:hasTag>
+        <system:hasTag>ADVCAUS</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1667,7 +1663,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#causal">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Causal"/>
-        <system:hasTag rdf:datatype="&xsd;string">CAUSAL</system:hasTag>
+        <system:hasTag>CAUSAL</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1676,7 +1672,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#cf">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ContrastFocus"/>
-        <system:hasTag rdf:datatype="&xsd;string">CF</system:hasTag>
+        <system:hasTag>CF</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1685,7 +1681,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#comm">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Comment"/>
-        <system:hasTag rdf:datatype="&xsd;string">COMM</system:hasTag>
+        <system:hasTag>COMM</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1694,7 +1690,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#conj">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Conjunction"/>
-        <system:hasTag rdf:datatype="&xsd;string">CONJ</system:hasTag>
+        <system:hasTag>CONJ</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1703,7 +1699,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#cop">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#CopulaVerb"/>
-        <system:hasTag rdf:datatype="&xsd;string">VCOP</system:hasTag>
+        <system:hasTag>VCOP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1712,7 +1708,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#cp">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ComplementizerPhrase"/>
-        <system:hasTag rdf:datatype="&xsd;string">CP</system:hasTag>
+        <system:hasTag>CP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1721,7 +1717,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#def">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Definite"/>
-        <system:hasTag rdf:datatype="&xsd;string">DEF</system:hasTag>
+        <system:hasTag>DEF</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1730,7 +1726,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#dir">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Directional"/>
-        <system:hasTag rdf:datatype="&xsd;string">DIR</system:hasTag>
+        <system:hasTag>DIR</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1739,7 +1735,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#do">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#DirectObject"/>
-        <system:hasTag rdf:datatype="&xsd;string">DO</system:hasTag>
+        <system:hasTag>DO</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1748,7 +1744,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#frame">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Frame"/>
-        <system:hasTag rdf:datatype="&xsd;string">FRAME</system:hasTag>
+        <system:hasTag>FRAME</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1757,7 +1753,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#gerund">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Gerund"/>
-        <system:hasTag rdf:datatype="&xsd;string">GERUND</system:hasTag>
+        <system:hasTag>GERUND</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1766,7 +1762,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#giv">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#GivenInformation"/>
-        <system:hasTag rdf:datatype="&xsd;string">GIV</system:hasTag>
+        <system:hasTag>GIV</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1775,7 +1771,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#indef">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Indefinite"/>
-        <system:hasTag rdf:datatype="&xsd;string">INDEF</system:hasTag>
+        <system:hasTag>INDEF</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1784,7 +1780,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#inf">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Infinitive"/>
-        <system:hasTag rdf:datatype="&xsd;string">INF</system:hasTag>
+        <system:hasTag>INF</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1793,7 +1789,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#infinitival_clause">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#InfinitivalClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">INFCLAUSE</system:hasTag>
+        <system:hasTag>INFCLAUSE</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1802,7 +1798,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#init">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#InitionalPosition"/>
-        <system:hasTag rdf:datatype="&xsd;string">init</system:hasTag>
+        <system:hasTag>init</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1811,7 +1807,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#interj">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Interjection"/>
-        <system:hasTag rdf:datatype="&xsd;string">INTERJ</system:hasTag>
+        <system:hasTag>INTERJ</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1820,7 +1816,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#io">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#IndirectObject"/>
-        <system:hasTag rdf:datatype="&xsd;string">IO</system:hasTag>
+        <system:hasTag>IO</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1829,7 +1825,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#loc_adverbial">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#LocalAdverbial"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADVLOC</system:hasTag>
+        <system:hasTag>ADVLOC</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1846,7 +1842,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#main_declarative">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#DeclarativeMainClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">MAINDECL</system:hasTag>
+        <system:hasTag>MAINDECL</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1855,7 +1851,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#main_imperative">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ImperativeMainClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">MAINIMPER</system:hasTag>
+        <system:hasTag>MAINIMPER</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1864,7 +1860,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#main_interrogative">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#InterrogativeMainClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">MAININTERR</system:hasTag>
+        <system:hasTag>MAININTERR</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1873,7 +1869,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#main_optative">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#OptativeMainClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">MAINOPTAT</system:hasTag>
+        <system:hasTag>MAINOPTAT</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1882,7 +1878,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#main_request">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#RequestMainClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">MAINREQUEST</system:hasTag>
+        <system:hasTag>MAINREQUEST</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1891,7 +1887,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#modal">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ModalVerb"/>
-        <system:hasTag rdf:datatype="&xsd;string">VMOD</system:hasTag>
+        <system:hasTag>VMOD</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1900,7 +1896,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#modal_adverbial">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ModalAdverbial"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADVMOD</system:hasTag>
+        <system:hasTag>ADVMOD</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1909,7 +1905,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#n">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Noun"/>
-        <system:hasTag rdf:datatype="&xsd;string">N</system:hasTag>
+        <system:hasTag>N</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1918,7 +1914,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#neg">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#NegationWord"/>
-        <system:hasTag rdf:datatype="&xsd;string">NEG</system:hasTag>
+        <system:hasTag>NEG</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1927,7 +1923,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#new">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#NewInformation"/>
-        <system:hasTag rdf:datatype="&xsd;string">NEW</system:hasTag>
+        <system:hasTag>NEW</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1936,7 +1932,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#nif">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#NewInformationFocus"/>
-        <system:hasTag rdf:datatype="&xsd;string">NIF</system:hasTag>
+        <system:hasTag>NIF</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1945,7 +1941,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#nif-cf">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#MixedFocusForm"/>
-        <system:hasTag rdf:datatype="&xsd;string">NIFCF</system:hasTag>
+        <system:hasTag>NIFCF</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1954,7 +1950,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#noninit">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#NonInitionalPosition"/>
-        <system:hasTag rdf:datatype="&xsd;string">noninit</system:hasTag>
+        <system:hasTag>noninit</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1963,7 +1959,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#np">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#NounPhrase"/>
-        <system:hasTag rdf:datatype="&xsd;string">NP</system:hasTag>
+        <system:hasTag>NP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1972,7 +1968,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#num">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Numeral"/>
-        <system:hasTag rdf:datatype="&xsd;string">NUM</system:hasTag>
+        <system:hasTag>NUM</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1981,7 +1977,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#participial_construction">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ParticipialConstruction"/>
-        <system:hasTag rdf:datatype="&xsd;string">PARTCONSTR</system:hasTag>
+        <system:hasTag>PARTCONSTR</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1990,7 +1986,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#particle">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Particle"/>
-        <system:hasTag rdf:datatype="&xsd;string">PTC</system:hasTag>
+        <system:hasTag>PTC</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -1999,7 +1995,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#partpf">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#PastParticiple"/>
-        <system:hasTag rdf:datatype="&xsd;string">PARTPF</system:hasTag>
+        <system:hasTag>PARTPF</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2008,7 +2004,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#partpr">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#PresentParticiple"/>
-        <system:hasTag rdf:datatype="&xsd;string">PARTPR</system:hasTag>
+        <system:hasTag>PARTPR</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2017,7 +2013,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#pp">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#PrepositionalPhrase"/>
-        <system:hasTag rdf:datatype="&xsd;string">PP</system:hasTag>
+        <system:hasTag>PP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2026,7 +2022,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#prdem">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#DemonstrativePronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRONDEM</system:hasTag>
+        <system:hasTag>PRONDEM</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2035,7 +2031,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#pred">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#PrepositionalObject"/>
-        <system:hasTag rdf:datatype="&xsd;string">PO</system:hasTag>
+        <system:hasTag>PO</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2044,7 +2040,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#predn">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#PredicateNoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRDNOM</system:hasTag>
+        <system:hasTag>PRDNOM</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2053,7 +2049,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#prep">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Preposition"/>
-        <system:hasTag rdf:datatype="&xsd;string">AP</system:hasTag>
+        <system:hasTag>AP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2062,7 +2058,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#prindef">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#IndefinitePronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRONINTERR</system:hasTag>
+        <system:hasTag>PRONINTERR</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2071,7 +2067,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#printerr">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#InterrogativePronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">printerr</system:hasTag>
+        <system:hasTag>printerr</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2080,7 +2076,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#prpers">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#PersonalPronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRONPRS</system:hasTag>
+        <system:hasTag>PRONPRS</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2089,7 +2085,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#prposs">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#PossessivePronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRONPOS</system:hasTag>
+        <system:hasTag>PRONPOS</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2098,7 +2094,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#prref">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ReflexivePronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRONRFL</system:hasTag>
+        <system:hasTag>PRONRFL</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2107,7 +2103,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#prrel">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#RelativePronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRONREL</system:hasTag>
+        <system:hasTag>PRONREL</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2116,7 +2112,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#prrez">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ReciprocalPronoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">PRONREZ</system:hasTag>
+        <system:hasTag>PRONREZ</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2125,7 +2121,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#ref">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Referent"/>
-        <system:hasTag rdf:datatype="&xsd;string">AB</system:hasTag>
+        <system:hasTag>AB</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2134,7 +2130,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#relative">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#RelativeClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">REL</system:hasTag>
+        <system:hasTag>REL</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2143,7 +2139,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#relative_obj">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ObjectFunctionRelativeClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">relative:obj</system:hasTag>
+        <system:hasTag>relative:obj</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2152,7 +2148,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#relative_su">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#SubjectFunctionRelativeClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">relative:su</system:hasTag>
+        <system:hasTag>relative:su</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2161,7 +2157,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#su">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Subject"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBJ</system:hasTag>
+        <system:hasTag>SUBJ</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2170,7 +2166,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#SubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUB</system:hasTag>
+        <system:hasTag>SUB</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2179,7 +2175,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_attributive">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#AttributiveSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">subordinate:attributive</system:hasTag>
+        <system:hasTag>subordinate:attributive</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2188,7 +2184,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_comparative">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ComparativeSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBCOMPAR</system:hasTag>
+        <system:hasTag>SUBCOMPAR</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2197,7 +2193,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_concessive">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ConcessiveSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBCONC</system:hasTag>
+        <system:hasTag>SUBCONC</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2206,7 +2202,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_conditional">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ConditionalSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBCOND</system:hasTag>
+        <system:hasTag>SUBCOND</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2215,7 +2211,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_consecutive">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ConsecutiveSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBCONS</system:hasTag>
+        <system:hasTag>SUBCONS</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2224,7 +2220,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_final">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#FinalSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBFINAL</system:hasTag>
+        <system:hasTag>SUBFINAL</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2233,7 +2229,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_interrogative">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#InterrogativeSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">subordinate:interrogative</system:hasTag>
+        <system:hasTag>subordinate:interrogative</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2242,7 +2238,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_local">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#LocalSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBLOCAL</system:hasTag>
+        <system:hasTag>SUBLOCAL</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2251,7 +2247,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_modal">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ModalSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBMODAL</system:hasTag>
+        <system:hasTag>SUBMODAL</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2260,7 +2256,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_object">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#ObjectSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">subordinate:object</system:hasTag>
+        <system:hasTag>subordinate:object</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2269,7 +2265,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_subject">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#SubjectSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">subordinate:su</system:hasTag>
+        <system:hasTag>subordinate:su</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2278,7 +2274,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#subordinate_temporal">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#TemporalSubordinateClause"/>
-        <system:hasTag rdf:datatype="&xsd;string">SUBTEMP</system:hasTag>
+        <system:hasTag>SUBTEMP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2287,7 +2283,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#temporal_adverbial">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#TemporalAdverbial"/>
-        <system:hasTag rdf:datatype="&xsd;string">ADVTEMP</system:hasTag>
+        <system:hasTag>ADVTEMP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2296,7 +2292,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#top">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#Topic"/>
-        <system:hasTag rdf:datatype="&xsd;string">TOP</system:hasTag>
+        <system:hasTag>TOP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2305,7 +2301,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#v">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#MainVerb"/>
-        <system:hasTag rdf:datatype="&xsd;string">V</system:hasTag>
+        <system:hasTag>V</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2314,7 +2310,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#vfin">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#FiniteVerb"/>
-        <system:hasTag rdf:datatype="&xsd;string">VFIN</system:hasTag>
+        <system:hasTag>VFIN</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2323,7 +2319,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#vn">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#VerbalNoun"/>
-        <system:hasTag rdf:datatype="&xsd;string">VN</system:hasTag>
+        <system:hasTag>VN</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2332,7 +2328,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#voc">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#VocativeForm"/>
-        <system:hasTag rdf:datatype="&xsd;string">VOC</system:hasTag>
+        <system:hasTag>VOC</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2341,7 +2337,7 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#vp">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#VerbalPhrase"/>
-        <system:hasTag rdf:datatype="&xsd;string">VP</system:hasTag>
+        <system:hasTag>VP</system:hasTag>
     </owl:NamedIndividual>
     
 
@@ -2350,7 +2346,11 @@ past  participle: &quot;gitruobet&quot; (aggrieved, saddened) (T_026_20)</rdfs:c
 
     <owl:NamedIndividual rdf:about="http://purl.org/olia/tcodex.owl#wh">
         <rdf:type rdf:resource="http://purl.org/olia/tcodex.owl#QuestionWord"/>
-        <system:hasTag rdf:datatype="&xsd;string">WH</system:hasTag>
+        <system:hasTag>WH</system:hasTag>
     </owl:NamedIndividual>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

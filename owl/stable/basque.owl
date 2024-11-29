@@ -1,27 +1,29 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY system "http://purl.org/olia/system.owl#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://purl.org/olia/basque.owl#"
      xml:base="http://purl.org/olia/basque.owl"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:system="http://purl.org/olia/system.owl#"
+     xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:ms="http://w3id.org/meta-share/meta-share/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:system="http://purl.org/olia/system.owl#">
     <owl:Ontology rdf:about="http://purl.org/olia/basque.owl">
- 	<ms:language rdf:resource="http://lexvo.org/id/iso639-3/eus"/>
-	<dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/3.0/"/>
+        <ms:language rdf:resource="http://lexvo.org/id/iso639-3/eus"/>
+        <rdfs:comment>OLiA Annotation Model for the morphosyntactic annotation of Basque as produced by Morfeus/EusTagger, a morphological analyzer and a lemmatizer/tagger for Basque (Ezeiza et al. 1998, details: http://ixa.si.ehu.es/Ixa/Produktuak/1274695175, http://ixa.si.ehu.es/Ixa/Produktuak/1273217967; demo: http://ixa2.si.ehu.es/demo/analisianali.jsp).
+Probably the same categories were used for the annotation of the Basque AnCora corpus (http://ixa.si.ehu.es/Ixa/Produktuak/1274695486), a 155.000 word sub-corpus of the EPEC (Reference Corpus for the Processing of Basque). 
+
+Unless stated otherwise, the information provided in the ontology is taken from http://ixa2.si.ehu.es/edblkontsulta/labur-eus.htm. For translation and interpretation of the tagset documentation, we consulted Sagüés (2011), http://en.wikipedia.org/wiki/Basque_language and google translate.
+
+References:
+
+Ezeiza N., Aduriz I., Alegria I., Arriola J.M., Urizar R. 1998. Combining Stochastic and Rule-Based Methods for Disambiguation in Agglutinative Languages COLING-ACL&apos;98. Pgs. 380 - 384. Vol 1. Montreal (Canada). August 10-14, 1998. 
+
+Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebastian), Spain</rdfs:comment>
+        <rdfs:isDefinedBy>http://ixa2.si.ehu.es/edblkontsulta/labur-eus.htm</rdfs:isDefinedBy>
         <owl:versionInfo>2011-09-11 created
 
 Note that all Basque labels are given as absolutive plural noun phrases (as in the original tagset description). Further, it seems that some of the labels used by EusTagger deviate from the documentation that is formalized in this ontology (there seem to have been a number of simplifications, and Punctuation is more fine-grained subcategorized).
@@ -31,18 +33,6 @@ Translated examples marked by ??? are uncertain translations.
 hasTier property is missing, undefined by document and in demo.
 
 Christian Chiarcos, chiarcos@uni-potsdam.de</owl:versionInfo>
-        <rdfs:isDefinedBy>http://ixa2.si.ehu.es/edblkontsulta/labur-eus.htm</rdfs:isDefinedBy>
-        <rdfs:comment>OLiA Annotation Model for the morphosyntactic annotation of Basque as produced by Morfeus/EusTagger, a morphological analyzer and a lemmatizer/tagger for Basque (Ezeiza et al. 1998, details: http://ixa.si.ehu.es/Ixa/Produktuak/1274695175, http://ixa.si.ehu.es/Ixa/Produktuak/1273217967; demo: http://ixa2.si.ehu.es/demo/analisianali.jsp).
-Probably the same categories were used for the annotation of the Basque AnCora corpus (http://ixa.si.ehu.es/Ixa/Produktuak/1274695486), a 155.000 word sub-corpus of the EPEC (Reference Corpus for the Processing of Basque). 
-
-Unless stated otherwise, the information provided in the ontology is taken from http://ixa2.si.ehu.es/edblkontsulta/labur-eus.htm. For translation and interpretation of the tagset documentation, we consulted Sagüés (2011), http://en.wikipedia.org/wiki/Basque_language and google translate.
-
-References:
-
-Ezeiza N., Aduriz I., Alegria I., Arriola J.M., Urizar R. 1998. Combining Stochastic and Rule-Based Methods for Disambiguation in Agglutinative Languages COLING-ACL&#39;98. Pgs. 380 - 384. Vol 1. Montreal (Canada). August 10-14, 1998. 
-
-Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebastian), Spain</rdfs:comment>
-        <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
     </owl:Ontology>
     
 
@@ -58,14 +48,15 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://purl.org/olia/system.owl#hasTagMatching -->
 
+    <owl:AnnotationProperty rdf:about="http://purl.org/olia/system.owl#hasTagMatching"/>
+    
+
+
+    <!-- http://w3id.org/meta-share/meta-share/language -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/meta-share/meta-share/language"/>
     
 
 
@@ -83,9 +74,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Abbreviation -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Abbreviation">
-        <rdfs:label xml:lang="eu">laburdurak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
         <rdfs:comment>e.g., &quot;etab.&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">laburdurak</rdfs:label>
     </owl:Class>
     
 
@@ -93,9 +84,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Acronym -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Acronym">
-        <rdfs:label xml:lang="eu">siglak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
         <rdfs:comment>e.g., &quot;EHU&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">siglak</rdfs:label>
     </owl:Class>
     
 
@@ -103,8 +94,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Adjective -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Adjective">
-        <rdfs:label xml:lang="eu">adjektiboak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:label xml:lang="eu">adjektiboak</rdfs:label>
     </owl:Class>
     
 
@@ -112,8 +103,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Adverb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Adverb">
-        <rdfs:label xml:lang="eu">adberbioak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:label xml:lang="eu">adberbioak</rdfs:label>
     </owl:Class>
     
 
@@ -121,9 +112,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#AspectMarkingMorpheme -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#AspectMarkingMorpheme">
-        <rdfs:label xml:lang="eu">aspektu-morfemak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
         <rdfs:comment>e.g., &quot;-0&quot; (base-form), &quot;-ko&quot; (forms synthetic future forms)</rdfs:comment>
+        <rdfs:label xml:lang="eu">aspektu-morfemak</rdfs:label>
     </owl:Class>
     
 
@@ -131,8 +122,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory">
-        <rdfs:label xml:lang="eu">kategoria lagungarriak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#LexicalCategory"/>
+        <rdfs:label xml:lang="eu">kategoria lagungarriak</rdfs:label>
     </owl:Class>
     
 
@@ -140,9 +131,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#AuxiliaryVerb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#AuxiliaryVerb">
-        <rdfs:label xml:lang="eu">aditz laguntzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
         <rdfs:comment>e.g., &quot;du&quot; (v.aux.3sg.abs-3sg.erg.prs)</rdfs:comment>
+        <rdfs:label xml:lang="eu">aditz laguntzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -150,9 +141,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#CommonNoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#CommonNoun">
-        <rdfs:label xml:lang="eu">izenak arruntak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
         <rdfs:comment>e.g., zuhaitz &quot;tree&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">izenak arruntak</rdfs:label>
     </owl:Class>
     
 
@@ -160,9 +151,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#CompoundVerb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#CompoundVerb">
-        <rdfs:label xml:lang="eu">aditzak konposatuak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
         <rdfs:comment>e.g., &quot;lo egin&quot; (to sleep)</rdfs:comment>
+        <rdfs:label xml:lang="eu">aditzak konposatuak</rdfs:label>
     </owl:Class>
     
 
@@ -170,9 +161,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Conjunction -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Conjunction">
-        <rdfs:label xml:lang="eu">loturazkoak juntagailuak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Connective"/>
         <rdfs:comment>e.g., &quot;edo&quot; (or)</rdfs:comment>
+        <rdfs:label xml:lang="eu">loturazkoak juntagailuak</rdfs:label>
     </owl:Class>
     
 
@@ -180,8 +171,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Connective -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Connective">
-        <rdfs:label xml:lang="eu">loturazkoak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:label xml:lang="eu">loturazkoak</rdfs:label>
     </owl:Class>
     
 
@@ -189,10 +180,10 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#DeclensionMorpheme -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#DeclensionMorpheme">
-        <rdfs:label xml:lang="eu">deklinabide morfemak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
-        <owl:versionInfo>&quot;declension&quot; probably means &quot;nominal/adjectival declension&quot;</owl:versionInfo>
         <rdfs:comment>e.g., &quot;-aren&quot; (gen.poss.sg.anim.)</rdfs:comment>
+        <rdfs:label xml:lang="eu">deklinabide morfemak</rdfs:label>
+        <owl:versionInfo>&quot;declension&quot; probably means &quot;nominal/adjectival declension&quot;</owl:versionInfo>
     </owl:Class>
     
 
@@ -200,9 +191,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#DegreeMarker -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#DegreeMarker">
-        <rdfs:label xml:lang="eu">graduatzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
         <rdfs:comment>e.g., &quot;-ago&quot; (cpv.)</rdfs:comment>
+        <rdfs:label xml:lang="eu">graduatzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -210,8 +201,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#DeicticDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#DeicticDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak erakusleak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Determiner"/>
+        <rdfs:label xml:lang="eu">determinatzaileak erakusleak</rdfs:label>
     </owl:Class>
     
 
@@ -219,8 +210,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Determiner -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Determiner">
-        <rdfs:label xml:lang="eu">determinatzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:label xml:lang="eu">determinatzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -228,9 +219,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#DistributiveQuantifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#DistributiveQuantifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak zehaztuak banatzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer"/>
         <rdfs:comment>e.g., &quot;bina&quot; (two)</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak zehaztuak banatzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -238,8 +229,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Ellipsis -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Ellipsis">
-        <rdfs:label xml:lang="eu">elipsia</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
+        <rdfs:label xml:lang="eu">elipsia</rdfs:label>
     </owl:Class>
     
 
@@ -247,9 +238,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#EmphaticDeicticDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#EmphaticDeicticDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak erakusleak indartuak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#DeicticDeterminer"/>
         <rdfs:comment>e.g., &quot;berori&quot; (it)</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak erakusleak indartuak</rdfs:label>
     </owl:Class>
     
 
@@ -257,9 +248,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#EmphaticPersonalPronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#EmphaticPersonalPronoun">
-        <rdfs:label xml:lang="eu">izenordainak pertsonalak indartuak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PersonalPronoun"/>
         <rdfs:comment>e.g., &quot;neu&quot; (I)</rdfs:comment>
+        <rdfs:label xml:lang="eu">izenordainak pertsonalak indartuak</rdfs:label>
     </owl:Class>
     
 
@@ -267,9 +258,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#FactiveVerb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#FactiveVerb">
-        <rdfs:label xml:lang="eu">aditzak faktitiboak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
         <rdfs:comment>e.g., &quot;etorrarazi&quot; (matching)</rdfs:comment>
+        <rdfs:label xml:lang="eu">aditzak faktitiboak</rdfs:label>
     </owl:Class>
     
 
@@ -277,8 +268,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#FullStop -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#FullStop">
-        <rdfs:label xml:lang="eu">puntua</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PunctuationMark"/>
+        <rdfs:label xml:lang="eu">puntua</rdfs:label>
         <owl:versionInfo>&quot;puntua&quot; means &quot;point&quot;, but as there is the category &quot;beste puntuazio zeinuak&quot; which &quot;may be merged with puntua&quot; (puntuaren pareko izan daitezkeenak), this is probably the most prototypical use of the full stop, i.e., as sentence-final marker.</owl:versionInfo>
     </owl:Class>
     
@@ -287,8 +278,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#GeneralLexicalCategory -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#GeneralLexicalCategory">
-        <rdfs:label xml:lang="eu">kategoria nagusiak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#LexicalCategory"/>
+        <rdfs:label xml:lang="eu">kategoria nagusiak</rdfs:label>
     </owl:Class>
     
 
@@ -296,9 +287,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#GeneralQuantifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#GeneralQuantifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak orokorrak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QuantifyingDeterminer"/>
         <rdfs:comment>e.g., &quot;guzti&quot; (all)</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak orokorrak</rdfs:label>
         <owl:versionInfo>Seems to mean &quot;all quantifier&quot;.</owl:versionInfo>
     </owl:Class>
     
@@ -307,9 +298,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Hyphen -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Hyphen">
-        <rdfs:label xml:lang="eu">marra</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
         <rdfs:comment>e.g., &quot;-&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">marra</rdfs:label>
         <owl:versionInfo>unclear why &quot;marra&quot; (lit. &quot;line&quot;, e.g., &quot;-&quot;) is considered a morphological category ...</owl:versionInfo>
     </owl:Class>
     
@@ -318,9 +309,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#IndefinitePronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#IndefinitePronoun">
-        <rdfs:label xml:lang="eu">izenordainak mugagabeak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#UndefinedAmountPronoun"/>
         <rdfs:comment>e.g., &quot;norbait&quot; (someone)</rdfs:comment>
+        <rdfs:label xml:lang="eu">izenordainak mugagabeak</rdfs:label>
     </owl:Class>
     
 
@@ -328,9 +319,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Interjection -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Interjection">
-        <rdfs:label xml:lang="eu">interjekzioak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
         <rdfs:comment>e.g., &quot;alajaina !&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">interjekzioak</rdfs:label>
     </owl:Class>
     
 
@@ -338,9 +329,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#InterrogativeAdjective -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#InterrogativeAdjective">
-        <rdfs:label xml:lang="eu">adjektiboak galdetzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Adjective"/>
         <rdfs:comment>e.g., &quot;nongo&quot; (where ???)</rdfs:comment>
+        <rdfs:label xml:lang="eu">adjektiboak galdetzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -348,9 +339,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#InterrogativeAdverb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#InterrogativeAdverb">
-        <rdfs:label xml:lang="eu">adberbioak galdetzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Adverb"/>
         <rdfs:comment>e.g., &quot;noiz&quot; (when ???)</rdfs:comment>
+        <rdfs:label xml:lang="eu">adberbioak galdetzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -358,9 +349,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#InterrogativePronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#InterrogativePronoun">
-        <rdfs:label xml:lang="eu">izenordainak galdetzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#UndefinedAmountPronoun"/>
         <rdfs:comment>e.g., &quot;nor&quot; (who)</rdfs:comment>
+        <rdfs:label xml:lang="eu">izenordainak galdetzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -368,9 +359,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#InterrogativeQualifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#InterrogativeQualifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak nolokotzaileak galdetzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QualifyingDeterminer"/>
         <rdfs:comment>e.g., &quot;zein&quot; (how many ???)</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak nolokotzaileak galdetzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -378,8 +369,14 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#LexicalCategory -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#LexicalCategory">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>MORPH</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="eu">kategoria lexikalak</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
     </owl:Class>
     
 
@@ -387,8 +384,14 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#MorphologicalCategory -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#MorphologicalCategory">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>MORPH</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="eu">kategoria morfologikoak</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
     </owl:Class>
     
 
@@ -396,9 +399,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#NormalAdjective -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalAdjective">
-        <rdfs:label xml:lang="eu">adjektiboak arruntak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Adjective"/>
         <rdfs:comment>e.g., &quot;benetako&quot; (true)</rdfs:comment>
+        <rdfs:label xml:lang="eu">adjektiboak arruntak</rdfs:label>
     </owl:Class>
     
 
@@ -406,9 +409,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#NormalAdverb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalAdverb">
-        <rdfs:label xml:lang="eu">adberbioak arruntak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Adverb"/>
         <rdfs:comment>e.g., &quot;gaur&quot; (today), &quot;negarrez&quot; (crying)</rdfs:comment>
+        <rdfs:label xml:lang="eu">adberbioak arruntak</rdfs:label>
     </owl:Class>
     
 
@@ -416,9 +419,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#NormalDeicticDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalDeicticDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak erakusleak arruntak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#DeicticDeterminer"/>
         <rdfs:comment>e.g., &quot;hau&quot; (this)</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak erakusleak arruntak</rdfs:label>
     </owl:Class>
     
 
@@ -426,9 +429,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#NormalPersonalPronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalPersonalPronoun">
-        <rdfs:label xml:lang="eu">izenordainak pertsonalak arruntak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PersonalPronoun"/>
         <rdfs:comment>e.g., &quot;ni&quot; (I)</rdfs:comment>
+        <rdfs:label xml:lang="eu">izenordainak pertsonalak arruntak</rdfs:label>
     </owl:Class>
     
 
@@ -436,9 +439,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#NormalQualifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#NormalQualifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak nolakotzaileak arruntak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QualifyingDeterminer"/>
         <rdfs:comment>e.g. &quot;edozein&quot; (any)</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak nolakotzaileak arruntak</rdfs:label>
     </owl:Class>
     
 
@@ -446,8 +449,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Noun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Noun">
-        <rdfs:label xml:lang="eu">izenak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:label xml:lang="eu">izenak</rdfs:label>
     </owl:Class>
     
 
@@ -455,9 +458,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#Numeral -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Numeral">
-        <rdfs:label xml:lang="eu">zenbakiak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
         <rdfs:comment>e.g., &quot;bat&quot; (one)</rdfs:comment>
+        <rdfs:label xml:lang="eu">zenbakiak</rdfs:label>
     </owl:Class>
     
 
@@ -465,9 +468,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#OrdinalQuantifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#OrdinalQuantifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak ordinalak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer"/>
         <rdfs:comment>e.g., &quot;bigarren&quot; (second)</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak ordinalak</rdfs:label>
     </owl:Class>
     
 
@@ -475,9 +478,9 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#OtherLexicalCategory -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#OtherLexicalCategory">
-        <rdfs:label xml:lang="eu">bestelakoak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
         <rdfs:comment>e.g., &quot;baldin&quot; (required)</rdfs:comment>
+        <rdfs:label xml:lang="eu">bestelakoak</rdfs:label>
     </owl:Class>
     
 
@@ -485,8 +488,8 @@ Miguel Sagüés (2011), Gramática Elemental Vasca, Txertoa, Donastia (San Sebas
     <!-- http://purl.org/olia/basque.owl#OtherPointSymbol -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#OtherPointSymbol">
-        <rdfs:label xml:lang="eu">beste puntuazio zeinuak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PunctuationMark"/>
+        <rdfs:label xml:lang="eu">beste puntuazio zeinuak</rdfs:label>
         <owl:versionInfo>Original note: &quot;may be merged with FullStop&quot; (beste puntuazio zeinuak).
 Therefore probably a use of the point different from its function as sentence-final marker.</owl:versionInfo>
     </owl:Class>
@@ -496,9 +499,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#Particle -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Particle">
-        <rdfs:label xml:lang="eu">partikulak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
         <rdfs:comment>e.g., &quot;omen&quot; (say ???), &quot;ote&quot; (if ???)</rdfs:comment>
+        <rdfs:label xml:lang="eu">partikulak</rdfs:label>
     </owl:Class>
     
 
@@ -506,9 +509,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#PeriphrasticVerb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#PeriphrasticVerb">
-        <rdfs:label xml:lang="eu">aditzak perifrastikoak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
         <rdfs:comment>e.g., &quot;ahal izan&quot; (to be)</rdfs:comment>
+        <rdfs:label xml:lang="eu">aditzak perifrastikoak</rdfs:label>
     </owl:Class>
     
 
@@ -516,9 +519,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#PersonName -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#PersonName">
-        <rdfs:label xml:lang="eu">pertsona-izen bereziak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
         <rdfs:comment>e.g., &quot;Mikel&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">pertsona-izen bereziak</rdfs:label>
     </owl:Class>
     
 
@@ -526,8 +529,8 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#PersonalPronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#PersonalPronoun">
-        <rdfs:label xml:lang="eu">izenordainak pertsonalak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
+        <rdfs:label xml:lang="eu">izenordainak pertsonalak</rdfs:label>
     </owl:Class>
     
 
@@ -535,9 +538,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#PlaceName -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#PlaceName">
-        <rdfs:label xml:lang="eu">leku-izen bereziak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Noun"/>
         <rdfs:comment>e.g., &quot;Donostia&quot; (Spanish: San Sebastian)</rdfs:comment>
+        <rdfs:label xml:lang="eu">leku-izen bereziak</rdfs:label>
     </owl:Class>
     
 
@@ -545,9 +548,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#Prefix -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Prefix">
-        <rdfs:label xml:lang="eu">aurrizkiak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
         <rdfs:comment>e.g., &quot;ber-&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">aurrizkiak</rdfs:label>
     </owl:Class>
     
 
@@ -555,8 +558,8 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#Pronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Pronoun">
-        <rdfs:label xml:lang="eu">izenordainak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:label xml:lang="eu">izenordainak</rdfs:label>
     </owl:Class>
     
 
@@ -564,8 +567,14 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#PunctuationMark -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#PunctuationMark">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#UnitOfAnnotation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
+                <owl:hasValue>MORPH</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="eu">puntuazio-zeinuak</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&system;UnitOfAnnotation"/>
     </owl:Class>
     
 
@@ -573,9 +582,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#PunctuationSymbol -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#PunctuationSymbol">
-        <rdfs:label xml:lang="eu">puntuazio sinboloak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#PunctuationMark"/>
         <rdfs:comment>e.g., parenthesis, long hyphen, quotation marks, ...</rdfs:comment>
+        <rdfs:label xml:lang="eu">puntuazio sinboloak</rdfs:label>
     </owl:Class>
     
 
@@ -583,8 +592,8 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#QualifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#QualifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak nolakotzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Determiner"/>
+        <rdfs:label xml:lang="eu">determinatzaileak nolakotzaileak</rdfs:label>
         <owl:versionInfo xml:lang="en">http://www.wordmeaning.org/vasque/nolakotzaile.htm: qualifier
 (but according to the example, it seems to mean &quot;quantifier&quot;, actually, ...)</owl:versionInfo>
     </owl:Class>
@@ -594,8 +603,8 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#QuantifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#QuantifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Determiner"/>
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak</rdfs:label>
     </owl:Class>
     
 
@@ -603,9 +612,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#ReciprocalPronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#ReciprocalPronoun">
-        <rdfs:label xml:lang="eu">izenordainak elkarkariak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
         <rdfs:comment>e.g., &quot;elkar&quot; (mutual)</rdfs:comment>
+        <rdfs:label xml:lang="eu">izenordainak elkarkariak</rdfs:label>
     </owl:Class>
     
 
@@ -613,9 +622,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#ReflexivePronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#ReflexivePronoun">
-        <rdfs:label xml:lang="eu">izenordainak bihurkariak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
         <rdfs:comment>e.g., &quot;-(r)en burua&quot; (&lt; burua &quot;head&quot;)</rdfs:comment>
+        <rdfs:label xml:lang="eu">izenordainak bihurkariak</rdfs:label>
     </owl:Class>
     
 
@@ -623,9 +632,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#RelationalSuffix -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#RelationalSuffix">
-        <rdfs:label xml:lang="eu">erlazio atzitkiak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
         <rdfs:comment>e.g., &quot;-(e)la&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">erlazio atzitkiak</rdfs:label>
     </owl:Class>
     
 
@@ -633,9 +642,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#SentenceConnective -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#SentenceConnective">
-        <rdfs:label xml:lang="eu">loturazkoak lokailuak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Connective"/>
         <rdfs:comment>e.g., &quot;hala ere&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">loturazkoak lokailuak</rdfs:label>
     </owl:Class>
     
 
@@ -643,9 +652,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#SimpleVerb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#SimpleVerb">
-        <rdfs:label xml:lang="eu">aditzak sinpleak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Verb"/>
         <rdfs:comment>e.g., ekarri &quot;brought&quot; (participle perfect)</rdfs:comment>
+        <rdfs:label xml:lang="eu">aditzak sinpleak</rdfs:label>
     </owl:Class>
     
 
@@ -653,9 +662,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#SpecificQuantifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak zehaztuak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QuantifyingDeterminer"/>
         <rdfs:comment>e.g., &quot;bi&quot; (two)</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak zehaztuak</rdfs:label>
         <owl:versionInfo>corresponds to category &quot;Numeral&quot;</owl:versionInfo>
     </owl:Class>
     
@@ -664,9 +673,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#Suffix -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Suffix">
-        <rdfs:label xml:lang="eu">atzizkiak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
         <rdfs:comment>e.g., &quot;-pe&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">atzizkiak</rdfs:label>
     </owl:Class>
     
 
@@ -674,9 +683,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#Symbol -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Symbol">
-        <rdfs:label xml:lang="eu">sinboloak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
         <rdfs:comment>e.g., &quot;km&quot;, &quot;cm&quot;, &quot;g&quot;,... </rdfs:comment>
+        <rdfs:label xml:lang="eu">sinboloak</rdfs:label>
     </owl:Class>
     
 
@@ -684,9 +693,9 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#SyntheticVerb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#SyntheticVerb">
-        <rdfs:label xml:lang="eu">aditz sintetikoak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#AuxiliaryLexicalCategory"/>
         <rdfs:comment>e.g., &quot;dator&quot; (v.prs.3sg.abs. of etorri)</rdfs:comment>
+        <rdfs:label xml:lang="eu">aditz sintetikoak</rdfs:label>
     </owl:Class>
     
 
@@ -694,8 +703,8 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#UndefinedAmountPronoun -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#UndefinedAmountPronoun">
-        <rdfs:label xml:lang="eu">izenordainak zehaztugabeak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#Pronoun"/>
+        <rdfs:label xml:lang="eu">izenordainak zehaztugabeak</rdfs:label>
     </owl:Class>
     
 
@@ -703,10 +712,10 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#UndefinedAmountQuantifyingDeterminer -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#UndefinedAmountQuantifyingDeterminer">
-        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak zehaztugabeak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#QuantifyingDeterminer"/>
-        <owl:versionInfo>seems to mean subset-indicating (existential) quantifier</owl:versionInfo>
         <rdfs:comment>e.g., zenbait &quot;some&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">determinatzaileak zenbatzaileak zehaztugabeak</rdfs:label>
+        <owl:versionInfo>seems to mean subset-indicating (existential) quantifier</owl:versionInfo>
     </owl:Class>
     
 
@@ -714,8 +723,8 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#Verb -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#Verb">
-        <rdfs:label xml:lang="eu">aditza</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#GeneralLexicalCategory"/>
+        <rdfs:label xml:lang="eu">aditza</rdfs:label>
     </owl:Class>
     
 
@@ -723,10 +732,10 @@ Therefore probably a use of the point different from its function as sentence-fi
     <!-- http://purl.org/olia/basque.owl#VerbTypeMorpheme -->
 
     <owl:Class rdf:about="http://purl.org/olia/basque.owl#VerbTypeMorpheme">
-        <rdfs:label xml:lang="eu">aditz-mota morfemak</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/basque.owl#MorphologicalCategory"/>
-        <owl:versionInfo>&quot;aditz mota&quot; means &quot;verb type&quot; (http://littera.deusto.es/enwiki/index.php/User:LeticiaEchevarria)</owl:versionInfo>
         <rdfs:comment>e.g., &quot;-tu&quot;, &quot;-t(z)e&quot;</rdfs:comment>
+        <rdfs:label xml:lang="eu">aditz-mota morfemak</rdfs:label>
+        <owl:versionInfo>&quot;aditz mota&quot; means &quot;verb type&quot; (http://littera.deusto.es/enwiki/index.php/User:LeticiaEchevarria)</owl:versionInfo>
     </owl:Class>
     
 
@@ -1292,5 +1301,5 @@ Therefore probably a use of the point different from its function as sentence-fi
 
 
 
-<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 
