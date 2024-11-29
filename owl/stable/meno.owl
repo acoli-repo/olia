@@ -21,6 +21,7 @@
 2010-04-08 updated [CC]]
 2010-04-14 validated [CC]
 2021-11-26 update to Menota 3.0, full revision [CC]
+2024-11-29 tier label "me:msa" replaced by "POS" [POS]
 
 Contributors:
 CC - Christian Chiarcos, christian.chiarcos@gmail.com, GU Frankfurt, Germany
@@ -361,7 +362,7 @@ LZ - Ludger Zeevaert, U Hamburg</owl:versionInfo>
 
     <owl:Class rdf:about="http://purl.org/olia/meno.owl#Government">
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/meno.owl#VariableProperties"/>
-        <rdfs:comment>MENOTA 3.0: In the Old Norwegian lemmatised corpus, prepositions are encoded for the case which they govern. This is valuable syntactic information, but it is really not a morphological category. We therefore recommend that prepositions, which have no inflection in Old Norse (or possibly not in any other language), are only encoded for word class in the @me:msa attribute, “xAP”.
+        <rdfs:comment>MENOTA 3.0: In the Old Norwegian lemmatised corpus, prepositions are encoded for the case which they govern. This is valuable syntactic information, but it is really not a morphological category. We therefore recommend that prepositions, which have no inflection in Old Norse (or possibly not in any other language), are only encoded for word class in the @me:msa attribute (tier POS), “xAP”.
 In the Old Norwegian lemmatised corpus, also conjunctions (i.e. subjunctions) are encoded for the mood which they govern.</rdfs:comment>
         <owl:versionInfo>TODO: Note that OLiA does not distinguish whether the case (etc.) is governed by an adposition or morphologically expressed at the token. In rare cases, this can lead to ambiguities, esp., if a nominal is grammaticalized as a preposition (cf. German &quot;wegen&quot; &apos;because[+GEN/DAT]&apos; &lt; &quot;(von den) Wegen&quot; &apos;from the ways[ACC] of&apos;). Not sure whether such a case exists in the Scandinavian languages, but it probably does not exist on a synchronic level.</owl:versionInfo>
     </owl:Class>
@@ -504,7 +505,7 @@ In the Old Norwegian lemmatised corpus, also conjunctions (i.e. subjunctions) ar
     <owl:Class rdf:about="http://purl.org/olia/meno.owl#InvariableProperties">
         <rdfs:comment>MENOTA v.3.0: Words in inflectional languages exhibit variable and invariable properties. Word class is the prime example of an invariable property, since a word can belong to one and only one word class – the noun “hestr” can not be inflected in adjectival and verbal forms. For nouns, gender is an invariable property – once again, “hestr” can not be inflected in feminine or neutral forms. Adjectives, on the other hand, are inflected in gender, so for this word class gender is a variable property. Other categories, such as case, number, grade etc., are all variable.
 
-Information on inflectional classes can be added to the @me:msa attribute, e.g. strong vs. weak verbs, stem classes of nouns etc. These are also invariable properties.
+Information on inflectional classes can be added to the @me:msa (POS) attribute, e.g. strong vs. weak verbs, stem classes of nouns etc. These are also invariable properties.
 
 The name tokens will, in any case, make it clear which tokens refer to invariable properties and which refer to invariable properties.</rdfs:comment>
     </owl:Class>
@@ -941,10 +942,11 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/olia/system.owl#hasTier"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">me.msa</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">POS</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>MENOTA 3.0: Word class is denoted by a name token consisting of the character “x” + an uppercase two-letter abbreviation for each class, including commonly recognised subclasses (such as the division between common and proper nouns). Inevitably, there will be some conflict of categorisation, especially among the pronouns and determiners.</rdfs:comment>
+        <owl:versionInfo>2024-11-29: The original tier label (me:msa) has been replaced by POS</owl:versionInfo>
     </owl:Class>
     
 
@@ -1118,7 +1120,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cA">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
         <olias:hasTag>cA</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Accusative</rdfs:label>
         <rdfs:label>accusative</rdfs:label>
@@ -1132,7 +1134,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
         <olias:hasTag>cAD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Accusative or Dative</rdfs:label>
     </owl:NamedIndividual>
@@ -1145,7 +1147,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
         <olias:hasTag>cAG</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Accusative or Genitive</rdfs:label>
     </owl:NamedIndividual>
@@ -1158,7 +1160,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Nominative"/>
         <olias:hasTag>cAN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Accusative or Nominative</rdfs:label>
     </owl:NamedIndividual>
@@ -1170,7 +1172,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cB">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Ablative"/>
         <olias:hasTag>cB</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>ablative</rdfs:label>
     </owl:NamedIndividual>
@@ -1182,7 +1184,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cD">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
         <olias:hasTag>cD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Dative</rdfs:label>
         <rdfs:label>dative</rdfs:label>
@@ -1195,7 +1197,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cG">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
         <olias:hasTag>cG</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Genitive</rdfs:label>
         <rdfs:label>genitive</rdfs:label>
@@ -1209,7 +1211,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
         <olias:hasTag>cGD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Genitive or Dative</rdfs:label>
     </owl:NamedIndividual>
@@ -1221,7 +1223,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cN">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Nominative"/>
         <olias:hasTag>cN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Nominative</rdfs:label>
         <rdfs:label>nominative</rdfs:label>
@@ -1236,7 +1238,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
         <olias:hasTag>cO</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Oblique (i.e. Accusative, Dative or Genitive)</rdfs:label>
     </owl:NamedIndividual>
@@ -1248,7 +1250,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Case"/>
         <olias:hasTag>cU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
         <rdfs:label>unspecified</rdfs:label>
@@ -1261,7 +1263,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#cV">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Vocative"/>
         <olias:hasTag>cV</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>vocative</rdfs:label>
     </owl:NamedIndividual>
@@ -1273,7 +1275,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#eN">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#NegativeEncliticParticle"/>
         <olias:hasTag>eN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Enclitic negative particle</rdfs:label>
     </owl:NamedIndividual>
@@ -1285,7 +1287,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#eP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#EncliticPronoun"/>
         <olias:hasTag>eP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Enclitic pronoun</rdfs:label>
     </owl:NamedIndividual>
@@ -1297,7 +1299,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#fF">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Finite"/>
         <olias:hasTag>fF</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Finite</rdfs:label>
     </owl:NamedIndividual>
@@ -1309,7 +1311,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#fI">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Infinite"/>
         <olias:hasTag>fI</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Infinite (non-finite)</rdfs:label>
     </owl:NamedIndividual>
@@ -1321,7 +1323,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#fP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Participle"/>
         <olias:hasTag>fP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Participle (non-finite)</rdfs:label>
     </owl:NamedIndividual>
@@ -1333,7 +1335,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#fU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Finiteness"/>
         <olias:hasTag>fU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
     </owl:NamedIndividual>
@@ -1345,7 +1347,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gF">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Feminine"/>
         <olias:hasTag>gF</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Feminine</rdfs:label>
     </owl:NamedIndividual>
@@ -1358,7 +1360,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Feminine"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Neuter"/>
         <olias:hasTag>gFN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Feminine or Neuter</rdfs:label>
     </owl:NamedIndividual>
@@ -1370,7 +1372,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gM">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Masculine"/>
         <olias:hasTag>gM</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Masculine</rdfs:label>
     </owl:NamedIndividual>
@@ -1383,7 +1385,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Feminine"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Masculine"/>
         <olias:hasTag>gMF</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Masculine or Feminine</rdfs:label>
     </owl:NamedIndividual>
@@ -1397,7 +1399,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Masculine"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Neuter"/>
         <olias:hasTag>gMFN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Masculine, Feminine or Neuter</rdfs:label>
     </owl:NamedIndividual>
@@ -1410,7 +1412,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Masculine"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Neuter"/>
         <olias:hasTag>gMN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Masculine or Neuter</rdfs:label>
     </owl:NamedIndividual>
@@ -1422,7 +1424,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gN">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Neuter"/>
         <olias:hasTag>gN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Neuter</rdfs:label>
     </owl:NamedIndividual>
@@ -1434,7 +1436,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#gU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Gender"/>
         <olias:hasTag>gU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
     </owl:NamedIndividual>
@@ -1447,7 +1449,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Present"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Preterite"/>
         <olias:hasTag>iPP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Preterite-Present</rdfs:label>
     </owl:NamedIndividual>
@@ -1459,7 +1461,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#iRD">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Reduplication"/>
         <olias:hasTag>iRD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Reduplicating</rdfs:label>
     </owl:NamedIndividual>
@@ -1471,7 +1473,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#iST">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#StrongInflection"/>
         <olias:hasTag>iST</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Strong</rdfs:label>
     </owl:NamedIndividual>
@@ -1483,7 +1485,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#iWK">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#WeakInflection"/>
         <olias:hasTag>iWK</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Weak</rdfs:label>
     </owl:NamedIndividual>
@@ -1495,7 +1497,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mIN">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indicative"/>
         <olias:hasTag>mIN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Indicative</rdfs:label>
     </owl:NamedIndividual>
@@ -1508,7 +1510,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Imperative"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indicative"/>
         <olias:hasTag>mINIM</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Indicative or Imperative</rdfs:label>
     </owl:NamedIndividual>
@@ -1521,7 +1523,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indicative"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
         <olias:hasTag>mINSU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Indicative or Subjunctive</rdfs:label>
     </owl:NamedIndividual>
@@ -1533,7 +1535,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mIP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Imperative"/>
         <olias:hasTag>mIP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Imperative</rdfs:label>
     </owl:NamedIndividual>
@@ -1545,7 +1547,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mSU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
         <olias:hasTag>mSU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Subjunctive</rdfs:label>
     </owl:NamedIndividual>
@@ -1558,7 +1560,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Imperative"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
         <olias:hasTag>mSUIM</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Subjunctive or Imperative</rdfs:label>
     </owl:NamedIndividual>
@@ -1570,7 +1572,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#mU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Mood"/>
         <olias:hasTag>mU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
     </owl:NamedIndividual>
@@ -1582,7 +1584,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#nD">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dual"/>
         <olias:hasTag>nD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Dual</rdfs:label>
     </owl:NamedIndividual>
@@ -1594,7 +1596,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#nP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Plural"/>
         <olias:hasTag>nP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Plural</rdfs:label>
     </owl:NamedIndividual>
@@ -1606,7 +1608,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#nS">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Singular"/>
         <olias:hasTag>nS</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Singular</rdfs:label>
     </owl:NamedIndividual>
@@ -1618,7 +1620,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#nU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Number"/>
         <olias:hasTag>nU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
     </owl:NamedIndividual>
@@ -1630,7 +1632,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#p1">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#FirstPerson"/>
         <olias:hasTag>p1</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>1. person</rdfs:label>
     </owl:NamedIndividual>
@@ -1642,7 +1644,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#p2">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#SecondPerson"/>
         <olias:hasTag>p2</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>2. person</rdfs:label>
     </owl:NamedIndividual>
@@ -1654,7 +1656,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#p3">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ThirdPerson"/>
         <olias:hasTag>p3</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>3. person</rdfs:label>
     </owl:NamedIndividual>
@@ -1666,7 +1668,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#pU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Person"/>
         <olias:hasTag>pU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
     </owl:NamedIndividual>
@@ -1678,7 +1680,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#rC">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ComparativeDegree"/>
         <olias:hasTag>rC</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Comparative</rdfs:label>
     </owl:NamedIndividual>
@@ -1690,7 +1692,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#rP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PositiveDegree"/>
         <olias:hasTag>rP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Positive</rdfs:label>
     </owl:NamedIndividual>
@@ -1702,7 +1704,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#rS">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#SuperlativeDegree"/>
         <olias:hasTag>rS</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Superlative</rdfs:label>
     </owl:NamedIndividual>
@@ -1714,7 +1716,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#rU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Grade"/>
         <olias:hasTag>rU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
     </owl:NamedIndividual>
@@ -1726,7 +1728,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#sD">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Definite"/>
         <olias:hasTag>sD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Definite</rdfs:label>
     </owl:NamedIndividual>
@@ -1738,7 +1740,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#sI">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indefinite"/>
         <olias:hasTag>sI</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Indefinite</rdfs:label>
     </owl:NamedIndividual>
@@ -1750,7 +1752,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#sU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Species"/>
         <olias:hasTag>sU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
     </owl:NamedIndividual>
@@ -1762,7 +1764,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tFP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#FuturePerfect"/>
         <olias:hasTag>tFP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>future perfect</rdfs:label>
     </owl:NamedIndividual>
@@ -1774,7 +1776,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tFS">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#FutureSimple"/>
         <olias:hasTag>tFS</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>future simple</rdfs:label>
     </owl:NamedIndividual>
@@ -1786,7 +1788,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tIP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Imperfect"/>
         <olias:hasTag>tIP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>imperfect</rdfs:label>
     </owl:NamedIndividual>
@@ -1798,7 +1800,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tPF">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Perfect"/>
         <olias:hasTag>tPF</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>perfect</rdfs:label>
     </owl:NamedIndividual>
@@ -1810,7 +1812,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tPP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Pluperfect"/>
         <olias:hasTag>tPP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>pluperfect</rdfs:label>
     </owl:NamedIndividual>
@@ -1822,7 +1824,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tPS">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Present"/>
         <olias:hasTag>tPS</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Present</rdfs:label>
         <rdfs:label>present</rdfs:label>
@@ -1835,7 +1837,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tPT">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Preterite"/>
         <olias:hasTag>tPT</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Preterite</rdfs:label>
     </owl:NamedIndividual>
@@ -1847,7 +1849,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#tU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Tense"/>
         <olias:hasTag>tU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
         <rdfs:label>unspecified</rdfs:label>
@@ -1870,7 +1872,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vA">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ActiveVoice"/>
         <olias:hasTag>vA</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Active</rdfs:label>
     </owl:NamedIndividual>
@@ -1882,7 +1884,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vD">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#DeponentVoice"/>
         <olias:hasTag>vD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Deponent</rdfs:label>
     </owl:NamedIndividual>
@@ -1894,7 +1896,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PassiveVoice"/>
         <olias:hasTag>vP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Passive</rdfs:label>
     </owl:NamedIndividual>
@@ -1906,7 +1908,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vR">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ReflexiveVoice"/>
         <olias:hasTag>vR</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Reflexive</rdfs:label>
     </owl:NamedIndividual>
@@ -1918,7 +1920,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#vU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Voice"/>
         <olias:hasTag>vU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified</rdfs:label>
     </owl:NamedIndividual>
@@ -1930,7 +1932,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xAJ">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Adjective"/>
         <olias:hasTag>xAJ</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Adjective</rdfs:label>
     </owl:NamedIndividual>
@@ -1942,7 +1944,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xAP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Preposition"/>
         <olias:hasTag>xAP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Preposition (apposition)</rdfs:label>
     </owl:NamedIndividual>
@@ -1954,7 +1956,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xAT">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Article"/>
         <olias:hasTag>xAT</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Articles</rdfs:label>
     </owl:NamedIndividual>
@@ -1966,7 +1968,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xAV">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Adverb"/>
         <olias:hasTag>xAV</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Adverb</rdfs:label>
     </owl:NamedIndividual>
@@ -1978,7 +1980,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xCC">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CoordinatingConjunction"/>
         <olias:hasTag>xCC</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Conjunction, coordinating</rdfs:label>
@@ -1991,7 +1993,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xCS">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#SubordinatingConjunction"/>
         <olias:hasTag>xCS</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">from data set provided by Ludger Zeevaert, 10.9.06, Johannes Bubenzer</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Conjunction, subordinating</rdfs:label>
@@ -2014,7 +2016,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xDD">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#DemonstrativeDeterminer"/>
         <olias:hasTag>xDD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Determiner, demonstrative</rdfs:label>
     </owl:NamedIndividual>
@@ -2026,7 +2028,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xDP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PossessiveDeterminer"/>
         <olias:hasTag>xDP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Determiner, possessive</rdfs:label>
     </owl:NamedIndividual>
@@ -2038,7 +2040,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xDQ">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#QuantifierDeterminer"/>
         <olias:hasTag>xDQ</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Determiner, quantifier</rdfs:label>
     </owl:NamedIndividual>
@@ -2050,7 +2052,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xIM">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#InfinitiveMarker"/>
         <olias:hasTag>xIM</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Infinitive marker</rdfs:label>
     </owl:NamedIndividual>
@@ -2062,7 +2064,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xIT">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Interjection"/>
         <olias:hasTag>xIT</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Interjection</rdfs:label>
     </owl:NamedIndividual>
@@ -2074,7 +2076,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xNA">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CardinalNumeral"/>
         <olias:hasTag>xNA</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Numeral, cardinal</rdfs:label>
     </owl:NamedIndividual>
@@ -2086,7 +2088,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xNC">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#CommonNoun"/>
         <olias:hasTag>xNC</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Noun, common</rdfs:label>
     </owl:NamedIndividual>
@@ -2098,7 +2100,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xNO">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#OrdinalNumeral"/>
         <olias:hasTag>xNO</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Numeral, ordinal</rdfs:label>
     </owl:NamedIndividual>
@@ -2110,7 +2112,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xNP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#ProperNoun"/>
         <olias:hasTag>xNP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Noun, proper</rdfs:label>
     </owl:NamedIndividual>
@@ -2123,7 +2125,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Determiner"/>
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Pronoun"/>
         <olias:hasTag>xPD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Pronoun/Determiner</rdfs:label>
     </owl:NamedIndividual>
@@ -2135,7 +2137,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xPE">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#PersonalPronoun"/>
         <olias:hasTag>xPE</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Pronoun, personal</rdfs:label>
     </owl:NamedIndividual>
@@ -2147,7 +2149,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xPI">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#IndefinitePronoun"/>
         <olias:hasTag>xPI</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Pronoun, indefinite</rdfs:label>
     </owl:NamedIndividual>
@@ -2159,7 +2161,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xPQ">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#InterrogativePronoun"/>
         <olias:hasTag>xPQ</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Pronoun, interrogative</rdfs:label>
     </owl:NamedIndividual>
@@ -2171,7 +2173,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xRP">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#RelativeParticle"/>
         <olias:hasTag>xRP</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Relative particle</rdfs:label>
     </owl:NamedIndividual>
@@ -2183,7 +2185,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xUA">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#WordClass"/>
         <olias:hasTag>xUA</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unassigned</rdfs:label>
     </owl:NamedIndividual>
@@ -2195,7 +2197,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#xVB">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Verb"/>
         <olias:hasTag>xVB</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Verb</rdfs:label>
     </owl:NamedIndividual>
@@ -2217,7 +2219,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yA">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Accusative"/>
         <olias:hasTag>yA</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Governing Accusative</rdfs:label>
     </owl:NamedIndividual>
@@ -2229,7 +2231,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yD">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Dative"/>
         <olias:hasTag>yD</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Governing Dative</rdfs:label>
     </owl:NamedIndividual>
@@ -2241,7 +2243,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yG">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Genitive"/>
         <olias:hasTag>yG</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Governing Genitive</rdfs:label>
     </owl:NamedIndividual>
@@ -2253,7 +2255,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yIN">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Indicative"/>
         <olias:hasTag>yIN</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Governing Indicative</rdfs:label>
     </owl:NamedIndividual>
@@ -2265,7 +2267,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#ySU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Subjunctive"/>
         <olias:hasTag>ySU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Governing Subjunctive</rdfs:label>
     </owl:NamedIndividual>
@@ -2277,7 +2279,7 @@ In Old Norse, nouns and adjectives can have either indefinite or definite forms,
     <owl:NamedIndividual rdf:about="http://purl.org/olia/meno.owl#yU">
         <rdf:type rdf:resource="http://purl.org/olia/meno.owl#Government"/>
         <olias:hasTag>yU</olias:hasTag>
-        <olias:hasTier>me:msa</olias:hasTier>
+        <olias:hasTier>POS</olias:hasTier>
         <rdfs:isDefinedBy rdf:resource="https://www.menota.org/HB3_ch11.xml"/>
         <rdfs:label>Unspecified government</rdfs:label>
     </owl:NamedIndividual>
