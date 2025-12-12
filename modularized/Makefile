@@ -2,6 +2,10 @@ SHELL=bash
 
 build: ../owl/core/olia.owl
 
+update_release: build
+	@echo we copy the current OWL files into ../doc, commit and push only if you feel confident 1>&2;\
+	 cp olia.owl olia-top.owl system.owl ../docs/owl;\
+
 # function to add a disclaimer, cf. https://www.gnu.org/software/make/manual/make.html#Call-Function, https://www.gnu.org/software/make/manual/make.html#Canned-Recipes
 define add_core_disclaimer_no_body = 
 	(egrep -m 1 '<\?' $(1); \

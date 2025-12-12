@@ -1,5 +1,7 @@
 # OLiA Modularization
 
+> TL/DR: build with `make` and check the logs. If all looks allright, update docs/owl by running `make update_release`
+
 TO facilitate the local management of individual components, OLiA is broken down down into several sub-vocabularies.
 All of these use the same namespaces, but they are *edited* independently in separate physical files. 
 The files in this repository are used to generate the OLiA Reference Model and associated ontologies (`olia-top.owl`, `system.owl`) in [../owl/core](../owl/core).
